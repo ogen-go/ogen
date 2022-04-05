@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 // Encode implements json.Marshaler.
@@ -430,7 +435,7 @@ func (s *NilFloat64) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o NilIP) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
@@ -439,7 +444,7 @@ func (o NilIP) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *NilIP) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilIP to nil")
@@ -449,7 +454,7 @@ func (o *NilIP) Decode(d *jx.Decoder) error {
 			return err
 		}
 
-		var v net.IP
+		var v netip.Addr
 		o.Value = v
 		o.Null = true
 		return nil
@@ -476,7 +481,7 @@ func (s *NilIP) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o NilIPv4) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
@@ -485,7 +490,7 @@ func (o NilIPv4) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *NilIPv4) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilIPv4 to nil")
@@ -495,7 +500,7 @@ func (o *NilIPv4) Decode(d *jx.Decoder) error {
 			return err
 		}
 
-		var v net.IP
+		var v netip.Addr
 		o.Value = v
 		o.Null = true
 		return nil
@@ -522,7 +527,7 @@ func (s *NilIPv4) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o NilIPv6) Encode(e *jx.Encoder) {
 	if o.Null {
 		e.Null()
@@ -531,7 +536,7 @@ func (o NilIPv6) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *NilIPv6) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode NilIPv6 to nil")
@@ -541,7 +546,7 @@ func (o *NilIPv6) Decode(d *jx.Decoder) error {
 			return err
 		}
 
-		var v net.IP
+		var v netip.Addr
 		o.Value = v
 		o.Null = true
 		return nil
@@ -1100,7 +1105,7 @@ func (s *OptFloat64) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptIP) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -1108,7 +1113,7 @@ func (o OptIP) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptIP) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIP to nil")
@@ -1135,7 +1140,7 @@ func (s *OptIP) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptIPv4) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -1143,7 +1148,7 @@ func (o OptIPv4) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptIPv4) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIPv4 to nil")
@@ -1170,7 +1175,7 @@ func (s *OptIPv4) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptIPv6) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -1178,7 +1183,7 @@ func (o OptIPv6) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptIPv6) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIPv6 to nil")
@@ -1667,7 +1672,7 @@ func (s *OptNilFloat64) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptNilIP) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -1679,7 +1684,7 @@ func (o OptNilIP) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptNilIP) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIP to nil")
@@ -1689,7 +1694,7 @@ func (o *OptNilIP) Decode(d *jx.Decoder) error {
 			return err
 		}
 
-		var v net.IP
+		var v netip.Addr
 		o.Value = v
 		o.Set = true
 		o.Null = true
@@ -1718,7 +1723,7 @@ func (s *OptNilIP) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptNilIPv4) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -1730,7 +1735,7 @@ func (o OptNilIPv4) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptNilIPv4) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIPv4 to nil")
@@ -1740,7 +1745,7 @@ func (o *OptNilIPv4) Decode(d *jx.Decoder) error {
 			return err
 		}
 
-		var v net.IP
+		var v netip.Addr
 		o.Value = v
 		o.Set = true
 		o.Null = true
@@ -1769,7 +1774,7 @@ func (s *OptNilIPv4) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptNilIPv6) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -1781,7 +1786,7 @@ func (o OptNilIPv6) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptNilIPv6) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptNilIPv6 to nil")
@@ -1791,7 +1796,7 @@ func (o *OptNilIPv6) Decode(d *jx.Decoder) error {
 			return err
 		}
 
-		var v net.IP
+		var v netip.Addr
 		o.Value = v
 		o.Set = true
 		o.Null = true
@@ -4378,9 +4383,9 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ip":
 			requiredBitSet[2] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayStringIP = make([]net.IP, 0)
+				s.RequiredArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -4398,9 +4403,9 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv4":
 			requiredBitSet[2] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringIpv4 = make([]net.IP, 0)
+				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -4418,9 +4423,9 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv6":
 			requiredBitSet[2] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringIpv6 = make([]net.IP, 0)
+				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -5034,12 +5039,12 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ip":
 			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayStringIP = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -5062,12 +5067,12 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv4":
 			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -5090,12 +5095,12 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv6":
 			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -5858,9 +5863,9 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
-				s.OptionalArrayStringIP = make([]net.IP, 0)
+				s.OptionalArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -5877,9 +5882,9 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv4":
 			if err := func() error {
-				s.OptionalArrayStringIpv4 = make([]net.IP, 0)
+				s.OptionalArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -5896,9 +5901,9 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv6":
 			if err := func() error {
-				s.OptionalArrayStringIpv6 = make([]net.IP, 0)
+				s.OptionalArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -6487,12 +6492,12 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIP = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -6514,12 +6519,12 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv4":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv4 = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -6541,12 +6546,12 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv6":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv6 = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -9007,9 +9012,9 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ip":
 			requiredBitSet[2] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayStringIP = make([]net.IP, 0)
+				s.RequiredArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -9027,9 +9032,9 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv4":
 			requiredBitSet[2] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringIpv4 = make([]net.IP, 0)
+				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -9047,9 +9052,9 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv6":
 			requiredBitSet[2] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringIpv6 = make([]net.IP, 0)
+				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -9663,12 +9668,12 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ip":
 			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayStringIP = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -9691,12 +9696,12 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv4":
 			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -9719,12 +9724,12 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv6":
 			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -10487,9 +10492,9 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
-				s.OptionalArrayStringIP = make([]net.IP, 0)
+				s.OptionalArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -10506,9 +10511,9 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv4":
 			if err := func() error {
-				s.OptionalArrayStringIpv4 = make([]net.IP, 0)
+				s.OptionalArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -10525,9 +10530,9 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv6":
 			if err := func() error {
-				s.OptionalArrayStringIpv6 = make([]net.IP, 0)
+				s.OptionalArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -11116,12 +11121,12 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIP = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -11143,12 +11148,12 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv4":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv4 = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -11170,12 +11175,12 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv6":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv6 = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -13636,9 +13641,9 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_ip":
 			requiredBitSet[2] |= 1 << 3
 			if err := func() error {
-				s.RequiredArrayStringIP = make([]net.IP, 0)
+				s.RequiredArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -13656,9 +13661,9 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv4":
 			requiredBitSet[2] |= 1 << 4
 			if err := func() error {
-				s.RequiredArrayStringIpv4 = make([]net.IP, 0)
+				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -13676,9 +13681,9 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_array_string_ipv6":
 			requiredBitSet[2] |= 1 << 5
 			if err := func() error {
-				s.RequiredArrayStringIpv6 = make([]net.IP, 0)
+				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -14292,12 +14297,12 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ip":
 			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
-				s.RequiredDoubleArrayStringIP = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -14320,12 +14325,12 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv4":
 			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv4 = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -14348,12 +14353,12 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		case "required_double_array_string_ipv6":
 			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
-				s.RequiredDoubleArrayStringIpv6 = make([][]net.IP, 0)
+				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -15116,9 +15121,9 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
-				s.OptionalArrayStringIP = make([]net.IP, 0)
+				s.OptionalArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -15135,9 +15140,9 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv4":
 			if err := func() error {
-				s.OptionalArrayStringIpv4 = make([]net.IP, 0)
+				s.OptionalArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -15154,9 +15159,9 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_array_string_ipv6":
 			if err := func() error {
-				s.OptionalArrayStringIpv6 = make([]net.IP, 0)
+				s.OptionalArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem net.IP
+					var elem netip.Addr
 					v, err := json.DecodeIP(d)
 					elem = v
 					if err != nil {
@@ -15745,12 +15750,12 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIP = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -15772,12 +15777,12 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv4":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv4 = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {
@@ -15799,12 +15804,12 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}
 		case "optional_double_array_string_ipv6":
 			if err := func() error {
-				s.OptionalDoubleArrayStringIpv6 = make([][]net.IP, 0)
+				s.OptionalDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem []net.IP
-					elem = make([]net.IP, 0)
+					var elem []netip.Addr
+					elem = make([]netip.Addr, 0)
 					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						v, err := json.DecodeIP(d)
 						elemElem = v
 						if err != nil {

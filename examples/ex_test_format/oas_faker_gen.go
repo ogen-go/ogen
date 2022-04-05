@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 // SetFake set fake values.
@@ -224,27 +229,27 @@ func (s *OptFloat64) SetFake() {
 
 // SetFake set fake values.
 func (s *OptIP) SetFake() {
-	var elem net.IP
+	var elem netip.Addr
 	{
-		elem = net.ParseIP("127.0.0.1")
+		elem = netip.MustParseAddr("127.0.0.1")
 	}
 	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIPv4) SetFake() {
-	var elem net.IP
+	var elem netip.Addr
 	{
-		elem = net.ParseIP("127.0.0.1")
+		elem = netip.MustParseAddr("127.0.0.1")
 	}
 	s.SetTo(elem)
 }
 
 // SetFake set fake values.
 func (s *OptIPv6) SetFake() {
-	var elem net.IP
+	var elem netip.Addr
 	{
-		elem = net.ParseIP("127.0.0.1")
+		elem = netip.MustParseAddr("127.0.0.1")
 	}
 	s.SetTo(elem)
 }
@@ -654,9 +659,9 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
 			}
@@ -666,9 +671,9 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.RequiredArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
 			}
@@ -678,9 +683,9 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.RequiredArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
 			}
@@ -1085,13 +1090,13 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1104,13 +1109,13 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1123,13 +1128,13 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -1296,17 +1301,17 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringIP = net.ParseIP("127.0.0.1")
+			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
 		{
-			s.RequiredStringIpv4 = net.ParseIP("127.0.0.1")
+			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
 		{
-			s.RequiredStringIpv6 = net.ParseIP("127.0.0.1")
+			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
@@ -1554,9 +1559,9 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.OptionalArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
 			}
@@ -1566,9 +1571,9 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.OptionalArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
 			}
@@ -1578,9 +1583,9 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.OptionalArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
 			}
@@ -1985,13 +1990,13 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2004,13 +2009,13 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2023,13 +2028,13 @@ func (s *TestRequestFormatTestReq) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2462,9 +2467,9 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
 			}
@@ -2474,9 +2479,9 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.RequiredArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
 			}
@@ -2486,9 +2491,9 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.RequiredArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
 			}
@@ -2893,13 +2898,13 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2912,13 +2917,13 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -2931,13 +2936,13 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3104,17 +3109,17 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringIP = net.ParseIP("127.0.0.1")
+			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
 		{
-			s.RequiredStringIpv4 = net.ParseIP("127.0.0.1")
+			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
 		{
-			s.RequiredStringIpv6 = net.ParseIP("127.0.0.1")
+			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
@@ -3362,9 +3367,9 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.OptionalArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
 			}
@@ -3374,9 +3379,9 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.OptionalArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
 			}
@@ -3386,9 +3391,9 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.OptionalArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
 			}
@@ -3793,13 +3798,13 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3812,13 +3817,13 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -3831,13 +3836,13 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4270,9 +4275,9 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIP = append(s.RequiredArrayStringIP, elem)
 			}
@@ -4282,9 +4287,9 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.RequiredArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIpv4 = append(s.RequiredArrayStringIpv4, elem)
 			}
@@ -4294,9 +4299,9 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.RequiredArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.RequiredArrayStringIpv6 = append(s.RequiredArrayStringIpv6, elem)
 			}
@@ -4701,13 +4706,13 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4720,13 +4725,13 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4739,13 +4744,13 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.RequiredDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -4912,17 +4917,17 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
-			s.RequiredStringIP = net.ParseIP("127.0.0.1")
+			s.RequiredStringIP = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
 		{
-			s.RequiredStringIpv4 = net.ParseIP("127.0.0.1")
+			s.RequiredStringIpv4 = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
 		{
-			s.RequiredStringIpv6 = net.ParseIP("127.0.0.1")
+			s.RequiredStringIpv6 = netip.MustParseAddr("127.0.0.1")
 		}
 	}
 	{
@@ -5170,9 +5175,9 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.OptionalArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIP = append(s.OptionalArrayStringIP, elem)
 			}
@@ -5182,9 +5187,9 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.OptionalArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIpv4 = append(s.OptionalArrayStringIpv4, elem)
 			}
@@ -5194,9 +5199,9 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.OptionalArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem net.IP
+				var elem netip.Addr
 				{
-					elem = net.ParseIP("127.0.0.1")
+					elem = netip.MustParseAddr("127.0.0.1")
 				}
 				s.OptionalArrayStringIpv6 = append(s.OptionalArrayStringIpv6, elem)
 			}
@@ -5601,13 +5606,13 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5620,13 +5625,13 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIpv4 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}
@@ -5639,13 +5644,13 @@ func (s *TestResponseFormatTestOK) SetFake() {
 		{
 			s.OptionalDoubleArrayStringIpv6 = nil
 			for i := 0; i < 0; i++ {
-				var elem []net.IP
+				var elem []netip.Addr
 				{
 					elem = nil
 					for i := 0; i < 0; i++ {
-						var elemElem net.IP
+						var elemElem netip.Addr
 						{
-							elemElem = net.ParseIP("127.0.0.1")
+							elemElem = netip.MustParseAddr("127.0.0.1")
 						}
 						elem = append(elem, elemElem)
 					}

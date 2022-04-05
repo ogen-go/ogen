@@ -2,7 +2,7 @@ package ogen
 
 import (
 	"fmt"
-	"net"
+	"net/netip"
 	"net/url"
 	"testing"
 	"time"
@@ -37,15 +37,15 @@ func TestDefault(t *testing.T) {
 				Set:   true,
 			},
 			IP: api.OptIP{
-				Value: net.IPv4(1, 1, 1, 1),
+				Value: netip.AddrFrom4([4]byte{1, 1, 1, 1}),
 				Set:   true,
 			},
 			IPV4: api.OptIPv4{
-				Value: net.IPv4(1, 1, 1, 1),
+				Value: netip.AddrFrom4([4]byte{1, 1, 1, 1}),
 				Set:   true,
 			},
 			IPV6: api.OptIPv6{
-				Value: net.ParseIP("2001:db8:85a3::8a2e:370:7334"),
+				Value: netip.MustParseAddr("2001:db8:85a3::8a2e:370:7334"),
 				Set:   true,
 			},
 			URI: api.OptURI{
@@ -113,7 +113,7 @@ func TestDefault(t *testing.T) {
 			Input: `{"required":"required", "ip": "8.8.8.8", "ip_v4": "8.8.8.8"}`,
 			Expected: func(test *api.DefaultTest) {
 				test.Required = "required"
-				test.IP.SetTo(net.IPv4(8, 8, 8, 8))
+				test.IP.SetTo(netip.AddrFrom4([4]byte{8, 8, 8, 8}))
 				test.IPV4.SetTo(test.IP.Value)
 			},
 			Error: false,

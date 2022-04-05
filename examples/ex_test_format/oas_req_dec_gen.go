@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 func decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, err error) {
@@ -9648,14 +9653,14 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) (req net.IP, err error) {
+func decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) (req netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request net.IP
+		var request netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9686,14 +9691,14 @@ func decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9709,9 +9714,9 @@ func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.S
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -9740,14 +9745,14 @@ func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9763,12 +9768,12 @@ func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span tr
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -9855,14 +9860,14 @@ func decodeTestRequestRequiredStringIPNullableRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9878,9 +9883,9 @@ func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -9909,14 +9914,14 @@ func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -9932,12 +9937,12 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request,
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -9988,14 +9993,14 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request,
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span) (req net.IP, err error) {
+func decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span) (req netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request net.IP
+		var request netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10026,14 +10031,14 @@ func decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10049,9 +10054,9 @@ func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -10080,14 +10085,14 @@ func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10103,12 +10108,12 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -10195,14 +10200,14 @@ func decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10218,9 +10223,9 @@ func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -10249,14 +10254,14 @@ func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10272,12 +10277,12 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -10328,14 +10333,14 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span) (req net.IP, err error) {
+func decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span) (req netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request net.IP
+		var request netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10366,14 +10371,14 @@ func decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10389,9 +10394,9 @@ func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -10420,14 +10425,14 @@ func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10443,12 +10448,12 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -10535,14 +10540,14 @@ func decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10558,9 +10563,9 @@ func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -10589,14 +10594,14 @@ func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -10612,12 +10617,12 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Reques
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -14936,14 +14941,14 @@ func decodeTestRequestStringIPRequest(r *http.Request, span trace.Span) (req Opt
 	}
 }
 
-func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -14959,9 +14964,9 @@ func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (re
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -14982,14 +14987,14 @@ func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15005,12 +15010,12 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -15095,14 +15100,14 @@ func decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15118,9 +15123,9 @@ func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.S
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -15141,14 +15146,14 @@ func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15164,12 +15169,12 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -15254,14 +15259,14 @@ func decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15277,9 +15282,9 @@ func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -15300,14 +15305,14 @@ func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15323,12 +15328,12 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -15413,14 +15418,14 @@ func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15436,9 +15441,9 @@ func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -15459,14 +15464,14 @@ func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15482,12 +15487,12 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -15572,14 +15577,14 @@ func decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15595,9 +15600,9 @@ func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -15618,14 +15623,14 @@ func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15641,12 +15646,12 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {
@@ -15731,14 +15736,14 @@ func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []net.IP, err error) {
+func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request []net.IP
+		var request []netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15754,9 +15759,9 @@ func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([]net.IP, 0)
+			request = make([]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem net.IP
+				var elem netip.Addr
 				v, err := json.DecodeIP(d)
 				elem = v
 				if err != nil {
@@ -15777,14 +15782,14 @@ func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]net.IP, err error) {
+func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request [][]net.IP
+		var request [][]netip.Addr
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -15800,12 +15805,12 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 		defer jx.PutDecoder(d)
 		d.ResetBytes(buf.Bytes())
 		if err := func() error {
-			request = make([][]net.IP, 0)
+			request = make([][]netip.Addr, 0)
 			if err := d.Arr(func(d *jx.Decoder) error {
-				var elem []net.IP
-				elem = make([]net.IP, 0)
+				var elem []netip.Addr
+				elem = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elemElem net.IP
+					var elemElem netip.Addr
 					v, err := json.DecodeIP(d)
 					elemElem = v
 					if err != nil {

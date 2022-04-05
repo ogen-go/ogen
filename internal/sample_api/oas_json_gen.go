@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 // Encode implements json.Marshaler.
@@ -4560,7 +4565,7 @@ func (s *OptID) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptIP) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -4568,7 +4573,7 @@ func (o OptIP) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptIP) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIP to nil")
@@ -4595,7 +4600,7 @@ func (s *OptIP) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptIPv4) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -4603,7 +4608,7 @@ func (o OptIPv4) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptIPv4) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIPv4 to nil")
@@ -4630,7 +4635,7 @@ func (s *OptIPv4) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-// Encode encodes net.IP as json.
+// Encode encodes netip.Addr as json.
 func (o OptIPv6) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
@@ -4638,7 +4643,7 @@ func (o OptIPv6) Encode(e *jx.Encoder) {
 	json.EncodeIP(e, o.Value)
 }
 
-// Decode decodes net.IP from json.
+// Decode decodes netip.Addr from json.
 func (o *OptIPv6) Decode(d *jx.Decoder) error {
 	if o == nil {
 		return errors.New("invalid: unable to decode OptIPv6 to nil")

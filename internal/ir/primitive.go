@@ -41,7 +41,7 @@ func (p PrimitiveType) String() string {
 	case UUID:
 		return "uuid.UUID"
 	case IP:
-		return "net.IP"
+		return "netip.Addr"
 	case URL:
 		return "url.URL"
 	case Bool:

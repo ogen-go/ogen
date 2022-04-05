@@ -12,6 +12,7 @@ import (
 	"math/bits"
 	"net"
 	"net/http"
+	"net/netip"
 	"net/url"
 	"regexp"
 	"sort"
@@ -23,12 +24,6 @@ import (
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"github.com/google/uuid"
-	"github.com/ogen-go/ogen/conv"
-	ht "github.com/ogen-go/ogen/http"
-	"github.com/ogen-go/ogen/json"
-	"github.com/ogen-go/ogen/otelogen"
-	"github.com/ogen-go/ogen/uri"
-	"github.com/ogen-go/ogen/validate"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/codes"
@@ -36,42 +31,52 @@ import (
 	"go.opentelemetry.io/otel/metric/instrument/syncint64"
 	"go.opentelemetry.io/otel/metric/nonrecording"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	ht "github.com/ogen-go/ogen/http"
+	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/otelogen"
+	"github.com/ogen-go/ogen/uri"
+	"github.com/ogen-go/ogen/validate"
 )
 
 // No-op definition for keeping imports.
 var (
+	_ = bytes.NewReader
 	_ = context.Background()
 	_ = fmt.Stringer(nil)
-	_ = strings.Builder{}
-	_ = errors.Is
-	_ = sort.Ints
-	_ = http.MethodGet
 	_ = io.Copy
-	_ = json.Marshal
-	_ = bytes.NewReader
-	_ = strconv.ParseInt
-	_ = time.Time{}
-	_ = conv.ToInt32
-	_ = uuid.UUID{}
-	_ = uri.PathEncoder{}
-	_ = url.URL{}
 	_ = math.Mod
-	_ = bits.LeadingZeros64
 	_ = big.Rat{}
-	_ = validate.Int{}
-	_ = ht.NewRequest
+	_ = bits.LeadingZeros64
 	_ = net.IP{}
-	_ = otelogen.Version
-	_ = attribute.KeyValue{}
-	_ = trace.TraceIDFromHex
+	_ = http.MethodGet
+	_ = netip.Addr{}
+	_ = url.URL{}
+	_ = regexp.MustCompile
+	_ = sort.Ints
+	_ = strconv.ParseInt
+	_ = strings.Builder{}
+	_ = sync.Pool{}
+	_ = time.Time{}
+
+	_ = errors.Is
+	_ = jx.Null
+	_ = uuid.UUID{}
 	_ = otel.GetTracerProvider
+	_ = attribute.KeyValue{}
+	_ = codes.Unset
 	_ = metric.MeterConfig{}
 	_ = syncint64.Counter(nil)
 	_ = nonrecording.NewNoopMeterProvider
-	_ = regexp.MustCompile
-	_ = jx.Null
-	_ = sync.Pool{}
-	_ = codes.Unset
+	_ = trace.TraceIDFromHex
+
+	_ = conv.ToInt32
+	_ = ht.NewRequest
+	_ = json.Marshal
+	_ = otelogen.Version
+	_ = uri.PathEncoder{}
+	_ = validate.Int{}
 )
 
 // Error Response Schema.
@@ -309,20 +314,20 @@ func (o NilFloat64) Or(d float64) float64 {
 }
 
 // NewNilIP returns new NilIP with value set to v.
-func NewNilIP(v net.IP) NilIP {
+func NewNilIP(v netip.Addr) NilIP {
 	return NilIP{
 		Value: v,
 	}
 }
 
-// NilIP is nullable net.IP.
+// NilIP is nullable netip.Addr.
 type NilIP struct {
-	Value net.IP
+	Value netip.Addr
 	Null  bool
 }
 
 // SetTo sets value to v.
-func (o *NilIP) SetTo(v net.IP) {
+func (o *NilIP) SetTo(v netip.Addr) {
 	o.Null = false
 	o.Value = v
 }
@@ -331,7 +336,7 @@ func (o *NilIP) SetTo(v net.IP) {
 func (o NilIP) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o NilIP) Get() (v net.IP, ok bool) {
+func (o NilIP) Get() (v netip.Addr, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -339,7 +344,7 @@ func (o NilIP) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o NilIP) Or(d net.IP) net.IP {
+func (o NilIP) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -347,20 +352,20 @@ func (o NilIP) Or(d net.IP) net.IP {
 }
 
 // NewNilIPv4 returns new NilIPv4 with value set to v.
-func NewNilIPv4(v net.IP) NilIPv4 {
+func NewNilIPv4(v netip.Addr) NilIPv4 {
 	return NilIPv4{
 		Value: v,
 	}
 }
 
-// NilIPv4 is nullable net.IP.
+// NilIPv4 is nullable netip.Addr.
 type NilIPv4 struct {
-	Value net.IP
+	Value netip.Addr
 	Null  bool
 }
 
 // SetTo sets value to v.
-func (o *NilIPv4) SetTo(v net.IP) {
+func (o *NilIPv4) SetTo(v netip.Addr) {
 	o.Null = false
 	o.Value = v
 }
@@ -369,7 +374,7 @@ func (o *NilIPv4) SetTo(v net.IP) {
 func (o NilIPv4) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o NilIPv4) Get() (v net.IP, ok bool) {
+func (o NilIPv4) Get() (v netip.Addr, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -377,7 +382,7 @@ func (o NilIPv4) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o NilIPv4) Or(d net.IP) net.IP {
+func (o NilIPv4) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -385,20 +390,20 @@ func (o NilIPv4) Or(d net.IP) net.IP {
 }
 
 // NewNilIPv6 returns new NilIPv6 with value set to v.
-func NewNilIPv6(v net.IP) NilIPv6 {
+func NewNilIPv6(v netip.Addr) NilIPv6 {
 	return NilIPv6{
 		Value: v,
 	}
 }
 
-// NilIPv6 is nullable net.IP.
+// NilIPv6 is nullable netip.Addr.
 type NilIPv6 struct {
-	Value net.IP
+	Value netip.Addr
 	Null  bool
 }
 
 // SetTo sets value to v.
-func (o *NilIPv6) SetTo(v net.IP) {
+func (o *NilIPv6) SetTo(v netip.Addr) {
 	o.Null = false
 	o.Value = v
 }
@@ -407,7 +412,7 @@ func (o *NilIPv6) SetTo(v net.IP) {
 func (o NilIPv6) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o NilIPv6) Get() (v net.IP, ok bool) {
+func (o NilIPv6) Get() (v netip.Addr, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -415,7 +420,7 @@ func (o NilIPv6) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o NilIPv6) Or(d net.IP) net.IP {
+func (o NilIPv6) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -965,16 +970,16 @@ func (o OptFloat64) Or(d float64) float64 {
 }
 
 // NewOptIP returns new OptIP with value set to v.
-func NewOptIP(v net.IP) OptIP {
+func NewOptIP(v netip.Addr) OptIP {
 	return OptIP{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIP is optional net.IP.
+// OptIP is optional netip.Addr.
 type OptIP struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 }
 
@@ -983,19 +988,19 @@ func (o OptIP) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptIP) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIP) SetTo(v net.IP) {
+func (o *OptIP) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIP) Get() (v net.IP, ok bool) {
+func (o OptIP) Get() (v netip.Addr, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1003,7 +1008,7 @@ func (o OptIP) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptIP) Or(d net.IP) net.IP {
+func (o OptIP) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1011,16 +1016,16 @@ func (o OptIP) Or(d net.IP) net.IP {
 }
 
 // NewOptIPv4 returns new OptIPv4 with value set to v.
-func NewOptIPv4(v net.IP) OptIPv4 {
+func NewOptIPv4(v netip.Addr) OptIPv4 {
 	return OptIPv4{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIPv4 is optional net.IP.
+// OptIPv4 is optional netip.Addr.
 type OptIPv4 struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 }
 
@@ -1029,19 +1034,19 @@ func (o OptIPv4) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptIPv4) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIPv4) SetTo(v net.IP) {
+func (o *OptIPv4) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIPv4) Get() (v net.IP, ok bool) {
+func (o OptIPv4) Get() (v netip.Addr, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1049,7 +1054,7 @@ func (o OptIPv4) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptIPv4) Or(d net.IP) net.IP {
+func (o OptIPv4) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1057,16 +1062,16 @@ func (o OptIPv4) Or(d net.IP) net.IP {
 }
 
 // NewOptIPv6 returns new OptIPv6 with value set to v.
-func NewOptIPv6(v net.IP) OptIPv6 {
+func NewOptIPv6(v netip.Addr) OptIPv6 {
 	return OptIPv6{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptIPv6 is optional net.IP.
+// OptIPv6 is optional netip.Addr.
 type OptIPv6 struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 }
 
@@ -1075,19 +1080,19 @@ func (o OptIPv6) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptIPv6) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptIPv6) SetTo(v net.IP) {
+func (o *OptIPv6) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptIPv6) Get() (v net.IP, ok bool) {
+func (o OptIPv6) Get() (v netip.Addr, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -1095,7 +1100,7 @@ func (o OptIPv6) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptIPv6) Or(d net.IP) net.IP {
+func (o OptIPv6) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1626,16 +1631,16 @@ func (o OptNilFloat64) Or(d float64) float64 {
 }
 
 // NewOptNilIP returns new OptNilIP with value set to v.
-func NewOptNilIP(v net.IP) OptNilIP {
+func NewOptNilIP(v netip.Addr) OptNilIP {
 	return OptNilIP{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilIP is optional nullable net.IP.
+// OptNilIP is optional nullable netip.Addr.
 type OptNilIP struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 	Null  bool
 }
@@ -1645,14 +1650,14 @@ func (o OptNilIP) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptNilIP) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 	o.Null = false
 }
 
 // SetTo sets value to v.
-func (o *OptNilIP) SetTo(v net.IP) {
+func (o *OptNilIP) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
@@ -1662,7 +1667,7 @@ func (o *OptNilIP) SetTo(v net.IP) {
 func (o OptNilIP) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilIP) Get() (v net.IP, ok bool) {
+func (o OptNilIP) Get() (v netip.Addr, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -1673,7 +1678,7 @@ func (o OptNilIP) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptNilIP) Or(d net.IP) net.IP {
+func (o OptNilIP) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1681,16 +1686,16 @@ func (o OptNilIP) Or(d net.IP) net.IP {
 }
 
 // NewOptNilIPv4 returns new OptNilIPv4 with value set to v.
-func NewOptNilIPv4(v net.IP) OptNilIPv4 {
+func NewOptNilIPv4(v netip.Addr) OptNilIPv4 {
 	return OptNilIPv4{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilIPv4 is optional nullable net.IP.
+// OptNilIPv4 is optional nullable netip.Addr.
 type OptNilIPv4 struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 	Null  bool
 }
@@ -1700,14 +1705,14 @@ func (o OptNilIPv4) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptNilIPv4) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 	o.Null = false
 }
 
 // SetTo sets value to v.
-func (o *OptNilIPv4) SetTo(v net.IP) {
+func (o *OptNilIPv4) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
@@ -1717,7 +1722,7 @@ func (o *OptNilIPv4) SetTo(v net.IP) {
 func (o OptNilIPv4) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilIPv4) Get() (v net.IP, ok bool) {
+func (o OptNilIPv4) Get() (v netip.Addr, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -1728,7 +1733,7 @@ func (o OptNilIPv4) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptNilIPv4) Or(d net.IP) net.IP {
+func (o OptNilIPv4) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -1736,16 +1741,16 @@ func (o OptNilIPv4) Or(d net.IP) net.IP {
 }
 
 // NewOptNilIPv6 returns new OptNilIPv6 with value set to v.
-func NewOptNilIPv6(v net.IP) OptNilIPv6 {
+func NewOptNilIPv6(v netip.Addr) OptNilIPv6 {
 	return OptNilIPv6{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptNilIPv6 is optional nullable net.IP.
+// OptNilIPv6 is optional nullable netip.Addr.
 type OptNilIPv6 struct {
-	Value net.IP
+	Value netip.Addr
 	Set   bool
 	Null  bool
 }
@@ -1755,14 +1760,14 @@ func (o OptNilIPv6) IsSet() bool { return o.Set }
 
 // Reset unsets value.
 func (o *OptNilIPv6) Reset() {
-	var v net.IP
+	var v netip.Addr
 	o.Value = v
 	o.Set = false
 	o.Null = false
 }
 
 // SetTo sets value to v.
-func (o *OptNilIPv6) SetTo(v net.IP) {
+func (o *OptNilIPv6) SetTo(v netip.Addr) {
 	o.Set = true
 	o.Null = false
 	o.Value = v
@@ -1772,7 +1777,7 @@ func (o *OptNilIPv6) SetTo(v net.IP) {
 func (o OptNilIPv6) IsNull() bool { return o.Null }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptNilIPv6) Get() (v net.IP, ok bool) {
+func (o OptNilIPv6) Get() (v netip.Addr, ok bool) {
 	if o.Null {
 		return v, false
 	}
@@ -1783,7 +1788,7 @@ func (o OptNilIPv6) Get() (v net.IP, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptNilIPv6) Or(d net.IP) net.IP {
+func (o OptNilIPv6) Or(d netip.Addr) netip.Addr {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2427,9 +2432,9 @@ type TestRequestFormatTestReq struct {
 	RequiredArrayStringDuration            []time.Duration   "json:\"required_array_string_duration\""
 	RequiredArrayStringEmail               []string          "json:\"required_array_string_email\""
 	RequiredArrayStringHostname            []string          "json:\"required_array_string_hostname\""
-	RequiredArrayStringIP                  []net.IP          "json:\"required_array_string_ip\""
-	RequiredArrayStringIpv4                []net.IP          "json:\"required_array_string_ipv4\""
-	RequiredArrayStringIpv6                []net.IP          "json:\"required_array_string_ipv6\""
+	RequiredArrayStringIP                  []netip.Addr      "json:\"required_array_string_ip\""
+	RequiredArrayStringIpv4                []netip.Addr      "json:\"required_array_string_ipv4\""
+	RequiredArrayStringIpv6                []netip.Addr      "json:\"required_array_string_ipv6\""
 	RequiredArrayStringPassword            []string          "json:\"required_array_string_password\""
 	RequiredArrayStringTime                []time.Time       "json:\"required_array_string_time\""
 	RequiredArrayStringURI                 []url.URL         "json:\"required_array_string_uri\""
@@ -2453,9 +2458,9 @@ type TestRequestFormatTestReq struct {
 	RequiredDoubleArrayStringDuration      [][]time.Duration "json:\"required_double_array_string_duration\""
 	RequiredDoubleArrayStringEmail         [][]string        "json:\"required_double_array_string_email\""
 	RequiredDoubleArrayStringHostname      [][]string        "json:\"required_double_array_string_hostname\""
-	RequiredDoubleArrayStringIP            [][]net.IP        "json:\"required_double_array_string_ip\""
-	RequiredDoubleArrayStringIpv4          [][]net.IP        "json:\"required_double_array_string_ipv4\""
-	RequiredDoubleArrayStringIpv6          [][]net.IP        "json:\"required_double_array_string_ipv6\""
+	RequiredDoubleArrayStringIP            [][]netip.Addr    "json:\"required_double_array_string_ip\""
+	RequiredDoubleArrayStringIpv4          [][]netip.Addr    "json:\"required_double_array_string_ipv4\""
+	RequiredDoubleArrayStringIpv6          [][]netip.Addr    "json:\"required_double_array_string_ipv6\""
 	RequiredDoubleArrayStringPassword      [][]string        "json:\"required_double_array_string_password\""
 	RequiredDoubleArrayStringTime          [][]time.Time     "json:\"required_double_array_string_time\""
 	RequiredDoubleArrayStringURI           [][]url.URL       "json:\"required_double_array_string_uri\""
@@ -2476,9 +2481,9 @@ type TestRequestFormatTestReq struct {
 	RequiredStringDuration                 time.Duration     "json:\"required_string_duration\""
 	RequiredStringEmail                    string            "json:\"required_string_email\""
 	RequiredStringHostname                 string            "json:\"required_string_hostname\""
-	RequiredStringIP                       net.IP            "json:\"required_string_ip\""
-	RequiredStringIpv4                     net.IP            "json:\"required_string_ipv4\""
-	RequiredStringIpv6                     net.IP            "json:\"required_string_ipv6\""
+	RequiredStringIP                       netip.Addr        "json:\"required_string_ip\""
+	RequiredStringIpv4                     netip.Addr        "json:\"required_string_ipv4\""
+	RequiredStringIpv6                     netip.Addr        "json:\"required_string_ipv6\""
 	RequiredStringPassword                 string            "json:\"required_string_password\""
 	RequiredStringTime                     time.Time         "json:\"required_string_time\""
 	RequiredStringURI                      url.URL           "json:\"required_string_uri\""
@@ -2502,9 +2507,9 @@ type TestRequestFormatTestReq struct {
 	OptionalArrayStringDuration            []time.Duration   "json:\"optional_array_string_duration\""
 	OptionalArrayStringEmail               []string          "json:\"optional_array_string_email\""
 	OptionalArrayStringHostname            []string          "json:\"optional_array_string_hostname\""
-	OptionalArrayStringIP                  []net.IP          "json:\"optional_array_string_ip\""
-	OptionalArrayStringIpv4                []net.IP          "json:\"optional_array_string_ipv4\""
-	OptionalArrayStringIpv6                []net.IP          "json:\"optional_array_string_ipv6\""
+	OptionalArrayStringIP                  []netip.Addr      "json:\"optional_array_string_ip\""
+	OptionalArrayStringIpv4                []netip.Addr      "json:\"optional_array_string_ipv4\""
+	OptionalArrayStringIpv6                []netip.Addr      "json:\"optional_array_string_ipv6\""
 	OptionalArrayStringPassword            []string          "json:\"optional_array_string_password\""
 	OptionalArrayStringTime                []time.Time       "json:\"optional_array_string_time\""
 	OptionalArrayStringURI                 []url.URL         "json:\"optional_array_string_uri\""
@@ -2528,9 +2533,9 @@ type TestRequestFormatTestReq struct {
 	OptionalDoubleArrayStringDuration      [][]time.Duration "json:\"optional_double_array_string_duration\""
 	OptionalDoubleArrayStringEmail         [][]string        "json:\"optional_double_array_string_email\""
 	OptionalDoubleArrayStringHostname      [][]string        "json:\"optional_double_array_string_hostname\""
-	OptionalDoubleArrayStringIP            [][]net.IP        "json:\"optional_double_array_string_ip\""
-	OptionalDoubleArrayStringIpv4          [][]net.IP        "json:\"optional_double_array_string_ipv4\""
-	OptionalDoubleArrayStringIpv6          [][]net.IP        "json:\"optional_double_array_string_ipv6\""
+	OptionalDoubleArrayStringIP            [][]netip.Addr    "json:\"optional_double_array_string_ip\""
+	OptionalDoubleArrayStringIpv4          [][]netip.Addr    "json:\"optional_double_array_string_ipv4\""
+	OptionalDoubleArrayStringIpv6          [][]netip.Addr    "json:\"optional_double_array_string_ipv6\""
 	OptionalDoubleArrayStringPassword      [][]string        "json:\"optional_double_array_string_password\""
 	OptionalDoubleArrayStringTime          [][]time.Time     "json:\"optional_double_array_string_time\""
 	OptionalDoubleArrayStringURI           [][]url.URL       "json:\"optional_double_array_string_uri\""
@@ -2582,9 +2587,9 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredArrayStringDuration            []time.Duration   "json:\"required_array_string_duration\""
 	RequiredArrayStringEmail               []string          "json:\"required_array_string_email\""
 	RequiredArrayStringHostname            []string          "json:\"required_array_string_hostname\""
-	RequiredArrayStringIP                  []net.IP          "json:\"required_array_string_ip\""
-	RequiredArrayStringIpv4                []net.IP          "json:\"required_array_string_ipv4\""
-	RequiredArrayStringIpv6                []net.IP          "json:\"required_array_string_ipv6\""
+	RequiredArrayStringIP                  []netip.Addr      "json:\"required_array_string_ip\""
+	RequiredArrayStringIpv4                []netip.Addr      "json:\"required_array_string_ipv4\""
+	RequiredArrayStringIpv6                []netip.Addr      "json:\"required_array_string_ipv6\""
 	RequiredArrayStringPassword            []string          "json:\"required_array_string_password\""
 	RequiredArrayStringTime                []time.Time       "json:\"required_array_string_time\""
 	RequiredArrayStringURI                 []url.URL         "json:\"required_array_string_uri\""
@@ -2608,9 +2613,9 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredDoubleArrayStringDuration      [][]time.Duration "json:\"required_double_array_string_duration\""
 	RequiredDoubleArrayStringEmail         [][]string        "json:\"required_double_array_string_email\""
 	RequiredDoubleArrayStringHostname      [][]string        "json:\"required_double_array_string_hostname\""
-	RequiredDoubleArrayStringIP            [][]net.IP        "json:\"required_double_array_string_ip\""
-	RequiredDoubleArrayStringIpv4          [][]net.IP        "json:\"required_double_array_string_ipv4\""
-	RequiredDoubleArrayStringIpv6          [][]net.IP        "json:\"required_double_array_string_ipv6\""
+	RequiredDoubleArrayStringIP            [][]netip.Addr    "json:\"required_double_array_string_ip\""
+	RequiredDoubleArrayStringIpv4          [][]netip.Addr    "json:\"required_double_array_string_ipv4\""
+	RequiredDoubleArrayStringIpv6          [][]netip.Addr    "json:\"required_double_array_string_ipv6\""
 	RequiredDoubleArrayStringPassword      [][]string        "json:\"required_double_array_string_password\""
 	RequiredDoubleArrayStringTime          [][]time.Time     "json:\"required_double_array_string_time\""
 	RequiredDoubleArrayStringURI           [][]url.URL       "json:\"required_double_array_string_uri\""
@@ -2631,9 +2636,9 @@ type TestRequestRequiredFormatTestReq struct {
 	RequiredStringDuration                 time.Duration     "json:\"required_string_duration\""
 	RequiredStringEmail                    string            "json:\"required_string_email\""
 	RequiredStringHostname                 string            "json:\"required_string_hostname\""
-	RequiredStringIP                       net.IP            "json:\"required_string_ip\""
-	RequiredStringIpv4                     net.IP            "json:\"required_string_ipv4\""
-	RequiredStringIpv6                     net.IP            "json:\"required_string_ipv6\""
+	RequiredStringIP                       netip.Addr        "json:\"required_string_ip\""
+	RequiredStringIpv4                     netip.Addr        "json:\"required_string_ipv4\""
+	RequiredStringIpv6                     netip.Addr        "json:\"required_string_ipv6\""
 	RequiredStringPassword                 string            "json:\"required_string_password\""
 	RequiredStringTime                     time.Time         "json:\"required_string_time\""
 	RequiredStringURI                      url.URL           "json:\"required_string_uri\""
@@ -2657,9 +2662,9 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalArrayStringDuration            []time.Duration   "json:\"optional_array_string_duration\""
 	OptionalArrayStringEmail               []string          "json:\"optional_array_string_email\""
 	OptionalArrayStringHostname            []string          "json:\"optional_array_string_hostname\""
-	OptionalArrayStringIP                  []net.IP          "json:\"optional_array_string_ip\""
-	OptionalArrayStringIpv4                []net.IP          "json:\"optional_array_string_ipv4\""
-	OptionalArrayStringIpv6                []net.IP          "json:\"optional_array_string_ipv6\""
+	OptionalArrayStringIP                  []netip.Addr      "json:\"optional_array_string_ip\""
+	OptionalArrayStringIpv4                []netip.Addr      "json:\"optional_array_string_ipv4\""
+	OptionalArrayStringIpv6                []netip.Addr      "json:\"optional_array_string_ipv6\""
 	OptionalArrayStringPassword            []string          "json:\"optional_array_string_password\""
 	OptionalArrayStringTime                []time.Time       "json:\"optional_array_string_time\""
 	OptionalArrayStringURI                 []url.URL         "json:\"optional_array_string_uri\""
@@ -2683,9 +2688,9 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalDoubleArrayStringDuration      [][]time.Duration "json:\"optional_double_array_string_duration\""
 	OptionalDoubleArrayStringEmail         [][]string        "json:\"optional_double_array_string_email\""
 	OptionalDoubleArrayStringHostname      [][]string        "json:\"optional_double_array_string_hostname\""
-	OptionalDoubleArrayStringIP            [][]net.IP        "json:\"optional_double_array_string_ip\""
-	OptionalDoubleArrayStringIpv4          [][]net.IP        "json:\"optional_double_array_string_ipv4\""
-	OptionalDoubleArrayStringIpv6          [][]net.IP        "json:\"optional_double_array_string_ipv6\""
+	OptionalDoubleArrayStringIP            [][]netip.Addr    "json:\"optional_double_array_string_ip\""
+	OptionalDoubleArrayStringIpv4          [][]netip.Addr    "json:\"optional_double_array_string_ipv4\""
+	OptionalDoubleArrayStringIpv6          [][]netip.Addr    "json:\"optional_double_array_string_ipv6\""
 	OptionalDoubleArrayStringPassword      [][]string        "json:\"optional_double_array_string_password\""
 	OptionalDoubleArrayStringTime          [][]time.Time     "json:\"optional_double_array_string_time\""
 	OptionalDoubleArrayStringURI           [][]url.URL       "json:\"optional_double_array_string_uri\""
@@ -2737,9 +2742,9 @@ type TestResponseFormatTestOK struct {
 	RequiredArrayStringDuration            []time.Duration   "json:\"required_array_string_duration\""
 	RequiredArrayStringEmail               []string          "json:\"required_array_string_email\""
 	RequiredArrayStringHostname            []string          "json:\"required_array_string_hostname\""
-	RequiredArrayStringIP                  []net.IP          "json:\"required_array_string_ip\""
-	RequiredArrayStringIpv4                []net.IP          "json:\"required_array_string_ipv4\""
-	RequiredArrayStringIpv6                []net.IP          "json:\"required_array_string_ipv6\""
+	RequiredArrayStringIP                  []netip.Addr      "json:\"required_array_string_ip\""
+	RequiredArrayStringIpv4                []netip.Addr      "json:\"required_array_string_ipv4\""
+	RequiredArrayStringIpv6                []netip.Addr      "json:\"required_array_string_ipv6\""
 	RequiredArrayStringPassword            []string          "json:\"required_array_string_password\""
 	RequiredArrayStringTime                []time.Time       "json:\"required_array_string_time\""
 	RequiredArrayStringURI                 []url.URL         "json:\"required_array_string_uri\""
@@ -2763,9 +2768,9 @@ type TestResponseFormatTestOK struct {
 	RequiredDoubleArrayStringDuration      [][]time.Duration "json:\"required_double_array_string_duration\""
 	RequiredDoubleArrayStringEmail         [][]string        "json:\"required_double_array_string_email\""
 	RequiredDoubleArrayStringHostname      [][]string        "json:\"required_double_array_string_hostname\""
-	RequiredDoubleArrayStringIP            [][]net.IP        "json:\"required_double_array_string_ip\""
-	RequiredDoubleArrayStringIpv4          [][]net.IP        "json:\"required_double_array_string_ipv4\""
-	RequiredDoubleArrayStringIpv6          [][]net.IP        "json:\"required_double_array_string_ipv6\""
+	RequiredDoubleArrayStringIP            [][]netip.Addr    "json:\"required_double_array_string_ip\""
+	RequiredDoubleArrayStringIpv4          [][]netip.Addr    "json:\"required_double_array_string_ipv4\""
+	RequiredDoubleArrayStringIpv6          [][]netip.Addr    "json:\"required_double_array_string_ipv6\""
 	RequiredDoubleArrayStringPassword      [][]string        "json:\"required_double_array_string_password\""
 	RequiredDoubleArrayStringTime          [][]time.Time     "json:\"required_double_array_string_time\""
 	RequiredDoubleArrayStringURI           [][]url.URL       "json:\"required_double_array_string_uri\""
@@ -2786,9 +2791,9 @@ type TestResponseFormatTestOK struct {
 	RequiredStringDuration                 time.Duration     "json:\"required_string_duration\""
 	RequiredStringEmail                    string            "json:\"required_string_email\""
 	RequiredStringHostname                 string            "json:\"required_string_hostname\""
-	RequiredStringIP                       net.IP            "json:\"required_string_ip\""
-	RequiredStringIpv4                     net.IP            "json:\"required_string_ipv4\""
-	RequiredStringIpv6                     net.IP            "json:\"required_string_ipv6\""
+	RequiredStringIP                       netip.Addr        "json:\"required_string_ip\""
+	RequiredStringIpv4                     netip.Addr        "json:\"required_string_ipv4\""
+	RequiredStringIpv6                     netip.Addr        "json:\"required_string_ipv6\""
 	RequiredStringPassword                 string            "json:\"required_string_password\""
 	RequiredStringTime                     time.Time         "json:\"required_string_time\""
 	RequiredStringURI                      url.URL           "json:\"required_string_uri\""
@@ -2812,9 +2817,9 @@ type TestResponseFormatTestOK struct {
 	OptionalArrayStringDuration            []time.Duration   "json:\"optional_array_string_duration\""
 	OptionalArrayStringEmail               []string          "json:\"optional_array_string_email\""
 	OptionalArrayStringHostname            []string          "json:\"optional_array_string_hostname\""
-	OptionalArrayStringIP                  []net.IP          "json:\"optional_array_string_ip\""
-	OptionalArrayStringIpv4                []net.IP          "json:\"optional_array_string_ipv4\""
-	OptionalArrayStringIpv6                []net.IP          "json:\"optional_array_string_ipv6\""
+	OptionalArrayStringIP                  []netip.Addr      "json:\"optional_array_string_ip\""
+	OptionalArrayStringIpv4                []netip.Addr      "json:\"optional_array_string_ipv4\""
+	OptionalArrayStringIpv6                []netip.Addr      "json:\"optional_array_string_ipv6\""
 	OptionalArrayStringPassword            []string          "json:\"optional_array_string_password\""
 	OptionalArrayStringTime                []time.Time       "json:\"optional_array_string_time\""
 	OptionalArrayStringURI                 []url.URL         "json:\"optional_array_string_uri\""
@@ -2838,9 +2843,9 @@ type TestResponseFormatTestOK struct {
 	OptionalDoubleArrayStringDuration      [][]time.Duration "json:\"optional_double_array_string_duration\""
 	OptionalDoubleArrayStringEmail         [][]string        "json:\"optional_double_array_string_email\""
 	OptionalDoubleArrayStringHostname      [][]string        "json:\"optional_double_array_string_hostname\""
-	OptionalDoubleArrayStringIP            [][]net.IP        "json:\"optional_double_array_string_ip\""
-	OptionalDoubleArrayStringIpv4          [][]net.IP        "json:\"optional_double_array_string_ipv4\""
-	OptionalDoubleArrayStringIpv6          [][]net.IP        "json:\"optional_double_array_string_ipv6\""
+	OptionalDoubleArrayStringIP            [][]netip.Addr    "json:\"optional_double_array_string_ip\""
+	OptionalDoubleArrayStringIpv4          [][]netip.Addr    "json:\"optional_double_array_string_ipv4\""
+	OptionalDoubleArrayStringIpv6          [][]netip.Addr    "json:\"optional_double_array_string_ipv6\""
 	OptionalDoubleArrayStringPassword      [][]string        "json:\"optional_double_array_string_password\""
 	OptionalDoubleArrayStringTime          [][]time.Time     "json:\"optional_double_array_string_time\""
 	OptionalDoubleArrayStringURI           [][]url.URL       "json:\"optional_double_array_string_uri\""

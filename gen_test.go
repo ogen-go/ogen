@@ -3,8 +3,6 @@ package ogen_test
 import (
 	"embed"
 	"io/fs"
-	"os"
-	"os/exec"
 	"path/filepath"
 	"strings"
 	"testing"
@@ -19,7 +17,7 @@ import (
 //go:embed _testdata
 var testdata embed.FS
 
-func testGenerate(t *testing.T, build bool, name string, ignore ...string) {
+func testGenerate(t *testing.T, _ bool, name string, ignore ...string) {
 	t.Helper()
 
 	data, err := testdata.ReadFile(name)
@@ -39,31 +37,7 @@ func testGenerate(t *testing.T, build bool, name string, ignore ...string) {
 
 		g, err := gen.NewGenerator(spec, opt)
 		require.NoError(t, err)
-
-		if !build {
-			require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
-			return
-		}
-
-		t.Log("Running build")
-		temp := t.TempDir()
-		do := func(args ...string) {
-			e := exec.Command("go", args...)
-			e.Dir = temp
-			e.Stdout = os.Stdout
-			stderr := &strings.Builder{}
-			e.Stderr = stderr
-
-			err := e.Run()
-			require.NoError(t, err, stderr.String())
-		}
-		require.NoError(t, g.WriteSource(genfs.FormattedSource{
-			Format: true,
-			Root:   temp,
-		}, "api"))
-		do("mod", "init", "check")
-		do("mod", "tidy", "-v")
-		do("build", "./")
+		require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
 	})
 	if len(opt.IgnoreNotImplemented) > 0 {
 		t.Run("Full", func(t *testing.T) {
