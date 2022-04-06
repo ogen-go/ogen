@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	github.com/go-faster/errors v0.5.0
-	github.com/go-faster/jx v0.33.0
+	github.com/go-faster/jx v0.34.0
 	github.com/google/uuid v1.3.0
 	github.com/ogen-go/ogen v0.0.0
 	github.com/stretchr/testify v1.7.1
