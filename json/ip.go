@@ -22,5 +22,7 @@ func DecodeIP(i *jx.Decoder) (v netip.Addr, err error) {
 
 // EncodeIP encodes netip.Addr.
 func EncodeIP(s *jx.Encoder, v netip.Addr) {
-	s.Str(v.String())
+	b := make([]byte, 64)
+	b = v.AppendTo(b[:0])
+	s.ByteStr(b)
 }

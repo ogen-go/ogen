@@ -20,7 +20,9 @@ func DecodeDate(i *jx.Decoder) (v time.Time, err error) {
 }
 
 func EncodeDate(s *jx.Encoder, v time.Time) {
-	s.Str(v.Format(dateLayout))
+	b := make([]byte, 64)
+	b = v.AppendFormat(b[:0], dateLayout)
+	s.ByteStr(b)
 }
 
 func DecodeTime(i *jx.Decoder) (v time.Time, err error) {
@@ -32,7 +34,9 @@ func DecodeTime(i *jx.Decoder) (v time.Time, err error) {
 }
 
 func EncodeTime(s *jx.Encoder, v time.Time) {
-	s.Str(v.Format(timeLayout))
+	b := make([]byte, 64)
+	b = v.AppendFormat(b[:0], timeLayout)
+	s.ByteStr(b)
 }
 
 func DecodeDateTime(i *jx.Decoder) (v time.Time, err error) {
@@ -44,7 +48,9 @@ func DecodeDateTime(i *jx.Decoder) (v time.Time, err error) {
 }
 
 func EncodeDateTime(s *jx.Encoder, v time.Time) {
-	s.Str(v.Format(time.RFC3339))
+	b := make([]byte, 64)
+	b = v.AppendFormat(b[:0], time.RFC3339)
+	s.ByteStr(b)
 }
 
 func DecodeDuration(i *jx.Decoder) (v time.Duration, err error) {
