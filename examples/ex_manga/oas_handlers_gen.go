@@ -97,7 +97,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	var err error
 	params, err := decodeGetBookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -106,7 +106,7 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -138,7 +138,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	var err error
 	params, err := decodeSearchParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -147,7 +147,7 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -179,7 +179,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	var err error
 	params, err := decodeSearchByTagIDParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -188,7 +188,7 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -202,22 +202,16 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+func (s *Server) badRequest(
+	ctx context.Context,
+	w http.ResponseWriter,
+	r *http.Request,
+	span trace.Span,
+	otelAttrs []attribute.KeyValue,
+	err error,
+) {
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	respondError(w, http.StatusBadRequest, err)
-}
-
-func respondError(w http.ResponseWriter, code int, err error) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	data, writeErr := json.Marshal(struct {
-		ErrorMessage string `json:"error_message"`
-	}{
-		ErrorMessage: err.Error(),
-	})
-	if writeErr == nil {
-		w.Write(data)
-	}
+	s.cfg.ErrorHandler(ctx, w, r, http.StatusBadRequest, err)
 }

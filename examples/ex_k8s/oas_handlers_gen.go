@@ -98,7 +98,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 	ctx, err = s.securityBearerToken(ctx, "GetAPIVersions", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -107,7 +107,7 @@ func (s *Server) handleGetAPIVersionsRequest(args [0]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -140,7 +140,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 	ctx, err = s.securityBearerToken(ctx, "GetAdmissionregistrationAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -149,7 +149,7 @@ func (s *Server) handleGetAdmissionregistrationAPIGroupRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -182,7 +182,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 	ctx, err = s.securityBearerToken(ctx, "GetAdmissionregistrationV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -191,7 +191,7 @@ func (s *Server) handleGetAdmissionregistrationV1APIResourcesRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -224,7 +224,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 	ctx, err = s.securityBearerToken(ctx, "GetApiextensionsAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -233,7 +233,7 @@ func (s *Server) handleGetApiextensionsAPIGroupRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -266,7 +266,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 	ctx, err = s.securityBearerToken(ctx, "GetApiextensionsV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -275,7 +275,7 @@ func (s *Server) handleGetApiextensionsV1APIResourcesRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -308,7 +308,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "GetApiregistrationAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -317,7 +317,7 @@ func (s *Server) handleGetApiregistrationAPIGroupRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -350,7 +350,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 	ctx, err = s.securityBearerToken(ctx, "GetApiregistrationV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -359,7 +359,7 @@ func (s *Server) handleGetApiregistrationV1APIResourcesRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -392,7 +392,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 	ctx, err = s.securityBearerToken(ctx, "GetAppsAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -401,7 +401,7 @@ func (s *Server) handleGetAppsAPIGroupRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -434,7 +434,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 	ctx, err = s.securityBearerToken(ctx, "GetAppsV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -443,7 +443,7 @@ func (s *Server) handleGetAppsV1APIResourcesRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -476,7 +476,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "GetAuthenticationAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -485,7 +485,7 @@ func (s *Server) handleGetAuthenticationAPIGroupRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -518,7 +518,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 	ctx, err = s.securityBearerToken(ctx, "GetAuthenticationV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -527,7 +527,7 @@ func (s *Server) handleGetAuthenticationV1APIResourcesRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -560,7 +560,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 	ctx, err = s.securityBearerToken(ctx, "GetAuthorizationAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -569,7 +569,7 @@ func (s *Server) handleGetAuthorizationAPIGroupRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -602,7 +602,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 	ctx, err = s.securityBearerToken(ctx, "GetAuthorizationV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -611,7 +611,7 @@ func (s *Server) handleGetAuthorizationV1APIResourcesRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -644,7 +644,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 	ctx, err = s.securityBearerToken(ctx, "GetAutoscalingAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -653,7 +653,7 @@ func (s *Server) handleGetAutoscalingAPIGroupRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -686,7 +686,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "GetAutoscalingV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -695,7 +695,7 @@ func (s *Server) handleGetAutoscalingV1APIResourcesRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -728,7 +728,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 	ctx, err = s.securityBearerToken(ctx, "GetAutoscalingV2beta1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -737,7 +737,7 @@ func (s *Server) handleGetAutoscalingV2beta1APIResourcesRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -770,7 +770,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 	ctx, err = s.securityBearerToken(ctx, "GetAutoscalingV2beta2APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -779,7 +779,7 @@ func (s *Server) handleGetAutoscalingV2beta2APIResourcesRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -812,7 +812,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 	ctx, err = s.securityBearerToken(ctx, "GetBatchAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -821,7 +821,7 @@ func (s *Server) handleGetBatchAPIGroupRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -854,7 +854,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 	ctx, err = s.securityBearerToken(ctx, "GetBatchV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -863,7 +863,7 @@ func (s *Server) handleGetBatchV1APIResourcesRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -896,7 +896,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 	ctx, err = s.securityBearerToken(ctx, "GetBatchV1beta1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -905,7 +905,7 @@ func (s *Server) handleGetBatchV1beta1APIResourcesRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -938,7 +938,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 	ctx, err = s.securityBearerToken(ctx, "GetCertificatesAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -947,7 +947,7 @@ func (s *Server) handleGetCertificatesAPIGroupRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -980,7 +980,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "GetCertificatesV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -989,7 +989,7 @@ func (s *Server) handleGetCertificatesV1APIResourcesRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1022,7 +1022,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 	ctx, err = s.securityBearerToken(ctx, "GetCodeVersion", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1031,7 +1031,7 @@ func (s *Server) handleGetCodeVersionRequest(args [0]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1064,7 +1064,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 	ctx, err = s.securityBearerToken(ctx, "GetCoordinationAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1073,7 +1073,7 @@ func (s *Server) handleGetCoordinationAPIGroupRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1106,7 +1106,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "GetCoordinationV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1115,7 +1115,7 @@ func (s *Server) handleGetCoordinationV1APIResourcesRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1148,7 +1148,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 	ctx, err = s.securityBearerToken(ctx, "GetCoreAPIVersions", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1157,7 +1157,7 @@ func (s *Server) handleGetCoreAPIVersionsRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1190,7 +1190,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 	ctx, err = s.securityBearerToken(ctx, "GetCoreV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1199,7 +1199,7 @@ func (s *Server) handleGetCoreV1APIResourcesRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1232,7 +1232,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 	ctx, err = s.securityBearerToken(ctx, "GetDiscoveryAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1241,7 +1241,7 @@ func (s *Server) handleGetDiscoveryAPIGroupRequest(args [0]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1274,7 +1274,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "GetDiscoveryV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1283,7 +1283,7 @@ func (s *Server) handleGetDiscoveryV1APIResourcesRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1316,7 +1316,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 	ctx, err = s.securityBearerToken(ctx, "GetDiscoveryV1beta1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1325,7 +1325,7 @@ func (s *Server) handleGetDiscoveryV1beta1APIResourcesRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1358,7 +1358,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 	ctx, err = s.securityBearerToken(ctx, "GetEventsAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1367,7 +1367,7 @@ func (s *Server) handleGetEventsAPIGroupRequest(args [0]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1400,7 +1400,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 	ctx, err = s.securityBearerToken(ctx, "GetEventsV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1409,7 +1409,7 @@ func (s *Server) handleGetEventsV1APIResourcesRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1442,7 +1442,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "GetEventsV1beta1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1451,7 +1451,7 @@ func (s *Server) handleGetEventsV1beta1APIResourcesRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1484,7 +1484,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 	ctx, err = s.securityBearerToken(ctx, "GetFlowcontrolApiserverAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1493,7 +1493,7 @@ func (s *Server) handleGetFlowcontrolApiserverAPIGroupRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1526,7 +1526,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 	ctx, err = s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1535,7 +1535,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta1APIResourcesRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1568,7 +1568,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 	ctx, err = s.securityBearerToken(ctx, "GetFlowcontrolApiserverV1beta2APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1577,7 +1577,7 @@ func (s *Server) handleGetFlowcontrolApiserverV1beta2APIResourcesRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1610,7 +1610,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "GetInternalApiserverAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1619,7 +1619,7 @@ func (s *Server) handleGetInternalApiserverAPIGroupRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1652,7 +1652,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 	ctx, err = s.securityBearerToken(ctx, "GetInternalApiserverV1alpha1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1661,7 +1661,7 @@ func (s *Server) handleGetInternalApiserverV1alpha1APIResourcesRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1694,7 +1694,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 	ctx, err = s.securityBearerToken(ctx, "GetNetworkingAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1703,7 +1703,7 @@ func (s *Server) handleGetNetworkingAPIGroupRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1736,7 +1736,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 	ctx, err = s.securityBearerToken(ctx, "GetNetworkingV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1745,7 +1745,7 @@ func (s *Server) handleGetNetworkingV1APIResourcesRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1778,7 +1778,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 	ctx, err = s.securityBearerToken(ctx, "GetNodeAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1787,7 +1787,7 @@ func (s *Server) handleGetNodeAPIGroupRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1820,7 +1820,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 	ctx, err = s.securityBearerToken(ctx, "GetNodeV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1829,7 +1829,7 @@ func (s *Server) handleGetNodeV1APIResourcesRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1862,7 +1862,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 	ctx, err = s.securityBearerToken(ctx, "GetNodeV1alpha1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1871,7 +1871,7 @@ func (s *Server) handleGetNodeV1alpha1APIResourcesRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1904,7 +1904,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "GetNodeV1beta1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1913,7 +1913,7 @@ func (s *Server) handleGetNodeV1beta1APIResourcesRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1946,7 +1946,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 	ctx, err = s.securityBearerToken(ctx, "GetPolicyAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1955,7 +1955,7 @@ func (s *Server) handleGetPolicyAPIGroupRequest(args [0]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -1988,7 +1988,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 	ctx, err = s.securityBearerToken(ctx, "GetPolicyV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1997,7 +1997,7 @@ func (s *Server) handleGetPolicyV1APIResourcesRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2030,7 +2030,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "GetPolicyV1beta1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2039,7 +2039,7 @@ func (s *Server) handleGetPolicyV1beta1APIResourcesRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2072,7 +2072,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "GetRbacAuthorizationAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2081,7 +2081,7 @@ func (s *Server) handleGetRbacAuthorizationAPIGroupRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2114,7 +2114,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 	ctx, err = s.securityBearerToken(ctx, "GetRbacAuthorizationV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2123,7 +2123,7 @@ func (s *Server) handleGetRbacAuthorizationV1APIResourcesRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2156,7 +2156,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 	ctx, err = s.securityBearerToken(ctx, "GetSchedulingAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2165,7 +2165,7 @@ func (s *Server) handleGetSchedulingAPIGroupRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2198,7 +2198,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 	ctx, err = s.securityBearerToken(ctx, "GetSchedulingV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2207,7 +2207,7 @@ func (s *Server) handleGetSchedulingV1APIResourcesRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2240,7 +2240,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 	ctx, err = s.securityBearerToken(ctx, "GetServiceAccountIssuerOpenIDConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2249,7 +2249,7 @@ func (s *Server) handleGetServiceAccountIssuerOpenIDConfigurationRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2282,7 +2282,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 	ctx, err = s.securityBearerToken(ctx, "GetStorageAPIGroup", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2291,7 +2291,7 @@ func (s *Server) handleGetStorageAPIGroupRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2324,7 +2324,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 	ctx, err = s.securityBearerToken(ctx, "GetStorageV1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2333,7 +2333,7 @@ func (s *Server) handleGetStorageV1APIResourcesRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2366,7 +2366,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 	ctx, err = s.securityBearerToken(ctx, "GetStorageV1alpha1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2375,7 +2375,7 @@ func (s *Server) handleGetStorageV1alpha1APIResourcesRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2408,7 +2408,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "GetStorageV1beta1APIResources", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2417,7 +2417,7 @@ func (s *Server) handleGetStorageV1beta1APIResourcesRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2450,12 +2450,12 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	ctx, err = s.securityBearerToken(ctx, "ListAdmissionregistrationV1MutatingWebhookConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2464,7 +2464,7 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2497,12 +2497,12 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	ctx, err = s.securityBearerToken(ctx, "ListAdmissionregistrationV1ValidatingWebhookConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2511,7 +2511,7 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2544,12 +2544,12 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ListApiextensionsV1CustomResourceDefinition", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2558,7 +2558,7 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2591,12 +2591,12 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 	ctx, err = s.securityBearerToken(ctx, "ListApiregistrationV1APIService", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2605,7 +2605,7 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2638,12 +2638,12 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1ControllerRevisionForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1ControllerRevisionForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2652,7 +2652,7 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2685,12 +2685,12 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1DaemonSetForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1DaemonSetForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2699,7 +2699,7 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2732,12 +2732,12 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1DeploymentForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1DeploymentForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2746,7 +2746,7 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2779,12 +2779,12 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedControllerRevision", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2793,7 +2793,7 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2826,12 +2826,12 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedDaemonSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2840,7 +2840,7 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2873,12 +2873,12 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedDeployment", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2887,7 +2887,7 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2920,12 +2920,12 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedReplicaSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2934,7 +2934,7 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -2967,12 +2967,12 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1NamespacedStatefulSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2981,7 +2981,7 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3014,12 +3014,12 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1ReplicaSetForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1ReplicaSetForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3028,7 +3028,7 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3061,12 +3061,12 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	ctx, err = s.securityBearerToken(ctx, "ListAppsV1StatefulSetForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAppsV1StatefulSetForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3075,7 +3075,7 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3108,12 +3108,12 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3122,7 +3122,7 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3155,12 +3155,12 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3169,7 +3169,7 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3202,12 +3202,12 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3216,7 +3216,7 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3249,12 +3249,12 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3263,7 +3263,7 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3296,12 +3296,12 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3310,7 +3310,7 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3343,12 +3343,12 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	ctx, err = s.securityBearerToken(ctx, "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3357,7 +3357,7 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3390,12 +3390,12 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1CronJobForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListBatchV1CronJobForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3404,7 +3404,7 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3437,12 +3437,12 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1JobForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListBatchV1JobForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3451,7 +3451,7 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3484,12 +3484,12 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1NamespacedCronJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3498,7 +3498,7 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3531,12 +3531,12 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1NamespacedJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListBatchV1NamespacedJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3545,7 +3545,7 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3578,12 +3578,12 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1beta1CronJobForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListBatchV1beta1CronJobForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3592,7 +3592,7 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3625,12 +3625,12 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	ctx, err = s.securityBearerToken(ctx, "ListBatchV1beta1NamespacedCronJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3639,7 +3639,7 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3672,12 +3672,12 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ListCertificatesV1CertificateSigningRequest", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3686,7 +3686,7 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3719,12 +3719,12 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	ctx, err = s.securityBearerToken(ctx, "ListCoordinationV1LeaseForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoordinationV1LeaseForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3733,7 +3733,7 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3766,12 +3766,12 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	ctx, err = s.securityBearerToken(ctx, "ListCoordinationV1NamespacedLease", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3780,7 +3780,7 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3813,12 +3813,12 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ComponentStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1ComponentStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3827,7 +3827,7 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3860,12 +3860,12 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ConfigMapForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1ConfigMapForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3874,7 +3874,7 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3907,12 +3907,12 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1EndpointsForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1EndpointsForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3921,7 +3921,7 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -3954,12 +3954,12 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1EventForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1EventForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3968,7 +3968,7 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4001,12 +4001,12 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1LimitRangeForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1LimitRangeForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4015,7 +4015,7 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4048,12 +4048,12 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1Namespace", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespaceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4062,7 +4062,7 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4095,12 +4095,12 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedConfigMap", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4109,7 +4109,7 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4142,12 +4142,12 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedEndpoints", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4156,7 +4156,7 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4189,12 +4189,12 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4203,7 +4203,7 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4236,12 +4236,12 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedLimitRange", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4250,7 +4250,7 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4283,12 +4283,12 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedPersistentVolumeClaim", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4297,7 +4297,7 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4330,12 +4330,12 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedPod", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedPodParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4344,7 +4344,7 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4377,12 +4377,12 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedPodTemplate", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4391,7 +4391,7 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4424,12 +4424,12 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedReplicationController", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4438,7 +4438,7 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4471,12 +4471,12 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedResourceQuota", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4485,7 +4485,7 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4518,12 +4518,12 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedSecret", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4532,7 +4532,7 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4565,12 +4565,12 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedService", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4579,7 +4579,7 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4612,12 +4612,12 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1NamespacedServiceAccount", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4626,7 +4626,7 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4659,12 +4659,12 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1Node", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1NodeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4673,7 +4673,7 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4706,12 +4706,12 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1PersistentVolume", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4720,7 +4720,7 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4753,12 +4753,12 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1PersistentVolumeClaimForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4767,7 +4767,7 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4800,12 +4800,12 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1PodForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1PodForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4814,7 +4814,7 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4847,12 +4847,12 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1PodTemplateForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1PodTemplateForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4861,7 +4861,7 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4894,12 +4894,12 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ReplicationControllerForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1ReplicationControllerForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4908,7 +4908,7 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4941,12 +4941,12 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ResourceQuotaForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1ResourceQuotaForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4955,7 +4955,7 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -4988,12 +4988,12 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1SecretForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1SecretForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5002,7 +5002,7 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5035,12 +5035,12 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ServiceAccountForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1ServiceAccountForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5049,7 +5049,7 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5082,12 +5082,12 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	ctx, err = s.securityBearerToken(ctx, "ListCoreV1ServiceForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListCoreV1ServiceForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5096,7 +5096,7 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5129,12 +5129,12 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "ListDiscoveryV1EndpointSliceForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5143,7 +5143,7 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5176,12 +5176,12 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	ctx, err = s.securityBearerToken(ctx, "ListDiscoveryV1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5190,7 +5190,7 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5223,12 +5223,12 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	ctx, err = s.securityBearerToken(ctx, "ListDiscoveryV1beta1EndpointSliceForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5237,7 +5237,7 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5270,12 +5270,12 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ListDiscoveryV1beta1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5284,7 +5284,7 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5317,12 +5317,12 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	ctx, err = s.securityBearerToken(ctx, "ListEventsV1EventForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListEventsV1EventForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5331,7 +5331,7 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5364,12 +5364,12 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 	ctx, err = s.securityBearerToken(ctx, "ListEventsV1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListEventsV1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5378,7 +5378,7 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5411,12 +5411,12 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	ctx, err = s.securityBearerToken(ctx, "ListEventsV1beta1EventForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListEventsV1beta1EventForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5425,7 +5425,7 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5458,12 +5458,12 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 	ctx, err = s.securityBearerToken(ctx, "ListEventsV1beta1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5472,7 +5472,7 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5505,12 +5505,12 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	ctx, err = s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1FlowSchema", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5519,7 +5519,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5552,12 +5552,12 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	ctx, err = s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5566,7 +5566,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5599,12 +5599,12 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	ctx, err = s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2FlowSchema", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5613,7 +5613,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5646,12 +5646,12 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	ctx, err = s.securityBearerToken(ctx, "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5660,7 +5660,7 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5693,12 +5693,12 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ListInternalApiserverV1alpha1StorageVersion", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5707,7 +5707,7 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5740,12 +5740,12 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1IngressClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListNetworkingV1IngressClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5754,7 +5754,7 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5787,12 +5787,12 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1IngressForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListNetworkingV1IngressForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5801,7 +5801,7 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5834,12 +5834,12 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1NamespacedIngress", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5848,7 +5848,7 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5881,12 +5881,12 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1NamespacedNetworkPolicy", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5895,7 +5895,7 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5928,12 +5928,12 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	ctx, err = s.securityBearerToken(ctx, "ListNetworkingV1NetworkPolicyForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5942,7 +5942,7 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -5975,12 +5975,12 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 	ctx, err = s.securityBearerToken(ctx, "ListNodeV1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListNodeV1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5989,7 +5989,7 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6022,12 +6022,12 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "ListNodeV1alpha1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6036,7 +6036,7 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6069,12 +6069,12 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 	ctx, err = s.securityBearerToken(ctx, "ListNodeV1beta1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6083,7 +6083,7 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6116,12 +6116,12 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6130,7 +6130,7 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6163,12 +6163,12 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1PodDisruptionBudgetForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6177,7 +6177,7 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6210,12 +6210,12 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1beta1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6224,7 +6224,7 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6257,12 +6257,12 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6271,7 +6271,7 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6304,12 +6304,12 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	ctx, err = s.securityBearerToken(ctx, "ListPolicyV1beta1PodSecurityPolicy", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6318,7 +6318,7 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6351,12 +6351,12 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRole", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6365,7 +6365,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6398,12 +6398,12 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1ClusterRoleBinding", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6412,7 +6412,7 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6445,12 +6445,12 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRole", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6459,7 +6459,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6492,12 +6492,12 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1NamespacedRoleBinding", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6506,7 +6506,7 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6539,12 +6539,12 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleBindingForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6553,7 +6553,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6586,12 +6586,12 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ListRbacAuthorizationV1RoleForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6600,7 +6600,7 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6633,12 +6633,12 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ListSchedulingV1PriorityClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6647,7 +6647,7 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6680,12 +6680,12 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1CSIDriver", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListStorageV1CSIDriverParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6694,7 +6694,7 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6727,12 +6727,12 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1CSINode", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListStorageV1CSINodeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6741,7 +6741,7 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6774,12 +6774,12 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1StorageClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListStorageV1StorageClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6788,7 +6788,7 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6821,12 +6821,12 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1VolumeAttachment", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6835,7 +6835,7 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6868,12 +6868,12 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6882,7 +6882,7 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6915,12 +6915,12 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1alpha1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6929,7 +6929,7 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -6962,12 +6962,12 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1beta1CSIStorageCapacityForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6976,7 +6976,7 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7009,12 +7009,12 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "ListStorageV1beta1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7023,7 +7023,7 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7056,12 +7056,12 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 	ctx, err = s.securityBearerToken(ctx, "LogFileHandler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeLogFileHandlerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7070,7 +7070,7 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7103,7 +7103,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 	ctx, err = s.securityBearerToken(ctx, "LogFileListHandler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7112,7 +7112,7 @@ func (s *Server) handleLogFileListHandlerRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7145,12 +7145,12 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	ctx, err = s.securityBearerToken(ctx, "ReadAdmissionregistrationV1MutatingWebhookConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7159,7 +7159,7 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7192,12 +7192,12 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	ctx, err = s.securityBearerToken(ctx, "ReadAdmissionregistrationV1ValidatingWebhookConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7206,7 +7206,7 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7239,12 +7239,12 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinition", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7253,7 +7253,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7286,12 +7286,12 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	ctx, err = s.securityBearerToken(ctx, "ReadApiextensionsV1CustomResourceDefinitionStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7300,7 +7300,7 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7333,12 +7333,12 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 	ctx, err = s.securityBearerToken(ctx, "ReadApiregistrationV1APIService", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7347,7 +7347,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7380,12 +7380,12 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	ctx, err = s.securityBearerToken(ctx, "ReadApiregistrationV1APIServiceStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadApiregistrationV1APIServiceStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7394,7 +7394,7 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7427,12 +7427,12 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedControllerRevision", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7441,7 +7441,7 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7474,12 +7474,12 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7488,7 +7488,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7521,12 +7521,12 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDaemonSetStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedDaemonSetStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7535,7 +7535,7 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7568,12 +7568,12 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeployment", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7582,7 +7582,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7615,12 +7615,12 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentScale", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedDeploymentScaleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7629,7 +7629,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7662,12 +7662,12 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedDeploymentStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedDeploymentStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7676,7 +7676,7 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7709,12 +7709,12 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7723,7 +7723,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7756,12 +7756,12 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetScale", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedReplicaSetScaleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7770,7 +7770,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7803,12 +7803,12 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedReplicaSetStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedReplicaSetStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7817,7 +7817,7 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7850,12 +7850,12 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7864,7 +7864,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7897,12 +7897,12 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetScale", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedStatefulSetScaleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7911,7 +7911,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7944,12 +7944,12 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	ctx, err = s.securityBearerToken(ctx, "ReadAppsV1NamespacedStatefulSetStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAppsV1NamespacedStatefulSetStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7958,7 +7958,7 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -7991,12 +7991,12 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8005,7 +8005,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8038,12 +8038,12 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8052,7 +8052,7 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8085,12 +8085,12 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8099,7 +8099,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8132,12 +8132,12 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8146,7 +8146,7 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8179,12 +8179,12 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8193,7 +8193,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8226,12 +8226,12 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	ctx, err = s.securityBearerToken(ctx, "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8240,7 +8240,7 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8273,12 +8273,12 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8287,7 +8287,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8320,12 +8320,12 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1NamespacedCronJobStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadBatchV1NamespacedCronJobStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8334,7 +8334,7 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8367,12 +8367,12 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1NamespacedJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadBatchV1NamespacedJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8381,7 +8381,7 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8414,12 +8414,12 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1NamespacedJobStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadBatchV1NamespacedJobStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8428,7 +8428,7 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8461,12 +8461,12 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8475,7 +8475,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8508,12 +8508,12 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	ctx, err = s.securityBearerToken(ctx, "ReadBatchV1beta1NamespacedCronJobStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadBatchV1beta1NamespacedCronJobStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8522,7 +8522,7 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8555,12 +8555,12 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequest", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8569,7 +8569,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8602,12 +8602,12 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	ctx, err = s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestApproval", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8616,7 +8616,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8649,12 +8649,12 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	ctx, err = s.securityBearerToken(ctx, "ReadCertificatesV1CertificateSigningRequestStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCertificatesV1CertificateSigningRequestStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8663,7 +8663,7 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8696,12 +8696,12 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	ctx, err = s.securityBearerToken(ctx, "ReadCoordinationV1NamespacedLease", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8710,7 +8710,7 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8743,12 +8743,12 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1ComponentStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1ComponentStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8757,7 +8757,7 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8790,12 +8790,12 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1Namespace", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespaceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8804,7 +8804,7 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8837,12 +8837,12 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespaceStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespaceStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8851,7 +8851,7 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8884,12 +8884,12 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedConfigMap", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8898,7 +8898,7 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8931,12 +8931,12 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedEndpoints", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8945,7 +8945,7 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -8978,12 +8978,12 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8992,7 +8992,7 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9025,12 +9025,12 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedLimitRange", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9039,7 +9039,7 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9072,12 +9072,12 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaim", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9086,7 +9086,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9119,12 +9119,12 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPersistentVolumeClaimStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9133,7 +9133,7 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9166,12 +9166,12 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPod", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedPodParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9180,7 +9180,7 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9213,12 +9213,12 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodEphemeralcontainers", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9227,7 +9227,7 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9260,12 +9260,12 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodLog", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedPodLogParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9274,7 +9274,7 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9307,12 +9307,12 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedPodStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9321,7 +9321,7 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9354,12 +9354,12 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedPodTemplate", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9368,7 +9368,7 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9401,12 +9401,12 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationController", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9415,7 +9415,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9448,12 +9448,12 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerScale", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedReplicationControllerScaleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9462,7 +9462,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9495,12 +9495,12 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedReplicationControllerStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedReplicationControllerStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9509,7 +9509,7 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9542,12 +9542,12 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuota", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9556,7 +9556,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9589,12 +9589,12 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedResourceQuotaStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedResourceQuotaStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9603,7 +9603,7 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9636,12 +9636,12 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedSecret", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9650,7 +9650,7 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9683,12 +9683,12 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedService", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9697,7 +9697,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9730,12 +9730,12 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceAccount", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9744,7 +9744,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9777,12 +9777,12 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NamespacedServiceStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NamespacedServiceStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9791,7 +9791,7 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9824,12 +9824,12 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1Node", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NodeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9838,7 +9838,7 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9871,12 +9871,12 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1NodeStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1NodeStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9885,7 +9885,7 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9918,12 +9918,12 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1PersistentVolume", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9932,7 +9932,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -9965,12 +9965,12 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 	ctx, err = s.securityBearerToken(ctx, "ReadCoreV1PersistentVolumeStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadCoreV1PersistentVolumeStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9979,7 +9979,7 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10012,12 +10012,12 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	ctx, err = s.securityBearerToken(ctx, "ReadDiscoveryV1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10026,7 +10026,7 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10059,12 +10059,12 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ReadDiscoveryV1beta1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10073,7 +10073,7 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10106,12 +10106,12 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 	ctx, err = s.securityBearerToken(ctx, "ReadEventsV1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadEventsV1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10120,7 +10120,7 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10153,12 +10153,12 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 	ctx, err = s.securityBearerToken(ctx, "ReadEventsV1beta1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10167,7 +10167,7 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10200,12 +10200,12 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchema", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10214,7 +10214,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10247,12 +10247,12 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10261,7 +10261,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10294,12 +10294,12 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10308,7 +10308,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10341,12 +10341,12 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10355,7 +10355,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10388,12 +10388,12 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchema", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10402,7 +10402,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10435,12 +10435,12 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10449,7 +10449,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10482,12 +10482,12 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10496,7 +10496,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10529,12 +10529,12 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	ctx, err = s.securityBearerToken(ctx, "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10543,7 +10543,7 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10576,12 +10576,12 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersion", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10590,7 +10590,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10623,12 +10623,12 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	ctx, err = s.securityBearerToken(ctx, "ReadInternalApiserverV1alpha1StorageVersionStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10637,7 +10637,7 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10670,12 +10670,12 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "ReadNetworkingV1IngressClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadNetworkingV1IngressClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10684,7 +10684,7 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10717,12 +10717,12 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	ctx, err = s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngress", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10731,7 +10731,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10764,12 +10764,12 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	ctx, err = s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedIngressStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadNetworkingV1NamespacedIngressStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10778,7 +10778,7 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10811,12 +10811,12 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	ctx, err = s.securityBearerToken(ctx, "ReadNetworkingV1NamespacedNetworkPolicy", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10825,7 +10825,7 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10858,12 +10858,12 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 	ctx, err = s.securityBearerToken(ctx, "ReadNodeV1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadNodeV1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10872,7 +10872,7 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10905,12 +10905,12 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "ReadNodeV1alpha1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10919,7 +10919,7 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10952,12 +10952,12 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 	ctx, err = s.securityBearerToken(ctx, "ReadNodeV1beta1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10966,7 +10966,7 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -10999,12 +10999,12 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11013,7 +11013,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11046,12 +11046,12 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1NamespacedPodDisruptionBudgetStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11060,7 +11060,7 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11093,12 +11093,12 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11107,7 +11107,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11140,12 +11140,12 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11154,7 +11154,7 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11187,12 +11187,12 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	ctx, err = s.securityBearerToken(ctx, "ReadPolicyV1beta1PodSecurityPolicy", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11201,7 +11201,7 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11234,12 +11234,12 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	ctx, err = s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRole", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11248,7 +11248,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11281,12 +11281,12 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	ctx, err = s.securityBearerToken(ctx, "ReadRbacAuthorizationV1ClusterRoleBinding", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11295,7 +11295,7 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11328,12 +11328,12 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	ctx, err = s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRole", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11342,7 +11342,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11375,12 +11375,12 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "ReadRbacAuthorizationV1NamespacedRoleBinding", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11389,7 +11389,7 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11422,12 +11422,12 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ReadSchedulingV1PriorityClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11436,7 +11436,7 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11469,12 +11469,12 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1CSIDriver", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadStorageV1CSIDriverParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11483,7 +11483,7 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11516,12 +11516,12 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1CSINode", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadStorageV1CSINodeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11530,7 +11530,7 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11563,12 +11563,12 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1StorageClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadStorageV1StorageClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11577,7 +11577,7 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11610,12 +11610,12 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachment", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11624,7 +11624,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11657,12 +11657,12 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1VolumeAttachmentStatus", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadStorageV1VolumeAttachmentStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11671,7 +11671,7 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11704,12 +11704,12 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1alpha1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11718,7 +11718,7 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11751,12 +11751,12 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "ReadStorageV1beta1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11765,7 +11765,7 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11798,12 +11798,12 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	ctx, err = s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11812,7 +11812,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11845,12 +11845,12 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	ctx, err = s.securityBearerToken(ctx, "WatchAdmissionregistrationV1MutatingWebhookConfigurationList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11859,7 +11859,7 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11892,12 +11892,12 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	ctx, err = s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11906,7 +11906,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11939,12 +11939,12 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	ctx, err = s.securityBearerToken(ctx, "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11953,7 +11953,7 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -11986,12 +11986,12 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinition", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12000,7 +12000,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12033,12 +12033,12 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	ctx, err = s.securityBearerToken(ctx, "WatchApiextensionsV1CustomResourceDefinitionList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12047,7 +12047,7 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12080,12 +12080,12 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 	ctx, err = s.securityBearerToken(ctx, "WatchApiregistrationV1APIService", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12094,7 +12094,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12127,12 +12127,12 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	ctx, err = s.securityBearerToken(ctx, "WatchApiregistrationV1APIServiceList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchApiregistrationV1APIServiceListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12141,7 +12141,7 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12174,12 +12174,12 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1ControllerRevisionListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12188,7 +12188,7 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12221,12 +12221,12 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1DaemonSetListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12235,7 +12235,7 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12268,12 +12268,12 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1DeploymentListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1DeploymentListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12282,7 +12282,7 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12315,12 +12315,12 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevision", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12329,7 +12329,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12362,12 +12362,12 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedControllerRevisionList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedControllerRevisionListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12376,7 +12376,7 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12409,12 +12409,12 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12423,7 +12423,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12456,12 +12456,12 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedDaemonSetList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedDaemonSetListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12470,7 +12470,7 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12503,12 +12503,12 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeployment", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12517,7 +12517,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12550,12 +12550,12 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedDeploymentList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedDeploymentListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12564,7 +12564,7 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12597,12 +12597,12 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12611,7 +12611,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12644,12 +12644,12 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedReplicaSetList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedReplicaSetListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12658,7 +12658,7 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12691,12 +12691,12 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSet", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12705,7 +12705,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12738,12 +12738,12 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1NamespacedStatefulSetList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1NamespacedStatefulSetListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12752,7 +12752,7 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12785,12 +12785,12 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1ReplicaSetListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12799,7 +12799,7 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12832,12 +12832,12 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	ctx, err = s.securityBearerToken(ctx, "WatchAppsV1StatefulSetListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12846,7 +12846,7 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12879,12 +12879,12 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12893,7 +12893,7 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12926,12 +12926,12 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12940,7 +12940,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -12973,12 +12973,12 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12987,7 +12987,7 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13020,12 +13020,12 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13034,7 +13034,7 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13067,12 +13067,12 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13081,7 +13081,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13114,12 +13114,12 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13128,7 +13128,7 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13161,12 +13161,12 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13175,7 +13175,7 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13208,12 +13208,12 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13222,7 +13222,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13255,12 +13255,12 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	ctx, err = s.securityBearerToken(ctx, "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13269,7 +13269,7 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13302,12 +13302,12 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1CronJobListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1CronJobListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13316,7 +13316,7 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13349,12 +13349,12 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1JobListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1JobListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13363,7 +13363,7 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13396,12 +13396,12 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13410,7 +13410,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13443,12 +13443,12 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1NamespacedCronJobList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1NamespacedCronJobListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13457,7 +13457,7 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13490,12 +13490,12 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1NamespacedJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1NamespacedJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13504,7 +13504,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13537,12 +13537,12 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1NamespacedJobList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1NamespacedJobListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13551,7 +13551,7 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13584,12 +13584,12 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1beta1CronJobListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13598,7 +13598,7 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13631,12 +13631,12 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJob", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13645,7 +13645,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13678,12 +13678,12 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	ctx, err = s.securityBearerToken(ctx, "WatchBatchV1beta1NamespacedCronJobList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchBatchV1beta1NamespacedCronJobListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13692,7 +13692,7 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13725,12 +13725,12 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequest", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13739,7 +13739,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13772,12 +13772,12 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	ctx, err = s.securityBearerToken(ctx, "WatchCertificatesV1CertificateSigningRequestList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCertificatesV1CertificateSigningRequestListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13786,7 +13786,7 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13819,12 +13819,12 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchCoordinationV1LeaseListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13833,7 +13833,7 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13866,12 +13866,12 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLease", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13880,7 +13880,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13913,12 +13913,12 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	ctx, err = s.securityBearerToken(ctx, "WatchCoordinationV1NamespacedLeaseList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoordinationV1NamespacedLeaseListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13927,7 +13927,7 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -13960,12 +13960,12 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ConfigMapListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13974,7 +13974,7 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14007,12 +14007,12 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1EndpointsListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1EndpointsListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14021,7 +14021,7 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14054,12 +14054,12 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1EventListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1EventListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14068,7 +14068,7 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14101,12 +14101,12 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1LimitRangeListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14115,7 +14115,7 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14148,12 +14148,12 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1Namespace", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespaceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14162,7 +14162,7 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14195,12 +14195,12 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespaceList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespaceListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14209,7 +14209,7 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14242,12 +14242,12 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMap", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14256,7 +14256,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14289,12 +14289,12 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedConfigMapList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedConfigMapListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14303,7 +14303,7 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14336,12 +14336,12 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpoints", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14350,7 +14350,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14383,12 +14383,12 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedEndpointsList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedEndpointsListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14397,7 +14397,7 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14430,12 +14430,12 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14444,7 +14444,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14477,12 +14477,12 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedEventList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedEventListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14491,7 +14491,7 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14524,12 +14524,12 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRange", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14538,7 +14538,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14571,12 +14571,12 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedLimitRangeList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedLimitRangeListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14585,7 +14585,7 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14618,12 +14618,12 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaim", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14632,7 +14632,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14665,12 +14665,12 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPersistentVolumeClaimList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14679,7 +14679,7 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14712,12 +14712,12 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPod", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedPodParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14726,7 +14726,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14759,12 +14759,12 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedPodListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14773,7 +14773,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14806,12 +14806,12 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplate", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14820,7 +14820,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14853,12 +14853,12 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedPodTemplateList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedPodTemplateListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14867,7 +14867,7 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14900,12 +14900,12 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationController", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14914,7 +14914,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14947,12 +14947,12 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedReplicationControllerList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedReplicationControllerListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14961,7 +14961,7 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -14994,12 +14994,12 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuota", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15008,7 +15008,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15041,12 +15041,12 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedResourceQuotaList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedResourceQuotaListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15055,7 +15055,7 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15088,12 +15088,12 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecret", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15102,7 +15102,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15135,12 +15135,12 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedSecretList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedSecretListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15149,7 +15149,7 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15182,12 +15182,12 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedService", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15196,7 +15196,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15229,12 +15229,12 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccount", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15243,7 +15243,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15276,12 +15276,12 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceAccountList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedServiceAccountListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15290,7 +15290,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15323,12 +15323,12 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NamespacedServiceList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NamespacedServiceListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15337,7 +15337,7 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15370,12 +15370,12 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1Node", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NodeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15384,7 +15384,7 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15417,12 +15417,12 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1NodeList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1NodeListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15431,7 +15431,7 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15464,12 +15464,12 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PersistentVolume", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15478,7 +15478,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15511,12 +15511,12 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeClaimListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15525,7 +15525,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15558,12 +15558,12 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PersistentVolumeList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1PersistentVolumeListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15572,7 +15572,7 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15605,12 +15605,12 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PodListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1PodListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15619,7 +15619,7 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15652,12 +15652,12 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1PodTemplateListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15666,7 +15666,7 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15699,12 +15699,12 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ReplicationControllerListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15713,7 +15713,7 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15746,12 +15746,12 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ResourceQuotaListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15760,7 +15760,7 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15793,12 +15793,12 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1SecretListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1SecretListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15807,7 +15807,7 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15840,12 +15840,12 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ServiceAccountListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15854,7 +15854,7 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15887,12 +15887,12 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	ctx, err = s.securityBearerToken(ctx, "WatchCoreV1ServiceListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchCoreV1ServiceListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15901,7 +15901,7 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15934,12 +15934,12 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1EndpointSliceListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15948,7 +15948,7 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -15981,12 +15981,12 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15995,7 +15995,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16028,12 +16028,12 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1NamespacedEndpointSliceList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16042,7 +16042,7 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16075,12 +16075,12 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16089,7 +16089,7 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16122,12 +16122,12 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSlice", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16136,7 +16136,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16169,12 +16169,12 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	ctx, err = s.securityBearerToken(ctx, "WatchDiscoveryV1beta1NamespacedEndpointSliceList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16183,7 +16183,7 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16216,12 +16216,12 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1EventListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchEventsV1EventListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16230,7 +16230,7 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16263,12 +16263,12 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchEventsV1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16277,7 +16277,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16310,12 +16310,12 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1NamespacedEventList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchEventsV1NamespacedEventListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16324,7 +16324,7 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16357,12 +16357,12 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1beta1EventListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchEventsV1beta1EventListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16371,7 +16371,7 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16404,12 +16404,12 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEvent", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16418,7 +16418,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16451,12 +16451,12 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	ctx, err = s.securityBearerToken(ctx, "WatchEventsV1beta1NamespacedEventList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchEventsV1beta1NamespacedEventListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16465,7 +16465,7 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16498,12 +16498,12 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchema", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16512,7 +16512,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16545,12 +16545,12 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1FlowSchemaList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16559,7 +16559,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16592,12 +16592,12 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16606,7 +16606,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16639,12 +16639,12 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16653,7 +16653,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16686,12 +16686,12 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchema", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16700,7 +16700,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16733,12 +16733,12 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2FlowSchemaList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16747,7 +16747,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16780,12 +16780,12 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16794,7 +16794,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16827,12 +16827,12 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	ctx, err = s.securityBearerToken(ctx, "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16841,7 +16841,7 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16874,12 +16874,12 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersion", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16888,7 +16888,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16921,12 +16921,12 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	ctx, err = s.securityBearerToken(ctx, "WatchInternalApiserverV1alpha1StorageVersionList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16935,7 +16935,7 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -16968,12 +16968,12 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1IngressClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNetworkingV1IngressClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16982,7 +16982,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17015,12 +17015,12 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1IngressClassList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNetworkingV1IngressClassListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17029,7 +17029,7 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17062,12 +17062,12 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1IngressListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNetworkingV1IngressListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17076,7 +17076,7 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17109,12 +17109,12 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngress", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17123,7 +17123,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17156,12 +17156,12 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedIngressList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNetworkingV1NamespacedIngressListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17170,7 +17170,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17203,12 +17203,12 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicy", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17217,7 +17217,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17250,12 +17250,12 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NamespacedNetworkPolicyList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17264,7 +17264,7 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17297,12 +17297,12 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	ctx, err = s.securityBearerToken(ctx, "WatchNetworkingV1NetworkPolicyListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17311,7 +17311,7 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17344,12 +17344,12 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNodeV1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17358,7 +17358,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17391,12 +17391,12 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1RuntimeClassList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNodeV1RuntimeClassListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17405,7 +17405,7 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17438,12 +17438,12 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17452,7 +17452,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17485,12 +17485,12 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1alpha1RuntimeClassList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNodeV1alpha1RuntimeClassListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17499,7 +17499,7 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17532,12 +17532,12 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17546,7 +17546,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17579,12 +17579,12 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 	ctx, err = s.securityBearerToken(ctx, "WatchNodeV1beta1RuntimeClassList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchNodeV1beta1RuntimeClassListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17593,7 +17593,7 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17626,12 +17626,12 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17640,7 +17640,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17673,12 +17673,12 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1NamespacedPodDisruptionBudgetList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17687,7 +17687,7 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17720,12 +17720,12 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17734,7 +17734,7 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17767,12 +17767,12 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudget", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17781,7 +17781,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17814,12 +17814,12 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17828,7 +17828,7 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17861,12 +17861,12 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17875,7 +17875,7 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17908,12 +17908,12 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicy", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17922,7 +17922,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -17955,12 +17955,12 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	ctx, err = s.securityBearerToken(ctx, "WatchPolicyV1beta1PodSecurityPolicyList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17969,7 +17969,7 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18002,12 +18002,12 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRole", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18016,7 +18016,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18049,12 +18049,12 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBinding", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18063,7 +18063,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18096,12 +18096,12 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleBindingList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18110,7 +18110,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18143,12 +18143,12 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1ClusterRoleList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18157,7 +18157,7 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18190,12 +18190,12 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRole", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18204,7 +18204,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18237,12 +18237,12 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBinding", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18251,7 +18251,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18284,12 +18284,12 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleBindingList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18298,7 +18298,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18331,12 +18331,12 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1NamespacedRoleList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18345,7 +18345,7 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18378,12 +18378,12 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18392,7 +18392,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18425,12 +18425,12 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	ctx, err = s.securityBearerToken(ctx, "WatchRbacAuthorizationV1RoleListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18439,7 +18439,7 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18472,12 +18472,12 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 	ctx, err = s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18486,7 +18486,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18519,12 +18519,12 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchSchedulingV1PriorityClassList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchSchedulingV1PriorityClassListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18533,7 +18533,7 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18566,12 +18566,12 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1CSIDriver", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1CSIDriverParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18580,7 +18580,7 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18613,12 +18613,12 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1CSIDriverList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1CSIDriverListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18627,7 +18627,7 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18660,12 +18660,12 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1CSINode", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1CSINodeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18674,7 +18674,7 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18707,12 +18707,12 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1CSINodeList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1CSINodeListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18721,7 +18721,7 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18754,12 +18754,12 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1StorageClass", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1StorageClassParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18768,7 +18768,7 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18801,12 +18801,12 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1StorageClassList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1StorageClassListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18815,7 +18815,7 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18848,12 +18848,12 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachment", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18862,7 +18862,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18895,12 +18895,12 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1VolumeAttachmentList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1VolumeAttachmentListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18909,7 +18909,7 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18942,12 +18942,12 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18956,7 +18956,7 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -18989,12 +18989,12 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19003,7 +19003,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -19036,12 +19036,12 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1alpha1NamespacedCSIStorageCapacityList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19050,7 +19050,7 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -19083,12 +19083,12 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19097,7 +19097,7 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -19130,12 +19130,12 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacity", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19144,7 +19144,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -19177,12 +19177,12 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	ctx, err = s.securityBearerToken(ctx, "WatchStorageV1beta1NamespacedCSIStorageCapacityList", r)
 	if err != nil {
 		err = errors.Wrap(err, "security \"BearerToken\"")
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19191,7 +19191,7 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
 		return
 	}
 
@@ -19205,22 +19205,16 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+func (s *Server) badRequest(
+	ctx context.Context,
+	w http.ResponseWriter,
+	r *http.Request,
+	span trace.Span,
+	otelAttrs []attribute.KeyValue,
+	err error,
+) {
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	respondError(w, http.StatusBadRequest, err)
-}
-
-func respondError(w http.ResponseWriter, code int, err error) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	data, writeErr := json.Marshal(struct {
-		ErrorMessage string `json:"error_message"`
-	}{
-		ErrorMessage: err.Error(),
-	})
-	if writeErr == nil {
-		w.Write(data)
-	}
+	s.cfg.ErrorHandler(ctx, w, r, http.StatusBadRequest, err)
 }
