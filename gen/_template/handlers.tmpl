@@ -27,7 +27,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	ctx, err = s.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r)
 	if err != nil {
 		err = errors.Wrap(err, {{ printf "security %q" $s.Security.Type.Name | quote }})
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	{{- end }}
@@ -35,7 +35,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	{{- if $op.Params }}
 	params, err := decode{{ $op.Name }}Params(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	{{- end }}
@@ -43,7 +43,7 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	{{- if $op.Request }}
 	request, err := decode{{ $op.Name }}Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	{{- end }}
@@ -61,12 +61,12 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {
-			respondError(w, http.StatusNotImplemented, err)
+			s.cfg.ErrorHandler(ctx, w, r, http.StatusNotImplemented, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		{{- else }}
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
         {{- end }}
 		return
 	}
@@ -82,23 +82,17 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 }
 {{ end }}
 
-func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+func (s *Server) badRequest(
+	ctx context.Context,
+	w http.ResponseWriter,
+	r *http.Request,
+	span trace.Span,
+	otelAttrs []attribute.KeyValue,
+	err error,
+) {
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	respondError(w, http.StatusBadRequest, err)
-}
-
-func respondError(w http.ResponseWriter, code int, err error) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	data, writeErr := json.Marshal(struct{
-		ErrorMessage string `json:"error_message"`
-	}{
-		ErrorMessage: err.Error(),
-	})
-	if writeErr == nil {
-	  w.Write(data)
-	}
+	s.cfg.ErrorHandler(ctx, w, r, http.StatusBadRequest, err)
 }
 {{ end }}
