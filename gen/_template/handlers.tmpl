@@ -26,7 +26,11 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	{{- range $s := $op.Security }}
 	ctx, err = s.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r)
 	if err != nil {
-		err = errors.Wrap(err, {{ printf "security %q" $s.Security.Type.Name | quote }})
+		err = &ogenerrors.SecurityError{
+			Operation: {{ quote $op.Name }},
+			Security: {{ quote $s.Security.Type.Name }},
+			Err: err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -35,6 +39,10 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	{{- if $op.Params }}
 	params, err := decode{{ $op.Name }}Params(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			{{ quote $op.Name }},
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -43,6 +51,10 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 	{{- if $op.Request }}
 	request, err := decode{{ $op.Name }}Request(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			{{ quote $op.Name }},
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -61,12 +73,12 @@ func (s *Server) handle{{ $op.Name }}Request(args [{{ $op.PathParamsCount }}]str
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {
-			s.cfg.ErrorHandler(ctx, w, r, http.StatusNotImplemented, err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
 		{{- else }}
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
         {{- end }}
 		return
 	}
@@ -93,6 +105,6 @@ func (s *Server) badRequest(
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, http.StatusBadRequest, err)
+	s.cfg.ErrorHandler(ctx, w, r, err)
 }
 {{ end }}

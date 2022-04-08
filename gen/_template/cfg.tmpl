@@ -45,9 +45,19 @@ func putBuf(b *bytes.Buffer) {
 }
 
 // ErrorHandler is error handler.
-type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, code int, err error)
+type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, err error)
 
-func respondError(ctx context.Context, w http.ResponseWriter, r *http.Request, code int, err error) {
+func respondError(ctx context.Context, w http.ResponseWriter, r *http.Request, err error) {
+	var (
+		code = http.StatusInternalServerError
+		ogenErr ogenerrors.Error
+	)
+	switch {
+	case errors.Is(err, ht.ErrNotImplemented):
+		code = http.StatusNotImplemented
+	case errors.As(err, &ogenErr):
+		code = ogenErr.Code()
+	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
 	data, writeErr := json.Marshal(struct{
