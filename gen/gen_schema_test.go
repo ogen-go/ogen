@@ -4,6 +4,7 @@ import (
 	"embed"
 	"io/fs"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -25,7 +26,7 @@ func TestGenerateSchema(t *testing.T) {
 		if err != nil {
 			return err
 		}
-		t.Run(file, func(t *testing.T) {
+		t.Run(strings.TrimSuffix(file, ".json"), func(t *testing.T) {
 			require.NoError(t, GenerateSchema(
 				input,
 				genfs.CheckFS{},

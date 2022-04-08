@@ -1,6 +1,7 @@
 package jsonschema
 
 import (
+	"bytes"
 	"encoding/json"
 
 	"github.com/go-faster/errors"
@@ -61,6 +62,34 @@ type RawSchema struct {
 	Default              json.RawMessage       `json:"default,omitempty"`
 	Example              json.RawMessage       `json:"example,omitempty"`
 	Deprecated           bool                  `json:"deprecated,omitempty"`
+	XAnnotations         map[string]jx.Raw     `json:"-"`
+}
+
+var xPrefix = []byte("x-")
+
+func (r *RawSchema) UnmarshalJSON(data []byte) error {
+	type Alias RawSchema
+	var val Alias
+	if err := json.Unmarshal(data, &val); err != nil {
+		return err
+	}
+	*r = RawSchema(val)
+
+	d := jx.DecodeBytes(data)
+	return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+		if !bytes.HasPrefix(key, xPrefix) {
+			return d.Skip()
+		}
+		val, err := d.RawAppend(nil)
+		if err != nil {
+			return errors.Wrapf(err, "decode %q", key)
+		}
+		if r.XAnnotations == nil {
+			r.XAnnotations = map[string]jx.Raw{}
+		}
+		r.XAnnotations[string(key)] = val
+		return nil
+	})
 }
 
 type RawProperty struct {

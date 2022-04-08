@@ -20,6 +20,8 @@ const (
 
 // Schema is a JSON Schema.
 type Schema struct {
+	XOgenName string // Annotation to set type name.
+
 	Type        SchemaType
 	Format      string // Schema format, optional.
 	Description string // Schema description, optional.
