@@ -5,6 +5,7 @@ import (
 	"regexp"
 
 	"github.com/go-faster/errors"
+	"github.com/go-faster/jx"
 )
 
 // ReferenceResolver resolves JSON schema references.
@@ -64,6 +65,13 @@ func (p *Parser) parse1(schema *RawSchema, ctx resolveCtx, hook func(*Schema) *S
 			s.Default = v
 			s.DefaultSet = true
 		}
+		if a, ok := schema.XAnnotations["x-ogen-name"]; ok {
+			name, err := jx.DecodeBytes(a).Str()
+			if err != nil {
+				return nil, errors.Wrapf(err, "decode %q", a)
+			}
+			s.XOgenName = name
+		}
 	}
 
 	return s, nil
@@ -92,15 +100,16 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 
 	switch {
 	case len(schema.Enum) > 0:
-		if p.inferTypes && schema.Type == "" {
-			typ, err := inferJSONType(schema.Enum[0])
+		typ := schema.Type
+		if p.inferTypes && typ == "" {
+			inferred, err := inferJSONType(schema.Enum[0])
 			if err != nil {
 				return nil, errors.Wrap(err, "infer enum type")
 			}
-			schema.Type = typ
+			typ = inferred
 		}
 
-		t, err := parseType(schema.Type)
+		t, err := parseType(typ)
 		if err != nil {
 			return nil, errors.Wrap(err, "type")
 		}
@@ -151,37 +160,38 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 		return hook(&Schema{AllOf: schemas}), nil
 	}
 
+	typ := schema.Type
 	// Try to infer schema type from properties.
-	if p.inferTypes && schema.Type == "" {
+	if p.inferTypes && typ == "" {
 		switch {
 		case len(schema.Properties) > 0 ||
 			schema.AdditionalProperties != nil ||
 			schema.PatternProperties != nil ||
 			schema.MaxProperties != nil ||
 			schema.MinProperties != nil:
-			schema.Type = "object"
+			typ = "object"
 
 		case schema.Items != nil ||
 			schema.UniqueItems ||
 			schema.MaxItems != nil ||
 			schema.MinItems != nil:
-			schema.Type = "array"
+			typ = "array"
 
 		case schema.Maximum != nil ||
 			schema.Minimum != nil ||
 			schema.ExclusiveMinimum ||
 			schema.ExclusiveMaximum || // FIXME(tdakkota): check for existence instead of true?
 			schema.MultipleOf != nil:
-			schema.Type = "number"
+			typ = "number"
 
 		case schema.MaxLength != nil ||
 			schema.MinLength != nil ||
 			schema.Pattern != "":
-			schema.Type = "string"
+			typ = "string"
 		}
 	}
 
-	switch schema.Type {
+	switch typ {
 	case "object":
 		if schema.Items != nil {
 			return nil, errors.New("object cannot contain 'items' field")
