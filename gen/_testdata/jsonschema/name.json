@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "x-ogen-name": "Name",
+  "properties": {
+    "street_address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string"
+    },
+    "foobar": {
+      "$ref": "#/$defs/FooBar"
+    }
+  },
+  "$defs": {
+    "FooBar": {
+      "x-ogen-name": "FooBar",
+      "type": "object",
+      "properties": {
+        "foo": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
