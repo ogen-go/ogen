@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -97,6 +99,32 @@ func putBuf(b *bytes.Buffer) {
 	bufPool.Put(b)
 }
 
+// ErrorHandler is error handler.
+type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, err error)
+
+func respondError(ctx context.Context, w http.ResponseWriter, r *http.Request, err error) {
+	var (
+		code    = http.StatusInternalServerError
+		ogenErr ogenerrors.Error
+	)
+	switch {
+	case errors.Is(err, ht.ErrNotImplemented):
+		code = http.StatusNotImplemented
+	case errors.As(err, &ogenErr):
+		code = ogenErr.Code()
+	}
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(code)
+	data, writeErr := json.Marshal(struct {
+		ErrorMessage string `json:"error_message"`
+	}{
+		ErrorMessage: err.Error(),
+	})
+	if writeErr == nil {
+		w.Write(data)
+	}
+}
+
 type config struct {
 	TracerProvider trace.TracerProvider
 	Tracer         trace.Tracer
@@ -104,6 +132,7 @@ type config struct {
 	Meter          metric.Meter
 	Client         ht.Client
 	NotFound       http.HandlerFunc
+	ErrorHandler   ErrorHandler
 }
 
 func newConfig(opts ...Option) config {
@@ -112,6 +141,7 @@ func newConfig(opts ...Option) config {
 		MeterProvider:  nonrecording.NewNoopMeterProvider(),
 		Client:         http.DefaultClient,
 		NotFound:       http.NotFound,
+		ErrorHandler:   respondError,
 	}
 	for _, opt := range opts {
 		opt.apply(&cfg)
@@ -164,11 +194,20 @@ func WithClient(client ht.Client) Option {
 	})
 }
 
-// WithNotFound specifies http handler to use.
+// WithNotFound specifies Not Found handler to use.
 func WithNotFound(notFound http.HandlerFunc) Option {
 	return optionFunc(func(cfg *config) {
 		if notFound != nil {
 			cfg.NotFound = notFound
+		}
+	})
+}
+
+// WithErrorHandler specifies error handler to use.
+func WithErrorHandler(h ErrorHandler) Option {
+	return optionFunc(func(cfg *config) {
+		if h != nil {
+			cfg.ErrorHandler = h
 		}
 	})
 }

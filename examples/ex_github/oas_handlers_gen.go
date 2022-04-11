@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -97,7 +99,11 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	var err error
 	params, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -106,7 +112,7 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -138,7 +144,11 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	var err error
 	params, err := decodeActionsAddSelectedRepoToOrgSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsAddSelectedRepoToOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -147,7 +157,7 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -179,7 +189,11 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	var err error
 	params, err := decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsAddSelfHostedRunnerToGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -188,7 +202,7 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -220,7 +234,11 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 	var err error
 	params, err := decodeActionsApproveWorkflowRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsApproveWorkflowRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -229,7 +247,7 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -261,7 +279,11 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodeActionsCancelWorkflowRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCancelWorkflowRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -270,7 +292,7 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -302,12 +324,20 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	var err error
 	params, err := decodeActionsCreateOrUpdateEnvironmentSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCreateOrUpdateEnvironmentSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsCreateOrUpdateEnvironmentSecretRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsCreateOrUpdateEnvironmentSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -316,7 +346,7 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -348,12 +378,20 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	var err error
 	params, err := decodeActionsCreateOrUpdateOrgSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCreateOrUpdateOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsCreateOrUpdateOrgSecretRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsCreateOrUpdateOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -362,7 +400,7 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -394,12 +432,20 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	var err error
 	params, err := decodeActionsCreateOrUpdateRepoSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCreateOrUpdateRepoSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsCreateOrUpdateRepoSecretRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsCreateOrUpdateRepoSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -408,7 +454,7 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -440,7 +486,11 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	var err error
 	params, err := decodeActionsCreateRegistrationTokenForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCreateRegistrationTokenForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -449,7 +499,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -481,7 +531,11 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	var err error
 	params, err := decodeActionsCreateRegistrationTokenForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCreateRegistrationTokenForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -490,7 +544,7 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -522,7 +576,11 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 	var err error
 	params, err := decodeActionsCreateRemoveTokenForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCreateRemoveTokenForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -531,7 +589,7 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -563,7 +621,11 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 	var err error
 	params, err := decodeActionsCreateRemoveTokenForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCreateRemoveTokenForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -572,7 +634,7 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -604,12 +666,20 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	var err error
 	params, err := decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsCreateSelfHostedRunnerGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsCreateSelfHostedRunnerGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -618,7 +688,7 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -650,7 +720,11 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeActionsDeleteArtifactParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteArtifact",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -659,7 +733,7 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -691,7 +765,11 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 	var err error
 	params, err := decodeActionsDeleteEnvironmentSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteEnvironmentSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -700,7 +778,7 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -732,7 +810,11 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeActionsDeleteOrgSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -741,7 +823,7 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -773,7 +855,11 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeActionsDeleteRepoSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteRepoSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -782,7 +868,7 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -814,7 +900,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	var err error
 	params, err := decodeActionsDeleteSelfHostedRunnerFromOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteSelfHostedRunnerFromOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -823,7 +913,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -855,7 +945,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	var err error
 	params, err := decodeActionsDeleteSelfHostedRunnerFromRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteSelfHostedRunnerFromRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -864,7 +958,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -896,7 +990,11 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	var err error
 	params, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteSelfHostedRunnerGroupFromOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -905,7 +1003,7 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -937,7 +1035,11 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodeActionsDeleteWorkflowRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteWorkflowRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -946,7 +1048,7 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -978,7 +1080,11 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 	var err error
 	params, err := decodeActionsDeleteWorkflowRunLogsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDeleteWorkflowRunLogs",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -987,7 +1093,7 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1019,7 +1125,11 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	var err error
 	params, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDisableSelectedRepositoryGithubActionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1028,7 +1138,7 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1060,7 +1170,11 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 	var err error
 	params, err := decodeActionsDownloadArtifactParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDownloadArtifact",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1069,7 +1183,7 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1101,7 +1215,11 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	var err error
 	params, err := decodeActionsDownloadJobLogsForWorkflowRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDownloadJobLogsForWorkflowRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1110,7 +1228,7 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1142,7 +1260,11 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 	var err error
 	params, err := decodeActionsDownloadWorkflowRunLogsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsDownloadWorkflowRunLogs",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1151,7 +1273,7 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1183,7 +1305,11 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	var err error
 	params, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsEnableSelectedRepositoryGithubActionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1192,7 +1318,7 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1224,7 +1350,11 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	var err error
 	params, err := decodeActionsGetAllowedActionsOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetAllowedActionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1233,7 +1363,7 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1265,7 +1395,11 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	var err error
 	params, err := decodeActionsGetAllowedActionsRepositoryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetAllowedActionsRepository",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1274,7 +1408,7 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1306,7 +1440,11 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeActionsGetArtifactParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetArtifact",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1315,7 +1453,7 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1347,7 +1485,11 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 	var err error
 	params, err := decodeActionsGetEnvironmentPublicKeyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetEnvironmentPublicKey",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1356,7 +1498,7 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1388,7 +1530,11 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 	var err error
 	params, err := decodeActionsGetEnvironmentSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetEnvironmentSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1397,7 +1543,7 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1429,7 +1575,11 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	var err error
 	params, err := decodeActionsGetGithubActionsPermissionsOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetGithubActionsPermissionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1438,7 +1588,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1470,7 +1620,11 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	var err error
 	params, err := decodeActionsGetGithubActionsPermissionsRepositoryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetGithubActionsPermissionsRepository",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1479,7 +1633,7 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1511,7 +1665,11 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 	var err error
 	params, err := decodeActionsGetJobForWorkflowRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetJobForWorkflowRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1520,7 +1678,7 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1552,7 +1710,11 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 	var err error
 	params, err := decodeActionsGetOrgPublicKeyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetOrgPublicKey",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1561,7 +1723,7 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1593,7 +1755,11 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 	var err error
 	params, err := decodeActionsGetOrgSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1602,7 +1768,7 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1634,7 +1800,11 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeActionsGetRepoPublicKeyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetRepoPublicKey",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1643,7 +1813,7 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1675,7 +1845,11 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeActionsGetRepoSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetRepoSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1684,7 +1858,7 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1716,7 +1890,11 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeActionsGetReviewsForRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetReviewsForRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1725,7 +1903,7 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1757,7 +1935,11 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 	var err error
 	params, err := decodeActionsGetSelfHostedRunnerForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetSelfHostedRunnerForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1766,7 +1948,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1798,7 +1980,11 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	var err error
 	params, err := decodeActionsGetSelfHostedRunnerForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetSelfHostedRunnerForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1807,7 +1993,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1839,7 +2025,11 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	var err error
 	params, err := decodeActionsGetSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetSelfHostedRunnerGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1848,7 +2038,7 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1880,7 +2070,11 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeActionsGetWorkflowRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetWorkflowRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1889,7 +2083,7 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1921,7 +2115,11 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 	var err error
 	params, err := decodeActionsGetWorkflowRunUsageParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsGetWorkflowRunUsage",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1930,7 +2128,7 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1962,7 +2160,11 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 	var err error
 	params, err := decodeActionsListArtifactsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListArtifactsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1971,7 +2173,7 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2003,7 +2205,11 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 	var err error
 	params, err := decodeActionsListEnvironmentSecretsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListEnvironmentSecrets",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2012,7 +2218,7 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2044,7 +2250,11 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 	var err error
 	params, err := decodeActionsListJobsForWorkflowRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListJobsForWorkflowRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2053,7 +2263,7 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2085,7 +2295,11 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 	var err error
 	params, err := decodeActionsListOrgSecretsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListOrgSecrets",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2094,7 +2308,7 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2126,7 +2340,11 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	var err error
 	params, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2135,7 +2353,7 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2167,7 +2385,11 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeActionsListRepoSecretsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListRepoSecrets",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2176,7 +2398,7 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2208,7 +2430,11 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeActionsListRepoWorkflowsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListRepoWorkflows",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2217,7 +2443,7 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2249,7 +2475,11 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	var err error
 	params, err := decodeActionsListRunnerApplicationsForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListRunnerApplicationsForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2258,7 +2488,7 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2290,7 +2520,11 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	var err error
 	params, err := decodeActionsListRunnerApplicationsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListRunnerApplicationsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2299,7 +2533,7 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2331,7 +2565,11 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	var err error
 	params, err := decodeActionsListSelectedReposForOrgSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListSelectedReposForOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2340,7 +2578,7 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2372,7 +2610,11 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	var err error
 	params, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2381,7 +2623,7 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2413,7 +2655,11 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	var err error
 	params, err := decodeActionsListSelfHostedRunnerGroupsForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListSelfHostedRunnerGroupsForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2422,7 +2668,7 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2454,7 +2700,11 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	var err error
 	params, err := decodeActionsListSelfHostedRunnersForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListSelfHostedRunnersForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2463,7 +2713,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2495,7 +2745,11 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	var err error
 	params, err := decodeActionsListSelfHostedRunnersForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListSelfHostedRunnersForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2504,7 +2758,7 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2536,7 +2790,11 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	var err error
 	params, err := decodeActionsListSelfHostedRunnersInGroupForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListSelfHostedRunnersInGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2545,7 +2803,7 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2577,7 +2835,11 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 	var err error
 	params, err := decodeActionsListWorkflowRunArtifactsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListWorkflowRunArtifacts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2586,7 +2848,7 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2618,7 +2880,11 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 	var err error
 	params, err := decodeActionsListWorkflowRunsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsListWorkflowRunsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2627,7 +2893,7 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2659,7 +2925,11 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeActionsReRunWorkflowParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsReRunWorkflow",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2668,7 +2938,7 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2700,7 +2970,11 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	var err error
 	params, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2709,7 +2983,7 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2741,7 +3015,11 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	var err error
 	params, err := decodeActionsRemoveSelectedRepoFromOrgSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsRemoveSelectedRepoFromOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2750,7 +3028,7 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2782,7 +3060,11 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	var err error
 	params, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2791,7 +3073,7 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2823,7 +3105,11 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeActionsRetryWorkflowParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsRetryWorkflow",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2832,7 +3118,7 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2864,12 +3150,20 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	var err error
 	params, err := decodeActionsReviewPendingDeploymentsForRunParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsReviewPendingDeploymentsForRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsReviewPendingDeploymentsForRunRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsReviewPendingDeploymentsForRun",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2878,7 +3172,7 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2910,12 +3204,20 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	var err error
 	params, err := decodeActionsSetAllowedActionsOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsSetAllowedActionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsSetAllowedActionsOrganizationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsSetAllowedActionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2924,7 +3226,7 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2956,12 +3258,20 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	var err error
 	params, err := decodeActionsSetAllowedActionsRepositoryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsSetAllowedActionsRepository",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsSetAllowedActionsRepositoryRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsSetAllowedActionsRepository",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2970,7 +3280,7 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3002,12 +3312,20 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	var err error
 	params, err := decodeActionsSetGithubActionsPermissionsOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsSetGithubActionsPermissionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsSetGithubActionsPermissionsOrganizationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsSetGithubActionsPermissionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3016,7 +3334,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3048,12 +3366,20 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	var err error
 	params, err := decodeActionsSetGithubActionsPermissionsRepositoryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsSetGithubActionsPermissionsRepository",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsSetGithubActionsPermissionsRepositoryRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsSetGithubActionsPermissionsRepository",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3062,7 +3388,7 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3094,12 +3420,20 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	var err error
 	params, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3108,7 +3442,7 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3140,12 +3474,20 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	var err error
 	params, err := decodeActionsSetSelectedReposForOrgSecretParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsSetSelectedReposForOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsSetSelectedReposForOrgSecretRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsSetSelectedReposForOrgSecret",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3154,7 +3496,7 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3186,12 +3528,20 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	var err error
 	params, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3200,7 +3550,7 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3232,12 +3582,20 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	var err error
 	params, err := decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsSetSelfHostedRunnersInGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsSetSelfHostedRunnersInGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3246,7 +3604,7 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3278,12 +3636,20 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	var err error
 	params, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActionsUpdateSelfHostedRunnerGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActionsUpdateSelfHostedRunnerGroupForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3292,7 +3658,7 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3324,7 +3690,11 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	var err error
 	params, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityCheckRepoIsStarredByAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3333,7 +3703,7 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3365,7 +3735,11 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 	var err error
 	params, err := decodeActivityDeleteRepoSubscriptionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityDeleteRepoSubscription",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3374,7 +3748,7 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3406,7 +3780,11 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 	var err error
 	params, err := decodeActivityDeleteThreadSubscriptionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityDeleteThreadSubscription",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3415,7 +3793,7 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3451,7 +3829,7 @@ func (s *Server) handleActivityGetFeedsRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3483,7 +3861,11 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 	var err error
 	params, err := decodeActivityGetRepoSubscriptionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityGetRepoSubscription",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3492,7 +3874,7 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3524,7 +3906,11 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodeActivityGetThreadParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityGetThread",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3533,7 +3919,7 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3565,7 +3951,11 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	var err error
 	params, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityGetThreadSubscriptionForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3574,7 +3964,7 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3606,7 +3996,11 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	var err error
 	params, err := decodeActivityListEventsForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListEventsForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3615,7 +4009,7 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3647,7 +4041,11 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	var err error
 	params, err := decodeActivityListNotificationsForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListNotificationsForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3656,7 +4054,7 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3688,7 +4086,11 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	var err error
 	params, err := decodeActivityListOrgEventsForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListOrgEventsForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3697,7 +4099,7 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3729,7 +4131,11 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 	var err error
 	params, err := decodeActivityListPublicEventsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListPublicEvents",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3738,7 +4144,7 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3770,7 +4176,11 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	var err error
 	params, err := decodeActivityListPublicEventsForRepoNetworkParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListPublicEventsForRepoNetwork",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3779,7 +4189,7 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3811,7 +4221,11 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 	var err error
 	params, err := decodeActivityListPublicEventsForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListPublicEventsForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3820,7 +4234,7 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3852,7 +4266,11 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 	var err error
 	params, err := decodeActivityListPublicOrgEventsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListPublicOrgEvents",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3861,7 +4279,7 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3893,7 +4311,11 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	var err error
 	params, err := decodeActivityListReceivedEventsForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListReceivedEventsForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3902,7 +4324,7 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3934,7 +4356,11 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	var err error
 	params, err := decodeActivityListReceivedPublicEventsForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListReceivedPublicEventsForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3943,7 +4369,7 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3975,7 +4401,11 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeActivityListRepoEventsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListRepoEvents",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3984,7 +4414,7 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4016,7 +4446,11 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	var err error
 	params, err := decodeActivityListRepoNotificationsForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListRepoNotificationsForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4025,7 +4459,7 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4057,7 +4491,11 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	var err error
 	params, err := decodeActivityListReposStarredByAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListReposStarredByAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4066,7 +4504,7 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4098,7 +4536,11 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 	var err error
 	params, err := decodeActivityListReposWatchedByUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListReposWatchedByUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4107,7 +4549,7 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4139,7 +4581,11 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	var err error
 	params, err := decodeActivityListWatchedReposForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListWatchedReposForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4148,7 +4594,7 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4180,7 +4626,11 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 	var err error
 	params, err := decodeActivityListWatchersForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityListWatchersForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4189,7 +4639,7 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4221,7 +4671,11 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 	var err error
 	request, err := decodeActivityMarkNotificationsAsReadRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActivityMarkNotificationsAsRead",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4230,7 +4684,7 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4262,12 +4716,20 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	var err error
 	params, err := decodeActivityMarkRepoNotificationsAsReadParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityMarkRepoNotificationsAsRead",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActivityMarkRepoNotificationsAsReadRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActivityMarkRepoNotificationsAsRead",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4276,7 +4738,7 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4308,7 +4770,11 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 	var err error
 	params, err := decodeActivityMarkThreadAsReadParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityMarkThreadAsRead",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4317,7 +4783,7 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4349,12 +4815,20 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	var err error
 	params, err := decodeActivitySetRepoSubscriptionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivitySetRepoSubscription",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActivitySetRepoSubscriptionRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActivitySetRepoSubscription",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4363,7 +4837,7 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4395,12 +4869,20 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	var err error
 	params, err := decodeActivitySetThreadSubscriptionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivitySetThreadSubscription",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeActivitySetThreadSubscriptionRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ActivitySetThreadSubscription",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4409,7 +4891,7 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4441,7 +4923,11 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	var err error
 	params, err := decodeActivityStarRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityStarRepoForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4450,7 +4936,7 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4482,7 +4968,11 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	var err error
 	params, err := decodeActivityUnstarRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ActivityUnstarRepoForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4491,7 +4981,7 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4523,7 +5013,11 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 	var err error
 	params, err := decodeAppsAddRepoToInstallationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsAddRepoToInstallation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4532,7 +5026,7 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4564,12 +5058,20 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	var err error
 	params, err := decodeAppsCheckTokenParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsCheckToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeAppsCheckTokenRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"AppsCheckToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4578,7 +5080,7 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4610,12 +5112,20 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	var err error
 	params, err := decodeAppsCreateContentAttachmentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsCreateContentAttachment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeAppsCreateContentAttachmentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"AppsCreateContentAttachment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4624,7 +5134,7 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4656,12 +5166,20 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	var err error
 	params, err := decodeAppsCreateInstallationAccessTokenParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsCreateInstallationAccessToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeAppsCreateInstallationAccessTokenRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"AppsCreateInstallationAccessToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4670,7 +5188,7 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4702,12 +5220,20 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	var err error
 	params, err := decodeAppsDeleteAuthorizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsDeleteAuthorization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeAppsDeleteAuthorizationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"AppsDeleteAuthorization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4716,7 +5242,7 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4748,7 +5274,11 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 	var err error
 	params, err := decodeAppsDeleteInstallationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsDeleteInstallation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4757,7 +5287,7 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4789,12 +5319,20 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	var err error
 	params, err := decodeAppsDeleteTokenParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsDeleteToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeAppsDeleteTokenRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"AppsDeleteToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4803,7 +5341,7 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4839,7 +5377,7 @@ func (s *Server) handleAppsGetAuthenticatedRequest(args [0]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4871,7 +5409,11 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 	var err error
 	params, err := decodeAppsGetBySlugParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsGetBySlug",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4880,7 +5422,7 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4912,7 +5454,11 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	var err error
 	params, err := decodeAppsGetSubscriptionPlanForAccountParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsGetSubscriptionPlanForAccount",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4921,7 +5467,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4953,7 +5499,11 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	var err error
 	params, err := decodeAppsGetSubscriptionPlanForAccountStubbedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsGetSubscriptionPlanForAccountStubbed",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4962,7 +5512,7 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4998,7 +5548,7 @@ func (s *Server) handleAppsGetWebhookConfigForAppRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5030,7 +5580,11 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 	var err error
 	params, err := decodeAppsGetWebhookDeliveryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsGetWebhookDelivery",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5039,7 +5593,7 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5071,7 +5625,11 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 	var err error
 	params, err := decodeAppsListAccountsForPlanParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListAccountsForPlan",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5080,7 +5638,7 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5112,7 +5670,11 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 	var err error
 	params, err := decodeAppsListAccountsForPlanStubbedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListAccountsForPlanStubbed",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5121,7 +5683,7 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5153,7 +5715,11 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	var err error
 	params, err := decodeAppsListInstallationReposForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListInstallationReposForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5162,7 +5728,7 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5194,7 +5760,11 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 	var err error
 	params, err := decodeAppsListPlansParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListPlans",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5203,7 +5773,7 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5235,7 +5805,11 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 	var err error
 	params, err := decodeAppsListPlansStubbedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListPlansStubbed",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5244,7 +5818,7 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5276,7 +5850,11 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	var err error
 	params, err := decodeAppsListReposAccessibleToInstallationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListReposAccessibleToInstallation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5285,7 +5863,7 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5317,7 +5895,11 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	var err error
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListSubscriptionsForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5326,7 +5908,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5358,7 +5940,11 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	var err error
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListSubscriptionsForAuthenticatedUserStubbed",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5367,7 +5953,7 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5399,7 +5985,11 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 	var err error
 	params, err := decodeAppsListWebhookDeliveriesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsListWebhookDeliveries",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5408,7 +5998,7 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5440,7 +6030,11 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 	var err error
 	params, err := decodeAppsRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsRedeliverWebhookDelivery",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5449,7 +6043,7 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5481,7 +6075,11 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 	var err error
 	params, err := decodeAppsRemoveRepoFromInstallationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsRemoveRepoFromInstallation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5490,7 +6088,7 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5522,12 +6120,20 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	var err error
 	params, err := decodeAppsResetTokenParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsResetToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeAppsResetTokenRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"AppsResetToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5536,7 +6142,7 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5572,7 +6178,7 @@ func (s *Server) handleAppsRevokeInstallationAccessTokenRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5604,12 +6210,20 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	var err error
 	params, err := decodeAppsScopeTokenParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsScopeToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeAppsScopeTokenRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"AppsScopeToken",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5618,7 +6232,7 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5650,7 +6264,11 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 	var err error
 	params, err := decodeAppsSuspendInstallationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsSuspendInstallation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5659,7 +6277,7 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5691,7 +6309,11 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 	var err error
 	params, err := decodeAppsUnsuspendInstallationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"AppsUnsuspendInstallation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5700,7 +6322,7 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5732,7 +6354,11 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 	var err error
 	request, err := decodeAppsUpdateWebhookConfigForAppRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"AppsUpdateWebhookConfigForApp",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5741,7 +6367,7 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5773,7 +6399,11 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	var err error
 	params, err := decodeBillingGetGithubActionsBillingGheParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetGithubActionsBillingGhe",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5782,7 +6412,7 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5814,7 +6444,11 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	var err error
 	params, err := decodeBillingGetGithubActionsBillingOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetGithubActionsBillingOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5823,7 +6457,7 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5855,7 +6489,11 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	var err error
 	params, err := decodeBillingGetGithubActionsBillingUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetGithubActionsBillingUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5864,7 +6502,7 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5896,7 +6534,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	var err error
 	params, err := decodeBillingGetGithubPackagesBillingGheParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetGithubPackagesBillingGhe",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5905,7 +6547,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5937,7 +6579,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	var err error
 	params, err := decodeBillingGetGithubPackagesBillingOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetGithubPackagesBillingOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5946,7 +6592,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5978,7 +6624,11 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	var err error
 	params, err := decodeBillingGetGithubPackagesBillingUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetGithubPackagesBillingUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5987,7 +6637,7 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6019,7 +6669,11 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	var err error
 	params, err := decodeBillingGetSharedStorageBillingGheParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetSharedStorageBillingGhe",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6028,7 +6682,7 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6060,7 +6714,11 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	var err error
 	params, err := decodeBillingGetSharedStorageBillingOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetSharedStorageBillingOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6069,7 +6727,7 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6101,7 +6759,11 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	var err error
 	params, err := decodeBillingGetSharedStorageBillingUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"BillingGetSharedStorageBillingUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6110,7 +6772,7 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6142,12 +6804,20 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeChecksCreateSuiteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksCreateSuite",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeChecksCreateSuiteRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ChecksCreateSuite",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6156,7 +6826,7 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6188,7 +6858,11 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeChecksGetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksGet",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6197,7 +6871,7 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6229,7 +6903,11 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 	var err error
 	params, err := decodeChecksGetSuiteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksGetSuite",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6238,7 +6916,7 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6270,7 +6948,11 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeChecksListAnnotationsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksListAnnotations",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6279,7 +6961,7 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6311,7 +6993,11 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 	var err error
 	params, err := decodeChecksListForRefParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksListForRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6320,7 +7006,7 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6352,7 +7038,11 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeChecksListForSuiteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksListForSuite",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6361,7 +7051,7 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6393,7 +7083,11 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 	var err error
 	params, err := decodeChecksListSuitesForRefParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksListSuitesForRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6402,7 +7096,7 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6434,7 +7128,11 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeChecksRerequestSuiteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksRerequestSuite",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6443,7 +7141,7 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6475,12 +7173,20 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	var err error
 	params, err := decodeChecksSetSuitesPreferencesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ChecksSetSuitesPreferences",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeChecksSetSuitesPreferencesRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ChecksSetSuitesPreferences",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6489,7 +7195,7 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6521,7 +7227,11 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 	var err error
 	params, err := decodeCodeScanningDeleteAnalysisParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningDeleteAnalysis",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6530,7 +7240,7 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6562,7 +7272,11 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeCodeScanningGetAlertParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningGetAlert",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6571,7 +7285,7 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6603,7 +7317,11 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeCodeScanningGetAnalysisParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningGetAnalysis",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6612,7 +7330,7 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6644,7 +7362,11 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeCodeScanningGetSarifParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningGetSarif",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6653,7 +7375,7 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6685,7 +7407,11 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 	var err error
 	params, err := decodeCodeScanningListAlertInstancesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningListAlertInstances",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6694,7 +7420,7 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6726,7 +7452,11 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 	var err error
 	params, err := decodeCodeScanningListAlertsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningListAlertsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6735,7 +7465,7 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6767,7 +7497,11 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 	var err error
 	params, err := decodeCodeScanningListRecentAnalysesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningListRecentAnalyses",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6776,7 +7510,7 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6808,12 +7542,20 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeCodeScanningUpdateAlertParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningUpdateAlert",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeCodeScanningUpdateAlertRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"CodeScanningUpdateAlert",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6822,7 +7564,7 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6854,12 +7596,20 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeCodeScanningUploadSarifParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodeScanningUploadSarif",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeCodeScanningUploadSarifRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"CodeScanningUploadSarif",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6868,7 +7618,7 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6904,7 +7654,7 @@ func (s *Server) handleCodesOfConductGetAllCodesOfConductRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6936,7 +7686,11 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 	var err error
 	params, err := decodeCodesOfConductGetConductCodeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"CodesOfConductGetConductCode",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6945,7 +7699,7 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6981,7 +7735,7 @@ func (s *Server) handleEmojisGetRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7013,7 +7767,11 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	var err error
 	params, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7022,7 +7780,7 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7054,7 +7812,11 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	var err error
 	params, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7063,7 +7825,7 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7095,7 +7857,11 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	var err error
 	params, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminCreateRegistrationTokenForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7104,7 +7870,7 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7136,7 +7902,11 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	var err error
 	params, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminCreateRemoveTokenForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7145,7 +7915,7 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7177,12 +7947,20 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	var err error
 	params, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7191,7 +7969,7 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7223,7 +8001,11 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	var err error
 	params, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminDeleteScimGroupFromEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7232,7 +8014,7 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7264,7 +8046,11 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	var err error
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7273,7 +8059,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7305,7 +8091,11 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	var err error
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7314,7 +8104,7 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7346,7 +8136,11 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	var err error
 	params, err := decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminDeleteUserFromEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7355,7 +8149,7 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7387,7 +8181,11 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	var err error
 	params, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7396,7 +8194,7 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7428,7 +8226,11 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	var err error
 	params, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7437,7 +8239,7 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7469,7 +8271,11 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	var err error
 	params, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminGetAllowedActionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7478,7 +8284,7 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7510,7 +8316,11 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 	var err error
 	params, err := decodeEnterpriseAdminGetAuditLogParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminGetAuditLog",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7519,7 +8329,7 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7551,7 +8361,11 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	var err error
 	params, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7560,7 +8374,7 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7592,7 +8406,11 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	var err error
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7601,7 +8419,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7633,7 +8451,11 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	var err error
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7642,7 +8464,7 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7674,7 +8496,11 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	var err error
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7683,7 +8509,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7715,7 +8541,11 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	var err error
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7724,7 +8554,7 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7756,7 +8586,11 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	var err error
 	params, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7765,7 +8599,7 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7797,7 +8631,11 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	var err error
 	params, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminListProvisionedGroupsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7806,7 +8644,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7838,7 +8676,11 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	var err error
 	params, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminListProvisionedIdentitiesEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7847,7 +8689,7 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7879,7 +8721,11 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	var err error
 	params, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminListRunnerApplicationsForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7888,7 +8734,7 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7920,7 +8766,11 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	var err error
 	params, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7929,7 +8779,7 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7961,7 +8811,11 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	var err error
 	params, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7970,7 +8824,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8002,7 +8856,11 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	var err error
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminListSelfHostedRunnersForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8011,7 +8869,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8043,7 +8901,11 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	var err error
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8052,7 +8914,7 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8084,12 +8946,20 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	var err error
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8098,7 +8968,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8130,12 +9000,20 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	var err error
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8144,7 +9022,7 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8176,7 +9054,11 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	var err error
 	params, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8185,7 +9067,7 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8217,7 +9099,11 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	var err error
 	params, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8226,7 +9112,7 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8258,12 +9144,20 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	var err error
 	params, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminSetAllowedActionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminSetAllowedActionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8272,7 +9166,7 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8304,12 +9198,20 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	var err error
 	params, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8318,7 +9220,7 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8350,12 +9252,20 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	var err error
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8364,7 +9274,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8396,12 +9306,20 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	var err error
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8410,7 +9328,7 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8442,12 +9360,20 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	var err error
 	params, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8456,7 +9382,7 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8488,12 +9414,20 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	var err error
 	params, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8502,7 +9436,7 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8534,12 +9468,20 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	var err error
 	params, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8548,7 +9490,7 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8580,12 +9522,20 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	var err error
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8594,7 +9544,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8626,12 +9576,20 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	var err error
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8640,7 +9598,7 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8672,12 +9630,20 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	var err error
 	params, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8686,7 +9652,7 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8718,7 +9684,11 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 	var err error
 	params, err := decodeGistsCheckIsStarredParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsCheckIsStarred",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8727,7 +9697,7 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8759,7 +9729,11 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 	var err error
 	request, err := decodeGistsCreateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GistsCreate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8768,7 +9742,7 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8800,12 +9774,20 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	var err error
 	params, err := decodeGistsCreateCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsCreateComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeGistsCreateCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GistsCreateComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8814,7 +9796,7 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8846,7 +9828,11 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeGistsDeleteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsDelete",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8855,7 +9841,7 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8887,7 +9873,11 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 	var err error
 	params, err := decodeGistsDeleteCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsDeleteComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8896,7 +9886,7 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8928,7 +9918,11 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeGistsForkParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsFork",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8937,7 +9931,7 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8969,7 +9963,11 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 	var err error
 	params, err := decodeGistsGetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsGet",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8978,7 +9976,7 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9010,7 +10008,11 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 	var err error
 	params, err := decodeGistsGetCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsGetComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9019,7 +10021,7 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9051,7 +10053,11 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 	var err error
 	params, err := decodeGistsGetRevisionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsGetRevision",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9060,7 +10066,7 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9092,7 +10098,11 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeGistsListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsList",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9101,7 +10111,7 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9133,7 +10143,11 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodeGistsListCommentsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsListComments",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9142,7 +10156,7 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9174,7 +10188,11 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 	var err error
 	params, err := decodeGistsListCommitsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsListCommits",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9183,7 +10201,7 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9215,7 +10233,11 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 	var err error
 	params, err := decodeGistsListForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsListForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9224,7 +10246,7 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9256,7 +10278,11 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 	var err error
 	params, err := decodeGistsListForksParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsListForks",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9265,7 +10291,7 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9297,7 +10323,11 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 	var err error
 	params, err := decodeGistsListPublicParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsListPublic",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9306,7 +10336,7 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9338,7 +10368,11 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 	var err error
 	params, err := decodeGistsListStarredParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsListStarred",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9347,7 +10381,7 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9379,7 +10413,11 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeGistsStarParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsStar",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9388,7 +10426,7 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9420,7 +10458,11 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeGistsUnstarParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsUnstar",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9429,7 +10471,7 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9461,12 +10503,20 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	var err error
 	params, err := decodeGistsUpdateCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GistsUpdateComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeGistsUpdateCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GistsUpdateComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9475,7 +10525,7 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9507,12 +10557,20 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	var err error
 	params, err := decodeGitCreateBlobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitCreateBlob",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeGitCreateBlobRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GitCreateBlob",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9521,7 +10579,7 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9553,12 +10611,20 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	var err error
 	params, err := decodeGitCreateCommitParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitCreateCommit",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeGitCreateCommitRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GitCreateCommit",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9567,7 +10633,7 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9599,12 +10665,20 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	var err error
 	params, err := decodeGitCreateRefParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitCreateRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeGitCreateRefRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GitCreateRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9613,7 +10687,7 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9645,12 +10719,20 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	var err error
 	params, err := decodeGitCreateTagParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitCreateTag",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeGitCreateTagRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GitCreateTag",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9659,7 +10741,7 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9691,12 +10773,20 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	var err error
 	params, err := decodeGitCreateTreeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitCreateTree",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeGitCreateTreeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GitCreateTree",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9705,7 +10795,7 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9737,7 +10827,11 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 	var err error
 	params, err := decodeGitDeleteRefParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitDeleteRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9746,7 +10840,7 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9778,7 +10872,11 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 	var err error
 	params, err := decodeGitGetBlobParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitGetBlob",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9787,7 +10885,7 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9819,7 +10917,11 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 	var err error
 	params, err := decodeGitGetCommitParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitGetCommit",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9828,7 +10930,7 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9860,7 +10962,11 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeGitGetRefParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitGetRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9869,7 +10975,7 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9901,7 +11007,11 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeGitGetTagParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitGetTag",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9910,7 +11020,7 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9942,7 +11052,11 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 	var err error
 	params, err := decodeGitGetTreeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitGetTree",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9951,7 +11065,7 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9983,7 +11097,11 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 	var err error
 	params, err := decodeGitListMatchingRefsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitListMatchingRefs",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9992,7 +11110,7 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10024,12 +11142,20 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	var err error
 	params, err := decodeGitUpdateRefParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitUpdateRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeGitUpdateRefRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"GitUpdateRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10038,7 +11164,7 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10074,7 +11200,7 @@ func (s *Server) handleGitignoreGetAllTemplatesRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10106,7 +11232,11 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeGitignoreGetTemplateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"GitignoreGetTemplate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10115,7 +11245,7 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10151,7 +11281,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10183,7 +11313,11 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	var err error
 	params, err := decodeInteractionsRemoveRestrictionsForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"InteractionsRemoveRestrictionsForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10192,7 +11326,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10224,7 +11358,11 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	var err error
 	params, err := decodeInteractionsRemoveRestrictionsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"InteractionsRemoveRestrictionsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10233,7 +11371,7 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10265,7 +11403,11 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	var err error
 	request, err := decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"InteractionsSetRestrictionsForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10274,7 +11416,7 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10306,12 +11448,20 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	var err error
 	params, err := decodeInteractionsSetRestrictionsForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"InteractionsSetRestrictionsForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeInteractionsSetRestrictionsForOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"InteractionsSetRestrictionsForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10320,7 +11470,7 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10352,12 +11502,20 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	var err error
 	params, err := decodeInteractionsSetRestrictionsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"InteractionsSetRestrictionsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeInteractionsSetRestrictionsForRepoRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"InteractionsSetRestrictionsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10366,7 +11524,7 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10398,12 +11556,20 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeIssuesAddAssigneesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesAddAssignees",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesAddAssigneesRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesAddAssignees",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10412,7 +11578,7 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10444,7 +11610,11 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 	var err error
 	params, err := decodeIssuesCheckUserCanBeAssignedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesCheckUserCanBeAssigned",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10453,7 +11623,7 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10485,12 +11655,20 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	var err error
 	params, err := decodeIssuesCreateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesCreate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesCreateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesCreate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10499,7 +11677,7 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10531,12 +11709,20 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	var err error
 	params, err := decodeIssuesCreateCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesCreateComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesCreateCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesCreateComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10545,7 +11731,7 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10577,12 +11763,20 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeIssuesCreateLabelParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesCreateLabel",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesCreateLabelRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesCreateLabel",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10591,7 +11785,7 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10623,12 +11817,20 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeIssuesCreateMilestoneParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesCreateMilestone",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesCreateMilestoneRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesCreateMilestone",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10637,7 +11839,7 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10669,7 +11871,11 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 	var err error
 	params, err := decodeIssuesDeleteCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesDeleteComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10678,7 +11884,7 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10710,7 +11916,11 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 	var err error
 	params, err := decodeIssuesDeleteLabelParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesDeleteLabel",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10719,7 +11929,7 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10751,7 +11961,11 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeIssuesDeleteMilestoneParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesDeleteMilestone",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10760,7 +11974,7 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10792,7 +12006,11 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeIssuesGetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesGet",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10801,7 +12019,7 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10833,7 +12051,11 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 	var err error
 	params, err := decodeIssuesGetCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesGetComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10842,7 +12064,7 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10874,7 +12096,11 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 	var err error
 	params, err := decodeIssuesGetEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesGetEvent",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10883,7 +12109,7 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10915,7 +12141,11 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 	var err error
 	params, err := decodeIssuesGetLabelParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesGetLabel",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10924,7 +12154,7 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10956,7 +12186,11 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeIssuesGetMilestoneParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesGetMilestone",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10965,7 +12199,7 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10997,7 +12231,11 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 	var err error
 	params, err := decodeIssuesListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesList",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11006,7 +12244,7 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11038,7 +12276,11 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 	var err error
 	params, err := decodeIssuesListAssigneesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListAssignees",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11047,7 +12289,7 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11079,7 +12321,11 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeIssuesListCommentsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListComments",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11088,7 +12334,7 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11120,7 +12366,11 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 	var err error
 	params, err := decodeIssuesListCommentsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListCommentsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11129,7 +12379,7 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11161,7 +12411,11 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeIssuesListEventsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListEventsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11170,7 +12424,7 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11202,7 +12456,11 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 	var err error
 	params, err := decodeIssuesListForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11211,7 +12469,7 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11243,7 +12501,11 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 	var err error
 	params, err := decodeIssuesListForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11252,7 +12514,7 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11284,7 +12546,11 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeIssuesListForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11293,7 +12559,7 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11325,7 +12591,11 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 	var err error
 	params, err := decodeIssuesListLabelsForMilestoneParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListLabelsForMilestone",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11334,7 +12604,7 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11366,7 +12636,11 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeIssuesListLabelsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListLabelsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11375,7 +12649,7 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11407,7 +12681,11 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeIssuesListLabelsOnIssueParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListLabelsOnIssue",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11416,7 +12694,7 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11448,7 +12726,11 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeIssuesListMilestonesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesListMilestones",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11457,7 +12739,7 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11489,12 +12771,20 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	var err error
 	params, err := decodeIssuesLockParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesLock",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesLockRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesLock",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11503,7 +12793,7 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11535,7 +12825,11 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeIssuesRemoveAllLabelsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesRemoveAllLabels",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11544,7 +12838,7 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11576,12 +12870,20 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeIssuesRemoveAssigneesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesRemoveAssignees",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesRemoveAssigneesRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesRemoveAssignees",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11590,7 +12892,7 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11622,7 +12924,11 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 	var err error
 	params, err := decodeIssuesRemoveLabelParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesRemoveLabel",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11631,7 +12937,7 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11663,7 +12969,11 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 	var err error
 	params, err := decodeIssuesUnlockParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesUnlock",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11672,7 +12982,7 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11704,12 +13014,20 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	var err error
 	params, err := decodeIssuesUpdateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesUpdate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesUpdateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesUpdate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11718,7 +13036,7 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11750,12 +13068,20 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	var err error
 	params, err := decodeIssuesUpdateCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesUpdateComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesUpdateCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesUpdateComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11764,7 +13090,7 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11796,12 +13122,20 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	var err error
 	params, err := decodeIssuesUpdateLabelParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesUpdateLabel",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesUpdateLabelRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesUpdateLabel",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11810,7 +13144,7 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11842,12 +13176,20 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeIssuesUpdateMilestoneParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"IssuesUpdateMilestone",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeIssuesUpdateMilestoneRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"IssuesUpdateMilestone",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11856,7 +13198,7 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11888,7 +13230,11 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeLicensesGetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"LicensesGet",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11897,7 +13243,7 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11929,7 +13275,11 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 	var err error
 	params, err := decodeLicensesGetAllCommonlyUsedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"LicensesGetAllCommonlyUsed",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11938,7 +13288,7 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11970,7 +13320,11 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 	var err error
 	params, err := decodeLicensesGetForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"LicensesGetForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11979,7 +13333,7 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12015,7 +13369,7 @@ func (s *Server) handleMetaGetRequest(args [0]string, w http.ResponseWriter, r *
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12051,7 +13405,7 @@ func (s *Server) handleMetaRootRequest(args [0]string, w http.ResponseWriter, r 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12083,7 +13437,11 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeMigrationsCancelImportParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsCancelImport",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12092,7 +13450,7 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12124,7 +13482,11 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	var err error
 	params, err := decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsDeleteArchiveForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12133,7 +13495,7 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12165,7 +13527,11 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 	var err error
 	params, err := decodeMigrationsDeleteArchiveForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsDeleteArchiveForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12174,7 +13540,7 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12206,7 +13572,11 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 	var err error
 	params, err := decodeMigrationsDownloadArchiveForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsDownloadArchiveForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12215,7 +13585,7 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12247,7 +13617,11 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	var err error
 	params, err := decodeMigrationsGetArchiveForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsGetArchiveForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12256,7 +13630,7 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12288,7 +13662,11 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 	var err error
 	params, err := decodeMigrationsGetCommitAuthorsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsGetCommitAuthors",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12297,7 +13675,7 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12329,7 +13707,11 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 	var err error
 	params, err := decodeMigrationsGetImportStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsGetImportStatus",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12338,7 +13720,7 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12370,7 +13752,11 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeMigrationsGetLargeFilesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsGetLargeFiles",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12379,7 +13765,7 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12411,7 +13797,11 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	var err error
 	params, err := decodeMigrationsGetStatusForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsGetStatusForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12420,7 +13810,7 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12452,7 +13842,11 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 	var err error
 	params, err := decodeMigrationsGetStatusForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsGetStatusForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12461,7 +13855,7 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12493,7 +13887,11 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	var err error
 	params, err := decodeMigrationsListForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsListForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12502,7 +13900,7 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12534,7 +13932,11 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeMigrationsListForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsListForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12543,7 +13945,7 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12575,7 +13977,11 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 	var err error
 	params, err := decodeMigrationsListReposForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsListReposForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12584,7 +13990,7 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12616,7 +14022,11 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 	var err error
 	params, err := decodeMigrationsListReposForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsListReposForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12625,7 +14035,7 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12657,12 +14067,20 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	var err error
 	params, err := decodeMigrationsMapCommitAuthorParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsMapCommitAuthor",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeMigrationsMapCommitAuthorRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MigrationsMapCommitAuthor",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12671,7 +14089,7 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12703,12 +14121,20 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	var err error
 	params, err := decodeMigrationsSetLfsPreferenceParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsSetLfsPreference",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeMigrationsSetLfsPreferenceRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MigrationsSetLfsPreference",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12717,7 +14143,7 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12749,7 +14175,11 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	var err error
 	request, err := decodeMigrationsStartForAuthenticatedUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MigrationsStartForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12758,7 +14188,7 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12790,12 +14220,20 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	var err error
 	params, err := decodeMigrationsStartForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsStartForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeMigrationsStartForOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MigrationsStartForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12804,7 +14242,7 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12836,12 +14274,20 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeMigrationsStartImportParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsStartImport",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeMigrationsStartImportRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MigrationsStartImport",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12850,7 +14296,7 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12882,7 +14328,11 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	var err error
 	params, err := decodeMigrationsUnlockRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsUnlockRepoForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12891,7 +14341,7 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12923,7 +14373,11 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 	var err error
 	params, err := decodeMigrationsUnlockRepoForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsUnlockRepoForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12932,7 +14386,7 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12964,12 +14418,20 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeMigrationsUpdateImportParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"MigrationsUpdateImport",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeMigrationsUpdateImportRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MigrationsUpdateImport",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12978,7 +14440,7 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13010,7 +14472,11 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	var err error
 	request, err := decodeOAuthAuthorizationsCreateAuthorizationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OAuthAuthorizationsCreateAuthorization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13019,7 +14485,7 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13051,7 +14517,11 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	var err error
 	params, err := decodeOAuthAuthorizationsDeleteAuthorizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsDeleteAuthorization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13060,7 +14530,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13092,7 +14562,11 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 	var err error
 	params, err := decodeOAuthAuthorizationsDeleteGrantParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsDeleteGrant",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13101,7 +14575,7 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13133,7 +14607,11 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	var err error
 	params, err := decodeOAuthAuthorizationsGetAuthorizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsGetAuthorization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13142,7 +14620,7 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13174,7 +14652,11 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 	var err error
 	params, err := decodeOAuthAuthorizationsGetGrantParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsGetGrant",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13183,7 +14665,7 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13215,12 +14697,20 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	var err error
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13229,7 +14719,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13261,12 +14751,20 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	var err error
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13275,7 +14773,7 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13307,7 +14805,11 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	var err error
 	params, err := decodeOAuthAuthorizationsListAuthorizationsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsListAuthorizations",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13316,7 +14818,7 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13348,7 +14850,11 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 	var err error
 	params, err := decodeOAuthAuthorizationsListGrantsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsListGrants",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13357,7 +14863,7 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13389,12 +14895,20 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	var err error
 	params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OAuthAuthorizationsUpdateAuthorization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOAuthAuthorizationsUpdateAuthorizationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OAuthAuthorizationsUpdateAuthorization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13403,7 +14917,7 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13435,7 +14949,11 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 	var err error
 	params, err := decodeOrgsBlockUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsBlockUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13444,7 +14962,7 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13476,7 +14994,11 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeOrgsCancelInvitationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsCancelInvitation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13485,7 +15007,7 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13517,7 +15039,11 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeOrgsCheckBlockedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsCheckBlockedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13526,7 +15052,7 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13558,7 +15084,11 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 	var err error
 	params, err := decodeOrgsCheckMembershipForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsCheckMembershipForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13567,7 +15097,7 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13599,7 +15129,11 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 	var err error
 	params, err := decodeOrgsCheckPublicMembershipForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsCheckPublicMembershipForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13608,7 +15142,7 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13640,7 +15174,11 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	var err error
 	params, err := decodeOrgsConvertMemberToOutsideCollaboratorParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsConvertMemberToOutsideCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13649,7 +15187,7 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13681,12 +15219,20 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeOrgsCreateInvitationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsCreateInvitation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrgsCreateInvitationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OrgsCreateInvitation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13695,7 +15241,7 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13727,12 +15273,20 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodeOrgsCreateWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsCreateWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrgsCreateWebhookRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OrgsCreateWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13741,7 +15295,7 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13773,7 +15327,11 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeOrgsDeleteWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsDeleteWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13782,7 +15340,7 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13814,7 +15372,11 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 	var err error
 	params, err := decodeOrgsGetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsGet",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13823,7 +15385,7 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13855,7 +15417,11 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 	var err error
 	params, err := decodeOrgsGetAuditLogParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsGetAuditLog",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13864,7 +15430,7 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13896,7 +15462,11 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	var err error
 	params, err := decodeOrgsGetMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsGetMembershipForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13905,7 +15475,7 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13937,7 +15507,11 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeOrgsGetMembershipForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsGetMembershipForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13946,7 +15520,7 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13978,7 +15552,11 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 	var err error
 	params, err := decodeOrgsGetWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsGetWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13987,7 +15565,7 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14019,7 +15597,11 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 	var err error
 	params, err := decodeOrgsGetWebhookConfigForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsGetWebhookConfigForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14028,7 +15610,7 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14060,7 +15642,11 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 	var err error
 	params, err := decodeOrgsGetWebhookDeliveryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsGetWebhookDelivery",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14069,7 +15655,7 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14101,7 +15687,11 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 	var err error
 	params, err := decodeOrgsListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsList",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14110,7 +15700,7 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14142,7 +15732,11 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeOrgsListBlockedUsersParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListBlockedUsers",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14151,7 +15745,7 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14183,7 +15777,11 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 	var err error
 	params, err := decodeOrgsListFailedInvitationsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListFailedInvitations",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14192,7 +15790,7 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14224,7 +15822,11 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 	var err error
 	params, err := decodeOrgsListForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14233,7 +15835,7 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14265,7 +15867,11 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 	var err error
 	params, err := decodeOrgsListForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14274,7 +15880,7 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14306,7 +15912,11 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeOrgsListInvitationTeamsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListInvitationTeams",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14315,7 +15925,7 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14347,7 +15957,11 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 	var err error
 	params, err := decodeOrgsListMembersParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListMembers",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14356,7 +15970,7 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14388,7 +16002,11 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	var err error
 	params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListMembershipsForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14397,7 +16015,7 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14429,7 +16047,11 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 	var err error
 	params, err := decodeOrgsListOutsideCollaboratorsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListOutsideCollaborators",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14438,7 +16060,7 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14470,7 +16092,11 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 	var err error
 	params, err := decodeOrgsListPendingInvitationsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListPendingInvitations",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14479,7 +16105,7 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14511,7 +16137,11 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 	var err error
 	params, err := decodeOrgsListPublicMembersParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListPublicMembers",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14520,7 +16150,7 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14552,7 +16182,11 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 	var err error
 	params, err := decodeOrgsListSamlSSOAuthorizationsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListSamlSSOAuthorizations",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14561,7 +16195,7 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14593,7 +16227,11 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 	var err error
 	params, err := decodeOrgsListWebhookDeliveriesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListWebhookDeliveries",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14602,7 +16240,7 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14634,7 +16272,11 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 	var err error
 	params, err := decodeOrgsListWebhooksParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsListWebhooks",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14643,7 +16285,7 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14675,7 +16317,11 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 	var err error
 	params, err := decodeOrgsPingWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsPingWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14684,7 +16330,7 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14716,7 +16362,11 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 	var err error
 	params, err := decodeOrgsRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsRedeliverWebhookDelivery",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14725,7 +16375,7 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14757,7 +16407,11 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 	var err error
 	params, err := decodeOrgsRemoveMemberParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsRemoveMember",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14766,7 +16420,7 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14798,7 +16452,11 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 	var err error
 	params, err := decodeOrgsRemoveMembershipForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsRemoveMembershipForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14807,7 +16465,7 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14839,7 +16497,11 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 	var err error
 	params, err := decodeOrgsRemoveOutsideCollaboratorParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsRemoveOutsideCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14848,7 +16510,7 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14880,7 +16542,11 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	var err error
 	params, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsRemovePublicMembershipForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14889,7 +16555,7 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14921,7 +16587,11 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 	var err error
 	params, err := decodeOrgsRemoveSamlSSOAuthorizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsRemoveSamlSSOAuthorization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14930,7 +16600,7 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14962,12 +16632,20 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeOrgsSetMembershipForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsSetMembershipForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrgsSetMembershipForUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OrgsSetMembershipForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14976,7 +16654,7 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15008,7 +16686,11 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	var err error
 	params, err := decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsSetPublicMembershipForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15017,7 +16699,7 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15049,7 +16731,11 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 	var err error
 	params, err := decodeOrgsUnblockUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsUnblockUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15058,7 +16744,7 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15090,12 +16776,20 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	var err error
 	params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsUpdateMembershipForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OrgsUpdateMembershipForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15104,7 +16798,7 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15136,12 +16830,20 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeOrgsUpdateWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsUpdateWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrgsUpdateWebhookRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OrgsUpdateWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15150,7 +16852,7 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15182,12 +16884,20 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	var err error
 	params, err := decodeOrgsUpdateWebhookConfigForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"OrgsUpdateWebhookConfigForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrgsUpdateWebhookConfigForOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"OrgsUpdateWebhookConfigForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15196,7 +16906,7 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15228,7 +16938,11 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	var err error
 	params, err := decodePackagesDeletePackageForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesDeletePackageForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15237,7 +16951,7 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15269,7 +16983,11 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 	var err error
 	params, err := decodePackagesDeletePackageForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesDeletePackageForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15278,7 +16996,7 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15310,7 +17028,11 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 	var err error
 	params, err := decodePackagesDeletePackageForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesDeletePackageForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15319,7 +17041,7 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15351,7 +17073,11 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	var err error
 	params, err := decodePackagesDeletePackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesDeletePackageVersionForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15360,7 +17086,7 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15392,7 +17118,11 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	var err error
 	params, err := decodePackagesDeletePackageVersionForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesDeletePackageVersionForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15401,7 +17131,7 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15433,7 +17163,11 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	var err error
 	params, err := decodePackagesDeletePackageVersionForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesDeletePackageVersionForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15442,7 +17176,7 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15474,7 +17208,11 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	var err error
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15483,7 +17221,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15515,7 +17253,11 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	var err error
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15524,7 +17266,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15556,7 +17298,11 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	var err error
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetAllPackageVersionsForPackageOwnedByUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15565,7 +17311,7 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15597,7 +17343,11 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	var err error
 	params, err := decodePackagesGetPackageForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetPackageForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15606,7 +17356,7 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15638,7 +17388,11 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	var err error
 	params, err := decodePackagesGetPackageForOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetPackageForOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15647,7 +17401,7 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15679,7 +17433,11 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 	var err error
 	params, err := decodePackagesGetPackageForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetPackageForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15688,7 +17446,7 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15720,7 +17478,11 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	var err error
 	params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetPackageVersionForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15729,7 +17491,7 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15761,7 +17523,11 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	var err error
 	params, err := decodePackagesGetPackageVersionForOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetPackageVersionForOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15770,7 +17536,7 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15802,7 +17568,11 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 	var err error
 	params, err := decodePackagesGetPackageVersionForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesGetPackageVersionForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15811,7 +17581,7 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15843,7 +17613,11 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	var err error
 	params, err := decodePackagesListPackagesForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesListPackagesForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15852,7 +17626,7 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15884,7 +17658,11 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	var err error
 	params, err := decodePackagesListPackagesForOrganizationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesListPackagesForOrganization",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15893,7 +17671,7 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15925,7 +17703,11 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 	var err error
 	params, err := decodePackagesListPackagesForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesListPackagesForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15934,7 +17716,7 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15966,7 +17748,11 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	var err error
 	params, err := decodePackagesRestorePackageForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesRestorePackageForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15975,7 +17761,7 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16007,7 +17793,11 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 	var err error
 	params, err := decodePackagesRestorePackageForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesRestorePackageForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16016,7 +17806,7 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16048,7 +17838,11 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 	var err error
 	params, err := decodePackagesRestorePackageForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesRestorePackageForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16057,7 +17851,7 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16089,7 +17883,11 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	var err error
 	params, err := decodePackagesRestorePackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesRestorePackageVersionForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16098,7 +17896,7 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16130,7 +17928,11 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	var err error
 	params, err := decodePackagesRestorePackageVersionForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesRestorePackageVersionForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16139,7 +17941,7 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16171,7 +17973,11 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	var err error
 	params, err := decodePackagesRestorePackageVersionForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PackagesRestorePackageVersionForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16180,7 +17986,7 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16212,12 +18018,20 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeProjectsAddCollaboratorParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsAddCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsAddCollaboratorRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsAddCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16226,7 +18040,7 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16258,12 +18072,20 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeProjectsCreateColumnParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsCreateColumn",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsCreateColumnRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsCreateColumn",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16272,7 +18094,7 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16304,7 +18126,11 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	var err error
 	request, err := decodeProjectsCreateForAuthenticatedUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsCreateForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16313,7 +18139,7 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16345,12 +18171,20 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeProjectsCreateForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsCreateForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsCreateForOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsCreateForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16359,7 +18193,7 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16391,12 +18225,20 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeProjectsCreateForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsCreateForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsCreateForRepoRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsCreateForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16405,7 +18247,7 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16437,7 +18279,11 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 	var err error
 	params, err := decodeProjectsDeleteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsDelete",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16446,7 +18292,7 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16478,7 +18324,11 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 	var err error
 	params, err := decodeProjectsDeleteCardParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsDeleteCard",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16487,7 +18337,7 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16519,7 +18369,11 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeProjectsDeleteColumnParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsDeleteColumn",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16528,7 +18382,7 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16560,7 +18414,11 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeProjectsGetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsGet",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16569,7 +18427,7 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16601,7 +18459,11 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 	var err error
 	params, err := decodeProjectsGetCardParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsGetCard",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16610,7 +18472,7 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16642,7 +18504,11 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodeProjectsGetColumnParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsGetColumn",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16651,7 +18517,7 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16683,7 +18549,11 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 	var err error
 	params, err := decodeProjectsGetPermissionForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsGetPermissionForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16692,7 +18562,7 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16724,7 +18594,11 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodeProjectsListCardsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsListCards",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16733,7 +18607,7 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16765,7 +18639,11 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 	var err error
 	params, err := decodeProjectsListCollaboratorsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsListCollaborators",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16774,7 +18652,7 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16806,7 +18684,11 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 	var err error
 	params, err := decodeProjectsListColumnsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsListColumns",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16815,7 +18697,7 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16847,7 +18729,11 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 	var err error
 	params, err := decodeProjectsListForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsListForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16856,7 +18742,7 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16888,7 +18774,11 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 	var err error
 	params, err := decodeProjectsListForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsListForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16897,7 +18787,7 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16929,7 +18819,11 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 	var err error
 	params, err := decodeProjectsListForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsListForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16938,7 +18832,7 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16970,12 +18864,20 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	var err error
 	params, err := decodeProjectsMoveCardParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsMoveCard",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsMoveCardRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsMoveCard",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16984,7 +18886,7 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17016,12 +18918,20 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	var err error
 	params, err := decodeProjectsMoveColumnParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsMoveColumn",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsMoveColumnRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsMoveColumn",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17030,7 +18940,7 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17062,7 +18972,11 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 	var err error
 	params, err := decodeProjectsRemoveCollaboratorParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsRemoveCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17071,7 +18985,7 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17103,12 +19017,20 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	var err error
 	params, err := decodeProjectsUpdateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsUpdate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsUpdateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsUpdate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17117,7 +19039,7 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17149,12 +19071,20 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	var err error
 	params, err := decodeProjectsUpdateCardParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsUpdateCard",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsUpdateCardRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsUpdateCard",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17163,7 +19093,7 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17195,12 +19125,20 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeProjectsUpdateColumnParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ProjectsUpdateColumn",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeProjectsUpdateColumnRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ProjectsUpdateColumn",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17209,7 +19147,7 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17241,7 +19179,11 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodePullsCheckIfMergedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsCheckIfMerged",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17250,7 +19192,7 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17282,12 +19224,20 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	var err error
 	params, err := decodePullsCreateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsCreate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsCreateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsCreate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17296,7 +19246,7 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17328,12 +19278,20 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	var err error
 	params, err := decodePullsCreateReplyForReviewCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsCreateReplyForReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsCreateReplyForReviewCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsCreateReplyForReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17342,7 +19300,7 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17374,12 +19332,20 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	var err error
 	params, err := decodePullsCreateReviewParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsCreateReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsCreateReviewRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsCreateReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17388,7 +19354,7 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17420,12 +19386,20 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodePullsCreateReviewCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsCreateReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsCreateReviewCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsCreateReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17434,7 +19408,7 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17466,7 +19440,11 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 	var err error
 	params, err := decodePullsDeletePendingReviewParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsDeletePendingReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17475,7 +19453,7 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17507,7 +19485,11 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodePullsDeleteReviewCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsDeleteReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17516,7 +19498,7 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17548,12 +19530,20 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	var err error
 	params, err := decodePullsDismissReviewParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsDismissReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsDismissReviewRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsDismissReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17562,7 +19552,7 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17594,7 +19584,11 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 	var err error
 	params, err := decodePullsGetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsGet",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17603,7 +19597,7 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17635,7 +19629,11 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 	var err error
 	params, err := decodePullsGetReviewParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsGetReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17644,7 +19642,7 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17676,7 +19674,11 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodePullsGetReviewCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsGetReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17685,7 +19687,7 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17717,7 +19719,11 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodePullsListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsList",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17726,7 +19732,7 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17758,7 +19764,11 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 	var err error
 	params, err := decodePullsListCommentsForReviewParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsListCommentsForReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17767,7 +19777,7 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17799,7 +19809,11 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 	var err error
 	params, err := decodePullsListCommitsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsListCommits",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17808,7 +19822,7 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17840,7 +19854,11 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 	var err error
 	params, err := decodePullsListFilesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsListFiles",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17849,7 +19867,7 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17881,7 +19899,11 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 	var err error
 	params, err := decodePullsListRequestedReviewersParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsListRequestedReviewers",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17890,7 +19912,7 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17922,7 +19944,11 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodePullsListReviewCommentsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsListReviewComments",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17931,7 +19957,7 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17963,7 +19989,11 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 	var err error
 	params, err := decodePullsListReviewCommentsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsListReviewCommentsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17972,7 +20002,7 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18004,7 +20034,11 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 	var err error
 	params, err := decodePullsListReviewsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsListReviews",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18013,7 +20047,7 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18045,12 +20079,20 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	var err error
 	params, err := decodePullsMergeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsMerge",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsMergeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsMerge",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18059,7 +20101,7 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18091,12 +20133,20 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	var err error
 	params, err := decodePullsRemoveRequestedReviewersParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsRemoveRequestedReviewers",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsRemoveRequestedReviewersRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsRemoveRequestedReviewers",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18105,7 +20155,7 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18137,12 +20187,20 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	var err error
 	params, err := decodePullsSubmitReviewParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsSubmitReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsSubmitReviewRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsSubmitReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18151,7 +20209,7 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18183,12 +20241,20 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	var err error
 	params, err := decodePullsUpdateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsUpdate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsUpdateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsUpdate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18197,7 +20263,7 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18229,12 +20295,20 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	var err error
 	params, err := decodePullsUpdateBranchParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsUpdateBranch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsUpdateBranchRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsUpdateBranch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18243,7 +20317,7 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18275,12 +20349,20 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	var err error
 	params, err := decodePullsUpdateReviewParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsUpdateReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsUpdateReviewRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsUpdateReview",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18289,7 +20371,7 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18321,12 +20403,20 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodePullsUpdateReviewCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PullsUpdateReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePullsUpdateReviewCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PullsUpdateReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18335,7 +20425,7 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18371,7 +20461,7 @@ func (s *Server) handleRateLimitGetRequest(args [0]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18403,12 +20493,20 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	var err error
 	params, err := decodeReactionsCreateForCommitCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForCommitCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18417,7 +20515,7 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18449,12 +20547,20 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeReactionsCreateForIssueParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForIssue",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForIssueRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForIssue",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18463,7 +20569,7 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18495,12 +20601,20 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	var err error
 	params, err := decodeReactionsCreateForIssueCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForIssueComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForIssueCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForIssueComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18509,7 +20623,7 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18541,12 +20655,20 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	var err error
 	params, err := decodeReactionsCreateForPullRequestReviewCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForPullRequestReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForPullRequestReviewCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForPullRequestReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18555,7 +20677,7 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18587,12 +20709,20 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	var err error
 	params, err := decodeReactionsCreateForReleaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForReleaseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18601,7 +20731,7 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18633,12 +20763,20 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	var err error
 	params, err := decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForTeamDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForTeamDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18647,7 +20785,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18679,12 +20817,20 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	var err error
 	params, err := decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForTeamDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForTeamDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18693,7 +20839,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18725,12 +20871,20 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	var err error
 	params, err := decodeReactionsCreateForTeamDiscussionInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForTeamDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForTeamDiscussionInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForTeamDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18739,7 +20893,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18771,12 +20925,20 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	var err error
 	params, err := decodeReactionsCreateForTeamDiscussionLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsCreateForTeamDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReactionsCreateForTeamDiscussionLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReactionsCreateForTeamDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18785,7 +20947,7 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18817,7 +20979,11 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 	var err error
 	params, err := decodeReactionsDeleteForCommitCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsDeleteForCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18826,7 +20992,7 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18858,7 +21024,11 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 	var err error
 	params, err := decodeReactionsDeleteForIssueParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsDeleteForIssue",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18867,7 +21037,7 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18899,7 +21069,11 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 	var err error
 	params, err := decodeReactionsDeleteForIssueCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsDeleteForIssueComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18908,7 +21082,7 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18940,7 +21114,11 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	var err error
 	params, err := decodeReactionsDeleteForPullRequestCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsDeleteForPullRequestComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18949,7 +21127,7 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18981,7 +21159,11 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 	var err error
 	params, err := decodeReactionsDeleteForTeamDiscussionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsDeleteForTeamDiscussion",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18990,7 +21172,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19022,7 +21204,11 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	var err error
 	params, err := decodeReactionsDeleteForTeamDiscussionCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsDeleteForTeamDiscussionComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19031,7 +21217,7 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19063,7 +21249,11 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 	var err error
 	params, err := decodeReactionsDeleteLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsDeleteLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19072,7 +21262,7 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19104,7 +21294,11 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 	var err error
 	params, err := decodeReactionsListForCommitCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsListForCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19113,7 +21307,7 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19145,7 +21339,11 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeReactionsListForIssueParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsListForIssue",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19154,7 +21352,7 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19186,7 +21384,11 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 	var err error
 	params, err := decodeReactionsListForIssueCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsListForIssueComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19195,7 +21397,7 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19227,7 +21429,11 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	var err error
 	params, err := decodeReactionsListForPullRequestReviewCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsListForPullRequestReviewComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19236,7 +21442,7 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19268,7 +21474,11 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	var err error
 	params, err := decodeReactionsListForTeamDiscussionCommentInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsListForTeamDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19277,7 +21487,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19309,7 +21519,11 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	var err error
 	params, err := decodeReactionsListForTeamDiscussionCommentLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsListForTeamDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19318,7 +21532,7 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19350,7 +21564,11 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	var err error
 	params, err := decodeReactionsListForTeamDiscussionInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsListForTeamDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19359,7 +21577,7 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19391,7 +21609,11 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	var err error
 	params, err := decodeReactionsListForTeamDiscussionLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReactionsListForTeamDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19400,7 +21622,7 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19432,7 +21654,11 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 	var err error
 	params, err := decodeReposAcceptInvitationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposAcceptInvitation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19441,7 +21667,7 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19473,12 +21699,20 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	var err error
 	params, err := decodeReposAddAppAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposAddAppAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposAddAppAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposAddAppAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19487,7 +21721,7 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19519,12 +21753,20 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeReposAddCollaboratorParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposAddCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposAddCollaboratorRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposAddCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19533,7 +21775,7 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19565,12 +21807,20 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	var err error
 	params, err := decodeReposAddStatusCheckContextsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposAddStatusCheckContexts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposAddStatusCheckContextsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposAddStatusCheckContexts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19579,7 +21829,7 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19611,12 +21861,20 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	var err error
 	params, err := decodeReposAddTeamAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposAddTeamAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposAddTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposAddTeamAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19625,7 +21883,7 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19657,12 +21915,20 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	var err error
 	params, err := decodeReposAddUserAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposAddUserAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposAddUserAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposAddUserAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19671,7 +21937,7 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19703,7 +21969,11 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 	var err error
 	params, err := decodeReposCheckCollaboratorParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCheckCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19712,7 +21982,7 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19744,7 +22014,11 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 	var err error
 	params, err := decodeReposCheckVulnerabilityAlertsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCheckVulnerabilityAlerts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19753,7 +22027,7 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19785,7 +22059,11 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 	var err error
 	params, err := decodeReposCompareCommitsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCompareCommits",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19794,7 +22072,7 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19826,12 +22104,20 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	var err error
 	params, err := decodeReposCreateAutolinkParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateAutolink",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateAutolinkRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateAutolink",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19840,7 +22126,7 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19872,12 +22158,20 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodeReposCreateCommitCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateCommitCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19886,7 +22180,7 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19918,7 +22212,11 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	var err error
 	params, err := decodeReposCreateCommitSignatureProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateCommitSignatureProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19927,7 +22225,7 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -19959,12 +22257,20 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeReposCreateCommitStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateCommitStatus",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateCommitStatusRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateCommitStatus",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -19973,7 +22279,7 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20005,12 +22311,20 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeReposCreateDeployKeyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateDeployKey",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateDeployKeyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateDeployKey",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20019,7 +22333,7 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20051,12 +22365,20 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeReposCreateDeploymentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateDeployment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateDeploymentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateDeployment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20065,7 +22387,7 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20097,12 +22419,20 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	var err error
 	params, err := decodeReposCreateDeploymentStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateDeploymentStatus",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateDeploymentStatusRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateDeploymentStatus",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20111,7 +22441,7 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20143,12 +22473,20 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeReposCreateDispatchEventParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateDispatchEvent",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateDispatchEventRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateDispatchEvent",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20157,7 +22495,7 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20189,7 +22527,11 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 	var err error
 	request, err := decodeReposCreateForAuthenticatedUserRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20198,7 +22540,7 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20230,12 +22572,20 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	var err error
 	params, err := decodeReposCreateForkParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateFork",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateForkRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateFork",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20244,7 +22594,7 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20276,12 +22626,20 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	var err error
 	params, err := decodeReposCreateInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20290,7 +22648,7 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20322,12 +22680,20 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	var err error
 	params, err := decodeReposCreateOrUpdateFileContentsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateOrUpdateFileContents",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateOrUpdateFileContentsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateOrUpdateFileContents",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20336,7 +22702,7 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20368,12 +22734,20 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeReposCreatePagesSiteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreatePagesSite",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreatePagesSiteRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreatePagesSite",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20382,7 +22756,7 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20414,12 +22788,20 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	var err error
 	params, err := decodeReposCreateReleaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateReleaseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20428,7 +22810,7 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20460,12 +22842,20 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeReposCreateUsingTemplateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateUsingTemplate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateUsingTemplateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateUsingTemplate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20474,7 +22864,7 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20506,12 +22896,20 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	var err error
 	params, err := decodeReposCreateWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposCreateWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposCreateWebhookRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposCreateWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20520,7 +22918,7 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20552,7 +22950,11 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 	var err error
 	params, err := decodeReposDeclineInvitationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeclineInvitation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20561,7 +22963,7 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20593,7 +22995,11 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeReposDeleteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDelete",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20602,7 +23008,7 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20634,7 +23040,11 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 	var err error
 	params, err := decodeReposDeleteAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20643,7 +23053,7 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20675,7 +23085,11 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 	var err error
 	params, err := decodeReposDeleteAdminBranchProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteAdminBranchProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20684,7 +23098,7 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20716,7 +23130,11 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodeReposDeleteAnEnvironmentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteAnEnvironment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20725,7 +23143,7 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20757,7 +23175,11 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 	var err error
 	params, err := decodeReposDeleteAutolinkParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteAutolink",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20766,7 +23188,7 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20798,7 +23220,11 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 	var err error
 	params, err := decodeReposDeleteBranchProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteBranchProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20807,7 +23233,7 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20839,7 +23265,11 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodeReposDeleteCommitCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20848,7 +23278,7 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20880,7 +23310,11 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	var err error
 	params, err := decodeReposDeleteCommitSignatureProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteCommitSignatureProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20889,7 +23323,7 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20921,7 +23355,11 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeReposDeleteDeployKeyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteDeployKey",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20930,7 +23368,7 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -20962,7 +23400,11 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeReposDeleteDeploymentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteDeployment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -20971,7 +23413,7 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21003,12 +23445,20 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	var err error
 	params, err := decodeReposDeleteFileParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteFile",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposDeleteFileRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposDeleteFile",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21017,7 +23467,7 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21049,7 +23499,11 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeReposDeleteInvitationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteInvitation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21058,7 +23512,7 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21090,7 +23544,11 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeReposDeletePagesSiteParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeletePagesSite",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21099,7 +23557,7 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21131,7 +23589,11 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	var err error
 	params, err := decodeReposDeletePullRequestReviewProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeletePullRequestReviewProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21140,7 +23602,7 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21172,7 +23634,11 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeReposDeleteReleaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21181,7 +23647,7 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21213,7 +23679,11 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeReposDeleteReleaseAssetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteReleaseAsset",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21222,7 +23692,7 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21254,7 +23724,11 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeReposDeleteWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDeleteWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21263,7 +23737,7 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21295,7 +23769,11 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	var err error
 	params, err := decodeReposDisableAutomatedSecurityFixesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDisableAutomatedSecurityFixes",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21304,7 +23782,7 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21336,7 +23814,11 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeReposDisableLfsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDisableLfsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21345,7 +23827,7 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21377,7 +23859,11 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 	var err error
 	params, err := decodeReposDisableVulnerabilityAlertsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDisableVulnerabilityAlerts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21386,7 +23872,7 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21418,7 +23904,11 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 	var err error
 	params, err := decodeReposDownloadTarballArchiveParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDownloadTarballArchive",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21427,7 +23917,7 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21459,7 +23949,11 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 	var err error
 	params, err := decodeReposDownloadZipballArchiveParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposDownloadZipballArchive",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21468,7 +23962,7 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21500,7 +23994,11 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	var err error
 	params, err := decodeReposEnableAutomatedSecurityFixesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposEnableAutomatedSecurityFixes",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21509,7 +24007,7 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21541,7 +24039,11 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeReposEnableLfsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposEnableLfsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21550,7 +24052,7 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21582,7 +24084,11 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 	var err error
 	params, err := decodeReposEnableVulnerabilityAlertsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposEnableVulnerabilityAlerts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21591,7 +24097,7 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21623,7 +24129,11 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 	var err error
 	params, err := decodeReposGetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGet",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21632,7 +24142,7 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21664,7 +24174,11 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 	var err error
 	params, err := decodeReposGetAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21673,7 +24187,7 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21705,7 +24219,11 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 	var err error
 	params, err := decodeReposGetAdminBranchProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetAdminBranchProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21714,7 +24232,7 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21746,7 +24264,11 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 	var err error
 	params, err := decodeReposGetAllStatusCheckContextsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetAllStatusCheckContexts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21755,7 +24277,7 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21787,7 +24309,11 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeReposGetAllTopicsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetAllTopics",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21796,7 +24322,7 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21828,7 +24354,11 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	var err error
 	params, err := decodeReposGetAppsWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetAppsWithAccessToProtectedBranch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21837,7 +24367,7 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21869,7 +24399,11 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 	var err error
 	params, err := decodeReposGetAutolinkParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetAutolink",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21878,7 +24412,7 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21910,7 +24444,11 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 	var err error
 	params, err := decodeReposGetBranchParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetBranch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21919,7 +24457,7 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21951,7 +24489,11 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodeReposGetBranchProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetBranchProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -21960,7 +24502,7 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -21992,7 +24534,11 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 	var err error
 	params, err := decodeReposGetClonesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetClones",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22001,7 +24547,7 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22033,7 +24579,11 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 	var err error
 	params, err := decodeReposGetCodeFrequencyStatsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetCodeFrequencyStats",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22042,7 +24592,7 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22074,7 +24624,11 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	var err error
 	params, err := decodeReposGetCollaboratorPermissionLevelParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetCollaboratorPermissionLevel",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22083,7 +24637,7 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22115,7 +24669,11 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 	var err error
 	params, err := decodeReposGetCombinedStatusForRefParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetCombinedStatusForRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22124,7 +24682,7 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22156,7 +24714,11 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 	var err error
 	params, err := decodeReposGetCommitParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetCommit",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22165,7 +24727,7 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22197,7 +24759,11 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 	var err error
 	params, err := decodeReposGetCommitActivityStatsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetCommitActivityStats",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22206,7 +24772,7 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22238,7 +24804,11 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeReposGetCommitCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22247,7 +24817,7 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22279,7 +24849,11 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	var err error
 	params, err := decodeReposGetCommitSignatureProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetCommitSignatureProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22288,7 +24862,7 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22320,7 +24894,11 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 	var err error
 	params, err := decodeReposGetCommunityProfileMetricsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetCommunityProfileMetrics",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22329,7 +24907,7 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22361,7 +24939,11 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 	var err error
 	params, err := decodeReposGetContributorsStatsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetContributorsStats",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22370,7 +24952,7 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22402,7 +24984,11 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 	var err error
 	params, err := decodeReposGetDeployKeyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetDeployKey",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22411,7 +24997,7 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22443,7 +25029,11 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeReposGetDeploymentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetDeployment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22452,7 +25042,7 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22484,7 +25074,11 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 	var err error
 	params, err := decodeReposGetDeploymentStatusParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetDeploymentStatus",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22493,7 +25087,7 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22525,7 +25119,11 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeReposGetLatestPagesBuildParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetLatestPagesBuild",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22534,7 +25132,7 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22566,7 +25164,11 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeReposGetLatestReleaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetLatestRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22575,7 +25177,7 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22607,7 +25209,11 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 	var err error
 	params, err := decodeReposGetPagesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetPages",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22616,7 +25222,7 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22648,7 +25254,11 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeReposGetPagesBuildParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetPagesBuild",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22657,7 +25267,7 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22689,7 +25299,11 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeReposGetPagesHealthCheckParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetPagesHealthCheck",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22698,7 +25312,7 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22730,7 +25344,11 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 	var err error
 	params, err := decodeReposGetParticipationStatsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetParticipationStats",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22739,7 +25357,7 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22771,7 +25389,11 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	var err error
 	params, err := decodeReposGetPullRequestReviewProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetPullRequestReviewProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22780,7 +25402,7 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22812,7 +25434,11 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeReposGetPunchCardStatsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetPunchCardStats",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22821,7 +25447,7 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22853,7 +25479,11 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 	var err error
 	params, err := decodeReposGetReadmeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetReadme",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22862,7 +25492,7 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22894,7 +25524,11 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 	var err error
 	params, err := decodeReposGetReadmeInDirectoryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetReadmeInDirectory",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22903,7 +25537,7 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22935,7 +25569,11 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 	var err error
 	params, err := decodeReposGetReleaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22944,7 +25582,7 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -22976,7 +25614,11 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeReposGetReleaseAssetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetReleaseAsset",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -22985,7 +25627,7 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23017,7 +25659,11 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeReposGetReleaseByTagParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetReleaseByTag",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23026,7 +25672,7 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23058,7 +25704,11 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 	var err error
 	params, err := decodeReposGetStatusChecksProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetStatusChecksProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23067,7 +25717,7 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23099,7 +25749,11 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	var err error
 	params, err := decodeReposGetTeamsWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetTeamsWithAccessToProtectedBranch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23108,7 +25762,7 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23140,7 +25794,11 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 	var err error
 	params, err := decodeReposGetTopPathsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetTopPaths",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23149,7 +25807,7 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23181,7 +25839,11 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeReposGetTopReferrersParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetTopReferrers",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23190,7 +25852,7 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23222,7 +25884,11 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	var err error
 	params, err := decodeReposGetUsersWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetUsersWithAccessToProtectedBranch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23231,7 +25897,7 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23263,7 +25929,11 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 	var err error
 	params, err := decodeReposGetViewsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetViews",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23272,7 +25942,7 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23304,7 +25974,11 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 	var err error
 	params, err := decodeReposGetWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23313,7 +25987,7 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23345,7 +26019,11 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 	var err error
 	params, err := decodeReposGetWebhookConfigForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetWebhookConfigForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23354,7 +26032,7 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23386,7 +26064,11 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 	var err error
 	params, err := decodeReposGetWebhookDeliveryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposGetWebhookDelivery",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23395,7 +26077,7 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23427,7 +26109,11 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 	var err error
 	params, err := decodeReposListAutolinksParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListAutolinks",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23436,7 +26122,7 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23468,7 +26154,11 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeReposListBranchesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListBranches",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23477,7 +26167,7 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23509,7 +26199,11 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 	var err error
 	params, err := decodeReposListBranchesForHeadCommitParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListBranchesForHeadCommit",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23518,7 +26212,7 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23550,7 +26244,11 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeReposListCollaboratorsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListCollaborators",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23559,7 +26257,7 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23591,7 +26289,11 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 	var err error
 	params, err := decodeReposListCommentsForCommitParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListCommentsForCommit",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23600,7 +26302,7 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23632,7 +26334,11 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 	var err error
 	params, err := decodeReposListCommitCommentsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListCommitCommentsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23641,7 +26347,7 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23673,7 +26379,11 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 	var err error
 	params, err := decodeReposListCommitStatusesForRefParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListCommitStatusesForRef",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23682,7 +26392,7 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23714,7 +26424,11 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 	var err error
 	params, err := decodeReposListCommitsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListCommits",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23723,7 +26437,7 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23755,7 +26469,11 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeReposListContributorsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListContributors",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23764,7 +26482,7 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23796,7 +26514,11 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 	var err error
 	params, err := decodeReposListDeployKeysParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListDeployKeys",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23805,7 +26527,7 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23837,7 +26559,11 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 	var err error
 	params, err := decodeReposListDeploymentStatusesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListDeploymentStatuses",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23846,7 +26572,7 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23878,7 +26604,11 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeReposListDeploymentsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListDeployments",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23887,7 +26617,7 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23919,7 +26649,11 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 	var err error
 	params, err := decodeReposListForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23928,7 +26662,7 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -23960,7 +26694,11 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 	var err error
 	params, err := decodeReposListForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -23969,7 +26707,7 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24001,7 +26739,11 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 	var err error
 	params, err := decodeReposListForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24010,7 +26752,7 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24042,7 +26784,11 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 	var err error
 	params, err := decodeReposListForksParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListForks",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24051,7 +26797,7 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24083,7 +26829,11 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeReposListInvitationsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListInvitations",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24092,7 +26842,7 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24124,7 +26874,11 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	var err error
 	params, err := decodeReposListInvitationsForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListInvitationsForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24133,7 +26887,7 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24165,7 +26919,11 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 	var err error
 	params, err := decodeReposListLanguagesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListLanguages",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24174,7 +26932,7 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24206,7 +26964,11 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeReposListPagesBuildsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListPagesBuilds",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24215,7 +26977,7 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24247,7 +27009,11 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 	var err error
 	params, err := decodeReposListPublicParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListPublic",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24256,7 +27022,7 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24288,7 +27054,11 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	var err error
 	params, err := decodeReposListPullRequestsAssociatedWithCommitParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListPullRequestsAssociatedWithCommit",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24297,7 +27067,7 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24329,7 +27099,11 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 	var err error
 	params, err := decodeReposListReleaseAssetsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListReleaseAssets",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24338,7 +27112,7 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24370,7 +27144,11 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeReposListReleasesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListReleases",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24379,7 +27157,7 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24411,7 +27189,11 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 	var err error
 	params, err := decodeReposListTagsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListTags",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24420,7 +27202,7 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24452,7 +27234,11 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 	var err error
 	params, err := decodeReposListTeamsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListTeams",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24461,7 +27247,7 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24493,7 +27279,11 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 	var err error
 	params, err := decodeReposListWebhookDeliveriesParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListWebhookDeliveries",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24502,7 +27292,7 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24534,7 +27324,11 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 	var err error
 	params, err := decodeReposListWebhooksParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposListWebhooks",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24543,7 +27337,7 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24575,12 +27369,20 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	var err error
 	params, err := decodeReposMergeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposMerge",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposMergeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposMerge",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24589,7 +27391,7 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24621,12 +27423,20 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	var err error
 	params, err := decodeReposMergeUpstreamParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposMergeUpstream",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposMergeUpstreamRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposMergeUpstream",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24635,7 +27445,7 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24667,7 +27477,11 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 	var err error
 	params, err := decodeReposPingWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposPingWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24676,7 +27490,7 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24708,7 +27522,11 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 	var err error
 	params, err := decodeReposRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRedeliverWebhookDelivery",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24717,7 +27535,7 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24749,12 +27567,20 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	var err error
 	params, err := decodeReposRemoveAppAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRemoveAppAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposRemoveAppAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposRemoveAppAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24763,7 +27589,7 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24795,7 +27621,11 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeReposRemoveCollaboratorParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRemoveCollaborator",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24804,7 +27634,7 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24836,12 +27666,20 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	var err error
 	params, err := decodeReposRemoveStatusCheckContextsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRemoveStatusCheckContexts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposRemoveStatusCheckContextsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposRemoveStatusCheckContexts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24850,7 +27688,7 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24882,7 +27720,11 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 	var err error
 	params, err := decodeReposRemoveStatusCheckProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRemoveStatusCheckProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24891,7 +27733,7 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24923,12 +27765,20 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	var err error
 	params, err := decodeReposRemoveTeamAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRemoveTeamAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposRemoveTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposRemoveTeamAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24937,7 +27787,7 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -24969,12 +27819,20 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	var err error
 	params, err := decodeReposRemoveUserAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRemoveUserAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposRemoveUserAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposRemoveUserAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -24983,7 +27841,7 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25015,12 +27873,20 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	var err error
 	params, err := decodeReposRenameBranchParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRenameBranch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposRenameBranchRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposRenameBranch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25029,7 +27895,7 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25061,12 +27927,20 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeReposReplaceAllTopicsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposReplaceAllTopics",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposReplaceAllTopicsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposReplaceAllTopics",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25075,7 +27949,7 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25107,7 +27981,11 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeReposRequestPagesBuildParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposRequestPagesBuild",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25116,7 +27994,7 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25148,7 +28026,11 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 	var err error
 	params, err := decodeReposSetAdminBranchProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposSetAdminBranchProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25157,7 +28039,7 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25189,12 +28071,20 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	var err error
 	params, err := decodeReposSetAppAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposSetAppAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposSetAppAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposSetAppAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25203,7 +28093,7 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25235,12 +28125,20 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	var err error
 	params, err := decodeReposSetStatusCheckContextsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposSetStatusCheckContexts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposSetStatusCheckContextsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposSetStatusCheckContexts",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25249,7 +28147,7 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25281,12 +28179,20 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	var err error
 	params, err := decodeReposSetTeamAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposSetTeamAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposSetTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposSetTeamAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25295,7 +28201,7 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25327,12 +28233,20 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	var err error
 	params, err := decodeReposSetUserAccessRestrictionsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposSetUserAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposSetUserAccessRestrictionsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposSetUserAccessRestrictions",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25341,7 +28255,7 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25373,7 +28287,11 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 	var err error
 	params, err := decodeReposTestPushWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposTestPushWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25382,7 +28300,7 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25414,12 +28332,20 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	var err error
 	params, err := decodeReposTransferParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposTransfer",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposTransferRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposTransfer",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25428,7 +28354,7 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25460,12 +28386,20 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeReposUpdateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25474,7 +28408,7 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25506,12 +28440,20 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	var err error
 	params, err := decodeReposUpdateBranchProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdateBranchProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateBranchProtectionRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdateBranchProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25520,7 +28462,7 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25552,12 +28494,20 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	var err error
 	params, err := decodeReposUpdateCommitCommentParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdateCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateCommitCommentRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdateCommitComment",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25566,7 +28516,7 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25598,12 +28548,20 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeReposUpdateInvitationParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdateInvitation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateInvitationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdateInvitation",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25612,7 +28570,7 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25644,12 +28602,20 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	var err error
 	params, err := decodeReposUpdatePullRequestReviewProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdatePullRequestReviewProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdatePullRequestReviewProtectionRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdatePullRequestReviewProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25658,7 +28624,7 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25690,12 +28656,20 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeReposUpdateReleaseParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdateRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateReleaseRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdateRelease",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25704,7 +28678,7 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25736,12 +28710,20 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeReposUpdateReleaseAssetParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdateReleaseAsset",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateReleaseAssetRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdateReleaseAsset",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25750,7 +28732,7 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25782,12 +28764,20 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	var err error
 	params, err := decodeReposUpdateStatusCheckProtectionParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdateStatusCheckProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateStatusCheckProtectionRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdateStatusCheckProtection",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25796,7 +28786,7 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25828,12 +28818,20 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	var err error
 	params, err := decodeReposUpdateWebhookParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdateWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateWebhookRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdateWebhook",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25842,7 +28840,7 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25874,12 +28872,20 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	var err error
 	params, err := decodeReposUpdateWebhookConfigForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ReposUpdateWebhookConfigForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeReposUpdateWebhookConfigForRepoRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"ReposUpdateWebhookConfigForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25888,7 +28894,7 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25920,7 +28926,11 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeScimDeleteUserFromOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"ScimDeleteUserFromOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25929,7 +28939,7 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -25961,7 +28971,11 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 	var err error
 	params, err := decodeSearchCodeParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SearchCode",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -25970,7 +28984,7 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26002,7 +29016,11 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 	var err error
 	params, err := decodeSearchCommitsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SearchCommits",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26011,7 +29029,7 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26043,7 +29061,11 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 	var err error
 	params, err := decodeSearchIssuesAndPullRequestsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SearchIssuesAndPullRequests",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26052,7 +29074,7 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26084,7 +29106,11 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 	var err error
 	params, err := decodeSearchLabelsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SearchLabels",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26093,7 +29119,7 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26125,7 +29151,11 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeSearchReposParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SearchRepos",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26134,7 +29164,7 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26166,7 +29196,11 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 	var err error
 	params, err := decodeSearchTopicsParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SearchTopics",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26175,7 +29209,7 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26207,7 +29241,11 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeSearchUsersParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SearchUsers",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26216,7 +29254,7 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26248,7 +29286,11 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 	var err error
 	params, err := decodeSecretScanningGetAlertParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SecretScanningGetAlert",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26257,7 +29299,7 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26289,7 +29331,11 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 	var err error
 	params, err := decodeSecretScanningListAlertsForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SecretScanningListAlertsForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26298,7 +29344,7 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26330,7 +29376,11 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 	var err error
 	params, err := decodeSecretScanningListAlertsForRepoParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SecretScanningListAlertsForRepo",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26339,7 +29389,7 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26371,12 +29421,20 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	var err error
 	params, err := decodeSecretScanningUpdateAlertParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"SecretScanningUpdateAlert",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeSecretScanningUpdateAlertRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"SecretScanningUpdateAlert",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26385,7 +29443,7 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26417,7 +29475,11 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeTeamsAddMemberLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsAddMemberLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26426,7 +29488,7 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26458,12 +29520,20 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	var err error
 	params, err := decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsAddOrUpdateMembershipForUserInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsAddOrUpdateMembershipForUserInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26472,7 +29542,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26504,12 +29574,20 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	var err error
 	params, err := decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsAddOrUpdateMembershipForUserLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsAddOrUpdateMembershipForUserLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26518,7 +29596,7 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26550,12 +29628,20 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	var err error
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsAddOrUpdateProjectPermissionsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsAddOrUpdateProjectPermissionsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26564,7 +29650,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26596,12 +29682,20 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	var err error
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsAddOrUpdateProjectPermissionsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsAddOrUpdateProjectPermissionsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26610,7 +29704,7 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26642,12 +29736,20 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	var err error
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsAddOrUpdateRepoPermissionsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsAddOrUpdateRepoPermissionsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26656,7 +29758,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26688,12 +29790,20 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	var err error
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsAddOrUpdateRepoPermissionsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsAddOrUpdateRepoPermissionsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26702,7 +29812,7 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26734,7 +29844,11 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	var err error
 	params, err := decodeTeamsCheckPermissionsForProjectInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCheckPermissionsForProjectInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26743,7 +29857,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26775,7 +29889,11 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	var err error
 	params, err := decodeTeamsCheckPermissionsForProjectLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCheckPermissionsForProjectLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26784,7 +29902,7 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26816,7 +29934,11 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	var err error
 	params, err := decodeTeamsCheckPermissionsForRepoInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCheckPermissionsForRepoInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26825,7 +29947,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26857,7 +29979,11 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	var err error
 	params, err := decodeTeamsCheckPermissionsForRepoLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCheckPermissionsForRepoLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26866,7 +29992,7 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26898,12 +30024,20 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeTeamsCreateParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCreate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsCreateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsCreate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26912,7 +30046,7 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26944,12 +30078,20 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	var err error
 	params, err := decodeTeamsCreateDiscussionCommentInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCreateDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsCreateDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsCreateDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -26958,7 +30100,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -26990,12 +30132,20 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	var err error
 	params, err := decodeTeamsCreateDiscussionCommentLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCreateDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsCreateDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsCreateDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27004,7 +30154,7 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27036,12 +30186,20 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	var err error
 	params, err := decodeTeamsCreateDiscussionInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCreateDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsCreateDiscussionInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsCreateDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27050,7 +30208,7 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27082,12 +30240,20 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	var err error
 	params, err := decodeTeamsCreateDiscussionLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCreateDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsCreateDiscussionLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsCreateDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27096,7 +30262,7 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27128,12 +30294,20 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	var err error
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27142,7 +30316,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27174,12 +30348,20 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	var err error
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27188,7 +30370,7 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27220,7 +30402,11 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	var err error
 	params, err := decodeTeamsDeleteDiscussionCommentInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsDeleteDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27229,7 +30415,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27261,7 +30447,11 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	var err error
 	params, err := decodeTeamsDeleteDiscussionCommentLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsDeleteDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27270,7 +30460,7 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27302,7 +30492,11 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 	var err error
 	params, err := decodeTeamsDeleteDiscussionInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsDeleteDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27311,7 +30505,7 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27343,7 +30537,11 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 	var err error
 	params, err := decodeTeamsDeleteDiscussionLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsDeleteDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27352,7 +30550,7 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27384,7 +30582,11 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 	var err error
 	params, err := decodeTeamsDeleteInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsDeleteInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27393,7 +30595,7 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27425,7 +30627,11 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodeTeamsDeleteLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsDeleteLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27434,7 +30640,7 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27466,7 +30672,11 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 	var err error
 	params, err := decodeTeamsGetByNameParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetByName",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27475,7 +30685,7 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27507,7 +30717,11 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 	var err error
 	params, err := decodeTeamsGetDiscussionCommentInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27516,7 +30730,7 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27548,7 +30762,11 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 	var err error
 	params, err := decodeTeamsGetDiscussionCommentLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27557,7 +30775,7 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27589,7 +30807,11 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeTeamsGetDiscussionInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27598,7 +30820,7 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27630,7 +30852,11 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeTeamsGetDiscussionLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27639,7 +30865,7 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27671,7 +30897,11 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 	var err error
 	params, err := decodeTeamsGetLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27680,7 +30910,7 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27712,7 +30942,11 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 	var err error
 	params, err := decodeTeamsGetMemberLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetMemberLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27721,7 +30955,7 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27753,7 +30987,11 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 	var err error
 	params, err := decodeTeamsGetMembershipForUserInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetMembershipForUserInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27762,7 +31000,7 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27794,7 +31032,11 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 	var err error
 	params, err := decodeTeamsGetMembershipForUserLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsGetMembershipForUserLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27803,7 +31045,7 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27835,7 +31077,11 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeTeamsListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsList",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27844,7 +31090,7 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27876,7 +31122,11 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 	var err error
 	params, err := decodeTeamsListChildInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListChildInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27885,7 +31135,7 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27917,7 +31167,11 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeTeamsListChildLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListChildLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27926,7 +31180,7 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27958,7 +31212,11 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 	var err error
 	params, err := decodeTeamsListDiscussionCommentsInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListDiscussionCommentsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -27967,7 +31225,7 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -27999,7 +31257,11 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	var err error
 	params, err := decodeTeamsListDiscussionCommentsLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListDiscussionCommentsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28008,7 +31270,7 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28040,7 +31302,11 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 	var err error
 	params, err := decodeTeamsListDiscussionsInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListDiscussionsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28049,7 +31315,7 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28081,7 +31347,11 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 	var err error
 	params, err := decodeTeamsListDiscussionsLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListDiscussionsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28090,7 +31360,7 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28122,7 +31392,11 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 	var err error
 	params, err := decodeTeamsListForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28131,7 +31405,7 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28163,7 +31437,11 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 	var err error
 	params, err := decodeTeamsListIdpGroupsForLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListIdpGroupsForLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28172,7 +31450,7 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28204,7 +31482,11 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 	var err error
 	params, err := decodeTeamsListIdpGroupsForOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListIdpGroupsForOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28213,7 +31495,7 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28245,7 +31527,11 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeTeamsListIdpGroupsInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListIdpGroupsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28254,7 +31540,7 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28286,7 +31572,11 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 	var err error
 	params, err := decodeTeamsListMembersInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListMembersInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28295,7 +31585,7 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28327,7 +31617,11 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 	var err error
 	params, err := decodeTeamsListMembersLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListMembersLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28336,7 +31630,7 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28368,7 +31662,11 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 	var err error
 	params, err := decodeTeamsListPendingInvitationsInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListPendingInvitationsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28377,7 +31675,7 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28409,7 +31707,11 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	var err error
 	params, err := decodeTeamsListPendingInvitationsLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListPendingInvitationsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28418,7 +31720,7 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28450,7 +31752,11 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 	var err error
 	params, err := decodeTeamsListProjectsInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListProjectsInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28459,7 +31765,7 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28491,7 +31797,11 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 	var err error
 	params, err := decodeTeamsListProjectsLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListProjectsLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28500,7 +31810,7 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28532,7 +31842,11 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 	var err error
 	params, err := decodeTeamsListReposInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListReposInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28541,7 +31855,7 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28573,7 +31887,11 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 	var err error
 	params, err := decodeTeamsListReposLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsListReposLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28582,7 +31900,7 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28614,7 +31932,11 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 	var err error
 	params, err := decodeTeamsRemoveMemberLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsRemoveMemberLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28623,7 +31945,7 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28655,7 +31977,11 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	var err error
 	params, err := decodeTeamsRemoveMembershipForUserInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsRemoveMembershipForUserInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28664,7 +31990,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28696,7 +32022,11 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	var err error
 	params, err := decodeTeamsRemoveMembershipForUserLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsRemoveMembershipForUserLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28705,7 +32035,7 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28737,7 +32067,11 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 	var err error
 	params, err := decodeTeamsRemoveProjectInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsRemoveProjectInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28746,7 +32080,7 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28778,7 +32112,11 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 	var err error
 	params, err := decodeTeamsRemoveProjectLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsRemoveProjectLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28787,7 +32125,7 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28819,7 +32157,11 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 	var err error
 	params, err := decodeTeamsRemoveRepoInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsRemoveRepoInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28828,7 +32170,7 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28860,7 +32202,11 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 	var err error
 	params, err := decodeTeamsRemoveRepoLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsRemoveRepoLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28869,7 +32215,7 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28901,12 +32247,20 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	var err error
 	params, err := decodeTeamsUpdateDiscussionCommentInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsUpdateDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsUpdateDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsUpdateDiscussionCommentInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28915,7 +32269,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28947,12 +32301,20 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	var err error
 	params, err := decodeTeamsUpdateDiscussionCommentLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsUpdateDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsUpdateDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsUpdateDiscussionCommentLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -28961,7 +32323,7 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -28993,12 +32355,20 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	var err error
 	params, err := decodeTeamsUpdateDiscussionInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsUpdateDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsUpdateDiscussionInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsUpdateDiscussionInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29007,7 +32377,7 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29039,12 +32409,20 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	var err error
 	params, err := decodeTeamsUpdateDiscussionLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsUpdateDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsUpdateDiscussionLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsUpdateDiscussionLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29053,7 +32431,7 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29085,12 +32463,20 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	var err error
 	params, err := decodeTeamsUpdateInOrgParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsUpdateInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsUpdateInOrgRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsUpdateInOrg",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29099,7 +32485,7 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29131,12 +32517,20 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodeTeamsUpdateLegacyParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"TeamsUpdateLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeTeamsUpdateLegacyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TeamsUpdateLegacy",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29145,7 +32539,7 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29177,7 +32571,11 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 	var err error
 	request, err := decodeUsersAddEmailForAuthenticatedRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"UsersAddEmailForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29186,7 +32584,7 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29218,7 +32616,11 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 	var err error
 	params, err := decodeUsersBlockParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersBlock",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29227,7 +32629,7 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29259,7 +32661,11 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodeUsersCheckBlockedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersCheckBlocked",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29268,7 +32674,7 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29300,7 +32706,11 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 	var err error
 	params, err := decodeUsersCheckFollowingForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersCheckFollowingForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29309,7 +32719,7 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29341,7 +32751,11 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	var err error
 	params, err := decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersCheckPersonIsFollowedByAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29350,7 +32764,7 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29382,7 +32796,11 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	var err error
 	request, err := decodeUsersCreateGpgKeyForAuthenticatedRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"UsersCreateGpgKeyForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29391,7 +32809,7 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29423,7 +32841,11 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	var err error
 	request, err := decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"UsersCreatePublicSSHKeyForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29432,7 +32854,7 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29464,7 +32886,11 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 	var err error
 	request, err := decodeUsersDeleteEmailForAuthenticatedRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"UsersDeleteEmailForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29473,7 +32899,7 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29505,7 +32931,11 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	var err error
 	params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersDeleteGpgKeyForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29514,7 +32944,7 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29546,7 +32976,11 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	var err error
 	params, err := decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersDeletePublicSSHKeyForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29555,7 +32989,7 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29587,7 +33021,11 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeUsersFollowParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersFollow",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29596,7 +33034,7 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29632,7 +33070,7 @@ func (s *Server) handleUsersGetAuthenticatedRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29664,7 +33102,11 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 	var err error
 	params, err := decodeUsersGetByUsernameParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersGetByUsername",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29673,7 +33115,7 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29705,7 +33147,11 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 	var err error
 	params, err := decodeUsersGetContextForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersGetContextForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29714,7 +33160,7 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29746,7 +33192,11 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 	var err error
 	params, err := decodeUsersGetGpgKeyForAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersGetGpgKeyForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29755,7 +33205,7 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29787,7 +33237,11 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	var err error
 	params, err := decodeUsersGetPublicSSHKeyForAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersGetPublicSSHKeyForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29796,7 +33250,7 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29828,7 +33282,11 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeUsersListParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersList",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29837,7 +33295,7 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29873,7 +33331,7 @@ func (s *Server) handleUsersListBlockedByAuthenticatedRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29905,7 +33363,11 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 	var err error
 	params, err := decodeUsersListEmailsForAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListEmailsForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29914,7 +33376,7 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29946,7 +33408,11 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 	var err error
 	params, err := decodeUsersListFollowedByAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListFollowedByAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29955,7 +33421,7 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -29987,7 +33453,11 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	var err error
 	params, err := decodeUsersListFollowersForAuthenticatedUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListFollowersForAuthenticatedUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -29996,7 +33466,7 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30028,7 +33498,11 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 	var err error
 	params, err := decodeUsersListFollowersForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListFollowersForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30037,7 +33511,7 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30069,7 +33543,11 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 	var err error
 	params, err := decodeUsersListFollowingForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListFollowingForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30078,7 +33556,7 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30110,7 +33588,11 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 	var err error
 	params, err := decodeUsersListGpgKeysForAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListGpgKeysForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30119,7 +33601,7 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30151,7 +33633,11 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 	var err error
 	params, err := decodeUsersListGpgKeysForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListGpgKeysForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30160,7 +33646,7 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30192,7 +33678,11 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	var err error
 	params, err := decodeUsersListPublicEmailsForAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListPublicEmailsForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30201,7 +33691,7 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30233,7 +33723,11 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 	var err error
 	params, err := decodeUsersListPublicKeysForUserParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListPublicKeysForUser",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30242,7 +33736,7 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30274,7 +33768,11 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	var err error
 	params, err := decodeUsersListPublicSSHKeysForAuthenticatedParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersListPublicSSHKeysForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30283,7 +33781,7 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30315,7 +33813,11 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	var err error
 	request, err := decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"UsersSetPrimaryEmailVisibilityForAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30324,7 +33826,7 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30356,7 +33858,11 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 	var err error
 	params, err := decodeUsersUnblockParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersUnblock",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30365,7 +33871,7 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30397,7 +33903,11 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 	var err error
 	params, err := decodeUsersUnfollowParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"UsersUnfollow",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30406,7 +33916,7 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30438,7 +33948,11 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 	var err error
 	request, err := decodeUsersUpdateAuthenticatedRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"UsersUpdateAuthenticated",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -30447,7 +33961,7 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -30461,22 +33975,16 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+func (s *Server) badRequest(
+	ctx context.Context,
+	w http.ResponseWriter,
+	r *http.Request,
+	span trace.Span,
+	otelAttrs []attribute.KeyValue,
+	err error,
+) {
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	respondError(w, http.StatusBadRequest, err)
-}
-
-func respondError(w http.ResponseWriter, code int, err error) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	data, writeErr := json.Marshal(struct {
-		ErrorMessage string `json:"error_message"`
-	}{
-		ErrorMessage: err.Error(),
-	})
-	if writeErr == nil {
-		w.Write(data)
-	}
+	s.cfg.ErrorHandler(ctx, w, r, err)
 }

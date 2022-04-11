@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -81,6 +82,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}

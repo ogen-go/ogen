@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -97,7 +99,11 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 	var err error
 	request, err := decodeTestRequestAnyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestAny",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -106,7 +112,7 @@ func (s *Server) handleTestRequestAnyRequest(args [0]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -138,7 +144,11 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 	var err error
 	request, err := decodeTestRequestBooleanRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestBoolean",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -147,7 +157,7 @@ func (s *Server) handleTestRequestBooleanRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -179,7 +189,11 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestRequestBooleanArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestBooleanArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -188,7 +202,7 @@ func (s *Server) handleTestRequestBooleanArrayRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -220,7 +234,11 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestRequestBooleanArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestBooleanArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -229,7 +247,7 @@ func (s *Server) handleTestRequestBooleanArrayArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -261,7 +279,11 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestBooleanNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestBooleanNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -270,7 +292,7 @@ func (s *Server) handleTestRequestBooleanNullableRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -302,7 +324,11 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestBooleanNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestBooleanNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -311,7 +337,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -343,7 +369,11 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestBooleanNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -352,7 +382,7 @@ func (s *Server) handleTestRequestBooleanNullableArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -384,7 +414,11 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestRequestEmptyStructRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestEmptyStruct",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -393,7 +427,7 @@ func (s *Server) handleTestRequestEmptyStructRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -425,7 +459,11 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 	var err error
 	request, err := decodeTestRequestFormatTestRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestFormatTest",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -434,7 +472,7 @@ func (s *Server) handleTestRequestFormatTestRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -466,7 +504,11 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 	var err error
 	request, err := decodeTestRequestIntegerRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestInteger",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -475,7 +517,7 @@ func (s *Server) handleTestRequestIntegerRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -507,7 +549,11 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestRequestIntegerArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -516,7 +562,7 @@ func (s *Server) handleTestRequestIntegerArrayRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -548,7 +594,11 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestRequestIntegerArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -557,7 +607,7 @@ func (s *Server) handleTestRequestIntegerArrayArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -589,7 +639,11 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestRequestIntegerInt32Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt32",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -598,7 +652,7 @@ func (s *Server) handleTestRequestIntegerInt32Request(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -630,7 +684,11 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestRequestIntegerInt32ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt32Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -639,7 +697,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -671,7 +729,11 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt32ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -680,7 +742,7 @@ func (s *Server) handleTestRequestIntegerInt32ArrayArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -712,7 +774,11 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestIntegerInt32NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt32Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -721,7 +787,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -753,7 +819,11 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt32NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -762,7 +832,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -794,7 +864,11 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt32NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -803,7 +877,7 @@ func (s *Server) handleTestRequestIntegerInt32NullableArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -835,7 +909,11 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestRequestIntegerInt64Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt64",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -844,7 +922,7 @@ func (s *Server) handleTestRequestIntegerInt64Request(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -876,7 +954,11 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestRequestIntegerInt64ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt64Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -885,7 +967,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -917,7 +999,11 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt64ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -926,7 +1012,7 @@ func (s *Server) handleTestRequestIntegerInt64ArrayArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -958,7 +1044,11 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestIntegerInt64NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt64Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -967,7 +1057,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -999,7 +1089,11 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt64NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1008,7 +1102,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1040,7 +1134,11 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerInt64NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1049,7 +1147,7 @@ func (s *Server) handleTestRequestIntegerInt64NullableArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1081,7 +1179,11 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestIntegerNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1090,7 +1192,7 @@ func (s *Server) handleTestRequestIntegerNullableRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1122,7 +1224,11 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestIntegerNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1131,7 +1237,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1163,7 +1269,11 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestIntegerNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1172,7 +1282,7 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1204,7 +1314,11 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 	var err error
 	request, err := decodeTestRequestNumberRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumber",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1213,7 +1327,7 @@ func (s *Server) handleTestRequestNumberRequest(args [0]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1245,7 +1359,11 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestRequestNumberArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1254,7 +1372,7 @@ func (s *Server) handleTestRequestNumberArrayRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1286,7 +1404,11 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestRequestNumberArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1295,7 +1417,7 @@ func (s *Server) handleTestRequestNumberArrayArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1327,7 +1449,11 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestRequestNumberDoubleRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberDouble",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1336,7 +1462,7 @@ func (s *Server) handleTestRequestNumberDoubleRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1368,7 +1494,11 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestRequestNumberDoubleArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberDoubleArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1377,7 +1507,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1409,7 +1539,11 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberDoubleArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1418,7 +1552,7 @@ func (s *Server) handleTestRequestNumberDoubleArrayArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1450,7 +1584,11 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestNumberDoubleNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberDoubleNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1459,7 +1597,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1491,7 +1629,11 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberDoubleNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1500,7 +1642,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1532,7 +1674,11 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberDoubleNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1541,7 +1687,7 @@ func (s *Server) handleTestRequestNumberDoubleNullableArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1573,7 +1719,11 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestRequestNumberFloatRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberFloat",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1582,7 +1732,7 @@ func (s *Server) handleTestRequestNumberFloatRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1614,7 +1764,11 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestRequestNumberFloatArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberFloatArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1623,7 +1777,7 @@ func (s *Server) handleTestRequestNumberFloatArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1655,7 +1809,11 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestRequestNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberFloatArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1664,7 +1822,7 @@ func (s *Server) handleTestRequestNumberFloatArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1696,7 +1854,11 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestNumberFloatNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberFloatNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1705,7 +1867,7 @@ func (s *Server) handleTestRequestNumberFloatNullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1737,7 +1899,11 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberFloatNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1746,7 +1912,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1778,7 +1944,11 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberFloatNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1787,7 +1957,7 @@ func (s *Server) handleTestRequestNumberFloatNullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1819,7 +1989,11 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestRequestNumberInt32Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt32",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1828,7 +2002,7 @@ func (s *Server) handleTestRequestNumberInt32Request(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1860,7 +2034,11 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestRequestNumberInt32ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt32Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1869,7 +2047,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1901,7 +2079,11 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestRequestNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt32ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1910,7 +2092,7 @@ func (s *Server) handleTestRequestNumberInt32ArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1942,7 +2124,11 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestNumberInt32NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt32Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1951,7 +2137,7 @@ func (s *Server) handleTestRequestNumberInt32NullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1983,7 +2169,11 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt32NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1992,7 +2182,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2024,7 +2214,11 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt32NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2033,7 +2227,7 @@ func (s *Server) handleTestRequestNumberInt32NullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2065,7 +2259,11 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestRequestNumberInt64Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt64",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2074,7 +2272,7 @@ func (s *Server) handleTestRequestNumberInt64Request(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2106,7 +2304,11 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestRequestNumberInt64ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt64Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2115,7 +2317,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2147,7 +2349,11 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestRequestNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt64ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2156,7 +2362,7 @@ func (s *Server) handleTestRequestNumberInt64ArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2188,7 +2394,11 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestNumberInt64NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt64Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2197,7 +2407,7 @@ func (s *Server) handleTestRequestNumberInt64NullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2229,7 +2439,11 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt64NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2238,7 +2452,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2270,7 +2484,11 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberInt64NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2279,7 +2497,7 @@ func (s *Server) handleTestRequestNumberInt64NullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2311,7 +2529,11 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestNumberNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2320,7 +2542,7 @@ func (s *Server) handleTestRequestNumberNullableRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2352,7 +2574,11 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestNumberNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2361,7 +2587,7 @@ func (s *Server) handleTestRequestNumberNullableArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2393,7 +2619,11 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNumberNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2402,7 +2632,7 @@ func (s *Server) handleTestRequestNumberNullableArrayArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2434,7 +2664,11 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestRequestRequiredAnyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredAny",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2443,7 +2677,7 @@ func (s *Server) handleTestRequestRequiredAnyRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2475,7 +2709,11 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestRequiredBooleanRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredBoolean",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2484,7 +2722,7 @@ func (s *Server) handleTestRequestRequiredBooleanRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2516,7 +2754,11 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestRequiredBooleanArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredBooleanArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2525,7 +2767,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2557,7 +2799,11 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestRequiredBooleanArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredBooleanArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2566,7 +2812,7 @@ func (s *Server) handleTestRequestRequiredBooleanArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2598,7 +2844,11 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestRequiredBooleanNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredBooleanNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2607,7 +2857,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2639,7 +2889,11 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredBooleanNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredBooleanNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2648,7 +2902,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2680,7 +2934,11 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 	var err error
 	request, err := decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredBooleanNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2689,7 +2947,7 @@ func (s *Server) handleTestRequestRequiredBooleanNullableArrayArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2721,7 +2979,11 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestRequiredEmptyStructRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredEmptyStruct",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2730,7 +2992,7 @@ func (s *Server) handleTestRequestRequiredEmptyStructRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2762,7 +3024,11 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestRequiredFormatTestRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredFormatTest",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2771,7 +3037,7 @@ func (s *Server) handleTestRequestRequiredFormatTestRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2803,7 +3069,11 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestRequiredIntegerRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredInteger",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2812,7 +3082,7 @@ func (s *Server) handleTestRequestRequiredIntegerRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2844,7 +3114,11 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestRequiredIntegerArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2853,7 +3127,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2885,7 +3159,11 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestRequiredIntegerArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2894,7 +3172,7 @@ func (s *Server) handleTestRequestRequiredIntegerArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2926,7 +3204,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt32",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2935,7 +3217,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32Request(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -2967,7 +3249,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt32Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -2976,7 +3262,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3008,7 +3294,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt32ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3017,7 +3307,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32ArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3049,7 +3339,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt32Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3058,7 +3352,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3090,7 +3384,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt32NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3099,7 +3397,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3131,7 +3429,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt32NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3140,7 +3442,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt32NullableArrayArrayRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3172,7 +3474,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt64",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3181,7 +3487,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64Request(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3213,7 +3519,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt64Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3222,7 +3532,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3254,7 +3564,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt64ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3263,7 +3577,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64ArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3295,7 +3609,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt64Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3304,7 +3622,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3336,7 +3654,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt64NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3345,7 +3667,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3377,7 +3699,11 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 	var err error
 	request, err := decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerInt64NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3386,7 +3712,7 @@ func (s *Server) handleTestRequestRequiredIntegerInt64NullableArrayArrayRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3418,7 +3744,11 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestRequiredIntegerNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3427,7 +3757,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3459,7 +3789,11 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredIntegerNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3468,7 +3802,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3500,7 +3834,11 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	var err error
 	request, err := decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredIntegerNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3509,7 +3847,7 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3541,7 +3879,11 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestRequiredNumberRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumber",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3550,7 +3892,7 @@ func (s *Server) handleTestRequestRequiredNumberRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3582,7 +3924,11 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestRequiredNumberArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3591,7 +3937,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3623,7 +3969,11 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestRequiredNumberArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3632,7 +3982,7 @@ func (s *Server) handleTestRequestRequiredNumberArrayArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3664,7 +4014,11 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberDouble",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3673,7 +4027,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3705,7 +4059,11 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberDoubleArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3714,7 +4072,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3746,7 +4104,11 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberDoubleArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3755,7 +4117,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3787,7 +4149,11 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberDoubleNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3796,7 +4162,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3828,7 +4194,11 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberDoubleNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3837,7 +4207,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3869,7 +4239,11 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 	var err error
 	request, err := decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberDoubleNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3878,7 +4252,7 @@ func (s *Server) handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3910,7 +4284,11 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestRequiredNumberFloatRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberFloat",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3919,7 +4297,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3951,7 +4329,11 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestRequiredNumberFloatArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberFloatArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -3960,7 +4342,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -3992,7 +4374,11 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestRequiredNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberFloatArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4001,7 +4387,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4033,7 +4419,11 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredNumberFloatNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberFloatNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4042,7 +4432,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4074,7 +4464,11 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberFloatNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4083,7 +4477,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4115,7 +4509,11 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 	var err error
 	request, err := decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberFloatNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4124,7 +4522,7 @@ func (s *Server) handleTestRequestRequiredNumberFloatNullableArrayArrayRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4156,7 +4554,11 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt32Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt32",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4165,7 +4567,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32Request(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4197,7 +4599,11 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt32ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt32Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4206,7 +4612,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4238,7 +4644,11 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt32ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4247,7 +4657,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32ArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4279,7 +4689,11 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt32NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt32Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4288,7 +4702,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4320,7 +4734,11 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt32NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4329,7 +4747,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4361,7 +4779,11 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt32NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4370,7 +4792,7 @@ func (s *Server) handleTestRequestRequiredNumberInt32NullableArrayArrayRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4402,7 +4824,11 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt64Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt64",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4411,7 +4837,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64Request(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4443,7 +4869,11 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt64ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt64Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4452,7 +4882,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4484,7 +4914,11 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt64ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4493,7 +4927,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64ArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4525,7 +4959,11 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt64NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt64Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4534,7 +4972,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4566,7 +5004,11 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt64NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4575,7 +5017,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4607,7 +5049,11 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 	var err error
 	request, err := decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberInt64NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4616,7 +5062,7 @@ func (s *Server) handleTestRequestRequiredNumberInt64NullableArrayArrayRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4648,7 +5094,11 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestRequiredNumberNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4657,7 +5107,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4689,7 +5139,11 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredNumberNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4698,7 +5152,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4730,7 +5184,11 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNumberNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4739,7 +5197,7 @@ func (s *Server) handleTestRequestRequiredNumberNullableArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4771,7 +5229,11 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestRequiredStringRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredString",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4780,7 +5242,7 @@ func (s *Server) handleTestRequestRequiredStringRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4812,7 +5274,11 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestRequiredStringArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4821,7 +5287,7 @@ func (s *Server) handleTestRequestRequiredStringArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4853,7 +5319,11 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestRequiredStringArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4862,7 +5332,7 @@ func (s *Server) handleTestRequestRequiredStringArrayArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4894,7 +5364,11 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestRequiredStringBinaryRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringBinary",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4903,7 +5377,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4935,7 +5409,11 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestRequiredStringBinaryArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringBinaryArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4944,7 +5422,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -4976,7 +5454,11 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringBinaryArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -4985,7 +5467,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5017,7 +5499,11 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredStringBinaryNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringBinaryNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5026,7 +5512,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5058,7 +5544,11 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 	var err error
 	request, err := decodeTestRequestRequiredStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringBinaryNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5067,7 +5557,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5099,7 +5589,11 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 	var err error
 	request, err := decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringBinaryNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5108,7 +5602,7 @@ func (s *Server) handleTestRequestRequiredStringBinaryNullableArrayArrayRequest(
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5140,7 +5634,11 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestRequiredStringByteRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringByte",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5149,7 +5647,7 @@ func (s *Server) handleTestRequestRequiredStringByteRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5181,7 +5679,11 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestRequiredStringByteArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringByteArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5190,7 +5692,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5222,7 +5724,11 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredStringByteArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringByteArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5231,7 +5737,7 @@ func (s *Server) handleTestRequestRequiredStringByteArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5263,7 +5769,11 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 	var err error
 	request, err := decodeTestRequestRequiredStringByteNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringByteNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5272,7 +5782,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5304,7 +5814,11 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 	var err error
 	request, err := decodeTestRequestRequiredStringByteNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringByteNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5313,7 +5827,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5345,7 +5859,11 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 	var err error
 	request, err := decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringByteNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5354,7 +5872,7 @@ func (s *Server) handleTestRequestRequiredStringByteNullableArrayArrayRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5386,7 +5904,11 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestRequiredStringDateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5395,7 +5917,7 @@ func (s *Server) handleTestRequestRequiredStringDateRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5427,7 +5949,11 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestRequiredStringDateArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5436,7 +5962,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5468,7 +5994,11 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredStringDateArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5477,7 +6007,7 @@ func (s *Server) handleTestRequestRequiredStringDateArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5509,7 +6039,11 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 	var err error
 	request, err := decodeTestRequestRequiredStringDateNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5518,7 +6052,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5550,7 +6084,11 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 	var err error
 	request, err := decodeTestRequestRequiredStringDateNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5559,7 +6097,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5591,7 +6129,11 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 	var err error
 	request, err := decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5600,7 +6142,7 @@ func (s *Server) handleTestRequestRequiredStringDateNullableArrayArrayRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5632,7 +6174,11 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateTime",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5641,7 +6187,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5673,7 +6219,11 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateTimeArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5682,7 +6232,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5714,7 +6264,11 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateTimeArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5723,7 +6277,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5755,7 +6309,11 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateTimeNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5764,7 +6322,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5796,7 +6354,11 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateTimeNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5805,7 +6367,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5837,7 +6399,11 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 	var err error
 	request, err := decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDateTimeNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5846,7 +6412,7 @@ func (s *Server) handleTestRequestRequiredStringDateTimeNullableArrayArrayReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5878,7 +6444,11 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestRequiredStringDurationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDuration",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5887,7 +6457,7 @@ func (s *Server) handleTestRequestRequiredStringDurationRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5919,7 +6489,11 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredStringDurationArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDurationArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5928,7 +6502,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -5960,7 +6534,11 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredStringDurationArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDurationArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -5969,7 +6547,7 @@ func (s *Server) handleTestRequestRequiredStringDurationArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6001,7 +6579,11 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredStringDurationNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDurationNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6010,7 +6592,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6042,7 +6624,11 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 	var err error
 	request, err := decodeTestRequestRequiredStringDurationNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDurationNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6051,7 +6637,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6083,7 +6669,11 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 	var err error
 	request, err := decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringDurationNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6092,7 +6682,7 @@ func (s *Server) handleTestRequestRequiredStringDurationNullableArrayArrayReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6124,7 +6714,11 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestRequiredStringEmailRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringEmail",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6133,7 +6727,7 @@ func (s *Server) handleTestRequestRequiredStringEmailRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6165,7 +6759,11 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestRequiredStringEmailArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringEmailArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6174,7 +6772,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6206,7 +6804,11 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestRequiredStringEmailArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringEmailArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6215,7 +6817,7 @@ func (s *Server) handleTestRequestRequiredStringEmailArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6247,7 +6849,11 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredStringEmailNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringEmailNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6256,7 +6862,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6288,7 +6894,11 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredStringEmailNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringEmailNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6297,7 +6907,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6329,7 +6939,11 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 	var err error
 	request, err := decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringEmailNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6338,7 +6952,7 @@ func (s *Server) handleTestRequestRequiredStringEmailNullableArrayArrayRequest(a
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6370,7 +6984,11 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestRequiredStringHostnameRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringHostname",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6379,7 +6997,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6411,7 +7029,11 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredStringHostnameArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringHostnameArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6420,7 +7042,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6452,7 +7074,11 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringHostnameArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6461,7 +7087,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6493,7 +7119,11 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredStringHostnameNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringHostnameNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6502,7 +7132,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6534,7 +7164,11 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 	var err error
 	request, err := decodeTestRequestRequiredStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringHostnameNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6543,7 +7177,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6575,7 +7209,11 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 	var err error
 	request, err := decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringHostnameNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6584,7 +7222,7 @@ func (s *Server) handleTestRequestRequiredStringHostnameNullableArrayArrayReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6616,7 +7254,11 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestRequestRequiredStringIPRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIP",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6625,7 +7267,7 @@ func (s *Server) handleTestRequestRequiredStringIPRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6657,7 +7299,11 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestRequestRequiredStringIPArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIPArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6666,7 +7312,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6698,7 +7344,11 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 	var err error
 	request, err := decodeTestRequestRequiredStringIPArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIPArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6707,7 +7357,7 @@ func (s *Server) handleTestRequestRequiredStringIPArrayArrayRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6739,7 +7389,11 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestRequiredStringIPNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIPNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6748,7 +7402,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6780,7 +7434,11 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestRequiredStringIPNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIPNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6789,7 +7447,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6821,7 +7479,11 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 	var err error
 	request, err := decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIPNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6830,7 +7492,7 @@ func (s *Server) handleTestRequestRequiredStringIPNullableArrayArrayRequest(args
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6862,7 +7524,11 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv4Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv4",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6871,7 +7537,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4Request(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6903,7 +7569,11 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv4ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv4Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6912,7 +7582,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6944,7 +7614,11 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv4ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6953,7 +7627,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4ArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -6985,7 +7659,11 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv4NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv4Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -6994,7 +7672,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7026,7 +7704,11 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv4NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7035,7 +7717,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7067,7 +7749,11 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv4NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7076,7 +7762,7 @@ func (s *Server) handleTestRequestRequiredStringIpv4NullableArrayArrayRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7108,7 +7794,11 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv6Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv6",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7117,7 +7807,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6Request(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7149,7 +7839,11 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv6ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv6Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7158,7 +7852,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7190,7 +7884,11 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv6ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7199,7 +7897,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6ArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7231,7 +7929,11 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv6NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv6Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7240,7 +7942,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7272,7 +7974,11 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv6NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7281,7 +7987,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7313,7 +8019,11 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 	var err error
 	request, err := decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringIpv6NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7322,7 +8032,7 @@ func (s *Server) handleTestRequestRequiredStringIpv6NullableArrayArrayRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7354,7 +8064,11 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestRequiredStringNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7363,7 +8077,7 @@ func (s *Server) handleTestRequestRequiredStringNullableRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7395,7 +8109,11 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredStringNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7404,7 +8122,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7436,7 +8154,11 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredStringNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7445,7 +8167,7 @@ func (s *Server) handleTestRequestRequiredStringNullableArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7477,7 +8199,11 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestRequiredStringPasswordRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringPassword",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7486,7 +8212,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7518,7 +8244,11 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredStringPasswordArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringPasswordArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7527,7 +8257,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7559,7 +8289,11 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestRequiredStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringPasswordArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7568,7 +8302,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7600,7 +8334,11 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredStringPasswordNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringPasswordNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7609,7 +8347,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7641,7 +8379,11 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 	var err error
 	request, err := decodeTestRequestRequiredStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringPasswordNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7650,7 +8392,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7682,7 +8424,11 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 	var err error
 	request, err := decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringPasswordNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7691,7 +8437,7 @@ func (s *Server) handleTestRequestRequiredStringPasswordNullableArrayArrayReques
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7723,7 +8469,11 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestRequiredStringTimeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringTime",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7732,7 +8482,7 @@ func (s *Server) handleTestRequestRequiredStringTimeRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7764,7 +8514,11 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestRequiredStringTimeArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringTimeArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7773,7 +8527,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7805,7 +8559,11 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredStringTimeArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringTimeArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7814,7 +8572,7 @@ func (s *Server) handleTestRequestRequiredStringTimeArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7846,7 +8604,11 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 	var err error
 	request, err := decodeTestRequestRequiredStringTimeNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringTimeNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7855,7 +8617,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7887,7 +8649,11 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 	var err error
 	request, err := decodeTestRequestRequiredStringTimeNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringTimeNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7896,7 +8662,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7928,7 +8694,11 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 	var err error
 	request, err := decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringTimeNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7937,7 +8707,7 @@ func (s *Server) handleTestRequestRequiredStringTimeNullableArrayArrayRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -7969,7 +8739,11 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestRequestRequiredStringURIRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringURI",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -7978,7 +8752,7 @@ func (s *Server) handleTestRequestRequiredStringURIRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8010,7 +8784,11 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestRequiredStringURIArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringURIArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8019,7 +8797,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8051,7 +8829,11 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestRequiredStringURIArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringURIArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8060,7 +8842,7 @@ func (s *Server) handleTestRequestRequiredStringURIArrayArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8092,7 +8874,11 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestRequiredStringURINullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringURINullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8101,7 +8887,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8133,7 +8919,11 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestRequiredStringURINullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringURINullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8142,7 +8932,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8174,7 +8964,11 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 	var err error
 	request, err := decodeTestRequestRequiredStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringURINullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8183,7 +8977,7 @@ func (s *Server) handleTestRequestRequiredStringURINullableArrayArrayRequest(arg
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8215,7 +9009,11 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestRequiredStringUUIDRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringUUID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8224,7 +9022,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8256,7 +9054,11 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestRequiredStringUUIDArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringUUIDArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8265,7 +9067,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8297,7 +9099,11 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestRequiredStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringUUIDArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8306,7 +9112,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8338,7 +9144,11 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 	var err error
 	request, err := decodeTestRequestRequiredStringUUIDNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringUUIDNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8347,7 +9157,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8379,7 +9189,11 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 	var err error
 	request, err := decodeTestRequestRequiredStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringUUIDNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8388,7 +9202,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8420,7 +9234,11 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 	var err error
 	request, err := decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredStringUUIDNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8429,7 +9247,7 @@ func (s *Server) handleTestRequestRequiredStringUUIDNullableArrayArrayRequest(ar
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8461,7 +9279,11 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 	var err error
 	request, err := decodeTestRequestStringRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestString",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8470,7 +9292,7 @@ func (s *Server) handleTestRequestStringRequest(args [0]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8502,7 +9324,11 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestRequestStringArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8511,7 +9337,7 @@ func (s *Server) handleTestRequestStringArrayRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8543,7 +9369,11 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestRequestStringArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8552,7 +9382,7 @@ func (s *Server) handleTestRequestStringArrayArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8584,7 +9414,11 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestRequestStringBinaryRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringBinary",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8593,7 +9427,7 @@ func (s *Server) handleTestRequestStringBinaryRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8625,7 +9459,11 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestRequestStringBinaryArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringBinaryArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8634,7 +9472,7 @@ func (s *Server) handleTestRequestStringBinaryArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8666,7 +9504,11 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringBinaryArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8675,7 +9517,7 @@ func (s *Server) handleTestRequestStringBinaryArrayArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8707,7 +9549,11 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestStringBinaryNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringBinaryNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8716,7 +9562,7 @@ func (s *Server) handleTestRequestStringBinaryNullableRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8748,7 +9594,11 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestRequestStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringBinaryNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8757,7 +9607,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8789,7 +9639,11 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestRequestStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringBinaryNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8798,7 +9652,7 @@ func (s *Server) handleTestRequestStringBinaryNullableArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8830,7 +9684,11 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 	var err error
 	request, err := decodeTestRequestStringByteRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringByte",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8839,7 +9697,7 @@ func (s *Server) handleTestRequestStringByteRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8871,7 +9729,11 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestStringByteArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringByteArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8880,7 +9742,7 @@ func (s *Server) handleTestRequestStringByteArrayRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8912,7 +9774,11 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestStringByteArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringByteArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8921,7 +9787,7 @@ func (s *Server) handleTestRequestStringByteArrayArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8953,7 +9819,11 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestStringByteNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringByteNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -8962,7 +9832,7 @@ func (s *Server) handleTestRequestStringByteNullableRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -8994,7 +9864,11 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestStringByteNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringByteNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9003,7 +9877,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9035,7 +9909,11 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringByteNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9044,7 +9922,7 @@ func (s *Server) handleTestRequestStringByteNullableArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9076,7 +9954,11 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 	var err error
 	request, err := decodeTestRequestStringDateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9085,7 +9967,7 @@ func (s *Server) handleTestRequestStringDateRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9117,7 +9999,11 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestStringDateArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9126,7 +10012,7 @@ func (s *Server) handleTestRequestStringDateArrayRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9158,7 +10044,11 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestStringDateArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9167,7 +10057,7 @@ func (s *Server) handleTestRequestStringDateArrayArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9199,7 +10089,11 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestStringDateNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9208,7 +10102,7 @@ func (s *Server) handleTestRequestStringDateNullableRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9240,7 +10134,11 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestStringDateNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9249,7 +10147,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9281,7 +10179,11 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9290,7 +10192,7 @@ func (s *Server) handleTestRequestStringDateNullableArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9322,7 +10224,11 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestStringDateTimeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateTime",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9331,7 +10237,7 @@ func (s *Server) handleTestRequestStringDateTimeRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9363,7 +10269,11 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestStringDateTimeArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateTimeArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9372,7 +10282,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9404,7 +10314,11 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateTimeArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9413,7 +10327,7 @@ func (s *Server) handleTestRequestStringDateTimeArrayArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9445,7 +10359,11 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestStringDateTimeNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateTimeNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9454,7 +10372,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9486,7 +10404,11 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateTimeNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9495,7 +10417,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9527,7 +10449,11 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDateTimeNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9536,7 +10462,7 @@ func (s *Server) handleTestRequestStringDateTimeNullableArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9568,7 +10494,11 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestStringDurationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDuration",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9577,7 +10507,7 @@ func (s *Server) handleTestRequestStringDurationRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9609,7 +10539,11 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestStringDurationArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDurationArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9618,7 +10552,7 @@ func (s *Server) handleTestRequestStringDurationArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9650,7 +10584,11 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestStringDurationArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDurationArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9659,7 +10597,7 @@ func (s *Server) handleTestRequestStringDurationArrayArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9691,7 +10629,11 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestStringDurationNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDurationNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9700,7 +10642,7 @@ func (s *Server) handleTestRequestStringDurationNullableRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9732,7 +10674,11 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestStringDurationNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDurationNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9741,7 +10687,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9773,7 +10719,11 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringDurationNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9782,7 +10732,7 @@ func (s *Server) handleTestRequestStringDurationNullableArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9814,7 +10764,11 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestRequestStringEmailRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringEmail",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9823,7 +10777,7 @@ func (s *Server) handleTestRequestStringEmailRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9855,7 +10809,11 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestRequestStringEmailArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringEmailArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9864,7 +10822,7 @@ func (s *Server) handleTestRequestStringEmailArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9896,7 +10854,11 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestRequestStringEmailArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringEmailArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9905,7 +10867,7 @@ func (s *Server) handleTestRequestStringEmailArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9937,7 +10899,11 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestStringEmailNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringEmailNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9946,7 +10912,7 @@ func (s *Server) handleTestRequestStringEmailNullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -9978,7 +10944,11 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestStringEmailNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringEmailNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -9987,7 +10957,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10019,7 +10989,11 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestRequestStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringEmailNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10028,7 +11002,7 @@ func (s *Server) handleTestRequestStringEmailNullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10060,7 +11034,11 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestStringHostnameRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringHostname",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10069,7 +11047,7 @@ func (s *Server) handleTestRequestStringHostnameRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10101,7 +11079,11 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestStringHostnameArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringHostnameArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10110,7 +11092,7 @@ func (s *Server) handleTestRequestStringHostnameArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10142,7 +11124,11 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringHostnameArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10151,7 +11137,7 @@ func (s *Server) handleTestRequestStringHostnameArrayArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10183,7 +11169,11 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestStringHostnameNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringHostnameNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10192,7 +11182,7 @@ func (s *Server) handleTestRequestStringHostnameNullableRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10224,7 +11214,11 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringHostnameNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10233,7 +11227,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10265,7 +11259,11 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringHostnameNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10274,7 +11272,7 @@ func (s *Server) handleTestRequestStringHostnameNullableArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10306,7 +11304,11 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 	var err error
 	request, err := decodeTestRequestStringIPRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIP",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10315,7 +11317,7 @@ func (s *Server) handleTestRequestStringIPRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10347,7 +11349,11 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 	var err error
 	request, err := decodeTestRequestStringIPArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIPArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10356,7 +11362,7 @@ func (s *Server) handleTestRequestStringIPArrayRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10388,7 +11394,11 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestStringIPArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIPArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10397,7 +11407,7 @@ func (s *Server) handleTestRequestStringIPArrayArrayRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10429,7 +11439,11 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestRequestStringIPNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIPNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10438,7 +11452,7 @@ func (s *Server) handleTestRequestStringIPNullableRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10470,7 +11484,11 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestRequestStringIPNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIPNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10479,7 +11497,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10511,7 +11529,11 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 	var err error
 	request, err := decodeTestRequestStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIPNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10520,7 +11542,7 @@ func (s *Server) handleTestRequestStringIPNullableArrayArrayRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10552,7 +11574,11 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 	var err error
 	request, err := decodeTestRequestStringIpv4Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv4",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10561,7 +11587,7 @@ func (s *Server) handleTestRequestStringIpv4Request(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10593,7 +11619,11 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestStringIpv4ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv4Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10602,7 +11632,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10634,7 +11664,11 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv4ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10643,7 +11677,7 @@ func (s *Server) handleTestRequestStringIpv4ArrayArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10675,7 +11709,11 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestStringIpv4NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv4Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10684,7 +11722,7 @@ func (s *Server) handleTestRequestStringIpv4NullableRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10716,7 +11754,11 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv4NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10725,7 +11767,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10757,7 +11799,11 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv4NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10766,7 +11812,7 @@ func (s *Server) handleTestRequestStringIpv4NullableArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10798,7 +11844,11 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 	var err error
 	request, err := decodeTestRequestStringIpv6Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv6",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10807,7 +11857,7 @@ func (s *Server) handleTestRequestStringIpv6Request(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10839,7 +11889,11 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestStringIpv6ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv6Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10848,7 +11902,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10880,7 +11934,11 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv6ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10889,7 +11947,7 @@ func (s *Server) handleTestRequestStringIpv6ArrayArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10921,7 +11979,11 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestStringIpv6NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv6Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10930,7 +11992,7 @@ func (s *Server) handleTestRequestStringIpv6NullableRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -10962,7 +12024,11 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv6NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -10971,7 +12037,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11003,7 +12069,11 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringIpv6NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11012,7 +12082,7 @@ func (s *Server) handleTestRequestStringIpv6NullableArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11044,7 +12114,11 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestStringNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11053,7 +12127,7 @@ func (s *Server) handleTestRequestStringNullableRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11085,7 +12159,11 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestStringNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11094,7 +12172,7 @@ func (s *Server) handleTestRequestStringNullableArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11126,7 +12204,11 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestStringNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11135,7 +12217,7 @@ func (s *Server) handleTestRequestStringNullableArrayArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11167,7 +12249,11 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestStringPasswordRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringPassword",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11176,7 +12262,7 @@ func (s *Server) handleTestRequestStringPasswordRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11208,7 +12294,11 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestStringPasswordArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringPasswordArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11217,7 +12307,7 @@ func (s *Server) handleTestRequestStringPasswordArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11249,7 +12339,11 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestRequestStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringPasswordArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11258,7 +12352,7 @@ func (s *Server) handleTestRequestStringPasswordArrayArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11290,7 +12384,11 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestStringPasswordNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringPasswordNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11299,7 +12397,7 @@ func (s *Server) handleTestRequestStringPasswordNullableRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11331,7 +12429,11 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringPasswordNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11340,7 +12442,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11372,7 +12474,11 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 	var err error
 	request, err := decodeTestRequestStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringPasswordNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11381,7 +12487,7 @@ func (s *Server) handleTestRequestStringPasswordNullableArrayArrayRequest(args [
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11413,7 +12519,11 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 	var err error
 	request, err := decodeTestRequestStringTimeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringTime",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11422,7 +12532,7 @@ func (s *Server) handleTestRequestStringTimeRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11454,7 +12564,11 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestStringTimeArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringTimeArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11463,7 +12577,7 @@ func (s *Server) handleTestRequestStringTimeArrayRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11495,7 +12609,11 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestStringTimeArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringTimeArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11504,7 +12622,7 @@ func (s *Server) handleTestRequestStringTimeArrayArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11536,7 +12654,11 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestStringTimeNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringTimeNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11545,7 +12667,7 @@ func (s *Server) handleTestRequestStringTimeNullableRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11577,7 +12699,11 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestStringTimeNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringTimeNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11586,7 +12712,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11618,7 +12744,11 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringTimeNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11627,7 +12757,7 @@ func (s *Server) handleTestRequestStringTimeNullableArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11659,7 +12789,11 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 	var err error
 	request, err := decodeTestRequestStringURIRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringURI",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11668,7 +12802,7 @@ func (s *Server) handleTestRequestStringURIRequest(args [0]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11700,7 +12834,11 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestRequestStringURIArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringURIArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11709,7 +12847,7 @@ func (s *Server) handleTestRequestStringURIArrayRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11741,7 +12879,11 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestRequestStringURIArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringURIArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11750,7 +12892,7 @@ func (s *Server) handleTestRequestStringURIArrayArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11782,7 +12924,11 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestRequestStringURINullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringURINullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11791,7 +12937,7 @@ func (s *Server) handleTestRequestStringURINullableRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11823,7 +12969,11 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestRequestStringURINullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringURINullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11832,7 +12982,7 @@ func (s *Server) handleTestRequestStringURINullableArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11864,7 +13014,11 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestRequestStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringURINullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11873,7 +13027,7 @@ func (s *Server) handleTestRequestStringURINullableArrayArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11905,7 +13059,11 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 	var err error
 	request, err := decodeTestRequestStringUUIDRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringUUID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11914,7 +13072,7 @@ func (s *Server) handleTestRequestStringUUIDRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11946,7 +13104,11 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestRequestStringUUIDArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringUUIDArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11955,7 +13117,7 @@ func (s *Server) handleTestRequestStringUUIDArrayRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -11987,7 +13149,11 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestRequestStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringUUIDArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -11996,7 +13162,7 @@ func (s *Server) handleTestRequestStringUUIDArrayArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12028,7 +13194,11 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestRequestStringUUIDNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringUUIDNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12037,7 +13207,7 @@ func (s *Server) handleTestRequestStringUUIDNullableRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12069,7 +13239,11 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestRequestStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringUUIDNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12078,7 +13252,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12110,7 +13284,11 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestRequestStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestStringUUIDNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12119,7 +13297,7 @@ func (s *Server) handleTestRequestStringUUIDNullableArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12151,7 +13329,11 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 	var err error
 	request, err := decodeTestResponseAnyRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseAny",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12160,7 +13342,7 @@ func (s *Server) handleTestResponseAnyRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12192,7 +13374,11 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 	var err error
 	request, err := decodeTestResponseBooleanRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseBoolean",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12201,7 +13387,7 @@ func (s *Server) handleTestResponseBooleanRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12233,7 +13419,11 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 	var err error
 	request, err := decodeTestResponseBooleanArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseBooleanArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12242,7 +13432,7 @@ func (s *Server) handleTestResponseBooleanArrayRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12274,7 +13464,11 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestResponseBooleanArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseBooleanArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12283,7 +13477,7 @@ func (s *Server) handleTestResponseBooleanArrayArrayRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12315,7 +13509,11 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestResponseBooleanNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseBooleanNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12324,7 +13522,7 @@ func (s *Server) handleTestResponseBooleanNullableRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12356,7 +13554,11 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseBooleanNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseBooleanNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12365,7 +13567,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12397,7 +13599,11 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 	var err error
 	request, err := decodeTestResponseBooleanNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseBooleanNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12406,7 +13612,7 @@ func (s *Server) handleTestResponseBooleanNullableArrayArrayRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12438,7 +13644,11 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestResponseEmptyStructRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseEmptyStruct",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12447,7 +13657,7 @@ func (s *Server) handleTestResponseEmptyStructRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12479,7 +13689,11 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestResponseFormatTestRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseFormatTest",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12488,7 +13702,7 @@ func (s *Server) handleTestResponseFormatTestRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12520,7 +13734,11 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 	var err error
 	request, err := decodeTestResponseIntegerRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseInteger",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12529,7 +13747,7 @@ func (s *Server) handleTestResponseIntegerRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12561,7 +13779,11 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 	var err error
 	request, err := decodeTestResponseIntegerArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12570,7 +13792,7 @@ func (s *Server) handleTestResponseIntegerArrayRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12602,7 +13824,11 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestResponseIntegerArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12611,7 +13837,7 @@ func (s *Server) handleTestResponseIntegerArrayArrayRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12643,7 +13869,11 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 	var err error
 	request, err := decodeTestResponseIntegerInt32Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt32",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12652,7 +13882,7 @@ func (s *Server) handleTestResponseIntegerInt32Request(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12684,7 +13914,11 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestResponseIntegerInt32ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt32Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12693,7 +13927,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12725,7 +13959,11 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseIntegerInt32ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt32ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12734,7 +13972,7 @@ func (s *Server) handleTestResponseIntegerInt32ArrayArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12766,7 +14004,11 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseIntegerInt32NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt32Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12775,7 +14017,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12807,7 +14049,11 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 	var err error
 	request, err := decodeTestResponseIntegerInt32NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt32NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12816,7 +14062,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12848,7 +14094,11 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 	var err error
 	request, err := decodeTestResponseIntegerInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt32NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12857,7 +14107,7 @@ func (s *Server) handleTestResponseIntegerInt32NullableArrayArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12889,7 +14139,11 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 	var err error
 	request, err := decodeTestResponseIntegerInt64Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt64",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12898,7 +14152,7 @@ func (s *Server) handleTestResponseIntegerInt64Request(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12930,7 +14184,11 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestResponseIntegerInt64ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt64Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12939,7 +14197,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -12971,7 +14229,11 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseIntegerInt64ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt64ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -12980,7 +14242,7 @@ func (s *Server) handleTestResponseIntegerInt64ArrayArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13012,7 +14274,11 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseIntegerInt64NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt64Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13021,7 +14287,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13053,7 +14319,11 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 	var err error
 	request, err := decodeTestResponseIntegerInt64NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt64NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13062,7 +14332,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13094,7 +14364,11 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 	var err error
 	request, err := decodeTestResponseIntegerInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerInt64NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13103,7 +14377,7 @@ func (s *Server) handleTestResponseIntegerInt64NullableArrayArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13135,7 +14409,11 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestResponseIntegerNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13144,7 +14422,7 @@ func (s *Server) handleTestResponseIntegerNullableRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13176,7 +14454,11 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseIntegerNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13185,7 +14467,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13217,7 +14499,11 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	var err error
 	request, err := decodeTestResponseIntegerNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseIntegerNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13226,7 +14512,7 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13258,7 +14544,11 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 	var err error
 	request, err := decodeTestResponseNumberRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumber",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13267,7 +14557,7 @@ func (s *Server) handleTestResponseNumberRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13299,7 +14589,11 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestResponseNumberArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13308,7 +14602,7 @@ func (s *Server) handleTestResponseNumberArrayRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13340,7 +14634,11 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestResponseNumberArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13349,7 +14647,7 @@ func (s *Server) handleTestResponseNumberArrayArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13381,7 +14679,11 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 	var err error
 	request, err := decodeTestResponseNumberDoubleRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberDouble",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13390,7 +14692,7 @@ func (s *Server) handleTestResponseNumberDoubleRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13422,7 +14724,11 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestResponseNumberDoubleArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberDoubleArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13431,7 +14737,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13463,7 +14769,11 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseNumberDoubleArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberDoubleArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13472,7 +14782,7 @@ func (s *Server) handleTestResponseNumberDoubleArrayArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13504,7 +14814,11 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseNumberDoubleNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberDoubleNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13513,7 +14827,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13545,7 +14859,11 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 	var err error
 	request, err := decodeTestResponseNumberDoubleNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberDoubleNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13554,7 +14872,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13586,7 +14904,11 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 	var err error
 	request, err := decodeTestResponseNumberDoubleNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberDoubleNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13595,7 +14917,7 @@ func (s *Server) handleTestResponseNumberDoubleNullableArrayArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13627,7 +14949,11 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestResponseNumberFloatRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberFloat",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13636,7 +14962,7 @@ func (s *Server) handleTestResponseNumberFloatRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13668,7 +14994,11 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestResponseNumberFloatArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberFloatArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13677,7 +15007,7 @@ func (s *Server) handleTestResponseNumberFloatArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13709,7 +15039,11 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestResponseNumberFloatArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberFloatArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13718,7 +15052,7 @@ func (s *Server) handleTestResponseNumberFloatArrayArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13750,7 +15084,11 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseNumberFloatNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberFloatNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13759,7 +15097,7 @@ func (s *Server) handleTestResponseNumberFloatNullableRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13791,7 +15129,11 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseNumberFloatNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberFloatNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13800,7 +15142,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13832,7 +15174,11 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestResponseNumberFloatNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberFloatNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13841,7 +15187,7 @@ func (s *Server) handleTestResponseNumberFloatNullableArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13873,7 +15219,11 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestResponseNumberInt32Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt32",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13882,7 +15232,7 @@ func (s *Server) handleTestResponseNumberInt32Request(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13914,7 +15264,11 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestResponseNumberInt32ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt32Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13923,7 +15277,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13955,7 +15309,11 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestResponseNumberInt32ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt32ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -13964,7 +15322,7 @@ func (s *Server) handleTestResponseNumberInt32ArrayArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -13996,7 +15354,11 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseNumberInt32NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt32Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14005,7 +15367,7 @@ func (s *Server) handleTestResponseNumberInt32NullableRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14037,7 +15399,11 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseNumberInt32NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt32NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14046,7 +15412,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14078,7 +15444,11 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestResponseNumberInt32NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt32NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14087,7 +15457,7 @@ func (s *Server) handleTestResponseNumberInt32NullableArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14119,7 +15489,11 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestResponseNumberInt64Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt64",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14128,7 +15502,7 @@ func (s *Server) handleTestResponseNumberInt64Request(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14160,7 +15534,11 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestResponseNumberInt64ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt64Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14169,7 +15547,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14201,7 +15579,11 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestResponseNumberInt64ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt64ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14210,7 +15592,7 @@ func (s *Server) handleTestResponseNumberInt64ArrayArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14242,7 +15624,11 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseNumberInt64NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt64Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14251,7 +15637,7 @@ func (s *Server) handleTestResponseNumberInt64NullableRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14283,7 +15669,11 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseNumberInt64NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt64NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14292,7 +15682,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14324,7 +15714,11 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestResponseNumberInt64NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberInt64NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14333,7 +15727,7 @@ func (s *Server) handleTestResponseNumberInt64NullableArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14365,7 +15759,11 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestResponseNumberNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14374,7 +15772,7 @@ func (s *Server) handleTestResponseNumberNullableRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14406,7 +15804,11 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseNumberNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14415,7 +15817,7 @@ func (s *Server) handleTestResponseNumberNullableArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14447,7 +15849,11 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseNumberNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNumberNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14456,7 +15862,7 @@ func (s *Server) handleTestResponseNumberNullableArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14488,7 +15894,11 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 	var err error
 	request, err := decodeTestResponseStringRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseString",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14497,7 +15907,7 @@ func (s *Server) handleTestResponseStringRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14529,7 +15939,11 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestResponseStringArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14538,7 +15952,7 @@ func (s *Server) handleTestResponseStringArrayRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14570,7 +15984,11 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestResponseStringArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14579,7 +15997,7 @@ func (s *Server) handleTestResponseStringArrayArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14611,7 +16029,11 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 	var err error
 	request, err := decodeTestResponseStringBinaryRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringBinary",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14620,7 +16042,7 @@ func (s *Server) handleTestResponseStringBinaryRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14652,7 +16074,11 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestResponseStringBinaryArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringBinaryArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14661,7 +16087,7 @@ func (s *Server) handleTestResponseStringBinaryArrayRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14693,7 +16119,11 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseStringBinaryArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringBinaryArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14702,7 +16132,7 @@ func (s *Server) handleTestResponseStringBinaryArrayArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14734,7 +16164,11 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseStringBinaryNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringBinaryNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14743,7 +16177,7 @@ func (s *Server) handleTestResponseStringBinaryNullableRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14775,7 +16209,11 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 	var err error
 	request, err := decodeTestResponseStringBinaryNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringBinaryNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14784,7 +16222,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayRequest(args [0]stri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14816,7 +16254,11 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 	var err error
 	request, err := decodeTestResponseStringBinaryNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringBinaryNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14825,7 +16267,7 @@ func (s *Server) handleTestResponseStringBinaryNullableArrayArrayRequest(args [0
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14857,7 +16299,11 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestResponseStringByteRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringByte",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14866,7 +16312,7 @@ func (s *Server) handleTestResponseStringByteRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14898,7 +16344,11 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestResponseStringByteArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringByteArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14907,7 +16357,7 @@ func (s *Server) handleTestResponseStringByteArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14939,7 +16389,11 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseStringByteArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringByteArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14948,7 +16402,7 @@ func (s *Server) handleTestResponseStringByteArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -14980,7 +16434,11 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestResponseStringByteNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringByteNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -14989,7 +16447,7 @@ func (s *Server) handleTestResponseStringByteNullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15021,7 +16479,11 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestResponseStringByteNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringByteNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15030,7 +16492,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15062,7 +16524,11 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestResponseStringByteNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringByteNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15071,7 +16537,7 @@ func (s *Server) handleTestResponseStringByteNullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15103,7 +16569,11 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestResponseStringDateRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDate",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15112,7 +16582,7 @@ func (s *Server) handleTestResponseStringDateRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15144,7 +16614,11 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestResponseStringDateArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15153,7 +16627,7 @@ func (s *Server) handleTestResponseStringDateArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15185,7 +16659,11 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseStringDateArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15194,7 +16672,7 @@ func (s *Server) handleTestResponseStringDateArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15226,7 +16704,11 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestResponseStringDateNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15235,7 +16717,7 @@ func (s *Server) handleTestResponseStringDateNullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15267,7 +16749,11 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestResponseStringDateNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15276,7 +16762,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15308,7 +16794,11 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestResponseStringDateNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15317,7 +16807,7 @@ func (s *Server) handleTestResponseStringDateNullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15349,7 +16839,11 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestResponseStringDateTimeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateTime",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15358,7 +16852,7 @@ func (s *Server) handleTestResponseStringDateTimeRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15390,7 +16884,11 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseStringDateTimeArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateTimeArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15399,7 +16897,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15431,7 +16929,11 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseStringDateTimeArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateTimeArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15440,7 +16942,7 @@ func (s *Server) handleTestResponseStringDateTimeArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15472,7 +16974,11 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseStringDateTimeNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateTimeNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15481,7 +16987,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15513,7 +17019,11 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestResponseStringDateTimeNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateTimeNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15522,7 +17032,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15554,7 +17064,11 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 	var err error
 	request, err := decodeTestResponseStringDateTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDateTimeNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15563,7 +17077,7 @@ func (s *Server) handleTestResponseStringDateTimeNullableArrayArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15595,7 +17109,11 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestResponseStringDurationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDuration",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15604,7 +17122,7 @@ func (s *Server) handleTestResponseStringDurationRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15636,7 +17154,11 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseStringDurationArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDurationArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15645,7 +17167,7 @@ func (s *Server) handleTestResponseStringDurationArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15677,7 +17199,11 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseStringDurationArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDurationArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15686,7 +17212,7 @@ func (s *Server) handleTestResponseStringDurationArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15718,7 +17244,11 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseStringDurationNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDurationNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15727,7 +17257,7 @@ func (s *Server) handleTestResponseStringDurationNullableRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15759,7 +17289,11 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestResponseStringDurationNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDurationNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15768,7 +17302,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15800,7 +17334,11 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 	var err error
 	request, err := decodeTestResponseStringDurationNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringDurationNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15809,7 +17347,7 @@ func (s *Server) handleTestResponseStringDurationNullableArrayArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15841,7 +17379,11 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodeTestResponseStringEmailRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringEmail",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15850,7 +17392,7 @@ func (s *Server) handleTestResponseStringEmailRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15882,7 +17424,11 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestResponseStringEmailArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringEmailArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15891,7 +17437,7 @@ func (s *Server) handleTestResponseStringEmailArrayRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15923,7 +17469,11 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestResponseStringEmailArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringEmailArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15932,7 +17482,7 @@ func (s *Server) handleTestResponseStringEmailArrayArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -15964,7 +17514,11 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseStringEmailNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringEmailNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -15973,7 +17527,7 @@ func (s *Server) handleTestResponseStringEmailNullableRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16005,7 +17559,11 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseStringEmailNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringEmailNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16014,7 +17572,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16046,7 +17604,11 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 	var err error
 	request, err := decodeTestResponseStringEmailNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringEmailNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16055,7 +17617,7 @@ func (s *Server) handleTestResponseStringEmailNullableArrayArrayRequest(args [0]
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16087,7 +17649,11 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestResponseStringHostnameRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringHostname",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16096,7 +17662,7 @@ func (s *Server) handleTestResponseStringHostnameRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16128,7 +17694,11 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseStringHostnameArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringHostnameArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16137,7 +17707,7 @@ func (s *Server) handleTestResponseStringHostnameArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16169,7 +17739,11 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseStringHostnameArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringHostnameArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16178,7 +17752,7 @@ func (s *Server) handleTestResponseStringHostnameArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16210,7 +17784,11 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseStringHostnameNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringHostnameNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16219,7 +17797,7 @@ func (s *Server) handleTestResponseStringHostnameNullableRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16251,7 +17829,11 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestResponseStringHostnameNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringHostnameNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16260,7 +17842,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16292,7 +17874,11 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 	var err error
 	request, err := decodeTestResponseStringHostnameNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringHostnameNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16301,7 +17887,7 @@ func (s *Server) handleTestResponseStringHostnameNullableArrayArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16333,7 +17919,11 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 	var err error
 	request, err := decodeTestResponseStringIPRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIP",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16342,7 +17932,7 @@ func (s *Server) handleTestResponseStringIPRequest(args [0]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16374,7 +17964,11 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 	var err error
 	request, err := decodeTestResponseStringIPArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIPArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16383,7 +17977,7 @@ func (s *Server) handleTestResponseStringIPArrayRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16415,7 +18009,11 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestResponseStringIPArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIPArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16424,7 +18022,7 @@ func (s *Server) handleTestResponseStringIPArrayArrayRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16456,7 +18054,11 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 	var err error
 	request, err := decodeTestResponseStringIPNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIPNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16465,7 +18067,7 @@ func (s *Server) handleTestResponseStringIPNullableRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16497,7 +18099,11 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 	var err error
 	request, err := decodeTestResponseStringIPNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIPNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16506,7 +18112,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayRequest(args [0]string, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16538,7 +18144,11 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 	var err error
 	request, err := decodeTestResponseStringIPNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIPNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16547,7 +18157,7 @@ func (s *Server) handleTestResponseStringIPNullableArrayArrayRequest(args [0]str
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16579,7 +18189,11 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestResponseStringIpv4Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv4",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16588,7 +18202,7 @@ func (s *Server) handleTestResponseStringIpv4Request(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16620,7 +18234,11 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestResponseStringIpv4ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv4Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16629,7 +18247,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16661,7 +18279,11 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseStringIpv4ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv4ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16670,7 +18292,7 @@ func (s *Server) handleTestResponseStringIpv4ArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16702,7 +18324,11 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestResponseStringIpv4NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv4Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16711,7 +18337,7 @@ func (s *Server) handleTestResponseStringIpv4NullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16743,7 +18369,11 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestResponseStringIpv4NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv4NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16752,7 +18382,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16784,7 +18414,11 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestResponseStringIpv4NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv4NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16793,7 +18427,7 @@ func (s *Server) handleTestResponseStringIpv4NullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16825,7 +18459,11 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestResponseStringIpv6Request(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv6",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16834,7 +18472,7 @@ func (s *Server) handleTestResponseStringIpv6Request(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16866,7 +18504,11 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestResponseStringIpv6ArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv6Array",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16875,7 +18517,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16907,7 +18549,11 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseStringIpv6ArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv6ArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16916,7 +18562,7 @@ func (s *Server) handleTestResponseStringIpv6ArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16948,7 +18594,11 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestResponseStringIpv6NullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv6Nullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16957,7 +18607,7 @@ func (s *Server) handleTestResponseStringIpv6NullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -16989,7 +18639,11 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestResponseStringIpv6NullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv6NullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -16998,7 +18652,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17030,7 +18684,11 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestResponseStringIpv6NullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringIpv6NullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17039,7 +18697,7 @@ func (s *Server) handleTestResponseStringIpv6NullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17071,7 +18729,11 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestResponseStringNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17080,7 +18742,7 @@ func (s *Server) handleTestResponseStringNullableRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17112,7 +18774,11 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseStringNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17121,7 +18787,7 @@ func (s *Server) handleTestResponseStringNullableArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17153,7 +18819,11 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseStringNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17162,7 +18832,7 @@ func (s *Server) handleTestResponseStringNullableArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17194,7 +18864,11 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestResponseStringPasswordRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringPassword",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17203,7 +18877,7 @@ func (s *Server) handleTestResponseStringPasswordRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17235,7 +18909,11 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseStringPasswordArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringPasswordArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17244,7 +18922,7 @@ func (s *Server) handleTestResponseStringPasswordArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17276,7 +18954,11 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 	var err error
 	request, err := decodeTestResponseStringPasswordArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringPasswordArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17285,7 +18967,7 @@ func (s *Server) handleTestResponseStringPasswordArrayArrayRequest(args [0]strin
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17317,7 +18999,11 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseStringPasswordNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringPasswordNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17326,7 +19012,7 @@ func (s *Server) handleTestResponseStringPasswordNullableRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17358,7 +19044,11 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestResponseStringPasswordNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringPasswordNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17367,7 +19057,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17399,7 +19089,11 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 	var err error
 	request, err := decodeTestResponseStringPasswordNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringPasswordNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17408,7 +19102,7 @@ func (s *Server) handleTestResponseStringPasswordNullableArrayArrayRequest(args 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17440,7 +19134,11 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestResponseStringTimeRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringTime",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17449,7 +19147,7 @@ func (s *Server) handleTestResponseStringTimeRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17481,7 +19179,11 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestResponseStringTimeArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringTimeArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17490,7 +19192,7 @@ func (s *Server) handleTestResponseStringTimeArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17522,7 +19224,11 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseStringTimeArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringTimeArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17531,7 +19237,7 @@ func (s *Server) handleTestResponseStringTimeArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17563,7 +19269,11 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestResponseStringTimeNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringTimeNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17572,7 +19282,7 @@ func (s *Server) handleTestResponseStringTimeNullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17604,7 +19314,11 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestResponseStringTimeNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringTimeNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17613,7 +19327,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17645,7 +19359,11 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestResponseStringTimeNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringTimeNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17654,7 +19372,7 @@ func (s *Server) handleTestResponseStringTimeNullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17686,7 +19404,11 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 	var err error
 	request, err := decodeTestResponseStringURIRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringURI",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17695,7 +19417,7 @@ func (s *Server) handleTestResponseStringURIRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17727,7 +19449,11 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 	var err error
 	request, err := decodeTestResponseStringURIArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringURIArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17736,7 +19462,7 @@ func (s *Server) handleTestResponseStringURIArrayRequest(args [0]string, w http.
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17768,7 +19494,11 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 	var err error
 	request, err := decodeTestResponseStringURIArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringURIArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17777,7 +19507,7 @@ func (s *Server) handleTestResponseStringURIArrayArrayRequest(args [0]string, w 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17809,7 +19539,11 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 	var err error
 	request, err := decodeTestResponseStringURINullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringURINullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17818,7 +19552,7 @@ func (s *Server) handleTestResponseStringURINullableRequest(args [0]string, w ht
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17850,7 +19584,11 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 	var err error
 	request, err := decodeTestResponseStringURINullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringURINullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17859,7 +19597,7 @@ func (s *Server) handleTestResponseStringURINullableArrayRequest(args [0]string,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17891,7 +19629,11 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 	var err error
 	request, err := decodeTestResponseStringURINullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringURINullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17900,7 +19642,7 @@ func (s *Server) handleTestResponseStringURINullableArrayArrayRequest(args [0]st
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17932,7 +19674,11 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodeTestResponseStringUUIDRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringUUID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17941,7 +19687,7 @@ func (s *Server) handleTestResponseStringUUIDRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -17973,7 +19719,11 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 	var err error
 	request, err := decodeTestResponseStringUUIDArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringUUIDArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -17982,7 +19732,7 @@ func (s *Server) handleTestResponseStringUUIDArrayRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18014,7 +19764,11 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 	var err error
 	request, err := decodeTestResponseStringUUIDArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringUUIDArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18023,7 +19777,7 @@ func (s *Server) handleTestResponseStringUUIDArrayArrayRequest(args [0]string, w
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18055,7 +19809,11 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 	var err error
 	request, err := decodeTestResponseStringUUIDNullableRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringUUIDNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18064,7 +19822,7 @@ func (s *Server) handleTestResponseStringUUIDNullableRequest(args [0]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18096,7 +19854,11 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 	var err error
 	request, err := decodeTestResponseStringUUIDNullableArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringUUIDNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18105,7 +19867,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayRequest(args [0]string
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18137,7 +19899,11 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	var err error
 	request, err := decodeTestResponseStringUUIDNullableArrayArrayRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseStringUUIDNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -18146,7 +19912,7 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -18160,22 +19926,16 @@ func (s *Server) handleTestResponseStringUUIDNullableArrayArrayRequest(args [0]s
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+func (s *Server) badRequest(
+	ctx context.Context,
+	w http.ResponseWriter,
+	r *http.Request,
+	span trace.Span,
+	otelAttrs []attribute.KeyValue,
+	err error,
+) {
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	respondError(w, http.StatusBadRequest, err)
-}
-
-func respondError(w http.ResponseWriter, code int, err error) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	data, writeErr := json.Marshal(struct {
-		ErrorMessage string `json:"error_message"`
-	}{
-		ErrorMessage: err.Error(),
-	})
-	if writeErr == nil {
-		w.Write(data)
-	}
+	s.cfg.ErrorHandler(ctx, w, r, err)
 }

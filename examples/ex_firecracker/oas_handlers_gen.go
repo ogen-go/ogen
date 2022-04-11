@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -97,7 +99,11 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 	var err error
 	request, err := decodeCreateSnapshotRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"CreateSnapshot",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -106,7 +112,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -138,7 +144,11 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 	var err error
 	request, err := decodeCreateSyncActionRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"CreateSyncAction",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -147,7 +157,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -183,7 +193,7 @@ func (s *Server) handleDescribeBalloonConfigRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -219,7 +229,7 @@ func (s *Server) handleDescribeBalloonStatsRequest(args [0]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -255,7 +265,7 @@ func (s *Server) handleDescribeInstanceRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -291,7 +301,7 @@ func (s *Server) handleGetExportVmConfigRequest(args [0]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -327,7 +337,7 @@ func (s *Server) handleGetMachineConfigurationRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -359,7 +369,11 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	var err error
 	request, err := decodeLoadSnapshotRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"LoadSnapshot",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -368,7 +382,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -398,7 +412,11 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	var err error
 	request, err := decodeMmdsConfigPutRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MmdsConfigPut",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -407,7 +425,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -441,7 +459,7 @@ func (s *Server) handleMmdsGetRequest(args [0]string, w http.ResponseWriter, r *
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -471,7 +489,11 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	request, err := decodeMmdsPatchRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MmdsPatch",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -480,7 +502,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -510,7 +532,11 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 	var err error
 	request, err := decodeMmdsPutRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"MmdsPut",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -519,7 +545,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -551,7 +577,11 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 	var err error
 	request, err := decodePatchBalloonRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PatchBalloon",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -560,7 +590,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -592,7 +622,11 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 	var err error
 	request, err := decodePatchBalloonStatsIntervalRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PatchBalloonStatsInterval",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -601,7 +635,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -633,12 +667,20 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 	var err error
 	params, err := decodePatchGuestDriveByIDParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PatchGuestDriveByID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePatchGuestDriveByIDRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PatchGuestDriveByID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -647,7 +689,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -679,12 +721,20 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 	var err error
 	params, err := decodePatchGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PatchGuestNetworkInterfaceByID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePatchGuestNetworkInterfaceByIDRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PatchGuestNetworkInterfaceByID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -693,7 +743,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -725,7 +775,11 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 	var err error
 	request, err := decodePatchMachineConfigurationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PatchMachineConfiguration",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -734,7 +788,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -766,7 +820,11 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 	var err error
 	request, err := decodePatchVmRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PatchVm",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -775,7 +833,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -807,7 +865,11 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 	var err error
 	request, err := decodePutBalloonRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PutBalloon",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -816,7 +878,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -848,7 +910,11 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 	var err error
 	request, err := decodePutGuestBootSourceRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PutGuestBootSource",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -857,7 +923,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -889,12 +955,20 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 	var err error
 	params, err := decodePutGuestDriveByIDParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PutGuestDriveByID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePutGuestDriveByIDRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PutGuestDriveByID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -903,7 +977,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -935,12 +1009,20 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 	var err error
 	params, err := decodePutGuestNetworkInterfaceByIDParams(args, r)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeParamsError{
+			"PutGuestNetworkInterfaceByID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePutGuestNetworkInterfaceByIDRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PutGuestNetworkInterfaceByID",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -949,7 +1031,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -981,7 +1063,11 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 	var err error
 	request, err := decodePutGuestVsockRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PutGuestVsock",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -990,7 +1076,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1022,7 +1108,11 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	request, err := decodePutLoggerRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PutLogger",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1031,7 +1121,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1063,7 +1153,11 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 	var err error
 	request, err := decodePutMachineConfigurationRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PutMachineConfiguration",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1072,7 +1166,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1104,7 +1198,11 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	var err error
 	request, err := decodePutMetricsRequest(r, span)
 	if err != nil {
-		s.badRequest(ctx, w, span, otelAttrs, err)
+		err = &ogenerrors.DecodeRequestError{
+			"PutMetrics",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 
@@ -1113,7 +1211,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		respondError(w, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1127,22 +1225,16 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-func (s *Server) badRequest(ctx context.Context, w http.ResponseWriter, span trace.Span, otelAttrs []attribute.KeyValue, err error) {
+func (s *Server) badRequest(
+	ctx context.Context,
+	w http.ResponseWriter,
+	r *http.Request,
+	span trace.Span,
+	otelAttrs []attribute.KeyValue,
+	err error,
+) {
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	respondError(w, http.StatusBadRequest, err)
-}
-
-func respondError(w http.ResponseWriter, code int, err error) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-	data, writeErr := json.Marshal(struct {
-		ErrorMessage string `json:"error_message"`
-	}{
-		ErrorMessage: err.Error(),
-	})
-	if writeErr == nil {
-		w.Write(data)
-	}
+	s.cfg.ErrorHandler(ctx, w, r, err)
 }
