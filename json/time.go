@@ -62,5 +62,7 @@ func DecodeDuration(i *jx.Decoder) (v time.Duration, err error) {
 }
 
 func EncodeDuration(s *jx.Encoder, v time.Duration) {
-	s.Str(v.String())
+	var buf [32]byte
+	w := formatDuration(&buf, v)
+	s.ByteStr(buf[w:])
 }
