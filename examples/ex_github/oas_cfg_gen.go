@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -106,9 +108,19 @@ func putBuf(b *bytes.Buffer) {
 }
 
 // ErrorHandler is error handler.
-type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, code int, err error)
+type ErrorHandler func(ctx context.Context, w http.ResponseWriter, r *http.Request, err error)
 
-func respondError(ctx context.Context, w http.ResponseWriter, r *http.Request, code int, err error) {
+func respondError(ctx context.Context, w http.ResponseWriter, r *http.Request, err error) {
+	var (
+		code    = http.StatusInternalServerError
+		ogenErr ogenerrors.Error
+	)
+	switch {
+	case errors.Is(err, ht.ErrNotImplemented):
+		code = http.StatusNotImplemented
+	case errors.As(err, &ogenErr):
+		code = ogenErr.Code()
+	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(code)
 	data, writeErr := json.Marshal(struct {

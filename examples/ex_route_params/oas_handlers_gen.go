@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -97,6 +99,10 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 	var err error
 	params, err := decodeDataGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"DataGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -106,7 +112,7 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -142,7 +148,7 @@ func (s *Server) handleDataGetAnyRequest(args [0]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -174,6 +180,10 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeDataGetIDParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"DataGetID",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -183,7 +193,7 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -208,5 +218,5 @@ func (s *Server) badRequest(
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, http.StatusBadRequest, err)
+	s.cfg.ErrorHandler(ctx, w, r, err)
 }

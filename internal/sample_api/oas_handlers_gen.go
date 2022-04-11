@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -97,6 +99,10 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	var err error
 	params, err := decodeDataGetFormatParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"DataGetFormat",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -106,7 +112,7 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -138,11 +144,19 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	var err error
 	params, err := decodeDefaultTestParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"DefaultTest",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeDefaultTestRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"DefaultTest",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -152,7 +166,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -188,7 +202,7 @@ func (s *Server) handleErrorGetRequest(args [0]string, w http.ResponseWriter, r 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -220,6 +234,10 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeFoobarGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"FoobarGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -229,7 +247,7 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -261,6 +279,10 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	var err error
 	request, err := decodeFoobarPostRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"FoobarPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -270,7 +292,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -304,7 +326,7 @@ func (s *Server) handleFoobarPutRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -336,6 +358,10 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	params, err := decodeGetHeaderParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"GetHeader",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -345,7 +371,7 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -381,7 +407,7 @@ func (s *Server) handleNullableDefaultResponseRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -413,6 +439,10 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	var err error
 	request, err := decodeOneofBugRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"OneofBug",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -422,7 +452,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -456,7 +486,7 @@ func (s *Server) handlePatternRecursiveMapGetRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -488,6 +518,10 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	request, err := decodePetCreateRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"PetCreate",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -497,7 +531,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -529,6 +563,10 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	var err error
 	params, err := decodePetFriendsNamesByIDParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PetFriendsNamesByID",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -538,7 +576,7 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -570,6 +608,10 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	var err error
 	params, err := decodePetGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PetGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -579,7 +621,7 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -611,6 +653,10 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	var err error
 	params, err := decodePetGetAvatarByIDParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PetGetAvatarByID",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -620,7 +666,7 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -652,6 +698,10 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	var err error
 	params, err := decodePetGetAvatarByNameParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PetGetAvatarByName",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -661,7 +711,7 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -693,6 +743,10 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	var err error
 	params, err := decodePetGetByNameParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PetGetByName",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -702,7 +756,7 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -734,6 +788,10 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	var err error
 	params, err := decodePetNameByIDParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PetNameByID",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -743,7 +801,7 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -773,6 +831,10 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	var err error
 	request, err := decodePetUpdateNameAliasPostRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"PetUpdateNameAliasPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -782,7 +844,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -812,6 +874,10 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 	var err error
 	request, err := decodePetUpdateNamePostRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"PetUpdateNamePost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -821,7 +887,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -853,11 +919,19 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	var err error
 	params, err := decodePetUploadAvatarByIDParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PetUploadAvatarByID",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodePetUploadAvatarByIDRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"PetUploadAvatarByID",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -867,7 +941,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -901,7 +975,7 @@ func (s *Server) handleRecursiveArrayGetRequest(args [0]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -935,7 +1009,7 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -967,7 +1041,11 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 	var err error
 	ctx, err = s.securityAPIKey(ctx, "SecurityTest", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"APIKey\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "SecurityTest",
+			Security:  "APIKey",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -977,7 +1055,7 @@ func (s *Server) handleSecurityTestRequest(args [0]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1011,7 +1089,7 @@ func (s *Server) handleStringIntMapGetRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1043,6 +1121,10 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	var err error
 	request, err := decodeTestFloatValidationRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestFloatValidation",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -1052,7 +1134,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1084,6 +1166,10 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 	var err error
 	params, err := decodeTestObjectQueryParameterParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"TestObjectQueryParameter",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -1093,7 +1179,7 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1118,5 +1204,5 @@ func (s *Server) badRequest(
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, http.StatusBadRequest, err)
+	s.cfg.ErrorHandler(ctx, w, r, err)
 }

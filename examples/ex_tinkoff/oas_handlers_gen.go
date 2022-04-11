@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -95,7 +97,11 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "MarketBondsGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "MarketBondsGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -105,7 +111,7 @@ func (s *Server) handleMarketBondsGetRequest(args [0]string, w http.ResponseWrit
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -135,12 +141,20 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "MarketCandlesGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "MarketCandlesGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeMarketCandlesGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"MarketCandlesGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -150,7 +164,7 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -180,7 +194,11 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "MarketCurrenciesGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "MarketCurrenciesGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -190,7 +208,7 @@ func (s *Server) handleMarketCurrenciesGetRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -220,7 +238,11 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "MarketEtfsGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "MarketEtfsGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -230,7 +252,7 @@ func (s *Server) handleMarketEtfsGetRequest(args [0]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -260,12 +282,20 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "MarketOrderbookGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "MarketOrderbookGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeMarketOrderbookGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"MarketOrderbookGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -275,7 +305,7 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -305,12 +335,20 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "MarketSearchByFigiGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "MarketSearchByFigiGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeMarketSearchByFigiGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"MarketSearchByFigiGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -320,7 +358,7 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -350,12 +388,20 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "MarketSearchByTickerGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "MarketSearchByTickerGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeMarketSearchByTickerGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"MarketSearchByTickerGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -365,7 +411,7 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -395,7 +441,11 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "MarketStocksGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "MarketStocksGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -405,7 +455,7 @@ func (s *Server) handleMarketStocksGetRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -435,12 +485,20 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "OperationsGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "OperationsGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOperationsGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"OperationsGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -450,7 +508,7 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -480,12 +538,20 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "OrdersCancelPost", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "OrdersCancelPost",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOrdersCancelPostParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"OrdersCancelPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -495,7 +561,7 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -525,12 +591,20 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "OrdersGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "OrdersGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOrdersGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"OrdersGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -540,7 +614,7 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -570,17 +644,29 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "OrdersLimitOrderPost", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "OrdersLimitOrderPost",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOrdersLimitOrderPostParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"OrdersLimitOrderPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrdersLimitOrderPostRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"OrdersLimitOrderPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -590,7 +676,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -620,17 +706,29 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "OrdersMarketOrderPost", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "OrdersMarketOrderPost",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeOrdersMarketOrderPostParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"OrdersMarketOrderPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeOrdersMarketOrderPostRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"OrdersMarketOrderPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -640,7 +738,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -670,12 +768,20 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "PortfolioCurrenciesGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "PortfolioCurrenciesGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodePortfolioCurrenciesGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PortfolioCurrenciesGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -685,7 +791,7 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -715,12 +821,20 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "PortfolioGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "PortfolioGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodePortfolioGetParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"PortfolioGet",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -730,7 +844,7 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -760,12 +874,20 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "SandboxClearPost", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "SandboxClearPost",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeSandboxClearPostParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"SandboxClearPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -775,7 +897,7 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -805,17 +927,29 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "SandboxCurrenciesBalancePost", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "SandboxCurrenciesBalancePost",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeSandboxCurrenciesBalancePostParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"SandboxCurrenciesBalancePost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeSandboxCurrenciesBalancePostRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"SandboxCurrenciesBalancePost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -825,7 +959,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -855,17 +989,29 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "SandboxPositionsBalancePost", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "SandboxPositionsBalancePost",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeSandboxPositionsBalancePostParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"SandboxPositionsBalancePost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeSandboxPositionsBalancePostRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"SandboxPositionsBalancePost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -875,7 +1021,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -905,12 +1051,20 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "SandboxRegisterPost", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "SandboxRegisterPost",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	request, err := decodeSandboxRegisterPostRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"SandboxRegisterPost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -920,7 +1074,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -950,12 +1104,20 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "SandboxRemovePost", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "SandboxRemovePost",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
 	params, err := decodeSandboxRemovePostParams(args, r)
 	if err != nil {
+		err = &ogenerrors.DecodeParamsError{
+			"SandboxRemovePost",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -965,7 +1127,7 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -995,7 +1157,11 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 	var err error
 	ctx, err = s.securitySSOAuth(ctx, "UserAccountsGet", r)
 	if err != nil {
-		err = errors.Wrap(err, "security \"SSOAuth\"")
+		err = &ogenerrors.SecurityError{
+			Operation: "UserAccountsGet",
+			Security:  "SSOAuth",
+			Err:       err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -1005,7 +1171,7 @@ func (s *Server) handleUserAccountsGetRequest(args [0]string, w http.ResponseWri
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
 		s.errors.Add(ctx, 1, otelAttrs...)
-		s.cfg.ErrorHandler(ctx, w, r, http.StatusInternalServerError, err)
+		s.cfg.ErrorHandler(ctx, w, r, err)
 		return
 	}
 
@@ -1030,5 +1196,5 @@ func (s *Server) badRequest(
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, http.StatusBadRequest, err)
+	s.cfg.ErrorHandler(ctx, w, r, err)
 }

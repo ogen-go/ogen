@@ -35,6 +35,7 @@ import (
 	"github.com/ogen-go/ogen/conv"
 	ht "github.com/ogen-go/ogen/http"
 	"github.com/ogen-go/ogen/json"
+	"github.com/ogen-go/ogen/ogenerrors"
 	"github.com/ogen-go/ogen/otelogen"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
@@ -74,6 +75,7 @@ var (
 	_ = conv.ToInt32
 	_ = ht.NewRequest
 	_ = json.Marshal
+	_ = ogenerrors.SecurityError{}
 	_ = otelogen.Version
 	_ = uri.PathEncoder{}
 	_ = validate.Int{}
@@ -97,6 +99,10 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 	var err error
 	request, err := decodeDataCreateRequest(r, span)
 	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"DataCreate",
+			err,
+		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
@@ -112,7 +118,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {
-			s.cfg.ErrorHandler(ctx, w, r, http.StatusNotImplemented, err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -157,7 +163,7 @@ func (s *Server) handleDataGetRequest(args [0]string, w http.ResponseWriter, r *
 			return
 		}
 		if errors.Is(err, ht.ErrNotImplemented) {
-			s.cfg.ErrorHandler(ctx, w, r, http.StatusNotImplemented, err)
+			s.cfg.ErrorHandler(ctx, w, r, err)
 			return
 		}
 		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
@@ -185,5 +191,5 @@ func (s *Server) badRequest(
 	span.RecordError(err)
 	span.SetStatus(codes.Error, "BadRequest")
 	s.errors.Add(ctx, 1, otelAttrs...)
-	s.cfg.ErrorHandler(ctx, w, r, http.StatusBadRequest, err)
+	s.cfg.ErrorHandler(ctx, w, r, err)
 }
