@@ -52,3 +52,23 @@ func BenchmarkEncodeDateTime(b *testing.B) {
 	}
 }
 
+func BenchmarkEncodeDuration(b *testing.B) {
+	t := time.Nanosecond +
+		time.Microsecond +
+		time.Millisecond +
+		time.Second +
+		time.Minute +
+		time.Hour
+	
+	e := jx.GetEncoder()
+	// Preallocate internal buffer.
+	EncodeDuration(e, t)
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		e.Reset()
+		EncodeDuration(e, t)
+	}
+}
