@@ -119,20 +119,17 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 			Format: schema.Format,
 		}), nil
 	case len(schema.OneOf) > 0:
+		s := hook(&Schema{})
+
 		schemas, err := p.parseMany(schema.OneOf, ctx)
 		if err != nil {
 			return nil, errors.Wrapf(err, "oneOf")
 		}
+		s.OneOf = schemas
 
-		return hook(&Schema{OneOf: schemas}), nil
+		return s, nil
 	case len(schema.AnyOf) > 0:
-		schemas, err := p.parseMany(schema.AnyOf, ctx)
-		if err != nil {
-			return nil, errors.Wrapf(err, "anyOf")
-		}
-
-		return hook(&Schema{
-			AnyOf: schemas,
+		s := hook(&Schema{
 			// Object validators
 			MaxProperties: schema.MaxProperties,
 			MinProperties: schema.MinProperties,
@@ -150,14 +147,25 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 			MaxLength: schema.MaxLength,
 			MinLength: schema.MinLength,
 			Pattern:   schema.Pattern,
-		}), nil
+		})
+
+		schemas, err := p.parseMany(schema.AnyOf, ctx)
+		if err != nil {
+			return nil, errors.Wrapf(err, "anyOf")
+		}
+		s.AnyOf = schemas
+
+		return s, nil
 	case len(schema.AllOf) > 0:
+		s := hook(&Schema{})
+
 		schemas, err := p.parseMany(schema.AllOf, ctx)
 		if err != nil {
 			return nil, errors.Wrap(err, "allOf")
 		}
+		s.AllOf = schemas
 
-		return hook(&Schema{AllOf: schemas}), nil
+		return s, nil
 	}
 
 	typ := schema.Type
