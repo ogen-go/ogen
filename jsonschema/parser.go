@@ -319,6 +319,12 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 			Pattern:   schema.Pattern,
 		}), nil
 
+	case "null":
+		return hook(&Schema{
+			Type:     Null,
+			Nullable: true,
+		}), nil
+
 	case "":
 		return hook(&Schema{}), nil
 

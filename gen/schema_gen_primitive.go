@@ -148,5 +148,8 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 		jsonschema.Boolean: {
 			"": ir.Bool,
 		},
+		jsonschema.Null: {
+			"": ir.Null,
+		},
 	}
 }

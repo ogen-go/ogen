@@ -395,6 +395,15 @@ func (s *OptString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptStruct) SetFake() {
+	var elem struct{}
+	{
+		elem = struct{}{}
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptTestRequestFormatTestReq) SetFake() {
 	var elem TestRequestFormatTestReq
 	{
@@ -498,6 +507,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = int64(0)
 				}
 				s.RequiredArrayIntegerInt64 = append(s.RequiredArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
 			}
 		}
 	}
@@ -838,6 +859,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
 			}
 		}
 	}
@@ -1238,6 +1278,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredNull = struct{}{}
+		}
+	}
+	{
+		{
 			s.RequiredNumber = float64(0)
 		}
 	}
@@ -1398,6 +1443,18 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = int64(0)
 				}
 				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
 			}
 		}
 	}
@@ -1738,6 +1795,25 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
 			}
 		}
 	}
@@ -2134,6 +2210,11 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalIntegerInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNull.SetFake()
 		}
 	}
 	{
@@ -2311,6 +2392,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
@@ -2646,6 +2739,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
 			}
 		}
 	}
@@ -3046,6 +3158,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredNull = struct{}{}
+		}
+	}
+	{
+		{
 			s.RequiredNumber = float64(0)
 		}
 	}
@@ -3206,6 +3323,18 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = int64(0)
 				}
 				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
 			}
 		}
 	}
@@ -3546,6 +3675,25 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
 			}
 		}
 	}
@@ -3942,6 +4090,11 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalIntegerInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNull.SetFake()
 		}
 	}
 	{
@@ -4119,6 +4272,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.RequiredArrayNull = append(s.RequiredArrayNull, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayNumber = nil
 			for i := 0; i < 0; i++ {
 				var elem float64
@@ -4454,6 +4619,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.RequiredDoubleArrayIntegerInt64 = append(s.RequiredDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayNull = append(s.RequiredDoubleArrayNull, elem)
 			}
 		}
 	}
@@ -4854,6 +5038,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredNull = struct{}{}
+		}
+	}
+	{
+		{
 			s.RequiredNumber = float64(0)
 		}
 	}
@@ -5014,6 +5203,18 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = int64(0)
 				}
 				s.OptionalArrayIntegerInt64 = append(s.OptionalArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem struct{}
+				{
+					elem = struct{}{}
+				}
+				s.OptionalArrayNull = append(s.OptionalArrayNull, elem)
 			}
 		}
 	}
@@ -5354,6 +5555,25 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					}
 				}
 				s.OptionalDoubleArrayIntegerInt64 = append(s.OptionalDoubleArrayIntegerInt64, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayNull = nil
+			for i := 0; i < 0; i++ {
+				var elem []struct{}
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem struct{}
+						{
+							elemElem = struct{}{}
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayNull = append(s.OptionalDoubleArrayNull, elem)
 			}
 		}
 	}
@@ -5750,6 +5970,11 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalIntegerInt64.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalNull.SetFake()
 		}
 	}
 	{

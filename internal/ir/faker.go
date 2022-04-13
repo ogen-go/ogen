@@ -37,6 +37,8 @@ func (t *Type) FakeValue() string {
 		return `url.URL{Scheme:"https", Host:"github.com", Path:"/ogen-go/ogen"}`
 	case Bool:
 		return "true"
+	case Null:
+		return "struct{}{}"
 	default:
 		panic(fmt.Sprintf("unexpected PrimitiveType: %d", p))
 	}

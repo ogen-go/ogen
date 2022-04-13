@@ -1843,6 +1843,392 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 	return result, nil
 }
 
+// TestRequestNull invokes test_request_null operation.
+//
+// POST /test_request_null
+func (c *Client) TestRequestNull(ctx context.Context, request OptStruct) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNull",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestNullRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_null"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestNullResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNullArray invokes test_request_null_array operation.
+//
+// POST /test_request_null_array
+func (c *Client) TestRequestNullArray(ctx context.Context, request []struct{}) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestNullArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_null_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestNullArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNullArrayArray invokes test_request_null_array_array operation.
+//
+// POST /test_request_null_array_array
+func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]struct{}) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestNullArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_null_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestNullArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNullNullable invokes test_request_null_nullable operation.
+//
+// POST /test_request_null_nullable
+func (c *Client) TestRequestNullNullable(ctx context.Context, request OptStruct) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestNullNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_null_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestNullNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNullNullableArray invokes test_request_null_nullable_array operation.
+//
+// POST /test_request_null_nullable_array
+func (c *Client) TestRequestNullNullableArray(ctx context.Context, request []struct{}) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestNullNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_null_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestNullNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestNullNullableArrayArray invokes test_request_null_nullable_array_array operation.
+//
+// POST /test_request_null_nullable_array_array
+func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request [][]struct{}) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestNullNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestNullNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_null_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestNullNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestRequestNumber invokes test_request_number operation.
 //
 // POST /test_request_number
@@ -5907,6 +6293,414 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 	defer resp.Body.Close()
 
 	result, err := decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNull invokes test_request_required_null operation.
+//
+// POST /test_request_required_null
+func (c *Client) TestRequestRequiredNull(ctx context.Context, request struct{}) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNull",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredNullRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_null"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredNullResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNullArray invokes test_request_required_null_array operation.
+//
+// POST /test_request_required_null_array
+func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []struct{}) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredNullArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_null_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredNullArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNullArrayArray invokes test_request_required_null_array_array operation.
+//
+// POST /test_request_required_null_array_array
+func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request [][]struct{}) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredNullArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_null_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredNullArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNullNullable invokes test_request_required_null_nullable operation.
+//
+// POST /test_request_required_null_nullable
+func (c *Client) TestRequestRequiredNullNullable(ctx context.Context, request struct{}) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredNullNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_null_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredNullNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNullNullableArray invokes test_request_required_null_nullable_array operation.
+//
+// POST /test_request_required_null_nullable_array
+func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, request []struct{}) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredNullNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_null_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredNullNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredNullNullableArrayArray invokes test_request_required_null_nullable_array_array operation.
+//
+// POST /test_request_required_null_nullable_array_array
+func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, request [][]struct{}) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredNullNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredNullNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_null_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredNullNullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -22233,6 +23027,348 @@ func (c *Client) TestResponseIntegerNullableArrayArray(ctx context.Context, requ
 	defer resp.Body.Close()
 
 	result, err := decodeTestResponseIntegerNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNull invokes test_response_null operation.
+//
+// POST /test_response_null
+func (c *Client) TestResponseNull(ctx context.Context, request string) (res struct{}, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNull",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseNullRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_null"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseNullResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNullArray invokes test_response_null_array operation.
+//
+// POST /test_response_null_array
+func (c *Client) TestResponseNullArray(ctx context.Context, request string) (res []struct{}, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseNullArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_null_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseNullArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNullArrayArray invokes test_response_null_array_array operation.
+//
+// POST /test_response_null_array_array
+func (c *Client) TestResponseNullArrayArray(ctx context.Context, request string) (res [][]struct{}, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseNullArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_null_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseNullArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNullNullable invokes test_response_null_nullable operation.
+//
+// POST /test_response_null_nullable
+func (c *Client) TestResponseNullNullable(ctx context.Context, request string) (res struct{}, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseNullNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_null_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseNullNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNullNullableArray invokes test_response_null_nullable_array operation.
+//
+// POST /test_response_null_nullable_array
+func (c *Client) TestResponseNullNullableArray(ctx context.Context, request string) (res []struct{}, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseNullNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_null_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseNullNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseNullNullableArrayArray invokes test_response_null_nullable_array_array operation.
+//
+// POST /test_response_null_nullable_array_array
+func (c *Client) TestResponseNullNullableArrayArray(ctx context.Context, request string) (res [][]struct{}, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseNullNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseNullNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_null_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseNullNullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

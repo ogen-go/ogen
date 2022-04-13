@@ -1296,6 +1296,276 @@ func (s *Server) handleTestRequestIntegerNullableArrayArrayRequest(args [0]strin
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleTestRequestNullRequest handles test_request_null operation.
+//
+// POST /test_request_null
+func (s *Server) handleTestRequestNullRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNull",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestNullRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNull",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestNull(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestNullResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestNullArrayRequest handles test_request_null_array operation.
+//
+// POST /test_request_null_array
+func (s *Server) handleTestRequestNullArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestNullArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNullArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestNullArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestNullArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestNullArrayArrayRequest handles test_request_null_array_array operation.
+//
+// POST /test_request_null_array_array
+func (s *Server) handleTestRequestNullArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_array_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestNullArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNullArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestNullArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestNullArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestNullNullableRequest handles test_request_null_nullable operation.
+//
+// POST /test_request_null_nullable
+func (s *Server) handleTestRequestNullNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_nullable"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestNullNullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNullNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestNullNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestNullNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestNullNullableArrayRequest handles test_request_null_nullable_array operation.
+//
+// POST /test_request_null_nullable_array
+func (s *Server) handleTestRequestNullNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_nullable_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestNullNullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNullNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestNullNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestNullNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestNullNullableArrayArrayRequest handles test_request_null_nullable_array_array operation.
+//
+// POST /test_request_null_nullable_array_array
+func (s *Server) handleTestRequestNullNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_null_nullable_array_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestNullNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestNullNullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestNullNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestNullNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestNullNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleTestRequestNumberRequest handles test_request_number operation.
 //
 // POST /test_request_number
@@ -3852,6 +4122,276 @@ func (s *Server) handleTestRequestRequiredIntegerNullableArrayArrayRequest(args 
 	}
 
 	if err := encodeTestRequestRequiredIntegerNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestRequiredNullRequest handles test_request_required_null operation.
+//
+// POST /test_request_required_null
+func (s *Server) handleTestRequestRequiredNullRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNull",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestRequiredNullRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNull",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNull(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNullResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestRequiredNullArrayRequest handles test_request_required_null_array operation.
+//
+// POST /test_request_required_null_array
+func (s *Server) handleTestRequestRequiredNullArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestRequiredNullArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNullArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNullArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNullArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestRequiredNullArrayArrayRequest handles test_request_required_null_array_array operation.
+//
+// POST /test_request_required_null_array_array
+func (s *Server) handleTestRequestRequiredNullArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_array_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestRequiredNullArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNullArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNullArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNullArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestRequiredNullNullableRequest handles test_request_required_null_nullable operation.
+//
+// POST /test_request_required_null_nullable
+func (s *Server) handleTestRequestRequiredNullNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_nullable"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestRequiredNullNullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNullNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNullNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNullNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestRequiredNullNullableArrayRequest handles test_request_required_null_nullable_array operation.
+//
+// POST /test_request_required_null_nullable_array
+func (s *Server) handleTestRequestRequiredNullNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_nullable_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestRequiredNullNullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNullNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNullNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNullNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestRequestRequiredNullNullableArrayArrayRequest handles test_request_required_null_nullable_array_array operation.
+//
+// POST /test_request_required_null_nullable_array_array
+func (s *Server) handleTestRequestRequiredNullNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_null_nullable_array_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestRequestRequiredNullNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestRequestRequiredNullNullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestRequestRequiredNullNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestRequestRequiredNullNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestRequestRequiredNullNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -14517,6 +15057,276 @@ func (s *Server) handleTestResponseIntegerNullableArrayArrayRequest(args [0]stri
 	}
 
 	if err := encodeTestResponseIntegerNullableArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestResponseNullRequest handles test_response_null operation.
+//
+// POST /test_response_null
+func (s *Server) handleTestResponseNullRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNull",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestResponseNullRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNull",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestResponseNull(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseNullResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestResponseNullArrayRequest handles test_response_null_array operation.
+//
+// POST /test_response_null_array
+func (s *Server) handleTestResponseNullArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestResponseNullArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNullArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestResponseNullArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseNullArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestResponseNullArrayArrayRequest handles test_response_null_array_array operation.
+//
+// POST /test_response_null_array_array
+func (s *Server) handleTestResponseNullArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_array_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestResponseNullArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNullArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestResponseNullArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseNullArrayArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestResponseNullNullableRequest handles test_response_null_nullable operation.
+//
+// POST /test_response_null_nullable
+func (s *Server) handleTestResponseNullNullableRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_nullable"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestResponseNullNullableRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNullNullable",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestResponseNullNullable(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseNullNullableResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestResponseNullNullableArrayRequest handles test_response_null_nullable_array operation.
+//
+// POST /test_response_null_nullable_array
+func (s *Server) handleTestResponseNullNullableArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_nullable_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestResponseNullNullableArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNullNullableArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestResponseNullNullableArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseNullNullableArrayResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestResponseNullNullableArrayArrayRequest handles test_response_null_nullable_array_array operation.
+//
+// POST /test_response_null_nullable_array_array
+func (s *Server) handleTestResponseNullNullableArrayArrayRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_null_nullable_array_array"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestResponseNullNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeTestResponseNullNullableArrayArrayRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"TestResponseNullNullableArrayArray",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestResponseNullNullableArrayArray(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestResponseNullNullableArrayArrayResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

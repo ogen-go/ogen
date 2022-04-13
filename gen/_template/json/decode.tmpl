@@ -60,16 +60,20 @@ if err := d.Arr(func(d *jx.Decoder) error {
 	{{- $j := $t.JSON -}}
 	{{- if $t.IsPointer }}
 		{{- template "json/dec_pointer" $ }}
+    {{- else if $t.IsGeneric }}
+        {{- template "json/dec_generic" $ }}
 	{{- else if $t.IsArray }}
 		{{ template "json/dec_array" $ }}
-	{{- else if $t.GenericOf }}
-		{{- template "json/dec_generic" $ }}
 	{{- else if $t.IsMap }}
 		if err := {{ $.Var }}.Decode(d); err != nil {
 			return err
 		}
 	{{- else if or ($t.IsStruct) ($t.IsEnum) ($t.IsSum) ($t.IsAlias) }}
 		if err := {{ $.Var }}.Decode(d); err != nil {
+			return err
+		}
+    {{- else if $t.IsNull }}
+		if err := d.Null(); err != nil {
 			return err
 		}
 	{{- else if $j.Fn }}

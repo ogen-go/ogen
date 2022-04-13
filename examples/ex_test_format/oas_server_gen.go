@@ -191,6 +191,30 @@ type Handler interface {
 	//
 	// POST /test_request_integer_nullable_array_array
 	TestRequestIntegerNullableArrayArray(ctx context.Context, req [][]int) (Error, error)
+	// TestRequestNull implements test_request_null operation.
+	//
+	// POST /test_request_null
+	TestRequestNull(ctx context.Context, req OptStruct) (Error, error)
+	// TestRequestNullArray implements test_request_null_array operation.
+	//
+	// POST /test_request_null_array
+	TestRequestNullArray(ctx context.Context, req []struct{}) (Error, error)
+	// TestRequestNullArrayArray implements test_request_null_array_array operation.
+	//
+	// POST /test_request_null_array_array
+	TestRequestNullArrayArray(ctx context.Context, req [][]struct{}) (Error, error)
+	// TestRequestNullNullable implements test_request_null_nullable operation.
+	//
+	// POST /test_request_null_nullable
+	TestRequestNullNullable(ctx context.Context, req OptStruct) (Error, error)
+	// TestRequestNullNullableArray implements test_request_null_nullable_array operation.
+	//
+	// POST /test_request_null_nullable_array
+	TestRequestNullNullableArray(ctx context.Context, req []struct{}) (Error, error)
+	// TestRequestNullNullableArrayArray implements test_request_null_nullable_array_array operation.
+	//
+	// POST /test_request_null_nullable_array_array
+	TestRequestNullNullableArrayArray(ctx context.Context, req [][]struct{}) (Error, error)
 	// TestRequestNumber implements test_request_number operation.
 	//
 	// POST /test_request_number
@@ -419,6 +443,30 @@ type Handler interface {
 	//
 	// POST /test_request_required_integer_nullable_array_array
 	TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, req [][]int) (Error, error)
+	// TestRequestRequiredNull implements test_request_required_null operation.
+	//
+	// POST /test_request_required_null
+	TestRequestRequiredNull(ctx context.Context, req struct{}) (Error, error)
+	// TestRequestRequiredNullArray implements test_request_required_null_array operation.
+	//
+	// POST /test_request_required_null_array
+	TestRequestRequiredNullArray(ctx context.Context, req []struct{}) (Error, error)
+	// TestRequestRequiredNullArrayArray implements test_request_required_null_array_array operation.
+	//
+	// POST /test_request_required_null_array_array
+	TestRequestRequiredNullArrayArray(ctx context.Context, req [][]struct{}) (Error, error)
+	// TestRequestRequiredNullNullable implements test_request_required_null_nullable operation.
+	//
+	// POST /test_request_required_null_nullable
+	TestRequestRequiredNullNullable(ctx context.Context, req struct{}) (Error, error)
+	// TestRequestRequiredNullNullableArray implements test_request_required_null_nullable_array operation.
+	//
+	// POST /test_request_required_null_nullable_array
+	TestRequestRequiredNullNullableArray(ctx context.Context, req []struct{}) (Error, error)
+	// TestRequestRequiredNullNullableArrayArray implements test_request_required_null_nullable_array_array operation.
+	//
+	// POST /test_request_required_null_nullable_array_array
+	TestRequestRequiredNullNullableArrayArray(ctx context.Context, req [][]struct{}) (Error, error)
 	// TestRequestRequiredNumber implements test_request_required_number operation.
 	//
 	// POST /test_request_required_number
@@ -1367,6 +1415,30 @@ type Handler interface {
 	//
 	// POST /test_response_integer_nullable_array_array
 	TestResponseIntegerNullableArrayArray(ctx context.Context, req string) ([][]int, error)
+	// TestResponseNull implements test_response_null operation.
+	//
+	// POST /test_response_null
+	TestResponseNull(ctx context.Context, req string) (struct{}, error)
+	// TestResponseNullArray implements test_response_null_array operation.
+	//
+	// POST /test_response_null_array
+	TestResponseNullArray(ctx context.Context, req string) ([]struct{}, error)
+	// TestResponseNullArrayArray implements test_response_null_array_array operation.
+	//
+	// POST /test_response_null_array_array
+	TestResponseNullArrayArray(ctx context.Context, req string) ([][]struct{}, error)
+	// TestResponseNullNullable implements test_response_null_nullable operation.
+	//
+	// POST /test_response_null_nullable
+	TestResponseNullNullable(ctx context.Context, req string) (struct{}, error)
+	// TestResponseNullNullableArray implements test_response_null_nullable_array operation.
+	//
+	// POST /test_response_null_nullable_array
+	TestResponseNullNullableArray(ctx context.Context, req string) ([]struct{}, error)
+	// TestResponseNullNullableArrayArray implements test_response_null_nullable_array_array operation.
+	//
+	// POST /test_response_null_nullable_array_array
+	TestResponseNullNullableArrayArray(ctx context.Context, req string) ([][]struct{}, error)
 	// TestResponseNumber implements test_response_number operation.
 	//
 	// POST /test_response_number

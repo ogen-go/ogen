@@ -237,7 +237,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 
 		return ret, nil
 
-	case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
+	case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean, jsonschema.Null:
 		t, err := g.primitive(name, schema)
 		if err != nil {
 			return nil, errors.Wrap(err, "primitive")

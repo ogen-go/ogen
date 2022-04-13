@@ -16,6 +16,7 @@ const (
 	Number  SchemaType = "number"
 	String  SchemaType = "string"
 	Boolean SchemaType = "boolean"
+	Null    SchemaType = "null"
 )
 
 // Schema is a JSON Schema.

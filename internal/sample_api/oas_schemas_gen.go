@@ -782,6 +782,8 @@ func (*NotFound) petGetAvatarByIDRes()    {}
 func (*NotFound) petGetAvatarByNameRes()  {}
 func (*NotFound) petUploadAvatarByIDRes() {}
 
+type NullValue struct{}
+
 // Ref: #/components/schemas/NullableEnums
 type NullableEnums struct {
 	// Must not be nullable.
@@ -2050,6 +2052,52 @@ func (o OptNilStringArray) Or(d []string) []string {
 	return d
 }
 
+// NewOptNullValue returns new OptNullValue with value set to v.
+func NewOptNullValue(v NullValue) OptNullValue {
+	return OptNullValue{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNullValue is optional NullValue.
+type OptNullValue struct {
+	Value NullValue
+	Set   bool
+}
+
+// IsSet returns true if OptNullValue was set.
+func (o OptNullValue) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNullValue) Reset() {
+	var v NullValue
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptNullValue) SetTo(v NullValue) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNullValue) Get() (v NullValue, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNullValue) Or(d NullValue) NullValue {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNullableEnums returns new OptNullableEnums with value set to v.
 func NewOptNullableEnums(v NullableEnums) OptNullableEnums {
 	return OptNullableEnums{
@@ -2785,6 +2833,7 @@ type Pet struct {
 	TestDuration      OptDuration          "json:\"testDuration\""
 	TestTime          OptTime              "json:\"testTime\""
 	TestDateTime      OptDateTime          "json:\"testDateTime\""
+	NullValue         OptNullValue         "json:\"nullValue\""
 }
 
 func (*Pet) foobarGetRes()  {}
