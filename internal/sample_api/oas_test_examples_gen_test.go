@@ -376,6 +376,18 @@ func TestMaxPropertiesTest_EncodeDecode(t *testing.T) {
 	var typ2 MaxPropertiesTest
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestNullValue_EncodeDecode(t *testing.T) {
+	var typ NullValue
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NullValue
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestNullableEnums_EncodeDecode(t *testing.T) {
 	var typ NullableEnums
 	typ.SetFake()

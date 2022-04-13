@@ -568,6 +568,15 @@ func (s *NilString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *NullValue) SetFake() {
+	var unwrapped struct{}
+	{
+		unwrapped = struct{}{}
+	}
+	*s = NullValue(unwrapped)
+}
+
+// SetFake set fake values.
 func (s *NullableEnums) SetFake() {
 	{
 		{
@@ -919,6 +928,15 @@ func (s *OptNilStringArray) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptNullValue) SetFake() {
+	var elem NullValue
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptNullableEnums) SetFake() {
 	var elem NullableEnums
 	{
@@ -1217,6 +1235,11 @@ func (s *Pet) SetFake() {
 	{
 		{
 			s.TestDateTime.SetFake()
+		}
+	}
+	{
+		{
+			s.NullValue.SetFake()
 		}
 	}
 }

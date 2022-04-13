@@ -3080,6 +3080,44 @@ func (s *NilString) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes NullValue as json.
+func (s NullValue) Encode(e *jx.Encoder) {
+	unwrapped := struct{}(s)
+	_ = unwrapped
+	e.Null()
+}
+
+// Decode decodes NullValue from json.
+func (s *NullValue) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode NullValue to nil")
+	}
+	var unwrapped struct{}
+	if err := func() error {
+		if err := d.Null(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = NullValue(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NullValue) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NullValue) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s NullableEnums) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -4956,6 +4994,39 @@ func (s *OptNilStringArray) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode encodes NullValue as json.
+func (o OptNullValue) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes NullValue from json.
+func (o *OptNullValue) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptNullValue to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptNullValue) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptNullValue) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes NullableEnums as json.
 func (o OptNullableEnums) Encode(e *jx.Encoder) {
 	if !o.Set {
@@ -5644,9 +5715,15 @@ func (s Pet) encodeFields(e *jx.Encoder) {
 			s.TestDateTime.Encode(e, json.EncodeDateTime)
 		}
 	}
+	{
+		if s.NullValue.Set {
+			e.FieldStart("nullValue")
+			s.NullValue.Encode(e)
+		}
+	}
 }
 
-var jsonFieldsNameOfPet = [30]string{
+var jsonFieldsNameOfPet = [31]string{
 	0:  "primary",
 	1:  "id",
 	2:  "unique_id",
@@ -5677,6 +5754,7 @@ var jsonFieldsNameOfPet = [30]string{
 	27: "testDuration",
 	28: "testTime",
 	29: "testDateTime",
+	30: "nullValue",
 }
 
 // Decode decodes Pet from json.
@@ -6031,6 +6109,16 @@ func (s *Pet) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"testDateTime\"")
+			}
+		case "nullValue":
+			if err := func() error {
+				s.NullValue.Reset()
+				if err := s.NullValue.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"nullValue\"")
 			}
 		default:
 			return d.Skip()

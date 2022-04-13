@@ -275,6 +275,48 @@ func (UnimplementedHandler) TestRequestIntegerNullableArrayArray(ctx context.Con
 	return r, ht.ErrNotImplemented
 }
 
+// TestRequestNull implements test_request_null operation.
+//
+// POST /test_request_null
+func (UnimplementedHandler) TestRequestNull(ctx context.Context, req OptStruct) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestNullArray implements test_request_null_array operation.
+//
+// POST /test_request_null_array
+func (UnimplementedHandler) TestRequestNullArray(ctx context.Context, req []struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestNullArrayArray implements test_request_null_array_array operation.
+//
+// POST /test_request_null_array_array
+func (UnimplementedHandler) TestRequestNullArrayArray(ctx context.Context, req [][]struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestNullNullable implements test_request_null_nullable operation.
+//
+// POST /test_request_null_nullable
+func (UnimplementedHandler) TestRequestNullNullable(ctx context.Context, req OptStruct) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestNullNullableArray implements test_request_null_nullable_array operation.
+//
+// POST /test_request_null_nullable_array
+func (UnimplementedHandler) TestRequestNullNullableArray(ctx context.Context, req []struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestNullNullableArrayArray implements test_request_null_nullable_array_array operation.
+//
+// POST /test_request_null_nullable_array_array
+func (UnimplementedHandler) TestRequestNullNullableArrayArray(ctx context.Context, req [][]struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestRequestNumber implements test_request_number operation.
 //
 // POST /test_request_number
@@ -671,6 +713,48 @@ func (UnimplementedHandler) TestRequestRequiredIntegerNullableArray(ctx context.
 //
 // POST /test_request_required_integer_nullable_array_array
 func (UnimplementedHandler) TestRequestRequiredIntegerNullableArrayArray(ctx context.Context, req [][]int) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredNull implements test_request_required_null operation.
+//
+// POST /test_request_required_null
+func (UnimplementedHandler) TestRequestRequiredNull(ctx context.Context, req struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredNullArray implements test_request_required_null_array operation.
+//
+// POST /test_request_required_null_array
+func (UnimplementedHandler) TestRequestRequiredNullArray(ctx context.Context, req []struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredNullArrayArray implements test_request_required_null_array_array operation.
+//
+// POST /test_request_required_null_array_array
+func (UnimplementedHandler) TestRequestRequiredNullArrayArray(ctx context.Context, req [][]struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredNullNullable implements test_request_required_null_nullable operation.
+//
+// POST /test_request_required_null_nullable
+func (UnimplementedHandler) TestRequestRequiredNullNullable(ctx context.Context, req struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredNullNullableArray implements test_request_required_null_nullable_array operation.
+//
+// POST /test_request_required_null_nullable_array
+func (UnimplementedHandler) TestRequestRequiredNullNullableArray(ctx context.Context, req []struct{}) (r Error, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestRequestRequiredNullNullableArrayArray implements test_request_required_null_nullable_array_array operation.
+//
+// POST /test_request_required_null_nullable_array_array
+func (UnimplementedHandler) TestRequestRequiredNullNullableArrayArray(ctx context.Context, req [][]struct{}) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2330,6 +2414,48 @@ func (UnimplementedHandler) TestResponseIntegerNullableArray(ctx context.Context
 //
 // POST /test_response_integer_nullable_array_array
 func (UnimplementedHandler) TestResponseIntegerNullableArrayArray(ctx context.Context, req string) (r [][]int, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseNull implements test_response_null operation.
+//
+// POST /test_response_null
+func (UnimplementedHandler) TestResponseNull(ctx context.Context, req string) (r struct{}, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseNullArray implements test_response_null_array operation.
+//
+// POST /test_response_null_array
+func (UnimplementedHandler) TestResponseNullArray(ctx context.Context, req string) (r []struct{}, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseNullArrayArray implements test_response_null_array_array operation.
+//
+// POST /test_response_null_array_array
+func (UnimplementedHandler) TestResponseNullArrayArray(ctx context.Context, req string) (r [][]struct{}, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseNullNullable implements test_response_null_nullable operation.
+//
+// POST /test_response_null_nullable
+func (UnimplementedHandler) TestResponseNullNullable(ctx context.Context, req string) (r struct{}, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseNullNullableArray implements test_response_null_nullable_array operation.
+//
+// POST /test_response_null_nullable_array
+func (UnimplementedHandler) TestResponseNullNullableArray(ctx context.Context, req string) (r []struct{}, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// TestResponseNullNullableArrayArray implements test_response_null_nullable_array_array operation.
+//
+// POST /test_response_null_nullable_array_array
+func (UnimplementedHandler) TestResponseNullNullableArrayArray(ctx context.Context, req string) (r [][]struct{}, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

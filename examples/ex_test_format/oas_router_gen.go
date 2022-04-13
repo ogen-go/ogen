@@ -563,8 +563,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					}
-				case 'n': // Prefix: "number"
-					if l := len("number"); len(elem) >= l && elem[0:l] == "number" {
+				case 'n': // Prefix: "nu"
+					if l := len("nu"); len(elem) >= l && elem[0:l] == "nu" {
 						elem = elem[l:]
 					} else {
 						break
@@ -576,466 +576,41 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 					switch elem[0] {
-					case '_': // Prefix: "_"
-						if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+					case 'l': // Prefix: "ll"
+						if l := len("ll"); len(elem) >= l && elem[0:l] == "ll" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							s.handleTestRequestNumberDoubleRequest([0]string{}, w, r)
+							s.handleTestRequestNullRequest([0]string{}, w, r)
 
 							return
 						}
 						switch elem[0] {
-						case 'a': // Prefix: "array"
-							if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+						case '_': // Prefix: "_"
+							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestNumberArrayRequest([0]string{}, w, r)
+								s.handleTestRequestNullNullableRequest([0]string{}, w, r)
 
 								return
 							}
 							switch elem[0] {
-							case '_': // Prefix: "_array"
-								if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+							case 'a': // Prefix: "array"
+								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									// Leaf: TestRequestNumberArrayArray
-									s.handleTestRequestNumberArrayArrayRequest([0]string{}, w, r)
-
-									return
-								}
-							}
-						case 'd': // Prefix: "double"
-							if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTestRequestNumberDoubleRequest([0]string{}, w, r)
-
-								return
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_"
-								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestNumberDoubleNullableRequest([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "array"
-									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestNumberDoubleArrayRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: TestRequestNumberDoubleArrayArray
-											s.handleTestRequestNumberDoubleArrayArrayRequest([0]string{}, w, r)
-
-											return
-										}
-									}
-								case 'n': // Prefix: "nullable"
-									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestNumberDoubleNullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestNumberDoubleNullableArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestNumberDoubleNullableArrayArray
-												s.handleTestRequestNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									}
-								}
-							}
-						case 'f': // Prefix: "float"
-							if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTestRequestNumberFloatRequest([0]string{}, w, r)
-
-								return
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_"
-								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestNumberFloatNullableRequest([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "array"
-									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestNumberFloatArrayRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: TestRequestNumberFloatArrayArray
-											s.handleTestRequestNumberFloatArrayArrayRequest([0]string{}, w, r)
-
-											return
-										}
-									}
-								case 'n': // Prefix: "nullable"
-									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestNumberFloatNullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestNumberFloatNullableArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestNumberFloatNullableArrayArray
-												s.handleTestRequestNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									}
-								}
-							}
-						case 'i': // Prefix: "int"
-							if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTestRequestNumberInt64Request([0]string{}, w, r)
-
-								return
-							}
-							switch elem[0] {
-							case '3': // Prefix: "32"
-								if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestNumberInt32Request([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestNumberInt32NullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestNumberInt32ArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestNumberInt32ArrayArray
-												s.handleTestRequestNumberInt32ArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestNumberInt32NullableRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestRequestNumberInt32NullableArrayRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestNumberInt32NullableArrayArray
-													s.handleTestRequestNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
-
-													return
-												}
-											}
-										}
-									}
-								}
-							case '6': // Prefix: "64"
-								if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestNumberInt64Request([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestNumberInt64NullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestNumberInt64ArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestNumberInt64ArrayArray
-												s.handleTestRequestNumberInt64ArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestNumberInt64NullableRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestRequestNumberInt64NullableArrayRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestNumberInt64NullableArrayArray
-													s.handleTestRequestNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
-
-													return
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'n': // Prefix: "nullable"
-							if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTestRequestNumberNullableRequest([0]string{}, w, r)
-
-								return
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_array"
-								if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestNumberNullableArrayRequest([0]string{}, w, r)
+									s.handleTestRequestNullArrayRequest([0]string{}, w, r)
 
 									return
 								}
@@ -1048,10 +623,545 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: TestRequestNumberNullableArrayArray
-										s.handleTestRequestNumberNullableArrayArrayRequest([0]string{}, w, r)
+										// Leaf: TestRequestNullArrayArray
+										s.handleTestRequestNullArrayArrayRequest([0]string{}, w, r)
 
 										return
+									}
+								}
+							case 'n': // Prefix: "nullable"
+								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestRequestNullNullableRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestNullNullableArrayRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestRequestNullNullableArrayArray
+											s.handleTestRequestNullNullableArrayArrayRequest([0]string{}, w, r)
+
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'm': // Prefix: "mber"
+						if l := len("mber"); len(elem) >= l && elem[0:l] == "mber" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTestRequestNumberRequest([0]string{}, w, r)
+
+							return
+						}
+						switch elem[0] {
+						case '_': // Prefix: "_"
+							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTestRequestNumberDoubleRequest([0]string{}, w, r)
+
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "array"
+								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestRequestNumberArrayRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: TestRequestNumberArrayArray
+										s.handleTestRequestNumberArrayArrayRequest([0]string{}, w, r)
+
+										return
+									}
+								}
+							case 'd': // Prefix: "double"
+								if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestRequestNumberDoubleRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestNumberDoubleNullableRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestNumberDoubleArrayRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestRequestNumberDoubleArrayArray
+												s.handleTestRequestNumberDoubleArrayArrayRequest([0]string{}, w, r)
+
+												return
+											}
+										}
+									case 'n': // Prefix: "nullable"
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestNumberDoubleNullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestNumberDoubleNullableArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestNumberDoubleNullableArrayArray
+													s.handleTestRequestNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'f': // Prefix: "float"
+								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestRequestNumberFloatRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestNumberFloatNullableRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestNumberFloatArrayRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestRequestNumberFloatArrayArray
+												s.handleTestRequestNumberFloatArrayArrayRequest([0]string{}, w, r)
+
+												return
+											}
+										}
+									case 'n': // Prefix: "nullable"
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestNumberFloatNullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestNumberFloatNullableArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestNumberFloatNullableArrayArray
+													s.handleTestRequestNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "int"
+								if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestRequestNumberInt64Request([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '3': // Prefix: "32"
+									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestNumberInt32Request([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestNumberInt32NullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestNumberInt32ArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestNumberInt32ArrayArray
+													s.handleTestRequestNumberInt32ArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestNumberInt32NullableRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestRequestNumberInt32NullableArrayRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestNumberInt32NullableArrayArray
+														s.handleTestRequestNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
+
+														return
+													}
+												}
+											}
+										}
+									}
+								case '6': // Prefix: "64"
+									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestNumberInt64Request([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestNumberInt64NullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestNumberInt64ArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestNumberInt64ArrayArray
+													s.handleTestRequestNumberInt64ArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestNumberInt64NullableRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestRequestNumberInt64NullableArrayRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestNumberInt64NullableArrayArray
+														s.handleTestRequestNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
+
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							case 'n': // Prefix: "nullable"
+								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestRequestNumberNullableRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestNumberNullableArrayRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestRequestNumberNullableArrayArray
+											s.handleTestRequestNumberNullableArrayArrayRequest([0]string{}, w, r)
+
+											return
+										}
 									}
 								}
 							}
@@ -1507,8 +1617,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 							}
 						}
-					case 'n': // Prefix: "number"
-						if l := len("number"); len(elem) >= l && elem[0:l] == "number" {
+					case 'n': // Prefix: "nu"
+						if l := len("nu"); len(elem) >= l && elem[0:l] == "nu" {
 							elem = elem[l:]
 						} else {
 							break
@@ -1520,466 +1630,41 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							return
 						}
 						switch elem[0] {
-						case '_': // Prefix: "_"
-							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+						case 'l': // Prefix: "ll"
+							if l := len("ll"); len(elem) >= l && elem[0:l] == "ll" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, w, r)
+								s.handleTestRequestRequiredNullRequest([0]string{}, w, r)
 
 								return
 							}
 							switch elem[0] {
-							case 'a': // Prefix: "array"
-								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+							case '_': // Prefix: "_"
+								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestRequiredNumberArrayRequest([0]string{}, w, r)
+									s.handleTestRequestRequiredNullNullableRequest([0]string{}, w, r)
 
 									return
 								}
 								switch elem[0] {
-								case '_': // Prefix: "_array"
-									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+								case 'a': // Prefix: "array"
+									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										// Leaf: TestRequestRequiredNumberArrayArray
-										s.handleTestRequestRequiredNumberArrayArrayRequest([0]string{}, w, r)
-
-										return
-									}
-								}
-							case 'd': // Prefix: "double"
-								if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestRequiredNumberDoubleArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestRequiredNumberDoubleArrayArray
-												s.handleTestRequestRequiredNumberDoubleArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestRequestRequiredNumberDoubleNullableArrayRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestRequiredNumberDoubleNullableArrayArray
-													s.handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
-
-													return
-												}
-											}
-										}
-									}
-								}
-							case 'f': // Prefix: "float"
-								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestRequiredNumberFloatRequest([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestRequiredNumberFloatNullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestRequiredNumberFloatArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestRequiredNumberFloatArrayArray
-												s.handleTestRequestRequiredNumberFloatArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestRequiredNumberFloatNullableRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestRequestRequiredNumberFloatNullableArrayRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestRequiredNumberFloatNullableArrayArray
-													s.handleTestRequestRequiredNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
-
-													return
-												}
-											}
-										}
-									}
-								}
-							case 'i': // Prefix: "int"
-								if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestRequiredNumberInt64Request([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case '3': // Prefix: "32"
-									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestRequiredNumberInt32Request([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_"
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestRequiredNumberInt32NullableRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "array"
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestRequestRequiredNumberInt32ArrayRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestRequiredNumberInt32ArrayArray
-													s.handleTestRequestRequiredNumberInt32ArrayArrayRequest([0]string{}, w, r)
-
-													return
-												}
-											}
-										case 'n': // Prefix: "nullable"
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestRequestRequiredNumberInt32NullableRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleTestRequestRequiredNumberInt32NullableArrayRequest([0]string{}, w, r)
-
-													return
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_array"
-													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: TestRequestRequiredNumberInt32NullableArrayArray
-														s.handleTestRequestRequiredNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
-
-														return
-													}
-												}
-											}
-										}
-									}
-								case '6': // Prefix: "64"
-									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestRequiredNumberInt64Request([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_"
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestRequestRequiredNumberInt64NullableRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "array"
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestRequestRequiredNumberInt64ArrayRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestRequiredNumberInt64ArrayArray
-													s.handleTestRequestRequiredNumberInt64ArrayArrayRequest([0]string{}, w, r)
-
-													return
-												}
-											}
-										case 'n': // Prefix: "nullable"
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestRequestRequiredNumberInt64NullableRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													s.handleTestRequestRequiredNumberInt64NullableArrayRequest([0]string{}, w, r)
-
-													return
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_array"
-													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: TestRequestRequiredNumberInt64NullableArrayArray
-														s.handleTestRequestRequiredNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
-
-														return
-													}
-												}
-											}
-										}
-									}
-								}
-							case 'n': // Prefix: "nullable"
-								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestRequestRequiredNumberNullableRequest([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_array"
-									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestRequestRequiredNumberNullableArrayRequest([0]string{}, w, r)
+										s.handleTestRequestRequiredNullArrayRequest([0]string{}, w, r)
 
 										return
 									}
@@ -1992,10 +1677,545 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: TestRequestRequiredNumberNullableArrayArray
-											s.handleTestRequestRequiredNumberNullableArrayArrayRequest([0]string{}, w, r)
+											// Leaf: TestRequestRequiredNullArrayArray
+											s.handleTestRequestRequiredNullArrayArrayRequest([0]string{}, w, r)
 
 											return
+										}
+									}
+								case 'n': // Prefix: "nullable"
+									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestRequiredNullNullableRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestRequiredNullNullableArrayRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestRequestRequiredNullNullableArrayArray
+												s.handleTestRequestRequiredNullNullableArrayArrayRequest([0]string{}, w, r)
+
+												return
+											}
+										}
+									}
+								}
+							}
+						case 'm': // Prefix: "mber"
+							if l := len("mber"); len(elem) >= l && elem[0:l] == "mber" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTestRequestRequiredNumberRequest([0]string{}, w, r)
+
+								return
+							}
+							switch elem[0] {
+							case '_': // Prefix: "_"
+								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "array"
+									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestRequiredNumberArrayRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestRequestRequiredNumberArrayArray
+											s.handleTestRequestRequiredNumberArrayArrayRequest([0]string{}, w, r)
+
+											return
+										}
+									}
+								case 'd': // Prefix: "double"
+									if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestRequiredNumberDoubleArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestRequiredNumberDoubleArrayArray
+													s.handleTestRequestRequiredNumberDoubleArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestRequestRequiredNumberDoubleNullableArrayRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestRequiredNumberDoubleNullableArrayArray
+														s.handleTestRequestRequiredNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
+
+														return
+													}
+												}
+											}
+										}
+									}
+								case 'f': // Prefix: "float"
+									if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestRequiredNumberFloatRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestRequiredNumberFloatNullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestRequiredNumberFloatArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestRequiredNumberFloatArrayArray
+													s.handleTestRequestRequiredNumberFloatArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestRequiredNumberFloatNullableRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestRequestRequiredNumberFloatNullableArrayRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestRequiredNumberFloatNullableArrayArray
+														s.handleTestRequestRequiredNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
+
+														return
+													}
+												}
+											}
+										}
+									}
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestRequiredNumberInt64Request([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestRequiredNumberInt32Request([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestRequiredNumberInt32NullableRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestRequestRequiredNumberInt32ArrayRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestRequiredNumberInt32ArrayArray
+														s.handleTestRequestRequiredNumberInt32ArrayArrayRequest([0]string{}, w, r)
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestRequestRequiredNumberInt32NullableRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTestRequestRequiredNumberInt32NullableArrayRequest([0]string{}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: TestRequestRequiredNumberInt32NullableArrayArray
+															s.handleTestRequestRequiredNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
+
+															return
+														}
+													}
+												}
+											}
+										}
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestRequiredNumberInt64Request([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestRequestRequiredNumberInt64NullableRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestRequestRequiredNumberInt64ArrayRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestRequiredNumberInt64ArrayArray
+														s.handleTestRequestRequiredNumberInt64ArrayArrayRequest([0]string{}, w, r)
+
+														return
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestRequestRequiredNumberInt64NullableRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														s.handleTestRequestRequiredNumberInt64NullableArrayRequest([0]string{}, w, r)
+
+														return
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: TestRequestRequiredNumberInt64NullableArrayArray
+															s.handleTestRequestRequiredNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
+
+															return
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'n': // Prefix: "nullable"
+									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestRequestRequiredNumberNullableRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestRequestRequiredNumberNullableArrayRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestRequestRequiredNumberNullableArrayArray
+												s.handleTestRequestRequiredNumberNullableArrayArrayRequest([0]string{}, w, r)
+
+												return
+											}
 										}
 									}
 								}
@@ -5445,8 +5665,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					}
-				case 'n': // Prefix: "number"
-					if l := len("number"); len(elem) >= l && elem[0:l] == "number" {
+				case 'n': // Prefix: "nu"
+					if l := len("nu"); len(elem) >= l && elem[0:l] == "nu" {
 						elem = elem[l:]
 					} else {
 						break
@@ -5458,466 +5678,41 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 					switch elem[0] {
-					case '_': // Prefix: "_"
-						if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+					case 'l': // Prefix: "ll"
+						if l := len("ll"); len(elem) >= l && elem[0:l] == "ll" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							s.handleTestResponseNumberDoubleRequest([0]string{}, w, r)
+							s.handleTestResponseNullRequest([0]string{}, w, r)
 
 							return
 						}
 						switch elem[0] {
-						case 'a': // Prefix: "array"
-							if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+						case '_': // Prefix: "_"
+							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
 							if len(elem) == 0 {
-								s.handleTestResponseNumberArrayRequest([0]string{}, w, r)
+								s.handleTestResponseNullNullableRequest([0]string{}, w, r)
 
 								return
 							}
 							switch elem[0] {
-							case '_': // Prefix: "_array"
-								if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+							case 'a': // Prefix: "array"
+								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									// Leaf: TestResponseNumberArrayArray
-									s.handleTestResponseNumberArrayArrayRequest([0]string{}, w, r)
-
-									return
-								}
-							}
-						case 'd': // Prefix: "double"
-							if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTestResponseNumberDoubleRequest([0]string{}, w, r)
-
-								return
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_"
-								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestResponseNumberDoubleNullableRequest([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "array"
-									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestResponseNumberDoubleArrayRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: TestResponseNumberDoubleArrayArray
-											s.handleTestResponseNumberDoubleArrayArrayRequest([0]string{}, w, r)
-
-											return
-										}
-									}
-								case 'n': // Prefix: "nullable"
-									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestResponseNumberDoubleNullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestResponseNumberDoubleNullableArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestResponseNumberDoubleNullableArrayArray
-												s.handleTestResponseNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									}
-								}
-							}
-						case 'f': // Prefix: "float"
-							if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTestResponseNumberFloatRequest([0]string{}, w, r)
-
-								return
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_"
-								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestResponseNumberFloatNullableRequest([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "array"
-									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestResponseNumberFloatArrayRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: TestResponseNumberFloatArrayArray
-											s.handleTestResponseNumberFloatArrayArrayRequest([0]string{}, w, r)
-
-											return
-										}
-									}
-								case 'n': // Prefix: "nullable"
-									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestResponseNumberFloatNullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestResponseNumberFloatNullableArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestResponseNumberFloatNullableArrayArray
-												s.handleTestResponseNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									}
-								}
-							}
-						case 'i': // Prefix: "int"
-							if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTestResponseNumberInt64Request([0]string{}, w, r)
-
-								return
-							}
-							switch elem[0] {
-							case '3': // Prefix: "32"
-								if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestResponseNumberInt32Request([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestResponseNumberInt32NullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestResponseNumberInt32ArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestResponseNumberInt32ArrayArray
-												s.handleTestResponseNumberInt32ArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestResponseNumberInt32NullableRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestResponseNumberInt32NullableArrayRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestResponseNumberInt32NullableArrayArray
-													s.handleTestResponseNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
-
-													return
-												}
-											}
-										}
-									}
-								}
-							case '6': // Prefix: "64"
-								if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestResponseNumberInt64Request([0]string{}, w, r)
-
-									return
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										s.handleTestResponseNumberInt64NullableRequest([0]string{}, w, r)
-
-										return
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestResponseNumberInt64ArrayRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestResponseNumberInt64ArrayArray
-												s.handleTestResponseNumberInt64ArrayArrayRequest([0]string{}, w, r)
-
-												return
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											s.handleTestResponseNumberInt64NullableRequest([0]string{}, w, r)
-
-											return
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												s.handleTestResponseNumberInt64NullableArrayRequest([0]string{}, w, r)
-
-												return
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestResponseNumberInt64NullableArrayArray
-													s.handleTestResponseNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
-
-													return
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'n': // Prefix: "nullable"
-							if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								s.handleTestResponseNumberNullableRequest([0]string{}, w, r)
-
-								return
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_array"
-								if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									s.handleTestResponseNumberNullableArrayRequest([0]string{}, w, r)
+									s.handleTestResponseNullArrayRequest([0]string{}, w, r)
 
 									return
 								}
@@ -5930,10 +5725,545 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: TestResponseNumberNullableArrayArray
-										s.handleTestResponseNumberNullableArrayArrayRequest([0]string{}, w, r)
+										// Leaf: TestResponseNullArrayArray
+										s.handleTestResponseNullArrayArrayRequest([0]string{}, w, r)
 
 										return
+									}
+								}
+							case 'n': // Prefix: "nullable"
+								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestResponseNullNullableRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestResponseNullNullableArrayRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestResponseNullNullableArrayArray
+											s.handleTestResponseNullNullableArrayArrayRequest([0]string{}, w, r)
+
+											return
+										}
+									}
+								}
+							}
+						}
+					case 'm': // Prefix: "mber"
+						if l := len("mber"); len(elem) >= l && elem[0:l] == "mber" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							s.handleTestResponseNumberRequest([0]string{}, w, r)
+
+							return
+						}
+						switch elem[0] {
+						case '_': // Prefix: "_"
+							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								s.handleTestResponseNumberDoubleRequest([0]string{}, w, r)
+
+								return
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "array"
+								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestResponseNumberArrayRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: TestResponseNumberArrayArray
+										s.handleTestResponseNumberArrayArrayRequest([0]string{}, w, r)
+
+										return
+									}
+								}
+							case 'd': // Prefix: "double"
+								if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestResponseNumberDoubleRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestResponseNumberDoubleNullableRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestResponseNumberDoubleArrayRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestResponseNumberDoubleArrayArray
+												s.handleTestResponseNumberDoubleArrayArrayRequest([0]string{}, w, r)
+
+												return
+											}
+										}
+									case 'n': // Prefix: "nullable"
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestResponseNumberDoubleNullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestResponseNumberDoubleNullableArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestResponseNumberDoubleNullableArrayArray
+													s.handleTestResponseNumberDoubleNullableArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'f': // Prefix: "float"
+								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestResponseNumberFloatRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestResponseNumberFloatNullableRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestResponseNumberFloatArrayRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestResponseNumberFloatArrayArray
+												s.handleTestResponseNumberFloatArrayArrayRequest([0]string{}, w, r)
+
+												return
+											}
+										}
+									case 'n': // Prefix: "nullable"
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestResponseNumberFloatNullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestResponseNumberFloatNullableArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestResponseNumberFloatNullableArrayArray
+													s.handleTestResponseNumberFloatNullableArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "int"
+								if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestResponseNumberInt64Request([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '3': // Prefix: "32"
+									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestResponseNumberInt32Request([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestResponseNumberInt32NullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestResponseNumberInt32ArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestResponseNumberInt32ArrayArray
+													s.handleTestResponseNumberInt32ArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestResponseNumberInt32NullableRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestResponseNumberInt32NullableArrayRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestResponseNumberInt32NullableArrayArray
+														s.handleTestResponseNumberInt32NullableArrayArrayRequest([0]string{}, w, r)
+
+														return
+													}
+												}
+											}
+										}
+									}
+								case '6': // Prefix: "64"
+									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestResponseNumberInt64Request([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											s.handleTestResponseNumberInt64NullableRequest([0]string{}, w, r)
+
+											return
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestResponseNumberInt64ArrayRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestResponseNumberInt64ArrayArray
+													s.handleTestResponseNumberInt64ArrayArrayRequest([0]string{}, w, r)
+
+													return
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												s.handleTestResponseNumberInt64NullableRequest([0]string{}, w, r)
+
+												return
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													s.handleTestResponseNumberInt64NullableArrayRequest([0]string{}, w, r)
+
+													return
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestResponseNumberInt64NullableArrayArray
+														s.handleTestResponseNumberInt64NullableArrayArrayRequest([0]string{}, w, r)
+
+														return
+													}
+												}
+											}
+										}
+									}
+								}
+							case 'n': // Prefix: "nullable"
+								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									s.handleTestResponseNumberNullableRequest([0]string{}, w, r)
+
+									return
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										s.handleTestResponseNumberNullableArrayRequest([0]string{}, w, r)
+
+										return
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestResponseNumberNullableArrayArray
+											s.handleTestResponseNumberNullableArrayArrayRequest([0]string{}, w, r)
+
+											return
+										}
 									}
 								}
 							}
@@ -7974,8 +8304,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 						}
 					}
-				case 'n': // Prefix: "number"
-					if l := len("number"); len(elem) >= l && elem[0:l] == "number" {
+				case 'n': // Prefix: "nu"
+					if l := len("nu"); len(elem) >= l && elem[0:l] == "nu" {
 						elem = elem[l:]
 					} else {
 						break
@@ -7988,499 +8318,43 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						return r, true
 					}
 					switch elem[0] {
-					case '_': // Prefix: "_"
-						if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+					case 'l': // Prefix: "ll"
+						if l := len("ll"); len(elem) >= l && elem[0:l] == "ll" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestRequestNumberDouble"
+							r.name = "TestRequestNull"
 							r.args = args
 							r.count = 0
 							return r, true
 						}
 						switch elem[0] {
-						case 'a': // Prefix: "array"
-							if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+						case '_': // Prefix: "_"
+							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestNumberArray"
+								r.name = "TestRequestNullNullable"
 								r.args = args
 								r.count = 0
 								return r, true
 							}
 							switch elem[0] {
-							case '_': // Prefix: "_array"
-								if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+							case 'a': // Prefix: "array"
+								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									// Leaf: TestRequestNumberArrayArray
-									r.name = "TestRequestNumberArrayArray"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-							}
-						case 'd': // Prefix: "double"
-							if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								r.name = "TestRequestNumberDouble"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_"
-								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestNumberDoubleNullable"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "array"
-									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestNumberDoubleArray"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: TestRequestNumberDoubleArrayArray
-											r.name = "TestRequestNumberDoubleArrayArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-									}
-								case 'n': // Prefix: "nullable"
-									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestNumberDoubleNullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestNumberDoubleNullableArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestNumberDoubleNullableArrayArray
-												r.name = "TestRequestNumberDoubleNullableArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									}
-								}
-							}
-						case 'f': // Prefix: "float"
-							if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								r.name = "TestRequestNumberFloat"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_"
-								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestNumberFloatNullable"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "array"
-									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestNumberFloatArray"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: TestRequestNumberFloatArrayArray
-											r.name = "TestRequestNumberFloatArrayArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-									}
-								case 'n': // Prefix: "nullable"
-									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestNumberFloatNullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestNumberFloatNullableArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestNumberFloatNullableArrayArray
-												r.name = "TestRequestNumberFloatNullableArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									}
-								}
-							}
-						case 'i': // Prefix: "int"
-							if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								r.name = "TestRequestNumberInt64"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
-							switch elem[0] {
-							case '3': // Prefix: "32"
-								if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestNumberInt32"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestNumberInt32Nullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestNumberInt32Array"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestNumberInt32ArrayArray
-												r.name = "TestRequestNumberInt32ArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestNumberInt32Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestRequestNumberInt32NullableArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestNumberInt32NullableArrayArray
-													r.name = "TestRequestNumberInt32NullableArrayArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-											}
-										}
-									}
-								}
-							case '6': // Prefix: "64"
-								if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestNumberInt64"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestNumberInt64Nullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestNumberInt64Array"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestNumberInt64ArrayArray
-												r.name = "TestRequestNumberInt64ArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestNumberInt64Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestRequestNumberInt64NullableArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestNumberInt64NullableArrayArray
-													r.name = "TestRequestNumberInt64NullableArrayArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'n': // Prefix: "nullable"
-							if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								r.name = "TestRequestNumberNullable"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_array"
-								if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestNumberNullableArray"
+									r.name = "TestRequestNullArray"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -8494,11 +8368,585 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: TestRequestNumberNullableArrayArray
-										r.name = "TestRequestNumberNullableArrayArray"
+										// Leaf: TestRequestNullArrayArray
+										r.name = "TestRequestNullArrayArray"
 										r.args = args
 										r.count = 0
 										return r, true
+									}
+								}
+							case 'n': // Prefix: "nullable"
+								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestRequestNullNullable"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestNullNullableArray"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestRequestNullNullableArrayArray
+											r.name = "TestRequestNullNullableArrayArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+									}
+								}
+							}
+						}
+					case 'm': // Prefix: "mber"
+						if l := len("mber"); len(elem) >= l && elem[0:l] == "mber" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							r.name = "TestRequestNumber"
+							r.args = args
+							r.count = 0
+							return r, true
+						}
+						switch elem[0] {
+						case '_': // Prefix: "_"
+							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								r.name = "TestRequestNumberDouble"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "array"
+								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestRequestNumberArray"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: TestRequestNumberArrayArray
+										r.name = "TestRequestNumberArrayArray"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+								}
+							case 'd': // Prefix: "double"
+								if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestRequestNumberDouble"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestNumberDoubleNullable"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestNumberDoubleArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestRequestNumberDoubleArrayArray
+												r.name = "TestRequestNumberDoubleArrayArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+										}
+									case 'n': // Prefix: "nullable"
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestNumberDoubleNullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestNumberDoubleNullableArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestNumberDoubleNullableArrayArray
+													r.name = "TestRequestNumberDoubleNullableArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										}
+									}
+								}
+							case 'f': // Prefix: "float"
+								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestRequestNumberFloat"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestNumberFloatNullable"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestNumberFloatArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestRequestNumberFloatArrayArray
+												r.name = "TestRequestNumberFloatArrayArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+										}
+									case 'n': // Prefix: "nullable"
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestNumberFloatNullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestNumberFloatNullableArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestNumberFloatNullableArrayArray
+													r.name = "TestRequestNumberFloatNullableArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "int"
+								if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestRequestNumberInt64"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '3': // Prefix: "32"
+									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestNumberInt32"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestNumberInt32Nullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestNumberInt32Array"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestNumberInt32ArrayArray
+													r.name = "TestRequestNumberInt32ArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestNumberInt32Nullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestRequestNumberInt32NullableArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestNumberInt32NullableArrayArray
+														r.name = "TestRequestNumberInt32NullableArrayArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+												}
+											}
+										}
+									}
+								case '6': // Prefix: "64"
+									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestNumberInt64"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestNumberInt64Nullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestNumberInt64Array"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestNumberInt64ArrayArray
+													r.name = "TestRequestNumberInt64ArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestNumberInt64Nullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestRequestNumberInt64NullableArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestNumberInt64NullableArrayArray
+														r.name = "TestRequestNumberInt64NullableArrayArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+												}
+											}
+										}
+									}
+								}
+							case 'n': // Prefix: "nullable"
+								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestRequestNumberNullable"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestNumberNullableArray"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestRequestNumberNullableArrayArray
+											r.name = "TestRequestNumberNullableArrayArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
 									}
 								}
 							}
@@ -8987,8 +9435,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 							}
 						}
-					case 'n': // Prefix: "number"
-						if l := len("number"); len(elem) >= l && elem[0:l] == "number" {
+					case 'n': // Prefix: "nu"
+						if l := len("nu"); len(elem) >= l && elem[0:l] == "nu" {
 							elem = elem[l:]
 						} else {
 							break
@@ -9001,499 +9449,43 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							return r, true
 						}
 						switch elem[0] {
-						case '_': // Prefix: "_"
-							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+						case 'l': // Prefix: "ll"
+							if l := len("ll"); len(elem) >= l && elem[0:l] == "ll" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestRequiredNumberDouble"
+								r.name = "TestRequestRequiredNull"
 								r.args = args
 								r.count = 0
 								return r, true
 							}
 							switch elem[0] {
-							case 'a': // Prefix: "array"
-								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+							case '_': // Prefix: "_"
+								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestRequiredNumberArray"
+									r.name = "TestRequestRequiredNullNullable"
 									r.args = args
 									r.count = 0
 									return r, true
 								}
 								switch elem[0] {
-								case '_': // Prefix: "_array"
-									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+								case 'a': // Prefix: "array"
+									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 										elem = elem[l:]
 									} else {
 										break
 									}
 
 									if len(elem) == 0 {
-										// Leaf: TestRequestRequiredNumberArrayArray
-										r.name = "TestRequestRequiredNumberArrayArray"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-								}
-							case 'd': // Prefix: "double"
-								if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestRequiredNumberDouble"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestRequiredNumberDoubleNullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestRequiredNumberDoubleArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestRequiredNumberDoubleArrayArray
-												r.name = "TestRequestRequiredNumberDoubleArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestRequiredNumberDoubleNullable"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestRequestRequiredNumberDoubleNullableArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestRequiredNumberDoubleNullableArrayArray
-													r.name = "TestRequestRequiredNumberDoubleNullableArrayArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-											}
-										}
-									}
-								}
-							case 'f': // Prefix: "float"
-								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestRequiredNumberFloat"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestRequiredNumberFloatNullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestRequiredNumberFloatArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestRequestRequiredNumberFloatArrayArray
-												r.name = "TestRequestRequiredNumberFloatArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestRequiredNumberFloatNullable"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestRequestRequiredNumberFloatNullableArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestRequiredNumberFloatNullableArrayArray
-													r.name = "TestRequestRequiredNumberFloatNullableArrayArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-											}
-										}
-									}
-								}
-							case 'i': // Prefix: "int"
-								if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestRequiredNumberInt64"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case '3': // Prefix: "32"
-									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestRequiredNumberInt32"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_"
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestRequiredNumberInt32Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "array"
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestRequestRequiredNumberInt32Array"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestRequiredNumberInt32ArrayArray
-													r.name = "TestRequestRequiredNumberInt32ArrayArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-											}
-										case 'n': // Prefix: "nullable"
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestRequestRequiredNumberInt32Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													r.name = "TestRequestRequiredNumberInt32NullableArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_array"
-													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: TestRequestRequiredNumberInt32NullableArrayArray
-														r.name = "TestRequestRequiredNumberInt32NullableArrayArray"
-														r.args = args
-														r.count = 0
-														return r, true
-													}
-												}
-											}
-										}
-									}
-								case '6': // Prefix: "64"
-									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestRequiredNumberInt64"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_"
-										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestRequestRequiredNumberInt64Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case 'a': // Prefix: "array"
-											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestRequestRequiredNumberInt64Array"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestRequestRequiredNumberInt64ArrayArray
-													r.name = "TestRequestRequiredNumberInt64ArrayArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-											}
-										case 'n': // Prefix: "nullable"
-											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestRequestRequiredNumberInt64Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													r.name = "TestRequestRequiredNumberInt64NullableArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-												switch elem[0] {
-												case '_': // Prefix: "_array"
-													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-														elem = elem[l:]
-													} else {
-														break
-													}
-
-													if len(elem) == 0 {
-														// Leaf: TestRequestRequiredNumberInt64NullableArrayArray
-														r.name = "TestRequestRequiredNumberInt64NullableArrayArray"
-														r.args = args
-														r.count = 0
-														return r, true
-													}
-												}
-											}
-										}
-									}
-								}
-							case 'n': // Prefix: "nullable"
-								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestRequestRequiredNumberNullable"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_array"
-									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestRequestRequiredNumberNullableArray"
+										r.name = "TestRequestRequiredNullArray"
 										r.args = args
 										r.count = 0
 										return r, true
@@ -9507,11 +9499,585 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											// Leaf: TestRequestRequiredNumberNullableArrayArray
-											r.name = "TestRequestRequiredNumberNullableArrayArray"
+											// Leaf: TestRequestRequiredNullArrayArray
+											r.name = "TestRequestRequiredNullArrayArray"
 											r.args = args
 											r.count = 0
 											return r, true
+										}
+									}
+								case 'n': // Prefix: "nullable"
+									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestRequiredNullNullable"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestRequiredNullNullableArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestRequestRequiredNullNullableArrayArray
+												r.name = "TestRequestRequiredNullNullableArrayArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+										}
+									}
+								}
+							}
+						case 'm': // Prefix: "mber"
+							if l := len("mber"); len(elem) >= l && elem[0:l] == "mber" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								r.name = "TestRequestRequiredNumber"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
+							switch elem[0] {
+							case '_': // Prefix: "_"
+								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestRequestRequiredNumberDouble"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case 'a': // Prefix: "array"
+									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestRequiredNumberArray"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestRequestRequiredNumberArrayArray
+											r.name = "TestRequestRequiredNumberArrayArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+									}
+								case 'd': // Prefix: "double"
+									if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestRequiredNumberDouble"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestRequiredNumberDoubleNullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestRequiredNumberDoubleArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestRequiredNumberDoubleArrayArray
+													r.name = "TestRequestRequiredNumberDoubleArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestRequiredNumberDoubleNullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestRequestRequiredNumberDoubleNullableArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestRequiredNumberDoubleNullableArrayArray
+														r.name = "TestRequestRequiredNumberDoubleNullableArrayArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+												}
+											}
+										}
+									}
+								case 'f': // Prefix: "float"
+									if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestRequiredNumberFloat"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestRequiredNumberFloatNullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestRequiredNumberFloatArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestRequestRequiredNumberFloatArrayArray
+													r.name = "TestRequestRequiredNumberFloatArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestRequiredNumberFloatNullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestRequestRequiredNumberFloatNullableArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestRequiredNumberFloatNullableArrayArray
+														r.name = "TestRequestRequiredNumberFloatNullableArrayArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+												}
+											}
+										}
+									}
+								case 'i': // Prefix: "int"
+									if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestRequiredNumberInt64"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '3': // Prefix: "32"
+										if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestRequiredNumberInt32"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestRequiredNumberInt32Nullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestRequestRequiredNumberInt32Array"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestRequiredNumberInt32ArrayArray
+														r.name = "TestRequestRequiredNumberInt32ArrayArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestRequestRequiredNumberInt32Nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "TestRequestRequiredNumberInt32NullableArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: TestRequestRequiredNumberInt32NullableArrayArray
+															r.name = "TestRequestRequiredNumberInt32NullableArrayArray"
+															r.args = args
+															r.count = 0
+															return r, true
+														}
+													}
+												}
+											}
+										}
+									case '6': // Prefix: "64"
+										if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestRequiredNumberInt64"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_"
+											if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestRequestRequiredNumberInt64Nullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case 'a': // Prefix: "array"
+												if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestRequestRequiredNumberInt64Array"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestRequestRequiredNumberInt64ArrayArray
+														r.name = "TestRequestRequiredNumberInt64ArrayArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+												}
+											case 'n': // Prefix: "nullable"
+												if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestRequestRequiredNumberInt64Nullable"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														r.name = "TestRequestRequiredNumberInt64NullableArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+													switch elem[0] {
+													case '_': // Prefix: "_array"
+														if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+															elem = elem[l:]
+														} else {
+															break
+														}
+
+														if len(elem) == 0 {
+															// Leaf: TestRequestRequiredNumberInt64NullableArrayArray
+															r.name = "TestRequestRequiredNumberInt64NullableArrayArray"
+															r.args = args
+															r.count = 0
+															return r, true
+														}
+													}
+												}
+											}
+										}
+									}
+								case 'n': // Prefix: "nullable"
+									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestRequestRequiredNumberNullable"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestRequestRequiredNumberNullableArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestRequestRequiredNumberNullableArrayArray
+												r.name = "TestRequestRequiredNumberNullableArrayArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
 										}
 									}
 								}
@@ -13212,8 +13778,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 						}
 					}
-				case 'n': // Prefix: "number"
-					if l := len("number"); len(elem) >= l && elem[0:l] == "number" {
+				case 'n': // Prefix: "nu"
+					if l := len("nu"); len(elem) >= l && elem[0:l] == "nu" {
 						elem = elem[l:]
 					} else {
 						break
@@ -13226,499 +13792,43 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						return r, true
 					}
 					switch elem[0] {
-					case '_': // Prefix: "_"
-						if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+					case 'l': // Prefix: "ll"
+						if l := len("ll"); len(elem) >= l && elem[0:l] == "ll" {
 							elem = elem[l:]
 						} else {
 							break
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestResponseNumberDouble"
+							r.name = "TestResponseNull"
 							r.args = args
 							r.count = 0
 							return r, true
 						}
 						switch elem[0] {
-						case 'a': // Prefix: "array"
-							if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+						case '_': // Prefix: "_"
+							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
 								elem = elem[l:]
 							} else {
 								break
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestResponseNumberArray"
+								r.name = "TestResponseNullNullable"
 								r.args = args
 								r.count = 0
 								return r, true
 							}
 							switch elem[0] {
-							case '_': // Prefix: "_array"
-								if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+							case 'a': // Prefix: "array"
+								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
 									elem = elem[l:]
 								} else {
 									break
 								}
 
 								if len(elem) == 0 {
-									// Leaf: TestResponseNumberArrayArray
-									r.name = "TestResponseNumberArrayArray"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-							}
-						case 'd': // Prefix: "double"
-							if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								r.name = "TestResponseNumberDouble"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_"
-								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestResponseNumberDoubleNullable"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "array"
-									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestResponseNumberDoubleArray"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: TestResponseNumberDoubleArrayArray
-											r.name = "TestResponseNumberDoubleArrayArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-									}
-								case 'n': // Prefix: "nullable"
-									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestResponseNumberDoubleNullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestResponseNumberDoubleNullableArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestResponseNumberDoubleNullableArrayArray
-												r.name = "TestResponseNumberDoubleNullableArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									}
-								}
-							}
-						case 'f': // Prefix: "float"
-							if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								r.name = "TestResponseNumberFloat"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_"
-								if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestResponseNumberFloatNullable"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case 'a': // Prefix: "array"
-									if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestResponseNumberFloatArray"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											// Leaf: TestResponseNumberFloatArrayArray
-											r.name = "TestResponseNumberFloatArrayArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-									}
-								case 'n': // Prefix: "nullable"
-									if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestResponseNumberFloatNullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case '_': // Prefix: "_array"
-										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestResponseNumberFloatNullableArray"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestResponseNumberFloatNullableArrayArray
-												r.name = "TestResponseNumberFloatNullableArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									}
-								}
-							}
-						case 'i': // Prefix: "int"
-							if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								r.name = "TestResponseNumberInt64"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
-							switch elem[0] {
-							case '3': // Prefix: "32"
-								if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestResponseNumberInt32"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestResponseNumberInt32Nullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestResponseNumberInt32Array"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestResponseNumberInt32ArrayArray
-												r.name = "TestResponseNumberInt32ArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestResponseNumberInt32Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestResponseNumberInt32NullableArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestResponseNumberInt32NullableArrayArray
-													r.name = "TestResponseNumberInt32NullableArrayArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-											}
-										}
-									}
-								}
-							case '6': // Prefix: "64"
-								if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestResponseNumberInt64"
-									r.args = args
-									r.count = 0
-									return r, true
-								}
-								switch elem[0] {
-								case '_': // Prefix: "_"
-									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
-										elem = elem[l:]
-									} else {
-										break
-									}
-
-									if len(elem) == 0 {
-										r.name = "TestResponseNumberInt64Nullable"
-										r.args = args
-										r.count = 0
-										return r, true
-									}
-									switch elem[0] {
-									case 'a': // Prefix: "array"
-										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestResponseNumberInt64Array"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												// Leaf: TestResponseNumberInt64ArrayArray
-												r.name = "TestResponseNumberInt64ArrayArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-										}
-									case 'n': // Prefix: "nullable"
-										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-											elem = elem[l:]
-										} else {
-											break
-										}
-
-										if len(elem) == 0 {
-											r.name = "TestResponseNumberInt64Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
-										}
-										switch elem[0] {
-										case '_': // Prefix: "_array"
-											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-												elem = elem[l:]
-											} else {
-												break
-											}
-
-											if len(elem) == 0 {
-												r.name = "TestResponseNumberInt64NullableArray"
-												r.args = args
-												r.count = 0
-												return r, true
-											}
-											switch elem[0] {
-											case '_': // Prefix: "_array"
-												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-													elem = elem[l:]
-												} else {
-													break
-												}
-
-												if len(elem) == 0 {
-													// Leaf: TestResponseNumberInt64NullableArrayArray
-													r.name = "TestResponseNumberInt64NullableArrayArray"
-													r.args = args
-													r.count = 0
-													return r, true
-												}
-											}
-										}
-									}
-								}
-							}
-						case 'n': // Prefix: "nullable"
-							if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
-								elem = elem[l:]
-							} else {
-								break
-							}
-
-							if len(elem) == 0 {
-								r.name = "TestResponseNumberNullable"
-								r.args = args
-								r.count = 0
-								return r, true
-							}
-							switch elem[0] {
-							case '_': // Prefix: "_array"
-								if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
-									elem = elem[l:]
-								} else {
-									break
-								}
-
-								if len(elem) == 0 {
-									r.name = "TestResponseNumberNullableArray"
+									r.name = "TestResponseNullArray"
 									r.args = args
 									r.count = 0
 									return r, true
@@ -13732,11 +13842,585 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										// Leaf: TestResponseNumberNullableArrayArray
-										r.name = "TestResponseNumberNullableArrayArray"
+										// Leaf: TestResponseNullArrayArray
+										r.name = "TestResponseNullArrayArray"
 										r.args = args
 										r.count = 0
 										return r, true
+									}
+								}
+							case 'n': // Prefix: "nullable"
+								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestResponseNullNullable"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestResponseNullNullableArray"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestResponseNullNullableArrayArray
+											r.name = "TestResponseNullNullableArrayArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+									}
+								}
+							}
+						}
+					case 'm': // Prefix: "mber"
+						if l := len("mber"); len(elem) >= l && elem[0:l] == "mber" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							r.name = "TestResponseNumber"
+							r.args = args
+							r.count = 0
+							return r, true
+						}
+						switch elem[0] {
+						case '_': // Prefix: "_"
+							if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+								elem = elem[l:]
+							} else {
+								break
+							}
+
+							if len(elem) == 0 {
+								r.name = "TestResponseNumberDouble"
+								r.args = args
+								r.count = 0
+								return r, true
+							}
+							switch elem[0] {
+							case 'a': // Prefix: "array"
+								if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestResponseNumberArray"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										// Leaf: TestResponseNumberArrayArray
+										r.name = "TestResponseNumberArrayArray"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+								}
+							case 'd': // Prefix: "double"
+								if l := len("double"); len(elem) >= l && elem[0:l] == "double" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestResponseNumberDouble"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestResponseNumberDoubleNullable"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestResponseNumberDoubleArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestResponseNumberDoubleArrayArray
+												r.name = "TestResponseNumberDoubleArrayArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+										}
+									case 'n': // Prefix: "nullable"
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestResponseNumberDoubleNullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestResponseNumberDoubleNullableArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestResponseNumberDoubleNullableArrayArray
+													r.name = "TestResponseNumberDoubleNullableArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										}
+									}
+								}
+							case 'f': // Prefix: "float"
+								if l := len("float"); len(elem) >= l && elem[0:l] == "float" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestResponseNumberFloat"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_"
+									if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestResponseNumberFloatNullable"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case 'a': // Prefix: "array"
+										if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestResponseNumberFloatArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												// Leaf: TestResponseNumberFloatArrayArray
+												r.name = "TestResponseNumberFloatArrayArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+										}
+									case 'n': // Prefix: "nullable"
+										if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestResponseNumberFloatNullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case '_': // Prefix: "_array"
+											if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestResponseNumberFloatNullableArray"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestResponseNumberFloatNullableArrayArray
+													r.name = "TestResponseNumberFloatNullableArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										}
+									}
+								}
+							case 'i': // Prefix: "int"
+								if l := len("int"); len(elem) >= l && elem[0:l] == "int" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestResponseNumberInt64"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '3': // Prefix: "32"
+									if l := len("32"); len(elem) >= l && elem[0:l] == "32" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestResponseNumberInt32"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestResponseNumberInt32Nullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestResponseNumberInt32Array"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestResponseNumberInt32ArrayArray
+													r.name = "TestResponseNumberInt32ArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestResponseNumberInt32Nullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestResponseNumberInt32NullableArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestResponseNumberInt32NullableArrayArray
+														r.name = "TestResponseNumberInt32NullableArrayArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+												}
+											}
+										}
+									}
+								case '6': // Prefix: "64"
+									if l := len("64"); len(elem) >= l && elem[0:l] == "64" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestResponseNumberInt64"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_"
+										if l := len("_"); len(elem) >= l && elem[0:l] == "_" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											r.name = "TestResponseNumberInt64Nullable"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
+										switch elem[0] {
+										case 'a': // Prefix: "array"
+											if l := len("array"); len(elem) >= l && elem[0:l] == "array" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestResponseNumberInt64Array"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													// Leaf: TestResponseNumberInt64ArrayArray
+													r.name = "TestResponseNumberInt64ArrayArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+											}
+										case 'n': // Prefix: "nullable"
+											if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+												elem = elem[l:]
+											} else {
+												break
+											}
+
+											if len(elem) == 0 {
+												r.name = "TestResponseNumberInt64Nullable"
+												r.args = args
+												r.count = 0
+												return r, true
+											}
+											switch elem[0] {
+											case '_': // Prefix: "_array"
+												if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+													elem = elem[l:]
+												} else {
+													break
+												}
+
+												if len(elem) == 0 {
+													r.name = "TestResponseNumberInt64NullableArray"
+													r.args = args
+													r.count = 0
+													return r, true
+												}
+												switch elem[0] {
+												case '_': // Prefix: "_array"
+													if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+														elem = elem[l:]
+													} else {
+														break
+													}
+
+													if len(elem) == 0 {
+														// Leaf: TestResponseNumberInt64NullableArrayArray
+														r.name = "TestResponseNumberInt64NullableArrayArray"
+														r.args = args
+														r.count = 0
+														return r, true
+													}
+												}
+											}
+										}
+									}
+								}
+							case 'n': // Prefix: "nullable"
+								if l := len("nullable"); len(elem) >= l && elem[0:l] == "nullable" {
+									elem = elem[l:]
+								} else {
+									break
+								}
+
+								if len(elem) == 0 {
+									r.name = "TestResponseNumberNullable"
+									r.args = args
+									r.count = 0
+									return r, true
+								}
+								switch elem[0] {
+								case '_': // Prefix: "_array"
+									if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+										elem = elem[l:]
+									} else {
+										break
+									}
+
+									if len(elem) == 0 {
+										r.name = "TestResponseNumberNullableArray"
+										r.args = args
+										r.count = 0
+										return r, true
+									}
+									switch elem[0] {
+									case '_': // Prefix: "_array"
+										if l := len("_array"); len(elem) >= l && elem[0:l] == "_array" {
+											elem = elem[l:]
+										} else {
+											break
+										}
+
+										if len(elem) == 0 {
+											// Leaf: TestResponseNumberNullableArrayArray
+											r.name = "TestResponseNumberNullableArrayArray"
+											r.args = args
+											r.count = 0
+											return r, true
+										}
 									}
 								}
 							}
