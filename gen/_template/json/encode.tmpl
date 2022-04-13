@@ -93,6 +93,7 @@ e.FieldStart({{ $.Tag.EscapedJSON }})
 		}
     {{- else if $t.IsNull }}
 		_ = {{ $.Var }}
+        {{- template "json/enc_field" $ }}
 		e.Null()
 	{{- else if $j.Fn -}}
 		{{- template "json/enc_field" $ }}
