@@ -91,12 +91,15 @@ e.FieldStart({{ $.Tag.EscapedJSON }})
         	{{- template "json/enc_field" $ }}
 			e.{{ $j.Fn }}({{ $.Var }})
 		}
-	{{- else if $j.Format -}}
-		{{- template "json/enc_field" $ }}
-		json.Encode{{ $j.Format }}(e, {{ $.Var }})
+    {{- else if $t.IsNull }}
+		_ = {{ $.Var }}
+		e.Null()
 	{{- else if $j.Fn -}}
 		{{- template "json/enc_field" $ }}
 		e.{{ $j.Fn }}({{ $.Var }})
+    {{- else if $j.Format -}}
+        {{- template "json/enc_field" $ }}
+		json.Encode{{ $j.Format }}(e, {{ $.Var }})
 	{{- else -}}
 		{{ errorf "unsupported: %s" $t }}
 	{{- end }}

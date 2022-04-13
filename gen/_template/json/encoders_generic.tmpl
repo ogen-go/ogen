@@ -24,6 +24,8 @@ func (o {{ $.Name }}) Encode(e *jx.Encoder{{ if $g.Format }}, format func(*jx.En
 		{{ errorf "unexpected optional any" }}
 	{{- end }}
 	e.{{ $g.JSON.Fn }}({{ $g.Primitive }}(o.Value))
+{{- else if $g.IsNull }}
+	e.Null()
 {{- else if $g.IsArray }}
 	{{- template "json/enc_array_elems" elem $g "o.Value" -}}
 {{- else if or ($g.IsStruct) ($g.IsMap) ($g.IsEnum) ($g.IsPointer) ($g.IsSum) ($g.IsAlias) }}
@@ -91,6 +93,10 @@ func (o *{{ $.Name }}) Decode(d *jx.Decoder{{ if $g.Format }}, format func(*jx.D
 			return err
 		}
 		o.Value = {{ $g.Go }}(v)
+	{{- else if $g.IsNull }}
+		if err := d.Null(); err != nil {
+			return err
+		}
 	{{- else }}
 		{{ errorf "unexpected kind %s" $g.Kind }}
 	{{- end }}

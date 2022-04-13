@@ -60,6 +60,13 @@ func boxType(ctx *genctx, v ir.GenericVariant, t *ir.Type) (*ir.Type, error) {
 	if t.IsAny() || t.IsStream() || !v.Any() {
 		return t, nil
 	}
+	// Do not wrap if type is Null primitive and generic is nullable only.
+	if t.IsNull() {
+		if v.OnlyNullable() {
+			return t, nil
+		}
+		v.Nullable = false
+	}
 
 	if t.IsArray() || t.Primitive == ir.ByteSlice {
 		// Using special case for array nil value if possible.

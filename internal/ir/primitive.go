@@ -34,6 +34,10 @@ func (p PrimitiveType) String() string {
 		return "float32"
 	case Float64:
 		return "float64"
+	case Bool:
+		return "bool"
+	case Null:
+		return "struct{}"
 	case Time:
 		return "time.Time"
 	case Duration:
@@ -44,8 +48,6 @@ func (p PrimitiveType) String() string {
 		return "netip.Addr"
 	case URL:
 		return "url.URL"
-	case Bool:
-		return "bool"
 	default:
 		panic(fmt.Sprintf("unexpected PrimitiveType: %d", p))
 	}
@@ -72,10 +74,11 @@ const (
 	Uint64
 	Float32
 	Float64
+	Bool
+	Null
 	Time
 	Duration
 	UUID
 	IP
 	URL
-	Bool
 )

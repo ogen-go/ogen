@@ -164,6 +164,8 @@ func jsonType(t *Type) string {
 		return "Bool"
 	case String, Time, Duration, UUID, IP, URL, ByteSlice:
 		return "String"
+	case Null:
+		return "Null"
 	default:
 		return ""
 	}

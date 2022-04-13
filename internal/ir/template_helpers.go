@@ -66,6 +66,10 @@ func (t *Type) IsFloat() bool {
 	}
 }
 
+func (t *Type) IsNull() bool {
+	return t.Primitive == Null
+}
+
 func (t *Type) IsArray() bool     { return t.Is(KindArray) }
 func (t *Type) IsMap() bool       { return t.Is(KindMap) }
 func (t *Type) IsPrimitive() bool { return t.Is(KindPrimitive) }
