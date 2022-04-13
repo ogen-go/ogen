@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "foo": {
+      "$ref": "#/definitions/schemaOrReference"
+    }
+  },
+  "definitions": {
+    "schema": {
+      "type": "object",
+      "properties": {
+        "allOf": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/schemaOrReference"
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "reference": {
+      "type": "object",
+      "required": [
+        "$ref"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "$ref": {
+          "type": "string"
+        }
+      }
+    },
+    "schemaOrReference": {
+      "oneOf": [
+        {
+          "$ref": "#/definitions/schema"
+        },
+        {
+          "$ref": "#/definitions/reference"
+        }
+      ]
+    }
+  }
+}
