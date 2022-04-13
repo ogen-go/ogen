@@ -3052,6 +3052,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
 
 		_ = s.RequiredNull
+		e.FieldStart("required_null")
 		e.Null()
 	}
 	{
@@ -7855,6 +7856,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 	{
 
 		_ = s.RequiredNull
+		e.FieldStart("required_null")
 		e.Null()
 	}
 	{
@@ -12658,6 +12660,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 	{
 
 		_ = s.RequiredNull
+		e.FieldStart("required_null")
 		e.Null()
 	}
 	{
