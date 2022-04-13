@@ -915,3 +915,29 @@ func TestJSONAny(t *testing.T) {
 		})
 	}
 }
+
+func TestJSONNull(t *testing.T) {
+	for i, tc := range []struct {
+		Input string
+		Error bool
+	}{
+		{"null", false},
+		{" null", false},
+		{"", true},
+		{"nil", true},
+		{"{}", true},
+		{"0", true},
+		{"true", true},
+		{"false", true},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			m := api.NullValue{}
+			checker := require.NoError
+			if tc.Error {
+				checker = require.Error
+			}
+			checker(t, m.Decode(jx.DecodeStr(tc.Input)))
+		})
+	}
+}

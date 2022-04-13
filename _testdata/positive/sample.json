@@ -1046,6 +1046,9 @@
           }
         }
       },
+      "NullValue": {
+        "type": "null"
+      },
       "Pet": {
         "description": "cute and lovely creature",
         "type": "object",
@@ -1181,6 +1184,9 @@
           "testDateTime": {
             "type": "string",
             "format": "date-time"
+          },
+          "nullValue": {
+            "$ref": "#/components/schemas/NullValue"
           }
         },
         "required": [
