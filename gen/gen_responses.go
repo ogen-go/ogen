@@ -9,10 +9,10 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[string]*oas.Response) (*ir.Response, error) {
+func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[string]*openapi.Response) (*ir.Response, error) {
 	name := opName + "Res"
 	result := &ir.Response{
 		StatusCode: make(map[int]*ir.StatusResponse, len(responses)),
@@ -121,7 +121,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	return result, nil
 }
 
-func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *oas.Response) (ret *ir.StatusResponse, rerr error) {
+func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Response) (ret *ir.StatusResponse, rerr error) {
 	if ref := resp.Ref; ref != "" {
 		if r, ok := ctx.lookupResponse(ref); ok {
 			return r, nil

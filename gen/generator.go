@@ -9,13 +9,14 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
-	"github.com/ogen-go/ogen/internal/oas/parser"
+	"github.com/ogen-go/ogen/openapi"
+	"github.com/ogen-go/ogen/openapi/parser"
 )
 
 // Generator is OpenAPI-to-Go generator.
 type Generator struct {
 	opt        Options
+	api        *openapi.API
 	operations []*ir.Operation
 	securities map[string]*ir.Security
 	tstorage   *tstorage
@@ -50,7 +51,7 @@ type Filters struct {
 	Methods   []string
 }
 
-func (f Filters) accept(op *oas.Operation) bool {
+func (f Filters) accept(op *openapi.Operation) bool {
 	if f.PathRegex != nil && !f.PathRegex.MatchString(op.Path.String()) {
 		return false
 	}
@@ -69,13 +70,14 @@ func (f Filters) accept(op *oas.Operation) bool {
 
 // NewGenerator creates new Generator.
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
-	operations, err := parser.Parse(spec, opts.InferSchemaType)
+	api, err := parser.Parse(spec, opts.InferSchemaType)
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}
 	}
 
 	g := &Generator{
 		opt:        opts,
+		api:        api,
 		operations: nil,
 		securities: map[string]*ir.Security{},
 		tstorage:   newTStorage(),
@@ -83,7 +85,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		router:     Router{},
 	}
 
-	if err := g.makeIR(operations); err != nil {
+	if err := g.makeIR(api.Operations); err != nil {
 		return nil, errors.Wrap(err, "make ir")
 	}
 
@@ -94,7 +96,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 	return g, nil
 }
 
-func (g *Generator) makeIR(ops []*oas.Operation) error {
+func (g *Generator) makeIR(ops []*openapi.Operation) error {
 	if err := g.reduceDefault(ops); err != nil {
 		return errors.Wrap(err, "reduce default")
 	}

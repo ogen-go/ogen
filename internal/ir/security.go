@@ -1,6 +1,6 @@
 package ir
 
-import "github.com/ogen-go/ogen/internal/oas"
+import "github.com/ogen-go/ogen/openapi"
 
 // SecurityKind defines security kind.
 type SecurityKind string
@@ -81,5 +81,5 @@ func (s *Security) GoDoc() []string {
 
 type SecurityRequirement struct {
 	Security *Security
-	Spec     oas.SecurityRequirements
+	Spec     openapi.SecurityRequirements
 }

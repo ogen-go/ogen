@@ -6,14 +6,14 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateParameters(ctx *genctx, opName string, params []*oas.Parameter) (_ []*ir.Parameter, err error) {
+func (g *Generator) generateParameters(ctx *genctx, opName string, params []*openapi.Parameter) (_ []*ir.Parameter, err error) {
 	result := make([]*ir.Parameter, 0, len(params))
 	for i, p := range params {
-		if p.In == oas.LocationCookie {
+		if p.In == openapi.LocationCookie {
 			if err := g.fail(&ErrNotImplemented{"cookie params"}); err != nil {
 				return nil, errors.Wrap(err, "fail")
 			}
@@ -150,12 +150,12 @@ func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error 
 	}
 }
 
-func isSupportedParamStyle(param *oas.Parameter) error {
+func isSupportedParamStyle(param *openapi.Parameter) error {
 	switch param.Style {
-	case oas.QueryStyleSpaceDelimited:
+	case openapi.QueryStyleSpaceDelimited:
 		return &ErrNotImplemented{Name: "spaceDelimited parameter style"}
 
-	case oas.QueryStylePipeDelimited:
+	case openapi.QueryStylePipeDelimited:
 		if param.Schema.Type == jsonschema.Object {
 			return &ErrNotImplemented{Name: "pipeDelimited style for object parameters"}
 		}

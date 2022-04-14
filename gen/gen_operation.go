@@ -6,10 +6,10 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateOperation(ctx *genctx, spec *oas.Operation) (_ *ir.Operation, err error) {
+func (g *Generator) generateOperation(ctx *genctx, spec *openapi.Operation) (_ *ir.Operation, err error) {
 	var opName string
 	if spec.OperationID != "" {
 		opName, err = pascalNonEmpty(spec.OperationID)
@@ -26,13 +26,13 @@ func (g *Generator) generateOperation(ctx *genctx, spec *oas.Operation) (_ *ir.O
 		Spec:        spec,
 	}
 
-	// Convert []oas.Parameter to []*ir.Parameter.
+	// Convert []openapi.Parameter to []*ir.Parameter.
 	op.Params, err = g.generateParameters(ctx.appendPath("parameters"), op.Name, spec.Parameters)
 	if err != nil {
 		return nil, errors.Wrap(err, "parameters")
 	}
 
-	// Convert []oas.PathPart to []*ir.PathPart
+	// Convert []openapi.PathPart to []*ir.PathPart
 	op.PathParts = convertPathParts(op.Spec.Path, op.PathParams())
 
 	if spec.RequestBody != nil {
@@ -55,10 +55,10 @@ func (g *Generator) generateOperation(ctx *genctx, spec *oas.Operation) (_ *ir.O
 	return op, nil
 }
 
-func convertPathParts(parts []oas.PathPart, params []*ir.Parameter) []*ir.PathPart {
+func convertPathParts(parts []openapi.PathPart, params []*ir.Parameter) []*ir.PathPart {
 	find := func(pname string) (*ir.Parameter, bool) {
 		for _, p := range params {
-			if p.Spec.Name == pname && p.Spec.In == oas.LocationPath {
+			if p.Spec.Name == pname && p.Spec.In == openapi.LocationPath {
 				return p, true
 			}
 		}

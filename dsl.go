@@ -7,8 +7,8 @@ import (
 	"github.com/go-faster/jx"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 // NewSpec returns a new Spec.
@@ -598,22 +598,22 @@ func (p *Parameter) SetIn(i string) *Parameter {
 
 // InPath sets the In of the Parameter to "PathItem".
 func (p *Parameter) InPath() *Parameter {
-	return p.SetIn(string(oas.LocationPath))
+	return p.SetIn(string(openapi.LocationPath))
 }
 
 // InQuery sets the In of the Parameter to "query".
 func (p *Parameter) InQuery() *Parameter {
-	return p.SetIn(string(oas.LocationQuery))
+	return p.SetIn(string(openapi.LocationQuery))
 }
 
 // InHeader sets the In of the Parameter to "header".
 func (p *Parameter) InHeader() *Parameter {
-	return p.SetIn(string(oas.LocationHeader))
+	return p.SetIn(string(openapi.LocationHeader))
 }
 
 // InCookie sets the In of the Parameter to "cookie".
 func (p *Parameter) InCookie() *Parameter {
-	return p.SetIn(string(oas.LocationCookie))
+	return p.SetIn(string(openapi.LocationCookie))
 }
 
 // SetDescription sets the Description of the Parameter.

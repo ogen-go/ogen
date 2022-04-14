@@ -5,8 +5,8 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ogen-go/ogen/internal/oas"
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 type Operation struct {
@@ -17,7 +17,7 @@ type Operation struct {
 	Request     *Request
 	Response    *Response
 	Security    []*SecurityRequirement
-	Spec        *oas.Operation
+	Spec        *openapi.Operation
 }
 
 func (op Operation) GoDoc() []string {
@@ -39,7 +39,7 @@ func (p PathPart) String() string {
 type Parameter struct {
 	Name string
 	Type *Type
-	Spec *oas.Parameter
+	Spec *openapi.Parameter
 }
 
 // Default returns default value of this field, if it is set.
@@ -70,7 +70,7 @@ func (op Parameter) GoDoc() []string {
 type Request struct {
 	Type     *Type
 	Contents map[ContentType]*Type
-	Spec     *oas.RequestBody
+	Spec     *openapi.RequestBody
 }
 
 type Content struct {
@@ -126,7 +126,7 @@ type StatusResponse struct {
 	Wrapped   bool
 	NoContent *Type
 	Contents  map[ContentType]*Type
-	Spec      *oas.Response
+	Spec      *openapi.Response
 }
 
 func (s StatusResponse) ResponseInfo() []ResponseInfo {

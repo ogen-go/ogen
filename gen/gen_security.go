@@ -6,10 +6,10 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/internal/ir"
-	"github.com/ogen-go/ogen/internal/oas"
+	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec oas.SecurityRequirements) (*ir.Security, error) {
+func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec openapi.SecurityRequirements) (*ir.Security, error) {
 	security := spec.Security
 	if name := security.Name; name == "" {
 		return nil, errors.Errorf(`invalid "apiKey" name %q`, name)
@@ -34,7 +34,7 @@ func (g *Generator) generateSecurityAPIKey(s *ir.Security, spec oas.SecurityRequ
 	return s, nil
 }
 
-func (g *Generator) generateSecurityHTTP(s *ir.Security, spec oas.SecurityRequirements) (*ir.Security, error) {
+func (g *Generator) generateSecurityHTTP(s *ir.Security, spec openapi.SecurityRequirements) (*ir.Security, error) {
 	security := spec.Security
 	s.Kind = ir.HeaderSecurity
 	switch scheme := security.Scheme; scheme {
@@ -64,7 +64,7 @@ func (g *Generator) generateSecurityHTTP(s *ir.Security, spec oas.SecurityRequir
 	return s, nil
 }
 
-func (g *Generator) generateSecurity(ctx *genctx, spec oas.SecurityRequirements) (r *ir.Security, rErr error) {
+func (g *Generator) generateSecurity(ctx *genctx, spec openapi.SecurityRequirements) (r *ir.Security, rErr error) {
 	if sec, ok := g.securities[spec.Name]; ok {
 		return sec, nil
 	}
@@ -99,7 +99,7 @@ func (g *Generator) generateSecurity(ctx *genctx, spec oas.SecurityRequirements)
 		}
 		fallthrough
 	case "oauth2":
-		checkScopes := func(flow *oas.OAuthFlow) error {
+		checkScopes := func(flow *openapi.OAuthFlow) error {
 			if flow == nil {
 				return nil
 			}
@@ -111,7 +111,7 @@ func (g *Generator) generateSecurity(ctx *genctx, spec oas.SecurityRequirements)
 			return nil
 		}
 
-		for flowName, flow := range map[string]*oas.OAuthFlow{
+		for flowName, flow := range map[string]*openapi.OAuthFlow{
 			"implicit":          flows.Implicit,
 			"password":          flows.Password,
 			"clientCredentials": flows.ClientCredentials,
@@ -134,7 +134,7 @@ func (g *Generator) generateSecurity(ctx *genctx, spec oas.SecurityRequirements)
 	}
 }
 
-func (g *Generator) generateSecurities(ctx *genctx, spec []oas.SecurityRequirements) (r []*ir.SecurityRequirement, _ error) {
+func (g *Generator) generateSecurities(ctx *genctx, spec []openapi.SecurityRequirements) (r []*ir.SecurityRequirement, _ error) {
 	for idx, sr := range spec {
 		s, err := g.generateSecurity(ctx, sr)
 		if err != nil {
@@ -148,5 +148,4 @@ func (g *Generator) generateSecurities(ctx *genctx, spec []oas.SecurityRequireme
 		})
 	}
 	return r, nil
-
 }
