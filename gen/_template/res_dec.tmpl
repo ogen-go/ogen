@@ -1,5 +1,5 @@
 {{ define "dec_res_json" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 buf := getBuf()
 defer putBuf(buf)
 if _, err := io.Copy(buf, resp.Body); err != nil {

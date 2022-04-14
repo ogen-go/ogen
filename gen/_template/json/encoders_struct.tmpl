@@ -1,5 +1,5 @@
 {{- define "json/encode_struct_fields" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ir.JSONFields*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.JSONFields*/ -}}
 	{{- range $i, $f := $ }}
 		{
 		{{- $elem := field_elem $f }}
@@ -9,7 +9,7 @@
 {{- end }}
 
 {{- define "json/encoders_struct" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- $fields := $.JSON.Fields }}
 {{- $additional := $.JSON.AdditionalProps }}
 {{- $pattern := $.JSON.PatternProps }}

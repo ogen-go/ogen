@@ -70,7 +70,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 {{ end }}
 
 {{ define "route_handle_request" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Operation*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
 s.handle{{ $.Name }}Request([{{ $.PathParamsCount }}]string{
 	{{- range $i, $_ := times $.PathParamsCount }}
 	args[{{ $i }}],

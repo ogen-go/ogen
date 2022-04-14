@@ -52,7 +52,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 {{ end }}
 
 {{ define "respond" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ir.ResponseInfo*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.ResponseInfo*/ -}}
 {{- if not $.NoContent }}{{- /* Set content-type */}}
 w.Header().Set("Content-Type", {{ quote $.ContentType }})
 {{- end }}{{- /* Set content-type */}}
