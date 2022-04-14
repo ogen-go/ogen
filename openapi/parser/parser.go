@@ -17,6 +17,7 @@ type parser struct {
 	operations []*openapi.Operation
 	// refs contains lazy-initialized referenced components.
 	refs struct {
+		schemas         map[string]*jsonschema.Schema
 		requestBodies   map[string]*openapi.RequestBody
 		responses       map[string]*openapi.Response
 		parameters      map[string]*openapi.Parameter
@@ -33,26 +34,31 @@ func Parse(doc *document.Document, inferTypes bool) (*openapi.API, error) {
 		doc:        doc,
 		operations: nil,
 		refs: struct {
+			schemas         map[string]*jsonschema.Schema
 			requestBodies   map[string]*openapi.RequestBody
 			responses       map[string]*openapi.Response
 			parameters      map[string]*openapi.Parameter
 			examples        map[string]*openapi.Example
 			securitySchemes map[string]*document.SecuritySchema
 		}{
+			schemas:         map[string]*jsonschema.Schema{},
 			requestBodies:   map[string]*openapi.RequestBody{},
 			responses:       map[string]*openapi.Response{},
 			parameters:      map[string]*openapi.Parameter{},
 			examples:        map[string]*openapi.Example{},
 			securitySchemes: map[string]*document.SecuritySchema{},
 		},
-		schemaParser: jsonschema.NewParser(jsonschema.Settings{
-			Resolver: componentsResolver{
-				components: doc.Components.Schemas,
-				root:       jsonschema.NewRootResolver(doc.Raw),
-			},
-			InferTypes: inferTypes,
-		}),
 	}
+
+	p.schemaParser = jsonschema.NewParser(jsonschema.Settings{
+		Resolver: componentsResolver{
+			components: doc.Components.Schemas,
+			root:       jsonschema.NewRootResolver(doc.Raw),
+		},
+		InferTypes:     inferTypes,
+		ReferenceCache: p.refs.schemas,
+	})
+
 	for name, s := range doc.Components.SecuritySchemes {
 		p.refs.securitySchemes[name] = s
 	}
@@ -63,6 +69,12 @@ func Parse(doc *document.Document, inferTypes bool) (*openapi.API, error) {
 
 	return &openapi.API{
 		Operations: p.operations,
+		Components: &openapi.Components{
+			Parameters:    p.refs.parameters,
+			Schemas:       p.refs.schemas,
+			RequestBodies: p.refs.requestBodies,
+			Responses:     p.refs.responses,
+		},
 	}, nil
 }
 

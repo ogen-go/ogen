@@ -24,7 +24,7 @@ func NewParser(s Settings) *Parser {
 	s.setDefaults()
 	return &Parser{
 		resolver:   s.Resolver,
-		refcache:   map[string]*Schema{},
+		refcache:   s.ReferenceCache,
 		inferTypes: s.InferTypes,
 	}
 }
