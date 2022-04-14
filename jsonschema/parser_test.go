@@ -177,6 +177,41 @@ func TestSchemaInfiniteRecursion(t *testing.T) {
 	}
 }
 
+func TestSchemaRefToRef(t *testing.T) {
+	// This regression test checks ref-to-ref handling.
+	//
+	// Such schema caused a false-positive infinite recursion error before.
+	components := components{
+		"first": {
+			Ref: "#/components/schemas/second",
+		},
+		"second": {
+			Ref: "#/components/schemas/third",
+		},
+		"third": {
+			Ref: "#/components/schemas/actual",
+		},
+		"actual": {
+			Type: "integer",
+		},
+		"referer": {
+			Type: "object",
+			Properties: RawProperties{
+				{"Ref1", &RawSchema{Ref: "#/components/schemas/first"}},
+				{"Ref2", &RawSchema{Ref: "#/components/schemas/first"}},
+				{"Ref3", &RawSchema{Ref: "#/components/schemas/second"}},
+			},
+		},
+	}
+	parser := NewParser(Settings{
+		Resolver: components,
+	})
+	_, err := parser.Parse(&RawSchema{
+		Ref: "#/components/schemas/referer",
+	})
+	require.NoError(t, err)
+}
+
 func TestSchemaSideEffects(t *testing.T) {
 	expectSide := []*Schema{
 		{

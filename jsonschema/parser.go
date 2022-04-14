@@ -366,6 +366,10 @@ func (p *Parser) resolve(ref string, ctx resolveCtx) (*Schema, error) {
 		return nil, errors.New("infinite recursion")
 	}
 	ctx[ref] = struct{}{}
+	defer func() {
+		// Drop the resolved ref to prevent false-positive infinite recursion detection.
+		delete(ctx, ref)
+	}()
 
 	raw, err := p.resolver.ResolveReference(ref)
 	if err != nil {
