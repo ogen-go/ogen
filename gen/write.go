@@ -10,7 +10,7 @@ import (
 
 	"github.com/go-faster/errors"
 
-	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/gen/ir"
 )
 
 type TemplateConfig struct {
@@ -129,7 +129,7 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) err
 		return errors.Wrapf(err, "failed to execute template %s for %s", templateName, fileName)
 	}
 	if err := w.fs.WriteFile(fileName, w.buf.Bytes()); err != nil {
-		_ = os.WriteFile(fileName+".dump", w.buf.Bytes(), 0600)
+		_ = os.WriteFile(fileName+".dump", w.buf.Bytes(), 0o600)
 		return errors.Wrapf(err, "failed to write file %s", fileName)
 	}
 	w.wrote[fileName] = true
@@ -221,7 +221,6 @@ func (g *Generator) WriteSource(fs FileSystem, pkgName string) error {
 				return errors.Wrapf(err, "%s", name)
 			}
 		}
-
 	}
 	return nil
 }

@@ -1,6 +1,6 @@
 package gen
 
-import "github.com/ogen-go/ogen/internal/ir"
+import "github.com/ogen-go/ogen/gen/ir"
 
 // genctx is a generation context.
 type genctx struct {

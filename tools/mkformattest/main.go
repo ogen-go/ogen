@@ -8,7 +8,7 @@ import (
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
-	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/gen/ir"
 )
 
 func generateSpec() *ogen.Spec {

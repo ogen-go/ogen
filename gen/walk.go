@@ -3,7 +3,7 @@ package gen
 import (
 	"github.com/go-faster/errors"
 
-	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/gen/ir"
 )
 
 func walkResponseTypes(r *ir.Response, walkFn func(name string, t *ir.Type) (*ir.Type, error)) error {

@@ -8,8 +8,8 @@ import (
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/capitalize"
-	"github.com/ogen-go/ogen/internal/ir"
 )
 
 // RouterElem is variable helper for router generation.

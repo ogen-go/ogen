@@ -6,7 +6,7 @@ import (
 
 	"github.com/go-faster/jx"
 
-	"github.com/ogen-go/ogen/internal/ir"
+	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
