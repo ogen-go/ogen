@@ -5,11 +5,11 @@ import (
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/openapi"
-	"github.com/ogen-go/ogen/openapi/document"
 )
 
-func (p *parser) parseParams(params []*document.Parameter) ([]*openapi.Parameter, error) {
+func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, error) {
 	// Unique parameter is defined by a combination of a name and location.
 	type pnameLoc struct {
 		name     string
@@ -46,7 +46,7 @@ func (p *parser) parseParams(params []*document.Parameter) ([]*openapi.Parameter
 	return result, nil
 }
 
-func (p *parser) parseParameter(param *document.Parameter, ctx resolveCtx) (*openapi.Parameter, error) {
+func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi.Parameter, error) {
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)
 		if err != nil {
@@ -72,7 +72,7 @@ func (p *parser) parseParameter(param *document.Parameter, ctx resolveCtx) (*ope
 		return nil, errors.New("path parameters must be required")
 	}
 
-	schema, err := p.schemaParser.Parse(param.Schema)
+	schema, err := p.schemaParser.Parse(param.Schema.ToJSONSchema())
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")
 	}

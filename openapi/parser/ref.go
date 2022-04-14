@@ -5,8 +5,8 @@ import (
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/openapi"
-	"github.com/ogen-go/ogen/openapi/document"
 )
 
 type resolveCtx map[string]struct{}
@@ -27,7 +27,7 @@ func (p *parser) resolveRequestBody(ref string, ctx resolveCtx) (*openapi.Reques
 	ctx[ref] = struct{}{}
 
 	name := strings.TrimPrefix(ref, prefix)
-	component, found := p.doc.Components.RequestBodies[name]
+	component, found := p.spec.Components.RequestBodies[name]
 	if !found {
 		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
@@ -57,7 +57,7 @@ func (p *parser) resolveResponse(ref string, ctx resolveCtx) (*openapi.Response,
 	ctx[ref] = struct{}{}
 
 	name := strings.TrimPrefix(ref, prefix)
-	component, found := p.doc.Components.Responses[name]
+	component, found := p.spec.Components.Responses[name]
 	if !found {
 		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
@@ -88,7 +88,7 @@ func (p *parser) resolveParameter(ref string, ctx resolveCtx) (*openapi.Paramete
 	ctx[ref] = struct{}{}
 
 	name := strings.TrimPrefix(ref, prefix)
-	component, found := p.doc.Components.Parameters[name]
+	component, found := p.spec.Components.Parameters[name]
 	if !found {
 		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
@@ -113,7 +113,7 @@ func (p *parser) resolveExample(ref string) (*openapi.Example, error) {
 	}
 
 	name := strings.TrimPrefix(ref, prefix)
-	component, found := p.doc.Components.Examples[name]
+	component, found := p.spec.Components.Examples[name]
 	if !found {
 		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
@@ -129,7 +129,7 @@ func (p *parser) resolveExample(ref string) (*openapi.Example, error) {
 	return example, nil
 }
 
-func (p *parser) resolveSecuritySchema(ref string, ctx resolveCtx) (*document.SecuritySchema, error) {
+func (p *parser) resolveSecuritySchema(ref string, ctx resolveCtx) (*ogen.SecuritySchema, error) {
 	const prefix = "#/components/securitySchemes/"
 	if !strings.HasPrefix(ref, prefix) {
 		return nil, errors.Errorf("invalid securitySchema reference: %q", ref)
@@ -145,7 +145,7 @@ func (p *parser) resolveSecuritySchema(ref string, ctx resolveCtx) (*document.Se
 	ctx[ref] = struct{}{}
 
 	name := strings.TrimPrefix(ref, prefix)
-	component, found := p.doc.Components.SecuritySchemes[name]
+	component, found := p.spec.Components.SecuritySchemes[name]
 	if !found {
 		return nil, errors.Errorf("component by reference %q not found", ref)
 	}

@@ -3,11 +3,11 @@ package parser
 import (
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/openapi"
-	"github.com/ogen-go/ogen/openapi/document"
 )
 
-func (p *parser) parseSecuritySchema(s *document.SecuritySchema, ctx resolveCtx) (*document.SecuritySchema, error) {
+func (p *parser) parseSecuritySchema(s *ogen.SecuritySchema, ctx resolveCtx) (*ogen.SecuritySchema, error) {
 	if s == nil {
 		return nil, errors.New("security schema must not be null")
 	}
@@ -21,8 +21,8 @@ func (p *parser) parseSecuritySchema(s *document.SecuritySchema, ctx resolveCtx)
 	return s, nil
 }
 
-func cloneOAuthFlows(flows document.OAuthFlows) (r openapi.OAuthFlows) {
-	cloneFlow := func(flow *document.OAuthFlow) *openapi.OAuthFlow {
+func cloneOAuthFlows(flows ogen.OAuthFlows) (r openapi.OAuthFlows) {
+	cloneFlow := func(flow *ogen.OAuthFlow) *openapi.OAuthFlow {
 		if flow == nil {
 			return nil
 		}
@@ -46,7 +46,7 @@ func cloneOAuthFlows(flows document.OAuthFlows) (r openapi.OAuthFlows) {
 	}
 }
 
-func (p *parser) parseSecurityRequirements(requirements document.SecurityRequirements) ([]openapi.SecurityRequirements, error) {
+func (p *parser) parseSecurityRequirements(requirements ogen.SecurityRequirements) ([]openapi.SecurityRequirements, error) {
 	result := make([]openapi.SecurityRequirements, 0, len(requirements))
 	for _, req := range requirements {
 		for requirementName, scopes := range req {

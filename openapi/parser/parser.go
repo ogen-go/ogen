@@ -5,14 +5,14 @@ import (
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
-	"github.com/ogen-go/ogen/openapi/document"
 )
 
 type parser struct {
-	// api document, immutable.
-	doc *document.Document
+	// api spec, immutable.
+	spec *ogen.Spec
 	// parsed operations.
 	operations []*openapi.Operation
 	// refs contains lazy-initialized referenced components.
@@ -22,16 +22,16 @@ type parser struct {
 		responses       map[string]*openapi.Response
 		parameters      map[string]*openapi.Parameter
 		examples        map[string]*openapi.Example
-		securitySchemes map[string]*document.SecuritySchema
+		securitySchemes map[string]*ogen.SecuritySchema
 	}
 
 	schemaParser *jsonschema.Parser
 }
 
-func Parse(doc *document.Document, inferTypes bool) (*openapi.API, error) {
-	doc.Init()
+func Parse(spec *ogen.Spec, inferTypes bool) (*openapi.API, error) {
+	spec.Init()
 	p := &parser{
-		doc:        doc,
+		spec:       spec,
 		operations: nil,
 		refs: struct {
 			schemas         map[string]*jsonschema.Schema
@@ -39,27 +39,27 @@ func Parse(doc *document.Document, inferTypes bool) (*openapi.API, error) {
 			responses       map[string]*openapi.Response
 			parameters      map[string]*openapi.Parameter
 			examples        map[string]*openapi.Example
-			securitySchemes map[string]*document.SecuritySchema
+			securitySchemes map[string]*ogen.SecuritySchema
 		}{
 			schemas:         map[string]*jsonschema.Schema{},
 			requestBodies:   map[string]*openapi.RequestBody{},
 			responses:       map[string]*openapi.Response{},
 			parameters:      map[string]*openapi.Parameter{},
 			examples:        map[string]*openapi.Example{},
-			securitySchemes: map[string]*document.SecuritySchema{},
+			securitySchemes: map[string]*ogen.SecuritySchema{},
 		},
 	}
 
 	p.schemaParser = jsonschema.NewParser(jsonschema.Settings{
 		Resolver: componentsResolver{
-			components: doc.Components.Schemas,
-			root:       jsonschema.NewRootResolver(doc.Raw),
+			components: spec.Components.Schemas,
+			root:       jsonschema.NewRootResolver(spec.Raw),
 		},
 		InferTypes:     inferTypes,
 		ReferenceCache: p.refs.schemas,
 	})
 
-	for name, s := range doc.Components.SecuritySchemes {
+	for name, s := range spec.Components.SecuritySchemes {
 		p.refs.securitySchemes[name] = s
 	}
 
@@ -80,7 +80,7 @@ func Parse(doc *document.Document, inferTypes bool) (*openapi.API, error) {
 
 func (p *parser) parse() error {
 	operationIDs := make(map[string]struct{})
-	for path, item := range p.doc.Paths {
+	for path, item := range p.spec.Paths {
 		if item == nil {
 			return errors.Errorf("%s: unexpected nil schema", path)
 		}
@@ -93,7 +93,7 @@ func (p *parser) parse() error {
 			return errors.Wrapf(err, "%s: parameters", path)
 		}
 
-		if err := forEachOps(item, func(method string, op document.Operation) error {
+		if err := forEachOps(item, func(method string, op ogen.Operation) error {
 			if id := op.OperationID; id != "" {
 				if _, ok := operationIDs[id]; ok {
 					return errors.Errorf("duplicate operationId: %q", id)
@@ -116,7 +116,7 @@ func (p *parser) parse() error {
 	return nil
 }
 
-func (p *parser) parseOp(path, httpMethod string, spec document.Operation, itemParams []*openapi.Parameter) (_ *openapi.Operation, err error) {
+func (p *parser) parseOp(path, httpMethod string, spec ogen.Operation, itemParams []*openapi.Parameter) (_ *openapi.Operation, err error) {
 	op := &openapi.Operation{
 		OperationID: spec.OperationID,
 		Description: spec.Description,
@@ -156,7 +156,7 @@ func (p *parser) parseOp(path, httpMethod string, spec document.Operation, itemP
 		}
 	} else {
 		// Use root level security.
-		op.Security, err = p.parseSecurityRequirements(p.doc.Security)
+		op.Security, err = p.parseSecurityRequirements(p.spec.Security)
 		if err != nil {
 			return nil, errors.Wrap(err, "security")
 		}

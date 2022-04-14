@@ -5,12 +5,12 @@ import (
 
 	"github.com/go-faster/errors"
 
+	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
-	"github.com/ogen-go/ogen/openapi/document"
 )
 
-func (p *parser) parseStatus(status string, response *document.Response) (*openapi.Response, error) {
+func (p *parser) parseStatus(status string, response *ogen.Response) (*openapi.Response, error) {
 	if err := validateStatusCode(status); err != nil {
 		return nil, err
 	}
@@ -27,7 +27,7 @@ func (p *parser) parseStatus(status string, response *document.Response) (*opena
 	return resp, nil
 }
 
-func (p *parser) parseResponses(responses document.Responses) (map[string]*openapi.Response, error) {
+func (p *parser) parseResponses(responses ogen.Responses) (map[string]*openapi.Response, error) {
 	result := make(map[string]*openapi.Response, len(responses))
 	if len(responses) == 0 {
 		return nil, errors.New("no responses")
@@ -44,7 +44,7 @@ func (p *parser) parseResponses(responses document.Responses) (map[string]*opena
 	return result, nil
 }
 
-func (p *parser) parseResponse(resp *document.Response, ctx resolveCtx) (*openapi.Response, error) {
+func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*openapi.Response, error) {
 	if ref := resp.Ref; ref != "" {
 		resp, err := p.resolveResponse(ref, ctx)
 		if err != nil {
@@ -58,7 +58,7 @@ func (p *parser) parseResponse(resp *document.Response, ctx resolveCtx) (*openap
 		Contents: make(map[string]*jsonschema.Schema, len(resp.Content)),
 	}
 	for contentType, media := range resp.Content {
-		schema, err := p.schemaParser.Parse(media.Schema)
+		schema, err := p.schemaParser.Parse(media.Schema.ToJSONSchema())
 		if err != nil {
 			return nil, errors.Wrapf(err, "content: %q: schema", contentType)
 		}
