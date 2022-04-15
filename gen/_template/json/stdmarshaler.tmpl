@@ -1,5 +1,5 @@
 {{- define "json/stdmarshaler" }}
-{{- /*gotype: github.com/ogen-go/ogen/internal/ir.Type*/ -}}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- $g := $.GenericOf -}}
 // MarshalJSON implements stdjson.Marshaler.
 func (s {{ $.Name }}) MarshalJSON() ([]byte, error) {
