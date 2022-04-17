@@ -50,8 +50,9 @@ var redocFixtures = []Schema{
 		Link: "https://raw.githubusercontent.com/Redocly/redoc/master/src/services/__tests__/fixtures/discriminator.json",
 	},
 	{
-		File: "redoc/fields.json",
-		Link: "https://raw.githubusercontent.com/Redocly/redoc/master/src/services/__tests__/fixtures/fields.json",
+		File:       "redoc/fields.json",
+		Link:       "https://raw.githubusercontent.com/Redocly/redoc/master/src/services/__tests__/fixtures/fields.json",
+		SkipReason: "invalid parameter: \"testParam\": path parameters must be required",
 	},
 	{
 		File: "redoc/oneOfHoist.json",
@@ -91,8 +92,9 @@ var autoRestLinks = []Schema{
 		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/complex-model.json",
 	},
 	{
-		File: "autorest/default-response.json",
-		Link: "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/default-response.json",
+		File:       "autorest/default-response.json",
+		Link:       "https://raw.githubusercontent.com/Azure/autorest/main/packages/libs/oai2-to-oai3/test/resources/conversion/oai3/default-response.json",
+		SkipReason: "invalid schema: unexpected schema type: \"file\"",
 	},
 	{
 		File:       "autorest/exec-service.json",
