@@ -4,7 +4,7 @@
     "title": "Telegram Bot API",
     "description": "API for Telegram bots",
     "termsOfService": "https://telegram.org/tos",
-    "version": "5.7"
+    "version": "6.0"
   },
   "servers": [
     {
@@ -118,6 +118,30 @@
             "application/json": {
               "schema": {
                 "$ref": "#/components/schemas/answerShippingQuery"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/answerWebAppQuery": {
+      "description": "Use this method to set the result of an interaction with a Web App and send a corresponding message on behalf of the user to the chat from which the query originated. On success, a SentWebAppMessage object is returned.",
+      "post": {
+        "operationId": "answerWebAppQuery",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/answerWebAppQuery"
               }
             }
           },
@@ -745,6 +769,29 @@
         }
       }
     },
+    "/getChatMenuButton": {
+      "description": "Use this method to get the current value of the bot's menu button in a private chat, or the default menu button. Returns MenuButton on success.",
+      "post": {
+        "operationId": "getChatMenuButton",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getChatMenuButton"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
     "/getFile": {
       "description": "Use this method to get basic info about a file and prepare it for downloading. For the moment, bots can download files of up to 20MB in size. On success, a File object is returned. The file can then be downloaded via the link https://api.telegram.org/file/bot\u003ctoken\u003e/\u003cfile_path\u003e, where \u003cfile_path\u003e is taken from the response. It is guaranteed that the link will be valid for at least 1 hour. When the link expires, a new one can be requested by calling getFile again.",
       "post": {
@@ -823,6 +870,29 @@
         "responses": {
           "200": {
             "$ref": "#/components/responses/ResultArrayOfBotCommand"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/getMyDefaultAdministratorRights": {
+      "description": "Use this method to get the current default administrator rights of the bot. Returns ChatAdministratorRights on success.",
+      "post": {
+        "operationId": "getMyDefaultAdministratorRights",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/getMyDefaultAdministratorRights"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
           },
           "default": {
             "$ref": "#/components/responses/Error"
@@ -1529,6 +1599,29 @@
         }
       }
     },
+    "/setChatMenuButton": {
+      "description": "Use this method to change the bot's menu button in a private chat, or the default menu button. Returns True on success.",
+      "post": {
+        "operationId": "setChatMenuButton",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/setChatMenuButton"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
     "/setChatPermissions": {
       "description": "Use this method to set default chat permissions for all members. The bot must be an administrator in the group or a supergroup for this to work and must have the can_restrict_members administrator rights. Returns True on success.",
       "post": {
@@ -1662,6 +1755,29 @@
             }
           },
           "required": true
+        },
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/Result"
+          },
+          "default": {
+            "$ref": "#/components/responses/Error"
+          }
+        }
+      }
+    },
+    "/setMyDefaultAdministratorRights": {
+      "description": "Use this method to change the default administrator rights requested by the bot when it's added as an administrator to groups or channels. These rights will be suggested to users, but they are are free to modify the list before adding the bot. Returns True on success.",
+      "post": {
+        "operationId": "setMyDefaultAdministratorRights",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/setMyDefaultAdministratorRights"
+              }
+            }
+          }
         },
         "responses": {
           "200": {
@@ -2356,6 +2472,66 @@
           "type"
         ]
       },
+      "ChatAdministratorRights": {
+        "description": "Represents the rights of an administrator in a chat.",
+        "type": "object",
+        "properties": {
+          "is_anonymous": {
+            "description": "True, if the user's presence in the chat is hidden",
+            "type": "boolean"
+          },
+          "can_manage_chat": {
+            "description": "True, if the administrator can access the chat event log, chat statistics, message statistics in channels, see channel members, see anonymous administrators in supergroups and ignore slow mode. Implied by any other administrator privilege",
+            "type": "boolean"
+          },
+          "can_delete_messages": {
+            "description": "True, if the administrator can delete messages of other users",
+            "type": "boolean"
+          },
+          "can_manage_video_chats": {
+            "description": "True, if the administrator can manage video chats",
+            "type": "boolean"
+          },
+          "can_restrict_members": {
+            "description": "True, if the administrator can restrict, ban or unban chat members",
+            "type": "boolean"
+          },
+          "can_promote_members": {
+            "description": "True, if the administrator can add new administrators with a subset of their own privileges or demote administrators that he has promoted, directly or indirectly (promoted by administrators that were appointed by the user)",
+            "type": "boolean"
+          },
+          "can_change_info": {
+            "description": "True, if the user is allowed to change the chat title, photo and other settings",
+            "type": "boolean"
+          },
+          "can_invite_users": {
+            "description": "True, if the user is allowed to invite new users to the chat",
+            "type": "boolean"
+          },
+          "can_post_messages": {
+            "description": "True, if the administrator can post in the channel; channels only",
+            "type": "boolean"
+          },
+          "can_edit_messages": {
+            "description": "True, if the administrator can edit messages of other users and can pin messages; channels only",
+            "type": "boolean"
+          },
+          "can_pin_messages": {
+            "description": "True, if the user is allowed to pin messages; groups and supergroups only",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "is_anonymous",
+          "can_manage_chat",
+          "can_delete_messages",
+          "can_manage_video_chats",
+          "can_restrict_members",
+          "can_promote_members",
+          "can_change_info",
+          "can_invite_users"
+        ]
+      },
       "ChatInviteLink": {
         "description": "Represents an invite link for a chat.",
         "type": "object",
@@ -2506,8 +2682,8 @@
             "description": "True, if the administrator can delete messages of other users",
             "type": "boolean"
           },
-          "can_manage_voice_chats": {
-            "description": "True, if the administrator can manage voice chats",
+          "can_manage_video_chats": {
+            "description": "True, if the administrator can manage video chats",
             "type": "boolean"
           },
           "can_restrict_members": {
@@ -2550,7 +2726,7 @@
           "is_anonymous",
           "can_manage_chat",
           "can_delete_messages",
-          "can_manage_voice_chats",
+          "can_manage_video_chats",
           "can_restrict_members",
           "can_promote_members",
           "can_change_info",
@@ -3164,14 +3340,17 @@
             "description": "HTTP or tg:// url to be opened when the button is pressed. Links tg://user?id=\u003cuser_id\u003e can be used to mention a user by their ID without using a username, if this is allowed by their privacy settings",
             "type": "string"
           },
-          "login_url": {
-            "$ref": "#/components/schemas/LoginUrl"
-          },
           "callback_data": {
             "description": "Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes",
             "type": "string",
             "maxLength": 64,
             "minLength": 1
+          },
+          "web_app": {
+            "$ref": "#/components/schemas/WebAppInfo"
+          },
+          "login_url": {
+            "$ref": "#/components/schemas/LoginUrl"
           },
           "switch_inline_query": {
             "description": "If set, pressing the button will prompt the user to select one of their chats, open that chat and insert the bot's username and the specified inline query in the input field. Can be empty, in which case just the bot's username will be inserted.Note: This offers an easy way for users to start using your bot in inline mode when they are currently in a private chat with it. Especially useful when combined with switch_pm… actions – in this case the user will be automatically returned to the chat they switched from, skipping the chat selection screen",
@@ -5147,7 +5326,7 @@
         ]
       },
       "KeyboardButton": {
-        "description": "This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields request_contact, request_location, and request_poll are mutually exclusive.",
+        "description": "This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields web_app, request_contact, request_location, and request_poll are mutually exclusive.",
         "oneOf": [
           {
             "type": "string"
@@ -5158,7 +5337,7 @@
         ]
       },
       "KeyboardButtonObject": {
-        "description": "This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields request_contact, request_location, and request_poll are mutually exclusive.",
+        "description": "This object represents one button of the reply keyboard. For simple text buttons String can be used instead of this object to specify text of the button. Optional fields web_app, request_contact, request_location, and request_poll are mutually exclusive.",
         "type": "object",
         "properties": {
           "text": {
@@ -5175,6 +5354,9 @@
           },
           "request_poll": {
             "$ref": "#/components/schemas/KeyboardButtonPollType"
+          },
+          "web_app": {
+            "$ref": "#/components/schemas/WebAppInfo"
           }
         },
         "required": [
@@ -5296,6 +5478,79 @@
           "x_shift",
           "y_shift",
           "scale"
+        ]
+      },
+      "MenuButton": {
+        "description": "This object describes the bot's menu button in a private chat.",
+        "oneOf": [
+          {
+            "$ref": "#/components/schemas/MenuButtonCommands"
+          },
+          {
+            "$ref": "#/components/schemas/MenuButtonWebApp"
+          },
+          {
+            "$ref": "#/components/schemas/MenuButtonDefault"
+          }
+        ],
+        "discriminator": {
+          "propertyName": "type",
+          "mapping": {
+            "commands": "MenuButtonCommands",
+            "default": "MenuButtonDefault",
+            "web_app": "MenuButtonWebApp"
+          }
+        }
+      },
+      "MenuButtonCommands": {
+        "description": "Represents a menu button, which opens the bot's list of commands.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Type of the button, must be commands",
+            "type": "string",
+            "default": "commands"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "MenuButtonDefault": {
+        "description": "Describes that no specific value for the menu button was set.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Type of the button, must be default",
+            "type": "string",
+            "default": "default"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "MenuButtonWebApp": {
+        "description": "Represents a menu button, which launches a Web App.",
+        "type": "object",
+        "properties": {
+          "type": {
+            "description": "Type of the button, must be web_app",
+            "type": "string",
+            "default": "web_app"
+          },
+          "text": {
+            "description": "Text on the button",
+            "type": "string"
+          },
+          "web_app": {
+            "$ref": "#/components/schemas/WebAppInfo"
+          }
+        },
+        "required": [
+          "type",
+          "text",
+          "web_app"
         ]
       },
       "Message": {
@@ -5506,17 +5761,20 @@
           "proximity_alert_triggered": {
             "$ref": "#/components/schemas/ProximityAlertTriggered"
           },
-          "voice_chat_scheduled": {
-            "$ref": "#/components/schemas/VoiceChatScheduled"
+          "video_chat_scheduled": {
+            "$ref": "#/components/schemas/VideoChatScheduled"
           },
-          "voice_chat_started": {
-            "$ref": "#/components/schemas/VoiceChatStarted"
+          "video_chat_started": {
+            "$ref": "#/components/schemas/VideoChatStarted"
           },
-          "voice_chat_ended": {
-            "$ref": "#/components/schemas/VoiceChatEnded"
+          "video_chat_ended": {
+            "$ref": "#/components/schemas/VideoChatEnded"
           },
-          "voice_chat_participants_invited": {
-            "$ref": "#/components/schemas/VoiceChatParticipantsInvited"
+          "video_chat_participants_invited": {
+            "$ref": "#/components/schemas/VideoChatParticipantsInvited"
+          },
+          "web_app_data": {
+            "$ref": "#/components/schemas/WebAppData"
           },
           "reply_markup": {
             "$ref": "#/components/schemas/InlineKeyboardMarkup"
@@ -6752,6 +7010,16 @@
           }
         ]
       },
+      "SentWebAppMessage": {
+        "description": "Contains information about an inline message sent by a Web App on behalf of a user.",
+        "type": "object",
+        "properties": {
+          "inline_message_id": {
+            "description": "Identifier of the sent inline message. Available only if there is an inline keyboard attached to the message",
+            "type": "string"
+          }
+        }
+      },
       "ShippingAddress": {
         "description": "This object represents a shipping address.",
         "type": "object",
@@ -7205,6 +7473,54 @@
           "duration"
         ]
       },
+      "VideoChatEnded": {
+        "description": "This object represents a service message about a video chat ended in the chat.",
+        "type": "object",
+        "properties": {
+          "duration": {
+            "description": "Video chat duration in seconds",
+            "type": "integer",
+            "minimum": 0,
+            "exclusiveMinimum": true
+          }
+        },
+        "required": [
+          "duration"
+        ]
+      },
+      "VideoChatParticipantsInvited": {
+        "description": "This object represents a service message about new members invited to a video chat.",
+        "type": "object",
+        "properties": {
+          "users": {
+            "description": "New members that were invited to the video chat",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/User"
+            }
+          }
+        },
+        "required": [
+          "users"
+        ]
+      },
+      "VideoChatScheduled": {
+        "description": "This object represents a service message about a video chat scheduled in the chat.",
+        "type": "object",
+        "properties": {
+          "start_date": {
+            "description": "Point in time (Unix timestamp) when the video chat is supposed to be started by a chat administrator",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "start_date"
+        ]
+      },
+      "VideoChatStarted": {
+        "description": "This object represents a service message about a video chat started in the chat. Currently holds no information.",
+        "type": "object"
+      },
       "VideoNote": {
         "description": "This object represents a video message (available in Telegram apps as of v.4.0).",
         "type": "object",
@@ -7275,50 +7591,36 @@
           "duration"
         ]
       },
-      "VoiceChatEnded": {
-        "description": "This object represents a service message about a voice chat ended in the chat.",
+      "WebAppData": {
+        "description": "Contains data sent from a Web App to the bot.",
         "type": "object",
         "properties": {
-          "duration": {
-            "description": "Voice chat duration in seconds",
-            "type": "integer",
-            "minimum": 0,
-            "exclusiveMinimum": true
+          "data": {
+            "description": "The data. Be aware that a bad client can send arbitrary data in this field",
+            "type": "string"
+          },
+          "button_text": {
+            "description": "Text of the web_app keyboard button, from which the Web App was opened. Be aware that a bad client can send arbitrary data in this field",
+            "type": "string"
           }
         },
         "required": [
-          "duration"
+          "data",
+          "button_text"
         ]
       },
-      "VoiceChatParticipantsInvited": {
-        "description": "This object represents a service message about new members invited to a voice chat.",
+      "WebAppInfo": {
+        "description": "Contains information about a Web App.",
         "type": "object",
         "properties": {
-          "users": {
-            "description": "New members that were invited to the voice chat",
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/User"
-            }
-          }
-        }
-      },
-      "VoiceChatScheduled": {
-        "description": "This object represents a service message about a voice chat scheduled in the chat.",
-        "type": "object",
-        "properties": {
-          "start_date": {
-            "description": "Point in time (Unix timestamp) when the voice chat is supposed to be started by a chat administrator",
-            "type": "integer"
+          "url": {
+            "description": "An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps",
+            "type": "string"
           }
         },
         "required": [
-          "start_date"
+          "url"
         ]
-      },
-      "VoiceChatStarted": {
-        "description": "This object represents a service message about a voice chat started in the chat. Currently holds no information.",
-        "type": "object"
       },
       "WebhookInfo": {
         "description": "Contains information about the current status of a webhook.",
@@ -7347,6 +7649,10 @@
           "last_error_message": {
             "description": "Error message in human-readable format for the most recent error that happened when trying to deliver an update via webhook",
             "type": "string"
+          },
+          "last_synchronization_error_date": {
+            "description": "Unix time of the most recent error that happened when trying to synchronize available updates with Telegram datacenters",
+            "type": "integer"
           },
           "max_connections": {
             "description": "Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery",
@@ -7529,6 +7835,23 @@
           "ok"
         ]
       },
+      "answerWebAppQuery": {
+        "description": "Input for answerWebAppQuery",
+        "type": "object",
+        "properties": {
+          "web_app_query_id": {
+            "description": "Unique identifier for the query to be answered",
+            "type": "string"
+          },
+          "result": {
+            "$ref": "#/components/schemas/InlineQueryResult"
+          }
+        },
+        "required": [
+          "web_app_query_id",
+          "result"
+        ]
+      },
       "approveChatJoinRequest": {
         "description": "Input for approveChatJoinRequest",
         "type": "object",
@@ -7688,7 +8011,7 @@
             "format": "int64"
           },
           "name": {
-            "description": "Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in \"_by_\u003cbot username\u003e\". \u003cbot_username\u003e is case insensitive. 1-64 characters",
+            "description": "Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only english letters, digits and underscores. Must begin with a letter, can't contain consecutive underscores and must end in \"_by_\u003cbot_username\u003e\". \u003cbot_username\u003e is case insensitive. 1-64 characters",
             "type": "string",
             "maxLength": 64,
             "minLength": 1
@@ -8130,6 +8453,17 @@
           "chat_id"
         ]
       },
+      "getChatMenuButton": {
+        "description": "Input for getChatMenuButton",
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "description": "Unique identifier for the target private chat. If not specified, default bot's menu button will be returned",
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      },
       "getFile": {
         "description": "Input for getFile",
         "type": "object",
@@ -8180,6 +8514,16 @@
           "language_code": {
             "description": "A two-letter ISO 639-1 language code or an empty string",
             "type": "string"
+          }
+        }
+      },
+      "getMyDefaultAdministratorRights": {
+        "description": "Input for getMyDefaultAdministratorRights",
+        "type": "object",
+        "properties": {
+          "for_channels": {
+            "description": "Pass True to get default administrator rights of the bot in channels. Otherwise, default administrator rights of the bot for groups and supergroups will be returned",
+            "type": "boolean"
           }
         }
       },
@@ -8314,8 +8658,8 @@
             "description": "Pass True, if the administrator can delete messages of other users",
             "type": "boolean"
           },
-          "can_manage_voice_chats": {
-            "description": "Pass True, if the administrator can manage voice chats",
+          "can_manage_video_chats": {
+            "description": "Pass True, if the administrator can manage video chats",
             "type": "boolean"
           },
           "can_restrict_members": {
@@ -9515,6 +9859,20 @@
           "chat_id"
         ]
       },
+      "setChatMenuButton": {
+        "description": "Input for setChatMenuButton",
+        "type": "object",
+        "properties": {
+          "chat_id": {
+            "description": "Unique identifier for the target private chat. If not specified, default bot's menu button will be changed",
+            "type": "integer",
+            "format": "int64"
+          },
+          "menu_button": {
+            "$ref": "#/components/schemas/MenuButton"
+          }
+        }
+      },
       "setChatPermissions": {
         "description": "Input for setChatPermissions",
         "type": "object",
@@ -9646,6 +10004,19 @@
         "required": [
           "commands"
         ]
+      },
+      "setMyDefaultAdministratorRights": {
+        "description": "Input for setMyDefaultAdministratorRights",
+        "type": "object",
+        "properties": {
+          "rights": {
+            "$ref": "#/components/schemas/ChatAdministratorRights"
+          },
+          "for_channels": {
+            "description": "Pass True to change the default administrator rights of the bot in channels. Otherwise, the default administrator rights of the bot for groups and supergroups will be changed",
+            "type": "boolean"
+          }
+        }
       },
       "setPassportDataErrors": {
         "description": "Input for setPassportDataErrors",
