@@ -17,7 +17,6 @@ type parser struct {
 	operations []*openapi.Operation
 	// refs contains lazy-initialized referenced components.
 	refs struct {
-		schemas         map[string]*jsonschema.Schema
 		requestBodies   map[string]*openapi.RequestBody
 		responses       map[string]*openapi.Response
 		parameters      map[string]*openapi.Parameter
@@ -34,51 +33,47 @@ func Parse(spec *ogen.Spec, inferTypes bool) (*openapi.API, error) {
 		spec:       spec,
 		operations: nil,
 		refs: struct {
-			schemas         map[string]*jsonschema.Schema
 			requestBodies   map[string]*openapi.RequestBody
 			responses       map[string]*openapi.Response
 			parameters      map[string]*openapi.Parameter
 			examples        map[string]*openapi.Example
 			securitySchemes map[string]*ogen.SecuritySchema
 		}{
-			schemas:         map[string]*jsonschema.Schema{},
 			requestBodies:   map[string]*openapi.RequestBody{},
 			responses:       map[string]*openapi.Response{},
 			parameters:      map[string]*openapi.Parameter{},
 			examples:        map[string]*openapi.Example{},
 			securitySchemes: map[string]*ogen.SecuritySchema{},
 		},
+		schemaParser: jsonschema.NewParser(jsonschema.Settings{
+			Resolver: componentsResolver{
+				components: spec.Components.Schemas,
+				root:       jsonschema.NewRootResolver(spec.Raw),
+			},
+			InferTypes: inferTypes,
+		}),
 	}
-
-	p.schemaParser = jsonschema.NewParser(jsonschema.Settings{
-		Resolver: componentsResolver{
-			components: spec.Components.Schemas,
-			root:       jsonschema.NewRootResolver(spec.Raw),
-		},
-		InferTypes:     inferTypes,
-		ReferenceCache: p.refs.schemas,
-	})
 
 	for name, s := range spec.Components.SecuritySchemes {
 		p.refs.securitySchemes[name] = s
 	}
 
-	if err := p.parse(); err != nil {
-		return nil, errors.Wrap(err, "parse document")
+	components, err := p.parseComponents(spec.Components)
+	if err != nil {
+		return nil, errors.Wrap(err, "parse components")
+	}
+
+	if err := p.parseOps(); err != nil {
+		return nil, errors.Wrap(err, "parse operations")
 	}
 
 	return &openapi.API{
 		Operations: p.operations,
-		Components: &openapi.Components{
-			Parameters:    p.refs.parameters,
-			Schemas:       p.refs.schemas,
-			RequestBodies: p.refs.requestBodies,
-			Responses:     p.refs.responses,
-		},
+		Components: components,
 	}, nil
 }
 
-func (p *parser) parse() error {
+func (p *parser) parseOps() error {
 	operationIDs := make(map[string]struct{})
 	for path, item := range p.spec.Paths {
 		if item == nil {
