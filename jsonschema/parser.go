@@ -24,13 +24,17 @@ func NewParser(s Settings) *Parser {
 	s.setDefaults()
 	return &Parser{
 		resolver:   s.Resolver,
-		refcache:   s.ReferenceCache,
+		refcache:   map[string]*Schema{},
 		inferTypes: s.InferTypes,
 	}
 }
 
 func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
 	return p.parse(schema, resolveCtx{})
+}
+
+func (p *Parser) Resolve(ref string) (*Schema, error) {
+	return p.resolve(ref, resolveCtx{})
 }
 
 func (p *Parser) parse(schema *RawSchema, ctx resolveCtx) (*Schema, error) {
