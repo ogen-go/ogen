@@ -429,6 +429,71 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 	return result, nil
 }
 
+// AnswerWebAppQuery invokes answerWebAppQuery operation.
+//
+// POST /answerWebAppQuery
+func (c *Client) AnswerWebAppQuery(ctx context.Context, request AnswerWebAppQuery) (res Result, err error) {
+	if err := func() error {
+		if err := request.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("answerWebAppQuery"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "AnswerWebAppQuery",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeAnswerWebAppQueryRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/answerWebAppQuery"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeAnswerWebAppQueryResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // ApproveChatJoinRequest invokes approveChatJoinRequest operation.
 //
 // POST /approveChatJoinRequest
@@ -1969,6 +2034,63 @@ func (c *Client) GetChatMemberCount(ctx context.Context, request GetChatMemberCo
 	return result, nil
 }
 
+// GetChatMenuButton invokes getChatMenuButton operation.
+//
+// POST /getChatMenuButton
+func (c *Client) GetChatMenuButton(ctx context.Context, request OptGetChatMenuButton) (res Result, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getChatMenuButton"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "GetChatMenuButton",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetChatMenuButtonRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/getChatMenuButton"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetChatMenuButtonResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // GetFile invokes getFile operation.
 //
 // POST /getFile
@@ -2176,6 +2298,63 @@ func (c *Client) GetMyCommands(ctx context.Context, request OptGetMyCommands) (r
 	defer resp.Body.Close()
 
 	result, err := decodeGetMyCommandsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// GetMyDefaultAdministratorRights invokes getMyDefaultAdministratorRights operation.
+//
+// POST /getMyDefaultAdministratorRights
+func (c *Client) GetMyDefaultAdministratorRights(ctx context.Context, request OptGetMyDefaultAdministratorRights) (res Result, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getMyDefaultAdministratorRights"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "GetMyDefaultAdministratorRights",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeGetMyDefaultAdministratorRightsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/getMyDefaultAdministratorRights"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeGetMyDefaultAdministratorRightsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -4041,6 +4220,63 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 	return result, nil
 }
 
+// SetChatMenuButton invokes setChatMenuButton operation.
+//
+// POST /setChatMenuButton
+func (c *Client) SetChatMenuButton(ctx context.Context, request OptSetChatMenuButton) (res Result, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setChatMenuButton"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "SetChatMenuButton",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetChatMenuButtonRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setChatMenuButton"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetChatMenuButtonResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // SetChatPermissions invokes setChatPermissions operation.
 //
 // POST /setChatPermissions
@@ -4392,6 +4628,63 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 	defer resp.Body.Close()
 
 	result, err := decodeSetMyCommandsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// SetMyDefaultAdministratorRights invokes setMyDefaultAdministratorRights operation.
+//
+// POST /setMyDefaultAdministratorRights
+func (c *Client) SetMyDefaultAdministratorRights(ctx context.Context, request OptSetMyDefaultAdministratorRights) (res Result, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setMyDefaultAdministratorRights"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "SetMyDefaultAdministratorRights",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeSetMyDefaultAdministratorRightsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/setMyDefaultAdministratorRights"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeSetMyDefaultAdministratorRightsResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

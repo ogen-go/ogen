@@ -213,6 +213,14 @@ type AnswerShippingQuery struct {
 	ErrorMessage OptString "json:\"error_message\""
 }
 
+// Input for answerWebAppQuery.
+// Ref: #/components/schemas/answerWebAppQuery
+type AnswerWebAppQuery struct {
+	// Unique identifier for the query to be answered.
+	WebAppQueryID string            "json:\"web_app_query_id\""
+	Result        InlineQueryResult "json:\"result\""
+}
+
 // Input for approveChatJoinRequest.
 // Ref: #/components/schemas/approveChatJoinRequest
 type ApproveChatJoinRequest struct {
@@ -605,6 +613,37 @@ type Chat struct {
 	AllMembersAreAdministrators OptBool         "json:\"all_members_are_administrators\""
 }
 
+// Represents the rights of an administrator in a chat.
+// Ref: #/components/schemas/ChatAdministratorRights
+type ChatAdministratorRights struct {
+	// True, if the user's presence in the chat is hidden.
+	IsAnonymous bool "json:\"is_anonymous\""
+	// True, if the administrator can access the chat event log, chat statistics, message statistics in
+	// channels, see channel members, see anonymous administrators in supergroups and ignore slow mode.
+	// Implied by any other administrator privilege.
+	CanManageChat bool "json:\"can_manage_chat\""
+	// True, if the administrator can delete messages of other users.
+	CanDeleteMessages bool "json:\"can_delete_messages\""
+	// True, if the administrator can manage video chats.
+	CanManageVideoChats bool "json:\"can_manage_video_chats\""
+	// True, if the administrator can restrict, ban or unban chat members.
+	CanRestrictMembers bool "json:\"can_restrict_members\""
+	// True, if the administrator can add new administrators with a subset of their own privileges or
+	// demote administrators that he has promoted, directly or indirectly (promoted by administrators
+	// that were appointed by the user).
+	CanPromoteMembers bool "json:\"can_promote_members\""
+	// True, if the user is allowed to change the chat title, photo and other settings.
+	CanChangeInfo bool "json:\"can_change_info\""
+	// True, if the user is allowed to invite new users to the chat.
+	CanInviteUsers bool "json:\"can_invite_users\""
+	// True, if the administrator can post in the channel; channels only.
+	CanPostMessages OptBool "json:\"can_post_messages\""
+	// True, if the administrator can edit messages of other users and can pin messages; channels only.
+	CanEditMessages OptBool "json:\"can_edit_messages\""
+	// True, if the user is allowed to pin messages; groups and supergroups only.
+	CanPinMessages OptBool "json:\"can_pin_messages\""
+}
+
 // Represents an invite link for a chat.
 // Ref: #/components/schemas/ChatInviteLink
 type ChatInviteLink struct {
@@ -838,8 +877,8 @@ type ChatMemberAdministrator struct {
 	CanManageChat bool "json:\"can_manage_chat\""
 	// True, if the administrator can delete messages of other users.
 	CanDeleteMessages bool "json:\"can_delete_messages\""
-	// True, if the administrator can manage voice chats.
-	CanManageVoiceChats bool "json:\"can_manage_voice_chats\""
+	// True, if the administrator can manage video chats.
+	CanManageVideoChats bool "json:\"can_manage_video_chats\""
 	// True, if the administrator can restrict, ban or unban chat members.
 	CanRestrictMembers bool "json:\"can_restrict_members\""
 	// True, if the administrator can add new administrators with a subset of their own privileges or
@@ -1074,7 +1113,7 @@ type CreateNewStickerSet struct {
 	UserID int64 "json:\"user_id\""
 	// Short name of sticker set, to be used in t.me/addstickers/ URLs (e.g., animals). Can contain only
 	// english letters, digits and underscores. Must begin with a letter, can't contain consecutive
-	// underscores and must end in "_by_<bot username>". <bot_username> is case insensitive. 1-64
+	// underscores and must end in "_by_<bot_username>". <bot_username> is case insensitive. 1-64
 	// characters.
 	Name string "json:\"name\""
 	// Sticker set title, 1-64 characters.
@@ -1464,6 +1503,14 @@ type GetChatMemberCount struct {
 	ChatID ID "json:\"chat_id\""
 }
 
+// Input for getChatMenuButton.
+// Ref: #/components/schemas/getChatMenuButton
+type GetChatMenuButton struct {
+	// Unique identifier for the target private chat. If not specified, default bot's menu button will be
+	// returned.
+	ChatID OptInt64 "json:\"chat_id\""
+}
+
 // Input for getFile.
 // Ref: #/components/schemas/getFile
 type GetFile struct {
@@ -1490,6 +1537,14 @@ type GetMyCommands struct {
 	Scope OptBotCommandScope "json:\"scope\""
 	// A two-letter ISO 639-1 language code or an empty string.
 	LanguageCode OptString "json:\"language_code\""
+}
+
+// Input for getMyDefaultAdministratorRights.
+// Ref: #/components/schemas/getMyDefaultAdministratorRights
+type GetMyDefaultAdministratorRights struct {
+	// Pass True to get default administrator rights of the bot in channels. Otherwise, default
+	// administrator rights of the bot for groups and supergroups will be returned.
+	ForChannels OptBool "json:\"for_channels\""
 }
 
 // Input for getStickerSet.
@@ -1607,10 +1662,11 @@ type InlineKeyboardButton struct {
 	// HTTP or tg:// url to be opened when the button is pressed. Links tg://user?id=<user_id> can be
 	// used to mention a user by their ID without using a username, if this is allowed by their privacy
 	// settings.
-	URL      OptString   "json:\"url\""
-	LoginURL OptLoginUrl "json:\"login_url\""
+	URL OptString "json:\"url\""
 	// Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes.
-	CallbackData OptString "json:\"callback_data\""
+	CallbackData OptString     "json:\"callback_data\""
+	WebApp       OptWebAppInfo "json:\"web_app\""
+	LoginURL     OptLoginUrl   "json:\"login_url\""
 	// If set, pressing the button will prompt the user to select one of their chats, open that chat and
 	// insert the bot's username and the specified inline query in the input field. Can be empty, in
 	// which case just the bot's username will be inserted.Note: This offers an easy way for users to
@@ -3320,8 +3376,8 @@ type Invoice struct {
 }
 
 // This object represents one button of the reply keyboard. For simple text buttons String can be
-// used instead of this object to specify text of the button. Optional fields request_contact,
-// request_location, and request_poll are mutually exclusive.
+// used instead of this object to specify text of the button. Optional fields web_app,
+// request_contact, request_location, and request_poll are mutually exclusive.
 // Ref: #/components/schemas/KeyboardButton
 // KeyboardButton represents sum type.
 type KeyboardButton struct {
@@ -3390,8 +3446,8 @@ func NewKeyboardButtonObjectKeyboardButton(v KeyboardButtonObject) KeyboardButto
 }
 
 // This object represents one button of the reply keyboard. For simple text buttons String can be
-// used instead of this object to specify text of the button. Optional fields request_contact,
-// request_location, and request_poll are mutually exclusive.
+// used instead of this object to specify text of the button. Optional fields web_app,
+// request_contact, request_location, and request_poll are mutually exclusive.
 // Ref: #/components/schemas/KeyboardButtonObject
 type KeyboardButtonObject struct {
 	// Text of the button. If none of the optional fields are used, it will be sent as a message when the
@@ -3404,6 +3460,7 @@ type KeyboardButtonObject struct {
 	// chats only.
 	RequestLocation OptBool                   "json:\"request_location\""
 	RequestPoll     OptKeyboardButtonPollType "json:\"request_poll\""
+	WebApp          OptWebAppInfo             "json:\"web_app\""
 }
 
 // This object represents type of a poll, which is allowed to be created and sent when the
@@ -3486,6 +3543,114 @@ type MaskPosition struct {
 	YShift float64 "json:\"y_shift\""
 	// Mask scaling coefficient. For example, 2.0 means double size.
 	Scale float64 "json:\"scale\""
+}
+
+// This object describes the bot's menu button in a private chat.
+// Ref: #/components/schemas/MenuButton
+// MenuButton represents sum type.
+type MenuButton struct {
+	Type               MenuButtonType // switch on this field
+	MenuButtonCommands MenuButtonCommands
+	MenuButtonWebApp   MenuButtonWebApp
+	MenuButtonDefault  MenuButtonDefault
+}
+
+// MenuButtonType is oneOf type of MenuButton.
+type MenuButtonType string
+
+// Possible values for MenuButtonType.
+const (
+	MenuButtonCommandsMenuButton MenuButtonType = "MenuButtonCommands"
+	MenuButtonWebAppMenuButton   MenuButtonType = "MenuButtonWebApp"
+	MenuButtonDefaultMenuButton  MenuButtonType = "MenuButtonDefault"
+)
+
+// IsMenuButtonCommands reports whether MenuButton is MenuButtonCommands.
+func (s MenuButton) IsMenuButtonCommands() bool { return s.Type == MenuButtonCommandsMenuButton }
+
+// IsMenuButtonWebApp reports whether MenuButton is MenuButtonWebApp.
+func (s MenuButton) IsMenuButtonWebApp() bool { return s.Type == MenuButtonWebAppMenuButton }
+
+// IsMenuButtonDefault reports whether MenuButton is MenuButtonDefault.
+func (s MenuButton) IsMenuButtonDefault() bool { return s.Type == MenuButtonDefaultMenuButton }
+
+// SetMenuButtonCommands sets MenuButton to MenuButtonCommands.
+func (s *MenuButton) SetMenuButtonCommands(v MenuButtonCommands) {
+	s.Type = MenuButtonCommandsMenuButton
+	s.MenuButtonCommands = v
+}
+
+// GetMenuButtonCommands returns MenuButtonCommands and true boolean if MenuButton is MenuButtonCommands.
+func (s MenuButton) GetMenuButtonCommands() (v MenuButtonCommands, ok bool) {
+	if !s.IsMenuButtonCommands() {
+		return v, false
+	}
+	return s.MenuButtonCommands, true
+}
+
+// NewMenuButtonCommandsMenuButton returns new MenuButton from MenuButtonCommands.
+func NewMenuButtonCommandsMenuButton(v MenuButtonCommands) MenuButton {
+	var s MenuButton
+	s.SetMenuButtonCommands(v)
+	return s
+}
+
+// SetMenuButtonWebApp sets MenuButton to MenuButtonWebApp.
+func (s *MenuButton) SetMenuButtonWebApp(v MenuButtonWebApp) {
+	s.Type = MenuButtonWebAppMenuButton
+	s.MenuButtonWebApp = v
+}
+
+// GetMenuButtonWebApp returns MenuButtonWebApp and true boolean if MenuButton is MenuButtonWebApp.
+func (s MenuButton) GetMenuButtonWebApp() (v MenuButtonWebApp, ok bool) {
+	if !s.IsMenuButtonWebApp() {
+		return v, false
+	}
+	return s.MenuButtonWebApp, true
+}
+
+// NewMenuButtonWebAppMenuButton returns new MenuButton from MenuButtonWebApp.
+func NewMenuButtonWebAppMenuButton(v MenuButtonWebApp) MenuButton {
+	var s MenuButton
+	s.SetMenuButtonWebApp(v)
+	return s
+}
+
+// SetMenuButtonDefault sets MenuButton to MenuButtonDefault.
+func (s *MenuButton) SetMenuButtonDefault(v MenuButtonDefault) {
+	s.Type = MenuButtonDefaultMenuButton
+	s.MenuButtonDefault = v
+}
+
+// GetMenuButtonDefault returns MenuButtonDefault and true boolean if MenuButton is MenuButtonDefault.
+func (s MenuButton) GetMenuButtonDefault() (v MenuButtonDefault, ok bool) {
+	if !s.IsMenuButtonDefault() {
+		return v, false
+	}
+	return s.MenuButtonDefault, true
+}
+
+// NewMenuButtonDefaultMenuButton returns new MenuButton from MenuButtonDefault.
+func NewMenuButtonDefaultMenuButton(v MenuButtonDefault) MenuButton {
+	var s MenuButton
+	s.SetMenuButtonDefault(v)
+	return s
+}
+
+// Represents a menu button, which opens the bot's list of commands.
+// Ref: #/components/schemas/MenuButtonCommands
+type MenuButtonCommands struct{}
+
+// Describes that no specific value for the menu button was set.
+// Ref: #/components/schemas/MenuButtonDefault
+type MenuButtonDefault struct{}
+
+// Represents a menu button, which launches a Web App.
+// Ref: #/components/schemas/MenuButtonWebApp
+type MenuButtonWebApp struct {
+	// Text on the button.
+	Text   string     "json:\"text\""
+	WebApp WebAppInfo "json:\"web_app\""
 }
 
 // This object represents a message.
@@ -3588,10 +3753,11 @@ type Message struct {
 	ConnectedWebsite             OptString                       "json:\"connected_website\""
 	PassportData                 OptPassportData                 "json:\"passport_data\""
 	ProximityAlertTriggered      OptProximityAlertTriggered      "json:\"proximity_alert_triggered\""
-	VoiceChatScheduled           OptVoiceChatScheduled           "json:\"voice_chat_scheduled\""
-	VoiceChatStarted             *VoiceChatStarted               "json:\"voice_chat_started\""
-	VoiceChatEnded               OptVoiceChatEnded               "json:\"voice_chat_ended\""
-	VoiceChatParticipantsInvited OptVoiceChatParticipantsInvited "json:\"voice_chat_participants_invited\""
+	VideoChatScheduled           OptVideoChatScheduled           "json:\"video_chat_scheduled\""
+	VideoChatStarted             *VideoChatStarted               "json:\"video_chat_started\""
+	VideoChatEnded               OptVideoChatEnded               "json:\"video_chat_ended\""
+	VideoChatParticipantsInvited OptVideoChatParticipantsInvited "json:\"video_chat_participants_invited\""
+	WebAppData                   OptWebAppData                   "json:\"web_app_data\""
 	ReplyMarkup                  OptInlineKeyboardMarkup         "json:\"reply_markup\""
 	NewChatMember                OptUser                         "json:\"new_chat_member\""
 	NewChatParticipant           OptUser                         "json:\"new_chat_participant\""
@@ -3931,6 +4097,52 @@ func (o OptChat) Get() (v Chat, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptChat) Or(d Chat) Chat {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptChatAdministratorRights returns new OptChatAdministratorRights with value set to v.
+func NewOptChatAdministratorRights(v ChatAdministratorRights) OptChatAdministratorRights {
+	return OptChatAdministratorRights{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptChatAdministratorRights is optional ChatAdministratorRights.
+type OptChatAdministratorRights struct {
+	Value ChatAdministratorRights
+	Set   bool
+}
+
+// IsSet returns true if OptChatAdministratorRights was set.
+func (o OptChatAdministratorRights) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptChatAdministratorRights) Reset() {
+	var v ChatAdministratorRights
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptChatAdministratorRights) SetTo(v ChatAdministratorRights) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptChatAdministratorRights) Get() (v ChatAdministratorRights, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptChatAdministratorRights) Or(d ChatAdministratorRights) ChatAdministratorRights {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -4673,6 +4885,52 @@ func (o OptGame) Or(d Game) Game {
 	return d
 }
 
+// NewOptGetChatMenuButton returns new OptGetChatMenuButton with value set to v.
+func NewOptGetChatMenuButton(v GetChatMenuButton) OptGetChatMenuButton {
+	return OptGetChatMenuButton{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGetChatMenuButton is optional GetChatMenuButton.
+type OptGetChatMenuButton struct {
+	Value GetChatMenuButton
+	Set   bool
+}
+
+// IsSet returns true if OptGetChatMenuButton was set.
+func (o OptGetChatMenuButton) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGetChatMenuButton) Reset() {
+	var v GetChatMenuButton
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGetChatMenuButton) SetTo(v GetChatMenuButton) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGetChatMenuButton) Get() (v GetChatMenuButton, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGetChatMenuButton) Or(d GetChatMenuButton) GetChatMenuButton {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptGetMyCommands returns new OptGetMyCommands with value set to v.
 func NewOptGetMyCommands(v GetMyCommands) OptGetMyCommands {
 	return OptGetMyCommands{
@@ -4713,6 +4971,52 @@ func (o OptGetMyCommands) Get() (v GetMyCommands, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptGetMyCommands) Or(d GetMyCommands) GetMyCommands {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptGetMyDefaultAdministratorRights returns new OptGetMyDefaultAdministratorRights with value set to v.
+func NewOptGetMyDefaultAdministratorRights(v GetMyDefaultAdministratorRights) OptGetMyDefaultAdministratorRights {
+	return OptGetMyDefaultAdministratorRights{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptGetMyDefaultAdministratorRights is optional GetMyDefaultAdministratorRights.
+type OptGetMyDefaultAdministratorRights struct {
+	Value GetMyDefaultAdministratorRights
+	Set   bool
+}
+
+// IsSet returns true if OptGetMyDefaultAdministratorRights was set.
+func (o OptGetMyDefaultAdministratorRights) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptGetMyDefaultAdministratorRights) Reset() {
+	var v GetMyDefaultAdministratorRights
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptGetMyDefaultAdministratorRights) SetTo(v GetMyDefaultAdministratorRights) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptGetMyDefaultAdministratorRights) Get() (v GetMyDefaultAdministratorRights, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptGetMyDefaultAdministratorRights) Or(d GetMyDefaultAdministratorRights) GetMyDefaultAdministratorRights {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -5311,6 +5615,52 @@ func (o OptMaskPosition) Get() (v MaskPosition, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptMaskPosition) Or(d MaskPosition) MaskPosition {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptMenuButton returns new OptMenuButton with value set to v.
+func NewOptMenuButton(v MenuButton) OptMenuButton {
+	return OptMenuButton{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptMenuButton is optional MenuButton.
+type OptMenuButton struct {
+	Value MenuButton
+	Set   bool
+}
+
+// IsSet returns true if OptMenuButton was set.
+func (o OptMenuButton) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptMenuButton) Reset() {
+	var v MenuButton
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptMenuButton) SetTo(v MenuButton) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptMenuButton) Get() (v MenuButton, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptMenuButton) Or(d MenuButton) MenuButton {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -5961,6 +6311,98 @@ func (o OptSendReplyMarkup) Or(d SendReplyMarkup) SendReplyMarkup {
 	return d
 }
 
+// NewOptSetChatMenuButton returns new OptSetChatMenuButton with value set to v.
+func NewOptSetChatMenuButton(v SetChatMenuButton) OptSetChatMenuButton {
+	return OptSetChatMenuButton{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSetChatMenuButton is optional SetChatMenuButton.
+type OptSetChatMenuButton struct {
+	Value SetChatMenuButton
+	Set   bool
+}
+
+// IsSet returns true if OptSetChatMenuButton was set.
+func (o OptSetChatMenuButton) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSetChatMenuButton) Reset() {
+	var v SetChatMenuButton
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSetChatMenuButton) SetTo(v SetChatMenuButton) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSetChatMenuButton) Get() (v SetChatMenuButton, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSetChatMenuButton) Or(d SetChatMenuButton) SetChatMenuButton {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptSetMyDefaultAdministratorRights returns new OptSetMyDefaultAdministratorRights with value set to v.
+func NewOptSetMyDefaultAdministratorRights(v SetMyDefaultAdministratorRights) OptSetMyDefaultAdministratorRights {
+	return OptSetMyDefaultAdministratorRights{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptSetMyDefaultAdministratorRights is optional SetMyDefaultAdministratorRights.
+type OptSetMyDefaultAdministratorRights struct {
+	Value SetMyDefaultAdministratorRights
+	Set   bool
+}
+
+// IsSet returns true if OptSetMyDefaultAdministratorRights was set.
+func (o OptSetMyDefaultAdministratorRights) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptSetMyDefaultAdministratorRights) Reset() {
+	var v SetMyDefaultAdministratorRights
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptSetMyDefaultAdministratorRights) SetTo(v SetMyDefaultAdministratorRights) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptSetMyDefaultAdministratorRights) Get() (v SetMyDefaultAdministratorRights, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptSetMyDefaultAdministratorRights) Or(d SetMyDefaultAdministratorRights) SetMyDefaultAdministratorRights {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptShippingAddress returns new OptShippingAddress with value set to v.
 func NewOptShippingAddress(v ShippingAddress) OptShippingAddress {
 	return OptShippingAddress{
@@ -6421,6 +6863,144 @@ func (o OptVideo) Or(d Video) Video {
 	return d
 }
 
+// NewOptVideoChatEnded returns new OptVideoChatEnded with value set to v.
+func NewOptVideoChatEnded(v VideoChatEnded) OptVideoChatEnded {
+	return OptVideoChatEnded{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptVideoChatEnded is optional VideoChatEnded.
+type OptVideoChatEnded struct {
+	Value VideoChatEnded
+	Set   bool
+}
+
+// IsSet returns true if OptVideoChatEnded was set.
+func (o OptVideoChatEnded) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptVideoChatEnded) Reset() {
+	var v VideoChatEnded
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptVideoChatEnded) SetTo(v VideoChatEnded) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptVideoChatEnded) Get() (v VideoChatEnded, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptVideoChatEnded) Or(d VideoChatEnded) VideoChatEnded {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptVideoChatParticipantsInvited returns new OptVideoChatParticipantsInvited with value set to v.
+func NewOptVideoChatParticipantsInvited(v VideoChatParticipantsInvited) OptVideoChatParticipantsInvited {
+	return OptVideoChatParticipantsInvited{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptVideoChatParticipantsInvited is optional VideoChatParticipantsInvited.
+type OptVideoChatParticipantsInvited struct {
+	Value VideoChatParticipantsInvited
+	Set   bool
+}
+
+// IsSet returns true if OptVideoChatParticipantsInvited was set.
+func (o OptVideoChatParticipantsInvited) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptVideoChatParticipantsInvited) Reset() {
+	var v VideoChatParticipantsInvited
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptVideoChatParticipantsInvited) SetTo(v VideoChatParticipantsInvited) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptVideoChatParticipantsInvited) Get() (v VideoChatParticipantsInvited, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptVideoChatParticipantsInvited) Or(d VideoChatParticipantsInvited) VideoChatParticipantsInvited {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptVideoChatScheduled returns new OptVideoChatScheduled with value set to v.
+func NewOptVideoChatScheduled(v VideoChatScheduled) OptVideoChatScheduled {
+	return OptVideoChatScheduled{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptVideoChatScheduled is optional VideoChatScheduled.
+type OptVideoChatScheduled struct {
+	Value VideoChatScheduled
+	Set   bool
+}
+
+// IsSet returns true if OptVideoChatScheduled was set.
+func (o OptVideoChatScheduled) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptVideoChatScheduled) Reset() {
+	var v VideoChatScheduled
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptVideoChatScheduled) SetTo(v VideoChatScheduled) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptVideoChatScheduled) Get() (v VideoChatScheduled, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptVideoChatScheduled) Or(d VideoChatScheduled) VideoChatScheduled {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptVideoNote returns new OptVideoNote with value set to v.
 func NewOptVideoNote(v VideoNote) OptVideoNote {
 	return OptVideoNote{
@@ -6513,38 +7093,38 @@ func (o OptVoice) Or(d Voice) Voice {
 	return d
 }
 
-// NewOptVoiceChatEnded returns new OptVoiceChatEnded with value set to v.
-func NewOptVoiceChatEnded(v VoiceChatEnded) OptVoiceChatEnded {
-	return OptVoiceChatEnded{
+// NewOptWebAppData returns new OptWebAppData with value set to v.
+func NewOptWebAppData(v WebAppData) OptWebAppData {
+	return OptWebAppData{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptVoiceChatEnded is optional VoiceChatEnded.
-type OptVoiceChatEnded struct {
-	Value VoiceChatEnded
+// OptWebAppData is optional WebAppData.
+type OptWebAppData struct {
+	Value WebAppData
 	Set   bool
 }
 
-// IsSet returns true if OptVoiceChatEnded was set.
-func (o OptVoiceChatEnded) IsSet() bool { return o.Set }
+// IsSet returns true if OptWebAppData was set.
+func (o OptWebAppData) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptVoiceChatEnded) Reset() {
-	var v VoiceChatEnded
+func (o *OptWebAppData) Reset() {
+	var v WebAppData
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptVoiceChatEnded) SetTo(v VoiceChatEnded) {
+func (o *OptWebAppData) SetTo(v WebAppData) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptVoiceChatEnded) Get() (v VoiceChatEnded, ok bool) {
+func (o OptWebAppData) Get() (v WebAppData, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -6552,45 +7132,45 @@ func (o OptVoiceChatEnded) Get() (v VoiceChatEnded, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptVoiceChatEnded) Or(d VoiceChatEnded) VoiceChatEnded {
+func (o OptWebAppData) Or(d WebAppData) WebAppData {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptVoiceChatParticipantsInvited returns new OptVoiceChatParticipantsInvited with value set to v.
-func NewOptVoiceChatParticipantsInvited(v VoiceChatParticipantsInvited) OptVoiceChatParticipantsInvited {
-	return OptVoiceChatParticipantsInvited{
+// NewOptWebAppInfo returns new OptWebAppInfo with value set to v.
+func NewOptWebAppInfo(v WebAppInfo) OptWebAppInfo {
+	return OptWebAppInfo{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptVoiceChatParticipantsInvited is optional VoiceChatParticipantsInvited.
-type OptVoiceChatParticipantsInvited struct {
-	Value VoiceChatParticipantsInvited
+// OptWebAppInfo is optional WebAppInfo.
+type OptWebAppInfo struct {
+	Value WebAppInfo
 	Set   bool
 }
 
-// IsSet returns true if OptVoiceChatParticipantsInvited was set.
-func (o OptVoiceChatParticipantsInvited) IsSet() bool { return o.Set }
+// IsSet returns true if OptWebAppInfo was set.
+func (o OptWebAppInfo) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptVoiceChatParticipantsInvited) Reset() {
-	var v VoiceChatParticipantsInvited
+func (o *OptWebAppInfo) Reset() {
+	var v WebAppInfo
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptVoiceChatParticipantsInvited) SetTo(v VoiceChatParticipantsInvited) {
+func (o *OptWebAppInfo) SetTo(v WebAppInfo) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptVoiceChatParticipantsInvited) Get() (v VoiceChatParticipantsInvited, ok bool) {
+func (o OptWebAppInfo) Get() (v WebAppInfo, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -6598,53 +7178,7 @@ func (o OptVoiceChatParticipantsInvited) Get() (v VoiceChatParticipantsInvited, 
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptVoiceChatParticipantsInvited) Or(d VoiceChatParticipantsInvited) VoiceChatParticipantsInvited {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptVoiceChatScheduled returns new OptVoiceChatScheduled with value set to v.
-func NewOptVoiceChatScheduled(v VoiceChatScheduled) OptVoiceChatScheduled {
-	return OptVoiceChatScheduled{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptVoiceChatScheduled is optional VoiceChatScheduled.
-type OptVoiceChatScheduled struct {
-	Value VoiceChatScheduled
-	Set   bool
-}
-
-// IsSet returns true if OptVoiceChatScheduled was set.
-func (o OptVoiceChatScheduled) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptVoiceChatScheduled) Reset() {
-	var v VoiceChatScheduled
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptVoiceChatScheduled) SetTo(v VoiceChatScheduled) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptVoiceChatScheduled) Get() (v VoiceChatScheduled, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptVoiceChatScheduled) Or(d VoiceChatScheduled) VoiceChatScheduled {
+func (o OptWebAppInfo) Or(d WebAppInfo) WebAppInfo {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -7338,8 +7872,8 @@ type PromoteChatMember struct {
 	CanEditMessages OptBool "json:\"can_edit_messages\""
 	// Pass True, if the administrator can delete messages of other users.
 	CanDeleteMessages OptBool "json:\"can_delete_messages\""
-	// Pass True, if the administrator can manage voice chats.
-	CanManageVoiceChats OptBool "json:\"can_manage_voice_chats\""
+	// Pass True, if the administrator can manage video chats.
+	CanManageVideoChats OptBool "json:\"can_manage_video_chats\""
 	// Pass True, if the administrator can restrict, ban or unban chat members.
 	CanRestrictMembers OptBool "json:\"can_restrict_members\""
 	// Pass True, if the administrator can add new administrators with a subset of their own privileges
@@ -8442,6 +8976,15 @@ type SetChatDescription struct {
 	Description OptString "json:\"description\""
 }
 
+// Input for setChatMenuButton.
+// Ref: #/components/schemas/setChatMenuButton
+type SetChatMenuButton struct {
+	// Unique identifier for the target private chat. If not specified, default bot's menu button will be
+	// changed.
+	ChatID     OptInt64      "json:\"chat_id\""
+	MenuButton OptMenuButton "json:\"menu_button\""
+}
+
 // Input for setChatPermissions.
 // Ref: #/components/schemas/setChatPermissions
 type SetChatPermissions struct {
@@ -8503,6 +9046,15 @@ type SetMyCommands struct {
 	// A two-letter ISO 639-1 language code. If empty, commands will be applied to all users from the
 	// given scope, for whose language there are no dedicated commands.
 	LanguageCode OptString "json:\"language_code\""
+}
+
+// Input for setMyDefaultAdministratorRights.
+// Ref: #/components/schemas/setMyDefaultAdministratorRights
+type SetMyDefaultAdministratorRights struct {
+	Rights OptChatAdministratorRights "json:\"rights\""
+	// Pass True to change the default administrator rights of the bot in channels. Otherwise, the
+	// default administrator rights of the bot for groups and supergroups will be changed.
+	ForChannels OptBool "json:\"for_channels\""
 }
 
 // Input for setPassportDataErrors.
@@ -8837,6 +9389,33 @@ type Video struct {
 	FileSize OptInt "json:\"file_size\""
 }
 
+// This object represents a service message about a video chat ended in the chat.
+// Ref: #/components/schemas/VideoChatEnded
+type VideoChatEnded struct {
+	// Video chat duration in seconds.
+	Duration int "json:\"duration\""
+}
+
+// This object represents a service message about new members invited to a video chat.
+// Ref: #/components/schemas/VideoChatParticipantsInvited
+type VideoChatParticipantsInvited struct {
+	// New members that were invited to the video chat.
+	Users []User "json:\"users\""
+}
+
+// This object represents a service message about a video chat scheduled in the chat.
+// Ref: #/components/schemas/VideoChatScheduled
+type VideoChatScheduled struct {
+	// Point in time (Unix timestamp) when the video chat is supposed to be started by a chat
+	// administrator.
+	StartDate int "json:\"start_date\""
+}
+
+// This object represents a service message about a video chat started in the chat. Currently holds
+// no information.
+// Ref: #/components/schemas/VideoChatStarted
+type VideoChatStarted struct{}
+
 // This object represents a video message (available in Telegram apps as of v.4.0).
 // Ref: #/components/schemas/VideoNote
 type VideoNote struct {
@@ -8870,32 +9449,22 @@ type Voice struct {
 	FileSize OptInt "json:\"file_size\""
 }
 
-// This object represents a service message about a voice chat ended in the chat.
-// Ref: #/components/schemas/VoiceChatEnded
-type VoiceChatEnded struct {
-	// Voice chat duration in seconds.
-	Duration int "json:\"duration\""
+// Contains data sent from a Web App to the bot.
+// Ref: #/components/schemas/WebAppData
+type WebAppData struct {
+	// The data. Be aware that a bad client can send arbitrary data in this field.
+	Data string "json:\"data\""
+	// Text of the web_app keyboard button, from which the Web App was opened. Be aware that a bad client
+	// can send arbitrary data in this field.
+	ButtonText string "json:\"button_text\""
 }
 
-// This object represents a service message about new members invited to a voice chat.
-// Ref: #/components/schemas/VoiceChatParticipantsInvited
-type VoiceChatParticipantsInvited struct {
-	// New members that were invited to the voice chat.
-	Users []User "json:\"users\""
+// Contains information about a Web App.
+// Ref: #/components/schemas/WebAppInfo
+type WebAppInfo struct {
+	// An HTTPS URL of a Web App to be opened with additional data as specified in Initializing Web Apps.
+	URL string "json:\"url\""
 }
-
-// This object represents a service message about a voice chat scheduled in the chat.
-// Ref: #/components/schemas/VoiceChatScheduled
-type VoiceChatScheduled struct {
-	// Point in time (Unix timestamp) when the voice chat is supposed to be started by a chat
-	// administrator.
-	StartDate int "json:\"start_date\""
-}
-
-// This object represents a service message about a voice chat started in the chat. Currently holds
-// no information.
-// Ref: #/components/schemas/VoiceChatStarted
-type VoiceChatStarted struct{}
 
 // Contains information about the current status of a webhook.
 // Ref: #/components/schemas/WebhookInfo
@@ -8913,6 +9482,9 @@ type WebhookInfo struct {
 	// Error message in human-readable format for the most recent error that happened when trying to
 	// deliver an update via webhook.
 	LastErrorMessage OptString "json:\"last_error_message\""
+	// Unix time of the most recent error that happened when trying to synchronize available updates with
+	// Telegram datacenters.
+	LastSynchronizationErrorDate OptInt "json:\"last_synchronization_error_date\""
 	// Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery.
 	MaxConnections OptInt "json:\"max_connections\""
 	// A list of update types the bot is subscribed to. Defaults to all update types except chat_member.

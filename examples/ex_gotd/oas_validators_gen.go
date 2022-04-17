@@ -321,6 +321,24 @@ func (s AnswerShippingQuery) Validate() error {
 	}
 	return nil
 }
+func (s AnswerWebAppQuery) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := s.Result.Validate(); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "result",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s Audio) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -6063,9 +6081,9 @@ func (s Message) Validate() error {
 		})
 	}
 	if err := func() error {
-		if s.VoiceChatEnded.Set {
+		if s.VideoChatEnded.Set {
 			if err := func() error {
-				if err := s.VoiceChatEnded.Value.Validate(); err != nil {
+				if err := s.VideoChatEnded.Value.Validate(); err != nil {
 					return err
 				}
 				return nil
@@ -6077,7 +6095,26 @@ func (s Message) Validate() error {
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
-			Name:  "voice_chat_ended",
+			Name:  "video_chat_ended",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.VideoChatParticipantsInvited.Set {
+			if err := func() error {
+				if err := s.VideoChatParticipantsInvited.Value.Validate(); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return err
+			}
+		}
+		return nil
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "video_chat_participants_invited",
 			Error: err,
 		})
 	}
@@ -9218,6 +9255,51 @@ func (s Video) Validate() error {
 	}
 	return nil
 }
+func (s VideoChatEnded) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if err := (validate.Int{
+			MinSet:        true,
+			Min:           0,
+			MaxSet:        false,
+			Max:           0,
+			MinExclusive:  true,
+			MaxExclusive:  false,
+			MultipleOfSet: false,
+			MultipleOf:    0,
+		}).Validate(int64(s.Duration)); err != nil {
+			return errors.Wrap(err, "int")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "duration",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s VideoChatParticipantsInvited) Validate() error {
+	var failures []validate.FieldError
+	if err := func() error {
+		if s.Users == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "users",
+			Error: err,
+		})
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
 func (s VideoNote) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -9265,33 +9347,6 @@ func (s VideoNote) Validate() error {
 	return nil
 }
 func (s Voice) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if err := (validate.Int{
-			MinSet:        true,
-			Min:           0,
-			MaxSet:        false,
-			Max:           0,
-			MinExclusive:  true,
-			MaxExclusive:  false,
-			MultipleOfSet: false,
-			MultipleOf:    0,
-		}).Validate(int64(s.Duration)); err != nil {
-			return errors.Wrap(err, "int")
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "duration",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s VoiceChatEnded) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := (validate.Int{

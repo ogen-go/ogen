@@ -351,6 +351,60 @@ func (s *Server) handleAnswerShippingQueryRequest(args [0]string, w http.Respons
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleAnswerWebAppQueryRequest handles answerWebAppQuery operation.
+//
+// POST /answerWebAppQuery
+func (s *Server) handleAnswerWebAppQueryRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("answerWebAppQuery"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "AnswerWebAppQuery",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeAnswerWebAppQueryRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"AnswerWebAppQuery",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.AnswerWebAppQuery(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeAnswerWebAppQueryResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleApproveChatJoinRequestRequest handles approveChatJoinRequest operation.
 //
 // POST /approveChatJoinRequest
@@ -1746,6 +1800,60 @@ func (s *Server) handleGetChatMemberCountRequest(args [0]string, w http.Response
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleGetChatMenuButtonRequest handles getChatMenuButton operation.
+//
+// POST /getChatMenuButton
+func (s *Server) handleGetChatMenuButtonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getChatMenuButton"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetChatMenuButton",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeGetChatMenuButtonRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"GetChatMenuButton",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.GetChatMenuButton(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeGetChatMenuButtonResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleGetFileRequest handles getFile operation.
 //
 // POST /getFile
@@ -1944,6 +2052,60 @@ func (s *Server) handleGetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	}
 
 	if err := encodeGetMyCommandsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleGetMyDefaultAdministratorRightsRequest handles getMyDefaultAdministratorRights operation.
+//
+// POST /getMyDefaultAdministratorRights
+func (s *Server) handleGetMyDefaultAdministratorRightsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("getMyDefaultAdministratorRights"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "GetMyDefaultAdministratorRights",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeGetMyDefaultAdministratorRightsRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"GetMyDefaultAdministratorRights",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.GetMyDefaultAdministratorRights(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeGetMyDefaultAdministratorRightsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)
@@ -3555,6 +3717,60 @@ func (s *Server) handleSetChatDescriptionRequest(args [0]string, w http.Response
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleSetChatMenuButtonRequest handles setChatMenuButton operation.
+//
+// POST /setChatMenuButton
+func (s *Server) handleSetChatMenuButtonRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setChatMenuButton"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetChatMenuButton",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeSetChatMenuButtonRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"SetChatMenuButton",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.SetChatMenuButton(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeSetChatMenuButtonResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleSetChatPermissionsRequest handles setChatPermissions operation.
 //
 // POST /setChatPermissions
@@ -3870,6 +4086,60 @@ func (s *Server) handleSetMyCommandsRequest(args [0]string, w http.ResponseWrite
 	}
 
 	if err := encodeSetMyCommandsResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleSetMyDefaultAdministratorRightsRequest handles setMyDefaultAdministratorRights operation.
+//
+// POST /setMyDefaultAdministratorRights
+func (s *Server) handleSetMyDefaultAdministratorRightsRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("setMyDefaultAdministratorRights"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "SetMyDefaultAdministratorRights",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := decodeSetMyDefaultAdministratorRightsRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			"SetMyDefaultAdministratorRights",
+			err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.SetMyDefaultAdministratorRights(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		var errRes *ErrorStatusCode
+		if errors.As(err, &errRes) {
+			encodeErrorResponse(*errRes, w, span)
+			return
+		}
+		if errors.Is(err, ht.ErrNotImplemented) {
+			s.cfg.ErrorHandler(ctx, w, r, err)
+			return
+		}
+		encodeErrorResponse(s.h.NewError(ctx, err), w, span)
+		return
+	}
+
+	if err := encodeSetMyDefaultAdministratorRightsResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

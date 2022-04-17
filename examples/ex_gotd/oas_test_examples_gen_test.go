@@ -166,6 +166,18 @@ func TestAnswerShippingQuery_EncodeDecode(t *testing.T) {
 	var typ2 AnswerShippingQuery
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestAnswerWebAppQuery_EncodeDecode(t *testing.T) {
+	var typ AnswerWebAppQuery
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 AnswerWebAppQuery
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestApproveChatJoinRequest_EncodeDecode(t *testing.T) {
 	var typ ApproveChatJoinRequest
 	typ.SetFake()
@@ -356,6 +368,18 @@ func TestChat_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 Chat
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestChatAdministratorRights_EncodeDecode(t *testing.T) {
+	var typ ChatAdministratorRights
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 ChatAdministratorRights
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestChatInviteLink_EncodeDecode(t *testing.T) {
@@ -934,6 +958,18 @@ func TestGetChatMemberCount_EncodeDecode(t *testing.T) {
 	var typ2 GetChatMemberCount
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestGetChatMenuButton_EncodeDecode(t *testing.T) {
+	var typ GetChatMenuButton
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GetChatMenuButton
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestGetFile_EncodeDecode(t *testing.T) {
 	var typ GetFile
 	typ.SetFake()
@@ -968,6 +1004,18 @@ func TestGetMyCommands_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 GetMyCommands
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestGetMyDefaultAdministratorRights_EncodeDecode(t *testing.T) {
+	var typ GetMyDefaultAdministratorRights
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 GetMyDefaultAdministratorRights
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestGetStickerSet_EncodeDecode(t *testing.T) {
@@ -1568,6 +1616,54 @@ func TestMaskPosition_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 MaskPosition
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMenuButton_EncodeDecode(t *testing.T) {
+	var typ MenuButton
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MenuButton
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMenuButtonCommands_EncodeDecode(t *testing.T) {
+	var typ MenuButtonCommands
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MenuButtonCommands
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMenuButtonDefault_EncodeDecode(t *testing.T) {
+	var typ MenuButtonDefault
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MenuButtonDefault
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestMenuButtonWebApp_EncodeDecode(t *testing.T) {
+	var typ MenuButtonWebApp
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 MenuButtonWebApp
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestMessage_EncodeDecode(t *testing.T) {
@@ -2470,6 +2566,18 @@ func TestSetChatDescription_EncodeDecode(t *testing.T) {
 	var typ2 SetChatDescription
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestSetChatMenuButton_EncodeDecode(t *testing.T) {
+	var typ SetChatMenuButton
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SetChatMenuButton
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestSetChatPermissions_EncodeDecode(t *testing.T) {
 	var typ SetChatPermissions
 	typ.SetFake()
@@ -2540,6 +2648,18 @@ func TestSetMyCommands_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 SetMyCommands
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestSetMyDefaultAdministratorRights_EncodeDecode(t *testing.T) {
+	var typ SetMyDefaultAdministratorRights
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 SetMyDefaultAdministratorRights
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestSetPassportDataErrors_EncodeDecode(t *testing.T) {
@@ -2806,6 +2926,54 @@ func TestVideo_EncodeDecode(t *testing.T) {
 	var typ2 Video
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestVideoChatEnded_EncodeDecode(t *testing.T) {
+	var typ VideoChatEnded
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 VideoChatEnded
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestVideoChatParticipantsInvited_EncodeDecode(t *testing.T) {
+	var typ VideoChatParticipantsInvited
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 VideoChatParticipantsInvited
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestVideoChatScheduled_EncodeDecode(t *testing.T) {
+	var typ VideoChatScheduled
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 VideoChatScheduled
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestVideoChatStarted_EncodeDecode(t *testing.T) {
+	var typ VideoChatStarted
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 VideoChatStarted
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestVideoNote_EncodeDecode(t *testing.T) {
 	var typ VideoNote
 	typ.SetFake()
@@ -2830,8 +2998,8 @@ func TestVoice_EncodeDecode(t *testing.T) {
 	var typ2 Voice
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestVoiceChatEnded_EncodeDecode(t *testing.T) {
-	var typ VoiceChatEnded
+func TestWebAppData_EncodeDecode(t *testing.T) {
+	var typ WebAppData
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -2839,11 +3007,11 @@ func TestVoiceChatEnded_EncodeDecode(t *testing.T) {
 	data := e.Bytes()
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
-	var typ2 VoiceChatEnded
+	var typ2 WebAppData
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestVoiceChatParticipantsInvited_EncodeDecode(t *testing.T) {
-	var typ VoiceChatParticipantsInvited
+func TestWebAppInfo_EncodeDecode(t *testing.T) {
+	var typ WebAppInfo
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -2851,31 +3019,7 @@ func TestVoiceChatParticipantsInvited_EncodeDecode(t *testing.T) {
 	data := e.Bytes()
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
-	var typ2 VoiceChatParticipantsInvited
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestVoiceChatScheduled_EncodeDecode(t *testing.T) {
-	var typ VoiceChatScheduled
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 VoiceChatScheduled
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestVoiceChatStarted_EncodeDecode(t *testing.T) {
-	var typ VoiceChatStarted
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 VoiceChatStarted
+	var typ2 WebAppInfo
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestWebhookInfo_EncodeDecode(t *testing.T) {

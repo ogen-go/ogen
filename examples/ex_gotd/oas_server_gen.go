@@ -103,6 +103,10 @@ type Handler interface {
 	//
 	// POST /answerShippingQuery
 	AnswerShippingQuery(ctx context.Context, req AnswerShippingQuery) (Result, error)
+	// AnswerWebAppQuery implements answerWebAppQuery operation.
+	//
+	// POST /answerWebAppQuery
+	AnswerWebAppQuery(ctx context.Context, req AnswerWebAppQuery) (Result, error)
 	// ApproveChatJoinRequest implements approveChatJoinRequest operation.
 	//
 	// POST /approveChatJoinRequest
@@ -207,6 +211,10 @@ type Handler interface {
 	//
 	// POST /getChatMemberCount
 	GetChatMemberCount(ctx context.Context, req GetChatMemberCount) (ResultInt, error)
+	// GetChatMenuButton implements getChatMenuButton operation.
+	//
+	// POST /getChatMenuButton
+	GetChatMenuButton(ctx context.Context, req OptGetChatMenuButton) (Result, error)
 	// GetFile implements getFile operation.
 	//
 	// POST /getFile
@@ -223,6 +231,10 @@ type Handler interface {
 	//
 	// POST /getMyCommands
 	GetMyCommands(ctx context.Context, req OptGetMyCommands) (ResultArrayOfBotCommand, error)
+	// GetMyDefaultAdministratorRights implements getMyDefaultAdministratorRights operation.
+	//
+	// POST /getMyDefaultAdministratorRights
+	GetMyDefaultAdministratorRights(ctx context.Context, req OptGetMyDefaultAdministratorRights) (Result, error)
 	// GetStickerSet implements getStickerSet operation.
 	//
 	// POST /getStickerSet
@@ -343,6 +355,10 @@ type Handler interface {
 	//
 	// POST /setChatDescription
 	SetChatDescription(ctx context.Context, req SetChatDescription) (Result, error)
+	// SetChatMenuButton implements setChatMenuButton operation.
+	//
+	// POST /setChatMenuButton
+	SetChatMenuButton(ctx context.Context, req OptSetChatMenuButton) (Result, error)
 	// SetChatPermissions implements setChatPermissions operation.
 	//
 	// POST /setChatPermissions
@@ -367,6 +383,10 @@ type Handler interface {
 	//
 	// POST /setMyCommands
 	SetMyCommands(ctx context.Context, req SetMyCommands) (Result, error)
+	// SetMyDefaultAdministratorRights implements setMyDefaultAdministratorRights operation.
+	//
+	// POST /setMyDefaultAdministratorRights
+	SetMyDefaultAdministratorRights(ctx context.Context, req OptSetMyDefaultAdministratorRights) (Result, error)
 	// SetPassportDataErrors implements setPassportDataErrors operation.
 	//
 	// POST /setPassportDataErrors

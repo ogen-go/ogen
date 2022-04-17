@@ -295,6 +295,20 @@ func (s *AnswerShippingQuery) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *AnswerWebAppQuery) SetFake() {
+	{
+		{
+			s.WebAppQueryID = "string"
+		}
+	}
+	{
+		{
+			s.Result.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *ApproveChatJoinRequest) SetFake() {
 	{
 		{
@@ -620,6 +634,65 @@ func (s *Chat) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *ChatAdministratorRights) SetFake() {
+	{
+		{
+			s.IsAnonymous = true
+		}
+	}
+	{
+		{
+			s.CanManageChat = true
+		}
+	}
+	{
+		{
+			s.CanDeleteMessages = true
+		}
+	}
+	{
+		{
+			s.CanManageVideoChats = true
+		}
+	}
+	{
+		{
+			s.CanRestrictMembers = true
+		}
+	}
+	{
+		{
+			s.CanPromoteMembers = true
+		}
+	}
+	{
+		{
+			s.CanChangeInfo = true
+		}
+	}
+	{
+		{
+			s.CanInviteUsers = true
+		}
+	}
+	{
+		{
+			s.CanPostMessages.SetFake()
+		}
+	}
+	{
+		{
+			s.CanEditMessages.SetFake()
+		}
+	}
+	{
+		{
+			s.CanPinMessages.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *ChatInviteLink) SetFake() {
 	{
 		{
@@ -755,7 +828,7 @@ func (s *ChatMemberAdministrator) SetFake() {
 	}
 	{
 		{
-			s.CanManageVoiceChats = true
+			s.CanManageVideoChats = true
 		}
 	}
 	{
@@ -1909,6 +1982,15 @@ func (s *GetChatMemberCount) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *GetChatMenuButton) SetFake() {
+	{
+		{
+			s.ChatID.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *GetFile) SetFake() {
 	{
 		{
@@ -1951,6 +2033,15 @@ func (s *GetMyCommands) SetFake() {
 	{
 		{
 			s.LanguageCode.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *GetMyDefaultAdministratorRights) SetFake() {
+	{
+		{
+			s.ForChannels.SetFake()
 		}
 	}
 }
@@ -2038,12 +2129,17 @@ func (s *InlineKeyboardButton) SetFake() {
 	}
 	{
 		{
-			s.LoginURL.SetFake()
+			s.CallbackData.SetFake()
 		}
 	}
 	{
 		{
-			s.CallbackData.SetFake()
+			s.WebApp.SetFake()
+		}
+	}
+	{
+		{
+			s.LoginURL.SetFake()
 		}
 	}
 	{
@@ -3895,6 +3991,11 @@ func (s *KeyboardButtonObject) SetFake() {
 			s.RequestPoll.SetFake()
 		}
 	}
+	{
+		{
+			s.WebApp.SetFake()
+		}
+	}
 }
 
 // SetFake set fake values.
@@ -4007,6 +4108,38 @@ func (s *MaskPosition) SetFake() {
 	{
 		{
 			s.Scale = float64(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *MenuButton) SetFake() {
+	var elem MenuButtonCommands
+
+	{
+		elem.SetFake()
+	}
+	s.SetMenuButtonCommands(elem)
+}
+
+// SetFake set fake values.
+func (s *MenuButtonCommands) SetFake() {
+}
+
+// SetFake set fake values.
+func (s *MenuButtonDefault) SetFake() {
+}
+
+// SetFake set fake values.
+func (s *MenuButtonWebApp) SetFake() {
+	{
+		{
+			s.Text = "string"
+		}
+	}
+	{
+		{
+			s.WebApp.SetFake()
 		}
 	}
 }
@@ -4315,22 +4448,27 @@ func (s *Message) SetFake() {
 	}
 	{
 		{
-			s.VoiceChatScheduled.SetFake()
+			s.VideoChatScheduled.SetFake()
 		}
 	}
 	{
 		{ // Keep pointer nil to prevent infinite recursion.
-			s.VoiceChatStarted = nil
+			s.VideoChatStarted = nil
 		}
 	}
 	{
 		{
-			s.VoiceChatEnded.SetFake()
+			s.VideoChatEnded.SetFake()
 		}
 	}
 	{
 		{
-			s.VoiceChatParticipantsInvited.SetFake()
+			s.VideoChatParticipantsInvited.SetFake()
+		}
+	}
+	{
+		{
+			s.WebAppData.SetFake()
 		}
 	}
 	{
@@ -4460,6 +4598,15 @@ func (s *OptCallbackQuery) SetFake() {
 // SetFake set fake values.
 func (s *OptChat) SetFake() {
 	var elem Chat
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptChatAdministratorRights) SetFake() {
+	var elem ChatAdministratorRights
 	{
 		elem.SetFake()
 	}
@@ -4611,8 +4758,26 @@ func (s *OptGame) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptGetChatMenuButton) SetFake() {
+	var elem GetChatMenuButton
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptGetMyCommands) SetFake() {
 	var elem GetMyCommands
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptGetMyDefaultAdministratorRights) SetFake() {
+	var elem GetMyDefaultAdministratorRights
 	{
 		elem.SetFake()
 	}
@@ -4730,6 +4895,15 @@ func (s *OptLoginUrl) SetFake() {
 // SetFake set fake values.
 func (s *OptMaskPosition) SetFake() {
 	var elem MaskPosition
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptMenuButton) SetFake() {
+	var elem MenuButton
 	{
 		elem.SetFake()
 	}
@@ -4863,6 +5037,24 @@ func (s *OptSendReplyMarkup) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptSetChatMenuButton) SetFake() {
+	var elem SetChatMenuButton
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptSetMyDefaultAdministratorRights) SetFake() {
+	var elem SetMyDefaultAdministratorRights
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptShippingAddress) SetFake() {
 	var elem ShippingAddress
 	{
@@ -4953,6 +5145,33 @@ func (s *OptVideo) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptVideoChatEnded) SetFake() {
+	var elem VideoChatEnded
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptVideoChatParticipantsInvited) SetFake() {
+	var elem VideoChatParticipantsInvited
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptVideoChatScheduled) SetFake() {
+	var elem VideoChatScheduled
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
 func (s *OptVideoNote) SetFake() {
 	var elem VideoNote
 	{
@@ -4971,8 +5190,8 @@ func (s *OptVoice) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OptVoiceChatEnded) SetFake() {
-	var elem VoiceChatEnded
+func (s *OptWebAppData) SetFake() {
+	var elem WebAppData
 	{
 		elem.SetFake()
 	}
@@ -4980,17 +5199,8 @@ func (s *OptVoiceChatEnded) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OptVoiceChatParticipantsInvited) SetFake() {
-	var elem VoiceChatParticipantsInvited
-	{
-		elem.SetFake()
-	}
-	s.SetTo(elem)
-}
-
-// SetFake set fake values.
-func (s *OptVoiceChatScheduled) SetFake() {
-	var elem VoiceChatScheduled
+func (s *OptWebAppInfo) SetFake() {
+	var elem WebAppInfo
 	{
 		elem.SetFake()
 	}
@@ -5529,7 +5739,7 @@ func (s *PromoteChatMember) SetFake() {
 	}
 	{
 		{
-			s.CanManageVoiceChats.SetFake()
+			s.CanManageVideoChats.SetFake()
 		}
 	}
 	{
@@ -7252,6 +7462,20 @@ func (s *SetChatDescription) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *SetChatMenuButton) SetFake() {
+	{
+		{
+			s.ChatID.SetFake()
+		}
+	}
+	{
+		{
+			s.MenuButton.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *SetChatPermissions) SetFake() {
 	{
 		{
@@ -7368,6 +7592,20 @@ func (s *SetMyCommands) SetFake() {
 	{
 		{
 			s.LanguageCode.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *SetMyDefaultAdministratorRights) SetFake() {
+	{
+		{
+			s.Rights.SetFake()
+		}
+	}
+	{
+		{
+			s.ForChannels.SetFake()
 		}
 	}
 }
@@ -8053,6 +8291,44 @@ func (s *Video) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *VideoChatEnded) SetFake() {
+	{
+		{
+			s.Duration = int(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *VideoChatParticipantsInvited) SetFake() {
+	{
+		{
+			s.Users = nil
+			for i := 0; i < 0; i++ {
+				var elem User
+				{
+					elem.SetFake()
+				}
+				s.Users = append(s.Users, elem)
+			}
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *VideoChatScheduled) SetFake() {
+	{
+		{
+			s.StartDate = int(0)
+		}
+	}
+}
+
+// SetFake set fake values.
+func (s *VideoChatStarted) SetFake() {
+}
+
+// SetFake set fake values.
 func (s *VideoNote) SetFake() {
 	{
 		{
@@ -8116,41 +8392,26 @@ func (s *Voice) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *VoiceChatEnded) SetFake() {
+func (s *WebAppData) SetFake() {
 	{
 		{
-			s.Duration = int(0)
+			s.Data = "string"
+		}
+	}
+	{
+		{
+			s.ButtonText = "string"
 		}
 	}
 }
 
 // SetFake set fake values.
-func (s *VoiceChatParticipantsInvited) SetFake() {
+func (s *WebAppInfo) SetFake() {
 	{
 		{
-			s.Users = nil
-			for i := 0; i < 0; i++ {
-				var elem User
-				{
-					elem.SetFake()
-				}
-				s.Users = append(s.Users, elem)
-			}
+			s.URL = "string"
 		}
 	}
-}
-
-// SetFake set fake values.
-func (s *VoiceChatScheduled) SetFake() {
-	{
-		{
-			s.StartDate = int(0)
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *VoiceChatStarted) SetFake() {
 }
 
 // SetFake set fake values.
@@ -8183,6 +8444,11 @@ func (s *WebhookInfo) SetFake() {
 	{
 		{
 			s.LastErrorMessage.SetFake()
+		}
+	}
+	{
+		{
+			s.LastSynchronizationErrorDate.SetFake()
 		}
 	}
 	{

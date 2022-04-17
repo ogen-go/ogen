@@ -121,6 +121,13 @@ func (UnimplementedHandler) AnswerShippingQuery(ctx context.Context, req AnswerS
 	return r, ht.ErrNotImplemented
 }
 
+// AnswerWebAppQuery implements answerWebAppQuery operation.
+//
+// POST /answerWebAppQuery
+func (UnimplementedHandler) AnswerWebAppQuery(ctx context.Context, req AnswerWebAppQuery) (r Result, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // ApproveChatJoinRequest implements approveChatJoinRequest operation.
 //
 // POST /approveChatJoinRequest
@@ -303,6 +310,13 @@ func (UnimplementedHandler) GetChatMemberCount(ctx context.Context, req GetChatM
 	return r, ht.ErrNotImplemented
 }
 
+// GetChatMenuButton implements getChatMenuButton operation.
+//
+// POST /getChatMenuButton
+func (UnimplementedHandler) GetChatMenuButton(ctx context.Context, req OptGetChatMenuButton) (r Result, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // GetFile implements getFile operation.
 //
 // POST /getFile
@@ -328,6 +342,13 @@ func (UnimplementedHandler) GetMe(ctx context.Context) (r ResultUser, _ error) {
 //
 // POST /getMyCommands
 func (UnimplementedHandler) GetMyCommands(ctx context.Context, req OptGetMyCommands) (r ResultArrayOfBotCommand, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// GetMyDefaultAdministratorRights implements getMyDefaultAdministratorRights operation.
+//
+// POST /getMyDefaultAdministratorRights
+func (UnimplementedHandler) GetMyDefaultAdministratorRights(ctx context.Context, req OptGetMyDefaultAdministratorRights) (r Result, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -541,6 +562,13 @@ func (UnimplementedHandler) SetChatDescription(ctx context.Context, req SetChatD
 	return r, ht.ErrNotImplemented
 }
 
+// SetChatMenuButton implements setChatMenuButton operation.
+//
+// POST /setChatMenuButton
+func (UnimplementedHandler) SetChatMenuButton(ctx context.Context, req OptSetChatMenuButton) (r Result, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // SetChatPermissions implements setChatPermissions operation.
 //
 // POST /setChatPermissions
@@ -580,6 +608,13 @@ func (UnimplementedHandler) SetGameScore(ctx context.Context, req SetGameScore) 
 //
 // POST /setMyCommands
 func (UnimplementedHandler) SetMyCommands(ctx context.Context, req SetMyCommands) (r Result, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// SetMyDefaultAdministratorRights implements setMyDefaultAdministratorRights operation.
+//
+// POST /setMyDefaultAdministratorRights
+func (UnimplementedHandler) SetMyDefaultAdministratorRights(ctx context.Context, req OptSetMyDefaultAdministratorRights) (r Result, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

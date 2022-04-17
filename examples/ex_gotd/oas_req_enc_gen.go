@@ -121,6 +121,14 @@ func encodeAnswerShippingQueryRequestJSON(req AnswerShippingQuery, span trace.Sp
 	return e, nil
 }
 
+func encodeAnswerWebAppQueryRequestJSON(req AnswerWebAppQuery, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
 func encodeApproveChatJoinRequestRequestJSON(req ApproveChatJoinRequest, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
@@ -323,6 +331,15 @@ func encodeGetChatMemberCountRequestJSON(req GetChatMemberCount, span trace.Span
 	return e, nil
 }
 
+func encodeGetChatMenuButtonRequestJSON(req OptGetChatMenuButton, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+
+	return e, nil
+}
+
 func encodeGetFileRequestJSON(req GetFile, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
@@ -340,6 +357,15 @@ func encodeGetGameHighScoresRequestJSON(req GetGameHighScores, span trace.Span) 
 }
 
 func encodeGetMyCommandsRequestJSON(req OptGetMyCommands, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+
+	return e, nil
+}
+
+func encodeGetMyDefaultAdministratorRightsRequestJSON(req OptGetMyDefaultAdministratorRights, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -573,6 +599,15 @@ func encodeSetChatDescriptionRequestJSON(req SetChatDescription, span trace.Span
 	return e, nil
 }
 
+func encodeSetChatMenuButtonRequestJSON(req OptSetChatMenuButton, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+
+	return e, nil
+}
+
 func encodeSetChatPermissionsRequestJSON(req SetChatPermissions, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
@@ -617,6 +652,15 @@ func encodeSetMyCommandsRequestJSON(req SetMyCommands, span trace.Span) (data *j
 	e := jx.GetEncoder()
 
 	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeSetMyDefaultAdministratorRightsRequestJSON(req OptSetMyDefaultAdministratorRights, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
 
 	return e, nil
 }
