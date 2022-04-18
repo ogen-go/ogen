@@ -4,27 +4,7 @@
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{- with $regexStrings := $.RegexStrings }}
-var regexMap = map[string]*regexp.Regexp{
-	{{- range $regex := $regexStrings }}
-	{{ quote $regex }}: regexp.MustCompile({{ quote $regex }}),
-	{{- end }}
-}
-{{- end }}
-
-{{- with $ratStrings := $.RatStrings }}
-var ratMap = map[string]*big.Rat{
-	{{- range $rat := $ratStrings }}
-	{{ quote $rat }}: func() *big.Rat {
-		r := new(big.Rat)
-		if err := r.UnmarshalText([]byte({{ quote $rat }})); err != nil {
-			panic(fmt.Sprintf("rat %q: %v", {{ quote $rat }}, err))
-		}
-		return r
-	}(),
-	{{- end }}
-}
-{{- end }}
+{{ template "globals" $ }}
 
 // bufPool is pool of bytes.Buffer for encoding and decoding.
 var bufPool = &sync.Pool{
