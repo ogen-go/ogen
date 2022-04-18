@@ -1,6 +1,11 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+
 {{ define "jsonschema" }}
+
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
+
+{{ template "globals" $ }}
 
 {{ template "schemas/body" $ }}
 {{ template "json/body" $ }}
