@@ -13,13 +13,37 @@ import (
 )
 
 func canUseTypeDiscriminator(sum []*ir.Type) bool {
-	// Collect map of variant kinds.
-	typeMap := map[string]struct{}{}
+	var (
+		// Collect map of variant kinds.
+		typeMap      = map[string]struct{}{}
+		collectTypes func(sum []*ir.Type)
+	)
+	collectTypes = func(sum []*ir.Type) {
+		for _, variant := range sum {
+			typ := variant.JSON().Type()
+			if typ == "" {
+				if variant.IsSum() {
+					collectTypes(variant.SumOf)
+				}
+				continue
+			}
+			typeMap[typ] = struct{}{}
+		}
+	}
 
 	for _, s := range sum {
 		typ := s.JSON().Type()
-		if typ == "" {
-			// Cannot make typed sum with Any or sub sum.
+		switch {
+		case s.IsSum():
+			switch s.JSON().Sum().Type {
+			case ir.SumJSONDiscriminator, ir.SumJSONFields:
+				typeMap["Object"] = struct{}{}
+			case ir.SumJSONPrimitive, ir.SumJSONTypeDiscriminator:
+				collectTypes(s.SumOf)
+			}
+			continue
+		case typ == "":
+			// Cannot make type discriminator with Any.
 			return false
 		}
 
