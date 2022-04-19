@@ -146,3 +146,13 @@ func (g *Generator) makeIR(ops []*openapi.Operation) error {
 
 	return nil
 }
+
+// Types returns generated types.
+func (g *Generator) Types() map[string]*ir.Type {
+	return g.tstorage.types
+}
+
+// API returns api schema.
+func (g *Generator) API() *openapi.API {
+	return g.api
+}
