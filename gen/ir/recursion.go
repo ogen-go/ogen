@@ -29,11 +29,10 @@ func (t *Type) recursive(target *Type, path *walkpath) bool {
 		return true
 	}
 
-	if path.has(t) {
+	if path.has(target) {
 		return false
 	}
-
-	path = path.append(t)
+	path = path.append(target)
 
 	switch target.Kind {
 	case KindAlias:
