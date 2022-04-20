@@ -10,6 +10,10 @@ import (
 
 //go:generate go run github.com/ogen-go/ogen/tools/mkformattest --output ../_testdata/positive/test_format.json
 
+// Generate JSON Schema:
+
+//go:generate go run github.com/ogen-go/ogen/cmd/jschemagen --typename Spec --schema ../gen/_testdata/jsonschema/openapi30.json --target ex_openapi/output.gen.go
+
 // Fully supported:
 
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/positive/test_format.json --target ex_test_format --clean --generate-tests

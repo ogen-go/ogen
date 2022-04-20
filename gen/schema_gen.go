@@ -62,7 +62,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 	if n := schema.XOgenName; n != "" {
 		name = n
 	} else {
-		if name[0] >= '0' && name[0] <= '9' {
+		if len(name) > 0 && name[0] >= '0' && name[0] <= '9' {
 			name = "R" + name
 		}
 	}
