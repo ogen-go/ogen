@@ -1,12 +1,8 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 
-{{ define "defaults" }}
-{{ $pkg := $.Package }}
-{{ template "header" $ }}
-
+{{ define "defaults/body" }}
 {{- range $_, $s := $.Types }}
 {{- with $defaults := $s.DefaultFields }}
-
 // setDefaults set default value of fields.
 func (s *{{ $s.Name }}) setDefaults()  {
 	{{- range $f := $defaults }}
@@ -17,5 +13,13 @@ func (s *{{ $s.Name }}) setDefaults()  {
 }
 {{- end }}
 {{- end }}
+{{ end }}
 
-{{- end }}
+{{ define "defaults" }}
+
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{ template "defaults/body" $ }}
+
+{{ end }}
