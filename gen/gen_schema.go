@@ -2,7 +2,8 @@ package gen
 
 import (
 	"bytes"
-	"encoding/json"
+	"os"
+	"strings"
 
 	"github.com/go-faster/errors"
 
@@ -51,20 +52,39 @@ func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.
 	return t, nil
 }
 
-// GenerateSchema generates type, validation and JSON encoding for given schema.
-func GenerateSchema(input []byte, fs FileSystem, typeName, fileName, pkgName string) error {
-	var rawSchema *jsonschema.RawSchema
-	if err := json.Unmarshal(input, &rawSchema); err != nil {
-		return errors.Wrap(err, "unmarshal")
-	}
+// GenerateSchemaOptions is options structure for GenerateSchema.
+type GenerateSchemaOptions struct {
+	// TypeName is root schema type name. Defaults to "Type".
+	TypeName string
+	// FileName is output filename. Defaults to "output.gen.go".
+	FileName string
+	// PkgName is the package name. Defaults to GOPACKAGE environment variable, if any. Otherwise, to "output".
+	PkgName string
+	// TrimPrefix is a ref name prefixes to trim. Defaults to []string{"#/definitions/", "#/$defs/"}.
+	TrimPrefix []string
+}
 
-	p := jsonschema.NewParser(jsonschema.Settings{
-		Resolver: jsonschema.NewRootResolver(input),
-	})
-	schema, err := p.Parse(rawSchema)
-	if err != nil {
-		return errors.Wrap(err, "parse")
+func (o *GenerateSchemaOptions) setDefaults() {
+	if o.TypeName == "" {
+		o.TypeName = "Type"
 	}
+	if o.FileName == "" {
+		o.FileName = "output.gen.go"
+	}
+	if o.PkgName == "" {
+		o.PkgName = os.Getenv("GOPACKAGE")
+		if o.PkgName == "" {
+			o.PkgName = "output"
+		}
+	}
+	if o.TrimPrefix == nil {
+		o.TrimPrefix = []string{"#/definitions/", "#/$defs/"}
+	}
+}
+
+// GenerateSchema generates type, validation and JSON encoding for given schema.
+func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchemaOptions) error {
+	opts.setDefaults()
 
 	ctx := &genctx{
 		path:   []string{"#"},
@@ -75,7 +95,22 @@ func GenerateSchema(input []byte, fs FileSystem, typeName, fileName, pkgName str
 		return nil, false
 	})
 
-	t, err := gen.generate(typeName, schema)
+	{
+		prev := gen.nameRef
+		gen.nameRef = func(ref string) (string, error) {
+			for _, trim := range opts.TrimPrefix {
+				ref = strings.TrimPrefix(ref, trim)
+			}
+
+			result, err := prev(ref)
+			if err != nil {
+				return "", err
+			}
+			return result, nil
+		}
+	}
+
+	t, err := gen.generate(opts.TypeName, schema)
 	if err != nil {
 		return errors.Wrap(err, "generate type")
 	}
@@ -91,8 +126,8 @@ func GenerateSchema(input []byte, fs FileSystem, typeName, fileName, pkgName str
 		buf:   new(bytes.Buffer),
 		wrote: map[string]bool{},
 	}
-	if err := w.Generate("jsonschema", fileName, TemplateConfig{
-		Package: pkgName,
+	if err := w.Generate("jsonschema", opts.FileName, TemplateConfig{
+		Package: opts.PkgName,
 		Types:   ctx.local.types,
 	}); err != nil {
 		return errors.Wrap(err, "write")
