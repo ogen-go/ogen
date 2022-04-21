@@ -9,6 +9,7 @@ import (
 	"text/template"
 
 	"github.com/go-faster/errors"
+	"golang.org/x/tools/imports"
 
 	"github.com/ogen-go/ogen/gen/ir"
 )
@@ -128,7 +129,13 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) err
 	if err := w.t.ExecuteTemplate(w.buf, templateName, cfg); err != nil {
 		return errors.Wrapf(err, "failed to execute template %s for %s", templateName, fileName)
 	}
-	if err := w.fs.WriteFile(fileName, w.buf.Bytes()); err != nil {
+
+	b, err := imports.Process(fileName, w.buf.Bytes(), nil)
+	if err != nil {
+		return errors.Wrap(err, "imports")
+	}
+
+	if err := w.fs.WriteFile(fileName, b); err != nil {
 		_ = os.WriteFile(fileName+".dump", w.buf.Bytes(), 0o600)
 		return errors.Wrapf(err, "failed to write file %s", fileName)
 	}
