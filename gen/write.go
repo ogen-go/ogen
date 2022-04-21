@@ -136,7 +136,7 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) err
 	}
 
 	if err := w.fs.WriteFile(fileName, b); err != nil {
-		_ = os.WriteFile(fileName+".dump", w.buf.Bytes(), 0o600)
+		_ = os.WriteFile(fileName+".dump", b, 0o600)
 		return errors.Wrapf(err, "failed to write file %s", fileName)
 	}
 	w.wrote[fileName] = true
