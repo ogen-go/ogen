@@ -23,9 +23,9 @@ var regexMap = map[string]*regexp.Regexp{
 }
 
 // Ref: #/definitions/anysOrExpressions
-type DefinitionsAnysOrExpressions map[string]jx.Raw
+type AnysOrExpressions map[string]jx.Raw
 
-func (s *DefinitionsAnysOrExpressions) init() DefinitionsAnysOrExpressions {
+func (s *AnysOrExpressions) init() AnysOrExpressions {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -39,15 +39,15 @@ func (s *DefinitionsAnysOrExpressions) init() DefinitionsAnysOrExpressions {
 // the expected responses. The key value used to identify the callback object is an expression,
 // evaluated at runtime, that identifies a URL to use for the callback operation.
 // Ref: #/definitions/callback
-type DefinitionsCallback struct {
-	AdditionalProps DefinitionsCallbackAdditional
-	Pattern0Props   DefinitionsCallbackPattern0
-	Pattern1Props   DefinitionsCallbackPattern1
+type Callback struct {
+	AdditionalProps CallbackAdditional
+	Pattern0Props   CallbackPattern0
+	Pattern1Props   CallbackPattern1
 }
 
-type DefinitionsCallbackAdditional map[string]jx.Raw
+type CallbackAdditional map[string]jx.Raw
 
-func (s *DefinitionsCallbackAdditional) init() DefinitionsCallbackAdditional {
+func (s *CallbackAdditional) init() CallbackAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -57,88 +57,84 @@ func (s *DefinitionsCallbackAdditional) init() DefinitionsCallbackAdditional {
 }
 
 // Ref: #/definitions/callbackOrReference
-// DefinitionsCallbackOrReference represents sum type.
-type DefinitionsCallbackOrReference struct {
-	Type                 DefinitionsCallbackOrReferenceType // switch on this field
-	DefinitionsCallback  DefinitionsCallback
-	DefinitionsReference DefinitionsReference
+// CallbackOrReference represents sum type.
+type CallbackOrReference struct {
+	Type      CallbackOrReferenceType // switch on this field
+	Callback  Callback
+	Reference Reference
 }
 
-// DefinitionsCallbackOrReferenceType is oneOf type of DefinitionsCallbackOrReference.
-type DefinitionsCallbackOrReferenceType string
+// CallbackOrReferenceType is oneOf type of CallbackOrReference.
+type CallbackOrReferenceType string
 
-// Possible values for DefinitionsCallbackOrReferenceType.
+// Possible values for CallbackOrReferenceType.
 const (
-	DefinitionsCallbackDefinitionsCallbackOrReference  DefinitionsCallbackOrReferenceType = "DefinitionsCallback"
-	DefinitionsReferenceDefinitionsCallbackOrReference DefinitionsCallbackOrReferenceType = "DefinitionsReference"
+	CallbackCallbackOrReference  CallbackOrReferenceType = "Callback"
+	ReferenceCallbackOrReference CallbackOrReferenceType = "Reference"
 )
 
-// IsDefinitionsCallback reports whether DefinitionsCallbackOrReference is DefinitionsCallback.
-func (s DefinitionsCallbackOrReference) IsDefinitionsCallback() bool {
-	return s.Type == DefinitionsCallbackDefinitionsCallbackOrReference
+// IsCallback reports whether CallbackOrReference is Callback.
+func (s CallbackOrReference) IsCallback() bool { return s.Type == CallbackCallbackOrReference }
+
+// IsReference reports whether CallbackOrReference is Reference.
+func (s CallbackOrReference) IsReference() bool { return s.Type == ReferenceCallbackOrReference }
+
+// SetCallback sets CallbackOrReference to Callback.
+func (s *CallbackOrReference) SetCallback(v Callback) {
+	s.Type = CallbackCallbackOrReference
+	s.Callback = v
 }
 
-// IsDefinitionsReference reports whether DefinitionsCallbackOrReference is DefinitionsReference.
-func (s DefinitionsCallbackOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsCallbackOrReference
-}
-
-// SetDefinitionsCallback sets DefinitionsCallbackOrReference to DefinitionsCallback.
-func (s *DefinitionsCallbackOrReference) SetDefinitionsCallback(v DefinitionsCallback) {
-	s.Type = DefinitionsCallbackDefinitionsCallbackOrReference
-	s.DefinitionsCallback = v
-}
-
-// GetDefinitionsCallback returns DefinitionsCallback and true boolean if DefinitionsCallbackOrReference is DefinitionsCallback.
-func (s DefinitionsCallbackOrReference) GetDefinitionsCallback() (v DefinitionsCallback, ok bool) {
-	if !s.IsDefinitionsCallback() {
+// GetCallback returns Callback and true boolean if CallbackOrReference is Callback.
+func (s CallbackOrReference) GetCallback() (v Callback, ok bool) {
+	if !s.IsCallback() {
 		return v, false
 	}
-	return s.DefinitionsCallback, true
+	return s.Callback, true
 }
 
-// NewDefinitionsCallbackDefinitionsCallbackOrReference returns new DefinitionsCallbackOrReference from DefinitionsCallback.
-func NewDefinitionsCallbackDefinitionsCallbackOrReference(v DefinitionsCallback) DefinitionsCallbackOrReference {
-	var s DefinitionsCallbackOrReference
-	s.SetDefinitionsCallback(v)
+// NewCallbackCallbackOrReference returns new CallbackOrReference from Callback.
+func NewCallbackCallbackOrReference(v Callback) CallbackOrReference {
+	var s CallbackOrReference
+	s.SetCallback(v)
 	return s
 }
 
-// SetDefinitionsReference sets DefinitionsCallbackOrReference to DefinitionsReference.
-func (s *DefinitionsCallbackOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsCallbackOrReference
-	s.DefinitionsReference = v
+// SetReference sets CallbackOrReference to Reference.
+func (s *CallbackOrReference) SetReference(v Reference) {
+	s.Type = ReferenceCallbackOrReference
+	s.Reference = v
 }
 
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsCallbackOrReference is DefinitionsReference.
-func (s DefinitionsCallbackOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
+// GetReference returns Reference and true boolean if CallbackOrReference is Reference.
+func (s CallbackOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
 		return v, false
 	}
-	return s.DefinitionsReference, true
+	return s.Reference, true
 }
 
-// NewDefinitionsReferenceDefinitionsCallbackOrReference returns new DefinitionsCallbackOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsCallbackOrReference(v DefinitionsReference) DefinitionsCallbackOrReference {
-	var s DefinitionsCallbackOrReference
-	s.SetDefinitionsReference(v)
+// NewReferenceCallbackOrReference returns new CallbackOrReference from Reference.
+func NewReferenceCallbackOrReference(v Reference) CallbackOrReference {
+	var s CallbackOrReference
+	s.SetReference(v)
 	return s
 }
 
-type DefinitionsCallbackPattern0 map[string]DefinitionsPathItem
+type CallbackPattern0 map[string]PathItem
 
-func (s *DefinitionsCallbackPattern0) init() DefinitionsCallbackPattern0 {
+func (s *CallbackPattern0) init() CallbackPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]DefinitionsPathItem{}
+		m = map[string]PathItem{}
 		*s = m
 	}
 	return m
 }
 
-type DefinitionsCallbackPattern1 map[string]jx.Raw
+type CallbackPattern1 map[string]jx.Raw
 
-func (s *DefinitionsCallbackPattern1) init() DefinitionsCallbackPattern1 {
+func (s *CallbackPattern1) init() CallbackPattern1 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -148,12 +144,12 @@ func (s *DefinitionsCallbackPattern1) init() DefinitionsCallbackPattern1 {
 }
 
 // Ref: #/definitions/callbacksOrReferences
-type DefinitionsCallbacksOrReferences map[string]DefinitionsCallbackOrReference
+type CallbacksOrReferences map[string]CallbackOrReference
 
-func (s *DefinitionsCallbacksOrReferences) init() DefinitionsCallbacksOrReferences {
+func (s *CallbacksOrReferences) init() CallbacksOrReferences {
 	m := *s
 	if m == nil {
-		m = map[string]DefinitionsCallbackOrReference{}
+		m = map[string]CallbackOrReference{}
 		*s = m
 	}
 	return m
@@ -163,23 +159,23 @@ func (s *DefinitionsCallbacksOrReferences) init() DefinitionsCallbacksOrReferenc
 // components object will have no effect on the API unless they are explicitly referenced from
 // properties outside the components object.
 // Ref: #/definitions/components
-type DefinitionsComponents struct {
-	Schemas         OptDefinitionsSchemasOrReferences         "json:\"schemas\""
-	Responses       OptDefinitionsResponsesOrReferences       "json:\"responses\""
-	Parameters      OptDefinitionsParametersOrReferences      "json:\"parameters\""
-	Examples        OptDefinitionsExamplesOrReferences        "json:\"examples\""
-	RequestBodies   OptDefinitionsRequestBodiesOrReferences   "json:\"requestBodies\""
-	Headers         OptDefinitionsHeadersOrReferences         "json:\"headers\""
-	SecuritySchemes OptDefinitionsSecuritySchemesOrReferences "json:\"securitySchemes\""
-	Links           OptDefinitionsLinksOrReferences           "json:\"links\""
-	Callbacks       OptDefinitionsCallbacksOrReferences       "json:\"callbacks\""
-	AdditionalProps DefinitionsComponentsAdditional
-	Pattern0Props   DefinitionsComponentsPattern0
+type Components struct {
+	Schemas         OptSchemasOrReferences         "json:\"schemas\""
+	Responses       OptResponsesOrReferences       "json:\"responses\""
+	Parameters      OptParametersOrReferences      "json:\"parameters\""
+	Examples        OptExamplesOrReferences        "json:\"examples\""
+	RequestBodies   OptRequestBodiesOrReferences   "json:\"requestBodies\""
+	Headers         OptHeadersOrReferences         "json:\"headers\""
+	SecuritySchemes OptSecuritySchemesOrReferences "json:\"securitySchemes\""
+	Links           OptLinksOrReferences           "json:\"links\""
+	Callbacks       OptCallbacksOrReferences       "json:\"callbacks\""
+	AdditionalProps ComponentsAdditional
+	Pattern0Props   ComponentsPattern0
 }
 
-type DefinitionsComponentsAdditional map[string]jx.Raw
+type ComponentsAdditional map[string]jx.Raw
 
-func (s *DefinitionsComponentsAdditional) init() DefinitionsComponentsAdditional {
+func (s *ComponentsAdditional) init() ComponentsAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -188,9 +184,9 @@ func (s *DefinitionsComponentsAdditional) init() DefinitionsComponentsAdditional
 	return m
 }
 
-type DefinitionsComponentsPattern0 map[string]jx.Raw
+type ComponentsPattern0 map[string]jx.Raw
 
-func (s *DefinitionsComponentsPattern0) init() DefinitionsComponentsPattern0 {
+func (s *ComponentsPattern0) init() ComponentsPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -201,17 +197,17 @@ func (s *DefinitionsComponentsPattern0) init() DefinitionsComponentsPattern0 {
 
 // Contact information for the exposed API.
 // Ref: #/definitions/contact
-type DefinitionsContact struct {
+type Contact struct {
 	Name            OptString "json:\"name\""
 	URL             OptString "json:\"url\""
 	Email           OptString "json:\"email\""
-	AdditionalProps DefinitionsContactAdditional
-	Pattern0Props   DefinitionsContactPattern0
+	AdditionalProps ContactAdditional
+	Pattern0Props   ContactPattern0
 }
 
-type DefinitionsContactAdditional map[string]jx.Raw
+type ContactAdditional map[string]jx.Raw
 
-func (s *DefinitionsContactAdditional) init() DefinitionsContactAdditional {
+func (s *ContactAdditional) init() ContactAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -220,9 +216,9 @@ func (s *DefinitionsContactAdditional) init() DefinitionsContactAdditional {
 	return m
 }
 
-type DefinitionsContactPattern0 map[string]jx.Raw
+type ContactPattern0 map[string]jx.Raw
 
-func (s *DefinitionsContactPattern0) init() DefinitionsContactPattern0 {
+func (s *ContactPattern0) init() ContactPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -237,15 +233,15 @@ func (s *DefinitionsContactPattern0) init() DefinitionsContactPattern0 {
 // specification of an alternative schema based on the value associated with it.  When using the
 // discriminator, _inline_ schemas will not be considered.
 // Ref: #/definitions/discriminator
-type DefinitionsDiscriminator struct {
-	PropertyName    string                "json:\"propertyName\""
-	Mapping         OptDefinitionsStrings "json:\"mapping\""
-	AdditionalProps DefinitionsDiscriminatorAdditional
+type Discriminator struct {
+	PropertyName    string     "json:\"propertyName\""
+	Mapping         OptStrings "json:\"mapping\""
+	AdditionalProps DiscriminatorAdditional
 }
 
-type DefinitionsDiscriminatorAdditional map[string]jx.Raw
+type DiscriminatorAdditional map[string]jx.Raw
 
-func (s *DefinitionsDiscriminatorAdditional) init() DefinitionsDiscriminatorAdditional {
+func (s *DiscriminatorAdditional) init() DiscriminatorAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -256,19 +252,19 @@ func (s *DefinitionsDiscriminatorAdditional) init() DefinitionsDiscriminatorAddi
 
 // A single encoding definition applied to a single schema property.
 // Ref: #/definitions/encoding
-type DefinitionsEncoding struct {
-	ContentType     OptString                         "json:\"contentType\""
-	Headers         OptDefinitionsHeadersOrReferences "json:\"headers\""
-	Style           OptString                         "json:\"style\""
-	Explode         OptBool                           "json:\"explode\""
-	AllowReserved   OptBool                           "json:\"allowReserved\""
-	AdditionalProps DefinitionsEncodingAdditional
-	Pattern0Props   DefinitionsEncodingPattern0
+type Encoding struct {
+	ContentType     OptString              "json:\"contentType\""
+	Headers         OptHeadersOrReferences "json:\"headers\""
+	Style           OptString              "json:\"style\""
+	Explode         OptBool                "json:\"explode\""
+	AllowReserved   OptBool                "json:\"allowReserved\""
+	AdditionalProps EncodingAdditional
+	Pattern0Props   EncodingPattern0
 }
 
-type DefinitionsEncodingAdditional map[string]jx.Raw
+type EncodingAdditional map[string]jx.Raw
 
-func (s *DefinitionsEncodingAdditional) init() DefinitionsEncodingAdditional {
+func (s *EncodingAdditional) init() EncodingAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -277,9 +273,9 @@ func (s *DefinitionsEncodingAdditional) init() DefinitionsEncodingAdditional {
 	return m
 }
 
-type DefinitionsEncodingPattern0 map[string]jx.Raw
+type EncodingPattern0 map[string]jx.Raw
 
-func (s *DefinitionsEncodingPattern0) init() DefinitionsEncodingPattern0 {
+func (s *EncodingPattern0) init() EncodingPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -289,30 +285,30 @@ func (s *DefinitionsEncodingPattern0) init() DefinitionsEncodingPattern0 {
 }
 
 // Ref: #/definitions/encodings
-type DefinitionsEncodings map[string]DefinitionsEncoding
+type Encodings map[string]Encoding
 
-func (s *DefinitionsEncodings) init() DefinitionsEncodings {
+func (s *Encodings) init() Encodings {
 	m := *s
 	if m == nil {
-		m = map[string]DefinitionsEncoding{}
+		m = map[string]Encoding{}
 		*s = m
 	}
 	return m
 }
 
 // Ref: #/definitions/example
-type DefinitionsExample struct {
+type Example struct {
 	Summary         OptString "json:\"summary\""
 	Description     OptString "json:\"description\""
 	Value           jx.Raw    "json:\"value\""
 	ExternalValue   OptString "json:\"externalValue\""
-	AdditionalProps DefinitionsExampleAdditional
-	Pattern0Props   DefinitionsExamplePattern0
+	AdditionalProps ExampleAdditional
+	Pattern0Props   ExamplePattern0
 }
 
-type DefinitionsExampleAdditional map[string]jx.Raw
+type ExampleAdditional map[string]jx.Raw
 
-func (s *DefinitionsExampleAdditional) init() DefinitionsExampleAdditional {
+func (s *ExampleAdditional) init() ExampleAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -322,77 +318,73 @@ func (s *DefinitionsExampleAdditional) init() DefinitionsExampleAdditional {
 }
 
 // Ref: #/definitions/exampleOrReference
-// DefinitionsExampleOrReference represents sum type.
-type DefinitionsExampleOrReference struct {
-	Type                 DefinitionsExampleOrReferenceType // switch on this field
-	DefinitionsExample   DefinitionsExample
-	DefinitionsReference DefinitionsReference
+// ExampleOrReference represents sum type.
+type ExampleOrReference struct {
+	Type      ExampleOrReferenceType // switch on this field
+	Example   Example
+	Reference Reference
 }
 
-// DefinitionsExampleOrReferenceType is oneOf type of DefinitionsExampleOrReference.
-type DefinitionsExampleOrReferenceType string
+// ExampleOrReferenceType is oneOf type of ExampleOrReference.
+type ExampleOrReferenceType string
 
-// Possible values for DefinitionsExampleOrReferenceType.
+// Possible values for ExampleOrReferenceType.
 const (
-	DefinitionsExampleDefinitionsExampleOrReference   DefinitionsExampleOrReferenceType = "DefinitionsExample"
-	DefinitionsReferenceDefinitionsExampleOrReference DefinitionsExampleOrReferenceType = "DefinitionsReference"
+	ExampleExampleOrReference   ExampleOrReferenceType = "Example"
+	ReferenceExampleOrReference ExampleOrReferenceType = "Reference"
 )
 
-// IsDefinitionsExample reports whether DefinitionsExampleOrReference is DefinitionsExample.
-func (s DefinitionsExampleOrReference) IsDefinitionsExample() bool {
-	return s.Type == DefinitionsExampleDefinitionsExampleOrReference
+// IsExample reports whether ExampleOrReference is Example.
+func (s ExampleOrReference) IsExample() bool { return s.Type == ExampleExampleOrReference }
+
+// IsReference reports whether ExampleOrReference is Reference.
+func (s ExampleOrReference) IsReference() bool { return s.Type == ReferenceExampleOrReference }
+
+// SetExample sets ExampleOrReference to Example.
+func (s *ExampleOrReference) SetExample(v Example) {
+	s.Type = ExampleExampleOrReference
+	s.Example = v
 }
 
-// IsDefinitionsReference reports whether DefinitionsExampleOrReference is DefinitionsReference.
-func (s DefinitionsExampleOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsExampleOrReference
-}
-
-// SetDefinitionsExample sets DefinitionsExampleOrReference to DefinitionsExample.
-func (s *DefinitionsExampleOrReference) SetDefinitionsExample(v DefinitionsExample) {
-	s.Type = DefinitionsExampleDefinitionsExampleOrReference
-	s.DefinitionsExample = v
-}
-
-// GetDefinitionsExample returns DefinitionsExample and true boolean if DefinitionsExampleOrReference is DefinitionsExample.
-func (s DefinitionsExampleOrReference) GetDefinitionsExample() (v DefinitionsExample, ok bool) {
-	if !s.IsDefinitionsExample() {
+// GetExample returns Example and true boolean if ExampleOrReference is Example.
+func (s ExampleOrReference) GetExample() (v Example, ok bool) {
+	if !s.IsExample() {
 		return v, false
 	}
-	return s.DefinitionsExample, true
+	return s.Example, true
 }
 
-// NewDefinitionsExampleDefinitionsExampleOrReference returns new DefinitionsExampleOrReference from DefinitionsExample.
-func NewDefinitionsExampleDefinitionsExampleOrReference(v DefinitionsExample) DefinitionsExampleOrReference {
-	var s DefinitionsExampleOrReference
-	s.SetDefinitionsExample(v)
+// NewExampleExampleOrReference returns new ExampleOrReference from Example.
+func NewExampleExampleOrReference(v Example) ExampleOrReference {
+	var s ExampleOrReference
+	s.SetExample(v)
 	return s
 }
 
-// SetDefinitionsReference sets DefinitionsExampleOrReference to DefinitionsReference.
-func (s *DefinitionsExampleOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsExampleOrReference
-	s.DefinitionsReference = v
+// SetReference sets ExampleOrReference to Reference.
+func (s *ExampleOrReference) SetReference(v Reference) {
+	s.Type = ReferenceExampleOrReference
+	s.Reference = v
 }
 
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsExampleOrReference is DefinitionsReference.
-func (s DefinitionsExampleOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
+// GetReference returns Reference and true boolean if ExampleOrReference is Reference.
+func (s ExampleOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
 		return v, false
 	}
-	return s.DefinitionsReference, true
+	return s.Reference, true
 }
 
-// NewDefinitionsReferenceDefinitionsExampleOrReference returns new DefinitionsExampleOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsExampleOrReference(v DefinitionsReference) DefinitionsExampleOrReference {
-	var s DefinitionsExampleOrReference
-	s.SetDefinitionsReference(v)
+// NewReferenceExampleOrReference returns new ExampleOrReference from Reference.
+func NewReferenceExampleOrReference(v Reference) ExampleOrReference {
+	var s ExampleOrReference
+	s.SetReference(v)
 	return s
 }
 
-type DefinitionsExamplePattern0 map[string]jx.Raw
+type ExamplePattern0 map[string]jx.Raw
 
-func (s *DefinitionsExamplePattern0) init() DefinitionsExamplePattern0 {
+func (s *ExamplePattern0) init() ExamplePattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -402,12 +394,12 @@ func (s *DefinitionsExamplePattern0) init() DefinitionsExamplePattern0 {
 }
 
 // Ref: #/definitions/examplesOrReferences
-type DefinitionsExamplesOrReferences map[string]DefinitionsExampleOrReference
+type ExamplesOrReferences map[string]ExampleOrReference
 
-func (s *DefinitionsExamplesOrReferences) init() DefinitionsExamplesOrReferences {
+func (s *ExamplesOrReferences) init() ExamplesOrReferences {
 	m := *s
 	if m == nil {
-		m = map[string]DefinitionsExampleOrReference{}
+		m = map[string]ExampleOrReference{}
 		*s = m
 	}
 	return m
@@ -415,16 +407,16 @@ func (s *DefinitionsExamplesOrReferences) init() DefinitionsExamplesOrReferences
 
 // Allows referencing an external resource for extended documentation.
 // Ref: #/definitions/externalDocs
-type DefinitionsExternalDocs struct {
+type ExternalDocs struct {
 	Description     OptString "json:\"description\""
 	URL             string    "json:\"url\""
-	AdditionalProps DefinitionsExternalDocsAdditional
-	Pattern0Props   DefinitionsExternalDocsPattern0
+	AdditionalProps ExternalDocsAdditional
+	Pattern0Props   ExternalDocsPattern0
 }
 
-type DefinitionsExternalDocsAdditional map[string]jx.Raw
+type ExternalDocsAdditional map[string]jx.Raw
 
-func (s *DefinitionsExternalDocsAdditional) init() DefinitionsExternalDocsAdditional {
+func (s *ExternalDocsAdditional) init() ExternalDocsAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -433,9 +425,9 @@ func (s *DefinitionsExternalDocsAdditional) init() DefinitionsExternalDocsAdditi
 	return m
 }
 
-type DefinitionsExternalDocsPattern0 map[string]jx.Raw
+type ExternalDocsPattern0 map[string]jx.Raw
 
-func (s *DefinitionsExternalDocsPattern0) init() DefinitionsExternalDocsPattern0 {
+func (s *ExternalDocsPattern0) init() ExternalDocsPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -449,25 +441,25 @@ func (s *DefinitionsExternalDocsPattern0) init() DefinitionsExternalDocsPattern0
 // specified, it is implicitly in `header`. 1. All traits that are affected by the location MUST be
 // applicable to a location of `header` (for example, `style`).
 // Ref: #/definitions/header
-type DefinitionsHeader struct {
-	Description     OptString                          "json:\"description\""
-	Required        OptBool                            "json:\"required\""
-	Deprecated      OptBool                            "json:\"deprecated\""
-	AllowEmptyValue OptBool                            "json:\"allowEmptyValue\""
-	Style           OptString                          "json:\"style\""
-	Explode         OptBool                            "json:\"explode\""
-	AllowReserved   OptBool                            "json:\"allowReserved\""
-	Schema          OptDefinitionsSchemaOrReference    "json:\"schema\""
-	Example         jx.Raw                             "json:\"example\""
-	Examples        OptDefinitionsExamplesOrReferences "json:\"examples\""
-	Content         OptDefinitionsMediaTypes           "json:\"content\""
-	AdditionalProps DefinitionsHeaderAdditional
-	Pattern0Props   DefinitionsHeaderPattern0
+type Header struct {
+	Description     OptString               "json:\"description\""
+	Required        OptBool                 "json:\"required\""
+	Deprecated      OptBool                 "json:\"deprecated\""
+	AllowEmptyValue OptBool                 "json:\"allowEmptyValue\""
+	Style           OptString               "json:\"style\""
+	Explode         OptBool                 "json:\"explode\""
+	AllowReserved   OptBool                 "json:\"allowReserved\""
+	Schema          OptSchemaOrReference    "json:\"schema\""
+	Example         jx.Raw                  "json:\"example\""
+	Examples        OptExamplesOrReferences "json:\"examples\""
+	Content         OptMediaTypes           "json:\"content\""
+	AdditionalProps HeaderAdditional
+	Pattern0Props   HeaderPattern0
 }
 
-type DefinitionsHeaderAdditional map[string]jx.Raw
+type HeaderAdditional map[string]jx.Raw
 
-func (s *DefinitionsHeaderAdditional) init() DefinitionsHeaderAdditional {
+func (s *HeaderAdditional) init() HeaderAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -477,77 +469,73 @@ func (s *DefinitionsHeaderAdditional) init() DefinitionsHeaderAdditional {
 }
 
 // Ref: #/definitions/headerOrReference
-// DefinitionsHeaderOrReference represents sum type.
-type DefinitionsHeaderOrReference struct {
-	Type                 DefinitionsHeaderOrReferenceType // switch on this field
-	DefinitionsHeader    DefinitionsHeader
-	DefinitionsReference DefinitionsReference
+// HeaderOrReference represents sum type.
+type HeaderOrReference struct {
+	Type      HeaderOrReferenceType // switch on this field
+	Header    Header
+	Reference Reference
 }
 
-// DefinitionsHeaderOrReferenceType is oneOf type of DefinitionsHeaderOrReference.
-type DefinitionsHeaderOrReferenceType string
+// HeaderOrReferenceType is oneOf type of HeaderOrReference.
+type HeaderOrReferenceType string
 
-// Possible values for DefinitionsHeaderOrReferenceType.
+// Possible values for HeaderOrReferenceType.
 const (
-	DefinitionsHeaderDefinitionsHeaderOrReference    DefinitionsHeaderOrReferenceType = "DefinitionsHeader"
-	DefinitionsReferenceDefinitionsHeaderOrReference DefinitionsHeaderOrReferenceType = "DefinitionsReference"
+	HeaderHeaderOrReference    HeaderOrReferenceType = "Header"
+	ReferenceHeaderOrReference HeaderOrReferenceType = "Reference"
 )
 
-// IsDefinitionsHeader reports whether DefinitionsHeaderOrReference is DefinitionsHeader.
-func (s DefinitionsHeaderOrReference) IsDefinitionsHeader() bool {
-	return s.Type == DefinitionsHeaderDefinitionsHeaderOrReference
+// IsHeader reports whether HeaderOrReference is Header.
+func (s HeaderOrReference) IsHeader() bool { return s.Type == HeaderHeaderOrReference }
+
+// IsReference reports whether HeaderOrReference is Reference.
+func (s HeaderOrReference) IsReference() bool { return s.Type == ReferenceHeaderOrReference }
+
+// SetHeader sets HeaderOrReference to Header.
+func (s *HeaderOrReference) SetHeader(v Header) {
+	s.Type = HeaderHeaderOrReference
+	s.Header = v
 }
 
-// IsDefinitionsReference reports whether DefinitionsHeaderOrReference is DefinitionsReference.
-func (s DefinitionsHeaderOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsHeaderOrReference
-}
-
-// SetDefinitionsHeader sets DefinitionsHeaderOrReference to DefinitionsHeader.
-func (s *DefinitionsHeaderOrReference) SetDefinitionsHeader(v DefinitionsHeader) {
-	s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
-	s.DefinitionsHeader = v
-}
-
-// GetDefinitionsHeader returns DefinitionsHeader and true boolean if DefinitionsHeaderOrReference is DefinitionsHeader.
-func (s DefinitionsHeaderOrReference) GetDefinitionsHeader() (v DefinitionsHeader, ok bool) {
-	if !s.IsDefinitionsHeader() {
+// GetHeader returns Header and true boolean if HeaderOrReference is Header.
+func (s HeaderOrReference) GetHeader() (v Header, ok bool) {
+	if !s.IsHeader() {
 		return v, false
 	}
-	return s.DefinitionsHeader, true
+	return s.Header, true
 }
 
-// NewDefinitionsHeaderDefinitionsHeaderOrReference returns new DefinitionsHeaderOrReference from DefinitionsHeader.
-func NewDefinitionsHeaderDefinitionsHeaderOrReference(v DefinitionsHeader) DefinitionsHeaderOrReference {
-	var s DefinitionsHeaderOrReference
-	s.SetDefinitionsHeader(v)
+// NewHeaderHeaderOrReference returns new HeaderOrReference from Header.
+func NewHeaderHeaderOrReference(v Header) HeaderOrReference {
+	var s HeaderOrReference
+	s.SetHeader(v)
 	return s
 }
 
-// SetDefinitionsReference sets DefinitionsHeaderOrReference to DefinitionsReference.
-func (s *DefinitionsHeaderOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsHeaderOrReference
-	s.DefinitionsReference = v
+// SetReference sets HeaderOrReference to Reference.
+func (s *HeaderOrReference) SetReference(v Reference) {
+	s.Type = ReferenceHeaderOrReference
+	s.Reference = v
 }
 
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsHeaderOrReference is DefinitionsReference.
-func (s DefinitionsHeaderOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
+// GetReference returns Reference and true boolean if HeaderOrReference is Reference.
+func (s HeaderOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
 		return v, false
 	}
-	return s.DefinitionsReference, true
+	return s.Reference, true
 }
 
-// NewDefinitionsReferenceDefinitionsHeaderOrReference returns new DefinitionsHeaderOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsHeaderOrReference(v DefinitionsReference) DefinitionsHeaderOrReference {
-	var s DefinitionsHeaderOrReference
-	s.SetDefinitionsReference(v)
+// NewReferenceHeaderOrReference returns new HeaderOrReference from Reference.
+func NewReferenceHeaderOrReference(v Reference) HeaderOrReference {
+	var s HeaderOrReference
+	s.SetReference(v)
 	return s
 }
 
-type DefinitionsHeaderPattern0 map[string]jx.Raw
+type HeaderPattern0 map[string]jx.Raw
 
-func (s *DefinitionsHeaderPattern0) init() DefinitionsHeaderPattern0 {
+func (s *HeaderPattern0) init() HeaderPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -557,12 +545,12 @@ func (s *DefinitionsHeaderPattern0) init() DefinitionsHeaderPattern0 {
 }
 
 // Ref: #/definitions/headersOrReferences
-type DefinitionsHeadersOrReferences map[string]DefinitionsHeaderOrReference
+type HeadersOrReferences map[string]HeaderOrReference
 
-func (s *DefinitionsHeadersOrReferences) init() DefinitionsHeadersOrReferences {
+func (s *HeadersOrReferences) init() HeadersOrReferences {
 	m := *s
 	if m == nil {
-		m = map[string]DefinitionsHeaderOrReference{}
+		m = map[string]HeaderOrReference{}
 		*s = m
 	}
 	return m
@@ -571,20 +559,20 @@ func (s *DefinitionsHeadersOrReferences) init() DefinitionsHeadersOrReferences {
 // The object provides metadata about the API. The metadata MAY be used by the clients if needed, and
 // MAY be presented in editing or documentation generation tools for convenience.
 // Ref: #/definitions/info
-type DefinitionsInfo struct {
-	Title           string                "json:\"title\""
-	Description     OptString             "json:\"description\""
-	TermsOfService  OptString             "json:\"termsOfService\""
-	Contact         OptDefinitionsContact "json:\"contact\""
-	License         OptDefinitionsLicense "json:\"license\""
-	Version         string                "json:\"version\""
-	AdditionalProps DefinitionsInfoAdditional
-	Pattern0Props   DefinitionsInfoPattern0
+type Info struct {
+	Title           string     "json:\"title\""
+	Description     OptString  "json:\"description\""
+	TermsOfService  OptString  "json:\"termsOfService\""
+	Contact         OptContact "json:\"contact\""
+	License         OptLicense "json:\"license\""
+	Version         string     "json:\"version\""
+	AdditionalProps InfoAdditional
+	Pattern0Props   InfoPattern0
 }
 
-type DefinitionsInfoAdditional map[string]jx.Raw
+type InfoAdditional map[string]jx.Raw
 
-func (s *DefinitionsInfoAdditional) init() DefinitionsInfoAdditional {
+func (s *InfoAdditional) init() InfoAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -593,9 +581,9 @@ func (s *DefinitionsInfoAdditional) init() DefinitionsInfoAdditional {
 	return m
 }
 
-type DefinitionsInfoPattern0 map[string]jx.Raw
+type InfoPattern0 map[string]jx.Raw
 
-func (s *DefinitionsInfoPattern0) init() DefinitionsInfoPattern0 {
+func (s *InfoPattern0) init() InfoPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -604,36 +592,36 @@ func (s *DefinitionsInfoPattern0) init() DefinitionsInfoPattern0 {
 	return m
 }
 
-type DefinitionsJsonschemaDraft4PropertiesEnum []jx.Raw
+type JsonschemaDraft4PropertiesEnum []jx.Raw
 
-type DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum bool
+type JsonschemaDraft4PropertiesExclusiveMaximum bool
 
-type DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum bool
+type JsonschemaDraft4PropertiesExclusiveMinimum bool
 
-type DefinitionsJsonschemaDraft4PropertiesMaximum float64
+type JsonschemaDraft4PropertiesMaximum float64
 
-type DefinitionsJsonschemaDraft4PropertiesMinimum float64
+type JsonschemaDraft4PropertiesMinimum float64
 
-type DefinitionsJsonschemaDraft4PropertiesMultipleOf float64
+type JsonschemaDraft4PropertiesMultipleOf float64
 
-type DefinitionsJsonschemaDraft4PropertiesPattern string
+type JsonschemaDraft4PropertiesPattern string
 
-type DefinitionsJsonschemaDraft4PropertiesTitle string
+type JsonschemaDraft4PropertiesTitle string
 
-type DefinitionsJsonschemaDraft4PropertiesUniqueItems bool
+type JsonschemaDraft4PropertiesUniqueItems bool
 
 // License information for the exposed API.
 // Ref: #/definitions/license
-type DefinitionsLicense struct {
+type License struct {
 	Name            string    "json:\"name\""
 	URL             OptString "json:\"url\""
-	AdditionalProps DefinitionsLicenseAdditional
-	Pattern0Props   DefinitionsLicensePattern0
+	AdditionalProps LicenseAdditional
+	Pattern0Props   LicensePattern0
 }
 
-type DefinitionsLicenseAdditional map[string]jx.Raw
+type LicenseAdditional map[string]jx.Raw
 
-func (s *DefinitionsLicenseAdditional) init() DefinitionsLicenseAdditional {
+func (s *LicenseAdditional) init() LicenseAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -642,9 +630,9 @@ func (s *DefinitionsLicenseAdditional) init() DefinitionsLicenseAdditional {
 	return m
 }
 
-type DefinitionsLicensePattern0 map[string]jx.Raw
+type LicensePattern0 map[string]jx.Raw
 
-func (s *DefinitionsLicensePattern0) init() DefinitionsLicensePattern0 {
+func (s *LicensePattern0) init() LicensePattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -661,20 +649,20 @@ func (s *DefinitionsLicensePattern0) init() DefinitionsLicensePattern0 {
 // to execute them, a runtime expression is used for accessing values in an operation and using them
 // as parameters while invoking the linked operation.
 // Ref: #/definitions/link
-type DefinitionsLink struct {
-	OperationRef    OptString                       "json:\"operationRef\""
-	OperationId     OptString                       "json:\"operationId\""
-	Parameters      OptDefinitionsAnysOrExpressions "json:\"parameters\""
-	RequestBody     jx.Raw                          "json:\"requestBody\""
-	Description     OptString                       "json:\"description\""
-	Server          OptDefinitionsServer            "json:\"server\""
-	AdditionalProps DefinitionsLinkAdditional
-	Pattern0Props   DefinitionsLinkPattern0
+type Link struct {
+	OperationRef    OptString            "json:\"operationRef\""
+	OperationId     OptString            "json:\"operationId\""
+	Parameters      OptAnysOrExpressions "json:\"parameters\""
+	RequestBody     jx.Raw               "json:\"requestBody\""
+	Description     OptString            "json:\"description\""
+	Server          OptServer            "json:\"server\""
+	AdditionalProps LinkAdditional
+	Pattern0Props   LinkPattern0
 }
 
-type DefinitionsLinkAdditional map[string]jx.Raw
+type LinkAdditional map[string]jx.Raw
 
-func (s *DefinitionsLinkAdditional) init() DefinitionsLinkAdditional {
+func (s *LinkAdditional) init() LinkAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -684,77 +672,73 @@ func (s *DefinitionsLinkAdditional) init() DefinitionsLinkAdditional {
 }
 
 // Ref: #/definitions/linkOrReference
-// DefinitionsLinkOrReference represents sum type.
-type DefinitionsLinkOrReference struct {
-	Type                 DefinitionsLinkOrReferenceType // switch on this field
-	DefinitionsLink      DefinitionsLink
-	DefinitionsReference DefinitionsReference
+// LinkOrReference represents sum type.
+type LinkOrReference struct {
+	Type      LinkOrReferenceType // switch on this field
+	Link      Link
+	Reference Reference
 }
 
-// DefinitionsLinkOrReferenceType is oneOf type of DefinitionsLinkOrReference.
-type DefinitionsLinkOrReferenceType string
+// LinkOrReferenceType is oneOf type of LinkOrReference.
+type LinkOrReferenceType string
 
-// Possible values for DefinitionsLinkOrReferenceType.
+// Possible values for LinkOrReferenceType.
 const (
-	DefinitionsLinkDefinitionsLinkOrReference      DefinitionsLinkOrReferenceType = "DefinitionsLink"
-	DefinitionsReferenceDefinitionsLinkOrReference DefinitionsLinkOrReferenceType = "DefinitionsReference"
+	LinkLinkOrReference      LinkOrReferenceType = "Link"
+	ReferenceLinkOrReference LinkOrReferenceType = "Reference"
 )
 
-// IsDefinitionsLink reports whether DefinitionsLinkOrReference is DefinitionsLink.
-func (s DefinitionsLinkOrReference) IsDefinitionsLink() bool {
-	return s.Type == DefinitionsLinkDefinitionsLinkOrReference
+// IsLink reports whether LinkOrReference is Link.
+func (s LinkOrReference) IsLink() bool { return s.Type == LinkLinkOrReference }
+
+// IsReference reports whether LinkOrReference is Reference.
+func (s LinkOrReference) IsReference() bool { return s.Type == ReferenceLinkOrReference }
+
+// SetLink sets LinkOrReference to Link.
+func (s *LinkOrReference) SetLink(v Link) {
+	s.Type = LinkLinkOrReference
+	s.Link = v
 }
 
-// IsDefinitionsReference reports whether DefinitionsLinkOrReference is DefinitionsReference.
-func (s DefinitionsLinkOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsLinkOrReference
-}
-
-// SetDefinitionsLink sets DefinitionsLinkOrReference to DefinitionsLink.
-func (s *DefinitionsLinkOrReference) SetDefinitionsLink(v DefinitionsLink) {
-	s.Type = DefinitionsLinkDefinitionsLinkOrReference
-	s.DefinitionsLink = v
-}
-
-// GetDefinitionsLink returns DefinitionsLink and true boolean if DefinitionsLinkOrReference is DefinitionsLink.
-func (s DefinitionsLinkOrReference) GetDefinitionsLink() (v DefinitionsLink, ok bool) {
-	if !s.IsDefinitionsLink() {
+// GetLink returns Link and true boolean if LinkOrReference is Link.
+func (s LinkOrReference) GetLink() (v Link, ok bool) {
+	if !s.IsLink() {
 		return v, false
 	}
-	return s.DefinitionsLink, true
+	return s.Link, true
 }
 
-// NewDefinitionsLinkDefinitionsLinkOrReference returns new DefinitionsLinkOrReference from DefinitionsLink.
-func NewDefinitionsLinkDefinitionsLinkOrReference(v DefinitionsLink) DefinitionsLinkOrReference {
-	var s DefinitionsLinkOrReference
-	s.SetDefinitionsLink(v)
+// NewLinkLinkOrReference returns new LinkOrReference from Link.
+func NewLinkLinkOrReference(v Link) LinkOrReference {
+	var s LinkOrReference
+	s.SetLink(v)
 	return s
 }
 
-// SetDefinitionsReference sets DefinitionsLinkOrReference to DefinitionsReference.
-func (s *DefinitionsLinkOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsLinkOrReference
-	s.DefinitionsReference = v
+// SetReference sets LinkOrReference to Reference.
+func (s *LinkOrReference) SetReference(v Reference) {
+	s.Type = ReferenceLinkOrReference
+	s.Reference = v
 }
 
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsLinkOrReference is DefinitionsReference.
-func (s DefinitionsLinkOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
+// GetReference returns Reference and true boolean if LinkOrReference is Reference.
+func (s LinkOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
 		return v, false
 	}
-	return s.DefinitionsReference, true
+	return s.Reference, true
 }
 
-// NewDefinitionsReferenceDefinitionsLinkOrReference returns new DefinitionsLinkOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsLinkOrReference(v DefinitionsReference) DefinitionsLinkOrReference {
-	var s DefinitionsLinkOrReference
-	s.SetDefinitionsReference(v)
+// NewReferenceLinkOrReference returns new LinkOrReference from Reference.
+func NewReferenceLinkOrReference(v Reference) LinkOrReference {
+	var s LinkOrReference
+	s.SetReference(v)
 	return s
 }
 
-type DefinitionsLinkPattern0 map[string]jx.Raw
+type LinkPattern0 map[string]jx.Raw
 
-func (s *DefinitionsLinkPattern0) init() DefinitionsLinkPattern0 {
+func (s *LinkPattern0) init() LinkPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -764,12 +748,12 @@ func (s *DefinitionsLinkPattern0) init() DefinitionsLinkPattern0 {
 }
 
 // Ref: #/definitions/linksOrReferences
-type DefinitionsLinksOrReferences map[string]DefinitionsLinkOrReference
+type LinksOrReferences map[string]LinkOrReference
 
-func (s *DefinitionsLinksOrReferences) init() DefinitionsLinksOrReferences {
+func (s *LinksOrReferences) init() LinksOrReferences {
 	m := *s
 	if m == nil {
-		m = map[string]DefinitionsLinkOrReference{}
+		m = map[string]LinkOrReference{}
 		*s = m
 	}
 	return m
@@ -777,18 +761,18 @@ func (s *DefinitionsLinksOrReferences) init() DefinitionsLinksOrReferences {
 
 // Each Media Type Object provides schema and examples for the media type identified by its key.
 // Ref: #/definitions/mediaType
-type DefinitionsMediaType struct {
-	Schema          OptDefinitionsSchemaOrReference    "json:\"schema\""
-	Example         jx.Raw                             "json:\"example\""
-	Examples        OptDefinitionsExamplesOrReferences "json:\"examples\""
-	Encoding        OptDefinitionsEncodings            "json:\"encoding\""
-	AdditionalProps DefinitionsMediaTypeAdditional
-	Pattern0Props   DefinitionsMediaTypePattern0
+type MediaType struct {
+	Schema          OptSchemaOrReference    "json:\"schema\""
+	Example         jx.Raw                  "json:\"example\""
+	Examples        OptExamplesOrReferences "json:\"examples\""
+	Encoding        OptEncodings            "json:\"encoding\""
+	AdditionalProps MediaTypeAdditional
+	Pattern0Props   MediaTypePattern0
 }
 
-type DefinitionsMediaTypeAdditional map[string]jx.Raw
+type MediaTypeAdditional map[string]jx.Raw
 
-func (s *DefinitionsMediaTypeAdditional) init() DefinitionsMediaTypeAdditional {
+func (s *MediaTypeAdditional) init() MediaTypeAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -797,9 +781,9 @@ func (s *DefinitionsMediaTypeAdditional) init() DefinitionsMediaTypeAdditional {
 	return m
 }
 
-type DefinitionsMediaTypePattern0 map[string]jx.Raw
+type MediaTypePattern0 map[string]jx.Raw
 
-func (s *DefinitionsMediaTypePattern0) init() DefinitionsMediaTypePattern0 {
+func (s *MediaTypePattern0) init() MediaTypePattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -809,12 +793,12 @@ func (s *DefinitionsMediaTypePattern0) init() DefinitionsMediaTypePattern0 {
 }
 
 // Ref: #/definitions/mediaTypes
-type DefinitionsMediaTypes map[string]DefinitionsMediaType
+type MediaTypes map[string]MediaType
 
-func (s *DefinitionsMediaTypes) init() DefinitionsMediaTypes {
+func (s *MediaTypes) init() MediaTypes {
 	m := *s
 	if m == nil {
-		m = map[string]DefinitionsMediaType{}
+		m = map[string]MediaType{}
 		*s = m
 	}
 	return m
@@ -822,18 +806,18 @@ func (s *DefinitionsMediaTypes) init() DefinitionsMediaTypes {
 
 // Configuration details for a supported OAuth Flow.
 // Ref: #/definitions/oauthFlow
-type DefinitionsOauthFlow struct {
-	AuthorizationUrl OptString             "json:\"authorizationUrl\""
-	TokenUrl         OptString             "json:\"tokenUrl\""
-	RefreshUrl       OptString             "json:\"refreshUrl\""
-	Scopes           OptDefinitionsStrings "json:\"scopes\""
-	AdditionalProps  DefinitionsOauthFlowAdditional
-	Pattern0Props    DefinitionsOauthFlowPattern0
+type OauthFlow struct {
+	AuthorizationUrl OptString  "json:\"authorizationUrl\""
+	TokenUrl         OptString  "json:\"tokenUrl\""
+	RefreshUrl       OptString  "json:\"refreshUrl\""
+	Scopes           OptStrings "json:\"scopes\""
+	AdditionalProps  OauthFlowAdditional
+	Pattern0Props    OauthFlowPattern0
 }
 
-type DefinitionsOauthFlowAdditional map[string]jx.Raw
+type OauthFlowAdditional map[string]jx.Raw
 
-func (s *DefinitionsOauthFlowAdditional) init() DefinitionsOauthFlowAdditional {
+func (s *OauthFlowAdditional) init() OauthFlowAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -842,9 +826,9 @@ func (s *DefinitionsOauthFlowAdditional) init() DefinitionsOauthFlowAdditional {
 	return m
 }
 
-type DefinitionsOauthFlowPattern0 map[string]jx.Raw
+type OauthFlowPattern0 map[string]jx.Raw
 
-func (s *DefinitionsOauthFlowPattern0) init() DefinitionsOauthFlowPattern0 {
+func (s *OauthFlowPattern0) init() OauthFlowPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -855,18 +839,18 @@ func (s *DefinitionsOauthFlowPattern0) init() DefinitionsOauthFlowPattern0 {
 
 // Allows configuration of the supported OAuth Flows.
 // Ref: #/definitions/oauthFlows
-type DefinitionsOauthFlows struct {
-	Implicit          OptDefinitionsOauthFlow "json:\"implicit\""
-	Password          OptDefinitionsOauthFlow "json:\"password\""
-	ClientCredentials OptDefinitionsOauthFlow "json:\"clientCredentials\""
-	AuthorizationCode OptDefinitionsOauthFlow "json:\"authorizationCode\""
-	AdditionalProps   DefinitionsOauthFlowsAdditional
-	Pattern0Props     DefinitionsOauthFlowsPattern0
+type OauthFlows struct {
+	Implicit          OptOauthFlow "json:\"implicit\""
+	Password          OptOauthFlow "json:\"password\""
+	ClientCredentials OptOauthFlow "json:\"clientCredentials\""
+	AuthorizationCode OptOauthFlow "json:\"authorizationCode\""
+	AdditionalProps   OauthFlowsAdditional
+	Pattern0Props     OauthFlowsPattern0
 }
 
-type DefinitionsOauthFlowsAdditional map[string]jx.Raw
+type OauthFlowsAdditional map[string]jx.Raw
 
-func (s *DefinitionsOauthFlowsAdditional) init() DefinitionsOauthFlowsAdditional {
+func (s *OauthFlowsAdditional) init() OauthFlowsAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -875,9 +859,9 @@ func (s *DefinitionsOauthFlowsAdditional) init() DefinitionsOauthFlowsAdditional
 	return m
 }
 
-type DefinitionsOauthFlowsPattern0 map[string]jx.Raw
+type OauthFlowsPattern0 map[string]jx.Raw
 
-func (s *DefinitionsOauthFlowsPattern0) init() DefinitionsOauthFlowsPattern0 {
+func (s *OauthFlowsPattern0) init() OauthFlowsPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -888,26 +872,26 @@ func (s *DefinitionsOauthFlowsPattern0) init() DefinitionsOauthFlowsPattern0 {
 
 // Describes a single API operation on a path.
 // Ref: #/definitions/operation
-type DefinitionsOperation struct {
-	Tags            []string                             "json:\"tags\""
-	Summary         OptString                            "json:\"summary\""
-	Description     OptString                            "json:\"description\""
-	ExternalDocs    OptDefinitionsExternalDocs           "json:\"externalDocs\""
-	OperationId     OptString                            "json:\"operationId\""
-	Parameters      []DefinitionsParameterOrReference    "json:\"parameters\""
-	RequestBody     OptDefinitionsRequestBodyOrReference "json:\"requestBody\""
-	Responses       DefinitionsResponses                 "json:\"responses\""
-	Callbacks       OptDefinitionsCallbacksOrReferences  "json:\"callbacks\""
-	Deprecated      OptBool                              "json:\"deprecated\""
-	Security        []DefinitionsSecurityRequirement     "json:\"security\""
-	Servers         []DefinitionsServer                  "json:\"servers\""
-	AdditionalProps DefinitionsOperationAdditional
-	Pattern0Props   DefinitionsOperationPattern0
+type Operation struct {
+	Tags            []string                  "json:\"tags\""
+	Summary         OptString                 "json:\"summary\""
+	Description     OptString                 "json:\"description\""
+	ExternalDocs    OptExternalDocs           "json:\"externalDocs\""
+	OperationId     OptString                 "json:\"operationId\""
+	Parameters      []ParameterOrReference    "json:\"parameters\""
+	RequestBody     OptRequestBodyOrReference "json:\"requestBody\""
+	Responses       Responses                 "json:\"responses\""
+	Callbacks       OptCallbacksOrReferences  "json:\"callbacks\""
+	Deprecated      OptBool                   "json:\"deprecated\""
+	Security        []SecurityRequirement     "json:\"security\""
+	Servers         []Server                  "json:\"servers\""
+	AdditionalProps OperationAdditional
+	Pattern0Props   OperationPattern0
 }
 
-type DefinitionsOperationAdditional map[string]jx.Raw
+type OperationAdditional map[string]jx.Raw
 
-func (s *DefinitionsOperationAdditional) init() DefinitionsOperationAdditional {
+func (s *OperationAdditional) init() OperationAdditional {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -916,9 +900,9 @@ func (s *DefinitionsOperationAdditional) init() DefinitionsOperationAdditional {
 	return m
 }
 
-type DefinitionsOperationPattern0 map[string]jx.Raw
+type OperationPattern0 map[string]jx.Raw
 
-func (s *DefinitionsOperationPattern0) init() DefinitionsOperationPattern0 {
+func (s *OperationPattern0) init() OperationPattern0 {
 	m := *s
 	if m == nil {
 		m = map[string]jx.Raw{}
@@ -927,1090 +911,50 @@ func (s *DefinitionsOperationPattern0) init() DefinitionsOperationPattern0 {
 	return m
 }
 
-// Describes a single operation parameter.  A unique parameter is defined by a combination of a name
-// and location.
-// Ref: #/definitions/parameter
-type DefinitionsParameter struct {
-	Name            string                             "json:\"name\""
-	In              DefinitionsParameterIn             "json:\"in\""
-	Description     OptString                          "json:\"description\""
-	Required        OptBool                            "json:\"required\""
-	Deprecated      OptBool                            "json:\"deprecated\""
-	AllowEmptyValue OptBool                            "json:\"allowEmptyValue\""
-	Style           OptDefinitionsParameterStyle       "json:\"style\""
-	Explode         OptBool                            "json:\"explode\""
-	AllowReserved   OptBool                            "json:\"allowReserved\""
-	Schema          OptDefinitionsSchemaOrReference    "json:\"schema\""
-	Example         jx.Raw                             "json:\"example\""
-	Examples        OptDefinitionsExamplesOrReferences "json:\"examples\""
-	Content         OptDefinitionsMediaTypes           "json:\"content\""
-	AdditionalProps DefinitionsParameterAdditional
-	Pattern0Props   DefinitionsParameterPattern0
-}
-
-type DefinitionsParameterAdditional map[string]jx.Raw
-
-func (s *DefinitionsParameterAdditional) init() DefinitionsParameterAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
+// NewOptAnysOrExpressions returns new OptAnysOrExpressions with value set to v.
+func NewOptAnysOrExpressions(v AnysOrExpressions) OptAnysOrExpressions {
+	return OptAnysOrExpressions{
+		Value: v,
+		Set:   true,
 	}
-	return m
 }
 
-type DefinitionsParameterIn string
-
-const (
-	DefinitionsParameterInPath   DefinitionsParameterIn = "path"
-	DefinitionsParameterInQuery  DefinitionsParameterIn = "query"
-	DefinitionsParameterInCookie DefinitionsParameterIn = "cookie"
-	DefinitionsParameterInHeader DefinitionsParameterIn = "header"
-)
-
-// Ref: #/definitions/parameterOrReference
-// DefinitionsParameterOrReference represents sum type.
-type DefinitionsParameterOrReference struct {
-	Type                 DefinitionsParameterOrReferenceType // switch on this field
-	DefinitionsParameter DefinitionsParameter
-	DefinitionsReference DefinitionsReference
+// OptAnysOrExpressions is optional AnysOrExpressions.
+type OptAnysOrExpressions struct {
+	Value AnysOrExpressions
+	Set   bool
 }
 
-// DefinitionsParameterOrReferenceType is oneOf type of DefinitionsParameterOrReference.
-type DefinitionsParameterOrReferenceType string
+// IsSet returns true if OptAnysOrExpressions was set.
+func (o OptAnysOrExpressions) IsSet() bool { return o.Set }
 
-// Possible values for DefinitionsParameterOrReferenceType.
-const (
-	DefinitionsParameterDefinitionsParameterOrReference DefinitionsParameterOrReferenceType = "DefinitionsParameter"
-	DefinitionsReferenceDefinitionsParameterOrReference DefinitionsParameterOrReferenceType = "DefinitionsReference"
-)
-
-// IsDefinitionsParameter reports whether DefinitionsParameterOrReference is DefinitionsParameter.
-func (s DefinitionsParameterOrReference) IsDefinitionsParameter() bool {
-	return s.Type == DefinitionsParameterDefinitionsParameterOrReference
+// Reset unsets value.
+func (o *OptAnysOrExpressions) Reset() {
+	var v AnysOrExpressions
+	o.Value = v
+	o.Set = false
 }
 
-// IsDefinitionsReference reports whether DefinitionsParameterOrReference is DefinitionsReference.
-func (s DefinitionsParameterOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsParameterOrReference
+// SetTo sets value to v.
+func (o *OptAnysOrExpressions) SetTo(v AnysOrExpressions) {
+	o.Set = true
+	o.Value = v
 }
 
-// SetDefinitionsParameter sets DefinitionsParameterOrReference to DefinitionsParameter.
-func (s *DefinitionsParameterOrReference) SetDefinitionsParameter(v DefinitionsParameter) {
-	s.Type = DefinitionsParameterDefinitionsParameterOrReference
-	s.DefinitionsParameter = v
-}
-
-// GetDefinitionsParameter returns DefinitionsParameter and true boolean if DefinitionsParameterOrReference is DefinitionsParameter.
-func (s DefinitionsParameterOrReference) GetDefinitionsParameter() (v DefinitionsParameter, ok bool) {
-	if !s.IsDefinitionsParameter() {
+// Get returns value and boolean that denotes whether value was set.
+func (o OptAnysOrExpressions) Get() (v AnysOrExpressions, ok bool) {
+	if !o.Set {
 		return v, false
 	}
-	return s.DefinitionsParameter, true
+	return o.Value, true
 }
 
-// NewDefinitionsParameterDefinitionsParameterOrReference returns new DefinitionsParameterOrReference from DefinitionsParameter.
-func NewDefinitionsParameterDefinitionsParameterOrReference(v DefinitionsParameter) DefinitionsParameterOrReference {
-	var s DefinitionsParameterOrReference
-	s.SetDefinitionsParameter(v)
-	return s
-}
-
-// SetDefinitionsReference sets DefinitionsParameterOrReference to DefinitionsReference.
-func (s *DefinitionsParameterOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsParameterOrReference
-	s.DefinitionsReference = v
-}
-
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsParameterOrReference is DefinitionsReference.
-func (s DefinitionsParameterOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
-		return v, false
+// Or returns value if set, or given parameter if does not.
+func (o OptAnysOrExpressions) Or(d AnysOrExpressions) AnysOrExpressions {
+	if v, ok := o.Get(); ok {
+		return v
 	}
-	return s.DefinitionsReference, true
-}
-
-// NewDefinitionsReferenceDefinitionsParameterOrReference returns new DefinitionsParameterOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsParameterOrReference(v DefinitionsReference) DefinitionsParameterOrReference {
-	var s DefinitionsParameterOrReference
-	s.SetDefinitionsReference(v)
-	return s
-}
-
-type DefinitionsParameterPattern0 map[string]jx.Raw
-
-func (s *DefinitionsParameterPattern0) init() DefinitionsParameterPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsParameterStyle string
-
-const (
-	DefinitionsParameterStyleMatrix         DefinitionsParameterStyle = "matrix"
-	DefinitionsParameterStyleLabel          DefinitionsParameterStyle = "label"
-	DefinitionsParameterStyleForm           DefinitionsParameterStyle = "form"
-	DefinitionsParameterStyleSimple         DefinitionsParameterStyle = "simple"
-	DefinitionsParameterStyleSpaceDelimited DefinitionsParameterStyle = "spaceDelimited"
-	DefinitionsParameterStylePipeDelimited  DefinitionsParameterStyle = "pipeDelimited"
-	DefinitionsParameterStyleDeepObject     DefinitionsParameterStyle = "deepObject"
-)
-
-// Ref: #/definitions/parametersOrReferences
-type DefinitionsParametersOrReferences map[string]DefinitionsParameterOrReference
-
-func (s *DefinitionsParametersOrReferences) init() DefinitionsParametersOrReferences {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsParameterOrReference{}
-		*s = m
-	}
-	return m
-}
-
-// Describes the operations available on a single path. A Path Item MAY be empty, due to ACL
-// constraints. The path itself is still exposed to the documentation viewer but they will not know
-// which operations and parameters are available.
-// Ref: #/definitions/pathItem
-type DefinitionsPathItem struct {
-	Ref             OptString                         "json:\"$ref\""
-	Summary         OptString                         "json:\"summary\""
-	Description     OptString                         "json:\"description\""
-	Get             OptDefinitionsOperation           "json:\"get\""
-	Put             OptDefinitionsOperation           "json:\"put\""
-	Post            OptDefinitionsOperation           "json:\"post\""
-	Delete          OptDefinitionsOperation           "json:\"delete\""
-	Options         OptDefinitionsOperation           "json:\"options\""
-	Head            OptDefinitionsOperation           "json:\"head\""
-	Patch           OptDefinitionsOperation           "json:\"patch\""
-	Trace           OptDefinitionsOperation           "json:\"trace\""
-	Servers         []DefinitionsServer               "json:\"servers\""
-	Parameters      []DefinitionsParameterOrReference "json:\"parameters\""
-	AdditionalProps DefinitionsPathItemAdditional
-	Pattern0Props   DefinitionsPathItemPattern0
-}
-
-type DefinitionsPathItemAdditional map[string]jx.Raw
-
-func (s *DefinitionsPathItemAdditional) init() DefinitionsPathItemAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsPathItemPattern0 map[string]jx.Raw
-
-func (s *DefinitionsPathItemPattern0) init() DefinitionsPathItemPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Holds the relative paths to the individual endpoints and their operations. The path is appended to
-// the URL from the `Server Object` in order to construct the full URL.  The Paths MAY be empty, due
-// to ACL constraints.
-// Ref: #/definitions/paths
-type DefinitionsPaths struct {
-	AdditionalProps DefinitionsPathsAdditional
-	Pattern0Props   DefinitionsPathsPattern0
-	Pattern1Props   DefinitionsPathsPattern1
-}
-
-type DefinitionsPathsAdditional map[string]jx.Raw
-
-func (s *DefinitionsPathsAdditional) init() DefinitionsPathsAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsPathsPattern0 map[string]DefinitionsPathItem
-
-func (s *DefinitionsPathsPattern0) init() DefinitionsPathsPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsPathItem{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsPathsPattern1 map[string]jx.Raw
-
-func (s *DefinitionsPathsPattern1) init() DefinitionsPathsPattern1 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsPositiveInteger int
-
-// A simple object to allow referencing other components in the specification, internally and
-// externally.  The Reference Object is defined by JSON Reference and follows the same structure,
-// behavior and rules.   For this specification, reference resolution is accomplished as defined by
-// the JSON Reference specification and not by the JSON Schema specification.
-// Ref: #/definitions/reference
-type DefinitionsReference struct {
-	Ref             string "json:\"$ref\""
-	AdditionalProps DefinitionsReferenceAdditional
-}
-
-type DefinitionsReferenceAdditional map[string]jx.Raw
-
-func (s *DefinitionsReferenceAdditional) init() DefinitionsReferenceAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Ref: #/definitions/requestBodiesOrReferences
-type DefinitionsRequestBodiesOrReferences map[string]DefinitionsRequestBodyOrReference
-
-func (s *DefinitionsRequestBodiesOrReferences) init() DefinitionsRequestBodiesOrReferences {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsRequestBodyOrReference{}
-		*s = m
-	}
-	return m
-}
-
-// Describes a single request body.
-// Ref: #/definitions/requestBody
-type DefinitionsRequestBody struct {
-	Description     OptString             "json:\"description\""
-	Content         DefinitionsMediaTypes "json:\"content\""
-	Required        OptBool               "json:\"required\""
-	AdditionalProps DefinitionsRequestBodyAdditional
-	Pattern0Props   DefinitionsRequestBodyPattern0
-}
-
-type DefinitionsRequestBodyAdditional map[string]jx.Raw
-
-func (s *DefinitionsRequestBodyAdditional) init() DefinitionsRequestBodyAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Ref: #/definitions/requestBodyOrReference
-// DefinitionsRequestBodyOrReference represents sum type.
-type DefinitionsRequestBodyOrReference struct {
-	Type                   DefinitionsRequestBodyOrReferenceType // switch on this field
-	DefinitionsRequestBody DefinitionsRequestBody
-	DefinitionsReference   DefinitionsReference
-}
-
-// DefinitionsRequestBodyOrReferenceType is oneOf type of DefinitionsRequestBodyOrReference.
-type DefinitionsRequestBodyOrReferenceType string
-
-// Possible values for DefinitionsRequestBodyOrReferenceType.
-const (
-	DefinitionsRequestBodyDefinitionsRequestBodyOrReference DefinitionsRequestBodyOrReferenceType = "DefinitionsRequestBody"
-	DefinitionsReferenceDefinitionsRequestBodyOrReference   DefinitionsRequestBodyOrReferenceType = "DefinitionsReference"
-)
-
-// IsDefinitionsRequestBody reports whether DefinitionsRequestBodyOrReference is DefinitionsRequestBody.
-func (s DefinitionsRequestBodyOrReference) IsDefinitionsRequestBody() bool {
-	return s.Type == DefinitionsRequestBodyDefinitionsRequestBodyOrReference
-}
-
-// IsDefinitionsReference reports whether DefinitionsRequestBodyOrReference is DefinitionsReference.
-func (s DefinitionsRequestBodyOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsRequestBodyOrReference
-}
-
-// SetDefinitionsRequestBody sets DefinitionsRequestBodyOrReference to DefinitionsRequestBody.
-func (s *DefinitionsRequestBodyOrReference) SetDefinitionsRequestBody(v DefinitionsRequestBody) {
-	s.Type = DefinitionsRequestBodyDefinitionsRequestBodyOrReference
-	s.DefinitionsRequestBody = v
-}
-
-// GetDefinitionsRequestBody returns DefinitionsRequestBody and true boolean if DefinitionsRequestBodyOrReference is DefinitionsRequestBody.
-func (s DefinitionsRequestBodyOrReference) GetDefinitionsRequestBody() (v DefinitionsRequestBody, ok bool) {
-	if !s.IsDefinitionsRequestBody() {
-		return v, false
-	}
-	return s.DefinitionsRequestBody, true
-}
-
-// NewDefinitionsRequestBodyDefinitionsRequestBodyOrReference returns new DefinitionsRequestBodyOrReference from DefinitionsRequestBody.
-func NewDefinitionsRequestBodyDefinitionsRequestBodyOrReference(v DefinitionsRequestBody) DefinitionsRequestBodyOrReference {
-	var s DefinitionsRequestBodyOrReference
-	s.SetDefinitionsRequestBody(v)
-	return s
-}
-
-// SetDefinitionsReference sets DefinitionsRequestBodyOrReference to DefinitionsReference.
-func (s *DefinitionsRequestBodyOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsRequestBodyOrReference
-	s.DefinitionsReference = v
-}
-
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsRequestBodyOrReference is DefinitionsReference.
-func (s DefinitionsRequestBodyOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
-		return v, false
-	}
-	return s.DefinitionsReference, true
-}
-
-// NewDefinitionsReferenceDefinitionsRequestBodyOrReference returns new DefinitionsRequestBodyOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsRequestBodyOrReference(v DefinitionsReference) DefinitionsRequestBodyOrReference {
-	var s DefinitionsRequestBodyOrReference
-	s.SetDefinitionsReference(v)
-	return s
-}
-
-type DefinitionsRequestBodyPattern0 map[string]jx.Raw
-
-func (s *DefinitionsRequestBodyPattern0) init() DefinitionsRequestBodyPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Describes a single response from an API Operation, including design-time, static  `links` to
-// operations based on the response.
-// Ref: #/definitions/response
-type DefinitionsResponse struct {
-	Description     string                            "json:\"description\""
-	Headers         OptDefinitionsHeadersOrReferences "json:\"headers\""
-	Content         OptDefinitionsMediaTypes          "json:\"content\""
-	Links           OptDefinitionsLinksOrReferences   "json:\"links\""
-	AdditionalProps DefinitionsResponseAdditional
-	Pattern0Props   DefinitionsResponsePattern0
-}
-
-type DefinitionsResponseAdditional map[string]jx.Raw
-
-func (s *DefinitionsResponseAdditional) init() DefinitionsResponseAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Ref: #/definitions/responseOrReference
-// DefinitionsResponseOrReference represents sum type.
-type DefinitionsResponseOrReference struct {
-	Type                 DefinitionsResponseOrReferenceType // switch on this field
-	DefinitionsResponse  DefinitionsResponse
-	DefinitionsReference DefinitionsReference
-}
-
-// DefinitionsResponseOrReferenceType is oneOf type of DefinitionsResponseOrReference.
-type DefinitionsResponseOrReferenceType string
-
-// Possible values for DefinitionsResponseOrReferenceType.
-const (
-	DefinitionsResponseDefinitionsResponseOrReference  DefinitionsResponseOrReferenceType = "DefinitionsResponse"
-	DefinitionsReferenceDefinitionsResponseOrReference DefinitionsResponseOrReferenceType = "DefinitionsReference"
-)
-
-// IsDefinitionsResponse reports whether DefinitionsResponseOrReference is DefinitionsResponse.
-func (s DefinitionsResponseOrReference) IsDefinitionsResponse() bool {
-	return s.Type == DefinitionsResponseDefinitionsResponseOrReference
-}
-
-// IsDefinitionsReference reports whether DefinitionsResponseOrReference is DefinitionsReference.
-func (s DefinitionsResponseOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsResponseOrReference
-}
-
-// SetDefinitionsResponse sets DefinitionsResponseOrReference to DefinitionsResponse.
-func (s *DefinitionsResponseOrReference) SetDefinitionsResponse(v DefinitionsResponse) {
-	s.Type = DefinitionsResponseDefinitionsResponseOrReference
-	s.DefinitionsResponse = v
-}
-
-// GetDefinitionsResponse returns DefinitionsResponse and true boolean if DefinitionsResponseOrReference is DefinitionsResponse.
-func (s DefinitionsResponseOrReference) GetDefinitionsResponse() (v DefinitionsResponse, ok bool) {
-	if !s.IsDefinitionsResponse() {
-		return v, false
-	}
-	return s.DefinitionsResponse, true
-}
-
-// NewDefinitionsResponseDefinitionsResponseOrReference returns new DefinitionsResponseOrReference from DefinitionsResponse.
-func NewDefinitionsResponseDefinitionsResponseOrReference(v DefinitionsResponse) DefinitionsResponseOrReference {
-	var s DefinitionsResponseOrReference
-	s.SetDefinitionsResponse(v)
-	return s
-}
-
-// SetDefinitionsReference sets DefinitionsResponseOrReference to DefinitionsReference.
-func (s *DefinitionsResponseOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsResponseOrReference
-	s.DefinitionsReference = v
-}
-
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsResponseOrReference is DefinitionsReference.
-func (s DefinitionsResponseOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
-		return v, false
-	}
-	return s.DefinitionsReference, true
-}
-
-// NewDefinitionsReferenceDefinitionsResponseOrReference returns new DefinitionsResponseOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsResponseOrReference(v DefinitionsReference) DefinitionsResponseOrReference {
-	var s DefinitionsResponseOrReference
-	s.SetDefinitionsReference(v)
-	return s
-}
-
-type DefinitionsResponsePattern0 map[string]jx.Raw
-
-func (s *DefinitionsResponsePattern0) init() DefinitionsResponsePattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// A container for the expected responses of an operation. The container maps a HTTP response code to
-// the expected response.  The documentation is not necessarily expected to cover all possible HTTP
-// response codes because they may not be known in advance. However, documentation is expected to
-// cover a successful operation response and any known errors.  The `default` MAY be used as a
-// default response object for all HTTP codes  that are not covered individually by the specification.
-//   The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response
-// for a successful operation call.
-// Ref: #/definitions/responses
-type DefinitionsResponses struct {
-	Default         OptDefinitionsResponseOrReference "json:\"default\""
-	AdditionalProps DefinitionsResponsesAdditional
-	Pattern0Props   DefinitionsResponsesPattern0
-	Pattern1Props   DefinitionsResponsesPattern1
-}
-
-type DefinitionsResponsesAdditional map[string]jx.Raw
-
-func (s *DefinitionsResponsesAdditional) init() DefinitionsResponsesAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Ref: #/definitions/responsesOrReferences
-type DefinitionsResponsesOrReferences map[string]DefinitionsResponseOrReference
-
-func (s *DefinitionsResponsesOrReferences) init() DefinitionsResponsesOrReferences {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsResponseOrReference{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsResponsesPattern0 map[string]DefinitionsResponseOrReference
-
-func (s *DefinitionsResponsesPattern0) init() DefinitionsResponsesPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsResponseOrReference{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsResponsesPattern1 map[string]jx.Raw
-
-func (s *DefinitionsResponsesPattern1) init() DefinitionsResponsesPattern1 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// The Schema Object allows the definition of input and output data types. These types can be objects,
-//  but also primitives and arrays. This object is an extended subset of the JSON Schema
-// Specification Wright Draft 00.  For more information about the properties, see JSON Schema Core
-// and JSON Schema Validation. Unless stated otherwise, the property definitions follow the JSON
-// Schema.
-// Ref: #/definitions/schema
-type DefinitionsSchema struct {
-	Nullable             OptBool                                                  "json:\"nullable\""
-	Discriminator        OptDefinitionsDiscriminator                              "json:\"discriminator\""
-	ReadOnly             OptBool                                                  "json:\"readOnly\""
-	WriteOnly            OptBool                                                  "json:\"writeOnly\""
-	XML                  OptDefinitionsXML                                        "json:\"xml\""
-	ExternalDocs         OptDefinitionsExternalDocs                               "json:\"externalDocs\""
-	Example              jx.Raw                                                   "json:\"example\""
-	Deprecated           OptBool                                                  "json:\"deprecated\""
-	Title                OptDefinitionsJsonschemaDraft4PropertiesTitle            "json:\"title\""
-	MultipleOf           OptDefinitionsJsonschemaDraft4PropertiesMultipleOf       "json:\"multipleOf\""
-	Maximum              OptDefinitionsJsonschemaDraft4PropertiesMaximum          "json:\"maximum\""
-	ExclusiveMaximum     OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum "json:\"exclusiveMaximum\""
-	Minimum              OptDefinitionsJsonschemaDraft4PropertiesMinimum          "json:\"minimum\""
-	ExclusiveMinimum     OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum "json:\"exclusiveMinimum\""
-	MaxLength            OptDefinitionsPositiveInteger                            "json:\"maxLength\""
-	MinLength            OptDefinitionsPositiveInteger                            "json:\"minLength\""
-	Pattern              OptDefinitionsJsonschemaDraft4PropertiesPattern          "json:\"pattern\""
-	MaxItems             OptDefinitionsPositiveInteger                            "json:\"maxItems\""
-	MinItems             OptDefinitionsPositiveInteger                            "json:\"minItems\""
-	UniqueItems          OptDefinitionsJsonschemaDraft4PropertiesUniqueItems      "json:\"uniqueItems\""
-	MaxProperties        OptDefinitionsPositiveInteger                            "json:\"maxProperties\""
-	MinProperties        OptDefinitionsPositiveInteger                            "json:\"minProperties\""
-	Required             *DefinitionsStringArray                                  "json:\"required\""
-	Enum                 *DefinitionsJsonschemaDraft4PropertiesEnum               "json:\"enum\""
-	Type                 OptDefinitionsSchemaType                                 "json:\"type\""
-	AllOf                []DefinitionsSchemaOrReference                           "json:\"allOf\""
-	OneOf                []DefinitionsSchemaOrReference                           "json:\"oneOf\""
-	AnyOf                []DefinitionsSchemaOrReference                           "json:\"anyOf\""
-	Not                  *DefinitionsSchema                                       "json:\"not\""
-	Items                *DefinitionsSchemaOrReference                            "json:\"items\""
-	Properties           OptDefinitionsSchemaProperties                           "json:\"properties\""
-	AdditionalProperties *DefinitionsSchemaAdditionalProperties                   "json:\"additionalProperties\""
-	Default              jx.Raw                                                   "json:\"default\""
-	Description          OptString                                                "json:\"description\""
-	Format               OptString                                                "json:\"format\""
-	AdditionalProps      DefinitionsSchemaAdditional
-	Pattern0Props        DefinitionsSchemaPattern0
-}
-
-type DefinitionsSchemaAdditional map[string]jx.Raw
-
-func (s *DefinitionsSchemaAdditional) init() DefinitionsSchemaAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// DefinitionsSchemaAdditionalProperties represents sum type.
-type DefinitionsSchemaAdditionalProperties struct {
-	Type                         DefinitionsSchemaAdditionalPropertiesType // switch on this field
-	DefinitionsSchemaOrReference DefinitionsSchemaOrReference
-	Bool                         bool
-}
-
-// DefinitionsSchemaAdditionalPropertiesType is oneOf type of DefinitionsSchemaAdditionalProperties.
-type DefinitionsSchemaAdditionalPropertiesType string
-
-// Possible values for DefinitionsSchemaAdditionalPropertiesType.
-const (
-	DefinitionsSchemaOrReferenceDefinitionsSchemaAdditionalProperties DefinitionsSchemaAdditionalPropertiesType = "DefinitionsSchemaOrReference"
-	BoolDefinitionsSchemaAdditionalProperties                         DefinitionsSchemaAdditionalPropertiesType = "bool"
-)
-
-// IsDefinitionsSchemaOrReference reports whether DefinitionsSchemaAdditionalProperties is DefinitionsSchemaOrReference.
-func (s DefinitionsSchemaAdditionalProperties) IsDefinitionsSchemaOrReference() bool {
-	return s.Type == DefinitionsSchemaOrReferenceDefinitionsSchemaAdditionalProperties
-}
-
-// IsBool reports whether DefinitionsSchemaAdditionalProperties is bool.
-func (s DefinitionsSchemaAdditionalProperties) IsBool() bool {
-	return s.Type == BoolDefinitionsSchemaAdditionalProperties
-}
-
-// SetDefinitionsSchemaOrReference sets DefinitionsSchemaAdditionalProperties to DefinitionsSchemaOrReference.
-func (s *DefinitionsSchemaAdditionalProperties) SetDefinitionsSchemaOrReference(v DefinitionsSchemaOrReference) {
-	s.Type = DefinitionsSchemaOrReferenceDefinitionsSchemaAdditionalProperties
-	s.DefinitionsSchemaOrReference = v
-}
-
-// GetDefinitionsSchemaOrReference returns DefinitionsSchemaOrReference and true boolean if DefinitionsSchemaAdditionalProperties is DefinitionsSchemaOrReference.
-func (s DefinitionsSchemaAdditionalProperties) GetDefinitionsSchemaOrReference() (v DefinitionsSchemaOrReference, ok bool) {
-	if !s.IsDefinitionsSchemaOrReference() {
-		return v, false
-	}
-	return s.DefinitionsSchemaOrReference, true
-}
-
-// NewDefinitionsSchemaOrReferenceDefinitionsSchemaAdditionalProperties returns new DefinitionsSchemaAdditionalProperties from DefinitionsSchemaOrReference.
-func NewDefinitionsSchemaOrReferenceDefinitionsSchemaAdditionalProperties(v DefinitionsSchemaOrReference) DefinitionsSchemaAdditionalProperties {
-	var s DefinitionsSchemaAdditionalProperties
-	s.SetDefinitionsSchemaOrReference(v)
-	return s
-}
-
-// SetBool sets DefinitionsSchemaAdditionalProperties to bool.
-func (s *DefinitionsSchemaAdditionalProperties) SetBool(v bool) {
-	s.Type = BoolDefinitionsSchemaAdditionalProperties
-	s.Bool = v
-}
-
-// GetBool returns bool and true boolean if DefinitionsSchemaAdditionalProperties is bool.
-func (s DefinitionsSchemaAdditionalProperties) GetBool() (v bool, ok bool) {
-	if !s.IsBool() {
-		return v, false
-	}
-	return s.Bool, true
-}
-
-// NewBoolDefinitionsSchemaAdditionalProperties returns new DefinitionsSchemaAdditionalProperties from bool.
-func NewBoolDefinitionsSchemaAdditionalProperties(v bool) DefinitionsSchemaAdditionalProperties {
-	var s DefinitionsSchemaAdditionalProperties
-	s.SetBool(v)
-	return s
-}
-
-// Ref: #/definitions/schemaOrReference
-// DefinitionsSchemaOrReference represents sum type.
-type DefinitionsSchemaOrReference struct {
-	Type                 DefinitionsSchemaOrReferenceType // switch on this field
-	DefinitionsSchema    DefinitionsSchema
-	DefinitionsReference DefinitionsReference
-}
-
-// DefinitionsSchemaOrReferenceType is oneOf type of DefinitionsSchemaOrReference.
-type DefinitionsSchemaOrReferenceType string
-
-// Possible values for DefinitionsSchemaOrReferenceType.
-const (
-	DefinitionsSchemaDefinitionsSchemaOrReference    DefinitionsSchemaOrReferenceType = "DefinitionsSchema"
-	DefinitionsReferenceDefinitionsSchemaOrReference DefinitionsSchemaOrReferenceType = "DefinitionsReference"
-)
-
-// IsDefinitionsSchema reports whether DefinitionsSchemaOrReference is DefinitionsSchema.
-func (s DefinitionsSchemaOrReference) IsDefinitionsSchema() bool {
-	return s.Type == DefinitionsSchemaDefinitionsSchemaOrReference
-}
-
-// IsDefinitionsReference reports whether DefinitionsSchemaOrReference is DefinitionsReference.
-func (s DefinitionsSchemaOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsSchemaOrReference
-}
-
-// SetDefinitionsSchema sets DefinitionsSchemaOrReference to DefinitionsSchema.
-func (s *DefinitionsSchemaOrReference) SetDefinitionsSchema(v DefinitionsSchema) {
-	s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
-	s.DefinitionsSchema = v
-}
-
-// GetDefinitionsSchema returns DefinitionsSchema and true boolean if DefinitionsSchemaOrReference is DefinitionsSchema.
-func (s DefinitionsSchemaOrReference) GetDefinitionsSchema() (v DefinitionsSchema, ok bool) {
-	if !s.IsDefinitionsSchema() {
-		return v, false
-	}
-	return s.DefinitionsSchema, true
-}
-
-// NewDefinitionsSchemaDefinitionsSchemaOrReference returns new DefinitionsSchemaOrReference from DefinitionsSchema.
-func NewDefinitionsSchemaDefinitionsSchemaOrReference(v DefinitionsSchema) DefinitionsSchemaOrReference {
-	var s DefinitionsSchemaOrReference
-	s.SetDefinitionsSchema(v)
-	return s
-}
-
-// SetDefinitionsReference sets DefinitionsSchemaOrReference to DefinitionsReference.
-func (s *DefinitionsSchemaOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsSchemaOrReference
-	s.DefinitionsReference = v
-}
-
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsSchemaOrReference is DefinitionsReference.
-func (s DefinitionsSchemaOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
-		return v, false
-	}
-	return s.DefinitionsReference, true
-}
-
-// NewDefinitionsReferenceDefinitionsSchemaOrReference returns new DefinitionsSchemaOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsSchemaOrReference(v DefinitionsReference) DefinitionsSchemaOrReference {
-	var s DefinitionsSchemaOrReference
-	s.SetDefinitionsReference(v)
-	return s
-}
-
-type DefinitionsSchemaPattern0 map[string]jx.Raw
-
-func (s *DefinitionsSchemaPattern0) init() DefinitionsSchemaPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsSchemaProperties map[string]DefinitionsSchemaOrReference
-
-func (s *DefinitionsSchemaProperties) init() DefinitionsSchemaProperties {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsSchemaOrReference{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsSchemaType string
-
-const (
-	DefinitionsSchemaTypeArray   DefinitionsSchemaType = "array"
-	DefinitionsSchemaTypeBoolean DefinitionsSchemaType = "boolean"
-	DefinitionsSchemaTypeInteger DefinitionsSchemaType = "integer"
-	DefinitionsSchemaTypeNull    DefinitionsSchemaType = "null"
-	DefinitionsSchemaTypeNumber  DefinitionsSchemaType = "number"
-	DefinitionsSchemaTypeObject  DefinitionsSchemaType = "object"
-	DefinitionsSchemaTypeString  DefinitionsSchemaType = "string"
-)
-
-// Ref: #/definitions/schemasOrReferences
-type DefinitionsSchemasOrReferences map[string]DefinitionsSchemaOrReference
-
-func (s *DefinitionsSchemasOrReferences) init() DefinitionsSchemasOrReferences {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsSchemaOrReference{}
-		*s = m
-	}
-	return m
-}
-
-// Lists the required security schemes to execute this operation. The name used for each property
-// MUST correspond to a security scheme declared in the Security Schemes under the Components Object.
-//  Security Requirement Objects that contain multiple schemes require that all schemes MUST be
-// satisfied for a request to be authorized. This enables support for scenarios where multiple query
-// parameters or HTTP headers are required to convey security information.  When a list of Security
-// Requirement Objects is defined on the Open API object or Operation Object, only one of Security
-// Requirement Objects in the list needs to be satisfied to authorize the request.
-// Ref: #/definitions/securityRequirement
-type DefinitionsSecurityRequirement struct {
-	AdditionalProps DefinitionsSecurityRequirementAdditional
-	Pattern0Props   DefinitionsSecurityRequirementPattern0
-}
-
-type DefinitionsSecurityRequirementAdditional map[string]jx.Raw
-
-func (s *DefinitionsSecurityRequirementAdditional) init() DefinitionsSecurityRequirementAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsSecurityRequirementPattern0 map[string][]string
-
-func (s *DefinitionsSecurityRequirementPattern0) init() DefinitionsSecurityRequirementPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string][]string{}
-		*s = m
-	}
-	return m
-}
-
-// Defines a security scheme that can be used by the operations. Supported schemes are HTTP
-// authentication, an API key (either as a header or as a query parameter), OAuth2's common flows
-// (implicit, password, application and access code) as defined in RFC6749, and OpenID Connect
-// Discovery.
-// Ref: #/definitions/securityScheme
-type DefinitionsSecurityScheme struct {
-	Type             string                   "json:\"type\""
-	Description      OptString                "json:\"description\""
-	Name             OptString                "json:\"name\""
-	In               OptString                "json:\"in\""
-	Scheme           OptString                "json:\"scheme\""
-	BearerFormat     OptString                "json:\"bearerFormat\""
-	Flows            OptDefinitionsOauthFlows "json:\"flows\""
-	OpenIdConnectUrl OptString                "json:\"openIdConnectUrl\""
-	AdditionalProps  DefinitionsSecuritySchemeAdditional
-	Pattern0Props    DefinitionsSecuritySchemePattern0
-}
-
-type DefinitionsSecuritySchemeAdditional map[string]jx.Raw
-
-func (s *DefinitionsSecuritySchemeAdditional) init() DefinitionsSecuritySchemeAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Ref: #/definitions/securitySchemeOrReference
-// DefinitionsSecuritySchemeOrReference represents sum type.
-type DefinitionsSecuritySchemeOrReference struct {
-	Type                      DefinitionsSecuritySchemeOrReferenceType // switch on this field
-	DefinitionsSecurityScheme DefinitionsSecurityScheme
-	DefinitionsReference      DefinitionsReference
-}
-
-// DefinitionsSecuritySchemeOrReferenceType is oneOf type of DefinitionsSecuritySchemeOrReference.
-type DefinitionsSecuritySchemeOrReferenceType string
-
-// Possible values for DefinitionsSecuritySchemeOrReferenceType.
-const (
-	DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference DefinitionsSecuritySchemeOrReferenceType = "DefinitionsSecurityScheme"
-	DefinitionsReferenceDefinitionsSecuritySchemeOrReference      DefinitionsSecuritySchemeOrReferenceType = "DefinitionsReference"
-)
-
-// IsDefinitionsSecurityScheme reports whether DefinitionsSecuritySchemeOrReference is DefinitionsSecurityScheme.
-func (s DefinitionsSecuritySchemeOrReference) IsDefinitionsSecurityScheme() bool {
-	return s.Type == DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
-}
-
-// IsDefinitionsReference reports whether DefinitionsSecuritySchemeOrReference is DefinitionsReference.
-func (s DefinitionsSecuritySchemeOrReference) IsDefinitionsReference() bool {
-	return s.Type == DefinitionsReferenceDefinitionsSecuritySchemeOrReference
-}
-
-// SetDefinitionsSecurityScheme sets DefinitionsSecuritySchemeOrReference to DefinitionsSecurityScheme.
-func (s *DefinitionsSecuritySchemeOrReference) SetDefinitionsSecurityScheme(v DefinitionsSecurityScheme) {
-	s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
-	s.DefinitionsSecurityScheme = v
-}
-
-// GetDefinitionsSecurityScheme returns DefinitionsSecurityScheme and true boolean if DefinitionsSecuritySchemeOrReference is DefinitionsSecurityScheme.
-func (s DefinitionsSecuritySchemeOrReference) GetDefinitionsSecurityScheme() (v DefinitionsSecurityScheme, ok bool) {
-	if !s.IsDefinitionsSecurityScheme() {
-		return v, false
-	}
-	return s.DefinitionsSecurityScheme, true
-}
-
-// NewDefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference returns new DefinitionsSecuritySchemeOrReference from DefinitionsSecurityScheme.
-func NewDefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference(v DefinitionsSecurityScheme) DefinitionsSecuritySchemeOrReference {
-	var s DefinitionsSecuritySchemeOrReference
-	s.SetDefinitionsSecurityScheme(v)
-	return s
-}
-
-// SetDefinitionsReference sets DefinitionsSecuritySchemeOrReference to DefinitionsReference.
-func (s *DefinitionsSecuritySchemeOrReference) SetDefinitionsReference(v DefinitionsReference) {
-	s.Type = DefinitionsReferenceDefinitionsSecuritySchemeOrReference
-	s.DefinitionsReference = v
-}
-
-// GetDefinitionsReference returns DefinitionsReference and true boolean if DefinitionsSecuritySchemeOrReference is DefinitionsReference.
-func (s DefinitionsSecuritySchemeOrReference) GetDefinitionsReference() (v DefinitionsReference, ok bool) {
-	if !s.IsDefinitionsReference() {
-		return v, false
-	}
-	return s.DefinitionsReference, true
-}
-
-// NewDefinitionsReferenceDefinitionsSecuritySchemeOrReference returns new DefinitionsSecuritySchemeOrReference from DefinitionsReference.
-func NewDefinitionsReferenceDefinitionsSecuritySchemeOrReference(v DefinitionsReference) DefinitionsSecuritySchemeOrReference {
-	var s DefinitionsSecuritySchemeOrReference
-	s.SetDefinitionsReference(v)
-	return s
-}
-
-type DefinitionsSecuritySchemePattern0 map[string]jx.Raw
-
-func (s *DefinitionsSecuritySchemePattern0) init() DefinitionsSecuritySchemePattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Ref: #/definitions/securitySchemesOrReferences
-type DefinitionsSecuritySchemesOrReferences map[string]DefinitionsSecuritySchemeOrReference
-
-func (s *DefinitionsSecuritySchemesOrReferences) init() DefinitionsSecuritySchemesOrReferences {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsSecuritySchemeOrReference{}
-		*s = m
-	}
-	return m
-}
-
-// An object representing a Server.
-// Ref: #/definitions/server
-type DefinitionsServer struct {
-	URL             string                        "json:\"url\""
-	Description     OptString                     "json:\"description\""
-	Variables       OptDefinitionsServerVariables "json:\"variables\""
-	AdditionalProps DefinitionsServerAdditional
-	Pattern0Props   DefinitionsServerPattern0
-}
-
-type DefinitionsServerAdditional map[string]jx.Raw
-
-func (s *DefinitionsServerAdditional) init() DefinitionsServerAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsServerPattern0 map[string]jx.Raw
-
-func (s *DefinitionsServerPattern0) init() DefinitionsServerPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// An object representing a Server Variable for server URL template substitution.
-// Ref: #/definitions/serverVariable
-type DefinitionsServerVariable struct {
-	Enum            []string  "json:\"enum\""
-	Default         string    "json:\"default\""
-	Description     OptString "json:\"description\""
-	AdditionalProps DefinitionsServerVariableAdditional
-	Pattern0Props   DefinitionsServerVariablePattern0
-}
-
-type DefinitionsServerVariableAdditional map[string]jx.Raw
-
-func (s *DefinitionsServerVariableAdditional) init() DefinitionsServerVariableAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsServerVariablePattern0 map[string]jx.Raw
-
-func (s *DefinitionsServerVariablePattern0) init() DefinitionsServerVariablePattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// Ref: #/definitions/serverVariables
-type DefinitionsServerVariables map[string]DefinitionsServerVariable
-
-func (s *DefinitionsServerVariables) init() DefinitionsServerVariables {
-	m := *s
-	if m == nil {
-		m = map[string]DefinitionsServerVariable{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsStringArray []string
-
-// Ref: #/definitions/strings
-type DefinitionsStrings map[string]string
-
-func (s *DefinitionsStrings) init() DefinitionsStrings {
-	m := *s
-	if m == nil {
-		m = map[string]string{}
-		*s = m
-	}
-	return m
-}
-
-// Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a
-// Tag Object per tag defined in the Operation Object instances.
-// Ref: #/definitions/tag
-type DefinitionsTag struct {
-	Name            string                     "json:\"name\""
-	Description     OptString                  "json:\"description\""
-	ExternalDocs    OptDefinitionsExternalDocs "json:\"externalDocs\""
-	AdditionalProps DefinitionsTagAdditional
-	Pattern0Props   DefinitionsTagPattern0
-}
-
-type DefinitionsTagAdditional map[string]jx.Raw
-
-func (s *DefinitionsTagAdditional) init() DefinitionsTagAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsTagPattern0 map[string]jx.Raw
-
-func (s *DefinitionsTagPattern0) init() DefinitionsTagPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-// A metadata object that allows for more fine-tuned XML model definitions.  When using arrays, XML
-// element names are *not* inferred (for singular/plural forms) and the `name` property SHOULD be
-// used to add that information. See examples for expected behavior.
-// Ref: #/definitions/xml
-type DefinitionsXML struct {
-	Name            OptString "json:\"name\""
-	Namespace       OptString "json:\"namespace\""
-	Prefix          OptString "json:\"prefix\""
-	Attribute       OptBool   "json:\"attribute\""
-	Wrapped         OptBool   "json:\"wrapped\""
-	AdditionalProps DefinitionsXMLAdditional
-	Pattern0Props   DefinitionsXMLPattern0
-}
-
-type DefinitionsXMLAdditional map[string]jx.Raw
-
-func (s *DefinitionsXMLAdditional) init() DefinitionsXMLAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type DefinitionsXMLPattern0 map[string]jx.Raw
-
-func (s *DefinitionsXMLPattern0) init() DefinitionsXMLPattern0 {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	return d
 }
 
 // NewOptBool returns new OptBool with value set to v.
@@ -2059,38 +1003,38 @@ func (o OptBool) Or(d bool) bool {
 	return d
 }
 
-// NewOptDefinitionsAnysOrExpressions returns new OptDefinitionsAnysOrExpressions with value set to v.
-func NewOptDefinitionsAnysOrExpressions(v DefinitionsAnysOrExpressions) OptDefinitionsAnysOrExpressions {
-	return OptDefinitionsAnysOrExpressions{
+// NewOptCallbacksOrReferences returns new OptCallbacksOrReferences with value set to v.
+func NewOptCallbacksOrReferences(v CallbacksOrReferences) OptCallbacksOrReferences {
+	return OptCallbacksOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsAnysOrExpressions is optional DefinitionsAnysOrExpressions.
-type OptDefinitionsAnysOrExpressions struct {
-	Value DefinitionsAnysOrExpressions
+// OptCallbacksOrReferences is optional CallbacksOrReferences.
+type OptCallbacksOrReferences struct {
+	Value CallbacksOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsAnysOrExpressions was set.
-func (o OptDefinitionsAnysOrExpressions) IsSet() bool { return o.Set }
+// IsSet returns true if OptCallbacksOrReferences was set.
+func (o OptCallbacksOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsAnysOrExpressions) Reset() {
-	var v DefinitionsAnysOrExpressions
+func (o *OptCallbacksOrReferences) Reset() {
+	var v CallbacksOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsAnysOrExpressions) SetTo(v DefinitionsAnysOrExpressions) {
+func (o *OptCallbacksOrReferences) SetTo(v CallbacksOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsAnysOrExpressions) Get() (v DefinitionsAnysOrExpressions, ok bool) {
+func (o OptCallbacksOrReferences) Get() (v CallbacksOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2098,45 +1042,45 @@ func (o OptDefinitionsAnysOrExpressions) Get() (v DefinitionsAnysOrExpressions, 
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsAnysOrExpressions) Or(d DefinitionsAnysOrExpressions) DefinitionsAnysOrExpressions {
+func (o OptCallbacksOrReferences) Or(d CallbacksOrReferences) CallbacksOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsCallbacksOrReferences returns new OptDefinitionsCallbacksOrReferences with value set to v.
-func NewOptDefinitionsCallbacksOrReferences(v DefinitionsCallbacksOrReferences) OptDefinitionsCallbacksOrReferences {
-	return OptDefinitionsCallbacksOrReferences{
+// NewOptComponents returns new OptComponents with value set to v.
+func NewOptComponents(v Components) OptComponents {
+	return OptComponents{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsCallbacksOrReferences is optional DefinitionsCallbacksOrReferences.
-type OptDefinitionsCallbacksOrReferences struct {
-	Value DefinitionsCallbacksOrReferences
+// OptComponents is optional Components.
+type OptComponents struct {
+	Value Components
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsCallbacksOrReferences was set.
-func (o OptDefinitionsCallbacksOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptComponents was set.
+func (o OptComponents) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsCallbacksOrReferences) Reset() {
-	var v DefinitionsCallbacksOrReferences
+func (o *OptComponents) Reset() {
+	var v Components
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsCallbacksOrReferences) SetTo(v DefinitionsCallbacksOrReferences) {
+func (o *OptComponents) SetTo(v Components) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsCallbacksOrReferences) Get() (v DefinitionsCallbacksOrReferences, ok bool) {
+func (o OptComponents) Get() (v Components, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2144,45 +1088,45 @@ func (o OptDefinitionsCallbacksOrReferences) Get() (v DefinitionsCallbacksOrRefe
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsCallbacksOrReferences) Or(d DefinitionsCallbacksOrReferences) DefinitionsCallbacksOrReferences {
+func (o OptComponents) Or(d Components) Components {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsComponents returns new OptDefinitionsComponents with value set to v.
-func NewOptDefinitionsComponents(v DefinitionsComponents) OptDefinitionsComponents {
-	return OptDefinitionsComponents{
+// NewOptContact returns new OptContact with value set to v.
+func NewOptContact(v Contact) OptContact {
+	return OptContact{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsComponents is optional DefinitionsComponents.
-type OptDefinitionsComponents struct {
-	Value DefinitionsComponents
+// OptContact is optional Contact.
+type OptContact struct {
+	Value Contact
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsComponents was set.
-func (o OptDefinitionsComponents) IsSet() bool { return o.Set }
+// IsSet returns true if OptContact was set.
+func (o OptContact) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsComponents) Reset() {
-	var v DefinitionsComponents
+func (o *OptContact) Reset() {
+	var v Contact
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsComponents) SetTo(v DefinitionsComponents) {
+func (o *OptContact) SetTo(v Contact) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsComponents) Get() (v DefinitionsComponents, ok bool) {
+func (o OptContact) Get() (v Contact, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2190,45 +1134,45 @@ func (o OptDefinitionsComponents) Get() (v DefinitionsComponents, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsComponents) Or(d DefinitionsComponents) DefinitionsComponents {
+func (o OptContact) Or(d Contact) Contact {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsContact returns new OptDefinitionsContact with value set to v.
-func NewOptDefinitionsContact(v DefinitionsContact) OptDefinitionsContact {
-	return OptDefinitionsContact{
+// NewOptDiscriminator returns new OptDiscriminator with value set to v.
+func NewOptDiscriminator(v Discriminator) OptDiscriminator {
+	return OptDiscriminator{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsContact is optional DefinitionsContact.
-type OptDefinitionsContact struct {
-	Value DefinitionsContact
+// OptDiscriminator is optional Discriminator.
+type OptDiscriminator struct {
+	Value Discriminator
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsContact was set.
-func (o OptDefinitionsContact) IsSet() bool { return o.Set }
+// IsSet returns true if OptDiscriminator was set.
+func (o OptDiscriminator) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsContact) Reset() {
-	var v DefinitionsContact
+func (o *OptDiscriminator) Reset() {
+	var v Discriminator
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsContact) SetTo(v DefinitionsContact) {
+func (o *OptDiscriminator) SetTo(v Discriminator) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsContact) Get() (v DefinitionsContact, ok bool) {
+func (o OptDiscriminator) Get() (v Discriminator, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2236,45 +1180,45 @@ func (o OptDefinitionsContact) Get() (v DefinitionsContact, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsContact) Or(d DefinitionsContact) DefinitionsContact {
+func (o OptDiscriminator) Or(d Discriminator) Discriminator {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsDiscriminator returns new OptDefinitionsDiscriminator with value set to v.
-func NewOptDefinitionsDiscriminator(v DefinitionsDiscriminator) OptDefinitionsDiscriminator {
-	return OptDefinitionsDiscriminator{
+// NewOptEncodings returns new OptEncodings with value set to v.
+func NewOptEncodings(v Encodings) OptEncodings {
+	return OptEncodings{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsDiscriminator is optional DefinitionsDiscriminator.
-type OptDefinitionsDiscriminator struct {
-	Value DefinitionsDiscriminator
+// OptEncodings is optional Encodings.
+type OptEncodings struct {
+	Value Encodings
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsDiscriminator was set.
-func (o OptDefinitionsDiscriminator) IsSet() bool { return o.Set }
+// IsSet returns true if OptEncodings was set.
+func (o OptEncodings) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsDiscriminator) Reset() {
-	var v DefinitionsDiscriminator
+func (o *OptEncodings) Reset() {
+	var v Encodings
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsDiscriminator) SetTo(v DefinitionsDiscriminator) {
+func (o *OptEncodings) SetTo(v Encodings) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsDiscriminator) Get() (v DefinitionsDiscriminator, ok bool) {
+func (o OptEncodings) Get() (v Encodings, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2282,45 +1226,45 @@ func (o OptDefinitionsDiscriminator) Get() (v DefinitionsDiscriminator, ok bool)
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsDiscriminator) Or(d DefinitionsDiscriminator) DefinitionsDiscriminator {
+func (o OptEncodings) Or(d Encodings) Encodings {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsEncodings returns new OptDefinitionsEncodings with value set to v.
-func NewOptDefinitionsEncodings(v DefinitionsEncodings) OptDefinitionsEncodings {
-	return OptDefinitionsEncodings{
+// NewOptExamplesOrReferences returns new OptExamplesOrReferences with value set to v.
+func NewOptExamplesOrReferences(v ExamplesOrReferences) OptExamplesOrReferences {
+	return OptExamplesOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsEncodings is optional DefinitionsEncodings.
-type OptDefinitionsEncodings struct {
-	Value DefinitionsEncodings
+// OptExamplesOrReferences is optional ExamplesOrReferences.
+type OptExamplesOrReferences struct {
+	Value ExamplesOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsEncodings was set.
-func (o OptDefinitionsEncodings) IsSet() bool { return o.Set }
+// IsSet returns true if OptExamplesOrReferences was set.
+func (o OptExamplesOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsEncodings) Reset() {
-	var v DefinitionsEncodings
+func (o *OptExamplesOrReferences) Reset() {
+	var v ExamplesOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsEncodings) SetTo(v DefinitionsEncodings) {
+func (o *OptExamplesOrReferences) SetTo(v ExamplesOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsEncodings) Get() (v DefinitionsEncodings, ok bool) {
+func (o OptExamplesOrReferences) Get() (v ExamplesOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2328,45 +1272,45 @@ func (o OptDefinitionsEncodings) Get() (v DefinitionsEncodings, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsEncodings) Or(d DefinitionsEncodings) DefinitionsEncodings {
+func (o OptExamplesOrReferences) Or(d ExamplesOrReferences) ExamplesOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsExamplesOrReferences returns new OptDefinitionsExamplesOrReferences with value set to v.
-func NewOptDefinitionsExamplesOrReferences(v DefinitionsExamplesOrReferences) OptDefinitionsExamplesOrReferences {
-	return OptDefinitionsExamplesOrReferences{
+// NewOptExternalDocs returns new OptExternalDocs with value set to v.
+func NewOptExternalDocs(v ExternalDocs) OptExternalDocs {
+	return OptExternalDocs{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsExamplesOrReferences is optional DefinitionsExamplesOrReferences.
-type OptDefinitionsExamplesOrReferences struct {
-	Value DefinitionsExamplesOrReferences
+// OptExternalDocs is optional ExternalDocs.
+type OptExternalDocs struct {
+	Value ExternalDocs
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsExamplesOrReferences was set.
-func (o OptDefinitionsExamplesOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptExternalDocs was set.
+func (o OptExternalDocs) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsExamplesOrReferences) Reset() {
-	var v DefinitionsExamplesOrReferences
+func (o *OptExternalDocs) Reset() {
+	var v ExternalDocs
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsExamplesOrReferences) SetTo(v DefinitionsExamplesOrReferences) {
+func (o *OptExternalDocs) SetTo(v ExternalDocs) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsExamplesOrReferences) Get() (v DefinitionsExamplesOrReferences, ok bool) {
+func (o OptExternalDocs) Get() (v ExternalDocs, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2374,45 +1318,45 @@ func (o OptDefinitionsExamplesOrReferences) Get() (v DefinitionsExamplesOrRefere
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsExamplesOrReferences) Or(d DefinitionsExamplesOrReferences) DefinitionsExamplesOrReferences {
+func (o OptExternalDocs) Or(d ExternalDocs) ExternalDocs {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsExternalDocs returns new OptDefinitionsExternalDocs with value set to v.
-func NewOptDefinitionsExternalDocs(v DefinitionsExternalDocs) OptDefinitionsExternalDocs {
-	return OptDefinitionsExternalDocs{
+// NewOptHeadersOrReferences returns new OptHeadersOrReferences with value set to v.
+func NewOptHeadersOrReferences(v HeadersOrReferences) OptHeadersOrReferences {
+	return OptHeadersOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsExternalDocs is optional DefinitionsExternalDocs.
-type OptDefinitionsExternalDocs struct {
-	Value DefinitionsExternalDocs
+// OptHeadersOrReferences is optional HeadersOrReferences.
+type OptHeadersOrReferences struct {
+	Value HeadersOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsExternalDocs was set.
-func (o OptDefinitionsExternalDocs) IsSet() bool { return o.Set }
+// IsSet returns true if OptHeadersOrReferences was set.
+func (o OptHeadersOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsExternalDocs) Reset() {
-	var v DefinitionsExternalDocs
+func (o *OptHeadersOrReferences) Reset() {
+	var v HeadersOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsExternalDocs) SetTo(v DefinitionsExternalDocs) {
+func (o *OptHeadersOrReferences) SetTo(v HeadersOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsExternalDocs) Get() (v DefinitionsExternalDocs, ok bool) {
+func (o OptHeadersOrReferences) Get() (v HeadersOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2420,45 +1364,45 @@ func (o OptDefinitionsExternalDocs) Get() (v DefinitionsExternalDocs, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsExternalDocs) Or(d DefinitionsExternalDocs) DefinitionsExternalDocs {
+func (o OptHeadersOrReferences) Or(d HeadersOrReferences) HeadersOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsHeadersOrReferences returns new OptDefinitionsHeadersOrReferences with value set to v.
-func NewOptDefinitionsHeadersOrReferences(v DefinitionsHeadersOrReferences) OptDefinitionsHeadersOrReferences {
-	return OptDefinitionsHeadersOrReferences{
+// NewOptJsonschemaDraft4PropertiesExclusiveMaximum returns new OptJsonschemaDraft4PropertiesExclusiveMaximum with value set to v.
+func NewOptJsonschemaDraft4PropertiesExclusiveMaximum(v JsonschemaDraft4PropertiesExclusiveMaximum) OptJsonschemaDraft4PropertiesExclusiveMaximum {
+	return OptJsonschemaDraft4PropertiesExclusiveMaximum{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsHeadersOrReferences is optional DefinitionsHeadersOrReferences.
-type OptDefinitionsHeadersOrReferences struct {
-	Value DefinitionsHeadersOrReferences
+// OptJsonschemaDraft4PropertiesExclusiveMaximum is optional JsonschemaDraft4PropertiesExclusiveMaximum.
+type OptJsonschemaDraft4PropertiesExclusiveMaximum struct {
+	Value JsonschemaDraft4PropertiesExclusiveMaximum
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsHeadersOrReferences was set.
-func (o OptDefinitionsHeadersOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptJsonschemaDraft4PropertiesExclusiveMaximum was set.
+func (o OptJsonschemaDraft4PropertiesExclusiveMaximum) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsHeadersOrReferences) Reset() {
-	var v DefinitionsHeadersOrReferences
+func (o *OptJsonschemaDraft4PropertiesExclusiveMaximum) Reset() {
+	var v JsonschemaDraft4PropertiesExclusiveMaximum
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsHeadersOrReferences) SetTo(v DefinitionsHeadersOrReferences) {
+func (o *OptJsonschemaDraft4PropertiesExclusiveMaximum) SetTo(v JsonschemaDraft4PropertiesExclusiveMaximum) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsHeadersOrReferences) Get() (v DefinitionsHeadersOrReferences, ok bool) {
+func (o OptJsonschemaDraft4PropertiesExclusiveMaximum) Get() (v JsonschemaDraft4PropertiesExclusiveMaximum, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2466,45 +1410,45 @@ func (o OptDefinitionsHeadersOrReferences) Get() (v DefinitionsHeadersOrReferenc
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsHeadersOrReferences) Or(d DefinitionsHeadersOrReferences) DefinitionsHeadersOrReferences {
+func (o OptJsonschemaDraft4PropertiesExclusiveMaximum) Or(d JsonschemaDraft4PropertiesExclusiveMaximum) JsonschemaDraft4PropertiesExclusiveMaximum {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum returns new OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum with value set to v.
-func NewOptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum(v DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum {
-	return OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum{
+// NewOptJsonschemaDraft4PropertiesExclusiveMinimum returns new OptJsonschemaDraft4PropertiesExclusiveMinimum with value set to v.
+func NewOptJsonschemaDraft4PropertiesExclusiveMinimum(v JsonschemaDraft4PropertiesExclusiveMinimum) OptJsonschemaDraft4PropertiesExclusiveMinimum {
+	return OptJsonschemaDraft4PropertiesExclusiveMinimum{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum is optional DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum.
-type OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum struct {
-	Value DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum
+// OptJsonschemaDraft4PropertiesExclusiveMinimum is optional JsonschemaDraft4PropertiesExclusiveMinimum.
+type OptJsonschemaDraft4PropertiesExclusiveMinimum struct {
+	Value JsonschemaDraft4PropertiesExclusiveMinimum
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) IsSet() bool { return o.Set }
+// IsSet returns true if OptJsonschemaDraft4PropertiesExclusiveMinimum was set.
+func (o OptJsonschemaDraft4PropertiesExclusiveMinimum) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Reset() {
-	var v DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum
+func (o *OptJsonschemaDraft4PropertiesExclusiveMinimum) Reset() {
+	var v JsonschemaDraft4PropertiesExclusiveMinimum
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) SetTo(v DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) {
+func (o *OptJsonschemaDraft4PropertiesExclusiveMinimum) SetTo(v JsonschemaDraft4PropertiesExclusiveMinimum) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Get() (v DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum, ok bool) {
+func (o OptJsonschemaDraft4PropertiesExclusiveMinimum) Get() (v JsonschemaDraft4PropertiesExclusiveMinimum, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2512,45 +1456,45 @@ func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Get() (v Defin
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Or(d DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum {
+func (o OptJsonschemaDraft4PropertiesExclusiveMinimum) Or(d JsonschemaDraft4PropertiesExclusiveMinimum) JsonschemaDraft4PropertiesExclusiveMinimum {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum returns new OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum with value set to v.
-func NewOptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum(v DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum {
-	return OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum{
+// NewOptJsonschemaDraft4PropertiesMaximum returns new OptJsonschemaDraft4PropertiesMaximum with value set to v.
+func NewOptJsonschemaDraft4PropertiesMaximum(v JsonschemaDraft4PropertiesMaximum) OptJsonschemaDraft4PropertiesMaximum {
+	return OptJsonschemaDraft4PropertiesMaximum{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum is optional DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum.
-type OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum struct {
-	Value DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum
+// OptJsonschemaDraft4PropertiesMaximum is optional JsonschemaDraft4PropertiesMaximum.
+type OptJsonschemaDraft4PropertiesMaximum struct {
+	Value JsonschemaDraft4PropertiesMaximum
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) IsSet() bool { return o.Set }
+// IsSet returns true if OptJsonschemaDraft4PropertiesMaximum was set.
+func (o OptJsonschemaDraft4PropertiesMaximum) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Reset() {
-	var v DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum
+func (o *OptJsonschemaDraft4PropertiesMaximum) Reset() {
+	var v JsonschemaDraft4PropertiesMaximum
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) SetTo(v DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) {
+func (o *OptJsonschemaDraft4PropertiesMaximum) SetTo(v JsonschemaDraft4PropertiesMaximum) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Get() (v DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum, ok bool) {
+func (o OptJsonschemaDraft4PropertiesMaximum) Get() (v JsonschemaDraft4PropertiesMaximum, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2558,45 +1502,45 @@ func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Get() (v Defin
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Or(d DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum {
+func (o OptJsonschemaDraft4PropertiesMaximum) Or(d JsonschemaDraft4PropertiesMaximum) JsonschemaDraft4PropertiesMaximum {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsJsonschemaDraft4PropertiesMaximum returns new OptDefinitionsJsonschemaDraft4PropertiesMaximum with value set to v.
-func NewOptDefinitionsJsonschemaDraft4PropertiesMaximum(v DefinitionsJsonschemaDraft4PropertiesMaximum) OptDefinitionsJsonschemaDraft4PropertiesMaximum {
-	return OptDefinitionsJsonschemaDraft4PropertiesMaximum{
+// NewOptJsonschemaDraft4PropertiesMinimum returns new OptJsonschemaDraft4PropertiesMinimum with value set to v.
+func NewOptJsonschemaDraft4PropertiesMinimum(v JsonschemaDraft4PropertiesMinimum) OptJsonschemaDraft4PropertiesMinimum {
+	return OptJsonschemaDraft4PropertiesMinimum{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsJsonschemaDraft4PropertiesMaximum is optional DefinitionsJsonschemaDraft4PropertiesMaximum.
-type OptDefinitionsJsonschemaDraft4PropertiesMaximum struct {
-	Value DefinitionsJsonschemaDraft4PropertiesMaximum
+// OptJsonschemaDraft4PropertiesMinimum is optional JsonschemaDraft4PropertiesMinimum.
+type OptJsonschemaDraft4PropertiesMinimum struct {
+	Value JsonschemaDraft4PropertiesMinimum
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsJsonschemaDraft4PropertiesMaximum was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMaximum) IsSet() bool { return o.Set }
+// IsSet returns true if OptJsonschemaDraft4PropertiesMinimum was set.
+func (o OptJsonschemaDraft4PropertiesMinimum) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMaximum) Reset() {
-	var v DefinitionsJsonschemaDraft4PropertiesMaximum
+func (o *OptJsonschemaDraft4PropertiesMinimum) Reset() {
+	var v JsonschemaDraft4PropertiesMinimum
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMaximum) SetTo(v DefinitionsJsonschemaDraft4PropertiesMaximum) {
+func (o *OptJsonschemaDraft4PropertiesMinimum) SetTo(v JsonschemaDraft4PropertiesMinimum) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMaximum) Get() (v DefinitionsJsonschemaDraft4PropertiesMaximum, ok bool) {
+func (o OptJsonschemaDraft4PropertiesMinimum) Get() (v JsonschemaDraft4PropertiesMinimum, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2604,45 +1548,45 @@ func (o OptDefinitionsJsonschemaDraft4PropertiesMaximum) Get() (v DefinitionsJso
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMaximum) Or(d DefinitionsJsonschemaDraft4PropertiesMaximum) DefinitionsJsonschemaDraft4PropertiesMaximum {
+func (o OptJsonschemaDraft4PropertiesMinimum) Or(d JsonschemaDraft4PropertiesMinimum) JsonschemaDraft4PropertiesMinimum {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsJsonschemaDraft4PropertiesMinimum returns new OptDefinitionsJsonschemaDraft4PropertiesMinimum with value set to v.
-func NewOptDefinitionsJsonschemaDraft4PropertiesMinimum(v DefinitionsJsonschemaDraft4PropertiesMinimum) OptDefinitionsJsonschemaDraft4PropertiesMinimum {
-	return OptDefinitionsJsonschemaDraft4PropertiesMinimum{
+// NewOptJsonschemaDraft4PropertiesMultipleOf returns new OptJsonschemaDraft4PropertiesMultipleOf with value set to v.
+func NewOptJsonschemaDraft4PropertiesMultipleOf(v JsonschemaDraft4PropertiesMultipleOf) OptJsonschemaDraft4PropertiesMultipleOf {
+	return OptJsonschemaDraft4PropertiesMultipleOf{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsJsonschemaDraft4PropertiesMinimum is optional DefinitionsJsonschemaDraft4PropertiesMinimum.
-type OptDefinitionsJsonschemaDraft4PropertiesMinimum struct {
-	Value DefinitionsJsonschemaDraft4PropertiesMinimum
+// OptJsonschemaDraft4PropertiesMultipleOf is optional JsonschemaDraft4PropertiesMultipleOf.
+type OptJsonschemaDraft4PropertiesMultipleOf struct {
+	Value JsonschemaDraft4PropertiesMultipleOf
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsJsonschemaDraft4PropertiesMinimum was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMinimum) IsSet() bool { return o.Set }
+// IsSet returns true if OptJsonschemaDraft4PropertiesMultipleOf was set.
+func (o OptJsonschemaDraft4PropertiesMultipleOf) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMinimum) Reset() {
-	var v DefinitionsJsonschemaDraft4PropertiesMinimum
+func (o *OptJsonschemaDraft4PropertiesMultipleOf) Reset() {
+	var v JsonschemaDraft4PropertiesMultipleOf
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMinimum) SetTo(v DefinitionsJsonschemaDraft4PropertiesMinimum) {
+func (o *OptJsonschemaDraft4PropertiesMultipleOf) SetTo(v JsonschemaDraft4PropertiesMultipleOf) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMinimum) Get() (v DefinitionsJsonschemaDraft4PropertiesMinimum, ok bool) {
+func (o OptJsonschemaDraft4PropertiesMultipleOf) Get() (v JsonschemaDraft4PropertiesMultipleOf, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2650,45 +1594,45 @@ func (o OptDefinitionsJsonschemaDraft4PropertiesMinimum) Get() (v DefinitionsJso
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMinimum) Or(d DefinitionsJsonschemaDraft4PropertiesMinimum) DefinitionsJsonschemaDraft4PropertiesMinimum {
+func (o OptJsonschemaDraft4PropertiesMultipleOf) Or(d JsonschemaDraft4PropertiesMultipleOf) JsonschemaDraft4PropertiesMultipleOf {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsJsonschemaDraft4PropertiesMultipleOf returns new OptDefinitionsJsonschemaDraft4PropertiesMultipleOf with value set to v.
-func NewOptDefinitionsJsonschemaDraft4PropertiesMultipleOf(v DefinitionsJsonschemaDraft4PropertiesMultipleOf) OptDefinitionsJsonschemaDraft4PropertiesMultipleOf {
-	return OptDefinitionsJsonschemaDraft4PropertiesMultipleOf{
+// NewOptJsonschemaDraft4PropertiesPattern returns new OptJsonschemaDraft4PropertiesPattern with value set to v.
+func NewOptJsonschemaDraft4PropertiesPattern(v JsonschemaDraft4PropertiesPattern) OptJsonschemaDraft4PropertiesPattern {
+	return OptJsonschemaDraft4PropertiesPattern{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsJsonschemaDraft4PropertiesMultipleOf is optional DefinitionsJsonschemaDraft4PropertiesMultipleOf.
-type OptDefinitionsJsonschemaDraft4PropertiesMultipleOf struct {
-	Value DefinitionsJsonschemaDraft4PropertiesMultipleOf
+// OptJsonschemaDraft4PropertiesPattern is optional JsonschemaDraft4PropertiesPattern.
+type OptJsonschemaDraft4PropertiesPattern struct {
+	Value JsonschemaDraft4PropertiesPattern
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsJsonschemaDraft4PropertiesMultipleOf was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) IsSet() bool { return o.Set }
+// IsSet returns true if OptJsonschemaDraft4PropertiesPattern was set.
+func (o OptJsonschemaDraft4PropertiesPattern) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) Reset() {
-	var v DefinitionsJsonschemaDraft4PropertiesMultipleOf
+func (o *OptJsonschemaDraft4PropertiesPattern) Reset() {
+	var v JsonschemaDraft4PropertiesPattern
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) SetTo(v DefinitionsJsonschemaDraft4PropertiesMultipleOf) {
+func (o *OptJsonschemaDraft4PropertiesPattern) SetTo(v JsonschemaDraft4PropertiesPattern) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) Get() (v DefinitionsJsonschemaDraft4PropertiesMultipleOf, ok bool) {
+func (o OptJsonschemaDraft4PropertiesPattern) Get() (v JsonschemaDraft4PropertiesPattern, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2696,45 +1640,45 @@ func (o OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) Get() (v Definitions
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) Or(d DefinitionsJsonschemaDraft4PropertiesMultipleOf) DefinitionsJsonschemaDraft4PropertiesMultipleOf {
+func (o OptJsonschemaDraft4PropertiesPattern) Or(d JsonschemaDraft4PropertiesPattern) JsonschemaDraft4PropertiesPattern {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsJsonschemaDraft4PropertiesPattern returns new OptDefinitionsJsonschemaDraft4PropertiesPattern with value set to v.
-func NewOptDefinitionsJsonschemaDraft4PropertiesPattern(v DefinitionsJsonschemaDraft4PropertiesPattern) OptDefinitionsJsonschemaDraft4PropertiesPattern {
-	return OptDefinitionsJsonschemaDraft4PropertiesPattern{
+// NewOptJsonschemaDraft4PropertiesTitle returns new OptJsonschemaDraft4PropertiesTitle with value set to v.
+func NewOptJsonschemaDraft4PropertiesTitle(v JsonschemaDraft4PropertiesTitle) OptJsonschemaDraft4PropertiesTitle {
+	return OptJsonschemaDraft4PropertiesTitle{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsJsonschemaDraft4PropertiesPattern is optional DefinitionsJsonschemaDraft4PropertiesPattern.
-type OptDefinitionsJsonschemaDraft4PropertiesPattern struct {
-	Value DefinitionsJsonschemaDraft4PropertiesPattern
+// OptJsonschemaDraft4PropertiesTitle is optional JsonschemaDraft4PropertiesTitle.
+type OptJsonschemaDraft4PropertiesTitle struct {
+	Value JsonschemaDraft4PropertiesTitle
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsJsonschemaDraft4PropertiesPattern was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesPattern) IsSet() bool { return o.Set }
+// IsSet returns true if OptJsonschemaDraft4PropertiesTitle was set.
+func (o OptJsonschemaDraft4PropertiesTitle) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesPattern) Reset() {
-	var v DefinitionsJsonschemaDraft4PropertiesPattern
+func (o *OptJsonschemaDraft4PropertiesTitle) Reset() {
+	var v JsonschemaDraft4PropertiesTitle
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesPattern) SetTo(v DefinitionsJsonschemaDraft4PropertiesPattern) {
+func (o *OptJsonschemaDraft4PropertiesTitle) SetTo(v JsonschemaDraft4PropertiesTitle) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesPattern) Get() (v DefinitionsJsonschemaDraft4PropertiesPattern, ok bool) {
+func (o OptJsonschemaDraft4PropertiesTitle) Get() (v JsonschemaDraft4PropertiesTitle, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2742,45 +1686,45 @@ func (o OptDefinitionsJsonschemaDraft4PropertiesPattern) Get() (v DefinitionsJso
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsJsonschemaDraft4PropertiesPattern) Or(d DefinitionsJsonschemaDraft4PropertiesPattern) DefinitionsJsonschemaDraft4PropertiesPattern {
+func (o OptJsonschemaDraft4PropertiesTitle) Or(d JsonschemaDraft4PropertiesTitle) JsonschemaDraft4PropertiesTitle {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsJsonschemaDraft4PropertiesTitle returns new OptDefinitionsJsonschemaDraft4PropertiesTitle with value set to v.
-func NewOptDefinitionsJsonschemaDraft4PropertiesTitle(v DefinitionsJsonschemaDraft4PropertiesTitle) OptDefinitionsJsonschemaDraft4PropertiesTitle {
-	return OptDefinitionsJsonschemaDraft4PropertiesTitle{
+// NewOptJsonschemaDraft4PropertiesUniqueItems returns new OptJsonschemaDraft4PropertiesUniqueItems with value set to v.
+func NewOptJsonschemaDraft4PropertiesUniqueItems(v JsonschemaDraft4PropertiesUniqueItems) OptJsonschemaDraft4PropertiesUniqueItems {
+	return OptJsonschemaDraft4PropertiesUniqueItems{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsJsonschemaDraft4PropertiesTitle is optional DefinitionsJsonschemaDraft4PropertiesTitle.
-type OptDefinitionsJsonschemaDraft4PropertiesTitle struct {
-	Value DefinitionsJsonschemaDraft4PropertiesTitle
+// OptJsonschemaDraft4PropertiesUniqueItems is optional JsonschemaDraft4PropertiesUniqueItems.
+type OptJsonschemaDraft4PropertiesUniqueItems struct {
+	Value JsonschemaDraft4PropertiesUniqueItems
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsJsonschemaDraft4PropertiesTitle was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesTitle) IsSet() bool { return o.Set }
+// IsSet returns true if OptJsonschemaDraft4PropertiesUniqueItems was set.
+func (o OptJsonschemaDraft4PropertiesUniqueItems) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesTitle) Reset() {
-	var v DefinitionsJsonschemaDraft4PropertiesTitle
+func (o *OptJsonschemaDraft4PropertiesUniqueItems) Reset() {
+	var v JsonschemaDraft4PropertiesUniqueItems
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesTitle) SetTo(v DefinitionsJsonschemaDraft4PropertiesTitle) {
+func (o *OptJsonschemaDraft4PropertiesUniqueItems) SetTo(v JsonschemaDraft4PropertiesUniqueItems) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesTitle) Get() (v DefinitionsJsonschemaDraft4PropertiesTitle, ok bool) {
+func (o OptJsonschemaDraft4PropertiesUniqueItems) Get() (v JsonschemaDraft4PropertiesUniqueItems, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2788,45 +1732,45 @@ func (o OptDefinitionsJsonschemaDraft4PropertiesTitle) Get() (v DefinitionsJsons
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsJsonschemaDraft4PropertiesTitle) Or(d DefinitionsJsonschemaDraft4PropertiesTitle) DefinitionsJsonschemaDraft4PropertiesTitle {
+func (o OptJsonschemaDraft4PropertiesUniqueItems) Or(d JsonschemaDraft4PropertiesUniqueItems) JsonschemaDraft4PropertiesUniqueItems {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsJsonschemaDraft4PropertiesUniqueItems returns new OptDefinitionsJsonschemaDraft4PropertiesUniqueItems with value set to v.
-func NewOptDefinitionsJsonschemaDraft4PropertiesUniqueItems(v DefinitionsJsonschemaDraft4PropertiesUniqueItems) OptDefinitionsJsonschemaDraft4PropertiesUniqueItems {
-	return OptDefinitionsJsonschemaDraft4PropertiesUniqueItems{
+// NewOptLicense returns new OptLicense with value set to v.
+func NewOptLicense(v License) OptLicense {
+	return OptLicense{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsJsonschemaDraft4PropertiesUniqueItems is optional DefinitionsJsonschemaDraft4PropertiesUniqueItems.
-type OptDefinitionsJsonschemaDraft4PropertiesUniqueItems struct {
-	Value DefinitionsJsonschemaDraft4PropertiesUniqueItems
+// OptLicense is optional License.
+type OptLicense struct {
+	Value License
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsJsonschemaDraft4PropertiesUniqueItems was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) IsSet() bool { return o.Set }
+// IsSet returns true if OptLicense was set.
+func (o OptLicense) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) Reset() {
-	var v DefinitionsJsonschemaDraft4PropertiesUniqueItems
+func (o *OptLicense) Reset() {
+	var v License
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) SetTo(v DefinitionsJsonschemaDraft4PropertiesUniqueItems) {
+func (o *OptLicense) SetTo(v License) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) Get() (v DefinitionsJsonschemaDraft4PropertiesUniqueItems, ok bool) {
+func (o OptLicense) Get() (v License, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2834,45 +1778,45 @@ func (o OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) Get() (v Definition
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) Or(d DefinitionsJsonschemaDraft4PropertiesUniqueItems) DefinitionsJsonschemaDraft4PropertiesUniqueItems {
+func (o OptLicense) Or(d License) License {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsLicense returns new OptDefinitionsLicense with value set to v.
-func NewOptDefinitionsLicense(v DefinitionsLicense) OptDefinitionsLicense {
-	return OptDefinitionsLicense{
+// NewOptLinksOrReferences returns new OptLinksOrReferences with value set to v.
+func NewOptLinksOrReferences(v LinksOrReferences) OptLinksOrReferences {
+	return OptLinksOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsLicense is optional DefinitionsLicense.
-type OptDefinitionsLicense struct {
-	Value DefinitionsLicense
+// OptLinksOrReferences is optional LinksOrReferences.
+type OptLinksOrReferences struct {
+	Value LinksOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsLicense was set.
-func (o OptDefinitionsLicense) IsSet() bool { return o.Set }
+// IsSet returns true if OptLinksOrReferences was set.
+func (o OptLinksOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsLicense) Reset() {
-	var v DefinitionsLicense
+func (o *OptLinksOrReferences) Reset() {
+	var v LinksOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsLicense) SetTo(v DefinitionsLicense) {
+func (o *OptLinksOrReferences) SetTo(v LinksOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsLicense) Get() (v DefinitionsLicense, ok bool) {
+func (o OptLinksOrReferences) Get() (v LinksOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2880,45 +1824,45 @@ func (o OptDefinitionsLicense) Get() (v DefinitionsLicense, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsLicense) Or(d DefinitionsLicense) DefinitionsLicense {
+func (o OptLinksOrReferences) Or(d LinksOrReferences) LinksOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsLinksOrReferences returns new OptDefinitionsLinksOrReferences with value set to v.
-func NewOptDefinitionsLinksOrReferences(v DefinitionsLinksOrReferences) OptDefinitionsLinksOrReferences {
-	return OptDefinitionsLinksOrReferences{
+// NewOptMediaTypes returns new OptMediaTypes with value set to v.
+func NewOptMediaTypes(v MediaTypes) OptMediaTypes {
+	return OptMediaTypes{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsLinksOrReferences is optional DefinitionsLinksOrReferences.
-type OptDefinitionsLinksOrReferences struct {
-	Value DefinitionsLinksOrReferences
+// OptMediaTypes is optional MediaTypes.
+type OptMediaTypes struct {
+	Value MediaTypes
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsLinksOrReferences was set.
-func (o OptDefinitionsLinksOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptMediaTypes was set.
+func (o OptMediaTypes) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsLinksOrReferences) Reset() {
-	var v DefinitionsLinksOrReferences
+func (o *OptMediaTypes) Reset() {
+	var v MediaTypes
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsLinksOrReferences) SetTo(v DefinitionsLinksOrReferences) {
+func (o *OptMediaTypes) SetTo(v MediaTypes) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsLinksOrReferences) Get() (v DefinitionsLinksOrReferences, ok bool) {
+func (o OptMediaTypes) Get() (v MediaTypes, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2926,45 +1870,45 @@ func (o OptDefinitionsLinksOrReferences) Get() (v DefinitionsLinksOrReferences, 
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsLinksOrReferences) Or(d DefinitionsLinksOrReferences) DefinitionsLinksOrReferences {
+func (o OptMediaTypes) Or(d MediaTypes) MediaTypes {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsMediaTypes returns new OptDefinitionsMediaTypes with value set to v.
-func NewOptDefinitionsMediaTypes(v DefinitionsMediaTypes) OptDefinitionsMediaTypes {
-	return OptDefinitionsMediaTypes{
+// NewOptOauthFlow returns new OptOauthFlow with value set to v.
+func NewOptOauthFlow(v OauthFlow) OptOauthFlow {
+	return OptOauthFlow{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsMediaTypes is optional DefinitionsMediaTypes.
-type OptDefinitionsMediaTypes struct {
-	Value DefinitionsMediaTypes
+// OptOauthFlow is optional OauthFlow.
+type OptOauthFlow struct {
+	Value OauthFlow
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsMediaTypes was set.
-func (o OptDefinitionsMediaTypes) IsSet() bool { return o.Set }
+// IsSet returns true if OptOauthFlow was set.
+func (o OptOauthFlow) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsMediaTypes) Reset() {
-	var v DefinitionsMediaTypes
+func (o *OptOauthFlow) Reset() {
+	var v OauthFlow
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsMediaTypes) SetTo(v DefinitionsMediaTypes) {
+func (o *OptOauthFlow) SetTo(v OauthFlow) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsMediaTypes) Get() (v DefinitionsMediaTypes, ok bool) {
+func (o OptOauthFlow) Get() (v OauthFlow, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -2972,45 +1916,45 @@ func (o OptDefinitionsMediaTypes) Get() (v DefinitionsMediaTypes, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsMediaTypes) Or(d DefinitionsMediaTypes) DefinitionsMediaTypes {
+func (o OptOauthFlow) Or(d OauthFlow) OauthFlow {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsOauthFlow returns new OptDefinitionsOauthFlow with value set to v.
-func NewOptDefinitionsOauthFlow(v DefinitionsOauthFlow) OptDefinitionsOauthFlow {
-	return OptDefinitionsOauthFlow{
+// NewOptOauthFlows returns new OptOauthFlows with value set to v.
+func NewOptOauthFlows(v OauthFlows) OptOauthFlows {
+	return OptOauthFlows{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsOauthFlow is optional DefinitionsOauthFlow.
-type OptDefinitionsOauthFlow struct {
-	Value DefinitionsOauthFlow
+// OptOauthFlows is optional OauthFlows.
+type OptOauthFlows struct {
+	Value OauthFlows
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsOauthFlow was set.
-func (o OptDefinitionsOauthFlow) IsSet() bool { return o.Set }
+// IsSet returns true if OptOauthFlows was set.
+func (o OptOauthFlows) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsOauthFlow) Reset() {
-	var v DefinitionsOauthFlow
+func (o *OptOauthFlows) Reset() {
+	var v OauthFlows
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsOauthFlow) SetTo(v DefinitionsOauthFlow) {
+func (o *OptOauthFlows) SetTo(v OauthFlows) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsOauthFlow) Get() (v DefinitionsOauthFlow, ok bool) {
+func (o OptOauthFlows) Get() (v OauthFlows, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3018,45 +1962,45 @@ func (o OptDefinitionsOauthFlow) Get() (v DefinitionsOauthFlow, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsOauthFlow) Or(d DefinitionsOauthFlow) DefinitionsOauthFlow {
+func (o OptOauthFlows) Or(d OauthFlows) OauthFlows {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsOauthFlows returns new OptDefinitionsOauthFlows with value set to v.
-func NewOptDefinitionsOauthFlows(v DefinitionsOauthFlows) OptDefinitionsOauthFlows {
-	return OptDefinitionsOauthFlows{
+// NewOptOperation returns new OptOperation with value set to v.
+func NewOptOperation(v Operation) OptOperation {
+	return OptOperation{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsOauthFlows is optional DefinitionsOauthFlows.
-type OptDefinitionsOauthFlows struct {
-	Value DefinitionsOauthFlows
+// OptOperation is optional Operation.
+type OptOperation struct {
+	Value Operation
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsOauthFlows was set.
-func (o OptDefinitionsOauthFlows) IsSet() bool { return o.Set }
+// IsSet returns true if OptOperation was set.
+func (o OptOperation) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsOauthFlows) Reset() {
-	var v DefinitionsOauthFlows
+func (o *OptOperation) Reset() {
+	var v Operation
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsOauthFlows) SetTo(v DefinitionsOauthFlows) {
+func (o *OptOperation) SetTo(v Operation) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsOauthFlows) Get() (v DefinitionsOauthFlows, ok bool) {
+func (o OptOperation) Get() (v Operation, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3064,45 +2008,45 @@ func (o OptDefinitionsOauthFlows) Get() (v DefinitionsOauthFlows, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsOauthFlows) Or(d DefinitionsOauthFlows) DefinitionsOauthFlows {
+func (o OptOperation) Or(d Operation) Operation {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsOperation returns new OptDefinitionsOperation with value set to v.
-func NewOptDefinitionsOperation(v DefinitionsOperation) OptDefinitionsOperation {
-	return OptDefinitionsOperation{
+// NewOptParameterStyle returns new OptParameterStyle with value set to v.
+func NewOptParameterStyle(v ParameterStyle) OptParameterStyle {
+	return OptParameterStyle{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsOperation is optional DefinitionsOperation.
-type OptDefinitionsOperation struct {
-	Value DefinitionsOperation
+// OptParameterStyle is optional ParameterStyle.
+type OptParameterStyle struct {
+	Value ParameterStyle
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsOperation was set.
-func (o OptDefinitionsOperation) IsSet() bool { return o.Set }
+// IsSet returns true if OptParameterStyle was set.
+func (o OptParameterStyle) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsOperation) Reset() {
-	var v DefinitionsOperation
+func (o *OptParameterStyle) Reset() {
+	var v ParameterStyle
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsOperation) SetTo(v DefinitionsOperation) {
+func (o *OptParameterStyle) SetTo(v ParameterStyle) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsOperation) Get() (v DefinitionsOperation, ok bool) {
+func (o OptParameterStyle) Get() (v ParameterStyle, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3110,45 +2054,45 @@ func (o OptDefinitionsOperation) Get() (v DefinitionsOperation, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsOperation) Or(d DefinitionsOperation) DefinitionsOperation {
+func (o OptParameterStyle) Or(d ParameterStyle) ParameterStyle {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsParameterStyle returns new OptDefinitionsParameterStyle with value set to v.
-func NewOptDefinitionsParameterStyle(v DefinitionsParameterStyle) OptDefinitionsParameterStyle {
-	return OptDefinitionsParameterStyle{
+// NewOptParametersOrReferences returns new OptParametersOrReferences with value set to v.
+func NewOptParametersOrReferences(v ParametersOrReferences) OptParametersOrReferences {
+	return OptParametersOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsParameterStyle is optional DefinitionsParameterStyle.
-type OptDefinitionsParameterStyle struct {
-	Value DefinitionsParameterStyle
+// OptParametersOrReferences is optional ParametersOrReferences.
+type OptParametersOrReferences struct {
+	Value ParametersOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsParameterStyle was set.
-func (o OptDefinitionsParameterStyle) IsSet() bool { return o.Set }
+// IsSet returns true if OptParametersOrReferences was set.
+func (o OptParametersOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsParameterStyle) Reset() {
-	var v DefinitionsParameterStyle
+func (o *OptParametersOrReferences) Reset() {
+	var v ParametersOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsParameterStyle) SetTo(v DefinitionsParameterStyle) {
+func (o *OptParametersOrReferences) SetTo(v ParametersOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsParameterStyle) Get() (v DefinitionsParameterStyle, ok bool) {
+func (o OptParametersOrReferences) Get() (v ParametersOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3156,45 +2100,45 @@ func (o OptDefinitionsParameterStyle) Get() (v DefinitionsParameterStyle, ok boo
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsParameterStyle) Or(d DefinitionsParameterStyle) DefinitionsParameterStyle {
+func (o OptParametersOrReferences) Or(d ParametersOrReferences) ParametersOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsParametersOrReferences returns new OptDefinitionsParametersOrReferences with value set to v.
-func NewOptDefinitionsParametersOrReferences(v DefinitionsParametersOrReferences) OptDefinitionsParametersOrReferences {
-	return OptDefinitionsParametersOrReferences{
+// NewOptPositiveInteger returns new OptPositiveInteger with value set to v.
+func NewOptPositiveInteger(v PositiveInteger) OptPositiveInteger {
+	return OptPositiveInteger{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsParametersOrReferences is optional DefinitionsParametersOrReferences.
-type OptDefinitionsParametersOrReferences struct {
-	Value DefinitionsParametersOrReferences
+// OptPositiveInteger is optional PositiveInteger.
+type OptPositiveInteger struct {
+	Value PositiveInteger
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsParametersOrReferences was set.
-func (o OptDefinitionsParametersOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptPositiveInteger was set.
+func (o OptPositiveInteger) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsParametersOrReferences) Reset() {
-	var v DefinitionsParametersOrReferences
+func (o *OptPositiveInteger) Reset() {
+	var v PositiveInteger
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsParametersOrReferences) SetTo(v DefinitionsParametersOrReferences) {
+func (o *OptPositiveInteger) SetTo(v PositiveInteger) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsParametersOrReferences) Get() (v DefinitionsParametersOrReferences, ok bool) {
+func (o OptPositiveInteger) Get() (v PositiveInteger, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3202,45 +2146,45 @@ func (o OptDefinitionsParametersOrReferences) Get() (v DefinitionsParametersOrRe
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsParametersOrReferences) Or(d DefinitionsParametersOrReferences) DefinitionsParametersOrReferences {
+func (o OptPositiveInteger) Or(d PositiveInteger) PositiveInteger {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsPositiveInteger returns new OptDefinitionsPositiveInteger with value set to v.
-func NewOptDefinitionsPositiveInteger(v DefinitionsPositiveInteger) OptDefinitionsPositiveInteger {
-	return OptDefinitionsPositiveInteger{
+// NewOptRequestBodiesOrReferences returns new OptRequestBodiesOrReferences with value set to v.
+func NewOptRequestBodiesOrReferences(v RequestBodiesOrReferences) OptRequestBodiesOrReferences {
+	return OptRequestBodiesOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsPositiveInteger is optional DefinitionsPositiveInteger.
-type OptDefinitionsPositiveInteger struct {
-	Value DefinitionsPositiveInteger
+// OptRequestBodiesOrReferences is optional RequestBodiesOrReferences.
+type OptRequestBodiesOrReferences struct {
+	Value RequestBodiesOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsPositiveInteger was set.
-func (o OptDefinitionsPositiveInteger) IsSet() bool { return o.Set }
+// IsSet returns true if OptRequestBodiesOrReferences was set.
+func (o OptRequestBodiesOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsPositiveInteger) Reset() {
-	var v DefinitionsPositiveInteger
+func (o *OptRequestBodiesOrReferences) Reset() {
+	var v RequestBodiesOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsPositiveInteger) SetTo(v DefinitionsPositiveInteger) {
+func (o *OptRequestBodiesOrReferences) SetTo(v RequestBodiesOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsPositiveInteger) Get() (v DefinitionsPositiveInteger, ok bool) {
+func (o OptRequestBodiesOrReferences) Get() (v RequestBodiesOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3248,45 +2192,45 @@ func (o OptDefinitionsPositiveInteger) Get() (v DefinitionsPositiveInteger, ok b
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsPositiveInteger) Or(d DefinitionsPositiveInteger) DefinitionsPositiveInteger {
+func (o OptRequestBodiesOrReferences) Or(d RequestBodiesOrReferences) RequestBodiesOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsRequestBodiesOrReferences returns new OptDefinitionsRequestBodiesOrReferences with value set to v.
-func NewOptDefinitionsRequestBodiesOrReferences(v DefinitionsRequestBodiesOrReferences) OptDefinitionsRequestBodiesOrReferences {
-	return OptDefinitionsRequestBodiesOrReferences{
+// NewOptRequestBodyOrReference returns new OptRequestBodyOrReference with value set to v.
+func NewOptRequestBodyOrReference(v RequestBodyOrReference) OptRequestBodyOrReference {
+	return OptRequestBodyOrReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsRequestBodiesOrReferences is optional DefinitionsRequestBodiesOrReferences.
-type OptDefinitionsRequestBodiesOrReferences struct {
-	Value DefinitionsRequestBodiesOrReferences
+// OptRequestBodyOrReference is optional RequestBodyOrReference.
+type OptRequestBodyOrReference struct {
+	Value RequestBodyOrReference
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsRequestBodiesOrReferences was set.
-func (o OptDefinitionsRequestBodiesOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptRequestBodyOrReference was set.
+func (o OptRequestBodyOrReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsRequestBodiesOrReferences) Reset() {
-	var v DefinitionsRequestBodiesOrReferences
+func (o *OptRequestBodyOrReference) Reset() {
+	var v RequestBodyOrReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsRequestBodiesOrReferences) SetTo(v DefinitionsRequestBodiesOrReferences) {
+func (o *OptRequestBodyOrReference) SetTo(v RequestBodyOrReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsRequestBodiesOrReferences) Get() (v DefinitionsRequestBodiesOrReferences, ok bool) {
+func (o OptRequestBodyOrReference) Get() (v RequestBodyOrReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3294,45 +2238,45 @@ func (o OptDefinitionsRequestBodiesOrReferences) Get() (v DefinitionsRequestBodi
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsRequestBodiesOrReferences) Or(d DefinitionsRequestBodiesOrReferences) DefinitionsRequestBodiesOrReferences {
+func (o OptRequestBodyOrReference) Or(d RequestBodyOrReference) RequestBodyOrReference {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsRequestBodyOrReference returns new OptDefinitionsRequestBodyOrReference with value set to v.
-func NewOptDefinitionsRequestBodyOrReference(v DefinitionsRequestBodyOrReference) OptDefinitionsRequestBodyOrReference {
-	return OptDefinitionsRequestBodyOrReference{
+// NewOptResponseOrReference returns new OptResponseOrReference with value set to v.
+func NewOptResponseOrReference(v ResponseOrReference) OptResponseOrReference {
+	return OptResponseOrReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsRequestBodyOrReference is optional DefinitionsRequestBodyOrReference.
-type OptDefinitionsRequestBodyOrReference struct {
-	Value DefinitionsRequestBodyOrReference
+// OptResponseOrReference is optional ResponseOrReference.
+type OptResponseOrReference struct {
+	Value ResponseOrReference
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsRequestBodyOrReference was set.
-func (o OptDefinitionsRequestBodyOrReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptResponseOrReference was set.
+func (o OptResponseOrReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsRequestBodyOrReference) Reset() {
-	var v DefinitionsRequestBodyOrReference
+func (o *OptResponseOrReference) Reset() {
+	var v ResponseOrReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsRequestBodyOrReference) SetTo(v DefinitionsRequestBodyOrReference) {
+func (o *OptResponseOrReference) SetTo(v ResponseOrReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsRequestBodyOrReference) Get() (v DefinitionsRequestBodyOrReference, ok bool) {
+func (o OptResponseOrReference) Get() (v ResponseOrReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3340,45 +2284,45 @@ func (o OptDefinitionsRequestBodyOrReference) Get() (v DefinitionsRequestBodyOrR
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsRequestBodyOrReference) Or(d DefinitionsRequestBodyOrReference) DefinitionsRequestBodyOrReference {
+func (o OptResponseOrReference) Or(d ResponseOrReference) ResponseOrReference {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsResponseOrReference returns new OptDefinitionsResponseOrReference with value set to v.
-func NewOptDefinitionsResponseOrReference(v DefinitionsResponseOrReference) OptDefinitionsResponseOrReference {
-	return OptDefinitionsResponseOrReference{
+// NewOptResponsesOrReferences returns new OptResponsesOrReferences with value set to v.
+func NewOptResponsesOrReferences(v ResponsesOrReferences) OptResponsesOrReferences {
+	return OptResponsesOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsResponseOrReference is optional DefinitionsResponseOrReference.
-type OptDefinitionsResponseOrReference struct {
-	Value DefinitionsResponseOrReference
+// OptResponsesOrReferences is optional ResponsesOrReferences.
+type OptResponsesOrReferences struct {
+	Value ResponsesOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsResponseOrReference was set.
-func (o OptDefinitionsResponseOrReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptResponsesOrReferences was set.
+func (o OptResponsesOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsResponseOrReference) Reset() {
-	var v DefinitionsResponseOrReference
+func (o *OptResponsesOrReferences) Reset() {
+	var v ResponsesOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsResponseOrReference) SetTo(v DefinitionsResponseOrReference) {
+func (o *OptResponsesOrReferences) SetTo(v ResponsesOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsResponseOrReference) Get() (v DefinitionsResponseOrReference, ok bool) {
+func (o OptResponsesOrReferences) Get() (v ResponsesOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3386,45 +2330,45 @@ func (o OptDefinitionsResponseOrReference) Get() (v DefinitionsResponseOrReferen
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsResponseOrReference) Or(d DefinitionsResponseOrReference) DefinitionsResponseOrReference {
+func (o OptResponsesOrReferences) Or(d ResponsesOrReferences) ResponsesOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsResponsesOrReferences returns new OptDefinitionsResponsesOrReferences with value set to v.
-func NewOptDefinitionsResponsesOrReferences(v DefinitionsResponsesOrReferences) OptDefinitionsResponsesOrReferences {
-	return OptDefinitionsResponsesOrReferences{
+// NewOptSchemaOrReference returns new OptSchemaOrReference with value set to v.
+func NewOptSchemaOrReference(v SchemaOrReference) OptSchemaOrReference {
+	return OptSchemaOrReference{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsResponsesOrReferences is optional DefinitionsResponsesOrReferences.
-type OptDefinitionsResponsesOrReferences struct {
-	Value DefinitionsResponsesOrReferences
+// OptSchemaOrReference is optional SchemaOrReference.
+type OptSchemaOrReference struct {
+	Value SchemaOrReference
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsResponsesOrReferences was set.
-func (o OptDefinitionsResponsesOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptSchemaOrReference was set.
+func (o OptSchemaOrReference) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsResponsesOrReferences) Reset() {
-	var v DefinitionsResponsesOrReferences
+func (o *OptSchemaOrReference) Reset() {
+	var v SchemaOrReference
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsResponsesOrReferences) SetTo(v DefinitionsResponsesOrReferences) {
+func (o *OptSchemaOrReference) SetTo(v SchemaOrReference) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsResponsesOrReferences) Get() (v DefinitionsResponsesOrReferences, ok bool) {
+func (o OptSchemaOrReference) Get() (v SchemaOrReference, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3432,45 +2376,45 @@ func (o OptDefinitionsResponsesOrReferences) Get() (v DefinitionsResponsesOrRefe
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsResponsesOrReferences) Or(d DefinitionsResponsesOrReferences) DefinitionsResponsesOrReferences {
+func (o OptSchemaOrReference) Or(d SchemaOrReference) SchemaOrReference {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsSchemaOrReference returns new OptDefinitionsSchemaOrReference with value set to v.
-func NewOptDefinitionsSchemaOrReference(v DefinitionsSchemaOrReference) OptDefinitionsSchemaOrReference {
-	return OptDefinitionsSchemaOrReference{
+// NewOptSchemaProperties returns new OptSchemaProperties with value set to v.
+func NewOptSchemaProperties(v SchemaProperties) OptSchemaProperties {
+	return OptSchemaProperties{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsSchemaOrReference is optional DefinitionsSchemaOrReference.
-type OptDefinitionsSchemaOrReference struct {
-	Value DefinitionsSchemaOrReference
+// OptSchemaProperties is optional SchemaProperties.
+type OptSchemaProperties struct {
+	Value SchemaProperties
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsSchemaOrReference was set.
-func (o OptDefinitionsSchemaOrReference) IsSet() bool { return o.Set }
+// IsSet returns true if OptSchemaProperties was set.
+func (o OptSchemaProperties) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsSchemaOrReference) Reset() {
-	var v DefinitionsSchemaOrReference
+func (o *OptSchemaProperties) Reset() {
+	var v SchemaProperties
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsSchemaOrReference) SetTo(v DefinitionsSchemaOrReference) {
+func (o *OptSchemaProperties) SetTo(v SchemaProperties) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsSchemaOrReference) Get() (v DefinitionsSchemaOrReference, ok bool) {
+func (o OptSchemaProperties) Get() (v SchemaProperties, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3478,45 +2422,45 @@ func (o OptDefinitionsSchemaOrReference) Get() (v DefinitionsSchemaOrReference, 
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsSchemaOrReference) Or(d DefinitionsSchemaOrReference) DefinitionsSchemaOrReference {
+func (o OptSchemaProperties) Or(d SchemaProperties) SchemaProperties {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsSchemaProperties returns new OptDefinitionsSchemaProperties with value set to v.
-func NewOptDefinitionsSchemaProperties(v DefinitionsSchemaProperties) OptDefinitionsSchemaProperties {
-	return OptDefinitionsSchemaProperties{
+// NewOptSchemaType returns new OptSchemaType with value set to v.
+func NewOptSchemaType(v SchemaType) OptSchemaType {
+	return OptSchemaType{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsSchemaProperties is optional DefinitionsSchemaProperties.
-type OptDefinitionsSchemaProperties struct {
-	Value DefinitionsSchemaProperties
+// OptSchemaType is optional SchemaType.
+type OptSchemaType struct {
+	Value SchemaType
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsSchemaProperties was set.
-func (o OptDefinitionsSchemaProperties) IsSet() bool { return o.Set }
+// IsSet returns true if OptSchemaType was set.
+func (o OptSchemaType) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsSchemaProperties) Reset() {
-	var v DefinitionsSchemaProperties
+func (o *OptSchemaType) Reset() {
+	var v SchemaType
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsSchemaProperties) SetTo(v DefinitionsSchemaProperties) {
+func (o *OptSchemaType) SetTo(v SchemaType) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsSchemaProperties) Get() (v DefinitionsSchemaProperties, ok bool) {
+func (o OptSchemaType) Get() (v SchemaType, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3524,45 +2468,45 @@ func (o OptDefinitionsSchemaProperties) Get() (v DefinitionsSchemaProperties, ok
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsSchemaProperties) Or(d DefinitionsSchemaProperties) DefinitionsSchemaProperties {
+func (o OptSchemaType) Or(d SchemaType) SchemaType {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsSchemaType returns new OptDefinitionsSchemaType with value set to v.
-func NewOptDefinitionsSchemaType(v DefinitionsSchemaType) OptDefinitionsSchemaType {
-	return OptDefinitionsSchemaType{
+// NewOptSchemasOrReferences returns new OptSchemasOrReferences with value set to v.
+func NewOptSchemasOrReferences(v SchemasOrReferences) OptSchemasOrReferences {
+	return OptSchemasOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsSchemaType is optional DefinitionsSchemaType.
-type OptDefinitionsSchemaType struct {
-	Value DefinitionsSchemaType
+// OptSchemasOrReferences is optional SchemasOrReferences.
+type OptSchemasOrReferences struct {
+	Value SchemasOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsSchemaType was set.
-func (o OptDefinitionsSchemaType) IsSet() bool { return o.Set }
+// IsSet returns true if OptSchemasOrReferences was set.
+func (o OptSchemasOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsSchemaType) Reset() {
-	var v DefinitionsSchemaType
+func (o *OptSchemasOrReferences) Reset() {
+	var v SchemasOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsSchemaType) SetTo(v DefinitionsSchemaType) {
+func (o *OptSchemasOrReferences) SetTo(v SchemasOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsSchemaType) Get() (v DefinitionsSchemaType, ok bool) {
+func (o OptSchemasOrReferences) Get() (v SchemasOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3570,45 +2514,45 @@ func (o OptDefinitionsSchemaType) Get() (v DefinitionsSchemaType, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsSchemaType) Or(d DefinitionsSchemaType) DefinitionsSchemaType {
+func (o OptSchemasOrReferences) Or(d SchemasOrReferences) SchemasOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsSchemasOrReferences returns new OptDefinitionsSchemasOrReferences with value set to v.
-func NewOptDefinitionsSchemasOrReferences(v DefinitionsSchemasOrReferences) OptDefinitionsSchemasOrReferences {
-	return OptDefinitionsSchemasOrReferences{
+// NewOptSecuritySchemesOrReferences returns new OptSecuritySchemesOrReferences with value set to v.
+func NewOptSecuritySchemesOrReferences(v SecuritySchemesOrReferences) OptSecuritySchemesOrReferences {
+	return OptSecuritySchemesOrReferences{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsSchemasOrReferences is optional DefinitionsSchemasOrReferences.
-type OptDefinitionsSchemasOrReferences struct {
-	Value DefinitionsSchemasOrReferences
+// OptSecuritySchemesOrReferences is optional SecuritySchemesOrReferences.
+type OptSecuritySchemesOrReferences struct {
+	Value SecuritySchemesOrReferences
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsSchemasOrReferences was set.
-func (o OptDefinitionsSchemasOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptSecuritySchemesOrReferences was set.
+func (o OptSecuritySchemesOrReferences) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsSchemasOrReferences) Reset() {
-	var v DefinitionsSchemasOrReferences
+func (o *OptSecuritySchemesOrReferences) Reset() {
+	var v SecuritySchemesOrReferences
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsSchemasOrReferences) SetTo(v DefinitionsSchemasOrReferences) {
+func (o *OptSecuritySchemesOrReferences) SetTo(v SecuritySchemesOrReferences) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsSchemasOrReferences) Get() (v DefinitionsSchemasOrReferences, ok bool) {
+func (o OptSecuritySchemesOrReferences) Get() (v SecuritySchemesOrReferences, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3616,45 +2560,45 @@ func (o OptDefinitionsSchemasOrReferences) Get() (v DefinitionsSchemasOrReferenc
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsSchemasOrReferences) Or(d DefinitionsSchemasOrReferences) DefinitionsSchemasOrReferences {
+func (o OptSecuritySchemesOrReferences) Or(d SecuritySchemesOrReferences) SecuritySchemesOrReferences {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsSecuritySchemesOrReferences returns new OptDefinitionsSecuritySchemesOrReferences with value set to v.
-func NewOptDefinitionsSecuritySchemesOrReferences(v DefinitionsSecuritySchemesOrReferences) OptDefinitionsSecuritySchemesOrReferences {
-	return OptDefinitionsSecuritySchemesOrReferences{
+// NewOptServer returns new OptServer with value set to v.
+func NewOptServer(v Server) OptServer {
+	return OptServer{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsSecuritySchemesOrReferences is optional DefinitionsSecuritySchemesOrReferences.
-type OptDefinitionsSecuritySchemesOrReferences struct {
-	Value DefinitionsSecuritySchemesOrReferences
+// OptServer is optional Server.
+type OptServer struct {
+	Value Server
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsSecuritySchemesOrReferences was set.
-func (o OptDefinitionsSecuritySchemesOrReferences) IsSet() bool { return o.Set }
+// IsSet returns true if OptServer was set.
+func (o OptServer) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsSecuritySchemesOrReferences) Reset() {
-	var v DefinitionsSecuritySchemesOrReferences
+func (o *OptServer) Reset() {
+	var v Server
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsSecuritySchemesOrReferences) SetTo(v DefinitionsSecuritySchemesOrReferences) {
+func (o *OptServer) SetTo(v Server) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsSecuritySchemesOrReferences) Get() (v DefinitionsSecuritySchemesOrReferences, ok bool) {
+func (o OptServer) Get() (v Server, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3662,45 +2606,45 @@ func (o OptDefinitionsSecuritySchemesOrReferences) Get() (v DefinitionsSecurityS
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsSecuritySchemesOrReferences) Or(d DefinitionsSecuritySchemesOrReferences) DefinitionsSecuritySchemesOrReferences {
+func (o OptServer) Or(d Server) Server {
 	if v, ok := o.Get(); ok {
 		return v
 	}
 	return d
 }
 
-// NewOptDefinitionsServer returns new OptDefinitionsServer with value set to v.
-func NewOptDefinitionsServer(v DefinitionsServer) OptDefinitionsServer {
-	return OptDefinitionsServer{
+// NewOptServerVariables returns new OptServerVariables with value set to v.
+func NewOptServerVariables(v ServerVariables) OptServerVariables {
+	return OptServerVariables{
 		Value: v,
 		Set:   true,
 	}
 }
 
-// OptDefinitionsServer is optional DefinitionsServer.
-type OptDefinitionsServer struct {
-	Value DefinitionsServer
+// OptServerVariables is optional ServerVariables.
+type OptServerVariables struct {
+	Value ServerVariables
 	Set   bool
 }
 
-// IsSet returns true if OptDefinitionsServer was set.
-func (o OptDefinitionsServer) IsSet() bool { return o.Set }
+// IsSet returns true if OptServerVariables was set.
+func (o OptServerVariables) IsSet() bool { return o.Set }
 
 // Reset unsets value.
-func (o *OptDefinitionsServer) Reset() {
-	var v DefinitionsServer
+func (o *OptServerVariables) Reset() {
+	var v ServerVariables
 	o.Value = v
 	o.Set = false
 }
 
 // SetTo sets value to v.
-func (o *OptDefinitionsServer) SetTo(v DefinitionsServer) {
+func (o *OptServerVariables) SetTo(v ServerVariables) {
 	o.Set = true
 	o.Value = v
 }
 
 // Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsServer) Get() (v DefinitionsServer, ok bool) {
+func (o OptServerVariables) Get() (v ServerVariables, ok bool) {
 	if !o.Set {
 		return v, false
 	}
@@ -3708,145 +2652,7 @@ func (o OptDefinitionsServer) Get() (v DefinitionsServer, ok bool) {
 }
 
 // Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsServer) Or(d DefinitionsServer) DefinitionsServer {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptDefinitionsServerVariables returns new OptDefinitionsServerVariables with value set to v.
-func NewOptDefinitionsServerVariables(v DefinitionsServerVariables) OptDefinitionsServerVariables {
-	return OptDefinitionsServerVariables{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptDefinitionsServerVariables is optional DefinitionsServerVariables.
-type OptDefinitionsServerVariables struct {
-	Value DefinitionsServerVariables
-	Set   bool
-}
-
-// IsSet returns true if OptDefinitionsServerVariables was set.
-func (o OptDefinitionsServerVariables) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptDefinitionsServerVariables) Reset() {
-	var v DefinitionsServerVariables
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptDefinitionsServerVariables) SetTo(v DefinitionsServerVariables) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsServerVariables) Get() (v DefinitionsServerVariables, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsServerVariables) Or(d DefinitionsServerVariables) DefinitionsServerVariables {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptDefinitionsStrings returns new OptDefinitionsStrings with value set to v.
-func NewOptDefinitionsStrings(v DefinitionsStrings) OptDefinitionsStrings {
-	return OptDefinitionsStrings{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptDefinitionsStrings is optional DefinitionsStrings.
-type OptDefinitionsStrings struct {
-	Value DefinitionsStrings
-	Set   bool
-}
-
-// IsSet returns true if OptDefinitionsStrings was set.
-func (o OptDefinitionsStrings) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptDefinitionsStrings) Reset() {
-	var v DefinitionsStrings
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptDefinitionsStrings) SetTo(v DefinitionsStrings) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsStrings) Get() (v DefinitionsStrings, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsStrings) Or(d DefinitionsStrings) DefinitionsStrings {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptDefinitionsXML returns new OptDefinitionsXML with value set to v.
-func NewOptDefinitionsXML(v DefinitionsXML) OptDefinitionsXML {
-	return OptDefinitionsXML{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptDefinitionsXML is optional DefinitionsXML.
-type OptDefinitionsXML struct {
-	Value DefinitionsXML
-	Set   bool
-}
-
-// IsSet returns true if OptDefinitionsXML was set.
-func (o OptDefinitionsXML) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptDefinitionsXML) Reset() {
-	var v DefinitionsXML
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptDefinitionsXML) SetTo(v DefinitionsXML) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptDefinitionsXML) Get() (v DefinitionsXML, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptDefinitionsXML) Or(d DefinitionsXML) DefinitionsXML {
+func (o OptServerVariables) Or(d ServerVariables) ServerVariables {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -3899,16 +2705,1095 @@ func (o OptString) Or(d string) string {
 	return d
 }
 
+// NewOptStrings returns new OptStrings with value set to v.
+func NewOptStrings(v Strings) OptStrings {
+	return OptStrings{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStrings is optional Strings.
+type OptStrings struct {
+	Value Strings
+	Set   bool
+}
+
+// IsSet returns true if OptStrings was set.
+func (o OptStrings) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStrings) Reset() {
+	var v Strings
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStrings) SetTo(v Strings) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStrings) Get() (v Strings, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStrings) Or(d Strings) Strings {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptXML returns new OptXML with value set to v.
+func NewOptXML(v XML) OptXML {
+	return OptXML{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptXML is optional XML.
+type OptXML struct {
+	Value XML
+	Set   bool
+}
+
+// IsSet returns true if OptXML was set.
+func (o OptXML) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptXML) Reset() {
+	var v XML
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptXML) SetTo(v XML) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptXML) Get() (v XML, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptXML) Or(d XML) XML {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// Describes a single operation parameter.  A unique parameter is defined by a combination of a name
+// and location.
+// Ref: #/definitions/parameter
+type Parameter struct {
+	Name            string                  "json:\"name\""
+	In              ParameterIn             "json:\"in\""
+	Description     OptString               "json:\"description\""
+	Required        OptBool                 "json:\"required\""
+	Deprecated      OptBool                 "json:\"deprecated\""
+	AllowEmptyValue OptBool                 "json:\"allowEmptyValue\""
+	Style           OptParameterStyle       "json:\"style\""
+	Explode         OptBool                 "json:\"explode\""
+	AllowReserved   OptBool                 "json:\"allowReserved\""
+	Schema          OptSchemaOrReference    "json:\"schema\""
+	Example         jx.Raw                  "json:\"example\""
+	Examples        OptExamplesOrReferences "json:\"examples\""
+	Content         OptMediaTypes           "json:\"content\""
+	AdditionalProps ParameterAdditional
+	Pattern0Props   ParameterPattern0
+}
+
+type ParameterAdditional map[string]jx.Raw
+
+func (s *ParameterAdditional) init() ParameterAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type ParameterIn string
+
+const (
+	ParameterInPath   ParameterIn = "path"
+	ParameterInQuery  ParameterIn = "query"
+	ParameterInCookie ParameterIn = "cookie"
+	ParameterInHeader ParameterIn = "header"
+)
+
+// Ref: #/definitions/parameterOrReference
+// ParameterOrReference represents sum type.
+type ParameterOrReference struct {
+	Type      ParameterOrReferenceType // switch on this field
+	Parameter Parameter
+	Reference Reference
+}
+
+// ParameterOrReferenceType is oneOf type of ParameterOrReference.
+type ParameterOrReferenceType string
+
+// Possible values for ParameterOrReferenceType.
+const (
+	ParameterParameterOrReference ParameterOrReferenceType = "Parameter"
+	ReferenceParameterOrReference ParameterOrReferenceType = "Reference"
+)
+
+// IsParameter reports whether ParameterOrReference is Parameter.
+func (s ParameterOrReference) IsParameter() bool { return s.Type == ParameterParameterOrReference }
+
+// IsReference reports whether ParameterOrReference is Reference.
+func (s ParameterOrReference) IsReference() bool { return s.Type == ReferenceParameterOrReference }
+
+// SetParameter sets ParameterOrReference to Parameter.
+func (s *ParameterOrReference) SetParameter(v Parameter) {
+	s.Type = ParameterParameterOrReference
+	s.Parameter = v
+}
+
+// GetParameter returns Parameter and true boolean if ParameterOrReference is Parameter.
+func (s ParameterOrReference) GetParameter() (v Parameter, ok bool) {
+	if !s.IsParameter() {
+		return v, false
+	}
+	return s.Parameter, true
+}
+
+// NewParameterParameterOrReference returns new ParameterOrReference from Parameter.
+func NewParameterParameterOrReference(v Parameter) ParameterOrReference {
+	var s ParameterOrReference
+	s.SetParameter(v)
+	return s
+}
+
+// SetReference sets ParameterOrReference to Reference.
+func (s *ParameterOrReference) SetReference(v Reference) {
+	s.Type = ReferenceParameterOrReference
+	s.Reference = v
+}
+
+// GetReference returns Reference and true boolean if ParameterOrReference is Reference.
+func (s ParameterOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
+		return v, false
+	}
+	return s.Reference, true
+}
+
+// NewReferenceParameterOrReference returns new ParameterOrReference from Reference.
+func NewReferenceParameterOrReference(v Reference) ParameterOrReference {
+	var s ParameterOrReference
+	s.SetReference(v)
+	return s
+}
+
+type ParameterPattern0 map[string]jx.Raw
+
+func (s *ParameterPattern0) init() ParameterPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type ParameterStyle string
+
+const (
+	ParameterStyleMatrix         ParameterStyle = "matrix"
+	ParameterStyleLabel          ParameterStyle = "label"
+	ParameterStyleForm           ParameterStyle = "form"
+	ParameterStyleSimple         ParameterStyle = "simple"
+	ParameterStyleSpaceDelimited ParameterStyle = "spaceDelimited"
+	ParameterStylePipeDelimited  ParameterStyle = "pipeDelimited"
+	ParameterStyleDeepObject     ParameterStyle = "deepObject"
+)
+
+// Ref: #/definitions/parametersOrReferences
+type ParametersOrReferences map[string]ParameterOrReference
+
+func (s *ParametersOrReferences) init() ParametersOrReferences {
+	m := *s
+	if m == nil {
+		m = map[string]ParameterOrReference{}
+		*s = m
+	}
+	return m
+}
+
+// Describes the operations available on a single path. A Path Item MAY be empty, due to ACL
+// constraints. The path itself is still exposed to the documentation viewer but they will not know
+// which operations and parameters are available.
+// Ref: #/definitions/pathItem
+type PathItem struct {
+	Ref             OptString              "json:\"$ref\""
+	Summary         OptString              "json:\"summary\""
+	Description     OptString              "json:\"description\""
+	Get             OptOperation           "json:\"get\""
+	Put             OptOperation           "json:\"put\""
+	Post            OptOperation           "json:\"post\""
+	Delete          OptOperation           "json:\"delete\""
+	Options         OptOperation           "json:\"options\""
+	Head            OptOperation           "json:\"head\""
+	Patch           OptOperation           "json:\"patch\""
+	Trace           OptOperation           "json:\"trace\""
+	Servers         []Server               "json:\"servers\""
+	Parameters      []ParameterOrReference "json:\"parameters\""
+	AdditionalProps PathItemAdditional
+	Pattern0Props   PathItemPattern0
+}
+
+type PathItemAdditional map[string]jx.Raw
+
+func (s *PathItemAdditional) init() PathItemAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type PathItemPattern0 map[string]jx.Raw
+
+func (s *PathItemPattern0) init() PathItemPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Holds the relative paths to the individual endpoints and their operations. The path is appended to
+// the URL from the `Server Object` in order to construct the full URL.  The Paths MAY be empty, due
+// to ACL constraints.
+// Ref: #/definitions/paths
+type Paths struct {
+	AdditionalProps PathsAdditional
+	Pattern0Props   PathsPattern0
+	Pattern1Props   PathsPattern1
+}
+
+type PathsAdditional map[string]jx.Raw
+
+func (s *PathsAdditional) init() PathsAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type PathsPattern0 map[string]PathItem
+
+func (s *PathsPattern0) init() PathsPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]PathItem{}
+		*s = m
+	}
+	return m
+}
+
+type PathsPattern1 map[string]jx.Raw
+
+func (s *PathsPattern1) init() PathsPattern1 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type PositiveInteger int
+
+// A simple object to allow referencing other components in the specification, internally and
+// externally.  The Reference Object is defined by JSON Reference and follows the same structure,
+// behavior and rules.   For this specification, reference resolution is accomplished as defined by
+// the JSON Reference specification and not by the JSON Schema specification.
+// Ref: #/definitions/reference
+type Reference struct {
+	Ref             string "json:\"$ref\""
+	AdditionalProps ReferenceAdditional
+}
+
+type ReferenceAdditional map[string]jx.Raw
+
+func (s *ReferenceAdditional) init() ReferenceAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/definitions/requestBodiesOrReferences
+type RequestBodiesOrReferences map[string]RequestBodyOrReference
+
+func (s *RequestBodiesOrReferences) init() RequestBodiesOrReferences {
+	m := *s
+	if m == nil {
+		m = map[string]RequestBodyOrReference{}
+		*s = m
+	}
+	return m
+}
+
+// Describes a single request body.
+// Ref: #/definitions/requestBody
+type RequestBody struct {
+	Description     OptString  "json:\"description\""
+	Content         MediaTypes "json:\"content\""
+	Required        OptBool    "json:\"required\""
+	AdditionalProps RequestBodyAdditional
+	Pattern0Props   RequestBodyPattern0
+}
+
+type RequestBodyAdditional map[string]jx.Raw
+
+func (s *RequestBodyAdditional) init() RequestBodyAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/definitions/requestBodyOrReference
+// RequestBodyOrReference represents sum type.
+type RequestBodyOrReference struct {
+	Type        RequestBodyOrReferenceType // switch on this field
+	RequestBody RequestBody
+	Reference   Reference
+}
+
+// RequestBodyOrReferenceType is oneOf type of RequestBodyOrReference.
+type RequestBodyOrReferenceType string
+
+// Possible values for RequestBodyOrReferenceType.
+const (
+	RequestBodyRequestBodyOrReference RequestBodyOrReferenceType = "RequestBody"
+	ReferenceRequestBodyOrReference   RequestBodyOrReferenceType = "Reference"
+)
+
+// IsRequestBody reports whether RequestBodyOrReference is RequestBody.
+func (s RequestBodyOrReference) IsRequestBody() bool {
+	return s.Type == RequestBodyRequestBodyOrReference
+}
+
+// IsReference reports whether RequestBodyOrReference is Reference.
+func (s RequestBodyOrReference) IsReference() bool { return s.Type == ReferenceRequestBodyOrReference }
+
+// SetRequestBody sets RequestBodyOrReference to RequestBody.
+func (s *RequestBodyOrReference) SetRequestBody(v RequestBody) {
+	s.Type = RequestBodyRequestBodyOrReference
+	s.RequestBody = v
+}
+
+// GetRequestBody returns RequestBody and true boolean if RequestBodyOrReference is RequestBody.
+func (s RequestBodyOrReference) GetRequestBody() (v RequestBody, ok bool) {
+	if !s.IsRequestBody() {
+		return v, false
+	}
+	return s.RequestBody, true
+}
+
+// NewRequestBodyRequestBodyOrReference returns new RequestBodyOrReference from RequestBody.
+func NewRequestBodyRequestBodyOrReference(v RequestBody) RequestBodyOrReference {
+	var s RequestBodyOrReference
+	s.SetRequestBody(v)
+	return s
+}
+
+// SetReference sets RequestBodyOrReference to Reference.
+func (s *RequestBodyOrReference) SetReference(v Reference) {
+	s.Type = ReferenceRequestBodyOrReference
+	s.Reference = v
+}
+
+// GetReference returns Reference and true boolean if RequestBodyOrReference is Reference.
+func (s RequestBodyOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
+		return v, false
+	}
+	return s.Reference, true
+}
+
+// NewReferenceRequestBodyOrReference returns new RequestBodyOrReference from Reference.
+func NewReferenceRequestBodyOrReference(v Reference) RequestBodyOrReference {
+	var s RequestBodyOrReference
+	s.SetReference(v)
+	return s
+}
+
+type RequestBodyPattern0 map[string]jx.Raw
+
+func (s *RequestBodyPattern0) init() RequestBodyPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Describes a single response from an API Operation, including design-time, static  `links` to
+// operations based on the response.
+// Ref: #/definitions/response
+type Response struct {
+	Description     string                 "json:\"description\""
+	Headers         OptHeadersOrReferences "json:\"headers\""
+	Content         OptMediaTypes          "json:\"content\""
+	Links           OptLinksOrReferences   "json:\"links\""
+	AdditionalProps ResponseAdditional
+	Pattern0Props   ResponsePattern0
+}
+
+type ResponseAdditional map[string]jx.Raw
+
+func (s *ResponseAdditional) init() ResponseAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/definitions/responseOrReference
+// ResponseOrReference represents sum type.
+type ResponseOrReference struct {
+	Type      ResponseOrReferenceType // switch on this field
+	Response  Response
+	Reference Reference
+}
+
+// ResponseOrReferenceType is oneOf type of ResponseOrReference.
+type ResponseOrReferenceType string
+
+// Possible values for ResponseOrReferenceType.
+const (
+	ResponseResponseOrReference  ResponseOrReferenceType = "Response"
+	ReferenceResponseOrReference ResponseOrReferenceType = "Reference"
+)
+
+// IsResponse reports whether ResponseOrReference is Response.
+func (s ResponseOrReference) IsResponse() bool { return s.Type == ResponseResponseOrReference }
+
+// IsReference reports whether ResponseOrReference is Reference.
+func (s ResponseOrReference) IsReference() bool { return s.Type == ReferenceResponseOrReference }
+
+// SetResponse sets ResponseOrReference to Response.
+func (s *ResponseOrReference) SetResponse(v Response) {
+	s.Type = ResponseResponseOrReference
+	s.Response = v
+}
+
+// GetResponse returns Response and true boolean if ResponseOrReference is Response.
+func (s ResponseOrReference) GetResponse() (v Response, ok bool) {
+	if !s.IsResponse() {
+		return v, false
+	}
+	return s.Response, true
+}
+
+// NewResponseResponseOrReference returns new ResponseOrReference from Response.
+func NewResponseResponseOrReference(v Response) ResponseOrReference {
+	var s ResponseOrReference
+	s.SetResponse(v)
+	return s
+}
+
+// SetReference sets ResponseOrReference to Reference.
+func (s *ResponseOrReference) SetReference(v Reference) {
+	s.Type = ReferenceResponseOrReference
+	s.Reference = v
+}
+
+// GetReference returns Reference and true boolean if ResponseOrReference is Reference.
+func (s ResponseOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
+		return v, false
+	}
+	return s.Reference, true
+}
+
+// NewReferenceResponseOrReference returns new ResponseOrReference from Reference.
+func NewReferenceResponseOrReference(v Reference) ResponseOrReference {
+	var s ResponseOrReference
+	s.SetReference(v)
+	return s
+}
+
+type ResponsePattern0 map[string]jx.Raw
+
+func (s *ResponsePattern0) init() ResponsePattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// A container for the expected responses of an operation. The container maps a HTTP response code to
+// the expected response.  The documentation is not necessarily expected to cover all possible HTTP
+// response codes because they may not be known in advance. However, documentation is expected to
+// cover a successful operation response and any known errors.  The `default` MAY be used as a
+// default response object for all HTTP codes  that are not covered individually by the specification.
+//   The `Responses Object` MUST contain at least one response code, and it  SHOULD be the response
+// for a successful operation call.
+// Ref: #/definitions/responses
+type Responses struct {
+	Default         OptResponseOrReference "json:\"default\""
+	AdditionalProps ResponsesAdditional
+	Pattern0Props   ResponsesPattern0
+	Pattern1Props   ResponsesPattern1
+}
+
+type ResponsesAdditional map[string]jx.Raw
+
+func (s *ResponsesAdditional) init() ResponsesAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/definitions/responsesOrReferences
+type ResponsesOrReferences map[string]ResponseOrReference
+
+func (s *ResponsesOrReferences) init() ResponsesOrReferences {
+	m := *s
+	if m == nil {
+		m = map[string]ResponseOrReference{}
+		*s = m
+	}
+	return m
+}
+
+type ResponsesPattern0 map[string]ResponseOrReference
+
+func (s *ResponsesPattern0) init() ResponsesPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]ResponseOrReference{}
+		*s = m
+	}
+	return m
+}
+
+type ResponsesPattern1 map[string]jx.Raw
+
+func (s *ResponsesPattern1) init() ResponsesPattern1 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// The Schema Object allows the definition of input and output data types. These types can be objects,
+//  but also primitives and arrays. This object is an extended subset of the JSON Schema
+// Specification Wright Draft 00.  For more information about the properties, see JSON Schema Core
+// and JSON Schema Validation. Unless stated otherwise, the property definitions follow the JSON
+// Schema.
+// Ref: #/definitions/schema
+type Schema struct {
+	Nullable             OptBool                                       "json:\"nullable\""
+	Discriminator        OptDiscriminator                              "json:\"discriminator\""
+	ReadOnly             OptBool                                       "json:\"readOnly\""
+	WriteOnly            OptBool                                       "json:\"writeOnly\""
+	XML                  OptXML                                        "json:\"xml\""
+	ExternalDocs         OptExternalDocs                               "json:\"externalDocs\""
+	Example              jx.Raw                                        "json:\"example\""
+	Deprecated           OptBool                                       "json:\"deprecated\""
+	Title                OptJsonschemaDraft4PropertiesTitle            "json:\"title\""
+	MultipleOf           OptJsonschemaDraft4PropertiesMultipleOf       "json:\"multipleOf\""
+	Maximum              OptJsonschemaDraft4PropertiesMaximum          "json:\"maximum\""
+	ExclusiveMaximum     OptJsonschemaDraft4PropertiesExclusiveMaximum "json:\"exclusiveMaximum\""
+	Minimum              OptJsonschemaDraft4PropertiesMinimum          "json:\"minimum\""
+	ExclusiveMinimum     OptJsonschemaDraft4PropertiesExclusiveMinimum "json:\"exclusiveMinimum\""
+	MaxLength            OptPositiveInteger                            "json:\"maxLength\""
+	MinLength            OptPositiveInteger                            "json:\"minLength\""
+	Pattern              OptJsonschemaDraft4PropertiesPattern          "json:\"pattern\""
+	MaxItems             OptPositiveInteger                            "json:\"maxItems\""
+	MinItems             OptPositiveInteger                            "json:\"minItems\""
+	UniqueItems          OptJsonschemaDraft4PropertiesUniqueItems      "json:\"uniqueItems\""
+	MaxProperties        OptPositiveInteger                            "json:\"maxProperties\""
+	MinProperties        OptPositiveInteger                            "json:\"minProperties\""
+	Required             *StringArray                                  "json:\"required\""
+	Enum                 *JsonschemaDraft4PropertiesEnum               "json:\"enum\""
+	Type                 OptSchemaType                                 "json:\"type\""
+	AllOf                []SchemaOrReference                           "json:\"allOf\""
+	OneOf                []SchemaOrReference                           "json:\"oneOf\""
+	AnyOf                []SchemaOrReference                           "json:\"anyOf\""
+	Not                  *Schema                                       "json:\"not\""
+	Items                *SchemaOrReference                            "json:\"items\""
+	Properties           OptSchemaProperties                           "json:\"properties\""
+	AdditionalProperties *SchemaAdditionalProperties                   "json:\"additionalProperties\""
+	Default              jx.Raw                                        "json:\"default\""
+	Description          OptString                                     "json:\"description\""
+	Format               OptString                                     "json:\"format\""
+	AdditionalProps      SchemaAdditional
+	Pattern0Props        SchemaPattern0
+}
+
+type SchemaAdditional map[string]jx.Raw
+
+func (s *SchemaAdditional) init() SchemaAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// SchemaAdditionalProperties represents sum type.
+type SchemaAdditionalProperties struct {
+	Type              SchemaAdditionalPropertiesType // switch on this field
+	SchemaOrReference SchemaOrReference
+	Bool              bool
+}
+
+// SchemaAdditionalPropertiesType is oneOf type of SchemaAdditionalProperties.
+type SchemaAdditionalPropertiesType string
+
+// Possible values for SchemaAdditionalPropertiesType.
+const (
+	SchemaOrReferenceSchemaAdditionalProperties SchemaAdditionalPropertiesType = "SchemaOrReference"
+	BoolSchemaAdditionalProperties              SchemaAdditionalPropertiesType = "bool"
+)
+
+// IsSchemaOrReference reports whether SchemaAdditionalProperties is SchemaOrReference.
+func (s SchemaAdditionalProperties) IsSchemaOrReference() bool {
+	return s.Type == SchemaOrReferenceSchemaAdditionalProperties
+}
+
+// IsBool reports whether SchemaAdditionalProperties is bool.
+func (s SchemaAdditionalProperties) IsBool() bool { return s.Type == BoolSchemaAdditionalProperties }
+
+// SetSchemaOrReference sets SchemaAdditionalProperties to SchemaOrReference.
+func (s *SchemaAdditionalProperties) SetSchemaOrReference(v SchemaOrReference) {
+	s.Type = SchemaOrReferenceSchemaAdditionalProperties
+	s.SchemaOrReference = v
+}
+
+// GetSchemaOrReference returns SchemaOrReference and true boolean if SchemaAdditionalProperties is SchemaOrReference.
+func (s SchemaAdditionalProperties) GetSchemaOrReference() (v SchemaOrReference, ok bool) {
+	if !s.IsSchemaOrReference() {
+		return v, false
+	}
+	return s.SchemaOrReference, true
+}
+
+// NewSchemaOrReferenceSchemaAdditionalProperties returns new SchemaAdditionalProperties from SchemaOrReference.
+func NewSchemaOrReferenceSchemaAdditionalProperties(v SchemaOrReference) SchemaAdditionalProperties {
+	var s SchemaAdditionalProperties
+	s.SetSchemaOrReference(v)
+	return s
+}
+
+// SetBool sets SchemaAdditionalProperties to bool.
+func (s *SchemaAdditionalProperties) SetBool(v bool) {
+	s.Type = BoolSchemaAdditionalProperties
+	s.Bool = v
+}
+
+// GetBool returns bool and true boolean if SchemaAdditionalProperties is bool.
+func (s SchemaAdditionalProperties) GetBool() (v bool, ok bool) {
+	if !s.IsBool() {
+		return v, false
+	}
+	return s.Bool, true
+}
+
+// NewBoolSchemaAdditionalProperties returns new SchemaAdditionalProperties from bool.
+func NewBoolSchemaAdditionalProperties(v bool) SchemaAdditionalProperties {
+	var s SchemaAdditionalProperties
+	s.SetBool(v)
+	return s
+}
+
+// Ref: #/definitions/schemaOrReference
+// SchemaOrReference represents sum type.
+type SchemaOrReference struct {
+	Type      SchemaOrReferenceType // switch on this field
+	Schema    Schema
+	Reference Reference
+}
+
+// SchemaOrReferenceType is oneOf type of SchemaOrReference.
+type SchemaOrReferenceType string
+
+// Possible values for SchemaOrReferenceType.
+const (
+	SchemaSchemaOrReference    SchemaOrReferenceType = "Schema"
+	ReferenceSchemaOrReference SchemaOrReferenceType = "Reference"
+)
+
+// IsSchema reports whether SchemaOrReference is Schema.
+func (s SchemaOrReference) IsSchema() bool { return s.Type == SchemaSchemaOrReference }
+
+// IsReference reports whether SchemaOrReference is Reference.
+func (s SchemaOrReference) IsReference() bool { return s.Type == ReferenceSchemaOrReference }
+
+// SetSchema sets SchemaOrReference to Schema.
+func (s *SchemaOrReference) SetSchema(v Schema) {
+	s.Type = SchemaSchemaOrReference
+	s.Schema = v
+}
+
+// GetSchema returns Schema and true boolean if SchemaOrReference is Schema.
+func (s SchemaOrReference) GetSchema() (v Schema, ok bool) {
+	if !s.IsSchema() {
+		return v, false
+	}
+	return s.Schema, true
+}
+
+// NewSchemaSchemaOrReference returns new SchemaOrReference from Schema.
+func NewSchemaSchemaOrReference(v Schema) SchemaOrReference {
+	var s SchemaOrReference
+	s.SetSchema(v)
+	return s
+}
+
+// SetReference sets SchemaOrReference to Reference.
+func (s *SchemaOrReference) SetReference(v Reference) {
+	s.Type = ReferenceSchemaOrReference
+	s.Reference = v
+}
+
+// GetReference returns Reference and true boolean if SchemaOrReference is Reference.
+func (s SchemaOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
+		return v, false
+	}
+	return s.Reference, true
+}
+
+// NewReferenceSchemaOrReference returns new SchemaOrReference from Reference.
+func NewReferenceSchemaOrReference(v Reference) SchemaOrReference {
+	var s SchemaOrReference
+	s.SetReference(v)
+	return s
+}
+
+type SchemaPattern0 map[string]jx.Raw
+
+func (s *SchemaPattern0) init() SchemaPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type SchemaProperties map[string]SchemaOrReference
+
+func (s *SchemaProperties) init() SchemaProperties {
+	m := *s
+	if m == nil {
+		m = map[string]SchemaOrReference{}
+		*s = m
+	}
+	return m
+}
+
+type SchemaType string
+
+const (
+	SchemaTypeArray   SchemaType = "array"
+	SchemaTypeBoolean SchemaType = "boolean"
+	SchemaTypeInteger SchemaType = "integer"
+	SchemaTypeNull    SchemaType = "null"
+	SchemaTypeNumber  SchemaType = "number"
+	SchemaTypeObject  SchemaType = "object"
+	SchemaTypeString  SchemaType = "string"
+)
+
+// Ref: #/definitions/schemasOrReferences
+type SchemasOrReferences map[string]SchemaOrReference
+
+func (s *SchemasOrReferences) init() SchemasOrReferences {
+	m := *s
+	if m == nil {
+		m = map[string]SchemaOrReference{}
+		*s = m
+	}
+	return m
+}
+
+// Lists the required security schemes to execute this operation. The name used for each property
+// MUST correspond to a security scheme declared in the Security Schemes under the Components Object.
+//  Security Requirement Objects that contain multiple schemes require that all schemes MUST be
+// satisfied for a request to be authorized. This enables support for scenarios where multiple query
+// parameters or HTTP headers are required to convey security information.  When a list of Security
+// Requirement Objects is defined on the Open API object or Operation Object, only one of Security
+// Requirement Objects in the list needs to be satisfied to authorize the request.
+// Ref: #/definitions/securityRequirement
+type SecurityRequirement struct {
+	AdditionalProps SecurityRequirementAdditional
+	Pattern0Props   SecurityRequirementPattern0
+}
+
+type SecurityRequirementAdditional map[string]jx.Raw
+
+func (s *SecurityRequirementAdditional) init() SecurityRequirementAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type SecurityRequirementPattern0 map[string][]string
+
+func (s *SecurityRequirementPattern0) init() SecurityRequirementPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string][]string{}
+		*s = m
+	}
+	return m
+}
+
+// Defines a security scheme that can be used by the operations. Supported schemes are HTTP
+// authentication, an API key (either as a header or as a query parameter), OAuth2's common flows
+// (implicit, password, application and access code) as defined in RFC6749, and OpenID Connect
+// Discovery.
+// Ref: #/definitions/securityScheme
+type SecurityScheme struct {
+	Type             string        "json:\"type\""
+	Description      OptString     "json:\"description\""
+	Name             OptString     "json:\"name\""
+	In               OptString     "json:\"in\""
+	Scheme           OptString     "json:\"scheme\""
+	BearerFormat     OptString     "json:\"bearerFormat\""
+	Flows            OptOauthFlows "json:\"flows\""
+	OpenIdConnectUrl OptString     "json:\"openIdConnectUrl\""
+	AdditionalProps  SecuritySchemeAdditional
+	Pattern0Props    SecuritySchemePattern0
+}
+
+type SecuritySchemeAdditional map[string]jx.Raw
+
+func (s *SecuritySchemeAdditional) init() SecuritySchemeAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/definitions/securitySchemeOrReference
+// SecuritySchemeOrReference represents sum type.
+type SecuritySchemeOrReference struct {
+	Type           SecuritySchemeOrReferenceType // switch on this field
+	SecurityScheme SecurityScheme
+	Reference      Reference
+}
+
+// SecuritySchemeOrReferenceType is oneOf type of SecuritySchemeOrReference.
+type SecuritySchemeOrReferenceType string
+
+// Possible values for SecuritySchemeOrReferenceType.
+const (
+	SecuritySchemeSecuritySchemeOrReference SecuritySchemeOrReferenceType = "SecurityScheme"
+	ReferenceSecuritySchemeOrReference      SecuritySchemeOrReferenceType = "Reference"
+)
+
+// IsSecurityScheme reports whether SecuritySchemeOrReference is SecurityScheme.
+func (s SecuritySchemeOrReference) IsSecurityScheme() bool {
+	return s.Type == SecuritySchemeSecuritySchemeOrReference
+}
+
+// IsReference reports whether SecuritySchemeOrReference is Reference.
+func (s SecuritySchemeOrReference) IsReference() bool {
+	return s.Type == ReferenceSecuritySchemeOrReference
+}
+
+// SetSecurityScheme sets SecuritySchemeOrReference to SecurityScheme.
+func (s *SecuritySchemeOrReference) SetSecurityScheme(v SecurityScheme) {
+	s.Type = SecuritySchemeSecuritySchemeOrReference
+	s.SecurityScheme = v
+}
+
+// GetSecurityScheme returns SecurityScheme and true boolean if SecuritySchemeOrReference is SecurityScheme.
+func (s SecuritySchemeOrReference) GetSecurityScheme() (v SecurityScheme, ok bool) {
+	if !s.IsSecurityScheme() {
+		return v, false
+	}
+	return s.SecurityScheme, true
+}
+
+// NewSecuritySchemeSecuritySchemeOrReference returns new SecuritySchemeOrReference from SecurityScheme.
+func NewSecuritySchemeSecuritySchemeOrReference(v SecurityScheme) SecuritySchemeOrReference {
+	var s SecuritySchemeOrReference
+	s.SetSecurityScheme(v)
+	return s
+}
+
+// SetReference sets SecuritySchemeOrReference to Reference.
+func (s *SecuritySchemeOrReference) SetReference(v Reference) {
+	s.Type = ReferenceSecuritySchemeOrReference
+	s.Reference = v
+}
+
+// GetReference returns Reference and true boolean if SecuritySchemeOrReference is Reference.
+func (s SecuritySchemeOrReference) GetReference() (v Reference, ok bool) {
+	if !s.IsReference() {
+		return v, false
+	}
+	return s.Reference, true
+}
+
+// NewReferenceSecuritySchemeOrReference returns new SecuritySchemeOrReference from Reference.
+func NewReferenceSecuritySchemeOrReference(v Reference) SecuritySchemeOrReference {
+	var s SecuritySchemeOrReference
+	s.SetReference(v)
+	return s
+}
+
+type SecuritySchemePattern0 map[string]jx.Raw
+
+func (s *SecuritySchemePattern0) init() SecuritySchemePattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/definitions/securitySchemesOrReferences
+type SecuritySchemesOrReferences map[string]SecuritySchemeOrReference
+
+func (s *SecuritySchemesOrReferences) init() SecuritySchemesOrReferences {
+	m := *s
+	if m == nil {
+		m = map[string]SecuritySchemeOrReference{}
+		*s = m
+	}
+	return m
+}
+
+// An object representing a Server.
+// Ref: #/definitions/server
+type Server struct {
+	URL             string             "json:\"url\""
+	Description     OptString          "json:\"description\""
+	Variables       OptServerVariables "json:\"variables\""
+	AdditionalProps ServerAdditional
+	Pattern0Props   ServerPattern0
+}
+
+type ServerAdditional map[string]jx.Raw
+
+func (s *ServerAdditional) init() ServerAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type ServerPattern0 map[string]jx.Raw
+
+func (s *ServerPattern0) init() ServerPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// An object representing a Server Variable for server URL template substitution.
+// Ref: #/definitions/serverVariable
+type ServerVariable struct {
+	Enum            []string  "json:\"enum\""
+	Default         string    "json:\"default\""
+	Description     OptString "json:\"description\""
+	AdditionalProps ServerVariableAdditional
+	Pattern0Props   ServerVariablePattern0
+}
+
+type ServerVariableAdditional map[string]jx.Raw
+
+func (s *ServerVariableAdditional) init() ServerVariableAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type ServerVariablePattern0 map[string]jx.Raw
+
+func (s *ServerVariablePattern0) init() ServerVariablePattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// Ref: #/definitions/serverVariables
+type ServerVariables map[string]ServerVariable
+
+func (s *ServerVariables) init() ServerVariables {
+	m := *s
+	if m == nil {
+		m = map[string]ServerVariable{}
+		*s = m
+	}
+	return m
+}
+
 // This is the root document object of the OpenAPI document.
 type Spec struct {
-	Openapi         string                           "json:\"openapi\""
-	Info            DefinitionsInfo                  "json:\"info\""
-	Servers         []DefinitionsServer              "json:\"servers\""
-	Paths           DefinitionsPaths                 "json:\"paths\""
-	Components      OptDefinitionsComponents         "json:\"components\""
-	Security        []DefinitionsSecurityRequirement "json:\"security\""
-	Tags            []DefinitionsTag                 "json:\"tags\""
-	ExternalDocs    OptDefinitionsExternalDocs       "json:\"externalDocs\""
+	Openapi         string                "json:\"openapi\""
+	Info            Info                  "json:\"info\""
+	Servers         []Server              "json:\"servers\""
+	Paths           Paths                 "json:\"paths\""
+	Components      OptComponents         "json:\"components\""
+	Security        []SecurityRequirement "json:\"security\""
+	Tags            []Tag                 "json:\"tags\""
+	ExternalDocs    OptExternalDocs       "json:\"externalDocs\""
 	AdditionalProps SpecAdditional
 	Pattern0Props   SpecPattern0
 }
@@ -3935,34 +3820,117 @@ func (s *SpecPattern0) init() SpecPattern0 {
 	return m
 }
 
+type StringArray []string
+
+// Ref: #/definitions/strings
+type Strings map[string]string
+
+func (s *Strings) init() Strings {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
+
+// Adds metadata to a single tag that is used by the Operation Object. It is not mandatory to have a
+// Tag Object per tag defined in the Operation Object instances.
+// Ref: #/definitions/tag
+type Tag struct {
+	Name            string          "json:\"name\""
+	Description     OptString       "json:\"description\""
+	ExternalDocs    OptExternalDocs "json:\"externalDocs\""
+	AdditionalProps TagAdditional
+	Pattern0Props   TagPattern0
+}
+
+type TagAdditional map[string]jx.Raw
+
+func (s *TagAdditional) init() TagAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type TagPattern0 map[string]jx.Raw
+
+func (s *TagPattern0) init() TagPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+// A metadata object that allows for more fine-tuned XML model definitions.  When using arrays, XML
+// element names are *not* inferred (for singular/plural forms) and the `name` property SHOULD be
+// used to add that information. See examples for expected behavior.
+// Ref: #/definitions/xml
+type XML struct {
+	Name            OptString "json:\"name\""
+	Namespace       OptString "json:\"namespace\""
+	Prefix          OptString "json:\"prefix\""
+	Attribute       OptBool   "json:\"attribute\""
+	Wrapped         OptBool   "json:\"wrapped\""
+	AdditionalProps XMLAdditional
+	Pattern0Props   XMLPattern0
+}
+
+type XMLAdditional map[string]jx.Raw
+
+func (s *XMLAdditional) init() XMLAdditional {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
+type XMLPattern0 map[string]jx.Raw
+
+func (s *XMLPattern0) init() XMLPattern0 {
+	m := *s
+	if m == nil {
+		m = map[string]jx.Raw{}
+		*s = m
+	}
+	return m
+}
+
 // setDefaults set default value of fields.
-func (s *DefinitionsSchema) setDefaults() {
+func (s *Schema) setDefaults() {
 	{
-		val := DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum(false)
+		val := JsonschemaDraft4PropertiesExclusiveMaximum(false)
 
 		s.ExclusiveMaximum.SetTo(val)
 	}
 	{
-		val := DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum(false)
+		val := JsonschemaDraft4PropertiesExclusiveMinimum(false)
 
 		s.ExclusiveMinimum.SetTo(val)
 	}
 	{
-		val := DefinitionsJsonschemaDraft4PropertiesUniqueItems(false)
+		val := JsonschemaDraft4PropertiesUniqueItems(false)
 
 		s.UniqueItems.SetTo(val)
 	}
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsAnysOrExpressions) Encode(e *jx.Encoder) {
+func (s AnysOrExpressions) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsAnysOrExpressions) encodeFields(e *jx.Encoder) {
+func (s AnysOrExpressions) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -3972,10 +3940,10 @@ func (s DefinitionsAnysOrExpressions) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsAnysOrExpressions from json.
-func (s *DefinitionsAnysOrExpressions) Decode(d *jx.Decoder) error {
+// Decode decodes AnysOrExpressions from json.
+func (s *AnysOrExpressions) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsAnysOrExpressions to nil")
+		return errors.New("invalid: unable to decode AnysOrExpressions to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -3993,34 +3961,34 @@ func (s *DefinitionsAnysOrExpressions) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsAnysOrExpressions")
+		return errors.Wrap(err, "decode AnysOrExpressions")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsAnysOrExpressions) MarshalJSON() ([]byte, error) {
+func (s AnysOrExpressions) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsAnysOrExpressions) UnmarshalJSON(data []byte) error {
+func (s *AnysOrExpressions) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsCallback) Encode(e *jx.Encoder) {
+func (s Callback) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsCallback) encodeFields(e *jx.Encoder) {
+func (s Callback) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.AdditionalProps {
 		e.FieldStart(k)
 
@@ -4042,15 +4010,15 @@ func (s DefinitionsCallback) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsCallback = [0]string{}
+var jsonFieldsNameOfCallback = [0]string{}
 
-// Decode decodes DefinitionsCallback from json.
-func (s *DefinitionsCallback) Decode(d *jx.Decoder) error {
+// Decode decodes Callback from json.
+func (s *Callback) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsCallback to nil")
+		return errors.New("invalid: unable to decode Callback to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
-	s.Pattern0Props = map[string]DefinitionsPathItem{}
+	s.Pattern0Props = map[string]PathItem{}
 	s.Pattern1Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -4059,7 +4027,7 @@ func (s *DefinitionsCallback) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^"]; pattern.Match(k) {
 				handled = true
-				var elem DefinitionsPathItem
+				var elem PathItem
 				if err := func() error {
 					if err := elem.Decode(d); err != nil {
 						return err
@@ -4103,34 +4071,34 @@ func (s *DefinitionsCallback) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsCallback")
+		return errors.Wrap(err, "decode Callback")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsCallback) MarshalJSON() ([]byte, error) {
+func (s Callback) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsCallback) UnmarshalJSON(data []byte) error {
+func (s *Callback) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsCallbackAdditional) Encode(e *jx.Encoder) {
+func (s CallbackAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsCallbackAdditional) encodeFields(e *jx.Encoder) {
+func (s CallbackAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -4140,10 +4108,10 @@ func (s DefinitionsCallbackAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsCallbackAdditional from json.
-func (s *DefinitionsCallbackAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes CallbackAdditional from json.
+func (s *CallbackAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsCallbackAdditional to nil")
+		return errors.New("invalid: unable to decode CallbackAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -4161,39 +4129,39 @@ func (s *DefinitionsCallbackAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsCallbackAdditional")
+		return errors.Wrap(err, "decode CallbackAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsCallbackAdditional) MarshalJSON() ([]byte, error) {
+func (s CallbackAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsCallbackAdditional) UnmarshalJSON(data []byte) error {
+func (s *CallbackAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsCallbackOrReference as json.
-func (s DefinitionsCallbackOrReference) Encode(e *jx.Encoder) {
+// Encode encodes CallbackOrReference as json.
+func (s CallbackOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsCallbackDefinitionsCallbackOrReference:
-		s.DefinitionsCallback.Encode(e)
-	case DefinitionsReferenceDefinitionsCallbackOrReference:
-		s.DefinitionsReference.Encode(e)
+	case CallbackCallbackOrReference:
+		s.Callback.Encode(e)
+	case ReferenceCallbackOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsCallbackOrReference from json.
-func (s *DefinitionsCallbackOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes CallbackOrReference from json.
+func (s *CallbackOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsCallbackOrReference to nil")
+		return errors.New("invalid: unable to decode CallbackOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -4209,7 +4177,7 @@ func (s *DefinitionsCallbackOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsCallbackOrReference
+				s.Type = ReferenceCallbackOrReference
 			}
 			return d.Skip()
 		})
@@ -4217,15 +4185,15 @@ func (s *DefinitionsCallbackOrReference) Decode(d *jx.Decoder) error {
 		return errors.Wrap(err, "capture")
 	}
 	if !found {
-		s.Type = DefinitionsCallbackDefinitionsCallbackOrReference
+		s.Type = CallbackCallbackOrReference
 	}
 	switch s.Type {
-	case DefinitionsCallbackDefinitionsCallbackOrReference:
-		if err := s.DefinitionsCallback.Decode(d); err != nil {
+	case CallbackCallbackOrReference:
+		if err := s.Callback.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsCallbackOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceCallbackOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -4235,27 +4203,27 @@ func (s *DefinitionsCallbackOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsCallbackOrReference) MarshalJSON() ([]byte, error) {
+func (s CallbackOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsCallbackOrReference) UnmarshalJSON(data []byte) error {
+func (s *CallbackOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsCallbackPattern0) Encode(e *jx.Encoder) {
+func (s CallbackPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsCallbackPattern0) encodeFields(e *jx.Encoder) {
+func (s CallbackPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -4263,10 +4231,10 @@ func (s DefinitionsCallbackPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsCallbackPattern0 from json.
-func (s *DefinitionsCallbackPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes CallbackPattern0 from json.
+func (s *CallbackPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsCallbackPattern0 to nil")
+		return errors.New("invalid: unable to decode CallbackPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^"]
@@ -4274,7 +4242,7 @@ func (s *DefinitionsCallbackPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem DefinitionsPathItem
+		var elem PathItem
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -4286,34 +4254,34 @@ func (s *DefinitionsCallbackPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsCallbackPattern0")
+		return errors.Wrap(err, "decode CallbackPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsCallbackPattern0) MarshalJSON() ([]byte, error) {
+func (s CallbackPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsCallbackPattern0) UnmarshalJSON(data []byte) error {
+func (s *CallbackPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsCallbackPattern1) Encode(e *jx.Encoder) {
+func (s CallbackPattern1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsCallbackPattern1) encodeFields(e *jx.Encoder) {
+func (s CallbackPattern1) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -4323,10 +4291,10 @@ func (s DefinitionsCallbackPattern1) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsCallbackPattern1 from json.
-func (s *DefinitionsCallbackPattern1) Decode(d *jx.Decoder) error {
+// Decode decodes CallbackPattern1 from json.
+func (s *CallbackPattern1) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsCallbackPattern1 to nil")
+		return errors.New("invalid: unable to decode CallbackPattern1 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -4348,34 +4316,34 @@ func (s *DefinitionsCallbackPattern1) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsCallbackPattern1")
+		return errors.Wrap(err, "decode CallbackPattern1")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsCallbackPattern1) MarshalJSON() ([]byte, error) {
+func (s CallbackPattern1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsCallbackPattern1) UnmarshalJSON(data []byte) error {
+func (s *CallbackPattern1) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsCallbacksOrReferences) Encode(e *jx.Encoder) {
+func (s CallbacksOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsCallbacksOrReferences) encodeFields(e *jx.Encoder) {
+func (s CallbacksOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -4383,14 +4351,14 @@ func (s DefinitionsCallbacksOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsCallbacksOrReferences from json.
-func (s *DefinitionsCallbacksOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes CallbacksOrReferences from json.
+func (s *CallbacksOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsCallbacksOrReferences to nil")
+		return errors.New("invalid: unable to decode CallbacksOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsCallbackOrReference
+		var elem CallbackOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -4402,34 +4370,34 @@ func (s *DefinitionsCallbacksOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsCallbacksOrReferences")
+		return errors.Wrap(err, "decode CallbacksOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsCallbacksOrReferences) MarshalJSON() ([]byte, error) {
+func (s CallbacksOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsCallbacksOrReferences) UnmarshalJSON(data []byte) error {
+func (s *CallbacksOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsComponents) Encode(e *jx.Encoder) {
+func (s Components) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsComponents) encodeFields(e *jx.Encoder) {
+func (s Components) encodeFields(e *jx.Encoder) {
 	{
 		if s.Schemas.Set {
 			e.FieldStart("schemas")
@@ -4500,7 +4468,7 @@ func (s DefinitionsComponents) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsComponents = [9]string{
+var jsonFieldsNameOfComponents = [9]string{
 	0: "schemas",
 	1: "responses",
 	2: "parameters",
@@ -4512,10 +4480,10 @@ var jsonFieldsNameOfDefinitionsComponents = [9]string{
 	8: "callbacks",
 }
 
-// Decode decodes DefinitionsComponents from json.
-func (s *DefinitionsComponents) Decode(d *jx.Decoder) error {
+// Decode decodes Components from json.
+func (s *Components) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsComponents to nil")
+		return errors.New("invalid: unable to decode Components to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -4647,34 +4615,34 @@ func (s *DefinitionsComponents) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsComponents")
+		return errors.Wrap(err, "decode Components")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsComponents) MarshalJSON() ([]byte, error) {
+func (s Components) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsComponents) UnmarshalJSON(data []byte) error {
+func (s *Components) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsComponentsAdditional) Encode(e *jx.Encoder) {
+func (s ComponentsAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsComponentsAdditional) encodeFields(e *jx.Encoder) {
+func (s ComponentsAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -4684,10 +4652,10 @@ func (s DefinitionsComponentsAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsComponentsAdditional from json.
-func (s *DefinitionsComponentsAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ComponentsAdditional from json.
+func (s *ComponentsAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsComponentsAdditional to nil")
+		return errors.New("invalid: unable to decode ComponentsAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -4705,34 +4673,34 @@ func (s *DefinitionsComponentsAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsComponentsAdditional")
+		return errors.Wrap(err, "decode ComponentsAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsComponentsAdditional) MarshalJSON() ([]byte, error) {
+func (s ComponentsAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsComponentsAdditional) UnmarshalJSON(data []byte) error {
+func (s *ComponentsAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsComponentsPattern0) Encode(e *jx.Encoder) {
+func (s ComponentsPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsComponentsPattern0) encodeFields(e *jx.Encoder) {
+func (s ComponentsPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -4742,10 +4710,10 @@ func (s DefinitionsComponentsPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsComponentsPattern0 from json.
-func (s *DefinitionsComponentsPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ComponentsPattern0 from json.
+func (s *ComponentsPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsComponentsPattern0 to nil")
+		return errors.New("invalid: unable to decode ComponentsPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -4767,34 +4735,34 @@ func (s *DefinitionsComponentsPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsComponentsPattern0")
+		return errors.Wrap(err, "decode ComponentsPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsComponentsPattern0) MarshalJSON() ([]byte, error) {
+func (s ComponentsPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsComponentsPattern0) UnmarshalJSON(data []byte) error {
+func (s *ComponentsPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsContact) Encode(e *jx.Encoder) {
+func (s Contact) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsContact) encodeFields(e *jx.Encoder) {
+func (s Contact) encodeFields(e *jx.Encoder) {
 	{
 		if s.Name.Set {
 			e.FieldStart("name")
@@ -4829,16 +4797,16 @@ func (s DefinitionsContact) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsContact = [3]string{
+var jsonFieldsNameOfContact = [3]string{
 	0: "name",
 	1: "url",
 	2: "email",
 }
 
-// Decode decodes DefinitionsContact from json.
-func (s *DefinitionsContact) Decode(d *jx.Decoder) error {
+// Decode decodes Contact from json.
+func (s *Contact) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsContact to nil")
+		return errors.New("invalid: unable to decode Contact to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -4910,34 +4878,34 @@ func (s *DefinitionsContact) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsContact")
+		return errors.Wrap(err, "decode Contact")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsContact) MarshalJSON() ([]byte, error) {
+func (s Contact) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsContact) UnmarshalJSON(data []byte) error {
+func (s *Contact) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsContactAdditional) Encode(e *jx.Encoder) {
+func (s ContactAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsContactAdditional) encodeFields(e *jx.Encoder) {
+func (s ContactAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -4947,10 +4915,10 @@ func (s DefinitionsContactAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsContactAdditional from json.
-func (s *DefinitionsContactAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ContactAdditional from json.
+func (s *ContactAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsContactAdditional to nil")
+		return errors.New("invalid: unable to decode ContactAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -4968,34 +4936,34 @@ func (s *DefinitionsContactAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsContactAdditional")
+		return errors.Wrap(err, "decode ContactAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsContactAdditional) MarshalJSON() ([]byte, error) {
+func (s ContactAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsContactAdditional) UnmarshalJSON(data []byte) error {
+func (s *ContactAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsContactPattern0) Encode(e *jx.Encoder) {
+func (s ContactPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsContactPattern0) encodeFields(e *jx.Encoder) {
+func (s ContactPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -5005,10 +4973,10 @@ func (s DefinitionsContactPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsContactPattern0 from json.
-func (s *DefinitionsContactPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ContactPattern0 from json.
+func (s *ContactPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsContactPattern0 to nil")
+		return errors.New("invalid: unable to decode ContactPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -5030,34 +4998,34 @@ func (s *DefinitionsContactPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsContactPattern0")
+		return errors.Wrap(err, "decode ContactPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsContactPattern0) MarshalJSON() ([]byte, error) {
+func (s ContactPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsContactPattern0) UnmarshalJSON(data []byte) error {
+func (s *ContactPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsDiscriminator) Encode(e *jx.Encoder) {
+func (s Discriminator) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsDiscriminator) encodeFields(e *jx.Encoder) {
+func (s Discriminator) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("propertyName")
@@ -5078,15 +5046,15 @@ func (s DefinitionsDiscriminator) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsDiscriminator = [2]string{
+var jsonFieldsNameOfDiscriminator = [2]string{
 	0: "propertyName",
 	1: "mapping",
 }
 
-// Decode decodes DefinitionsDiscriminator from json.
-func (s *DefinitionsDiscriminator) Decode(d *jx.Decoder) error {
+// Decode decodes Discriminator from json.
+func (s *Discriminator) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsDiscriminator to nil")
+		return errors.New("invalid: unable to decode Discriminator to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -5131,7 +5099,7 @@ func (s *DefinitionsDiscriminator) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsDiscriminator")
+		return errors.Wrap(err, "decode Discriminator")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -5148,8 +5116,8 @@ func (s *DefinitionsDiscriminator) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsDiscriminator) {
-					name = jsonFieldsNameOfDefinitionsDiscriminator[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfDiscriminator) {
+					name = jsonFieldsNameOfDiscriminator[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -5170,27 +5138,27 @@ func (s *DefinitionsDiscriminator) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsDiscriminator) MarshalJSON() ([]byte, error) {
+func (s Discriminator) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsDiscriminator) UnmarshalJSON(data []byte) error {
+func (s *Discriminator) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsDiscriminatorAdditional) Encode(e *jx.Encoder) {
+func (s DiscriminatorAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsDiscriminatorAdditional) encodeFields(e *jx.Encoder) {
+func (s DiscriminatorAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -5200,10 +5168,10 @@ func (s DefinitionsDiscriminatorAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsDiscriminatorAdditional from json.
-func (s *DefinitionsDiscriminatorAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes DiscriminatorAdditional from json.
+func (s *DiscriminatorAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsDiscriminatorAdditional to nil")
+		return errors.New("invalid: unable to decode DiscriminatorAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -5221,34 +5189,34 @@ func (s *DefinitionsDiscriminatorAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsDiscriminatorAdditional")
+		return errors.Wrap(err, "decode DiscriminatorAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsDiscriminatorAdditional) MarshalJSON() ([]byte, error) {
+func (s DiscriminatorAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsDiscriminatorAdditional) UnmarshalJSON(data []byte) error {
+func (s *DiscriminatorAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsEncoding) Encode(e *jx.Encoder) {
+func (s Encoding) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsEncoding) encodeFields(e *jx.Encoder) {
+func (s Encoding) encodeFields(e *jx.Encoder) {
 	{
 		if s.ContentType.Set {
 			e.FieldStart("contentType")
@@ -5295,7 +5263,7 @@ func (s DefinitionsEncoding) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsEncoding = [5]string{
+var jsonFieldsNameOfEncoding = [5]string{
 	0: "contentType",
 	1: "headers",
 	2: "style",
@@ -5303,10 +5271,10 @@ var jsonFieldsNameOfDefinitionsEncoding = [5]string{
 	4: "allowReserved",
 }
 
-// Decode decodes DefinitionsEncoding from json.
-func (s *DefinitionsEncoding) Decode(d *jx.Decoder) error {
+// Decode decodes Encoding from json.
+func (s *Encoding) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsEncoding to nil")
+		return errors.New("invalid: unable to decode Encoding to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -5398,34 +5366,34 @@ func (s *DefinitionsEncoding) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsEncoding")
+		return errors.Wrap(err, "decode Encoding")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsEncoding) MarshalJSON() ([]byte, error) {
+func (s Encoding) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsEncoding) UnmarshalJSON(data []byte) error {
+func (s *Encoding) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsEncodingAdditional) Encode(e *jx.Encoder) {
+func (s EncodingAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsEncodingAdditional) encodeFields(e *jx.Encoder) {
+func (s EncodingAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -5435,10 +5403,10 @@ func (s DefinitionsEncodingAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsEncodingAdditional from json.
-func (s *DefinitionsEncodingAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes EncodingAdditional from json.
+func (s *EncodingAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsEncodingAdditional to nil")
+		return errors.New("invalid: unable to decode EncodingAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -5456,34 +5424,34 @@ func (s *DefinitionsEncodingAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsEncodingAdditional")
+		return errors.Wrap(err, "decode EncodingAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsEncodingAdditional) MarshalJSON() ([]byte, error) {
+func (s EncodingAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsEncodingAdditional) UnmarshalJSON(data []byte) error {
+func (s *EncodingAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsEncodingPattern0) Encode(e *jx.Encoder) {
+func (s EncodingPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsEncodingPattern0) encodeFields(e *jx.Encoder) {
+func (s EncodingPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -5493,10 +5461,10 @@ func (s DefinitionsEncodingPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsEncodingPattern0 from json.
-func (s *DefinitionsEncodingPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes EncodingPattern0 from json.
+func (s *EncodingPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsEncodingPattern0 to nil")
+		return errors.New("invalid: unable to decode EncodingPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -5518,34 +5486,34 @@ func (s *DefinitionsEncodingPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsEncodingPattern0")
+		return errors.Wrap(err, "decode EncodingPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsEncodingPattern0) MarshalJSON() ([]byte, error) {
+func (s EncodingPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsEncodingPattern0) UnmarshalJSON(data []byte) error {
+func (s *EncodingPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsEncodings) Encode(e *jx.Encoder) {
+func (s Encodings) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsEncodings) encodeFields(e *jx.Encoder) {
+func (s Encodings) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -5553,14 +5521,14 @@ func (s DefinitionsEncodings) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsEncodings from json.
-func (s *DefinitionsEncodings) Decode(d *jx.Decoder) error {
+// Decode decodes Encodings from json.
+func (s *Encodings) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsEncodings to nil")
+		return errors.New("invalid: unable to decode Encodings to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsEncoding
+		var elem Encoding
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -5572,34 +5540,34 @@ func (s *DefinitionsEncodings) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsEncodings")
+		return errors.Wrap(err, "decode Encodings")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsEncodings) MarshalJSON() ([]byte, error) {
+func (s Encodings) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsEncodings) UnmarshalJSON(data []byte) error {
+func (s *Encodings) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsExample) Encode(e *jx.Encoder) {
+func (s Example) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsExample) encodeFields(e *jx.Encoder) {
+func (s Example) encodeFields(e *jx.Encoder) {
 	{
 		if s.Summary.Set {
 			e.FieldStart("summary")
@@ -5641,17 +5609,17 @@ func (s DefinitionsExample) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsExample = [4]string{
+var jsonFieldsNameOfExample = [4]string{
 	0: "summary",
 	1: "description",
 	2: "value",
 	3: "externalValue",
 }
 
-// Decode decodes DefinitionsExample from json.
-func (s *DefinitionsExample) Decode(d *jx.Decoder) error {
+// Decode decodes Example from json.
+func (s *Example) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsExample to nil")
+		return errors.New("invalid: unable to decode Example to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -5734,34 +5702,34 @@ func (s *DefinitionsExample) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsExample")
+		return errors.Wrap(err, "decode Example")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsExample) MarshalJSON() ([]byte, error) {
+func (s Example) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsExample) UnmarshalJSON(data []byte) error {
+func (s *Example) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsExampleAdditional) Encode(e *jx.Encoder) {
+func (s ExampleAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsExampleAdditional) encodeFields(e *jx.Encoder) {
+func (s ExampleAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -5771,10 +5739,10 @@ func (s DefinitionsExampleAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsExampleAdditional from json.
-func (s *DefinitionsExampleAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ExampleAdditional from json.
+func (s *ExampleAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsExampleAdditional to nil")
+		return errors.New("invalid: unable to decode ExampleAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -5792,39 +5760,39 @@ func (s *DefinitionsExampleAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsExampleAdditional")
+		return errors.Wrap(err, "decode ExampleAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsExampleAdditional) MarshalJSON() ([]byte, error) {
+func (s ExampleAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsExampleAdditional) UnmarshalJSON(data []byte) error {
+func (s *ExampleAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsExampleOrReference as json.
-func (s DefinitionsExampleOrReference) Encode(e *jx.Encoder) {
+// Encode encodes ExampleOrReference as json.
+func (s ExampleOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsExampleDefinitionsExampleOrReference:
-		s.DefinitionsExample.Encode(e)
-	case DefinitionsReferenceDefinitionsExampleOrReference:
-		s.DefinitionsReference.Encode(e)
+	case ExampleExampleOrReference:
+		s.Example.Encode(e)
+	case ReferenceExampleOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsExampleOrReference from json.
-func (s *DefinitionsExampleOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes ExampleOrReference from json.
+func (s *ExampleOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsExampleOrReference to nil")
+		return errors.New("invalid: unable to decode ExampleOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -5840,19 +5808,19 @@ func (s *DefinitionsExampleOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "summary":
 				found = true
-				s.Type = DefinitionsExampleDefinitionsExampleOrReference
+				s.Type = ExampleExampleOrReference
 			case "description":
 				found = true
-				s.Type = DefinitionsExampleDefinitionsExampleOrReference
+				s.Type = ExampleExampleOrReference
 			case "value":
 				found = true
-				s.Type = DefinitionsExampleDefinitionsExampleOrReference
+				s.Type = ExampleExampleOrReference
 			case "externalValue":
 				found = true
-				s.Type = DefinitionsExampleDefinitionsExampleOrReference
+				s.Type = ExampleExampleOrReference
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsExampleOrReference
+				s.Type = ReferenceExampleOrReference
 			}
 			return d.Skip()
 		})
@@ -5863,12 +5831,12 @@ func (s *DefinitionsExampleOrReference) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case DefinitionsExampleDefinitionsExampleOrReference:
-		if err := s.DefinitionsExample.Decode(d); err != nil {
+	case ExampleExampleOrReference:
+		if err := s.Example.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsExampleOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceExampleOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -5878,27 +5846,27 @@ func (s *DefinitionsExampleOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsExampleOrReference) MarshalJSON() ([]byte, error) {
+func (s ExampleOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsExampleOrReference) UnmarshalJSON(data []byte) error {
+func (s *ExampleOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsExamplePattern0) Encode(e *jx.Encoder) {
+func (s ExamplePattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsExamplePattern0) encodeFields(e *jx.Encoder) {
+func (s ExamplePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -5908,10 +5876,10 @@ func (s DefinitionsExamplePattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsExamplePattern0 from json.
-func (s *DefinitionsExamplePattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ExamplePattern0 from json.
+func (s *ExamplePattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsExamplePattern0 to nil")
+		return errors.New("invalid: unable to decode ExamplePattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -5933,34 +5901,34 @@ func (s *DefinitionsExamplePattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsExamplePattern0")
+		return errors.Wrap(err, "decode ExamplePattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsExamplePattern0) MarshalJSON() ([]byte, error) {
+func (s ExamplePattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsExamplePattern0) UnmarshalJSON(data []byte) error {
+func (s *ExamplePattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsExamplesOrReferences) Encode(e *jx.Encoder) {
+func (s ExamplesOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsExamplesOrReferences) encodeFields(e *jx.Encoder) {
+func (s ExamplesOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -5968,14 +5936,14 @@ func (s DefinitionsExamplesOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsExamplesOrReferences from json.
-func (s *DefinitionsExamplesOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes ExamplesOrReferences from json.
+func (s *ExamplesOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsExamplesOrReferences to nil")
+		return errors.New("invalid: unable to decode ExamplesOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsExampleOrReference
+		var elem ExampleOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -5987,34 +5955,34 @@ func (s *DefinitionsExamplesOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsExamplesOrReferences")
+		return errors.Wrap(err, "decode ExamplesOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsExamplesOrReferences) MarshalJSON() ([]byte, error) {
+func (s ExamplesOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsExamplesOrReferences) UnmarshalJSON(data []byte) error {
+func (s *ExamplesOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsExternalDocs) Encode(e *jx.Encoder) {
+func (s ExternalDocs) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsExternalDocs) encodeFields(e *jx.Encoder) {
+func (s ExternalDocs) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -6042,15 +6010,15 @@ func (s DefinitionsExternalDocs) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsExternalDocs = [2]string{
+var jsonFieldsNameOfExternalDocs = [2]string{
 	0: "description",
 	1: "url",
 }
 
-// Decode decodes DefinitionsExternalDocs from json.
-func (s *DefinitionsExternalDocs) Decode(d *jx.Decoder) error {
+// Decode decodes ExternalDocs from json.
+func (s *ExternalDocs) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsExternalDocs to nil")
+		return errors.New("invalid: unable to decode ExternalDocs to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -6115,7 +6083,7 @@ func (s *DefinitionsExternalDocs) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsExternalDocs")
+		return errors.Wrap(err, "decode ExternalDocs")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -6132,8 +6100,8 @@ func (s *DefinitionsExternalDocs) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsExternalDocs) {
-					name = jsonFieldsNameOfDefinitionsExternalDocs[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfExternalDocs) {
+					name = jsonFieldsNameOfExternalDocs[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -6154,27 +6122,27 @@ func (s *DefinitionsExternalDocs) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsExternalDocs) MarshalJSON() ([]byte, error) {
+func (s ExternalDocs) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsExternalDocs) UnmarshalJSON(data []byte) error {
+func (s *ExternalDocs) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsExternalDocsAdditional) Encode(e *jx.Encoder) {
+func (s ExternalDocsAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsExternalDocsAdditional) encodeFields(e *jx.Encoder) {
+func (s ExternalDocsAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -6184,10 +6152,10 @@ func (s DefinitionsExternalDocsAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsExternalDocsAdditional from json.
-func (s *DefinitionsExternalDocsAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ExternalDocsAdditional from json.
+func (s *ExternalDocsAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsExternalDocsAdditional to nil")
+		return errors.New("invalid: unable to decode ExternalDocsAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -6205,34 +6173,34 @@ func (s *DefinitionsExternalDocsAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsExternalDocsAdditional")
+		return errors.Wrap(err, "decode ExternalDocsAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsExternalDocsAdditional) MarshalJSON() ([]byte, error) {
+func (s ExternalDocsAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsExternalDocsAdditional) UnmarshalJSON(data []byte) error {
+func (s *ExternalDocsAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsExternalDocsPattern0) Encode(e *jx.Encoder) {
+func (s ExternalDocsPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsExternalDocsPattern0) encodeFields(e *jx.Encoder) {
+func (s ExternalDocsPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -6242,10 +6210,10 @@ func (s DefinitionsExternalDocsPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsExternalDocsPattern0 from json.
-func (s *DefinitionsExternalDocsPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ExternalDocsPattern0 from json.
+func (s *ExternalDocsPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsExternalDocsPattern0 to nil")
+		return errors.New("invalid: unable to decode ExternalDocsPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -6267,34 +6235,34 @@ func (s *DefinitionsExternalDocsPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsExternalDocsPattern0")
+		return errors.Wrap(err, "decode ExternalDocsPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsExternalDocsPattern0) MarshalJSON() ([]byte, error) {
+func (s ExternalDocsPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsExternalDocsPattern0) UnmarshalJSON(data []byte) error {
+func (s *ExternalDocsPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsHeader) Encode(e *jx.Encoder) {
+func (s Header) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsHeader) encodeFields(e *jx.Encoder) {
+func (s Header) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -6378,7 +6346,7 @@ func (s DefinitionsHeader) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsHeader = [11]string{
+var jsonFieldsNameOfHeader = [11]string{
 	0:  "description",
 	1:  "required",
 	2:  "deprecated",
@@ -6392,10 +6360,10 @@ var jsonFieldsNameOfDefinitionsHeader = [11]string{
 	10: "content",
 }
 
-// Decode decodes DefinitionsHeader from json.
-func (s *DefinitionsHeader) Decode(d *jx.Decoder) error {
+// Decode decodes Header from json.
+func (s *Header) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsHeader to nil")
+		return errors.New("invalid: unable to decode Header to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -6548,34 +6516,34 @@ func (s *DefinitionsHeader) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsHeader")
+		return errors.Wrap(err, "decode Header")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsHeader) MarshalJSON() ([]byte, error) {
+func (s Header) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsHeader) UnmarshalJSON(data []byte) error {
+func (s *Header) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsHeaderAdditional) Encode(e *jx.Encoder) {
+func (s HeaderAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsHeaderAdditional) encodeFields(e *jx.Encoder) {
+func (s HeaderAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -6585,10 +6553,10 @@ func (s DefinitionsHeaderAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsHeaderAdditional from json.
-func (s *DefinitionsHeaderAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes HeaderAdditional from json.
+func (s *HeaderAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsHeaderAdditional to nil")
+		return errors.New("invalid: unable to decode HeaderAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -6606,39 +6574,39 @@ func (s *DefinitionsHeaderAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsHeaderAdditional")
+		return errors.Wrap(err, "decode HeaderAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsHeaderAdditional) MarshalJSON() ([]byte, error) {
+func (s HeaderAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsHeaderAdditional) UnmarshalJSON(data []byte) error {
+func (s *HeaderAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsHeaderOrReference as json.
-func (s DefinitionsHeaderOrReference) Encode(e *jx.Encoder) {
+// Encode encodes HeaderOrReference as json.
+func (s HeaderOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsHeaderDefinitionsHeaderOrReference:
-		s.DefinitionsHeader.Encode(e)
-	case DefinitionsReferenceDefinitionsHeaderOrReference:
-		s.DefinitionsReference.Encode(e)
+	case HeaderHeaderOrReference:
+		s.Header.Encode(e)
+	case ReferenceHeaderOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsHeaderOrReference from json.
-func (s *DefinitionsHeaderOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes HeaderOrReference from json.
+func (s *HeaderOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsHeaderOrReference to nil")
+		return errors.New("invalid: unable to decode HeaderOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -6654,40 +6622,40 @@ func (s *DefinitionsHeaderOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "description":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "required":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "deprecated":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "allowEmptyValue":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "style":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "explode":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "allowReserved":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "schema":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "example":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "examples":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "content":
 				found = true
-				s.Type = DefinitionsHeaderDefinitionsHeaderOrReference
+				s.Type = HeaderHeaderOrReference
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsHeaderOrReference
+				s.Type = ReferenceHeaderOrReference
 			}
 			return d.Skip()
 		})
@@ -6698,12 +6666,12 @@ func (s *DefinitionsHeaderOrReference) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case DefinitionsHeaderDefinitionsHeaderOrReference:
-		if err := s.DefinitionsHeader.Decode(d); err != nil {
+	case HeaderHeaderOrReference:
+		if err := s.Header.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsHeaderOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceHeaderOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -6713,27 +6681,27 @@ func (s *DefinitionsHeaderOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsHeaderOrReference) MarshalJSON() ([]byte, error) {
+func (s HeaderOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsHeaderOrReference) UnmarshalJSON(data []byte) error {
+func (s *HeaderOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsHeaderPattern0) Encode(e *jx.Encoder) {
+func (s HeaderPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsHeaderPattern0) encodeFields(e *jx.Encoder) {
+func (s HeaderPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -6743,10 +6711,10 @@ func (s DefinitionsHeaderPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsHeaderPattern0 from json.
-func (s *DefinitionsHeaderPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes HeaderPattern0 from json.
+func (s *HeaderPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsHeaderPattern0 to nil")
+		return errors.New("invalid: unable to decode HeaderPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -6768,34 +6736,34 @@ func (s *DefinitionsHeaderPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsHeaderPattern0")
+		return errors.Wrap(err, "decode HeaderPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsHeaderPattern0) MarshalJSON() ([]byte, error) {
+func (s HeaderPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsHeaderPattern0) UnmarshalJSON(data []byte) error {
+func (s *HeaderPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsHeadersOrReferences) Encode(e *jx.Encoder) {
+func (s HeadersOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsHeadersOrReferences) encodeFields(e *jx.Encoder) {
+func (s HeadersOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -6803,14 +6771,14 @@ func (s DefinitionsHeadersOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsHeadersOrReferences from json.
-func (s *DefinitionsHeadersOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes HeadersOrReferences from json.
+func (s *HeadersOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsHeadersOrReferences to nil")
+		return errors.New("invalid: unable to decode HeadersOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsHeaderOrReference
+		var elem HeaderOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -6822,34 +6790,34 @@ func (s *DefinitionsHeadersOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsHeadersOrReferences")
+		return errors.Wrap(err, "decode HeadersOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsHeadersOrReferences) MarshalJSON() ([]byte, error) {
+func (s HeadersOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsHeadersOrReferences) UnmarshalJSON(data []byte) error {
+func (s *HeadersOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsInfo) Encode(e *jx.Encoder) {
+func (s Info) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsInfo) encodeFields(e *jx.Encoder) {
+func (s Info) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("title")
@@ -6900,7 +6868,7 @@ func (s DefinitionsInfo) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsInfo = [6]string{
+var jsonFieldsNameOfInfo = [6]string{
 	0: "title",
 	1: "description",
 	2: "termsOfService",
@@ -6909,10 +6877,10 @@ var jsonFieldsNameOfDefinitionsInfo = [6]string{
 	5: "version",
 }
 
-// Decode decodes DefinitionsInfo from json.
-func (s *DefinitionsInfo) Decode(d *jx.Decoder) error {
+// Decode decodes Info from json.
+func (s *Info) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsInfo to nil")
+		return errors.New("invalid: unable to decode Info to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -7019,7 +6987,7 @@ func (s *DefinitionsInfo) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsInfo")
+		return errors.Wrap(err, "decode Info")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -7036,8 +7004,8 @@ func (s *DefinitionsInfo) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsInfo) {
-					name = jsonFieldsNameOfDefinitionsInfo[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfInfo) {
+					name = jsonFieldsNameOfInfo[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -7058,27 +7026,27 @@ func (s *DefinitionsInfo) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsInfo) MarshalJSON() ([]byte, error) {
+func (s Info) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsInfo) UnmarshalJSON(data []byte) error {
+func (s *Info) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsInfoAdditional) Encode(e *jx.Encoder) {
+func (s InfoAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsInfoAdditional) encodeFields(e *jx.Encoder) {
+func (s InfoAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -7088,10 +7056,10 @@ func (s DefinitionsInfoAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsInfoAdditional from json.
-func (s *DefinitionsInfoAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes InfoAdditional from json.
+func (s *InfoAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsInfoAdditional to nil")
+		return errors.New("invalid: unable to decode InfoAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -7109,34 +7077,34 @@ func (s *DefinitionsInfoAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsInfoAdditional")
+		return errors.Wrap(err, "decode InfoAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsInfoAdditional) MarshalJSON() ([]byte, error) {
+func (s InfoAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsInfoAdditional) UnmarshalJSON(data []byte) error {
+func (s *InfoAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsInfoPattern0) Encode(e *jx.Encoder) {
+func (s InfoPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsInfoPattern0) encodeFields(e *jx.Encoder) {
+func (s InfoPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -7146,10 +7114,10 @@ func (s DefinitionsInfoPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsInfoPattern0 from json.
-func (s *DefinitionsInfoPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes InfoPattern0 from json.
+func (s *InfoPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsInfoPattern0 to nil")
+		return errors.New("invalid: unable to decode InfoPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -7171,27 +7139,27 @@ func (s *DefinitionsInfoPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsInfoPattern0")
+		return errors.Wrap(err, "decode InfoPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsInfoPattern0) MarshalJSON() ([]byte, error) {
+func (s InfoPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsInfoPattern0) UnmarshalJSON(data []byte) error {
+func (s *InfoPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesEnum as json.
-func (s DefinitionsJsonschemaDraft4PropertiesEnum) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesEnum as json.
+func (s JsonschemaDraft4PropertiesEnum) Encode(e *jx.Encoder) {
 	unwrapped := []jx.Raw(s)
 	e.ArrStart()
 	for _, elem := range unwrapped {
@@ -7202,10 +7170,10 @@ func (s DefinitionsJsonschemaDraft4PropertiesEnum) Encode(e *jx.Encoder) {
 	e.ArrEnd()
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesEnum from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesEnum) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesEnum from json.
+func (s *JsonschemaDraft4PropertiesEnum) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesEnum to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesEnum to nil")
 	}
 	var unwrapped []jx.Raw
 	if err := func() error {
@@ -7226,33 +7194,33 @@ func (s *DefinitionsJsonschemaDraft4PropertiesEnum) Decode(d *jx.Decoder) error 
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesEnum(unwrapped)
+	*s = JsonschemaDraft4PropertiesEnum(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesEnum) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesEnum) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesEnum) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesEnum) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum as json.
-func (s DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesExclusiveMaximum as json.
+func (s JsonschemaDraft4PropertiesExclusiveMaximum) Encode(e *jx.Encoder) {
 	unwrapped := bool(s)
 	e.Bool(unwrapped)
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesExclusiveMaximum from json.
+func (s *JsonschemaDraft4PropertiesExclusiveMaximum) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesExclusiveMaximum to nil")
 	}
 	var unwrapped bool
 	if err := func() error {
@@ -7265,33 +7233,33 @@ func (s *DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Decode(d *jx.Dec
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum(unwrapped)
+	*s = JsonschemaDraft4PropertiesExclusiveMaximum(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesExclusiveMaximum) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesExclusiveMaximum) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum as json.
-func (s DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesExclusiveMinimum as json.
+func (s JsonschemaDraft4PropertiesExclusiveMinimum) Encode(e *jx.Encoder) {
 	unwrapped := bool(s)
 	e.Bool(unwrapped)
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesExclusiveMinimum from json.
+func (s *JsonschemaDraft4PropertiesExclusiveMinimum) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesExclusiveMinimum to nil")
 	}
 	var unwrapped bool
 	if err := func() error {
@@ -7304,33 +7272,33 @@ func (s *DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Decode(d *jx.Dec
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum(unwrapped)
+	*s = JsonschemaDraft4PropertiesExclusiveMinimum(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesExclusiveMinimum) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesExclusiveMinimum) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesMaximum as json.
-func (s DefinitionsJsonschemaDraft4PropertiesMaximum) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesMaximum as json.
+func (s JsonschemaDraft4PropertiesMaximum) Encode(e *jx.Encoder) {
 	unwrapped := float64(s)
 	e.Float64(unwrapped)
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesMaximum from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesMaximum) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesMaximum from json.
+func (s *JsonschemaDraft4PropertiesMaximum) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesMaximum to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesMaximum to nil")
 	}
 	var unwrapped float64
 	if err := func() error {
@@ -7343,33 +7311,33 @@ func (s *DefinitionsJsonschemaDraft4PropertiesMaximum) Decode(d *jx.Decoder) err
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesMaximum(unwrapped)
+	*s = JsonschemaDraft4PropertiesMaximum(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesMaximum) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesMaximum) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesMaximum) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesMaximum) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesMinimum as json.
-func (s DefinitionsJsonschemaDraft4PropertiesMinimum) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesMinimum as json.
+func (s JsonschemaDraft4PropertiesMinimum) Encode(e *jx.Encoder) {
 	unwrapped := float64(s)
 	e.Float64(unwrapped)
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesMinimum from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesMinimum) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesMinimum from json.
+func (s *JsonschemaDraft4PropertiesMinimum) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesMinimum to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesMinimum to nil")
 	}
 	var unwrapped float64
 	if err := func() error {
@@ -7382,33 +7350,33 @@ func (s *DefinitionsJsonschemaDraft4PropertiesMinimum) Decode(d *jx.Decoder) err
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesMinimum(unwrapped)
+	*s = JsonschemaDraft4PropertiesMinimum(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesMinimum) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesMinimum) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesMinimum) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesMinimum) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesMultipleOf as json.
-func (s DefinitionsJsonschemaDraft4PropertiesMultipleOf) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesMultipleOf as json.
+func (s JsonschemaDraft4PropertiesMultipleOf) Encode(e *jx.Encoder) {
 	unwrapped := float64(s)
 	e.Float64(unwrapped)
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesMultipleOf from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesMultipleOf) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesMultipleOf from json.
+func (s *JsonschemaDraft4PropertiesMultipleOf) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesMultipleOf to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesMultipleOf to nil")
 	}
 	var unwrapped float64
 	if err := func() error {
@@ -7421,33 +7389,33 @@ func (s *DefinitionsJsonschemaDraft4PropertiesMultipleOf) Decode(d *jx.Decoder) 
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesMultipleOf(unwrapped)
+	*s = JsonschemaDraft4PropertiesMultipleOf(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesMultipleOf) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesMultipleOf) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesMultipleOf) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesMultipleOf) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesPattern as json.
-func (s DefinitionsJsonschemaDraft4PropertiesPattern) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesPattern as json.
+func (s JsonschemaDraft4PropertiesPattern) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesPattern from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesPattern) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesPattern from json.
+func (s *JsonschemaDraft4PropertiesPattern) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesPattern to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesPattern to nil")
 	}
 	var unwrapped string
 	if err := func() error {
@@ -7460,33 +7428,33 @@ func (s *DefinitionsJsonschemaDraft4PropertiesPattern) Decode(d *jx.Decoder) err
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesPattern(unwrapped)
+	*s = JsonschemaDraft4PropertiesPattern(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesPattern) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesPattern) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesPattern) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesPattern) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesTitle as json.
-func (s DefinitionsJsonschemaDraft4PropertiesTitle) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesTitle as json.
+func (s JsonschemaDraft4PropertiesTitle) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
 	e.Str(unwrapped)
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesTitle from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesTitle) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesTitle from json.
+func (s *JsonschemaDraft4PropertiesTitle) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesTitle to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesTitle to nil")
 	}
 	var unwrapped string
 	if err := func() error {
@@ -7499,33 +7467,33 @@ func (s *DefinitionsJsonschemaDraft4PropertiesTitle) Decode(d *jx.Decoder) error
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesTitle(unwrapped)
+	*s = JsonschemaDraft4PropertiesTitle(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesTitle) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesTitle) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesTitle) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesTitle) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesUniqueItems as json.
-func (s DefinitionsJsonschemaDraft4PropertiesUniqueItems) Encode(e *jx.Encoder) {
+// Encode encodes JsonschemaDraft4PropertiesUniqueItems as json.
+func (s JsonschemaDraft4PropertiesUniqueItems) Encode(e *jx.Encoder) {
 	unwrapped := bool(s)
 	e.Bool(unwrapped)
 }
 
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesUniqueItems from json.
-func (s *DefinitionsJsonschemaDraft4PropertiesUniqueItems) Decode(d *jx.Decoder) error {
+// Decode decodes JsonschemaDraft4PropertiesUniqueItems from json.
+func (s *JsonschemaDraft4PropertiesUniqueItems) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsJsonschemaDraft4PropertiesUniqueItems to nil")
+		return errors.New("invalid: unable to decode JsonschemaDraft4PropertiesUniqueItems to nil")
 	}
 	var unwrapped bool
 	if err := func() error {
@@ -7538,32 +7506,32 @@ func (s *DefinitionsJsonschemaDraft4PropertiesUniqueItems) Decode(d *jx.Decoder)
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsJsonschemaDraft4PropertiesUniqueItems(unwrapped)
+	*s = JsonschemaDraft4PropertiesUniqueItems(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsJsonschemaDraft4PropertiesUniqueItems) MarshalJSON() ([]byte, error) {
+func (s JsonschemaDraft4PropertiesUniqueItems) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsJsonschemaDraft4PropertiesUniqueItems) UnmarshalJSON(data []byte) error {
+func (s *JsonschemaDraft4PropertiesUniqueItems) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsLicense) Encode(e *jx.Encoder) {
+func (s License) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsLicense) encodeFields(e *jx.Encoder) {
+func (s License) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -7591,15 +7559,15 @@ func (s DefinitionsLicense) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsLicense = [2]string{
+var jsonFieldsNameOfLicense = [2]string{
 	0: "name",
 	1: "url",
 }
 
-// Decode decodes DefinitionsLicense from json.
-func (s *DefinitionsLicense) Decode(d *jx.Decoder) error {
+// Decode decodes License from json.
+func (s *License) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsLicense to nil")
+		return errors.New("invalid: unable to decode License to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -7664,7 +7632,7 @@ func (s *DefinitionsLicense) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsLicense")
+		return errors.Wrap(err, "decode License")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -7681,8 +7649,8 @@ func (s *DefinitionsLicense) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsLicense) {
-					name = jsonFieldsNameOfDefinitionsLicense[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfLicense) {
+					name = jsonFieldsNameOfLicense[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -7703,27 +7671,27 @@ func (s *DefinitionsLicense) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsLicense) MarshalJSON() ([]byte, error) {
+func (s License) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsLicense) UnmarshalJSON(data []byte) error {
+func (s *License) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsLicenseAdditional) Encode(e *jx.Encoder) {
+func (s LicenseAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsLicenseAdditional) encodeFields(e *jx.Encoder) {
+func (s LicenseAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -7733,10 +7701,10 @@ func (s DefinitionsLicenseAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsLicenseAdditional from json.
-func (s *DefinitionsLicenseAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes LicenseAdditional from json.
+func (s *LicenseAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsLicenseAdditional to nil")
+		return errors.New("invalid: unable to decode LicenseAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -7754,34 +7722,34 @@ func (s *DefinitionsLicenseAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsLicenseAdditional")
+		return errors.Wrap(err, "decode LicenseAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsLicenseAdditional) MarshalJSON() ([]byte, error) {
+func (s LicenseAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsLicenseAdditional) UnmarshalJSON(data []byte) error {
+func (s *LicenseAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsLicensePattern0) Encode(e *jx.Encoder) {
+func (s LicensePattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsLicensePattern0) encodeFields(e *jx.Encoder) {
+func (s LicensePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -7791,10 +7759,10 @@ func (s DefinitionsLicensePattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsLicensePattern0 from json.
-func (s *DefinitionsLicensePattern0) Decode(d *jx.Decoder) error {
+// Decode decodes LicensePattern0 from json.
+func (s *LicensePattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsLicensePattern0 to nil")
+		return errors.New("invalid: unable to decode LicensePattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -7816,34 +7784,34 @@ func (s *DefinitionsLicensePattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsLicensePattern0")
+		return errors.Wrap(err, "decode LicensePattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsLicensePattern0) MarshalJSON() ([]byte, error) {
+func (s LicensePattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsLicensePattern0) UnmarshalJSON(data []byte) error {
+func (s *LicensePattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsLink) Encode(e *jx.Encoder) {
+func (s Link) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsLink) encodeFields(e *jx.Encoder) {
+func (s Link) encodeFields(e *jx.Encoder) {
 	{
 		if s.OperationRef.Set {
 			e.FieldStart("operationRef")
@@ -7897,7 +7865,7 @@ func (s DefinitionsLink) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsLink = [6]string{
+var jsonFieldsNameOfLink = [6]string{
 	0: "operationRef",
 	1: "operationId",
 	2: "parameters",
@@ -7906,10 +7874,10 @@ var jsonFieldsNameOfDefinitionsLink = [6]string{
 	5: "server",
 }
 
-// Decode decodes DefinitionsLink from json.
-func (s *DefinitionsLink) Decode(d *jx.Decoder) error {
+// Decode decodes Link from json.
+func (s *Link) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsLink to nil")
+		return errors.New("invalid: unable to decode Link to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -8012,34 +7980,34 @@ func (s *DefinitionsLink) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsLink")
+		return errors.Wrap(err, "decode Link")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsLink) MarshalJSON() ([]byte, error) {
+func (s Link) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsLink) UnmarshalJSON(data []byte) error {
+func (s *Link) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsLinkAdditional) Encode(e *jx.Encoder) {
+func (s LinkAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsLinkAdditional) encodeFields(e *jx.Encoder) {
+func (s LinkAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -8049,10 +8017,10 @@ func (s DefinitionsLinkAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsLinkAdditional from json.
-func (s *DefinitionsLinkAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes LinkAdditional from json.
+func (s *LinkAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsLinkAdditional to nil")
+		return errors.New("invalid: unable to decode LinkAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -8070,39 +8038,39 @@ func (s *DefinitionsLinkAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsLinkAdditional")
+		return errors.Wrap(err, "decode LinkAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsLinkAdditional) MarshalJSON() ([]byte, error) {
+func (s LinkAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsLinkAdditional) UnmarshalJSON(data []byte) error {
+func (s *LinkAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsLinkOrReference as json.
-func (s DefinitionsLinkOrReference) Encode(e *jx.Encoder) {
+// Encode encodes LinkOrReference as json.
+func (s LinkOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsLinkDefinitionsLinkOrReference:
-		s.DefinitionsLink.Encode(e)
-	case DefinitionsReferenceDefinitionsLinkOrReference:
-		s.DefinitionsReference.Encode(e)
+	case LinkLinkOrReference:
+		s.Link.Encode(e)
+	case ReferenceLinkOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsLinkOrReference from json.
-func (s *DefinitionsLinkOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes LinkOrReference from json.
+func (s *LinkOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsLinkOrReference to nil")
+		return errors.New("invalid: unable to decode LinkOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -8118,25 +8086,25 @@ func (s *DefinitionsLinkOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "operationRef":
 				found = true
-				s.Type = DefinitionsLinkDefinitionsLinkOrReference
+				s.Type = LinkLinkOrReference
 			case "operationId":
 				found = true
-				s.Type = DefinitionsLinkDefinitionsLinkOrReference
+				s.Type = LinkLinkOrReference
 			case "parameters":
 				found = true
-				s.Type = DefinitionsLinkDefinitionsLinkOrReference
+				s.Type = LinkLinkOrReference
 			case "requestBody":
 				found = true
-				s.Type = DefinitionsLinkDefinitionsLinkOrReference
+				s.Type = LinkLinkOrReference
 			case "description":
 				found = true
-				s.Type = DefinitionsLinkDefinitionsLinkOrReference
+				s.Type = LinkLinkOrReference
 			case "server":
 				found = true
-				s.Type = DefinitionsLinkDefinitionsLinkOrReference
+				s.Type = LinkLinkOrReference
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsLinkOrReference
+				s.Type = ReferenceLinkOrReference
 			}
 			return d.Skip()
 		})
@@ -8147,12 +8115,12 @@ func (s *DefinitionsLinkOrReference) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case DefinitionsLinkDefinitionsLinkOrReference:
-		if err := s.DefinitionsLink.Decode(d); err != nil {
+	case LinkLinkOrReference:
+		if err := s.Link.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsLinkOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceLinkOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -8162,27 +8130,27 @@ func (s *DefinitionsLinkOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsLinkOrReference) MarshalJSON() ([]byte, error) {
+func (s LinkOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsLinkOrReference) UnmarshalJSON(data []byte) error {
+func (s *LinkOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsLinkPattern0) Encode(e *jx.Encoder) {
+func (s LinkPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsLinkPattern0) encodeFields(e *jx.Encoder) {
+func (s LinkPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -8192,10 +8160,10 @@ func (s DefinitionsLinkPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsLinkPattern0 from json.
-func (s *DefinitionsLinkPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes LinkPattern0 from json.
+func (s *LinkPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsLinkPattern0 to nil")
+		return errors.New("invalid: unable to decode LinkPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -8217,34 +8185,34 @@ func (s *DefinitionsLinkPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsLinkPattern0")
+		return errors.Wrap(err, "decode LinkPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsLinkPattern0) MarshalJSON() ([]byte, error) {
+func (s LinkPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsLinkPattern0) UnmarshalJSON(data []byte) error {
+func (s *LinkPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsLinksOrReferences) Encode(e *jx.Encoder) {
+func (s LinksOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsLinksOrReferences) encodeFields(e *jx.Encoder) {
+func (s LinksOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -8252,14 +8220,14 @@ func (s DefinitionsLinksOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsLinksOrReferences from json.
-func (s *DefinitionsLinksOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes LinksOrReferences from json.
+func (s *LinksOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsLinksOrReferences to nil")
+		return errors.New("invalid: unable to decode LinksOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsLinkOrReference
+		var elem LinkOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -8271,34 +8239,34 @@ func (s *DefinitionsLinksOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsLinksOrReferences")
+		return errors.Wrap(err, "decode LinksOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsLinksOrReferences) MarshalJSON() ([]byte, error) {
+func (s LinksOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsLinksOrReferences) UnmarshalJSON(data []byte) error {
+func (s *LinksOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsMediaType) Encode(e *jx.Encoder) {
+func (s MediaType) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsMediaType) encodeFields(e *jx.Encoder) {
+func (s MediaType) encodeFields(e *jx.Encoder) {
 	{
 		if s.Schema.Set {
 			e.FieldStart("schema")
@@ -8340,17 +8308,17 @@ func (s DefinitionsMediaType) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsMediaType = [4]string{
+var jsonFieldsNameOfMediaType = [4]string{
 	0: "schema",
 	1: "example",
 	2: "examples",
 	3: "encoding",
 }
 
-// Decode decodes DefinitionsMediaType from json.
-func (s *DefinitionsMediaType) Decode(d *jx.Decoder) error {
+// Decode decodes MediaType from json.
+func (s *MediaType) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsMediaType to nil")
+		return errors.New("invalid: unable to decode MediaType to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -8433,34 +8401,34 @@ func (s *DefinitionsMediaType) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsMediaType")
+		return errors.Wrap(err, "decode MediaType")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsMediaType) MarshalJSON() ([]byte, error) {
+func (s MediaType) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsMediaType) UnmarshalJSON(data []byte) error {
+func (s *MediaType) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsMediaTypeAdditional) Encode(e *jx.Encoder) {
+func (s MediaTypeAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsMediaTypeAdditional) encodeFields(e *jx.Encoder) {
+func (s MediaTypeAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -8470,10 +8438,10 @@ func (s DefinitionsMediaTypeAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsMediaTypeAdditional from json.
-func (s *DefinitionsMediaTypeAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes MediaTypeAdditional from json.
+func (s *MediaTypeAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsMediaTypeAdditional to nil")
+		return errors.New("invalid: unable to decode MediaTypeAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -8491,34 +8459,34 @@ func (s *DefinitionsMediaTypeAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsMediaTypeAdditional")
+		return errors.Wrap(err, "decode MediaTypeAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsMediaTypeAdditional) MarshalJSON() ([]byte, error) {
+func (s MediaTypeAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsMediaTypeAdditional) UnmarshalJSON(data []byte) error {
+func (s *MediaTypeAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsMediaTypePattern0) Encode(e *jx.Encoder) {
+func (s MediaTypePattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsMediaTypePattern0) encodeFields(e *jx.Encoder) {
+func (s MediaTypePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -8528,10 +8496,10 @@ func (s DefinitionsMediaTypePattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsMediaTypePattern0 from json.
-func (s *DefinitionsMediaTypePattern0) Decode(d *jx.Decoder) error {
+// Decode decodes MediaTypePattern0 from json.
+func (s *MediaTypePattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsMediaTypePattern0 to nil")
+		return errors.New("invalid: unable to decode MediaTypePattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -8553,34 +8521,34 @@ func (s *DefinitionsMediaTypePattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsMediaTypePattern0")
+		return errors.Wrap(err, "decode MediaTypePattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsMediaTypePattern0) MarshalJSON() ([]byte, error) {
+func (s MediaTypePattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsMediaTypePattern0) UnmarshalJSON(data []byte) error {
+func (s *MediaTypePattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsMediaTypes) Encode(e *jx.Encoder) {
+func (s MediaTypes) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsMediaTypes) encodeFields(e *jx.Encoder) {
+func (s MediaTypes) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -8588,14 +8556,14 @@ func (s DefinitionsMediaTypes) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsMediaTypes from json.
-func (s *DefinitionsMediaTypes) Decode(d *jx.Decoder) error {
+// Decode decodes MediaTypes from json.
+func (s *MediaTypes) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsMediaTypes to nil")
+		return errors.New("invalid: unable to decode MediaTypes to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsMediaType
+		var elem MediaType
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -8607,34 +8575,34 @@ func (s *DefinitionsMediaTypes) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsMediaTypes")
+		return errors.Wrap(err, "decode MediaTypes")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsMediaTypes) MarshalJSON() ([]byte, error) {
+func (s MediaTypes) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsMediaTypes) UnmarshalJSON(data []byte) error {
+func (s *MediaTypes) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOauthFlow) Encode(e *jx.Encoder) {
+func (s OauthFlow) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsOauthFlow) encodeFields(e *jx.Encoder) {
+func (s OauthFlow) encodeFields(e *jx.Encoder) {
 	{
 		if s.AuthorizationUrl.Set {
 			e.FieldStart("authorizationUrl")
@@ -8675,17 +8643,17 @@ func (s DefinitionsOauthFlow) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsOauthFlow = [4]string{
+var jsonFieldsNameOfOauthFlow = [4]string{
 	0: "authorizationUrl",
 	1: "tokenUrl",
 	2: "refreshUrl",
 	3: "scopes",
 }
 
-// Decode decodes DefinitionsOauthFlow from json.
-func (s *DefinitionsOauthFlow) Decode(d *jx.Decoder) error {
+// Decode decodes OauthFlow from json.
+func (s *OauthFlow) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOauthFlow to nil")
+		return errors.New("invalid: unable to decode OauthFlow to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -8767,34 +8735,34 @@ func (s *DefinitionsOauthFlow) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOauthFlow")
+		return errors.Wrap(err, "decode OauthFlow")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOauthFlow) MarshalJSON() ([]byte, error) {
+func (s OauthFlow) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOauthFlow) UnmarshalJSON(data []byte) error {
+func (s *OauthFlow) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOauthFlowAdditional) Encode(e *jx.Encoder) {
+func (s OauthFlowAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsOauthFlowAdditional) encodeFields(e *jx.Encoder) {
+func (s OauthFlowAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -8804,10 +8772,10 @@ func (s DefinitionsOauthFlowAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsOauthFlowAdditional from json.
-func (s *DefinitionsOauthFlowAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes OauthFlowAdditional from json.
+func (s *OauthFlowAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOauthFlowAdditional to nil")
+		return errors.New("invalid: unable to decode OauthFlowAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -8825,34 +8793,34 @@ func (s *DefinitionsOauthFlowAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOauthFlowAdditional")
+		return errors.Wrap(err, "decode OauthFlowAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOauthFlowAdditional) MarshalJSON() ([]byte, error) {
+func (s OauthFlowAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOauthFlowAdditional) UnmarshalJSON(data []byte) error {
+func (s *OauthFlowAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOauthFlowPattern0) Encode(e *jx.Encoder) {
+func (s OauthFlowPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsOauthFlowPattern0) encodeFields(e *jx.Encoder) {
+func (s OauthFlowPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -8862,10 +8830,10 @@ func (s DefinitionsOauthFlowPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsOauthFlowPattern0 from json.
-func (s *DefinitionsOauthFlowPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes OauthFlowPattern0 from json.
+func (s *OauthFlowPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOauthFlowPattern0 to nil")
+		return errors.New("invalid: unable to decode OauthFlowPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -8887,34 +8855,34 @@ func (s *DefinitionsOauthFlowPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOauthFlowPattern0")
+		return errors.Wrap(err, "decode OauthFlowPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOauthFlowPattern0) MarshalJSON() ([]byte, error) {
+func (s OauthFlowPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOauthFlowPattern0) UnmarshalJSON(data []byte) error {
+func (s *OauthFlowPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOauthFlows) Encode(e *jx.Encoder) {
+func (s OauthFlows) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsOauthFlows) encodeFields(e *jx.Encoder) {
+func (s OauthFlows) encodeFields(e *jx.Encoder) {
 	{
 		if s.Implicit.Set {
 			e.FieldStart("implicit")
@@ -8955,17 +8923,17 @@ func (s DefinitionsOauthFlows) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsOauthFlows = [4]string{
+var jsonFieldsNameOfOauthFlows = [4]string{
 	0: "implicit",
 	1: "password",
 	2: "clientCredentials",
 	3: "authorizationCode",
 }
 
-// Decode decodes DefinitionsOauthFlows from json.
-func (s *DefinitionsOauthFlows) Decode(d *jx.Decoder) error {
+// Decode decodes OauthFlows from json.
+func (s *OauthFlows) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOauthFlows to nil")
+		return errors.New("invalid: unable to decode OauthFlows to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -9047,34 +9015,34 @@ func (s *DefinitionsOauthFlows) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOauthFlows")
+		return errors.Wrap(err, "decode OauthFlows")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOauthFlows) MarshalJSON() ([]byte, error) {
+func (s OauthFlows) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOauthFlows) UnmarshalJSON(data []byte) error {
+func (s *OauthFlows) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOauthFlowsAdditional) Encode(e *jx.Encoder) {
+func (s OauthFlowsAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsOauthFlowsAdditional) encodeFields(e *jx.Encoder) {
+func (s OauthFlowsAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -9084,10 +9052,10 @@ func (s DefinitionsOauthFlowsAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsOauthFlowsAdditional from json.
-func (s *DefinitionsOauthFlowsAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes OauthFlowsAdditional from json.
+func (s *OauthFlowsAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOauthFlowsAdditional to nil")
+		return errors.New("invalid: unable to decode OauthFlowsAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -9105,34 +9073,34 @@ func (s *DefinitionsOauthFlowsAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOauthFlowsAdditional")
+		return errors.Wrap(err, "decode OauthFlowsAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOauthFlowsAdditional) MarshalJSON() ([]byte, error) {
+func (s OauthFlowsAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOauthFlowsAdditional) UnmarshalJSON(data []byte) error {
+func (s *OauthFlowsAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOauthFlowsPattern0) Encode(e *jx.Encoder) {
+func (s OauthFlowsPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsOauthFlowsPattern0) encodeFields(e *jx.Encoder) {
+func (s OauthFlowsPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -9142,10 +9110,10 @@ func (s DefinitionsOauthFlowsPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsOauthFlowsPattern0 from json.
-func (s *DefinitionsOauthFlowsPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes OauthFlowsPattern0 from json.
+func (s *OauthFlowsPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOauthFlowsPattern0 to nil")
+		return errors.New("invalid: unable to decode OauthFlowsPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -9167,34 +9135,34 @@ func (s *DefinitionsOauthFlowsPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOauthFlowsPattern0")
+		return errors.Wrap(err, "decode OauthFlowsPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOauthFlowsPattern0) MarshalJSON() ([]byte, error) {
+func (s OauthFlowsPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOauthFlowsPattern0) UnmarshalJSON(data []byte) error {
+func (s *OauthFlowsPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOperation) Encode(e *jx.Encoder) {
+func (s Operation) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsOperation) encodeFields(e *jx.Encoder) {
+func (s Operation) encodeFields(e *jx.Encoder) {
 	{
 		if s.Tags != nil {
 			e.FieldStart("tags")
@@ -9298,7 +9266,7 @@ func (s DefinitionsOperation) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsOperation = [12]string{
+var jsonFieldsNameOfOperation = [12]string{
 	0:  "tags",
 	1:  "summary",
 	2:  "description",
@@ -9313,10 +9281,10 @@ var jsonFieldsNameOfDefinitionsOperation = [12]string{
 	11: "servers",
 }
 
-// Decode decodes DefinitionsOperation from json.
-func (s *DefinitionsOperation) Decode(d *jx.Decoder) error {
+// Decode decodes Operation from json.
+func (s *Operation) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOperation to nil")
+		return errors.New("invalid: unable to decode Operation to nil")
 	}
 	var requiredBitSet [2]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -9385,9 +9353,9 @@ func (s *DefinitionsOperation) Decode(d *jx.Decoder) error {
 			}
 		case "parameters":
 			if err := func() error {
-				s.Parameters = make([]DefinitionsParameterOrReference, 0)
+				s.Parameters = make([]ParameterOrReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsParameterOrReference
+					var elem ParameterOrReference
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -9442,9 +9410,9 @@ func (s *DefinitionsOperation) Decode(d *jx.Decoder) error {
 			}
 		case "security":
 			if err := func() error {
-				s.Security = make([]DefinitionsSecurityRequirement, 0)
+				s.Security = make([]SecurityRequirement, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsSecurityRequirement
+					var elem SecurityRequirement
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -9459,9 +9427,9 @@ func (s *DefinitionsOperation) Decode(d *jx.Decoder) error {
 			}
 		case "servers":
 			if err := func() error {
-				s.Servers = make([]DefinitionsServer, 0)
+				s.Servers = make([]Server, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsServer
+					var elem Server
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -9509,7 +9477,7 @@ func (s *DefinitionsOperation) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOperation")
+		return errors.Wrap(err, "decode Operation")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -9527,8 +9495,8 @@ func (s *DefinitionsOperation) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsOperation) {
-					name = jsonFieldsNameOfDefinitionsOperation[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfOperation) {
+					name = jsonFieldsNameOfOperation[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -9549,27 +9517,27 @@ func (s *DefinitionsOperation) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOperation) MarshalJSON() ([]byte, error) {
+func (s Operation) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOperation) UnmarshalJSON(data []byte) error {
+func (s *Operation) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOperationAdditional) Encode(e *jx.Encoder) {
+func (s OperationAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsOperationAdditional) encodeFields(e *jx.Encoder) {
+func (s OperationAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -9579,10 +9547,10 @@ func (s DefinitionsOperationAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsOperationAdditional from json.
-func (s *DefinitionsOperationAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes OperationAdditional from json.
+func (s *OperationAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOperationAdditional to nil")
+		return errors.New("invalid: unable to decode OperationAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -9600,34 +9568,34 @@ func (s *DefinitionsOperationAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOperationAdditional")
+		return errors.Wrap(err, "decode OperationAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOperationAdditional) MarshalJSON() ([]byte, error) {
+func (s OperationAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOperationAdditional) UnmarshalJSON(data []byte) error {
+func (s *OperationAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsOperationPattern0) Encode(e *jx.Encoder) {
+func (s OperationPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsOperationPattern0) encodeFields(e *jx.Encoder) {
+func (s OperationPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -9637,10 +9605,10 @@ func (s DefinitionsOperationPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsOperationPattern0 from json.
-func (s *DefinitionsOperationPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes OperationPattern0 from json.
+func (s *OperationPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsOperationPattern0 to nil")
+		return errors.New("invalid: unable to decode OperationPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -9662,34 +9630,1406 @@ func (s *DefinitionsOperationPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsOperationPattern0")
+		return errors.Wrap(err, "decode OperationPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsOperationPattern0) MarshalJSON() ([]byte, error) {
+func (s OperationPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsOperationPattern0) UnmarshalJSON(data []byte) error {
+func (s *OperationPattern0) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes AnysOrExpressions as json.
+func (o OptAnysOrExpressions) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes AnysOrExpressions from json.
+func (o *OptAnysOrExpressions) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptAnysOrExpressions to nil")
+	}
+	o.Set = true
+	o.Value = make(AnysOrExpressions)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptAnysOrExpressions) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptAnysOrExpressions) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes bool as json.
+func (o OptBool) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	e.Bool(bool(o.Value))
+}
+
+// Decode decodes bool from json.
+func (o *OptBool) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptBool to nil")
+	}
+	o.Set = true
+	v, err := d.Bool()
+	if err != nil {
+		return err
+	}
+	o.Value = bool(v)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptBool) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptBool) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes CallbacksOrReferences as json.
+func (o OptCallbacksOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes CallbacksOrReferences from json.
+func (o *OptCallbacksOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptCallbacksOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(CallbacksOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptCallbacksOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptCallbacksOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Components as json.
+func (o OptComponents) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Components from json.
+func (o *OptComponents) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptComponents to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptComponents) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptComponents) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Contact as json.
+func (o OptContact) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Contact from json.
+func (o *OptContact) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptContact to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptContact) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptContact) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Discriminator as json.
+func (o OptDiscriminator) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Discriminator from json.
+func (o *OptDiscriminator) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptDiscriminator to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptDiscriminator) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptDiscriminator) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Encodings as json.
+func (o OptEncodings) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Encodings from json.
+func (o *OptEncodings) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptEncodings to nil")
+	}
+	o.Set = true
+	o.Value = make(Encodings)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptEncodings) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptEncodings) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ExamplesOrReferences as json.
+func (o OptExamplesOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ExamplesOrReferences from json.
+func (o *OptExamplesOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptExamplesOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(ExamplesOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptExamplesOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptExamplesOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ExternalDocs as json.
+func (o OptExternalDocs) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ExternalDocs from json.
+func (o *OptExternalDocs) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptExternalDocs to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptExternalDocs) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptExternalDocs) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes HeadersOrReferences as json.
+func (o OptHeadersOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes HeadersOrReferences from json.
+func (o *OptHeadersOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptHeadersOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(HeadersOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptHeadersOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptHeadersOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes JsonschemaDraft4PropertiesExclusiveMaximum as json.
+func (o OptJsonschemaDraft4PropertiesExclusiveMaximum) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes JsonschemaDraft4PropertiesExclusiveMaximum from json.
+func (o *OptJsonschemaDraft4PropertiesExclusiveMaximum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesExclusiveMaximum to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptJsonschemaDraft4PropertiesExclusiveMaximum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptJsonschemaDraft4PropertiesExclusiveMaximum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes JsonschemaDraft4PropertiesExclusiveMinimum as json.
+func (o OptJsonschemaDraft4PropertiesExclusiveMinimum) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes JsonschemaDraft4PropertiesExclusiveMinimum from json.
+func (o *OptJsonschemaDraft4PropertiesExclusiveMinimum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesExclusiveMinimum to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptJsonschemaDraft4PropertiesExclusiveMinimum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptJsonschemaDraft4PropertiesExclusiveMinimum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes JsonschemaDraft4PropertiesMaximum as json.
+func (o OptJsonschemaDraft4PropertiesMaximum) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes JsonschemaDraft4PropertiesMaximum from json.
+func (o *OptJsonschemaDraft4PropertiesMaximum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesMaximum to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptJsonschemaDraft4PropertiesMaximum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptJsonschemaDraft4PropertiesMaximum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes JsonschemaDraft4PropertiesMinimum as json.
+func (o OptJsonschemaDraft4PropertiesMinimum) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes JsonschemaDraft4PropertiesMinimum from json.
+func (o *OptJsonschemaDraft4PropertiesMinimum) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesMinimum to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptJsonschemaDraft4PropertiesMinimum) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptJsonschemaDraft4PropertiesMinimum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes JsonschemaDraft4PropertiesMultipleOf as json.
+func (o OptJsonschemaDraft4PropertiesMultipleOf) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes JsonschemaDraft4PropertiesMultipleOf from json.
+func (o *OptJsonschemaDraft4PropertiesMultipleOf) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesMultipleOf to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptJsonschemaDraft4PropertiesMultipleOf) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptJsonschemaDraft4PropertiesMultipleOf) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes JsonschemaDraft4PropertiesPattern as json.
+func (o OptJsonschemaDraft4PropertiesPattern) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes JsonschemaDraft4PropertiesPattern from json.
+func (o *OptJsonschemaDraft4PropertiesPattern) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesPattern to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptJsonschemaDraft4PropertiesPattern) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptJsonschemaDraft4PropertiesPattern) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes JsonschemaDraft4PropertiesTitle as json.
+func (o OptJsonschemaDraft4PropertiesTitle) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes JsonschemaDraft4PropertiesTitle from json.
+func (o *OptJsonschemaDraft4PropertiesTitle) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesTitle to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptJsonschemaDraft4PropertiesTitle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptJsonschemaDraft4PropertiesTitle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes JsonschemaDraft4PropertiesUniqueItems as json.
+func (o OptJsonschemaDraft4PropertiesUniqueItems) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes JsonschemaDraft4PropertiesUniqueItems from json.
+func (o *OptJsonschemaDraft4PropertiesUniqueItems) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptJsonschemaDraft4PropertiesUniqueItems to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptJsonschemaDraft4PropertiesUniqueItems) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptJsonschemaDraft4PropertiesUniqueItems) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes License as json.
+func (o OptLicense) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes License from json.
+func (o *OptLicense) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptLicense to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptLicense) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptLicense) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes LinksOrReferences as json.
+func (o OptLinksOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes LinksOrReferences from json.
+func (o *OptLinksOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptLinksOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(LinksOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptLinksOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptLinksOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes MediaTypes as json.
+func (o OptMediaTypes) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes MediaTypes from json.
+func (o *OptMediaTypes) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptMediaTypes to nil")
+	}
+	o.Set = true
+	o.Value = make(MediaTypes)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptMediaTypes) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptMediaTypes) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes OauthFlow as json.
+func (o OptOauthFlow) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes OauthFlow from json.
+func (o *OptOauthFlow) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOauthFlow to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptOauthFlow) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptOauthFlow) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes OauthFlows as json.
+func (o OptOauthFlows) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes OauthFlows from json.
+func (o *OptOauthFlows) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOauthFlows to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptOauthFlows) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptOauthFlows) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Operation as json.
+func (o OptOperation) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Operation from json.
+func (o *OptOperation) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOperation to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptOperation) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptOperation) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ParameterStyle as json.
+func (o OptParameterStyle) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes ParameterStyle from json.
+func (o *OptParameterStyle) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptParameterStyle to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptParameterStyle) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptParameterStyle) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ParametersOrReferences as json.
+func (o OptParametersOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ParametersOrReferences from json.
+func (o *OptParametersOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptParametersOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(ParametersOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptParametersOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptParametersOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes PositiveInteger as json.
+func (o OptPositiveInteger) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes PositiveInteger from json.
+func (o *OptPositiveInteger) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptPositiveInteger to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptPositiveInteger) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptPositiveInteger) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes RequestBodiesOrReferences as json.
+func (o OptRequestBodiesOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes RequestBodiesOrReferences from json.
+func (o *OptRequestBodiesOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptRequestBodiesOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(RequestBodiesOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptRequestBodiesOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptRequestBodiesOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes RequestBodyOrReference as json.
+func (o OptRequestBodyOrReference) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes RequestBodyOrReference from json.
+func (o *OptRequestBodyOrReference) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptRequestBodyOrReference to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptRequestBodyOrReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptRequestBodyOrReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ResponseOrReference as json.
+func (o OptResponseOrReference) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ResponseOrReference from json.
+func (o *OptResponseOrReference) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptResponseOrReference to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptResponseOrReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptResponseOrReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ResponsesOrReferences as json.
+func (o OptResponsesOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ResponsesOrReferences from json.
+func (o *OptResponsesOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptResponsesOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(ResponsesOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptResponsesOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptResponsesOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes SchemaOrReference as json.
+func (o OptSchemaOrReference) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes SchemaOrReference from json.
+func (o *OptSchemaOrReference) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptSchemaOrReference to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSchemaOrReference) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSchemaOrReference) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes SchemaProperties as json.
+func (o OptSchemaProperties) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes SchemaProperties from json.
+func (o *OptSchemaProperties) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptSchemaProperties to nil")
+	}
+	o.Set = true
+	o.Value = make(SchemaProperties)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSchemaProperties) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSchemaProperties) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes SchemaType as json.
+func (o OptSchemaType) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes SchemaType from json.
+func (o *OptSchemaType) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptSchemaType to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSchemaType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSchemaType) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes SchemasOrReferences as json.
+func (o OptSchemasOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes SchemasOrReferences from json.
+func (o *OptSchemasOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptSchemasOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(SchemasOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSchemasOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSchemasOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes SecuritySchemesOrReferences as json.
+func (o OptSecuritySchemesOrReferences) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes SecuritySchemesOrReferences from json.
+func (o *OptSecuritySchemesOrReferences) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptSecuritySchemesOrReferences to nil")
+	}
+	o.Set = true
+	o.Value = make(SecuritySchemesOrReferences)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptSecuritySchemesOrReferences) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptSecuritySchemesOrReferences) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Server as json.
+func (o OptServer) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Server from json.
+func (o *OptServer) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptServer to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptServer) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptServer) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes ServerVariables as json.
+func (o OptServerVariables) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes ServerVariables from json.
+func (o *OptServerVariables) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptServerVariables to nil")
+	}
+	o.Set = true
+	o.Value = make(ServerVariables)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptServerVariables) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptServerVariables) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes string as json.
+func (o OptString) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	e.Str(string(o.Value))
+}
+
+// Decode decodes string from json.
+func (o *OptString) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptString to nil")
+	}
+	o.Set = true
+	v, err := d.Str()
+	if err != nil {
+		return err
+	}
+	o.Value = string(v)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptString) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptString) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes Strings as json.
+func (o OptStrings) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes Strings from json.
+func (o *OptStrings) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptStrings to nil")
+	}
+	o.Set = true
+	o.Value = make(Strings)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptStrings) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptStrings) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes XML as json.
+func (o OptXML) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes XML from json.
+func (o *OptXML) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptXML to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptXML) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptXML) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsParameter) Encode(e *jx.Encoder) {
+func (s Parameter) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsParameter) encodeFields(e *jx.Encoder) {
+func (s Parameter) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("name")
@@ -9783,7 +11123,7 @@ func (s DefinitionsParameter) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsParameter = [13]string{
+var jsonFieldsNameOfParameter = [13]string{
 	0:  "name",
 	1:  "in",
 	2:  "description",
@@ -9799,10 +11139,10 @@ var jsonFieldsNameOfDefinitionsParameter = [13]string{
 	12: "content",
 }
 
-// Decode decodes DefinitionsParameter from json.
-func (s *DefinitionsParameter) Decode(d *jx.Decoder) error {
+// Decode decodes Parameter from json.
+func (s *Parameter) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsParameter to nil")
+		return errors.New("invalid: unable to decode Parameter to nil")
 	}
 	var requiredBitSet [2]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -9978,7 +11318,7 @@ func (s *DefinitionsParameter) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsParameter")
+		return errors.Wrap(err, "decode Parameter")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -9996,8 +11336,8 @@ func (s *DefinitionsParameter) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsParameter) {
-					name = jsonFieldsNameOfDefinitionsParameter[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfParameter) {
+					name = jsonFieldsNameOfParameter[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -10018,27 +11358,27 @@ func (s *DefinitionsParameter) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsParameter) MarshalJSON() ([]byte, error) {
+func (s Parameter) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsParameter) UnmarshalJSON(data []byte) error {
+func (s *Parameter) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsParameterAdditional) Encode(e *jx.Encoder) {
+func (s ParameterAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsParameterAdditional) encodeFields(e *jx.Encoder) {
+func (s ParameterAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -10048,10 +11388,10 @@ func (s DefinitionsParameterAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsParameterAdditional from json.
-func (s *DefinitionsParameterAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ParameterAdditional from json.
+func (s *ParameterAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsParameterAdditional to nil")
+		return errors.New("invalid: unable to decode ParameterAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -10069,83 +11409,83 @@ func (s *DefinitionsParameterAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsParameterAdditional")
+		return errors.Wrap(err, "decode ParameterAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsParameterAdditional) MarshalJSON() ([]byte, error) {
+func (s ParameterAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsParameterAdditional) UnmarshalJSON(data []byte) error {
+func (s *ParameterAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsParameterIn as json.
-func (s DefinitionsParameterIn) Encode(e *jx.Encoder) {
+// Encode encodes ParameterIn as json.
+func (s ParameterIn) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// Decode decodes DefinitionsParameterIn from json.
-func (s *DefinitionsParameterIn) Decode(d *jx.Decoder) error {
+// Decode decodes ParameterIn from json.
+func (s *ParameterIn) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsParameterIn to nil")
+		return errors.New("invalid: unable to decode ParameterIn to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
 	// Try to use constant string.
-	switch DefinitionsParameterIn(v) {
-	case DefinitionsParameterInPath:
-		*s = DefinitionsParameterInPath
-	case DefinitionsParameterInQuery:
-		*s = DefinitionsParameterInQuery
-	case DefinitionsParameterInCookie:
-		*s = DefinitionsParameterInCookie
-	case DefinitionsParameterInHeader:
-		*s = DefinitionsParameterInHeader
+	switch ParameterIn(v) {
+	case ParameterInPath:
+		*s = ParameterInPath
+	case ParameterInQuery:
+		*s = ParameterInQuery
+	case ParameterInCookie:
+		*s = ParameterInCookie
+	case ParameterInHeader:
+		*s = ParameterInHeader
 	default:
-		*s = DefinitionsParameterIn(v)
+		*s = ParameterIn(v)
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsParameterIn) MarshalJSON() ([]byte, error) {
+func (s ParameterIn) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsParameterIn) UnmarshalJSON(data []byte) error {
+func (s *ParameterIn) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsParameterOrReference as json.
-func (s DefinitionsParameterOrReference) Encode(e *jx.Encoder) {
+// Encode encodes ParameterOrReference as json.
+func (s ParameterOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsParameterDefinitionsParameterOrReference:
-		s.DefinitionsParameter.Encode(e)
-	case DefinitionsReferenceDefinitionsParameterOrReference:
-		s.DefinitionsReference.Encode(e)
+	case ParameterParameterOrReference:
+		s.Parameter.Encode(e)
+	case ReferenceParameterOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsParameterOrReference from json.
-func (s *DefinitionsParameterOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes ParameterOrReference from json.
+func (s *ParameterOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsParameterOrReference to nil")
+		return errors.New("invalid: unable to decode ParameterOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -10161,46 +11501,46 @@ func (s *DefinitionsParameterOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "name":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "in":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "description":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "required":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "deprecated":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "allowEmptyValue":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "style":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "explode":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "allowReserved":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "schema":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "example":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "examples":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "content":
 				found = true
-				s.Type = DefinitionsParameterDefinitionsParameterOrReference
+				s.Type = ParameterParameterOrReference
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsParameterOrReference
+				s.Type = ReferenceParameterOrReference
 			}
 			return d.Skip()
 		})
@@ -10211,12 +11551,12 @@ func (s *DefinitionsParameterOrReference) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case DefinitionsParameterDefinitionsParameterOrReference:
-		if err := s.DefinitionsParameter.Decode(d); err != nil {
+	case ParameterParameterOrReference:
+		if err := s.Parameter.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsParameterOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceParameterOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -10226,27 +11566,27 @@ func (s *DefinitionsParameterOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsParameterOrReference) MarshalJSON() ([]byte, error) {
+func (s ParameterOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsParameterOrReference) UnmarshalJSON(data []byte) error {
+func (s *ParameterOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsParameterPattern0) Encode(e *jx.Encoder) {
+func (s ParameterPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsParameterPattern0) encodeFields(e *jx.Encoder) {
+func (s ParameterPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -10256,10 +11596,10 @@ func (s DefinitionsParameterPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsParameterPattern0 from json.
-func (s *DefinitionsParameterPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ParameterPattern0 from json.
+func (s *ParameterPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsParameterPattern0 to nil")
+		return errors.New("invalid: unable to decode ParameterPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -10281,84 +11621,84 @@ func (s *DefinitionsParameterPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsParameterPattern0")
+		return errors.Wrap(err, "decode ParameterPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsParameterPattern0) MarshalJSON() ([]byte, error) {
+func (s ParameterPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsParameterPattern0) UnmarshalJSON(data []byte) error {
+func (s *ParameterPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsParameterStyle as json.
-func (s DefinitionsParameterStyle) Encode(e *jx.Encoder) {
+// Encode encodes ParameterStyle as json.
+func (s ParameterStyle) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// Decode decodes DefinitionsParameterStyle from json.
-func (s *DefinitionsParameterStyle) Decode(d *jx.Decoder) error {
+// Decode decodes ParameterStyle from json.
+func (s *ParameterStyle) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsParameterStyle to nil")
+		return errors.New("invalid: unable to decode ParameterStyle to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
 	// Try to use constant string.
-	switch DefinitionsParameterStyle(v) {
-	case DefinitionsParameterStyleMatrix:
-		*s = DefinitionsParameterStyleMatrix
-	case DefinitionsParameterStyleLabel:
-		*s = DefinitionsParameterStyleLabel
-	case DefinitionsParameterStyleForm:
-		*s = DefinitionsParameterStyleForm
-	case DefinitionsParameterStyleSimple:
-		*s = DefinitionsParameterStyleSimple
-	case DefinitionsParameterStyleSpaceDelimited:
-		*s = DefinitionsParameterStyleSpaceDelimited
-	case DefinitionsParameterStylePipeDelimited:
-		*s = DefinitionsParameterStylePipeDelimited
-	case DefinitionsParameterStyleDeepObject:
-		*s = DefinitionsParameterStyleDeepObject
+	switch ParameterStyle(v) {
+	case ParameterStyleMatrix:
+		*s = ParameterStyleMatrix
+	case ParameterStyleLabel:
+		*s = ParameterStyleLabel
+	case ParameterStyleForm:
+		*s = ParameterStyleForm
+	case ParameterStyleSimple:
+		*s = ParameterStyleSimple
+	case ParameterStyleSpaceDelimited:
+		*s = ParameterStyleSpaceDelimited
+	case ParameterStylePipeDelimited:
+		*s = ParameterStylePipeDelimited
+	case ParameterStyleDeepObject:
+		*s = ParameterStyleDeepObject
 	default:
-		*s = DefinitionsParameterStyle(v)
+		*s = ParameterStyle(v)
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsParameterStyle) MarshalJSON() ([]byte, error) {
+func (s ParameterStyle) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsParameterStyle) UnmarshalJSON(data []byte) error {
+func (s *ParameterStyle) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsParametersOrReferences) Encode(e *jx.Encoder) {
+func (s ParametersOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsParametersOrReferences) encodeFields(e *jx.Encoder) {
+func (s ParametersOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -10366,14 +11706,14 @@ func (s DefinitionsParametersOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsParametersOrReferences from json.
-func (s *DefinitionsParametersOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes ParametersOrReferences from json.
+func (s *ParametersOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsParametersOrReferences to nil")
+		return errors.New("invalid: unable to decode ParametersOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsParameterOrReference
+		var elem ParameterOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -10385,34 +11725,34 @@ func (s *DefinitionsParametersOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsParametersOrReferences")
+		return errors.Wrap(err, "decode ParametersOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsParametersOrReferences) MarshalJSON() ([]byte, error) {
+func (s ParametersOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsParametersOrReferences) UnmarshalJSON(data []byte) error {
+func (s *ParametersOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsPathItem) Encode(e *jx.Encoder) {
+func (s PathItem) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsPathItem) encodeFields(e *jx.Encoder) {
+func (s PathItem) encodeFields(e *jx.Encoder) {
 	{
 		if s.Ref.Set {
 			e.FieldStart("$ref")
@@ -10515,7 +11855,7 @@ func (s DefinitionsPathItem) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsPathItem = [13]string{
+var jsonFieldsNameOfPathItem = [13]string{
 	0:  "$ref",
 	1:  "summary",
 	2:  "description",
@@ -10531,10 +11871,10 @@ var jsonFieldsNameOfDefinitionsPathItem = [13]string{
 	12: "parameters",
 }
 
-// Decode decodes DefinitionsPathItem from json.
-func (s *DefinitionsPathItem) Decode(d *jx.Decoder) error {
+// Decode decodes PathItem from json.
+func (s *PathItem) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsPathItem to nil")
+		return errors.New("invalid: unable to decode PathItem to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
@@ -10653,9 +11993,9 @@ func (s *DefinitionsPathItem) Decode(d *jx.Decoder) error {
 			}
 		case "servers":
 			if err := func() error {
-				s.Servers = make([]DefinitionsServer, 0)
+				s.Servers = make([]Server, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsServer
+					var elem Server
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -10670,9 +12010,9 @@ func (s *DefinitionsPathItem) Decode(d *jx.Decoder) error {
 			}
 		case "parameters":
 			if err := func() error {
-				s.Parameters = make([]DefinitionsParameterOrReference, 0)
+				s.Parameters = make([]ParameterOrReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsParameterOrReference
+					var elem ParameterOrReference
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -10720,34 +12060,34 @@ func (s *DefinitionsPathItem) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsPathItem")
+		return errors.Wrap(err, "decode PathItem")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsPathItem) MarshalJSON() ([]byte, error) {
+func (s PathItem) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsPathItem) UnmarshalJSON(data []byte) error {
+func (s *PathItem) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsPathItemAdditional) Encode(e *jx.Encoder) {
+func (s PathItemAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsPathItemAdditional) encodeFields(e *jx.Encoder) {
+func (s PathItemAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -10757,10 +12097,10 @@ func (s DefinitionsPathItemAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsPathItemAdditional from json.
-func (s *DefinitionsPathItemAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes PathItemAdditional from json.
+func (s *PathItemAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsPathItemAdditional to nil")
+		return errors.New("invalid: unable to decode PathItemAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -10778,34 +12118,34 @@ func (s *DefinitionsPathItemAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsPathItemAdditional")
+		return errors.Wrap(err, "decode PathItemAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsPathItemAdditional) MarshalJSON() ([]byte, error) {
+func (s PathItemAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsPathItemAdditional) UnmarshalJSON(data []byte) error {
+func (s *PathItemAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsPathItemPattern0) Encode(e *jx.Encoder) {
+func (s PathItemPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsPathItemPattern0) encodeFields(e *jx.Encoder) {
+func (s PathItemPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -10815,10 +12155,10 @@ func (s DefinitionsPathItemPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsPathItemPattern0 from json.
-func (s *DefinitionsPathItemPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes PathItemPattern0 from json.
+func (s *PathItemPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsPathItemPattern0 to nil")
+		return errors.New("invalid: unable to decode PathItemPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -10840,34 +12180,34 @@ func (s *DefinitionsPathItemPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsPathItemPattern0")
+		return errors.Wrap(err, "decode PathItemPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsPathItemPattern0) MarshalJSON() ([]byte, error) {
+func (s PathItemPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsPathItemPattern0) UnmarshalJSON(data []byte) error {
+func (s *PathItemPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsPaths) Encode(e *jx.Encoder) {
+func (s Paths) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsPaths) encodeFields(e *jx.Encoder) {
+func (s Paths) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.AdditionalProps {
 		e.FieldStart(k)
 
@@ -10889,15 +12229,15 @@ func (s DefinitionsPaths) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsPaths = [0]string{}
+var jsonFieldsNameOfPaths = [0]string{}
 
-// Decode decodes DefinitionsPaths from json.
-func (s *DefinitionsPaths) Decode(d *jx.Decoder) error {
+// Decode decodes Paths from json.
+func (s *Paths) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsPaths to nil")
+		return errors.New("invalid: unable to decode Paths to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
-	s.Pattern0Props = map[string]DefinitionsPathItem{}
+	s.Pattern0Props = map[string]PathItem{}
 	s.Pattern1Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -10906,7 +12246,7 @@ func (s *DefinitionsPaths) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^/"]; pattern.Match(k) {
 				handled = true
-				var elem DefinitionsPathItem
+				var elem PathItem
 				if err := func() error {
 					if err := elem.Decode(d); err != nil {
 						return err
@@ -10950,34 +12290,34 @@ func (s *DefinitionsPaths) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsPaths")
+		return errors.Wrap(err, "decode Paths")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsPaths) MarshalJSON() ([]byte, error) {
+func (s Paths) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsPaths) UnmarshalJSON(data []byte) error {
+func (s *Paths) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsPathsAdditional) Encode(e *jx.Encoder) {
+func (s PathsAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsPathsAdditional) encodeFields(e *jx.Encoder) {
+func (s PathsAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -10987,10 +12327,10 @@ func (s DefinitionsPathsAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsPathsAdditional from json.
-func (s *DefinitionsPathsAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes PathsAdditional from json.
+func (s *PathsAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsPathsAdditional to nil")
+		return errors.New("invalid: unable to decode PathsAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -11008,34 +12348,34 @@ func (s *DefinitionsPathsAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsPathsAdditional")
+		return errors.Wrap(err, "decode PathsAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsPathsAdditional) MarshalJSON() ([]byte, error) {
+func (s PathsAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsPathsAdditional) UnmarshalJSON(data []byte) error {
+func (s *PathsAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsPathsPattern0) Encode(e *jx.Encoder) {
+func (s PathsPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsPathsPattern0) encodeFields(e *jx.Encoder) {
+func (s PathsPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -11043,10 +12383,10 @@ func (s DefinitionsPathsPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsPathsPattern0 from json.
-func (s *DefinitionsPathsPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes PathsPattern0 from json.
+func (s *PathsPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsPathsPattern0 to nil")
+		return errors.New("invalid: unable to decode PathsPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^/"]
@@ -11054,7 +12394,7 @@ func (s *DefinitionsPathsPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem DefinitionsPathItem
+		var elem PathItem
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -11066,34 +12406,34 @@ func (s *DefinitionsPathsPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsPathsPattern0")
+		return errors.Wrap(err, "decode PathsPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsPathsPattern0) MarshalJSON() ([]byte, error) {
+func (s PathsPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsPathsPattern0) UnmarshalJSON(data []byte) error {
+func (s *PathsPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsPathsPattern1) Encode(e *jx.Encoder) {
+func (s PathsPattern1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsPathsPattern1) encodeFields(e *jx.Encoder) {
+func (s PathsPattern1) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -11103,10 +12443,10 @@ func (s DefinitionsPathsPattern1) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsPathsPattern1 from json.
-func (s *DefinitionsPathsPattern1) Decode(d *jx.Decoder) error {
+// Decode decodes PathsPattern1 from json.
+func (s *PathsPattern1) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsPathsPattern1 to nil")
+		return errors.New("invalid: unable to decode PathsPattern1 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -11128,35 +12468,35 @@ func (s *DefinitionsPathsPattern1) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsPathsPattern1")
+		return errors.Wrap(err, "decode PathsPattern1")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsPathsPattern1) MarshalJSON() ([]byte, error) {
+func (s PathsPattern1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsPathsPattern1) UnmarshalJSON(data []byte) error {
+func (s *PathsPattern1) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsPositiveInteger as json.
-func (s DefinitionsPositiveInteger) Encode(e *jx.Encoder) {
+// Encode encodes PositiveInteger as json.
+func (s PositiveInteger) Encode(e *jx.Encoder) {
 	unwrapped := int(s)
 	e.Int(unwrapped)
 }
 
-// Decode decodes DefinitionsPositiveInteger from json.
-func (s *DefinitionsPositiveInteger) Decode(d *jx.Decoder) error {
+// Decode decodes PositiveInteger from json.
+func (s *PositiveInteger) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsPositiveInteger to nil")
+		return errors.New("invalid: unable to decode PositiveInteger to nil")
 	}
 	var unwrapped int
 	if err := func() error {
@@ -11169,32 +12509,32 @@ func (s *DefinitionsPositiveInteger) Decode(d *jx.Decoder) error {
 	}(); err != nil {
 		return errors.Wrap(err, "alias")
 	}
-	*s = DefinitionsPositiveInteger(unwrapped)
+	*s = PositiveInteger(unwrapped)
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsPositiveInteger) MarshalJSON() ([]byte, error) {
+func (s PositiveInteger) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsPositiveInteger) UnmarshalJSON(data []byte) error {
+func (s *PositiveInteger) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsReference) Encode(e *jx.Encoder) {
+func (s Reference) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsReference) encodeFields(e *jx.Encoder) {
+func (s Reference) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("$ref")
@@ -11209,14 +12549,14 @@ func (s DefinitionsReference) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsReference = [1]string{
+var jsonFieldsNameOfReference = [1]string{
 	0: "$ref",
 }
 
-// Decode decodes DefinitionsReference from json.
-func (s *DefinitionsReference) Decode(d *jx.Decoder) error {
+// Decode decodes Reference from json.
+func (s *Reference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsReference to nil")
+		return errors.New("invalid: unable to decode Reference to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -11251,7 +12591,7 @@ func (s *DefinitionsReference) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsReference")
+		return errors.Wrap(err, "decode Reference")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -11268,8 +12608,8 @@ func (s *DefinitionsReference) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsReference) {
-					name = jsonFieldsNameOfDefinitionsReference[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfReference) {
+					name = jsonFieldsNameOfReference[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -11290,27 +12630,27 @@ func (s *DefinitionsReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsReference) MarshalJSON() ([]byte, error) {
+func (s Reference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsReference) UnmarshalJSON(data []byte) error {
+func (s *Reference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsReferenceAdditional) Encode(e *jx.Encoder) {
+func (s ReferenceAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsReferenceAdditional) encodeFields(e *jx.Encoder) {
+func (s ReferenceAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -11320,10 +12660,10 @@ func (s DefinitionsReferenceAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsReferenceAdditional from json.
-func (s *DefinitionsReferenceAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ReferenceAdditional from json.
+func (s *ReferenceAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsReferenceAdditional to nil")
+		return errors.New("invalid: unable to decode ReferenceAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -11341,34 +12681,34 @@ func (s *DefinitionsReferenceAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsReferenceAdditional")
+		return errors.Wrap(err, "decode ReferenceAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsReferenceAdditional) MarshalJSON() ([]byte, error) {
+func (s ReferenceAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsReferenceAdditional) UnmarshalJSON(data []byte) error {
+func (s *ReferenceAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsRequestBodiesOrReferences) Encode(e *jx.Encoder) {
+func (s RequestBodiesOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsRequestBodiesOrReferences) encodeFields(e *jx.Encoder) {
+func (s RequestBodiesOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -11376,14 +12716,14 @@ func (s DefinitionsRequestBodiesOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsRequestBodiesOrReferences from json.
-func (s *DefinitionsRequestBodiesOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes RequestBodiesOrReferences from json.
+func (s *RequestBodiesOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsRequestBodiesOrReferences to nil")
+		return errors.New("invalid: unable to decode RequestBodiesOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsRequestBodyOrReference
+		var elem RequestBodyOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -11395,34 +12735,34 @@ func (s *DefinitionsRequestBodiesOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsRequestBodiesOrReferences")
+		return errors.Wrap(err, "decode RequestBodiesOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsRequestBodiesOrReferences) MarshalJSON() ([]byte, error) {
+func (s RequestBodiesOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsRequestBodiesOrReferences) UnmarshalJSON(data []byte) error {
+func (s *RequestBodiesOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsRequestBody) Encode(e *jx.Encoder) {
+func (s RequestBody) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsRequestBody) encodeFields(e *jx.Encoder) {
+func (s RequestBody) encodeFields(e *jx.Encoder) {
 	{
 		if s.Description.Set {
 			e.FieldStart("description")
@@ -11456,16 +12796,16 @@ func (s DefinitionsRequestBody) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsRequestBody = [3]string{
+var jsonFieldsNameOfRequestBody = [3]string{
 	0: "description",
 	1: "content",
 	2: "required",
 }
 
-// Decode decodes DefinitionsRequestBody from json.
-func (s *DefinitionsRequestBody) Decode(d *jx.Decoder) error {
+// Decode decodes RequestBody from json.
+func (s *RequestBody) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsRequestBody to nil")
+		return errors.New("invalid: unable to decode RequestBody to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -11538,7 +12878,7 @@ func (s *DefinitionsRequestBody) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsRequestBody")
+		return errors.Wrap(err, "decode RequestBody")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -11555,8 +12895,8 @@ func (s *DefinitionsRequestBody) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsRequestBody) {
-					name = jsonFieldsNameOfDefinitionsRequestBody[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfRequestBody) {
+					name = jsonFieldsNameOfRequestBody[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -11577,27 +12917,27 @@ func (s *DefinitionsRequestBody) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsRequestBody) MarshalJSON() ([]byte, error) {
+func (s RequestBody) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsRequestBody) UnmarshalJSON(data []byte) error {
+func (s *RequestBody) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsRequestBodyAdditional) Encode(e *jx.Encoder) {
+func (s RequestBodyAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsRequestBodyAdditional) encodeFields(e *jx.Encoder) {
+func (s RequestBodyAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -11607,10 +12947,10 @@ func (s DefinitionsRequestBodyAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsRequestBodyAdditional from json.
-func (s *DefinitionsRequestBodyAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes RequestBodyAdditional from json.
+func (s *RequestBodyAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsRequestBodyAdditional to nil")
+		return errors.New("invalid: unable to decode RequestBodyAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -11628,39 +12968,39 @@ func (s *DefinitionsRequestBodyAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsRequestBodyAdditional")
+		return errors.Wrap(err, "decode RequestBodyAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsRequestBodyAdditional) MarshalJSON() ([]byte, error) {
+func (s RequestBodyAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsRequestBodyAdditional) UnmarshalJSON(data []byte) error {
+func (s *RequestBodyAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsRequestBodyOrReference as json.
-func (s DefinitionsRequestBodyOrReference) Encode(e *jx.Encoder) {
+// Encode encodes RequestBodyOrReference as json.
+func (s RequestBodyOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsRequestBodyDefinitionsRequestBodyOrReference:
-		s.DefinitionsRequestBody.Encode(e)
-	case DefinitionsReferenceDefinitionsRequestBodyOrReference:
-		s.DefinitionsReference.Encode(e)
+	case RequestBodyRequestBodyOrReference:
+		s.RequestBody.Encode(e)
+	case ReferenceRequestBodyOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsRequestBodyOrReference from json.
-func (s *DefinitionsRequestBodyOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes RequestBodyOrReference from json.
+func (s *RequestBodyOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsRequestBodyOrReference to nil")
+		return errors.New("invalid: unable to decode RequestBodyOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -11676,16 +13016,16 @@ func (s *DefinitionsRequestBodyOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "description":
 				found = true
-				s.Type = DefinitionsRequestBodyDefinitionsRequestBodyOrReference
+				s.Type = RequestBodyRequestBodyOrReference
 			case "content":
 				found = true
-				s.Type = DefinitionsRequestBodyDefinitionsRequestBodyOrReference
+				s.Type = RequestBodyRequestBodyOrReference
 			case "required":
 				found = true
-				s.Type = DefinitionsRequestBodyDefinitionsRequestBodyOrReference
+				s.Type = RequestBodyRequestBodyOrReference
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsRequestBodyOrReference
+				s.Type = ReferenceRequestBodyOrReference
 			}
 			return d.Skip()
 		})
@@ -11696,12 +13036,12 @@ func (s *DefinitionsRequestBodyOrReference) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case DefinitionsRequestBodyDefinitionsRequestBodyOrReference:
-		if err := s.DefinitionsRequestBody.Decode(d); err != nil {
+	case RequestBodyRequestBodyOrReference:
+		if err := s.RequestBody.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsRequestBodyOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceRequestBodyOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -11711,27 +13051,27 @@ func (s *DefinitionsRequestBodyOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsRequestBodyOrReference) MarshalJSON() ([]byte, error) {
+func (s RequestBodyOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsRequestBodyOrReference) UnmarshalJSON(data []byte) error {
+func (s *RequestBodyOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsRequestBodyPattern0) Encode(e *jx.Encoder) {
+func (s RequestBodyPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsRequestBodyPattern0) encodeFields(e *jx.Encoder) {
+func (s RequestBodyPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -11741,10 +13081,10 @@ func (s DefinitionsRequestBodyPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsRequestBodyPattern0 from json.
-func (s *DefinitionsRequestBodyPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes RequestBodyPattern0 from json.
+func (s *RequestBodyPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsRequestBodyPattern0 to nil")
+		return errors.New("invalid: unable to decode RequestBodyPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -11766,34 +13106,34 @@ func (s *DefinitionsRequestBodyPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsRequestBodyPattern0")
+		return errors.Wrap(err, "decode RequestBodyPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsRequestBodyPattern0) MarshalJSON() ([]byte, error) {
+func (s RequestBodyPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsRequestBodyPattern0) UnmarshalJSON(data []byte) error {
+func (s *RequestBodyPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsResponse) Encode(e *jx.Encoder) {
+func (s Response) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsResponse) encodeFields(e *jx.Encoder) {
+func (s Response) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("description")
@@ -11833,17 +13173,17 @@ func (s DefinitionsResponse) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsResponse = [4]string{
+var jsonFieldsNameOfResponse = [4]string{
 	0: "description",
 	1: "headers",
 	2: "content",
 	3: "links",
 }
 
-// Decode decodes DefinitionsResponse from json.
-func (s *DefinitionsResponse) Decode(d *jx.Decoder) error {
+// Decode decodes Response from json.
+func (s *Response) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponse to nil")
+		return errors.New("invalid: unable to decode Response to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -11928,7 +13268,7 @@ func (s *DefinitionsResponse) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsResponse")
+		return errors.Wrap(err, "decode Response")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -11945,8 +13285,8 @@ func (s *DefinitionsResponse) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsResponse) {
-					name = jsonFieldsNameOfDefinitionsResponse[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfResponse) {
+					name = jsonFieldsNameOfResponse[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -11967,27 +13307,27 @@ func (s *DefinitionsResponse) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponse) MarshalJSON() ([]byte, error) {
+func (s Response) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponse) UnmarshalJSON(data []byte) error {
+func (s *Response) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsResponseAdditional) Encode(e *jx.Encoder) {
+func (s ResponseAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsResponseAdditional) encodeFields(e *jx.Encoder) {
+func (s ResponseAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -11997,10 +13337,10 @@ func (s DefinitionsResponseAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsResponseAdditional from json.
-func (s *DefinitionsResponseAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ResponseAdditional from json.
+func (s *ResponseAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponseAdditional to nil")
+		return errors.New("invalid: unable to decode ResponseAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -12018,39 +13358,39 @@ func (s *DefinitionsResponseAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsResponseAdditional")
+		return errors.Wrap(err, "decode ResponseAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponseAdditional) MarshalJSON() ([]byte, error) {
+func (s ResponseAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponseAdditional) UnmarshalJSON(data []byte) error {
+func (s *ResponseAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsResponseOrReference as json.
-func (s DefinitionsResponseOrReference) Encode(e *jx.Encoder) {
+// Encode encodes ResponseOrReference as json.
+func (s ResponseOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsResponseDefinitionsResponseOrReference:
-		s.DefinitionsResponse.Encode(e)
-	case DefinitionsReferenceDefinitionsResponseOrReference:
-		s.DefinitionsReference.Encode(e)
+	case ResponseResponseOrReference:
+		s.Response.Encode(e)
+	case ReferenceResponseOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsResponseOrReference from json.
-func (s *DefinitionsResponseOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes ResponseOrReference from json.
+func (s *ResponseOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponseOrReference to nil")
+		return errors.New("invalid: unable to decode ResponseOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -12066,19 +13406,19 @@ func (s *DefinitionsResponseOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "description":
 				found = true
-				s.Type = DefinitionsResponseDefinitionsResponseOrReference
+				s.Type = ResponseResponseOrReference
 			case "headers":
 				found = true
-				s.Type = DefinitionsResponseDefinitionsResponseOrReference
+				s.Type = ResponseResponseOrReference
 			case "content":
 				found = true
-				s.Type = DefinitionsResponseDefinitionsResponseOrReference
+				s.Type = ResponseResponseOrReference
 			case "links":
 				found = true
-				s.Type = DefinitionsResponseDefinitionsResponseOrReference
+				s.Type = ResponseResponseOrReference
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsResponseOrReference
+				s.Type = ReferenceResponseOrReference
 			}
 			return d.Skip()
 		})
@@ -12089,12 +13429,12 @@ func (s *DefinitionsResponseOrReference) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case DefinitionsResponseDefinitionsResponseOrReference:
-		if err := s.DefinitionsResponse.Decode(d); err != nil {
+	case ResponseResponseOrReference:
+		if err := s.Response.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsResponseOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceResponseOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -12104,27 +13444,27 @@ func (s *DefinitionsResponseOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponseOrReference) MarshalJSON() ([]byte, error) {
+func (s ResponseOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponseOrReference) UnmarshalJSON(data []byte) error {
+func (s *ResponseOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsResponsePattern0) Encode(e *jx.Encoder) {
+func (s ResponsePattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsResponsePattern0) encodeFields(e *jx.Encoder) {
+func (s ResponsePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -12134,10 +13474,10 @@ func (s DefinitionsResponsePattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsResponsePattern0 from json.
-func (s *DefinitionsResponsePattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ResponsePattern0 from json.
+func (s *ResponsePattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponsePattern0 to nil")
+		return errors.New("invalid: unable to decode ResponsePattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -12159,34 +13499,34 @@ func (s *DefinitionsResponsePattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsResponsePattern0")
+		return errors.Wrap(err, "decode ResponsePattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponsePattern0) MarshalJSON() ([]byte, error) {
+func (s ResponsePattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponsePattern0) UnmarshalJSON(data []byte) error {
+func (s *ResponsePattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsResponses) Encode(e *jx.Encoder) {
+func (s Responses) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsResponses) encodeFields(e *jx.Encoder) {
+func (s Responses) encodeFields(e *jx.Encoder) {
 	{
 		if s.Default.Set {
 			e.FieldStart("default")
@@ -12214,17 +13554,17 @@ func (s DefinitionsResponses) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsResponses = [1]string{
+var jsonFieldsNameOfResponses = [1]string{
 	0: "default",
 }
 
-// Decode decodes DefinitionsResponses from json.
-func (s *DefinitionsResponses) Decode(d *jx.Decoder) error {
+// Decode decodes Responses from json.
+func (s *Responses) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponses to nil")
+		return errors.New("invalid: unable to decode Responses to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
-	s.Pattern0Props = map[string]DefinitionsResponseOrReference{}
+	s.Pattern0Props = map[string]ResponseOrReference{}
 	s.Pattern1Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -12243,7 +13583,7 @@ func (s *DefinitionsResponses) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^([0-9X]{3})$"]; pattern.Match(k) {
 				handled = true
-				var elem DefinitionsResponseOrReference
+				var elem ResponseOrReference
 				if err := func() error {
 					if err := elem.Decode(d); err != nil {
 						return err
@@ -12287,34 +13627,34 @@ func (s *DefinitionsResponses) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsResponses")
+		return errors.Wrap(err, "decode Responses")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponses) MarshalJSON() ([]byte, error) {
+func (s Responses) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponses) UnmarshalJSON(data []byte) error {
+func (s *Responses) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsResponsesAdditional) Encode(e *jx.Encoder) {
+func (s ResponsesAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsResponsesAdditional) encodeFields(e *jx.Encoder) {
+func (s ResponsesAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -12324,10 +13664,10 @@ func (s DefinitionsResponsesAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsResponsesAdditional from json.
-func (s *DefinitionsResponsesAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ResponsesAdditional from json.
+func (s *ResponsesAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponsesAdditional to nil")
+		return errors.New("invalid: unable to decode ResponsesAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -12345,34 +13685,34 @@ func (s *DefinitionsResponsesAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsResponsesAdditional")
+		return errors.Wrap(err, "decode ResponsesAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponsesAdditional) MarshalJSON() ([]byte, error) {
+func (s ResponsesAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponsesAdditional) UnmarshalJSON(data []byte) error {
+func (s *ResponsesAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsResponsesOrReferences) Encode(e *jx.Encoder) {
+func (s ResponsesOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsResponsesOrReferences) encodeFields(e *jx.Encoder) {
+func (s ResponsesOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -12380,14 +13720,14 @@ func (s DefinitionsResponsesOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsResponsesOrReferences from json.
-func (s *DefinitionsResponsesOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes ResponsesOrReferences from json.
+func (s *ResponsesOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponsesOrReferences to nil")
+		return errors.New("invalid: unable to decode ResponsesOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsResponseOrReference
+		var elem ResponseOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -12399,34 +13739,34 @@ func (s *DefinitionsResponsesOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsResponsesOrReferences")
+		return errors.Wrap(err, "decode ResponsesOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponsesOrReferences) MarshalJSON() ([]byte, error) {
+func (s ResponsesOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponsesOrReferences) UnmarshalJSON(data []byte) error {
+func (s *ResponsesOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsResponsesPattern0) Encode(e *jx.Encoder) {
+func (s ResponsesPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsResponsesPattern0) encodeFields(e *jx.Encoder) {
+func (s ResponsesPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -12434,10 +13774,10 @@ func (s DefinitionsResponsesPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsResponsesPattern0 from json.
-func (s *DefinitionsResponsesPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ResponsesPattern0 from json.
+func (s *ResponsesPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponsesPattern0 to nil")
+		return errors.New("invalid: unable to decode ResponsesPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^([0-9X]{3})$"]
@@ -12445,7 +13785,7 @@ func (s *DefinitionsResponsesPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem DefinitionsResponseOrReference
+		var elem ResponseOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -12457,34 +13797,34 @@ func (s *DefinitionsResponsesPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsResponsesPattern0")
+		return errors.Wrap(err, "decode ResponsesPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponsesPattern0) MarshalJSON() ([]byte, error) {
+func (s ResponsesPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponsesPattern0) UnmarshalJSON(data []byte) error {
+func (s *ResponsesPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsResponsesPattern1) Encode(e *jx.Encoder) {
+func (s ResponsesPattern1) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsResponsesPattern1) encodeFields(e *jx.Encoder) {
+func (s ResponsesPattern1) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -12494,10 +13834,10 @@ func (s DefinitionsResponsesPattern1) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsResponsesPattern1 from json.
-func (s *DefinitionsResponsesPattern1) Decode(d *jx.Decoder) error {
+// Decode decodes ResponsesPattern1 from json.
+func (s *ResponsesPattern1) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsResponsesPattern1 to nil")
+		return errors.New("invalid: unable to decode ResponsesPattern1 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -12519,34 +13859,34 @@ func (s *DefinitionsResponsesPattern1) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsResponsesPattern1")
+		return errors.Wrap(err, "decode ResponsesPattern1")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsResponsesPattern1) MarshalJSON() ([]byte, error) {
+func (s ResponsesPattern1) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsResponsesPattern1) UnmarshalJSON(data []byte) error {
+func (s *ResponsesPattern1) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSchema) Encode(e *jx.Encoder) {
+func (s Schema) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsSchema) encodeFields(e *jx.Encoder) {
+func (s Schema) encodeFields(e *jx.Encoder) {
 	{
 		if s.Nullable.Set {
 			e.FieldStart("nullable")
@@ -12787,7 +14127,7 @@ func (s DefinitionsSchema) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsSchema = [35]string{
+var jsonFieldsNameOfSchema = [35]string{
 	0:  "nullable",
 	1:  "discriminator",
 	2:  "readOnly",
@@ -12825,10 +14165,10 @@ var jsonFieldsNameOfDefinitionsSchema = [35]string{
 	34: "format",
 }
 
-// Decode decodes DefinitionsSchema from json.
-func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
+// Decode decodes Schema from json.
+func (s *Schema) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSchema to nil")
+		return errors.New("invalid: unable to decode Schema to nil")
 	}
 	s.setDefaults()
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -13060,7 +14400,7 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 		case "required":
 			if err := func() error {
 				s.Required = nil
-				var elem DefinitionsStringArray
+				var elem StringArray
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -13072,7 +14412,7 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 		case "enum":
 			if err := func() error {
 				s.Enum = nil
-				var elem DefinitionsJsonschemaDraft4PropertiesEnum
+				var elem JsonschemaDraft4PropertiesEnum
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -13093,9 +14433,9 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 			}
 		case "allOf":
 			if err := func() error {
-				s.AllOf = make([]DefinitionsSchemaOrReference, 0)
+				s.AllOf = make([]SchemaOrReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsSchemaOrReference
+					var elem SchemaOrReference
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -13110,9 +14450,9 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 			}
 		case "oneOf":
 			if err := func() error {
-				s.OneOf = make([]DefinitionsSchemaOrReference, 0)
+				s.OneOf = make([]SchemaOrReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsSchemaOrReference
+					var elem SchemaOrReference
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -13127,9 +14467,9 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 			}
 		case "anyOf":
 			if err := func() error {
-				s.AnyOf = make([]DefinitionsSchemaOrReference, 0)
+				s.AnyOf = make([]SchemaOrReference, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsSchemaOrReference
+					var elem SchemaOrReference
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -13145,7 +14485,7 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 		case "not":
 			if err := func() error {
 				s.Not = nil
-				var elem DefinitionsSchema
+				var elem Schema
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -13157,7 +14497,7 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 		case "items":
 			if err := func() error {
 				s.Items = nil
-				var elem DefinitionsSchemaOrReference
+				var elem SchemaOrReference
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -13179,7 +14519,7 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 		case "additionalProperties":
 			if err := func() error {
 				s.AdditionalProperties = nil
-				var elem DefinitionsSchemaAdditionalProperties
+				var elem SchemaAdditionalProperties
 				if err := elem.Decode(d); err != nil {
 					return err
 				}
@@ -13254,34 +14594,34 @@ func (s *DefinitionsSchema) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSchema")
+		return errors.Wrap(err, "decode Schema")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSchema) MarshalJSON() ([]byte, error) {
+func (s Schema) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSchema) UnmarshalJSON(data []byte) error {
+func (s *Schema) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSchemaAdditional) Encode(e *jx.Encoder) {
+func (s SchemaAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSchemaAdditional) encodeFields(e *jx.Encoder) {
+func (s SchemaAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -13291,10 +14631,10 @@ func (s DefinitionsSchemaAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSchemaAdditional from json.
-func (s *DefinitionsSchemaAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes SchemaAdditional from json.
+func (s *SchemaAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSchemaAdditional to nil")
+		return errors.New("invalid: unable to decode SchemaAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -13312,54 +14652,54 @@ func (s *DefinitionsSchemaAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSchemaAdditional")
+		return errors.Wrap(err, "decode SchemaAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSchemaAdditional) MarshalJSON() ([]byte, error) {
+func (s SchemaAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSchemaAdditional) UnmarshalJSON(data []byte) error {
+func (s *SchemaAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsSchemaAdditionalProperties as json.
-func (s DefinitionsSchemaAdditionalProperties) Encode(e *jx.Encoder) {
+// Encode encodes SchemaAdditionalProperties as json.
+func (s SchemaAdditionalProperties) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsSchemaOrReferenceDefinitionsSchemaAdditionalProperties:
-		s.DefinitionsSchemaOrReference.Encode(e)
-	case BoolDefinitionsSchemaAdditionalProperties:
+	case SchemaOrReferenceSchemaAdditionalProperties:
+		s.SchemaOrReference.Encode(e)
+	case BoolSchemaAdditionalProperties:
 		e.Bool(s.Bool)
 	}
 }
 
-// Decode decodes DefinitionsSchemaAdditionalProperties from json.
-func (s *DefinitionsSchemaAdditionalProperties) Decode(d *jx.Decoder) error {
+// Decode decodes SchemaAdditionalProperties from json.
+func (s *SchemaAdditionalProperties) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSchemaAdditionalProperties to nil")
+		return errors.New("invalid: unable to decode SchemaAdditionalProperties to nil")
 	}
 	// Sum type type_discriminator.
 	switch t := d.Next(); t {
 	case jx.Object:
-		if err := s.DefinitionsSchemaOrReference.Decode(d); err != nil {
+		if err := s.SchemaOrReference.Decode(d); err != nil {
 			return err
 		}
-		s.Type = DefinitionsSchemaOrReferenceDefinitionsSchemaAdditionalProperties
+		s.Type = SchemaOrReferenceSchemaAdditionalProperties
 	case jx.Bool:
 		v, err := d.Bool()
 		s.Bool = bool(v)
 		if err != nil {
 			return err
 		}
-		s.Type = BoolDefinitionsSchemaAdditionalProperties
+		s.Type = BoolSchemaAdditionalProperties
 	default:
 		return errors.Errorf("unexpected json type %q", t)
 	}
@@ -13367,32 +14707,32 @@ func (s *DefinitionsSchemaAdditionalProperties) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSchemaAdditionalProperties) MarshalJSON() ([]byte, error) {
+func (s SchemaAdditionalProperties) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSchemaAdditionalProperties) UnmarshalJSON(data []byte) error {
+func (s *SchemaAdditionalProperties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsSchemaOrReference as json.
-func (s DefinitionsSchemaOrReference) Encode(e *jx.Encoder) {
+// Encode encodes SchemaOrReference as json.
+func (s SchemaOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsSchemaDefinitionsSchemaOrReference:
-		s.DefinitionsSchema.Encode(e)
-	case DefinitionsReferenceDefinitionsSchemaOrReference:
-		s.DefinitionsReference.Encode(e)
+	case SchemaSchemaOrReference:
+		s.Schema.Encode(e)
+	case ReferenceSchemaOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsSchemaOrReference from json.
-func (s *DefinitionsSchemaOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes SchemaOrReference from json.
+func (s *SchemaOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSchemaOrReference to nil")
+		return errors.New("invalid: unable to decode SchemaOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -13408,82 +14748,82 @@ func (s *DefinitionsSchemaOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "nullable":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "discriminator":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "readOnly":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "writeOnly":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "xml":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "externalDocs":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "example":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "deprecated":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "title":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "multipleOf":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "maximum":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "exclusiveMaximum":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "minimum":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "exclusiveMinimum":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "maxLength":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "minLength":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "pattern":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "maxItems":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "minItems":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "uniqueItems":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "maxProperties":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "minProperties":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "required":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "enum":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "type":
 				found = true
-				s.Type = DefinitionsSchemaDefinitionsSchemaOrReference
+				s.Type = SchemaSchemaOrReference
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsSchemaOrReference
+				s.Type = ReferenceSchemaOrReference
 			}
 			return d.Skip()
 		})
@@ -13494,12 +14834,12 @@ func (s *DefinitionsSchemaOrReference) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case DefinitionsSchemaDefinitionsSchemaOrReference:
-		if err := s.DefinitionsSchema.Decode(d); err != nil {
+	case SchemaSchemaOrReference:
+		if err := s.Schema.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsSchemaOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceSchemaOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -13509,27 +14849,27 @@ func (s *DefinitionsSchemaOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSchemaOrReference) MarshalJSON() ([]byte, error) {
+func (s SchemaOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSchemaOrReference) UnmarshalJSON(data []byte) error {
+func (s *SchemaOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSchemaPattern0) Encode(e *jx.Encoder) {
+func (s SchemaPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSchemaPattern0) encodeFields(e *jx.Encoder) {
+func (s SchemaPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -13539,10 +14879,10 @@ func (s DefinitionsSchemaPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSchemaPattern0 from json.
-func (s *DefinitionsSchemaPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes SchemaPattern0 from json.
+func (s *SchemaPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSchemaPattern0 to nil")
+		return errors.New("invalid: unable to decode SchemaPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -13564,34 +14904,34 @@ func (s *DefinitionsSchemaPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSchemaPattern0")
+		return errors.Wrap(err, "decode SchemaPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSchemaPattern0) MarshalJSON() ([]byte, error) {
+func (s SchemaPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSchemaPattern0) UnmarshalJSON(data []byte) error {
+func (s *SchemaPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSchemaProperties) Encode(e *jx.Encoder) {
+func (s SchemaProperties) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSchemaProperties) encodeFields(e *jx.Encoder) {
+func (s SchemaProperties) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -13599,14 +14939,14 @@ func (s DefinitionsSchemaProperties) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSchemaProperties from json.
-func (s *DefinitionsSchemaProperties) Decode(d *jx.Decoder) error {
+// Decode decodes SchemaProperties from json.
+func (s *SchemaProperties) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSchemaProperties to nil")
+		return errors.New("invalid: unable to decode SchemaProperties to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsSchemaOrReference
+		var elem SchemaOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -13618,84 +14958,84 @@ func (s *DefinitionsSchemaProperties) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSchemaProperties")
+		return errors.Wrap(err, "decode SchemaProperties")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSchemaProperties) MarshalJSON() ([]byte, error) {
+func (s SchemaProperties) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSchemaProperties) UnmarshalJSON(data []byte) error {
+func (s *SchemaProperties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsSchemaType as json.
-func (s DefinitionsSchemaType) Encode(e *jx.Encoder) {
+// Encode encodes SchemaType as json.
+func (s SchemaType) Encode(e *jx.Encoder) {
 	e.Str(string(s))
 }
 
-// Decode decodes DefinitionsSchemaType from json.
-func (s *DefinitionsSchemaType) Decode(d *jx.Decoder) error {
+// Decode decodes SchemaType from json.
+func (s *SchemaType) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSchemaType to nil")
+		return errors.New("invalid: unable to decode SchemaType to nil")
 	}
 	v, err := d.StrBytes()
 	if err != nil {
 		return err
 	}
 	// Try to use constant string.
-	switch DefinitionsSchemaType(v) {
-	case DefinitionsSchemaTypeArray:
-		*s = DefinitionsSchemaTypeArray
-	case DefinitionsSchemaTypeBoolean:
-		*s = DefinitionsSchemaTypeBoolean
-	case DefinitionsSchemaTypeInteger:
-		*s = DefinitionsSchemaTypeInteger
-	case DefinitionsSchemaTypeNull:
-		*s = DefinitionsSchemaTypeNull
-	case DefinitionsSchemaTypeNumber:
-		*s = DefinitionsSchemaTypeNumber
-	case DefinitionsSchemaTypeObject:
-		*s = DefinitionsSchemaTypeObject
-	case DefinitionsSchemaTypeString:
-		*s = DefinitionsSchemaTypeString
+	switch SchemaType(v) {
+	case SchemaTypeArray:
+		*s = SchemaTypeArray
+	case SchemaTypeBoolean:
+		*s = SchemaTypeBoolean
+	case SchemaTypeInteger:
+		*s = SchemaTypeInteger
+	case SchemaTypeNull:
+		*s = SchemaTypeNull
+	case SchemaTypeNumber:
+		*s = SchemaTypeNumber
+	case SchemaTypeObject:
+		*s = SchemaTypeObject
+	case SchemaTypeString:
+		*s = SchemaTypeString
 	default:
-		*s = DefinitionsSchemaType(v)
+		*s = SchemaType(v)
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSchemaType) MarshalJSON() ([]byte, error) {
+func (s SchemaType) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSchemaType) UnmarshalJSON(data []byte) error {
+func (s *SchemaType) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSchemasOrReferences) Encode(e *jx.Encoder) {
+func (s SchemasOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSchemasOrReferences) encodeFields(e *jx.Encoder) {
+func (s SchemasOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -13703,14 +15043,14 @@ func (s DefinitionsSchemasOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSchemasOrReferences from json.
-func (s *DefinitionsSchemasOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes SchemasOrReferences from json.
+func (s *SchemasOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSchemasOrReferences to nil")
+		return errors.New("invalid: unable to decode SchemasOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsSchemaOrReference
+		var elem SchemaOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -13722,34 +15062,34 @@ func (s *DefinitionsSchemasOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSchemasOrReferences")
+		return errors.Wrap(err, "decode SchemasOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSchemasOrReferences) MarshalJSON() ([]byte, error) {
+func (s SchemasOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSchemasOrReferences) UnmarshalJSON(data []byte) error {
+func (s *SchemasOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSecurityRequirement) Encode(e *jx.Encoder) {
+func (s SecurityRequirement) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsSecurityRequirement) encodeFields(e *jx.Encoder) {
+func (s SecurityRequirement) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.AdditionalProps {
 		e.FieldStart(k)
 
@@ -13768,12 +15108,12 @@ func (s DefinitionsSecurityRequirement) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsSecurityRequirement = [0]string{}
+var jsonFieldsNameOfSecurityRequirement = [0]string{}
 
-// Decode decodes DefinitionsSecurityRequirement from json.
-func (s *DefinitionsSecurityRequirement) Decode(d *jx.Decoder) error {
+// Decode decodes SecurityRequirement from json.
+func (s *SecurityRequirement) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSecurityRequirement to nil")
+		return errors.New("invalid: unable to decode SecurityRequirement to nil")
 	}
 	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string][]string{}
@@ -13823,34 +15163,34 @@ func (s *DefinitionsSecurityRequirement) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSecurityRequirement")
+		return errors.Wrap(err, "decode SecurityRequirement")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSecurityRequirement) MarshalJSON() ([]byte, error) {
+func (s SecurityRequirement) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSecurityRequirement) UnmarshalJSON(data []byte) error {
+func (s *SecurityRequirement) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSecurityRequirementAdditional) Encode(e *jx.Encoder) {
+func (s SecurityRequirementAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSecurityRequirementAdditional) encodeFields(e *jx.Encoder) {
+func (s SecurityRequirementAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -13860,10 +15200,10 @@ func (s DefinitionsSecurityRequirementAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSecurityRequirementAdditional from json.
-func (s *DefinitionsSecurityRequirementAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes SecurityRequirementAdditional from json.
+func (s *SecurityRequirementAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSecurityRequirementAdditional to nil")
+		return errors.New("invalid: unable to decode SecurityRequirementAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -13881,34 +15221,34 @@ func (s *DefinitionsSecurityRequirementAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSecurityRequirementAdditional")
+		return errors.Wrap(err, "decode SecurityRequirementAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSecurityRequirementAdditional) MarshalJSON() ([]byte, error) {
+func (s SecurityRequirementAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSecurityRequirementAdditional) UnmarshalJSON(data []byte) error {
+func (s *SecurityRequirementAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSecurityRequirementPattern0) Encode(e *jx.Encoder) {
+func (s SecurityRequirementPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSecurityRequirementPattern0) encodeFields(e *jx.Encoder) {
+func (s SecurityRequirementPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -13920,10 +15260,10 @@ func (s DefinitionsSecurityRequirementPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSecurityRequirementPattern0 from json.
-func (s *DefinitionsSecurityRequirementPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes SecurityRequirementPattern0 from json.
+func (s *SecurityRequirementPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSecurityRequirementPattern0 to nil")
+		return errors.New("invalid: unable to decode SecurityRequirementPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^[a-zA-Z0-9\\.\\-_]+$"]
@@ -13953,34 +15293,34 @@ func (s *DefinitionsSecurityRequirementPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSecurityRequirementPattern0")
+		return errors.Wrap(err, "decode SecurityRequirementPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSecurityRequirementPattern0) MarshalJSON() ([]byte, error) {
+func (s SecurityRequirementPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSecurityRequirementPattern0) UnmarshalJSON(data []byte) error {
+func (s *SecurityRequirementPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSecurityScheme) Encode(e *jx.Encoder) {
+func (s SecurityScheme) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsSecurityScheme) encodeFields(e *jx.Encoder) {
+func (s SecurityScheme) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("type")
@@ -14044,7 +15384,7 @@ func (s DefinitionsSecurityScheme) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsSecurityScheme = [8]string{
+var jsonFieldsNameOfSecurityScheme = [8]string{
 	0: "type",
 	1: "description",
 	2: "name",
@@ -14055,10 +15395,10 @@ var jsonFieldsNameOfDefinitionsSecurityScheme = [8]string{
 	7: "openIdConnectUrl",
 }
 
-// Decode decodes DefinitionsSecurityScheme from json.
-func (s *DefinitionsSecurityScheme) Decode(d *jx.Decoder) error {
+// Decode decodes SecurityScheme from json.
+func (s *SecurityScheme) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSecurityScheme to nil")
+		return errors.New("invalid: unable to decode SecurityScheme to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -14183,7 +15523,7 @@ func (s *DefinitionsSecurityScheme) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSecurityScheme")
+		return errors.Wrap(err, "decode SecurityScheme")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -14200,8 +15540,8 @@ func (s *DefinitionsSecurityScheme) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsSecurityScheme) {
-					name = jsonFieldsNameOfDefinitionsSecurityScheme[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfSecurityScheme) {
+					name = jsonFieldsNameOfSecurityScheme[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -14222,27 +15562,27 @@ func (s *DefinitionsSecurityScheme) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSecurityScheme) MarshalJSON() ([]byte, error) {
+func (s SecurityScheme) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSecurityScheme) UnmarshalJSON(data []byte) error {
+func (s *SecurityScheme) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSecuritySchemeAdditional) Encode(e *jx.Encoder) {
+func (s SecuritySchemeAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSecuritySchemeAdditional) encodeFields(e *jx.Encoder) {
+func (s SecuritySchemeAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -14252,10 +15592,10 @@ func (s DefinitionsSecuritySchemeAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSecuritySchemeAdditional from json.
-func (s *DefinitionsSecuritySchemeAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes SecuritySchemeAdditional from json.
+func (s *SecuritySchemeAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSecuritySchemeAdditional to nil")
+		return errors.New("invalid: unable to decode SecuritySchemeAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -14273,39 +15613,39 @@ func (s *DefinitionsSecuritySchemeAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSecuritySchemeAdditional")
+		return errors.Wrap(err, "decode SecuritySchemeAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSecuritySchemeAdditional) MarshalJSON() ([]byte, error) {
+func (s SecuritySchemeAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSecuritySchemeAdditional) UnmarshalJSON(data []byte) error {
+func (s *SecuritySchemeAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
-// Encode encodes DefinitionsSecuritySchemeOrReference as json.
-func (s DefinitionsSecuritySchemeOrReference) Encode(e *jx.Encoder) {
+// Encode encodes SecuritySchemeOrReference as json.
+func (s SecuritySchemeOrReference) Encode(e *jx.Encoder) {
 	switch s.Type {
-	case DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference:
-		s.DefinitionsSecurityScheme.Encode(e)
-	case DefinitionsReferenceDefinitionsSecuritySchemeOrReference:
-		s.DefinitionsReference.Encode(e)
+	case SecuritySchemeSecuritySchemeOrReference:
+		s.SecurityScheme.Encode(e)
+	case ReferenceSecuritySchemeOrReference:
+		s.Reference.Encode(e)
 	}
 }
 
-// Decode decodes DefinitionsSecuritySchemeOrReference from json.
-func (s *DefinitionsSecuritySchemeOrReference) Decode(d *jx.Decoder) error {
+// Decode decodes SecuritySchemeOrReference from json.
+func (s *SecuritySchemeOrReference) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSecuritySchemeOrReference to nil")
+		return errors.New("invalid: unable to decode SecuritySchemeOrReference to nil")
 	}
 	// Sum type fields.
 	if d.Next() != jx.Object {
@@ -14321,31 +15661,31 @@ func (s *DefinitionsSecuritySchemeOrReference) Decode(d *jx.Decoder) error {
 			switch string(key) {
 			case "type":
 				found = true
-				s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
+				s.Type = SecuritySchemeSecuritySchemeOrReference
 			case "description":
 				found = true
-				s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
+				s.Type = SecuritySchemeSecuritySchemeOrReference
 			case "name":
 				found = true
-				s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
+				s.Type = SecuritySchemeSecuritySchemeOrReference
 			case "in":
 				found = true
-				s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
+				s.Type = SecuritySchemeSecuritySchemeOrReference
 			case "scheme":
 				found = true
-				s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
+				s.Type = SecuritySchemeSecuritySchemeOrReference
 			case "bearerFormat":
 				found = true
-				s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
+				s.Type = SecuritySchemeSecuritySchemeOrReference
 			case "flows":
 				found = true
-				s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
+				s.Type = SecuritySchemeSecuritySchemeOrReference
 			case "openIdConnectUrl":
 				found = true
-				s.Type = DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference
+				s.Type = SecuritySchemeSecuritySchemeOrReference
 			case "$ref":
 				found = true
-				s.Type = DefinitionsReferenceDefinitionsSecuritySchemeOrReference
+				s.Type = ReferenceSecuritySchemeOrReference
 			}
 			return d.Skip()
 		})
@@ -14356,12 +15696,12 @@ func (s *DefinitionsSecuritySchemeOrReference) Decode(d *jx.Decoder) error {
 		return errors.New("unable to detect sum type variant")
 	}
 	switch s.Type {
-	case DefinitionsSecuritySchemeDefinitionsSecuritySchemeOrReference:
-		if err := s.DefinitionsSecurityScheme.Decode(d); err != nil {
+	case SecuritySchemeSecuritySchemeOrReference:
+		if err := s.SecurityScheme.Decode(d); err != nil {
 			return err
 		}
-	case DefinitionsReferenceDefinitionsSecuritySchemeOrReference:
-		if err := s.DefinitionsReference.Decode(d); err != nil {
+	case ReferenceSecuritySchemeOrReference:
+		if err := s.Reference.Decode(d); err != nil {
 			return err
 		}
 	default:
@@ -14371,27 +15711,27 @@ func (s *DefinitionsSecuritySchemeOrReference) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSecuritySchemeOrReference) MarshalJSON() ([]byte, error) {
+func (s SecuritySchemeOrReference) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSecuritySchemeOrReference) UnmarshalJSON(data []byte) error {
+func (s *SecuritySchemeOrReference) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSecuritySchemePattern0) Encode(e *jx.Encoder) {
+func (s SecuritySchemePattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSecuritySchemePattern0) encodeFields(e *jx.Encoder) {
+func (s SecuritySchemePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -14401,10 +15741,10 @@ func (s DefinitionsSecuritySchemePattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSecuritySchemePattern0 from json.
-func (s *DefinitionsSecuritySchemePattern0) Decode(d *jx.Decoder) error {
+// Decode decodes SecuritySchemePattern0 from json.
+func (s *SecuritySchemePattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSecuritySchemePattern0 to nil")
+		return errors.New("invalid: unable to decode SecuritySchemePattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -14426,34 +15766,34 @@ func (s *DefinitionsSecuritySchemePattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSecuritySchemePattern0")
+		return errors.Wrap(err, "decode SecuritySchemePattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSecuritySchemePattern0) MarshalJSON() ([]byte, error) {
+func (s SecuritySchemePattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSecuritySchemePattern0) UnmarshalJSON(data []byte) error {
+func (s *SecuritySchemePattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsSecuritySchemesOrReferences) Encode(e *jx.Encoder) {
+func (s SecuritySchemesOrReferences) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsSecuritySchemesOrReferences) encodeFields(e *jx.Encoder) {
+func (s SecuritySchemesOrReferences) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -14461,14 +15801,14 @@ func (s DefinitionsSecuritySchemesOrReferences) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsSecuritySchemesOrReferences from json.
-func (s *DefinitionsSecuritySchemesOrReferences) Decode(d *jx.Decoder) error {
+// Decode decodes SecuritySchemesOrReferences from json.
+func (s *SecuritySchemesOrReferences) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsSecuritySchemesOrReferences to nil")
+		return errors.New("invalid: unable to decode SecuritySchemesOrReferences to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsSecuritySchemeOrReference
+		var elem SecuritySchemeOrReference
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -14480,34 +15820,34 @@ func (s *DefinitionsSecuritySchemesOrReferences) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsSecuritySchemesOrReferences")
+		return errors.Wrap(err, "decode SecuritySchemesOrReferences")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsSecuritySchemesOrReferences) MarshalJSON() ([]byte, error) {
+func (s SecuritySchemesOrReferences) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsSecuritySchemesOrReferences) UnmarshalJSON(data []byte) error {
+func (s *SecuritySchemesOrReferences) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsServer) Encode(e *jx.Encoder) {
+func (s Server) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsServer) encodeFields(e *jx.Encoder) {
+func (s Server) encodeFields(e *jx.Encoder) {
 	{
 
 		e.FieldStart("url")
@@ -14541,16 +15881,16 @@ func (s DefinitionsServer) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsServer = [3]string{
+var jsonFieldsNameOfServer = [3]string{
 	0: "url",
 	1: "description",
 	2: "variables",
 }
 
-// Decode decodes DefinitionsServer from json.
-func (s *DefinitionsServer) Decode(d *jx.Decoder) error {
+// Decode decodes Server from json.
+func (s *Server) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsServer to nil")
+		return errors.New("invalid: unable to decode Server to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -14625,7 +15965,7 @@ func (s *DefinitionsServer) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsServer")
+		return errors.Wrap(err, "decode Server")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -14642,8 +15982,8 @@ func (s *DefinitionsServer) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsServer) {
-					name = jsonFieldsNameOfDefinitionsServer[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfServer) {
+					name = jsonFieldsNameOfServer[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -14664,27 +16004,27 @@ func (s *DefinitionsServer) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsServer) MarshalJSON() ([]byte, error) {
+func (s Server) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsServer) UnmarshalJSON(data []byte) error {
+func (s *Server) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsServerAdditional) Encode(e *jx.Encoder) {
+func (s ServerAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsServerAdditional) encodeFields(e *jx.Encoder) {
+func (s ServerAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -14694,10 +16034,10 @@ func (s DefinitionsServerAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsServerAdditional from json.
-func (s *DefinitionsServerAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ServerAdditional from json.
+func (s *ServerAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsServerAdditional to nil")
+		return errors.New("invalid: unable to decode ServerAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -14715,34 +16055,34 @@ func (s *DefinitionsServerAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsServerAdditional")
+		return errors.Wrap(err, "decode ServerAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsServerAdditional) MarshalJSON() ([]byte, error) {
+func (s ServerAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsServerAdditional) UnmarshalJSON(data []byte) error {
+func (s *ServerAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsServerPattern0) Encode(e *jx.Encoder) {
+func (s ServerPattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsServerPattern0) encodeFields(e *jx.Encoder) {
+func (s ServerPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -14752,10 +16092,10 @@ func (s DefinitionsServerPattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsServerPattern0 from json.
-func (s *DefinitionsServerPattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ServerPattern0 from json.
+func (s *ServerPattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsServerPattern0 to nil")
+		return errors.New("invalid: unable to decode ServerPattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -14777,34 +16117,34 @@ func (s *DefinitionsServerPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsServerPattern0")
+		return errors.Wrap(err, "decode ServerPattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsServerPattern0) MarshalJSON() ([]byte, error) {
+func (s ServerPattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsServerPattern0) UnmarshalJSON(data []byte) error {
+func (s *ServerPattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsServerVariable) Encode(e *jx.Encoder) {
+func (s ServerVariable) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s DefinitionsServerVariable) encodeFields(e *jx.Encoder) {
+func (s ServerVariable) encodeFields(e *jx.Encoder) {
 	{
 		if s.Enum != nil {
 			e.FieldStart("enum")
@@ -14842,16 +16182,16 @@ func (s DefinitionsServerVariable) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfDefinitionsServerVariable = [3]string{
+var jsonFieldsNameOfServerVariable = [3]string{
 	0: "enum",
 	1: "default",
 	2: "description",
 }
 
-// Decode decodes DefinitionsServerVariable from json.
-func (s *DefinitionsServerVariable) Decode(d *jx.Decoder) error {
+// Decode decodes ServerVariable from json.
+func (s *ServerVariable) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsServerVariable to nil")
+		return errors.New("invalid: unable to decode ServerVariable to nil")
 	}
 	var requiredBitSet [1]uint8
 	s.AdditionalProps = map[string]jx.Raw{}
@@ -14935,7 +16275,7 @@ func (s *DefinitionsServerVariable) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsServerVariable")
+		return errors.Wrap(err, "decode ServerVariable")
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
@@ -14952,8 +16292,8 @@ func (s *DefinitionsServerVariable) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i*8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsServerVariable) {
-					name = jsonFieldsNameOfDefinitionsServerVariable[fieldIdx]
+				if fieldIdx < len(jsonFieldsNameOfServerVariable) {
+					name = jsonFieldsNameOfServerVariable[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -14974,27 +16314,27 @@ func (s *DefinitionsServerVariable) Decode(d *jx.Decoder) error {
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsServerVariable) MarshalJSON() ([]byte, error) {
+func (s ServerVariable) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsServerVariable) UnmarshalJSON(data []byte) error {
+func (s *ServerVariable) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsServerVariableAdditional) Encode(e *jx.Encoder) {
+func (s ServerVariableAdditional) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsServerVariableAdditional) encodeFields(e *jx.Encoder) {
+func (s ServerVariableAdditional) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -15004,10 +16344,10 @@ func (s DefinitionsServerVariableAdditional) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsServerVariableAdditional from json.
-func (s *DefinitionsServerVariableAdditional) Decode(d *jx.Decoder) error {
+// Decode decodes ServerVariableAdditional from json.
+func (s *ServerVariableAdditional) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsServerVariableAdditional to nil")
+		return errors.New("invalid: unable to decode ServerVariableAdditional to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -15025,34 +16365,34 @@ func (s *DefinitionsServerVariableAdditional) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsServerVariableAdditional")
+		return errors.Wrap(err, "decode ServerVariableAdditional")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsServerVariableAdditional) MarshalJSON() ([]byte, error) {
+func (s ServerVariableAdditional) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsServerVariableAdditional) UnmarshalJSON(data []byte) error {
+func (s *ServerVariableAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsServerVariablePattern0) Encode(e *jx.Encoder) {
+func (s ServerVariablePattern0) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsServerVariablePattern0) encodeFields(e *jx.Encoder) {
+func (s ServerVariablePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -15062,10 +16402,10 @@ func (s DefinitionsServerVariablePattern0) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsServerVariablePattern0 from json.
-func (s *DefinitionsServerVariablePattern0) Decode(d *jx.Decoder) error {
+// Decode decodes ServerVariablePattern0 from json.
+func (s *ServerVariablePattern0) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsServerVariablePattern0 to nil")
+		return errors.New("invalid: unable to decode ServerVariablePattern0 to nil")
 	}
 	m := s.init()
 	pattern := regexMap["^x-"]
@@ -15087,34 +16427,34 @@ func (s *DefinitionsServerVariablePattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsServerVariablePattern0")
+		return errors.Wrap(err, "decode ServerVariablePattern0")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsServerVariablePattern0) MarshalJSON() ([]byte, error) {
+func (s ServerVariablePattern0) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsServerVariablePattern0) UnmarshalJSON(data []byte) error {
+func (s *ServerVariablePattern0) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
 
 // Encode implements json.Marshaler.
-func (s DefinitionsServerVariables) Encode(e *jx.Encoder) {
+func (s ServerVariables) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields implements json.Marshaler.
-func (s DefinitionsServerVariables) encodeFields(e *jx.Encoder) {
+func (s ServerVariables) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
@@ -15122,14 +16462,14 @@ func (s DefinitionsServerVariables) encodeFields(e *jx.Encoder) {
 	}
 }
 
-// Decode decodes DefinitionsServerVariables from json.
-func (s *DefinitionsServerVariables) Decode(d *jx.Decoder) error {
+// Decode decodes ServerVariables from json.
+func (s *ServerVariables) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsServerVariables to nil")
+		return errors.New("invalid: unable to decode ServerVariables to nil")
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem DefinitionsServerVariable
+		var elem ServerVariable
 		if err := func() error {
 			if err := elem.Decode(d); err != nil {
 				return err
@@ -15141,2094 +16481,21 @@ func (s *DefinitionsServerVariables) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsServerVariables")
+		return errors.Wrap(err, "decode ServerVariables")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsServerVariables) MarshalJSON() ([]byte, error) {
+func (s ServerVariables) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsServerVariables) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsStringArray as json.
-func (s DefinitionsStringArray) Encode(e *jx.Encoder) {
-	unwrapped := []string(s)
-	e.ArrStart()
-	for _, elem := range unwrapped {
-		e.Str(elem)
-	}
-	e.ArrEnd()
-}
-
-// Decode decodes DefinitionsStringArray from json.
-func (s *DefinitionsStringArray) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsStringArray to nil")
-	}
-	var unwrapped []string
-	if err := func() error {
-		unwrapped = make([]string, 0)
-		if err := d.Arr(func(d *jx.Decoder) error {
-			var elem string
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			unwrapped = append(unwrapped, elem)
-			return nil
-		}); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		return errors.Wrap(err, "alias")
-	}
-	*s = DefinitionsStringArray(unwrapped)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsStringArray) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsStringArray) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s DefinitionsStrings) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s DefinitionsStrings) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		e.Str(elem)
-	}
-}
-
-// Decode decodes DefinitionsStrings from json.
-func (s *DefinitionsStrings) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsStrings to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem string
-		if err := func() error {
-			v, err := d.Str()
-			elem = string(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsStrings")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsStrings) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsStrings) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s DefinitionsTag) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields encodes fields.
-func (s DefinitionsTag) encodeFields(e *jx.Encoder) {
-	{
-
-		e.FieldStart("name")
-		e.Str(s.Name)
-	}
-	{
-		if s.Description.Set {
-			e.FieldStart("description")
-			s.Description.Encode(e)
-		}
-	}
-	{
-		if s.ExternalDocs.Set {
-			e.FieldStart("externalDocs")
-			s.ExternalDocs.Encode(e)
-		}
-	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-	for k, elem := range s.Pattern0Props {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-var jsonFieldsNameOfDefinitionsTag = [3]string{
-	0: "name",
-	1: "description",
-	2: "externalDocs",
-}
-
-// Decode decodes DefinitionsTag from json.
-func (s *DefinitionsTag) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsTag to nil")
-	}
-	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
-	s.Pattern0Props = map[string]jx.Raw{}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "name":
-			requiredBitSet[0] |= 1 << 0
-			if err := func() error {
-				v, err := d.Str()
-				s.Name = string(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"name\"")
-			}
-		case "description":
-			if err := func() error {
-				s.Description.Reset()
-				if err := s.Description.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"description\"")
-			}
-		case "externalDocs":
-			if err := func() error {
-				s.ExternalDocs.Reset()
-				if err := s.ExternalDocs.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"externalDocs\"")
-			}
-		default:
-			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
-				handled = true
-				var elem jx.Raw
-				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return errors.Wrapf(err, "decode field %q", k)
-				}
-				s.Pattern0Props[string(k)] = elem
-			}
-			if handled {
-				return nil
-			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsTag")
-	}
-	// Validate required fields.
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000001,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(jsonFieldsNameOfDefinitionsTag) {
-					name = jsonFieldsNameOfDefinitionsTag[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsTag) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsTag) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s DefinitionsTagAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s DefinitionsTagAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes DefinitionsTagAdditional from json.
-func (s *DefinitionsTagAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsTagAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsTagAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsTagAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsTagAdditional) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s DefinitionsTagPattern0) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s DefinitionsTagPattern0) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes DefinitionsTagPattern0 from json.
-func (s *DefinitionsTagPattern0) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsTagPattern0 to nil")
-	}
-	m := s.init()
-	pattern := regexMap["^x-"]
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
-			return d.Skip()
-		}
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsTagPattern0")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsTagPattern0) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsTagPattern0) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s DefinitionsXML) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields encodes fields.
-func (s DefinitionsXML) encodeFields(e *jx.Encoder) {
-	{
-		if s.Name.Set {
-			e.FieldStart("name")
-			s.Name.Encode(e)
-		}
-	}
-	{
-		if s.Namespace.Set {
-			e.FieldStart("namespace")
-			s.Namespace.Encode(e)
-		}
-	}
-	{
-		if s.Prefix.Set {
-			e.FieldStart("prefix")
-			s.Prefix.Encode(e)
-		}
-	}
-	{
-		if s.Attribute.Set {
-			e.FieldStart("attribute")
-			s.Attribute.Encode(e)
-		}
-	}
-	{
-		if s.Wrapped.Set {
-			e.FieldStart("wrapped")
-			s.Wrapped.Encode(e)
-		}
-	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-	for k, elem := range s.Pattern0Props {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-var jsonFieldsNameOfDefinitionsXML = [5]string{
-	0: "name",
-	1: "namespace",
-	2: "prefix",
-	3: "attribute",
-	4: "wrapped",
-}
-
-// Decode decodes DefinitionsXML from json.
-func (s *DefinitionsXML) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsXML to nil")
-	}
-	s.AdditionalProps = map[string]jx.Raw{}
-	s.Pattern0Props = map[string]jx.Raw{}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		case "name":
-			if err := func() error {
-				s.Name.Reset()
-				if err := s.Name.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"name\"")
-			}
-		case "namespace":
-			if err := func() error {
-				s.Namespace.Reset()
-				if err := s.Namespace.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"namespace\"")
-			}
-		case "prefix":
-			if err := func() error {
-				s.Prefix.Reset()
-				if err := s.Prefix.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"prefix\"")
-			}
-		case "attribute":
-			if err := func() error {
-				s.Attribute.Reset()
-				if err := s.Attribute.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"attribute\"")
-			}
-		case "wrapped":
-			if err := func() error {
-				s.Wrapped.Reset()
-				if err := s.Wrapped.Decode(d); err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"wrapped\"")
-			}
-		default:
-			var handled bool
-			if pattern := regexMap["^x-"]; pattern.Match(k) {
-				handled = true
-				var elem jx.Raw
-				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return errors.Wrapf(err, "decode field %q", k)
-				}
-				s.Pattern0Props[string(k)] = elem
-			}
-			if handled {
-				return nil
-			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsXML")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsXML) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsXML) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s DefinitionsXMLAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s DefinitionsXMLAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes DefinitionsXMLAdditional from json.
-func (s *DefinitionsXMLAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsXMLAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsXMLAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsXMLAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsXMLAdditional) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s DefinitionsXMLPattern0) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s DefinitionsXMLPattern0) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes DefinitionsXMLPattern0 from json.
-func (s *DefinitionsXMLPattern0) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DefinitionsXMLPattern0 to nil")
-	}
-	m := s.init()
-	pattern := regexMap["^x-"]
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		if !pattern.Match(k) {
-			return d.Skip()
-		}
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DefinitionsXMLPattern0")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DefinitionsXMLPattern0) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DefinitionsXMLPattern0) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes bool as json.
-func (o OptBool) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	e.Bool(bool(o.Value))
-}
-
-// Decode decodes bool from json.
-func (o *OptBool) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptBool to nil")
-	}
-	o.Set = true
-	v, err := d.Bool()
-	if err != nil {
-		return err
-	}
-	o.Value = bool(v)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptBool) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptBool) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsAnysOrExpressions as json.
-func (o OptDefinitionsAnysOrExpressions) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsAnysOrExpressions from json.
-func (o *OptDefinitionsAnysOrExpressions) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsAnysOrExpressions to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsAnysOrExpressions)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsAnysOrExpressions) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsAnysOrExpressions) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsCallbacksOrReferences as json.
-func (o OptDefinitionsCallbacksOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsCallbacksOrReferences from json.
-func (o *OptDefinitionsCallbacksOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsCallbacksOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsCallbacksOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsCallbacksOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsCallbacksOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsComponents as json.
-func (o OptDefinitionsComponents) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsComponents from json.
-func (o *OptDefinitionsComponents) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsComponents to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsComponents) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsComponents) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsContact as json.
-func (o OptDefinitionsContact) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsContact from json.
-func (o *OptDefinitionsContact) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsContact to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsContact) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsContact) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsDiscriminator as json.
-func (o OptDefinitionsDiscriminator) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsDiscriminator from json.
-func (o *OptDefinitionsDiscriminator) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsDiscriminator to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsDiscriminator) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsDiscriminator) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsEncodings as json.
-func (o OptDefinitionsEncodings) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsEncodings from json.
-func (o *OptDefinitionsEncodings) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsEncodings to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsEncodings)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsEncodings) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsEncodings) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsExamplesOrReferences as json.
-func (o OptDefinitionsExamplesOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsExamplesOrReferences from json.
-func (o *OptDefinitionsExamplesOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsExamplesOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsExamplesOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsExamplesOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsExamplesOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsExternalDocs as json.
-func (o OptDefinitionsExternalDocs) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsExternalDocs from json.
-func (o *OptDefinitionsExternalDocs) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsExternalDocs to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsExternalDocs) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsExternalDocs) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsHeadersOrReferences as json.
-func (o OptDefinitionsHeadersOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsHeadersOrReferences from json.
-func (o *OptDefinitionsHeadersOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsHeadersOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsHeadersOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsHeadersOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsHeadersOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum as json.
-func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesExclusiveMaximum from json.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsJsonschemaDraft4PropertiesExclusiveMaximum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum as json.
-func (o OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesExclusiveMinimum from json.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsJsonschemaDraft4PropertiesExclusiveMinimum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesMaximum as json.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMaximum) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesMaximum from json.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMaximum) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsJsonschemaDraft4PropertiesMaximum to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsJsonschemaDraft4PropertiesMaximum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsJsonschemaDraft4PropertiesMaximum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesMinimum as json.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMinimum) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesMinimum from json.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMinimum) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsJsonschemaDraft4PropertiesMinimum to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsJsonschemaDraft4PropertiesMinimum) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsJsonschemaDraft4PropertiesMinimum) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesMultipleOf as json.
-func (o OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesMultipleOf from json.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsJsonschemaDraft4PropertiesMultipleOf to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsJsonschemaDraft4PropertiesMultipleOf) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesPattern as json.
-func (o OptDefinitionsJsonschemaDraft4PropertiesPattern) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesPattern from json.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesPattern) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsJsonschemaDraft4PropertiesPattern to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsJsonschemaDraft4PropertiesPattern) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsJsonschemaDraft4PropertiesPattern) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesTitle as json.
-func (o OptDefinitionsJsonschemaDraft4PropertiesTitle) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesTitle from json.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesTitle) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsJsonschemaDraft4PropertiesTitle to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsJsonschemaDraft4PropertiesTitle) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsJsonschemaDraft4PropertiesTitle) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsJsonschemaDraft4PropertiesUniqueItems as json.
-func (o OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsJsonschemaDraft4PropertiesUniqueItems from json.
-func (o *OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsJsonschemaDraft4PropertiesUniqueItems to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsJsonschemaDraft4PropertiesUniqueItems) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsLicense as json.
-func (o OptDefinitionsLicense) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsLicense from json.
-func (o *OptDefinitionsLicense) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsLicense to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsLicense) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsLicense) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsLinksOrReferences as json.
-func (o OptDefinitionsLinksOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsLinksOrReferences from json.
-func (o *OptDefinitionsLinksOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsLinksOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsLinksOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsLinksOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsLinksOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsMediaTypes as json.
-func (o OptDefinitionsMediaTypes) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsMediaTypes from json.
-func (o *OptDefinitionsMediaTypes) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsMediaTypes to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsMediaTypes)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsMediaTypes) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsMediaTypes) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsOauthFlow as json.
-func (o OptDefinitionsOauthFlow) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsOauthFlow from json.
-func (o *OptDefinitionsOauthFlow) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsOauthFlow to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsOauthFlow) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsOauthFlow) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsOauthFlows as json.
-func (o OptDefinitionsOauthFlows) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsOauthFlows from json.
-func (o *OptDefinitionsOauthFlows) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsOauthFlows to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsOauthFlows) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsOauthFlows) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsOperation as json.
-func (o OptDefinitionsOperation) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsOperation from json.
-func (o *OptDefinitionsOperation) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsOperation to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsOperation) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsOperation) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsParameterStyle as json.
-func (o OptDefinitionsParameterStyle) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes DefinitionsParameterStyle from json.
-func (o *OptDefinitionsParameterStyle) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsParameterStyle to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsParameterStyle) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsParameterStyle) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsParametersOrReferences as json.
-func (o OptDefinitionsParametersOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsParametersOrReferences from json.
-func (o *OptDefinitionsParametersOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsParametersOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsParametersOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsParametersOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsParametersOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsPositiveInteger as json.
-func (o OptDefinitionsPositiveInteger) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsPositiveInteger from json.
-func (o *OptDefinitionsPositiveInteger) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsPositiveInteger to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsPositiveInteger) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsPositiveInteger) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsRequestBodiesOrReferences as json.
-func (o OptDefinitionsRequestBodiesOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsRequestBodiesOrReferences from json.
-func (o *OptDefinitionsRequestBodiesOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsRequestBodiesOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsRequestBodiesOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsRequestBodiesOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsRequestBodiesOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsRequestBodyOrReference as json.
-func (o OptDefinitionsRequestBodyOrReference) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsRequestBodyOrReference from json.
-func (o *OptDefinitionsRequestBodyOrReference) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsRequestBodyOrReference to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsRequestBodyOrReference) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsRequestBodyOrReference) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsResponseOrReference as json.
-func (o OptDefinitionsResponseOrReference) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsResponseOrReference from json.
-func (o *OptDefinitionsResponseOrReference) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsResponseOrReference to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsResponseOrReference) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsResponseOrReference) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsResponsesOrReferences as json.
-func (o OptDefinitionsResponsesOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsResponsesOrReferences from json.
-func (o *OptDefinitionsResponsesOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsResponsesOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsResponsesOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsResponsesOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsResponsesOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsSchemaOrReference as json.
-func (o OptDefinitionsSchemaOrReference) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsSchemaOrReference from json.
-func (o *OptDefinitionsSchemaOrReference) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsSchemaOrReference to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsSchemaOrReference) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsSchemaOrReference) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsSchemaProperties as json.
-func (o OptDefinitionsSchemaProperties) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsSchemaProperties from json.
-func (o *OptDefinitionsSchemaProperties) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsSchemaProperties to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsSchemaProperties)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsSchemaProperties) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsSchemaProperties) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsSchemaType as json.
-func (o OptDefinitionsSchemaType) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes DefinitionsSchemaType from json.
-func (o *OptDefinitionsSchemaType) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsSchemaType to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsSchemaType) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsSchemaType) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsSchemasOrReferences as json.
-func (o OptDefinitionsSchemasOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsSchemasOrReferences from json.
-func (o *OptDefinitionsSchemasOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsSchemasOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsSchemasOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsSchemasOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsSchemasOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsSecuritySchemesOrReferences as json.
-func (o OptDefinitionsSecuritySchemesOrReferences) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsSecuritySchemesOrReferences from json.
-func (o *OptDefinitionsSecuritySchemesOrReferences) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsSecuritySchemesOrReferences to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsSecuritySchemesOrReferences)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsSecuritySchemesOrReferences) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsSecuritySchemesOrReferences) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsServer as json.
-func (o OptDefinitionsServer) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsServer from json.
-func (o *OptDefinitionsServer) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsServer to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsServer) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsServer) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsServerVariables as json.
-func (o OptDefinitionsServerVariables) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsServerVariables from json.
-func (o *OptDefinitionsServerVariables) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsServerVariables to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsServerVariables)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsServerVariables) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsServerVariables) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsStrings as json.
-func (o OptDefinitionsStrings) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsStrings from json.
-func (o *OptDefinitionsStrings) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsStrings to nil")
-	}
-	o.Set = true
-	o.Value = make(DefinitionsStrings)
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsStrings) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsStrings) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes DefinitionsXML as json.
-func (o OptDefinitionsXML) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	o.Value.Encode(e)
-}
-
-// Decode decodes DefinitionsXML from json.
-func (o *OptDefinitionsXML) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptDefinitionsXML to nil")
-	}
-	o.Set = true
-	if err := o.Value.Decode(d); err != nil {
-		return err
-	}
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptDefinitionsXML) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptDefinitionsXML) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode encodes string as json.
-func (o OptString) Encode(e *jx.Encoder) {
-	if !o.Set {
-		return
-	}
-	e.Str(string(o.Value))
-}
-
-// Decode decodes string from json.
-func (o *OptString) Decode(d *jx.Decoder) error {
-	if o == nil {
-		return errors.New("invalid: unable to decode OptString to nil")
-	}
-	o.Set = true
-	v, err := d.Str()
-	if err != nil {
-		return err
-	}
-	o.Value = string(v)
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OptString) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OptString) UnmarshalJSON(data []byte) error {
+func (s *ServerVariables) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -17361,9 +16628,9 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 			}
 		case "servers":
 			if err := func() error {
-				s.Servers = make([]DefinitionsServer, 0)
+				s.Servers = make([]Server, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsServer
+					var elem Server
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -17398,9 +16665,9 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 			}
 		case "security":
 			if err := func() error {
-				s.Security = make([]DefinitionsSecurityRequirement, 0)
+				s.Security = make([]SecurityRequirement, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsSecurityRequirement
+					var elem SecurityRequirement
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -17415,9 +16682,9 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 			}
 		case "tags":
 			if err := func() error {
-				s.Tags = make([]DefinitionsTag, 0)
+				s.Tags = make([]Tag, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
-					var elem DefinitionsTag
+					var elem Tag
 					if err := elem.Decode(d); err != nil {
 						return err
 					}
@@ -17646,7 +16913,708 @@ func (s *SpecPattern0) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
-func (s DefinitionsCallback) Validate() error {
+// Encode encodes StringArray as json.
+func (s StringArray) Encode(e *jx.Encoder) {
+	unwrapped := []string(s)
+	e.ArrStart()
+	for _, elem := range unwrapped {
+		e.Str(elem)
+	}
+	e.ArrEnd()
+}
+
+// Decode decodes StringArray from json.
+func (s *StringArray) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode StringArray to nil")
+	}
+	var unwrapped []string
+	if err := func() error {
+		unwrapped = make([]string, 0)
+		if err := d.Arr(func(d *jx.Decoder) error {
+			var elem string
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			unwrapped = append(unwrapped, elem)
+			return nil
+		}); err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = StringArray(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s StringArray) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *StringArray) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s Strings) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s Strings) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+// Decode decodes Strings from json.
+func (s *Strings) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Strings to nil")
+	}
+	m := s.init()
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode Strings")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Strings) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Strings) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s Tag) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s Tag) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("name")
+		e.Str(s.Name)
+	}
+	{
+		if s.Description.Set {
+			e.FieldStart("description")
+			s.Description.Encode(e)
+		}
+	}
+	{
+		if s.ExternalDocs.Set {
+			e.FieldStart("externalDocs")
+			s.ExternalDocs.Encode(e)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		e.FieldStart(k)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+	for k, elem := range s.Pattern0Props {
+		e.FieldStart(k)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
+
+var jsonFieldsNameOfTag = [3]string{
+	0: "name",
+	1: "description",
+	2: "externalDocs",
+}
+
+// Decode decodes Tag from json.
+func (s *Tag) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Tag to nil")
+	}
+	var requiredBitSet [1]uint8
+	s.AdditionalProps = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]jx.Raw{}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "name":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Name = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
+			}
+		case "description":
+			if err := func() error {
+				s.Description.Reset()
+				if err := s.Description.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"description\"")
+			}
+		case "externalDocs":
+			if err := func() error {
+				s.ExternalDocs.Reset()
+				if err := s.ExternalDocs.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"externalDocs\"")
+			}
+		default:
+			var handled bool
+			if pattern := regexMap["^x-"]; pattern.Match(k) {
+				handled = true
+				var elem jx.Raw
+				if err := func() error {
+					v, err := d.RawAppend(nil)
+					elem = jx.Raw(v)
+					if err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return errors.Wrapf(err, "decode field %q", k)
+				}
+				s.Pattern0Props[string(k)] = elem
+			}
+			if handled {
+				return nil
+			}
+			var elem jx.Raw
+			if err := func() error {
+				v, err := d.RawAppend(nil)
+				elem = jx.Raw(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrapf(err, "decode field %q", k)
+			}
+			s.AdditionalProps[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode Tag")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfTag) {
+					name = jsonFieldsNameOfTag[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Tag) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Tag) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s TagAdditional) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TagAdditional) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
+
+// Decode decodes TagAdditional from json.
+func (s *TagAdditional) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TagAdditional to nil")
+	}
+	m := s.init()
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode TagAdditional")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s TagAdditional) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *TagAdditional) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s TagPattern0) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s TagPattern0) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
+
+// Decode decodes TagPattern0 from json.
+func (s *TagPattern0) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TagPattern0 to nil")
+	}
+	m := s.init()
+	pattern := regexMap["^x-"]
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		if !pattern.Match(k) {
+			return d.Skip()
+		}
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode TagPattern0")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s TagPattern0) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *TagPattern0) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s XML) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s XML) encodeFields(e *jx.Encoder) {
+	{
+		if s.Name.Set {
+			e.FieldStart("name")
+			s.Name.Encode(e)
+		}
+	}
+	{
+		if s.Namespace.Set {
+			e.FieldStart("namespace")
+			s.Namespace.Encode(e)
+		}
+	}
+	{
+		if s.Prefix.Set {
+			e.FieldStart("prefix")
+			s.Prefix.Encode(e)
+		}
+	}
+	{
+		if s.Attribute.Set {
+			e.FieldStart("attribute")
+			s.Attribute.Encode(e)
+		}
+	}
+	{
+		if s.Wrapped.Set {
+			e.FieldStart("wrapped")
+			s.Wrapped.Encode(e)
+		}
+	}
+	for k, elem := range s.AdditionalProps {
+		e.FieldStart(k)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+	for k, elem := range s.Pattern0Props {
+		e.FieldStart(k)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
+
+var jsonFieldsNameOfXML = [5]string{
+	0: "name",
+	1: "namespace",
+	2: "prefix",
+	3: "attribute",
+	4: "wrapped",
+}
+
+// Decode decodes XML from json.
+func (s *XML) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode XML to nil")
+	}
+	s.AdditionalProps = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]jx.Raw{}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "name":
+			if err := func() error {
+				s.Name.Reset()
+				if err := s.Name.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"name\"")
+			}
+		case "namespace":
+			if err := func() error {
+				s.Namespace.Reset()
+				if err := s.Namespace.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"namespace\"")
+			}
+		case "prefix":
+			if err := func() error {
+				s.Prefix.Reset()
+				if err := s.Prefix.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"prefix\"")
+			}
+		case "attribute":
+			if err := func() error {
+				s.Attribute.Reset()
+				if err := s.Attribute.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"attribute\"")
+			}
+		case "wrapped":
+			if err := func() error {
+				s.Wrapped.Reset()
+				if err := s.Wrapped.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"wrapped\"")
+			}
+		default:
+			var handled bool
+			if pattern := regexMap["^x-"]; pattern.Match(k) {
+				handled = true
+				var elem jx.Raw
+				if err := func() error {
+					v, err := d.RawAppend(nil)
+					elem = jx.Raw(v)
+					if err != nil {
+						return err
+					}
+					return nil
+				}(); err != nil {
+					return errors.Wrapf(err, "decode field %q", k)
+				}
+				s.Pattern0Props[string(k)] = elem
+			}
+			if handled {
+				return nil
+			}
+			var elem jx.Raw
+			if err := func() error {
+				v, err := d.RawAppend(nil)
+				elem = jx.Raw(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrapf(err, "decode field %q", k)
+			}
+			s.AdditionalProps[string(k)] = elem
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode XML")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s XML) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *XML) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s XMLAdditional) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s XMLAdditional) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
+
+// Decode decodes XMLAdditional from json.
+func (s *XMLAdditional) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode XMLAdditional to nil")
+	}
+	m := s.init()
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode XMLAdditional")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s XMLAdditional) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *XMLAdditional) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s XMLPattern0) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s XMLPattern0) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		if len(elem) != 0 {
+			e.Raw(elem)
+		}
+	}
+}
+
+// Decode decodes XMLPattern0 from json.
+func (s *XMLPattern0) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode XMLPattern0 to nil")
+	}
+	m := s.init()
+	pattern := regexMap["^x-"]
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		if !pattern.Match(k) {
+			return d.Skip()
+		}
+		var elem jx.Raw
+		if err := func() error {
+			v, err := d.RawAppend(nil)
+			elem = jx.Raw(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode XMLPattern0")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s XMLPattern0) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *XMLPattern0) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+func (s Callback) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
@@ -17664,21 +17632,21 @@ func (s DefinitionsCallback) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsCallbackOrReference) Validate() error {
+func (s CallbackOrReference) Validate() error {
 	switch s.Type {
-	case DefinitionsCallbackDefinitionsCallbackOrReference:
-		if err := s.DefinitionsCallback.Validate(); err != nil {
+	case CallbackCallbackOrReference:
+		if err := s.Callback.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case DefinitionsReferenceDefinitionsCallbackOrReference:
+	case ReferenceCallbackOrReference:
 		return nil // no validation needed
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
 }
 
-func (s DefinitionsCallbackPattern0) Validate() error {
+func (s CallbackPattern0) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -17699,7 +17667,7 @@ func (s DefinitionsCallbackPattern0) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsCallbacksOrReferences) Validate() error {
+func (s CallbacksOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -17720,7 +17688,7 @@ func (s DefinitionsCallbacksOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsComponents) Validate() error {
+func (s Components) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schemas.Set {
@@ -17841,7 +17809,7 @@ func (s DefinitionsComponents) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsEncoding) Validate() error {
+func (s Encoding) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Headers.Set {
@@ -17867,7 +17835,7 @@ func (s DefinitionsEncoding) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsEncodings) Validate() error {
+func (s Encodings) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -17888,7 +17856,7 @@ func (s DefinitionsEncodings) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsHeader) Validate() error {
+func (s Header) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schema.Set {
@@ -17933,21 +17901,21 @@ func (s DefinitionsHeader) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsHeaderOrReference) Validate() error {
+func (s HeaderOrReference) Validate() error {
 	switch s.Type {
-	case DefinitionsHeaderDefinitionsHeaderOrReference:
-		if err := s.DefinitionsHeader.Validate(); err != nil {
+	case HeaderHeaderOrReference:
+		if err := s.Header.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case DefinitionsReferenceDefinitionsHeaderOrReference:
+	case ReferenceHeaderOrReference:
 		return nil // no validation needed
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
 }
 
-func (s DefinitionsHeadersOrReferences) Validate() error {
+func (s HeadersOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -17968,7 +17936,7 @@ func (s DefinitionsHeadersOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsJsonschemaDraft4PropertiesEnum) Validate() error {
+func (s JsonschemaDraft4PropertiesEnum) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
@@ -17982,19 +17950,19 @@ func (s DefinitionsJsonschemaDraft4PropertiesEnum) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsJsonschemaDraft4PropertiesMaximum) Validate() error {
+func (s JsonschemaDraft4PropertiesMaximum) Validate() error {
 	if err := (validate.Float{}).Validate(float64(s)); err != nil {
 		return errors.Wrap(err, "float")
 	}
 	return nil
 }
-func (s DefinitionsJsonschemaDraft4PropertiesMinimum) Validate() error {
+func (s JsonschemaDraft4PropertiesMinimum) Validate() error {
 	if err := (validate.Float{}).Validate(float64(s)); err != nil {
 		return errors.Wrap(err, "float")
 	}
 	return nil
 }
-func (s DefinitionsJsonschemaDraft4PropertiesMultipleOf) Validate() error {
+func (s JsonschemaDraft4PropertiesMultipleOf) Validate() error {
 	if err := (validate.Float{
 		MinSet:        true,
 		Min:           0,
@@ -18009,7 +17977,7 @@ func (s DefinitionsJsonschemaDraft4PropertiesMultipleOf) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsMediaType) Validate() error {
+func (s MediaType) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Schema.Set {
@@ -18054,7 +18022,7 @@ func (s DefinitionsMediaType) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsMediaTypes) Validate() error {
+func (s MediaTypes) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -18075,7 +18043,7 @@ func (s DefinitionsMediaTypes) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsOperation) Validate() error {
+func (s Operation) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		var failures []validate.FieldError
@@ -18181,7 +18149,8 @@ func (s DefinitionsOperation) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsParameter) Validate() error {
+
+func (s Parameter) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.In.Validate(); err != nil {
@@ -18256,7 +18225,7 @@ func (s DefinitionsParameter) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsParameterIn) Validate() error {
+func (s ParameterIn) Validate() error {
 	switch s {
 	case "path":
 		return nil
@@ -18270,21 +18239,21 @@ func (s DefinitionsParameterIn) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s DefinitionsParameterOrReference) Validate() error {
+func (s ParameterOrReference) Validate() error {
 	switch s.Type {
-	case DefinitionsParameterDefinitionsParameterOrReference:
-		if err := s.DefinitionsParameter.Validate(); err != nil {
+	case ParameterParameterOrReference:
+		if err := s.Parameter.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case DefinitionsReferenceDefinitionsParameterOrReference:
+	case ReferenceParameterOrReference:
 		return nil // no validation needed
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
 }
 
-func (s DefinitionsParameterStyle) Validate() error {
+func (s ParameterStyle) Validate() error {
 	switch s {
 	case "matrix":
 		return nil
@@ -18304,7 +18273,7 @@ func (s DefinitionsParameterStyle) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s DefinitionsParametersOrReferences) Validate() error {
+func (s ParametersOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -18325,7 +18294,7 @@ func (s DefinitionsParametersOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsPathItem) Validate() error {
+func (s PathItem) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Get.Set {
@@ -18509,7 +18478,7 @@ func (s DefinitionsPathItem) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsPaths) Validate() error {
+func (s Paths) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
@@ -18527,7 +18496,7 @@ func (s DefinitionsPaths) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsPathsPattern0) Validate() error {
+func (s PathsPattern0) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -18548,7 +18517,7 @@ func (s DefinitionsPathsPattern0) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsPositiveInteger) Validate() error {
+func (s PositiveInteger) Validate() error {
 	if err := (validate.Int{
 		MinSet:        true,
 		Min:           0,
@@ -18563,7 +18532,7 @@ func (s DefinitionsPositiveInteger) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsRequestBodiesOrReferences) Validate() error {
+func (s RequestBodiesOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -18584,7 +18553,7 @@ func (s DefinitionsRequestBodiesOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsRequestBody) Validate() error {
+func (s RequestBody) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Content.Validate(); err != nil {
@@ -18602,21 +18571,21 @@ func (s DefinitionsRequestBody) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsRequestBodyOrReference) Validate() error {
+func (s RequestBodyOrReference) Validate() error {
 	switch s.Type {
-	case DefinitionsRequestBodyDefinitionsRequestBodyOrReference:
-		if err := s.DefinitionsRequestBody.Validate(); err != nil {
+	case RequestBodyRequestBodyOrReference:
+		if err := s.RequestBody.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case DefinitionsReferenceDefinitionsRequestBodyOrReference:
+	case ReferenceRequestBodyOrReference:
 		return nil // no validation needed
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
 }
 
-func (s DefinitionsResponse) Validate() error {
+func (s Response) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Headers.Set {
@@ -18661,21 +18630,21 @@ func (s DefinitionsResponse) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsResponseOrReference) Validate() error {
+func (s ResponseOrReference) Validate() error {
 	switch s.Type {
-	case DefinitionsResponseDefinitionsResponseOrReference:
-		if err := s.DefinitionsResponse.Validate(); err != nil {
+	case ResponseResponseOrReference:
+		if err := s.Response.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case DefinitionsReferenceDefinitionsResponseOrReference:
+	case ReferenceResponseOrReference:
 		return nil // no validation needed
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
 }
 
-func (s DefinitionsResponses) Validate() error {
+func (s Responses) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.Default.Set {
@@ -18712,7 +18681,7 @@ func (s DefinitionsResponses) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsResponsesOrReferences) Validate() error {
+func (s ResponsesOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -18733,7 +18702,7 @@ func (s DefinitionsResponsesOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsResponsesPattern0) Validate() error {
+func (s ResponsesPattern0) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -18754,7 +18723,7 @@ func (s DefinitionsResponsesPattern0) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsSchema) Validate() error {
+func (s Schema) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if s.MultipleOf.Set {
@@ -19164,35 +19133,35 @@ func (s DefinitionsSchema) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsSchemaAdditionalProperties) Validate() error {
+func (s SchemaAdditionalProperties) Validate() error {
 	switch s.Type {
-	case DefinitionsSchemaOrReferenceDefinitionsSchemaAdditionalProperties:
-		if err := s.DefinitionsSchemaOrReference.Validate(); err != nil {
+	case SchemaOrReferenceSchemaAdditionalProperties:
+		if err := s.SchemaOrReference.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case BoolDefinitionsSchemaAdditionalProperties:
+	case BoolSchemaAdditionalProperties:
 		return nil // no validation needed
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
 }
 
-func (s DefinitionsSchemaOrReference) Validate() error {
+func (s SchemaOrReference) Validate() error {
 	switch s.Type {
-	case DefinitionsSchemaDefinitionsSchemaOrReference:
-		if err := s.DefinitionsSchema.Validate(); err != nil {
+	case SchemaSchemaOrReference:
+		if err := s.Schema.Validate(); err != nil {
 			return err
 		}
 		return nil
-	case DefinitionsReferenceDefinitionsSchemaOrReference:
+	case ReferenceSchemaOrReference:
 		return nil // no validation needed
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
 }
 
-func (s DefinitionsSchemaProperties) Validate() error {
+func (s SchemaProperties) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -19213,7 +19182,7 @@ func (s DefinitionsSchemaProperties) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsSchemaType) Validate() error {
+func (s SchemaType) Validate() error {
 	switch s {
 	case "array":
 		return nil
@@ -19233,7 +19202,7 @@ func (s DefinitionsSchemaType) Validate() error {
 		return errors.Errorf("invalid value: %v", s)
 	}
 }
-func (s DefinitionsSchemasOrReferences) Validate() error {
+func (s SchemasOrReferences) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -19254,7 +19223,7 @@ func (s DefinitionsSchemasOrReferences) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsSecurityRequirement) Validate() error {
+func (s SecurityRequirement) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
@@ -19272,7 +19241,7 @@ func (s DefinitionsSecurityRequirement) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsSecurityRequirementPattern0) Validate() error {
+func (s SecurityRequirementPattern0) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {
@@ -19293,21 +19262,6 @@ func (s DefinitionsSecurityRequirementPattern0) Validate() error {
 	}
 	return nil
 }
-func (s DefinitionsStringArray) Validate() error {
-	if s == nil {
-		return errors.New("nil is invalid value")
-	}
-	if err := (validate.Array{
-		MinLength:    1,
-		MinLengthSet: true,
-		MaxLength:    0,
-		MaxLengthSet: false,
-	}).ValidateLength(len(s)); err != nil {
-		return errors.Wrap(err, "array")
-	}
-	return nil
-}
-
 func (s Spec) Validate() error {
 	var failures []validate.FieldError
 	if err := func() error {
@@ -19367,6 +19321,20 @@ func (s Spec) Validate() error {
 	}
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
+	}
+	return nil
+}
+func (s StringArray) Validate() error {
+	if s == nil {
+		return errors.New("nil is invalid value")
+	}
+	if err := (validate.Array{
+		MinLength:    1,
+		MinLengthSet: true,
+		MaxLength:    0,
+		MaxLengthSet: false,
+	}).ValidateLength(len(s)); err != nil {
+		return errors.Wrap(err, "array")
 	}
 	return nil
 }
