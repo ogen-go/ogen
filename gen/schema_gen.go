@@ -88,19 +88,27 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 
 	switch {
 	case len(schema.AnyOf) > 0:
-		t, err := g.anyOf(name, schema)
-		if err != nil {
+		t := side(&ir.Type{
+			Name:   name,
+			Kind:   ir.KindSum,
+			Schema: schema,
+		})
+		if err := g.anyOf(t, name, schema); err != nil {
 			return nil, errors.Wrap(err, "anyOf")
 		}
-		return side(t), nil
+		return t, nil
 	case len(schema.AllOf) > 0:
 		return nil, &ErrNotImplemented{"allOf"}
 	case len(schema.OneOf) > 0:
-		t, err := g.oneOf(name, schema)
-		if err != nil {
+		t := side(&ir.Type{
+			Name:   name,
+			Kind:   ir.KindSum,
+			Schema: schema,
+		})
+		if err := g.oneOf(t, name, schema); err != nil {
 			return nil, errors.Wrap(err, "oneOf")
 		}
-		return side(t), nil
+		return t, nil
 	}
 
 	switch schema.Type {
