@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/signal"
 	"runtime"
+	"runtime/pprof"
 	"sync"
 
 	"github.com/go-faster/errors"
@@ -57,13 +58,45 @@ fragment SearchResultsAlertFields on SearchResults {
 
 func run(ctx context.Context) error {
 	var (
-		output       = flag.String("output", "./corpus", "Path to corpus output")
-		stats        = flag.String("stats", "", "Path to stats output")
-		clean        = flag.Bool("clean", false, "Clean generated files before generation")
-		generateYaml = flag.Bool("yaml", false, "Query yaml files")
-		q            = flag.String("query", "", "Sourcegraph query")
+		output         = flag.String("output", "./corpus", "Path to corpus output")
+		stats          = flag.String("stats", "", "Path to stats output")
+		clean          = flag.Bool("clean", false, "Clean generated files before generation")
+		generateYaml   = flag.Bool("yaml", false, "Query yaml files")
+		q              = flag.String("query", "", "Sourcegraph query")
+		cpuProfile     = flag.String("cpuprofile", "", "Write cpu profile to file")
+		memProfile     = flag.String("memprofile", "", "Write memory profile to file")
+		memProfileRate = flag.Int64("memprofilerate", 0, "Set runtime.MemProfileRate")
 	)
 	flag.Parse()
+
+	if val := *cpuProfile; val != "" {
+		f, err := os.Create(val)
+		if err != nil {
+			return errors.Wrap(err, "create CPU profile")
+		}
+		defer f.Close()
+
+		if err := pprof.StartCPUProfile(f); err != nil {
+			return errors.Wrap(err, "start CPU profile")
+		}
+		defer pprof.StopCPUProfile()
+	}
+	if val := *memProfile; val != "" {
+		if *memProfileRate != 0 {
+			runtime.MemProfileRate = int(*memProfileRate)
+		}
+
+		f, err := os.Create(val)
+		if err != nil {
+			return errors.Wrap(err, "create memory profile")
+		}
+		defer f.Close()
+
+		defer func() {
+			runtime.GC() // get up-to-date statistics
+			_ = pprof.WriteHeapProfile(f)
+		}()
+	}
 
 	var queries []string
 	if *q != "" {
@@ -86,7 +119,7 @@ func run(ctx context.Context) error {
 	}
 
 	var (
-		workers   = runtime.GOMAXPROCS(-1)
+		workers   = 1
 		links     = make(chan FileMatch, workers)
 		reporters = &Reporters{}
 		total     int
@@ -138,6 +171,7 @@ func run(ctx context.Context) error {
 					}
 
 					link := m.Link()
+					fmt.Printf("Checking %q\n", link)
 					if err := worker(ctx, m, reporters); err != nil {
 						fmt.Printf("Check %q: %v\n", link, err)
 					}
