@@ -14821,6 +14821,36 @@ func (s *SchemaOrReference) Decode(d *jx.Decoder) error {
 			case "type":
 				found = true
 				s.Type = SchemaSchemaOrReference
+			case "allOf":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "oneOf":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "anyOf":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "not":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "items":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "properties":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "additionalProperties":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "default":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "description":
+				found = true
+				s.Type = SchemaSchemaOrReference
+			case "format":
+				found = true
+				s.Type = SchemaSchemaOrReference
 			case "$ref":
 				found = true
 				s.Type = ReferenceSchemaOrReference

@@ -63,6 +63,7 @@ func run(ctx context.Context) error {
 		clean          = flag.Bool("clean", false, "Clean generated files before generation")
 		generateYaml   = flag.Bool("yaml", false, "Query yaml files")
 		q              = flag.String("query", "", "Sourcegraph query")
+		workers        = flag.Int("workers", runtime.GOMAXPROCS(-1), "Number of generator workers to spawn")
 		cpuProfile     = flag.String("cpuprofile", "", "Write cpu profile to file")
 		memProfile     = flag.String("memprofile", "", "Write memory profile to file")
 		memProfileRate = flag.Int64("memprofilerate", 0, "Set runtime.MemProfileRate")
@@ -119,12 +120,11 @@ func run(ctx context.Context) error {
 	}
 
 	var (
-		workers   = 1
-		links     = make(chan FileMatch, workers)
+		links     = make(chan FileMatch, *workers)
 		reporters = &Reporters{}
 		total     int
 	)
-	reporters.init(workers)
+	reporters.init(*workers)
 
 	g, ctx := errgroup.WithContext(ctx)
 	g.Go(func() error {
@@ -157,7 +157,7 @@ func run(ctx context.Context) error {
 	})
 
 	var workersWg sync.WaitGroup
-	for i := 0; i < workers; i++ {
+	for i := 0; i < *workers; i++ {
 		workersWg.Add(1)
 		g.Go(func() error {
 			defer workersWg.Done()
@@ -171,7 +171,6 @@ func run(ctx context.Context) error {
 					}
 
 					link := m.Link()
-					fmt.Printf("Checking %q\n", link)
 					if err := worker(ctx, m, reporters); err != nil {
 						fmt.Printf("Check %q: %v\n", link, err)
 					}
