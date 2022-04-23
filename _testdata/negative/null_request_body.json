@@ -1,0 +1,17 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/foo": {
+      "get": {
+        "requestBody": {
+          "$ref": "#/components/requestBodies/Foo"
+        }
+      }
+    }
+  },
+  "components": {
+    "requestBodies": {
+      "Foo": null
+    }
+  }
+}
