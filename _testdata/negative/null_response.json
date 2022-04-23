@@ -7,8 +7,6 @@
   "paths": {
     "/healthz": {
       "get": {
-        "operationId": "probeLiveness",
-        "description": "Liveness probe for kubernetes",
         "responses": {
           "200": null
         }
