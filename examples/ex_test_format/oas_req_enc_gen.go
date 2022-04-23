@@ -354,7 +354,7 @@ func encodeTestRequestIntegerNullableArrayArrayRequestJSON(req [][]int, span tra
 	return e, nil
 }
 
-func encodeTestRequestNullRequestJSON(req OptStruct, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestNullRequestJSON(req OptNull, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -395,7 +395,7 @@ func encodeTestRequestNullArrayArrayRequestJSON(req [][]struct{}, span trace.Spa
 	return e, nil
 }
 
-func encodeTestRequestNullNullableRequestJSON(req OptStruct, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestNullNullableRequestJSON(req OptNull, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)

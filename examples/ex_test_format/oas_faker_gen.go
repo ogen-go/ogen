@@ -316,19 +316,19 @@ func (s *OptNilUUID) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OptString) SetFake() {
-	var elem string
+func (s *OptNull) SetFake() {
+	var elem struct{}
 	{
-		elem = "string"
+		elem = struct{}{}
 	}
 	s.SetTo(elem)
 }
 
 // SetFake set fake values.
-func (s *OptStruct) SetFake() {
-	var elem struct{}
+func (s *OptString) SetFake() {
+	var elem string
 	{
-		elem = struct{}{}
+		elem = "string"
 	}
 	s.SetTo(elem)
 }

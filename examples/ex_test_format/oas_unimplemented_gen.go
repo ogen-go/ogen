@@ -211,7 +211,7 @@ func (UnimplementedHandler) TestRequestIntegerNullableArrayArray(ctx context.Con
 // TestRequestNull implements test_request_null operation.
 //
 // POST /test_request_null
-func (UnimplementedHandler) TestRequestNull(ctx context.Context, req OptStruct) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNull(ctx context.Context, req OptNull) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -232,7 +232,7 @@ func (UnimplementedHandler) TestRequestNullArrayArray(ctx context.Context, req [
 // TestRequestNullNullable implements test_request_null_nullable operation.
 //
 // POST /test_request_null_nullable
-func (UnimplementedHandler) TestRequestNullNullable(ctx context.Context, req OptStruct) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestNullNullable(ctx context.Context, req OptNull) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

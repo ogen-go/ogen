@@ -1789,7 +1789,7 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 // TestRequestNull invokes test_request_null operation.
 //
 // POST /test_request_null
-func (c *Client) TestRequestNull(ctx context.Context, request OptStruct) (res Error, err error) {
+func (c *Client) TestRequestNull(ctx context.Context, request OptNull) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null"),
@@ -1982,7 +1982,7 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 // TestRequestNullNullable invokes test_request_null_nullable operation.
 //
 // POST /test_request_null_nullable
-func (c *Client) TestRequestNullNullable(ctx context.Context, request OptStruct) (res Error, err error) {
+func (c *Client) TestRequestNullNullable(ctx context.Context, request OptNull) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_null_nullable"),
