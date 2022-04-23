@@ -67,45 +67,18 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 		}
 	}
 
-	side := func(t *ir.Type) *ir.Type {
-		if t.Schema != nil {
-			if ref := t.Schema.Ref; ref != "" {
-				if t.Is(ir.KindPrimitive, ir.KindArray) {
-					t = ir.Alias(name, t)
-				}
-
-				g.localRefs[ref] = t
-				return t
-			}
-		}
-
-		if t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindSum) {
-			g.side = append(g.side, t)
-		}
-
-		return t
-	}
-
 	switch {
 	case len(schema.AnyOf) > 0:
-		t := side(&ir.Type{
-			Name:   name,
-			Kind:   ir.KindSum,
-			Schema: schema,
-		})
-		if err := g.anyOf(t, name, schema); err != nil {
+		t, err := g.anyOf(name, schema)
+		if err != nil {
 			return nil, errors.Wrap(err, "anyOf")
 		}
 		return t, nil
 	case len(schema.AllOf) > 0:
 		return nil, &ErrNotImplemented{"allOf"}
 	case len(schema.OneOf) > 0:
-		t := side(&ir.Type{
-			Name:   name,
-			Kind:   ir.KindSum,
-			Schema: schema,
-		})
-		if err := g.oneOf(t, name, schema); err != nil {
+		t, err := g.oneOf(name, schema)
+		if err != nil {
 			return nil, errors.Wrap(err, "oneOf")
 		}
 		return t, nil
@@ -126,7 +99,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			}
 		}
 
-		s := side(&ir.Type{
+		s := g.regtype(name, &ir.Type{
 			Kind:   kind,
 			Name:   name,
 			Schema: schema,
@@ -176,7 +149,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			mapType := s
 			// Create special field for additionalProperties.
 			if s.Kind != ir.KindMap {
-				mapType = side(&ir.Type{
+				mapType = g.regtype(name, &ir.Type{
 					Kind: ir.KindMap,
 					Name: s.Name + "Additional",
 				})
@@ -204,7 +177,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			} else {
 				for idx, pp := range schema.PatternProperties {
 					suffix := fmt.Sprintf("Pattern%d", idx)
-					mapType := side(&ir.Type{
+					mapType := g.regtype(name, &ir.Type{
 						Kind:       ir.KindMap,
 						Name:       s.Name + suffix,
 						MapPattern: pp.Pattern,
@@ -233,7 +206,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 
 		array.Validators.SetArray(schema)
 
-		ret := side(array)
+		ret := g.regtype(name, array)
 		if schema.Item != nil {
 			array.Item, err = g.generate(name+"Item", schema.Item)
 			if err != nil {
@@ -266,10 +239,29 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 			}
 		}
 
-		return side(t), nil
+		return g.regtype(name, t), nil
 	case jsonschema.Empty:
-		return side(ir.Any()), nil
+		return g.regtype(name, ir.Any()), nil
 	default:
 		panic(unreachable(schema.Type))
 	}
+}
+
+func (g *schemaGen) regtype(name string, t *ir.Type) *ir.Type {
+	if t.Schema != nil {
+		if ref := t.Schema.Ref; ref != "" {
+			if t.Is(ir.KindPrimitive, ir.KindArray) {
+				t = ir.Alias(name, t)
+			}
+
+			g.localRefs[ref] = t
+			return t
+		}
+	}
+
+	if t.Is(ir.KindStruct, ir.KindMap, ir.KindEnum, ir.KindSum) {
+		g.side = append(g.side, t)
+	}
+
+	return t
 }

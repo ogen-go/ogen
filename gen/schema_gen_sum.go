@@ -85,11 +85,16 @@ func (g *schemaGen) collectSumVariants(
 	return sum, nil
 }
 
-func (g *schemaGen) anyOf(sum *ir.Type, name string, schema *jsonschema.Schema) error {
+func (g *schemaGen) anyOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+	sum := g.regtype(name, &ir.Type{
+		Name:   name,
+		Kind:   ir.KindSum,
+		Schema: schema,
+	})
 	{
 		variants, err := g.collectSumVariants(name, schema, schema.AnyOf)
 		if err != nil {
-			return errors.Wrap(err, "collect variants")
+			return nil, errors.Wrap(err, "collect variants")
 		}
 		sum.SumOf = variants
 	}
@@ -104,18 +109,18 @@ func (g *schemaGen) anyOf(sum *ir.Type, name string, schema *jsonschema.Schema) 
 				case v.IsInteger():
 					if !v.Validators.Int.Set() {
 						if err := v.Validators.SetInt(schema); err != nil {
-							return errors.Wrap(err, "int validator")
+							return nil, errors.Wrap(err, "int validator")
 						}
 					}
 				case v.IsFloat():
 					if !v.Validators.Float.Set() {
 						if err := v.Validators.SetFloat(schema); err != nil {
-							return errors.Wrap(err, "float validator")
+							return nil, errors.Wrap(err, "float validator")
 						}
 					}
 				case !v.Validators.String.Set():
 					if err := v.Validators.SetString(schema); err != nil {
-						return errors.Wrap(err, "string validator")
+						return nil, errors.Wrap(err, "string validator")
 					}
 				}
 			case ir.KindArray:
@@ -128,16 +133,21 @@ func (g *schemaGen) anyOf(sum *ir.Type, name string, schema *jsonschema.Schema) 
 				}
 			}
 		}
-		return nil
+		return sum, nil
 	}
-	return &ErrNotImplemented{"complex anyOf"}
+	return nil, &ErrNotImplemented{"complex anyOf"}
 }
 
-func (g *schemaGen) oneOf(sum *ir.Type, name string, schema *jsonschema.Schema) error {
+func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, error) {
+	sum := g.regtype(name, &ir.Type{
+		Name:   name,
+		Kind:   ir.KindSum,
+		Schema: schema,
+	})
 	{
 		variants, err := g.collectSumVariants(name, schema, schema.OneOf)
 		if err != nil {
-			return errors.Wrap(err, "collect variants")
+			return nil, errors.Wrap(err, "collect variants")
 		}
 		sum.SumOf = variants
 	}
@@ -151,7 +161,7 @@ func (g *schemaGen) oneOf(sum *ir.Type, name string, schema *jsonschema.Schema) 
 			var found bool
 			for i, s := range sum.SumOf {
 				if !s.Is(ir.KindStruct, ir.KindMap) {
-					return errors.Wrapf(&ErrNotImplemented{"unsupported sum type variant"}, "%T", s.Kind)
+					return nil, errors.Wrapf(&ErrNotImplemented{"unsupported sum type variant"}, "%T", s.Kind)
 				}
 				var ref string
 				if s.Schema != nil {
@@ -179,7 +189,7 @@ func (g *schemaGen) oneOf(sum *ir.Type, name string, schema *jsonschema.Schema) 
 				}
 			}
 			if !found {
-				return errors.Errorf("discriminator: unable to map %q to %q", k, v)
+				return nil, errors.Errorf("discriminator: unable to map %q to %q", k, v)
 			}
 		}
 		if len(sum.SumSpec.Mapping) == 0 {
@@ -203,13 +213,13 @@ func (g *schemaGen) oneOf(sum *ir.Type, name string, schema *jsonschema.Schema) 
 			b := sum.SumSpec.Mapping[j]
 			return strings.Compare(a.Key, b.Key) < 0
 		})
-		return nil
+		return sum, nil
 	}
 
 	// 2nd case: distinguish by serialization type.
 	if canUseTypeDiscriminator(sum.SumOf) {
 		sum.SumSpec.TypeDiscriminator = true
-		return nil
+		return sum, nil
 	}
 
 	// 3rd case: distinguish by unique fields.
@@ -220,7 +230,7 @@ func (g *schemaGen) oneOf(sum *ir.Type, name string, schema *jsonschema.Schema) 
 	for _, s := range sum.SumOf {
 		uniq[s.Name] = map[string]struct{}{}
 		if !s.Is(ir.KindStruct) {
-			return errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
+			return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
 				"oneOf %s: variant %s: no unique fields, "+
 					"unable to parse without discriminator", sum.Name, s.Name,
 			)
@@ -263,7 +273,7 @@ func (g *schemaGen) oneOf(sum *ir.Type, name string, schema *jsonschema.Schema) 
 			if len(uniq[k]) == 0 {
 				if metNoUniqueFields {
 					// Unable to deterministically select sub-schema only on fields.
-					return errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
+					return nil, errors.Wrapf(&ErrNotImplemented{Name: "discriminator inference"},
 						"oneOf %s: variant %s: no unique fields, "+
 							"unable to parse without discriminator", sum.Name, k,
 					)
@@ -321,5 +331,5 @@ func (g *schemaGen) oneOf(sum *ir.Type, name string, schema *jsonschema.Schema) 
 			}
 		}
 	}
-	return nil
+	return sum, nil
 }
