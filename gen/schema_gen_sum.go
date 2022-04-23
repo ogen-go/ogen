@@ -61,6 +61,8 @@ func (g *schemaGen) collectSumVariants(
 	parent *jsonschema.Schema,
 	schemas []*jsonschema.Schema,
 ) (sum []*ir.Type, _ error) {
+	// TODO(tdakkota): convert oneOf+null into generic
+
 	names := map[string]struct{}{}
 	for i, s := range schemas {
 		if ref := s.Ref; ref != "" && ref == parent.Ref {

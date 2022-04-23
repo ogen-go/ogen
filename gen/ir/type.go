@@ -157,6 +157,9 @@ func (t *Type) Go() string {
 func (t *Type) NamePostfix() string {
 	switch t.Kind {
 	case KindPrimitive:
+		if t.Primitive == Null {
+			return "Null"
+		}
 		switch t.Schema.Format {
 		case "uuid":
 			return "UUID"
