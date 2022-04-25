@@ -77,7 +77,7 @@ func (p *parser) parseOps() error {
 	operationIDs := make(map[string]struct{})
 	for path, item := range p.spec.Paths {
 		if item == nil {
-			return errors.Errorf("%s: unexpected nil schema", path)
+			return errors.Errorf("%s: pathItem object is empty or null", path)
 		}
 		if item.Ref != "" {
 			return errors.Errorf("%s: referenced pathItem not supported", path)
