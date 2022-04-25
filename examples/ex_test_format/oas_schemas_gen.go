@@ -2112,6 +2112,52 @@ func (o OptNilUUID) Or(d uuid.UUID) uuid.UUID {
 	return d
 }
 
+// NewOptNull returns new OptNull with value set to v.
+func NewOptNull(v struct{}) OptNull {
+	return OptNull{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNull is optional struct{}.
+type OptNull struct {
+	Value struct{}
+	Set   bool
+}
+
+// IsSet returns true if OptNull was set.
+func (o OptNull) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNull) Reset() {
+	var v struct{}
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptNull) SetTo(v struct{}) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNull) Get() (v struct{}, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNull) Or(d struct{}) struct{} {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptString returns new OptString with value set to v.
 func NewOptString(v string) OptString {
 	return OptString{
@@ -2152,52 +2198,6 @@ func (o OptString) Get() (v string, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptString) Or(d string) string {
-	if v, ok := o.Get(); ok {
-		return v
-	}
-	return d
-}
-
-// NewOptStruct returns new OptStruct with value set to v.
-func NewOptStruct(v struct{}) OptStruct {
-	return OptStruct{
-		Value: v,
-		Set:   true,
-	}
-}
-
-// OptStruct is optional struct{}.
-type OptStruct struct {
-	Value struct{}
-	Set   bool
-}
-
-// IsSet returns true if OptStruct was set.
-func (o OptStruct) IsSet() bool { return o.Set }
-
-// Reset unsets value.
-func (o *OptStruct) Reset() {
-	var v struct{}
-	o.Value = v
-	o.Set = false
-}
-
-// SetTo sets value to v.
-func (o *OptStruct) SetTo(v struct{}) {
-	o.Set = true
-	o.Value = v
-}
-
-// Get returns value and boolean that denotes whether value was set.
-func (o OptStruct) Get() (v struct{}, ok bool) {
-	if !o.Set {
-		return v, false
-	}
-	return o.Value, true
-}
-
-// Or returns value if set, or given parameter if does not.
-func (o OptStruct) Or(d struct{}) struct{} {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2526,7 +2526,7 @@ type TestRequestFormatTestReq struct {
 	OptionalInteger                        OptInt            "json:\"optional_integer\""
 	OptionalIntegerInt32                   OptInt32          "json:\"optional_integer_int32\""
 	OptionalIntegerInt64                   OptInt64          "json:\"optional_integer_int64\""
-	OptionalNull                           OptStruct         "json:\"optional_null\""
+	OptionalNull                           OptNull           "json:\"optional_null\""
 	OptionalNumber                         OptFloat64        "json:\"optional_number\""
 	OptionalNumberDouble                   OptFloat64        "json:\"optional_number_double\""
 	OptionalNumberFloat                    OptFloat32        "json:\"optional_number_float\""
@@ -2687,7 +2687,7 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalInteger                        OptInt            "json:\"optional_integer\""
 	OptionalIntegerInt32                   OptInt32          "json:\"optional_integer_int32\""
 	OptionalIntegerInt64                   OptInt64          "json:\"optional_integer_int64\""
-	OptionalNull                           OptStruct         "json:\"optional_null\""
+	OptionalNull                           OptNull           "json:\"optional_null\""
 	OptionalNumber                         OptFloat64        "json:\"optional_number\""
 	OptionalNumberDouble                   OptFloat64        "json:\"optional_number_double\""
 	OptionalNumberFloat                    OptFloat32        "json:\"optional_number_float\""
@@ -2848,7 +2848,7 @@ type TestResponseFormatTestOK struct {
 	OptionalInteger                        OptInt            "json:\"optional_integer\""
 	OptionalIntegerInt32                   OptInt32          "json:\"optional_integer_int32\""
 	OptionalIntegerInt64                   OptInt64          "json:\"optional_integer_int64\""
-	OptionalNull                           OptStruct         "json:\"optional_null\""
+	OptionalNull                           OptNull           "json:\"optional_null\""
 	OptionalNumber                         OptFloat64        "json:\"optional_number\""
 	OptionalNumberDouble                   OptFloat64        "json:\"optional_number_double\""
 	OptionalNumberFloat                    OptFloat32        "json:\"optional_number_float\""

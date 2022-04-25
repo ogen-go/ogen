@@ -132,7 +132,7 @@ func (w *writer) Generate(templateName, fileName string, cfg TemplateConfig) err
 
 	b, err := imports.Process(fileName, w.buf.Bytes(), nil)
 	if err != nil {
-		_ = os.WriteFile(fileName+".dump", b, 0o600)
+		_ = os.WriteFile(fileName+".dump", w.buf.Bytes(), 0o600)
 		return errors.Wrap(err, "format imports")
 	}
 

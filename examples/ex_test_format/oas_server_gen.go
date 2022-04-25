@@ -128,7 +128,7 @@ type Handler interface {
 	// TestRequestNull implements test_request_null operation.
 	//
 	// POST /test_request_null
-	TestRequestNull(ctx context.Context, req OptStruct) (Error, error)
+	TestRequestNull(ctx context.Context, req OptNull) (Error, error)
 	// TestRequestNullArray implements test_request_null_array operation.
 	//
 	// POST /test_request_null_array
@@ -140,7 +140,7 @@ type Handler interface {
 	// TestRequestNullNullable implements test_request_null_nullable operation.
 	//
 	// POST /test_request_null_nullable
-	TestRequestNullNullable(ctx context.Context, req OptStruct) (Error, error)
+	TestRequestNullNullable(ctx context.Context, req OptNull) (Error, error)
 	// TestRequestNullNullableArray implements test_request_null_nullable_array operation.
 	//
 	// POST /test_request_null_nullable_array

@@ -1421,14 +1421,14 @@ func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestNullRequest(r *http.Request, span trace.Span) (req OptStruct, err error) {
+func decodeTestRequestNullRequest(r *http.Request, span trace.Span) (req OptNull, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStruct
+		var request OptNull
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
@@ -1576,14 +1576,14 @@ func decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestNullNullableRequest(r *http.Request, span trace.Span) (req OptStruct, err error) {
+func decodeTestRequestNullNullableRequest(r *http.Request, span trace.Span) (req OptNull, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
 		}
 
-		var request OptStruct
+		var request OptNull
 		buf := getBuf()
 		defer putBuf(buf)
 		written, err := io.Copy(buf, r.Body)
