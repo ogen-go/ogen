@@ -1,6 +1,7 @@
 package parser
 
 import (
+	"fmt"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -24,14 +25,12 @@ func TestPathParser(t *testing.T) {
 	)
 
 	tests := []struct {
-		Name      string
 		Path      string
 		Params    []*openapi.Parameter
 		Expect    []openapi.PathPart
 		ExpectErr string
 	}{
 		{
-			Name:   "test1",
 			Path:   "/foo/{bar}",
 			Params: []*openapi.Parameter{bar},
 			Expect: []openapi.PathPart{
@@ -40,7 +39,6 @@ func TestPathParser(t *testing.T) {
 			},
 		},
 		{
-			Name:   "test2",
 			Path:   "/foo.{bar}",
 			Params: []*openapi.Parameter{bar},
 			Expect: []openapi.PathPart{
@@ -49,7 +47,6 @@ func TestPathParser(t *testing.T) {
 			},
 		},
 		{
-			Name:   "test3",
 			Path:   "/foo.{bar}.{baz}abc/def",
 			Params: []*openapi.Parameter{bar, baz},
 			Expect: []openapi.PathPart{
@@ -61,15 +58,31 @@ func TestPathParser(t *testing.T) {
 			},
 		},
 		{
-			Name:      "test4",
 			Path:      "/foo/{bar}/{baz}",
 			Params:    []*openapi.Parameter{bar},
 			ExpectErr: `path parameter not specified: "baz"`,
 		},
+		{
+			Path:      "/foo/{{",
+			ExpectErr: `invalid path: /foo/{{`,
+		},
+		{
+			Path:      "/foo/{{}",
+			ExpectErr: `invalid path: /foo/{{}`,
+		},
+		{
+			Path:      "/foo/{}}",
+			ExpectErr: `invalid path: /foo/{}}`,
+		},
+		{
+			Path:      "/foo/{{}}",
+			ExpectErr: `invalid path: /foo/{{}}`,
+		},
 	}
 
-	for _, test := range tests {
-		t.Run(test.Name, func(t *testing.T) {
+	for i, test := range tests {
+		test := test
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
 			result, err := parsePath(test.Path, test.Params)
 			if test.ExpectErr != "" {
 				require.EqualError(t, err, test.ExpectErr)

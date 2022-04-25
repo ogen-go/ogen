@@ -1,0 +1,42 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "title",
+    "version": "v0.1.0"
+  },
+  "paths": {
+    "/healthz": {
+      "get": {
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/Parameter"
+          },
+          {
+            "$ref": "#/components/parameters/Parameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User info",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "Parameter": {
+        "name": "foo",
+        "in": "query",
+        "style": "form"
+      }
+    }
+  }
+}

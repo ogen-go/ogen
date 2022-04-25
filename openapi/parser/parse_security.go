@@ -9,7 +9,7 @@ import (
 
 func (p *parser) parseSecuritySchema(s *ogen.SecuritySchema, ctx resolveCtx) (*ogen.SecuritySchema, error) {
 	if s == nil {
-		return nil, errors.New("security schema must not be null")
+		return nil, errors.New("securitySchema object is empty or null")
 	}
 	if ref := s.Ref; ref != "" {
 		sch, err := p.resolveSecuritySchema(ref, ctx)

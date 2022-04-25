@@ -15,10 +15,6 @@ func (p *parser) parseStatus(status string, response *ogen.Response) (*openapi.R
 		return nil, err
 	}
 
-	if response == nil {
-		return nil, errors.New("response object is empty or null")
-	}
-
 	resp, err := p.parseResponse(response, resolveCtx{})
 	if err != nil {
 		return nil, err
@@ -45,6 +41,9 @@ func (p *parser) parseResponses(responses ogen.Responses) (map[string]*openapi.R
 }
 
 func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*openapi.Response, error) {
+	if resp == nil {
+		return nil, errors.New("response object is empty or null")
+	}
 	if ref := resp.Ref; ref != "" {
 		resp, err := p.resolveResponse(ref, ctx)
 		if err != nil {

@@ -47,6 +47,9 @@ func (p *parser) parseParams(params []*ogen.Parameter) ([]*openapi.Parameter, er
 }
 
 func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi.Parameter, error) {
+	if param == nil {
+		return nil, errors.New("parameter object is empty or null")
+	}
 	if ref := param.Ref; ref != "" {
 		parsed, err := p.resolveParameter(ref, ctx)
 		if err != nil {

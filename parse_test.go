@@ -29,6 +29,7 @@ func TestNegative(t *testing.T) {
 
 			_, err = gen.NewGenerator(spec, gen.Options{})
 			a.Error(err)
+			t.Log(err.Error())
 		})
 		return nil
 	}); err != nil {
