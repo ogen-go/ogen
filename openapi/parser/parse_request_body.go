@@ -10,7 +10,7 @@ import (
 
 func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*openapi.RequestBody, error) {
 	if body == nil {
-		return nil, errors.New("body is empty or nil")
+		return nil, errors.New("requestBody object is empty or null")
 	}
 	if ref := body.Ref; ref != "" {
 		reqBody, err := p.resolveRequestBody(ref, ctx)
