@@ -563,7 +563,7 @@ func (o NilInt32) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	e.Int32(int32(o.Value))
+	json.EncodeStringInt32(e, o.Value)
 }
 
 // Decode decodes int32 from json.
@@ -582,11 +582,11 @@ func (o *NilInt32) Decode(d *jx.Decoder) error {
 		return nil
 	}
 	o.Null = false
-	v, err := d.Int32()
+	v, err := json.DecodeStringInt32(d)
 	if err != nil {
 		return err
 	}
-	o.Value = int32(v)
+	o.Value = v
 	return nil
 }
 
@@ -1188,7 +1188,7 @@ func (o OptInt32) Encode(e *jx.Encoder) {
 	if !o.Set {
 		return
 	}
-	e.Int32(int32(o.Value))
+	json.EncodeStringInt32(e, o.Value)
 }
 
 // Decode decodes int32 from json.
@@ -1197,11 +1197,11 @@ func (o *OptInt32) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OptInt32 to nil")
 	}
 	o.Set = true
-	v, err := d.Int32()
+	v, err := json.DecodeStringInt32(d)
 	if err != nil {
 		return err
 	}
-	o.Value = int32(v)
+	o.Value = v
 	return nil
 }
 
@@ -1874,7 +1874,7 @@ func (o OptNilInt64) Encode(e *jx.Encoder) {
 		e.Null()
 		return
 	}
-	e.Int64(int64(o.Value))
+	json.EncodeStringInt64(e, o.Value)
 }
 
 // Decode decodes int64 from json.
@@ -1895,11 +1895,11 @@ func (o *OptNilInt64) Decode(d *jx.Decoder) error {
 	}
 	o.Set = true
 	o.Null = false
-	v, err := d.Int64()
+	v, err := json.DecodeStringInt64(d)
 	if err != nil {
 		return err
 	}
-	o.Value = int64(v)
+	o.Value = v
 	return nil
 }
 
@@ -2563,6 +2563,24 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 	}
 	{
 
+		e.FieldStart("required_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt32 {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt64 {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
 		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIP {
@@ -2881,6 +2899,32 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 	}
 	{
 
+		e.FieldStart("required_double_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
 		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIP {
@@ -3055,6 +3099,16 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 
 		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
+	}
+	{
+
+		e.FieldStart("required_string_int32")
+		json.EncodeStringInt32(e, s.RequiredStringInt32)
+	}
+	{
+
+		e.FieldStart("required_string_int64")
+		json.EncodeStringInt64(e, s.RequiredStringInt64)
 	}
 	{
 
@@ -3287,6 +3341,26 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringHostname {
 				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalArrayStringInt32 != nil {
+			e.FieldStart("optional_array_string_int32")
+			e.ArrStart()
+			for _, elem := range s.OptionalArrayStringInt32 {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalArrayStringInt64 != nil {
+			e.FieldStart("optional_array_string_int64")
+			e.ArrStart()
+			for _, elem := range s.OptionalArrayStringInt64 {
+				json.EncodeStringInt64(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -3637,6 +3711,34 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.OptionalDoubleArrayStringInt32 != nil {
+			e.FieldStart("optional_double_array_string_int32")
+			e.ArrStart()
+			for _, elem := range s.OptionalDoubleArrayStringInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt32(e, elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalDoubleArrayStringInt64 != nil {
+			e.FieldStart("optional_double_array_string_int64")
+			e.ArrStart()
+			for _, elem := range s.OptionalDoubleArrayStringInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt64(e, elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	{
 		if s.OptionalDoubleArrayStringIP != nil {
 			e.FieldStart("optional_double_array_string_ip")
 			e.ArrStart()
@@ -3836,6 +3938,18 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.OptionalStringInt32.Set {
+			e.FieldStart("optional_string_int32")
+			s.OptionalStringInt32.Encode(e)
+		}
+	}
+	{
+		if s.OptionalStringInt64.Set {
+			e.FieldStart("optional_string_int64")
+			s.OptionalStringInt64.Encode(e)
+		}
+	}
+	{
 		if s.OptionalStringIP.Set {
 			e.FieldStart("optional_string_ip")
 			s.OptionalStringIP.Encode(e)
@@ -3879,7 +3993,7 @@ func (s TestRequestFormatTestReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfTestRequestFormatTestReq = [156]string{
+var jsonFieldsNameOfTestRequestFormatTestReq = [168]string{
 	0:   "required_any",
 	1:   "required_array_any",
 	2:   "required_array_boolean",
@@ -3900,142 +4014,154 @@ var jsonFieldsNameOfTestRequestFormatTestReq = [156]string{
 	17:  "required_array_string_duration",
 	18:  "required_array_string_email",
 	19:  "required_array_string_hostname",
-	20:  "required_array_string_ip",
-	21:  "required_array_string_ipv4",
-	22:  "required_array_string_ipv6",
-	23:  "required_array_string_password",
-	24:  "required_array_string_time",
-	25:  "required_array_string_uri",
-	26:  "required_array_string_uuid",
-	27:  "required_boolean",
-	28:  "required_double_array_any",
-	29:  "required_double_array_boolean",
-	30:  "required_double_array_integer",
-	31:  "required_double_array_integer_int32",
-	32:  "required_double_array_integer_int64",
-	33:  "required_double_array_null",
-	34:  "required_double_array_number",
-	35:  "required_double_array_number_double",
-	36:  "required_double_array_number_float",
-	37:  "required_double_array_number_int32",
-	38:  "required_double_array_number_int64",
-	39:  "required_double_array_string",
-	40:  "required_double_array_string_binary",
-	41:  "required_double_array_string_byte",
-	42:  "required_double_array_string_date",
-	43:  "required_double_array_string_date-time",
-	44:  "required_double_array_string_duration",
-	45:  "required_double_array_string_email",
-	46:  "required_double_array_string_hostname",
-	47:  "required_double_array_string_ip",
-	48:  "required_double_array_string_ipv4",
-	49:  "required_double_array_string_ipv6",
-	50:  "required_double_array_string_password",
-	51:  "required_double_array_string_time",
-	52:  "required_double_array_string_uri",
-	53:  "required_double_array_string_uuid",
-	54:  "required_integer",
-	55:  "required_integer_int32",
-	56:  "required_integer_int64",
-	57:  "required_null",
-	58:  "required_number",
-	59:  "required_number_double",
-	60:  "required_number_float",
-	61:  "required_number_int32",
-	62:  "required_number_int64",
-	63:  "required_string",
-	64:  "required_string_binary",
-	65:  "required_string_byte",
-	66:  "required_string_date",
-	67:  "required_string_date-time",
-	68:  "required_string_duration",
-	69:  "required_string_email",
-	70:  "required_string_hostname",
-	71:  "required_string_ip",
-	72:  "required_string_ipv4",
-	73:  "required_string_ipv6",
-	74:  "required_string_password",
-	75:  "required_string_time",
-	76:  "required_string_uri",
-	77:  "required_string_uuid",
-	78:  "optional_any",
-	79:  "optional_array_any",
-	80:  "optional_array_boolean",
-	81:  "optional_array_integer",
-	82:  "optional_array_integer_int32",
-	83:  "optional_array_integer_int64",
-	84:  "optional_array_null",
-	85:  "optional_array_number",
-	86:  "optional_array_number_double",
-	87:  "optional_array_number_float",
-	88:  "optional_array_number_int32",
-	89:  "optional_array_number_int64",
-	90:  "optional_array_string",
-	91:  "optional_array_string_binary",
-	92:  "optional_array_string_byte",
-	93:  "optional_array_string_date",
-	94:  "optional_array_string_date-time",
-	95:  "optional_array_string_duration",
-	96:  "optional_array_string_email",
-	97:  "optional_array_string_hostname",
-	98:  "optional_array_string_ip",
-	99:  "optional_array_string_ipv4",
-	100: "optional_array_string_ipv6",
-	101: "optional_array_string_password",
-	102: "optional_array_string_time",
-	103: "optional_array_string_uri",
-	104: "optional_array_string_uuid",
-	105: "optional_boolean",
-	106: "optional_double_array_any",
-	107: "optional_double_array_boolean",
-	108: "optional_double_array_integer",
-	109: "optional_double_array_integer_int32",
-	110: "optional_double_array_integer_int64",
-	111: "optional_double_array_null",
-	112: "optional_double_array_number",
-	113: "optional_double_array_number_double",
-	114: "optional_double_array_number_float",
-	115: "optional_double_array_number_int32",
-	116: "optional_double_array_number_int64",
-	117: "optional_double_array_string",
-	118: "optional_double_array_string_binary",
-	119: "optional_double_array_string_byte",
-	120: "optional_double_array_string_date",
-	121: "optional_double_array_string_date-time",
-	122: "optional_double_array_string_duration",
-	123: "optional_double_array_string_email",
-	124: "optional_double_array_string_hostname",
-	125: "optional_double_array_string_ip",
-	126: "optional_double_array_string_ipv4",
-	127: "optional_double_array_string_ipv6",
-	128: "optional_double_array_string_password",
-	129: "optional_double_array_string_time",
-	130: "optional_double_array_string_uri",
-	131: "optional_double_array_string_uuid",
-	132: "optional_integer",
-	133: "optional_integer_int32",
-	134: "optional_integer_int64",
-	135: "optional_null",
-	136: "optional_number",
-	137: "optional_number_double",
-	138: "optional_number_float",
-	139: "optional_number_int32",
-	140: "optional_number_int64",
-	141: "optional_string",
-	142: "optional_string_binary",
-	143: "optional_string_byte",
-	144: "optional_string_date",
-	145: "optional_string_date-time",
-	146: "optional_string_duration",
-	147: "optional_string_email",
-	148: "optional_string_hostname",
-	149: "optional_string_ip",
-	150: "optional_string_ipv4",
-	151: "optional_string_ipv6",
-	152: "optional_string_password",
-	153: "optional_string_time",
-	154: "optional_string_uri",
-	155: "optional_string_uuid",
+	20:  "required_array_string_int32",
+	21:  "required_array_string_int64",
+	22:  "required_array_string_ip",
+	23:  "required_array_string_ipv4",
+	24:  "required_array_string_ipv6",
+	25:  "required_array_string_password",
+	26:  "required_array_string_time",
+	27:  "required_array_string_uri",
+	28:  "required_array_string_uuid",
+	29:  "required_boolean",
+	30:  "required_double_array_any",
+	31:  "required_double_array_boolean",
+	32:  "required_double_array_integer",
+	33:  "required_double_array_integer_int32",
+	34:  "required_double_array_integer_int64",
+	35:  "required_double_array_null",
+	36:  "required_double_array_number",
+	37:  "required_double_array_number_double",
+	38:  "required_double_array_number_float",
+	39:  "required_double_array_number_int32",
+	40:  "required_double_array_number_int64",
+	41:  "required_double_array_string",
+	42:  "required_double_array_string_binary",
+	43:  "required_double_array_string_byte",
+	44:  "required_double_array_string_date",
+	45:  "required_double_array_string_date-time",
+	46:  "required_double_array_string_duration",
+	47:  "required_double_array_string_email",
+	48:  "required_double_array_string_hostname",
+	49:  "required_double_array_string_int32",
+	50:  "required_double_array_string_int64",
+	51:  "required_double_array_string_ip",
+	52:  "required_double_array_string_ipv4",
+	53:  "required_double_array_string_ipv6",
+	54:  "required_double_array_string_password",
+	55:  "required_double_array_string_time",
+	56:  "required_double_array_string_uri",
+	57:  "required_double_array_string_uuid",
+	58:  "required_integer",
+	59:  "required_integer_int32",
+	60:  "required_integer_int64",
+	61:  "required_null",
+	62:  "required_number",
+	63:  "required_number_double",
+	64:  "required_number_float",
+	65:  "required_number_int32",
+	66:  "required_number_int64",
+	67:  "required_string",
+	68:  "required_string_binary",
+	69:  "required_string_byte",
+	70:  "required_string_date",
+	71:  "required_string_date-time",
+	72:  "required_string_duration",
+	73:  "required_string_email",
+	74:  "required_string_hostname",
+	75:  "required_string_int32",
+	76:  "required_string_int64",
+	77:  "required_string_ip",
+	78:  "required_string_ipv4",
+	79:  "required_string_ipv6",
+	80:  "required_string_password",
+	81:  "required_string_time",
+	82:  "required_string_uri",
+	83:  "required_string_uuid",
+	84:  "optional_any",
+	85:  "optional_array_any",
+	86:  "optional_array_boolean",
+	87:  "optional_array_integer",
+	88:  "optional_array_integer_int32",
+	89:  "optional_array_integer_int64",
+	90:  "optional_array_null",
+	91:  "optional_array_number",
+	92:  "optional_array_number_double",
+	93:  "optional_array_number_float",
+	94:  "optional_array_number_int32",
+	95:  "optional_array_number_int64",
+	96:  "optional_array_string",
+	97:  "optional_array_string_binary",
+	98:  "optional_array_string_byte",
+	99:  "optional_array_string_date",
+	100: "optional_array_string_date-time",
+	101: "optional_array_string_duration",
+	102: "optional_array_string_email",
+	103: "optional_array_string_hostname",
+	104: "optional_array_string_int32",
+	105: "optional_array_string_int64",
+	106: "optional_array_string_ip",
+	107: "optional_array_string_ipv4",
+	108: "optional_array_string_ipv6",
+	109: "optional_array_string_password",
+	110: "optional_array_string_time",
+	111: "optional_array_string_uri",
+	112: "optional_array_string_uuid",
+	113: "optional_boolean",
+	114: "optional_double_array_any",
+	115: "optional_double_array_boolean",
+	116: "optional_double_array_integer",
+	117: "optional_double_array_integer_int32",
+	118: "optional_double_array_integer_int64",
+	119: "optional_double_array_null",
+	120: "optional_double_array_number",
+	121: "optional_double_array_number_double",
+	122: "optional_double_array_number_float",
+	123: "optional_double_array_number_int32",
+	124: "optional_double_array_number_int64",
+	125: "optional_double_array_string",
+	126: "optional_double_array_string_binary",
+	127: "optional_double_array_string_byte",
+	128: "optional_double_array_string_date",
+	129: "optional_double_array_string_date-time",
+	130: "optional_double_array_string_duration",
+	131: "optional_double_array_string_email",
+	132: "optional_double_array_string_hostname",
+	133: "optional_double_array_string_int32",
+	134: "optional_double_array_string_int64",
+	135: "optional_double_array_string_ip",
+	136: "optional_double_array_string_ipv4",
+	137: "optional_double_array_string_ipv6",
+	138: "optional_double_array_string_password",
+	139: "optional_double_array_string_time",
+	140: "optional_double_array_string_uri",
+	141: "optional_double_array_string_uuid",
+	142: "optional_integer",
+	143: "optional_integer_int32",
+	144: "optional_integer_int64",
+	145: "optional_null",
+	146: "optional_number",
+	147: "optional_number_double",
+	148: "optional_number_float",
+	149: "optional_number_int32",
+	150: "optional_number_int64",
+	151: "optional_string",
+	152: "optional_string_binary",
+	153: "optional_string_byte",
+	154: "optional_string_date",
+	155: "optional_string_date-time",
+	156: "optional_string_duration",
+	157: "optional_string_email",
+	158: "optional_string_hostname",
+	159: "optional_string_int32",
+	160: "optional_string_int64",
+	161: "optional_string_ip",
+	162: "optional_string_ipv4",
+	163: "optional_string_ipv6",
+	164: "optional_string_password",
+	165: "optional_string_time",
+	166: "optional_string_uri",
+	167: "optional_string_uuid",
 }
 
 // Decode decodes TestRequestFormatTestReq from json.
@@ -4043,7 +4169,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode TestRequestFormatTestReq to nil")
 	}
-	var requiredBitSet [20]uint8
+	var requiredBitSet [21]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4437,8 +4563,48 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
 			}
-		case "required_array_string_ip":
+		case "required_array_string_int32":
 			requiredBitSet[2] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
+			}
+		case "required_array_string_int64":
+			requiredBitSet[2] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
+			}
+		case "required_array_string_ip":
+			requiredBitSet[2] |= 1 << 6
 			if err := func() error {
 				s.RequiredArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4458,7 +4624,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
 			}
 		case "required_array_string_ipv4":
-			requiredBitSet[2] |= 1 << 5
+			requiredBitSet[2] |= 1 << 7
 			if err := func() error {
 				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4478,7 +4644,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
 			}
 		case "required_array_string_ipv6":
-			requiredBitSet[2] |= 1 << 6
+			requiredBitSet[3] |= 1 << 0
 			if err := func() error {
 				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4498,7 +4664,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
 			}
 		case "required_array_string_password":
-			requiredBitSet[2] |= 1 << 7
+			requiredBitSet[3] |= 1 << 1
 			if err := func() error {
 				s.RequiredArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4518,7 +4684,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_password\"")
 			}
 		case "required_array_string_time":
-			requiredBitSet[3] |= 1 << 0
+			requiredBitSet[3] |= 1 << 2
 			if err := func() error {
 				s.RequiredArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4538,7 +4704,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_time\"")
 			}
 		case "required_array_string_uri":
-			requiredBitSet[3] |= 1 << 1
+			requiredBitSet[3] |= 1 << 3
 			if err := func() error {
 				s.RequiredArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4558,7 +4724,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
 			}
 		case "required_array_string_uuid":
-			requiredBitSet[3] |= 1 << 2
+			requiredBitSet[3] |= 1 << 4
 			if err := func() error {
 				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4578,7 +4744,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
 			}
 		case "required_boolean":
-			requiredBitSet[3] |= 1 << 3
+			requiredBitSet[3] |= 1 << 5
 			if err := func() error {
 				v, err := d.Bool()
 				s.RequiredBoolean = bool(v)
@@ -4590,7 +4756,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_boolean\"")
 			}
 		case "required_double_array_any":
-			requiredBitSet[3] |= 1 << 4
+			requiredBitSet[3] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4618,7 +4784,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_any\"")
 			}
 		case "required_double_array_boolean":
-			requiredBitSet[3] |= 1 << 5
+			requiredBitSet[3] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4646,7 +4812,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
 			}
 		case "required_double_array_integer":
-			requiredBitSet[3] |= 1 << 6
+			requiredBitSet[4] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4674,7 +4840,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
 			}
 		case "required_double_array_integer_int32":
-			requiredBitSet[3] |= 1 << 7
+			requiredBitSet[4] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4702,7 +4868,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
 			}
 		case "required_double_array_integer_int64":
-			requiredBitSet[4] |= 1 << 0
+			requiredBitSet[4] |= 1 << 2
 			if err := func() error {
 				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4730,7 +4896,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
 			}
 		case "required_double_array_null":
-			requiredBitSet[4] |= 1 << 1
+			requiredBitSet[4] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4756,7 +4922,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_null\"")
 			}
 		case "required_double_array_number":
-			requiredBitSet[4] |= 1 << 2
+			requiredBitSet[4] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4784,7 +4950,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number\"")
 			}
 		case "required_double_array_number_double":
-			requiredBitSet[4] |= 1 << 3
+			requiredBitSet[4] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4812,7 +4978,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
 			}
 		case "required_double_array_number_float":
-			requiredBitSet[4] |= 1 << 4
+			requiredBitSet[4] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4840,7 +5006,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
 			}
 		case "required_double_array_number_int32":
-			requiredBitSet[4] |= 1 << 5
+			requiredBitSet[4] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4868,7 +5034,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
 			}
 		case "required_double_array_number_int64":
-			requiredBitSet[4] |= 1 << 6
+			requiredBitSet[5] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4896,7 +5062,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
 			}
 		case "required_double_array_string":
-			requiredBitSet[4] |= 1 << 7
+			requiredBitSet[5] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4924,7 +5090,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string\"")
 			}
 		case "required_double_array_string_binary":
-			requiredBitSet[5] |= 1 << 0
+			requiredBitSet[5] |= 1 << 2
 			if err := func() error {
 				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4952,7 +5118,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
 			}
 		case "required_double_array_string_byte":
-			requiredBitSet[5] |= 1 << 1
+			requiredBitSet[5] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -4980,7 +5146,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
 			}
 		case "required_double_array_string_date":
-			requiredBitSet[5] |= 1 << 2
+			requiredBitSet[5] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5008,7 +5174,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
 			}
 		case "required_double_array_string_date-time":
-			requiredBitSet[5] |= 1 << 3
+			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5036,7 +5202,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
 			}
 		case "required_double_array_string_duration":
-			requiredBitSet[5] |= 1 << 4
+			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5064,7 +5230,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
 			}
 		case "required_double_array_string_email":
-			requiredBitSet[5] |= 1 << 5
+			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5092,7 +5258,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
 			}
 		case "required_double_array_string_hostname":
-			requiredBitSet[5] |= 1 << 6
+			requiredBitSet[6] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5119,8 +5285,64 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
 			}
+		case "required_double_array_string_int32":
+			requiredBitSet[6] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
+			}
+		case "required_double_array_string_int64":
+			requiredBitSet[6] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
+			}
 		case "required_double_array_string_ip":
-			requiredBitSet[5] |= 1 << 7
+			requiredBitSet[6] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5148,7 +5370,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
 			}
 		case "required_double_array_string_ipv4":
-			requiredBitSet[6] |= 1 << 0
+			requiredBitSet[6] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5176,7 +5398,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
 			}
 		case "required_double_array_string_ipv6":
-			requiredBitSet[6] |= 1 << 1
+			requiredBitSet[6] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5204,7 +5426,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
 			}
 		case "required_double_array_string_password":
-			requiredBitSet[6] |= 1 << 2
+			requiredBitSet[6] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5232,7 +5454,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
 			}
 		case "required_double_array_string_time":
-			requiredBitSet[6] |= 1 << 3
+			requiredBitSet[6] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5260,7 +5482,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
 			}
 		case "required_double_array_string_uri":
-			requiredBitSet[6] |= 1 << 4
+			requiredBitSet[7] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5288,7 +5510,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
 			}
 		case "required_double_array_string_uuid":
-			requiredBitSet[6] |= 1 << 5
+			requiredBitSet[7] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -5316,7 +5538,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
 			}
 		case "required_integer":
-			requiredBitSet[6] |= 1 << 6
+			requiredBitSet[7] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int()
 				s.RequiredInteger = int(v)
@@ -5328,7 +5550,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer\"")
 			}
 		case "required_integer_int32":
-			requiredBitSet[6] |= 1 << 7
+			requiredBitSet[7] |= 1 << 3
 			if err := func() error {
 				v, err := d.Int32()
 				s.RequiredIntegerInt32 = int32(v)
@@ -5340,7 +5562,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer_int32\"")
 			}
 		case "required_integer_int64":
-			requiredBitSet[7] |= 1 << 0
+			requiredBitSet[7] |= 1 << 4
 			if err := func() error {
 				v, err := d.Int64()
 				s.RequiredIntegerInt64 = int64(v)
@@ -5352,7 +5574,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer_int64\"")
 			}
 		case "required_null":
-			requiredBitSet[7] |= 1 << 1
+			requiredBitSet[7] |= 1 << 5
 			if err := func() error {
 				if err := d.Null(); err != nil {
 					return err
@@ -5362,7 +5584,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_null\"")
 			}
 		case "required_number":
-			requiredBitSet[7] |= 1 << 2
+			requiredBitSet[7] |= 1 << 6
 			if err := func() error {
 				v, err := d.Float64()
 				s.RequiredNumber = float64(v)
@@ -5374,7 +5596,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number\"")
 			}
 		case "required_number_double":
-			requiredBitSet[7] |= 1 << 3
+			requiredBitSet[7] |= 1 << 7
 			if err := func() error {
 				v, err := d.Float64()
 				s.RequiredNumberDouble = float64(v)
@@ -5386,7 +5608,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_double\"")
 			}
 		case "required_number_float":
-			requiredBitSet[7] |= 1 << 4
+			requiredBitSet[8] |= 1 << 0
 			if err := func() error {
 				v, err := d.Float32()
 				s.RequiredNumberFloat = float32(v)
@@ -5398,7 +5620,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_float\"")
 			}
 		case "required_number_int32":
-			requiredBitSet[7] |= 1 << 5
+			requiredBitSet[8] |= 1 << 1
 			if err := func() error {
 				v, err := d.Int32()
 				s.RequiredNumberInt32 = int32(v)
@@ -5410,7 +5632,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_int32\"")
 			}
 		case "required_number_int64":
-			requiredBitSet[7] |= 1 << 6
+			requiredBitSet[8] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int64()
 				s.RequiredNumberInt64 = int64(v)
@@ -5422,7 +5644,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_int64\"")
 			}
 		case "required_string":
-			requiredBitSet[7] |= 1 << 7
+			requiredBitSet[8] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredString = string(v)
@@ -5434,7 +5656,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string\"")
 			}
 		case "required_string_binary":
-			requiredBitSet[8] |= 1 << 0
+			requiredBitSet[8] |= 1 << 4
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringBinary = string(v)
@@ -5446,7 +5668,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_binary\"")
 			}
 		case "required_string_byte":
-			requiredBitSet[8] |= 1 << 1
+			requiredBitSet[8] |= 1 << 5
 			if err := func() error {
 				v, err := d.Base64()
 				s.RequiredStringByte = []byte(v)
@@ -5458,7 +5680,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_byte\"")
 			}
 		case "required_string_date":
-			requiredBitSet[8] |= 1 << 2
+			requiredBitSet[8] |= 1 << 6
 			if err := func() error {
 				v, err := json.DecodeDate(d)
 				s.RequiredStringDate = v
@@ -5470,7 +5692,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_date\"")
 			}
 		case "required_string_date-time":
-			requiredBitSet[8] |= 1 << 3
+			requiredBitSet[8] |= 1 << 7
 			if err := func() error {
 				v, err := json.DecodeDateTime(d)
 				s.RequiredStringDateMinusTime = v
@@ -5482,7 +5704,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_date-time\"")
 			}
 		case "required_string_duration":
-			requiredBitSet[8] |= 1 << 4
+			requiredBitSet[9] |= 1 << 0
 			if err := func() error {
 				v, err := json.DecodeDuration(d)
 				s.RequiredStringDuration = v
@@ -5494,7 +5716,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_duration\"")
 			}
 		case "required_string_email":
-			requiredBitSet[8] |= 1 << 5
+			requiredBitSet[9] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringEmail = string(v)
@@ -5506,7 +5728,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_email\"")
 			}
 		case "required_string_hostname":
-			requiredBitSet[8] |= 1 << 6
+			requiredBitSet[9] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringHostname = string(v)
@@ -5517,8 +5739,32 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_string_hostname\"")
 			}
+		case "required_string_int32":
+			requiredBitSet[9] |= 1 << 3
+			if err := func() error {
+				v, err := json.DecodeStringInt32(d)
+				s.RequiredStringInt32 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int32\"")
+			}
+		case "required_string_int64":
+			requiredBitSet[9] |= 1 << 4
+			if err := func() error {
+				v, err := json.DecodeStringInt64(d)
+				s.RequiredStringInt64 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int64\"")
+			}
 		case "required_string_ip":
-			requiredBitSet[8] |= 1 << 7
+			requiredBitSet[9] |= 1 << 5
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIP = v
@@ -5530,7 +5776,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ip\"")
 			}
 		case "required_string_ipv4":
-			requiredBitSet[9] |= 1 << 0
+			requiredBitSet[9] |= 1 << 6
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIpv4 = v
@@ -5542,7 +5788,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
 			}
 		case "required_string_ipv6":
-			requiredBitSet[9] |= 1 << 1
+			requiredBitSet[9] |= 1 << 7
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIpv6 = v
@@ -5554,7 +5800,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
 			}
 		case "required_string_password":
-			requiredBitSet[9] |= 1 << 2
+			requiredBitSet[10] |= 1 << 0
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringPassword = string(v)
@@ -5566,7 +5812,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_password\"")
 			}
 		case "required_string_time":
-			requiredBitSet[9] |= 1 << 3
+			requiredBitSet[10] |= 1 << 1
 			if err := func() error {
 				v, err := json.DecodeTime(d)
 				s.RequiredStringTime = v
@@ -5578,7 +5824,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_time\"")
 			}
 		case "required_string_uri":
-			requiredBitSet[9] |= 1 << 4
+			requiredBitSet[10] |= 1 << 2
 			if err := func() error {
 				v, err := json.DecodeURI(d)
 				s.RequiredStringURI = v
@@ -5590,7 +5836,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_uri\"")
 			}
 		case "required_string_uuid":
-			requiredBitSet[9] |= 1 << 5
+			requiredBitSet[10] |= 1 << 3
 			if err := func() error {
 				v, err := json.DecodeUUID(d)
 				s.RequiredStringUUID = v
@@ -5970,6 +6216,44 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_array_string_hostname\"")
+			}
+		case "optional_array_string_int32":
+			if err := func() error {
+				s.OptionalArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_array_string_int32\"")
+			}
+		case "optional_array_string_int64":
+			if err := func() error {
+				s.OptionalArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_array_string_int64\"")
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
@@ -6625,6 +6909,60 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_double_array_string_hostname\"")
 			}
+		case "optional_double_array_string_int32":
+			if err := func() error {
+				s.OptionalDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_double_array_string_int32\"")
+			}
+		case "optional_double_array_string_int64":
+			if err := func() error {
+				s.OptionalDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_double_array_string_int64\"")
+			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
 				s.OptionalDoubleArrayStringIP = make([][]netip.Addr, 0)
@@ -6985,6 +7323,26 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_string_hostname\"")
 			}
+		case "optional_string_int32":
+			if err := func() error {
+				s.OptionalStringInt32.Reset()
+				if err := s.OptionalStringInt32.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_string_int32\"")
+			}
+		case "optional_string_int64":
+			if err := func() error {
+				s.OptionalStringInt64.Reset()
+				if err := s.OptionalStringInt64.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_string_int64\"")
+			}
 		case "optional_string_ip":
 			if err := func() error {
 				s.OptionalStringIP.Reset()
@@ -7064,7 +7422,7 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [20]uint8{
+	for i, mask := range [21]uint8{
 		0b11111111,
 		0b11111111,
 		0b11111111,
@@ -7074,7 +7432,8 @@ func (s *TestRequestFormatTestReq) Decode(d *jx.Decoder) error {
 		0b11111111,
 		0b11111111,
 		0b11111111,
-		0b00111111,
+		0b11111111,
+		0b00001111,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -7367,6 +7726,24 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 	}
 	{
 
+		e.FieldStart("required_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt32 {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt64 {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
 		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIP {
@@ -7685,6 +8062,32 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 	}
 	{
 
+		e.FieldStart("required_double_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
 		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIP {
@@ -7859,6 +8262,16 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 
 		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
+	}
+	{
+
+		e.FieldStart("required_string_int32")
+		json.EncodeStringInt32(e, s.RequiredStringInt32)
+	}
+	{
+
+		e.FieldStart("required_string_int64")
+		json.EncodeStringInt64(e, s.RequiredStringInt64)
 	}
 	{
 
@@ -8091,6 +8504,26 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringHostname {
 				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalArrayStringInt32 != nil {
+			e.FieldStart("optional_array_string_int32")
+			e.ArrStart()
+			for _, elem := range s.OptionalArrayStringInt32 {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalArrayStringInt64 != nil {
+			e.FieldStart("optional_array_string_int64")
+			e.ArrStart()
+			for _, elem := range s.OptionalArrayStringInt64 {
+				json.EncodeStringInt64(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -8441,6 +8874,34 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.OptionalDoubleArrayStringInt32 != nil {
+			e.FieldStart("optional_double_array_string_int32")
+			e.ArrStart()
+			for _, elem := range s.OptionalDoubleArrayStringInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt32(e, elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalDoubleArrayStringInt64 != nil {
+			e.FieldStart("optional_double_array_string_int64")
+			e.ArrStart()
+			for _, elem := range s.OptionalDoubleArrayStringInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt64(e, elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	{
 		if s.OptionalDoubleArrayStringIP != nil {
 			e.FieldStart("optional_double_array_string_ip")
 			e.ArrStart()
@@ -8640,6 +9101,18 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.OptionalStringInt32.Set {
+			e.FieldStart("optional_string_int32")
+			s.OptionalStringInt32.Encode(e)
+		}
+	}
+	{
+		if s.OptionalStringInt64.Set {
+			e.FieldStart("optional_string_int64")
+			s.OptionalStringInt64.Encode(e)
+		}
+	}
+	{
 		if s.OptionalStringIP.Set {
 			e.FieldStart("optional_string_ip")
 			s.OptionalStringIP.Encode(e)
@@ -8683,7 +9156,7 @@ func (s TestRequestRequiredFormatTestReq) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfTestRequestRequiredFormatTestReq = [156]string{
+var jsonFieldsNameOfTestRequestRequiredFormatTestReq = [168]string{
 	0:   "required_any",
 	1:   "required_array_any",
 	2:   "required_array_boolean",
@@ -8704,142 +9177,154 @@ var jsonFieldsNameOfTestRequestRequiredFormatTestReq = [156]string{
 	17:  "required_array_string_duration",
 	18:  "required_array_string_email",
 	19:  "required_array_string_hostname",
-	20:  "required_array_string_ip",
-	21:  "required_array_string_ipv4",
-	22:  "required_array_string_ipv6",
-	23:  "required_array_string_password",
-	24:  "required_array_string_time",
-	25:  "required_array_string_uri",
-	26:  "required_array_string_uuid",
-	27:  "required_boolean",
-	28:  "required_double_array_any",
-	29:  "required_double_array_boolean",
-	30:  "required_double_array_integer",
-	31:  "required_double_array_integer_int32",
-	32:  "required_double_array_integer_int64",
-	33:  "required_double_array_null",
-	34:  "required_double_array_number",
-	35:  "required_double_array_number_double",
-	36:  "required_double_array_number_float",
-	37:  "required_double_array_number_int32",
-	38:  "required_double_array_number_int64",
-	39:  "required_double_array_string",
-	40:  "required_double_array_string_binary",
-	41:  "required_double_array_string_byte",
-	42:  "required_double_array_string_date",
-	43:  "required_double_array_string_date-time",
-	44:  "required_double_array_string_duration",
-	45:  "required_double_array_string_email",
-	46:  "required_double_array_string_hostname",
-	47:  "required_double_array_string_ip",
-	48:  "required_double_array_string_ipv4",
-	49:  "required_double_array_string_ipv6",
-	50:  "required_double_array_string_password",
-	51:  "required_double_array_string_time",
-	52:  "required_double_array_string_uri",
-	53:  "required_double_array_string_uuid",
-	54:  "required_integer",
-	55:  "required_integer_int32",
-	56:  "required_integer_int64",
-	57:  "required_null",
-	58:  "required_number",
-	59:  "required_number_double",
-	60:  "required_number_float",
-	61:  "required_number_int32",
-	62:  "required_number_int64",
-	63:  "required_string",
-	64:  "required_string_binary",
-	65:  "required_string_byte",
-	66:  "required_string_date",
-	67:  "required_string_date-time",
-	68:  "required_string_duration",
-	69:  "required_string_email",
-	70:  "required_string_hostname",
-	71:  "required_string_ip",
-	72:  "required_string_ipv4",
-	73:  "required_string_ipv6",
-	74:  "required_string_password",
-	75:  "required_string_time",
-	76:  "required_string_uri",
-	77:  "required_string_uuid",
-	78:  "optional_any",
-	79:  "optional_array_any",
-	80:  "optional_array_boolean",
-	81:  "optional_array_integer",
-	82:  "optional_array_integer_int32",
-	83:  "optional_array_integer_int64",
-	84:  "optional_array_null",
-	85:  "optional_array_number",
-	86:  "optional_array_number_double",
-	87:  "optional_array_number_float",
-	88:  "optional_array_number_int32",
-	89:  "optional_array_number_int64",
-	90:  "optional_array_string",
-	91:  "optional_array_string_binary",
-	92:  "optional_array_string_byte",
-	93:  "optional_array_string_date",
-	94:  "optional_array_string_date-time",
-	95:  "optional_array_string_duration",
-	96:  "optional_array_string_email",
-	97:  "optional_array_string_hostname",
-	98:  "optional_array_string_ip",
-	99:  "optional_array_string_ipv4",
-	100: "optional_array_string_ipv6",
-	101: "optional_array_string_password",
-	102: "optional_array_string_time",
-	103: "optional_array_string_uri",
-	104: "optional_array_string_uuid",
-	105: "optional_boolean",
-	106: "optional_double_array_any",
-	107: "optional_double_array_boolean",
-	108: "optional_double_array_integer",
-	109: "optional_double_array_integer_int32",
-	110: "optional_double_array_integer_int64",
-	111: "optional_double_array_null",
-	112: "optional_double_array_number",
-	113: "optional_double_array_number_double",
-	114: "optional_double_array_number_float",
-	115: "optional_double_array_number_int32",
-	116: "optional_double_array_number_int64",
-	117: "optional_double_array_string",
-	118: "optional_double_array_string_binary",
-	119: "optional_double_array_string_byte",
-	120: "optional_double_array_string_date",
-	121: "optional_double_array_string_date-time",
-	122: "optional_double_array_string_duration",
-	123: "optional_double_array_string_email",
-	124: "optional_double_array_string_hostname",
-	125: "optional_double_array_string_ip",
-	126: "optional_double_array_string_ipv4",
-	127: "optional_double_array_string_ipv6",
-	128: "optional_double_array_string_password",
-	129: "optional_double_array_string_time",
-	130: "optional_double_array_string_uri",
-	131: "optional_double_array_string_uuid",
-	132: "optional_integer",
-	133: "optional_integer_int32",
-	134: "optional_integer_int64",
-	135: "optional_null",
-	136: "optional_number",
-	137: "optional_number_double",
-	138: "optional_number_float",
-	139: "optional_number_int32",
-	140: "optional_number_int64",
-	141: "optional_string",
-	142: "optional_string_binary",
-	143: "optional_string_byte",
-	144: "optional_string_date",
-	145: "optional_string_date-time",
-	146: "optional_string_duration",
-	147: "optional_string_email",
-	148: "optional_string_hostname",
-	149: "optional_string_ip",
-	150: "optional_string_ipv4",
-	151: "optional_string_ipv6",
-	152: "optional_string_password",
-	153: "optional_string_time",
-	154: "optional_string_uri",
-	155: "optional_string_uuid",
+	20:  "required_array_string_int32",
+	21:  "required_array_string_int64",
+	22:  "required_array_string_ip",
+	23:  "required_array_string_ipv4",
+	24:  "required_array_string_ipv6",
+	25:  "required_array_string_password",
+	26:  "required_array_string_time",
+	27:  "required_array_string_uri",
+	28:  "required_array_string_uuid",
+	29:  "required_boolean",
+	30:  "required_double_array_any",
+	31:  "required_double_array_boolean",
+	32:  "required_double_array_integer",
+	33:  "required_double_array_integer_int32",
+	34:  "required_double_array_integer_int64",
+	35:  "required_double_array_null",
+	36:  "required_double_array_number",
+	37:  "required_double_array_number_double",
+	38:  "required_double_array_number_float",
+	39:  "required_double_array_number_int32",
+	40:  "required_double_array_number_int64",
+	41:  "required_double_array_string",
+	42:  "required_double_array_string_binary",
+	43:  "required_double_array_string_byte",
+	44:  "required_double_array_string_date",
+	45:  "required_double_array_string_date-time",
+	46:  "required_double_array_string_duration",
+	47:  "required_double_array_string_email",
+	48:  "required_double_array_string_hostname",
+	49:  "required_double_array_string_int32",
+	50:  "required_double_array_string_int64",
+	51:  "required_double_array_string_ip",
+	52:  "required_double_array_string_ipv4",
+	53:  "required_double_array_string_ipv6",
+	54:  "required_double_array_string_password",
+	55:  "required_double_array_string_time",
+	56:  "required_double_array_string_uri",
+	57:  "required_double_array_string_uuid",
+	58:  "required_integer",
+	59:  "required_integer_int32",
+	60:  "required_integer_int64",
+	61:  "required_null",
+	62:  "required_number",
+	63:  "required_number_double",
+	64:  "required_number_float",
+	65:  "required_number_int32",
+	66:  "required_number_int64",
+	67:  "required_string",
+	68:  "required_string_binary",
+	69:  "required_string_byte",
+	70:  "required_string_date",
+	71:  "required_string_date-time",
+	72:  "required_string_duration",
+	73:  "required_string_email",
+	74:  "required_string_hostname",
+	75:  "required_string_int32",
+	76:  "required_string_int64",
+	77:  "required_string_ip",
+	78:  "required_string_ipv4",
+	79:  "required_string_ipv6",
+	80:  "required_string_password",
+	81:  "required_string_time",
+	82:  "required_string_uri",
+	83:  "required_string_uuid",
+	84:  "optional_any",
+	85:  "optional_array_any",
+	86:  "optional_array_boolean",
+	87:  "optional_array_integer",
+	88:  "optional_array_integer_int32",
+	89:  "optional_array_integer_int64",
+	90:  "optional_array_null",
+	91:  "optional_array_number",
+	92:  "optional_array_number_double",
+	93:  "optional_array_number_float",
+	94:  "optional_array_number_int32",
+	95:  "optional_array_number_int64",
+	96:  "optional_array_string",
+	97:  "optional_array_string_binary",
+	98:  "optional_array_string_byte",
+	99:  "optional_array_string_date",
+	100: "optional_array_string_date-time",
+	101: "optional_array_string_duration",
+	102: "optional_array_string_email",
+	103: "optional_array_string_hostname",
+	104: "optional_array_string_int32",
+	105: "optional_array_string_int64",
+	106: "optional_array_string_ip",
+	107: "optional_array_string_ipv4",
+	108: "optional_array_string_ipv6",
+	109: "optional_array_string_password",
+	110: "optional_array_string_time",
+	111: "optional_array_string_uri",
+	112: "optional_array_string_uuid",
+	113: "optional_boolean",
+	114: "optional_double_array_any",
+	115: "optional_double_array_boolean",
+	116: "optional_double_array_integer",
+	117: "optional_double_array_integer_int32",
+	118: "optional_double_array_integer_int64",
+	119: "optional_double_array_null",
+	120: "optional_double_array_number",
+	121: "optional_double_array_number_double",
+	122: "optional_double_array_number_float",
+	123: "optional_double_array_number_int32",
+	124: "optional_double_array_number_int64",
+	125: "optional_double_array_string",
+	126: "optional_double_array_string_binary",
+	127: "optional_double_array_string_byte",
+	128: "optional_double_array_string_date",
+	129: "optional_double_array_string_date-time",
+	130: "optional_double_array_string_duration",
+	131: "optional_double_array_string_email",
+	132: "optional_double_array_string_hostname",
+	133: "optional_double_array_string_int32",
+	134: "optional_double_array_string_int64",
+	135: "optional_double_array_string_ip",
+	136: "optional_double_array_string_ipv4",
+	137: "optional_double_array_string_ipv6",
+	138: "optional_double_array_string_password",
+	139: "optional_double_array_string_time",
+	140: "optional_double_array_string_uri",
+	141: "optional_double_array_string_uuid",
+	142: "optional_integer",
+	143: "optional_integer_int32",
+	144: "optional_integer_int64",
+	145: "optional_null",
+	146: "optional_number",
+	147: "optional_number_double",
+	148: "optional_number_float",
+	149: "optional_number_int32",
+	150: "optional_number_int64",
+	151: "optional_string",
+	152: "optional_string_binary",
+	153: "optional_string_byte",
+	154: "optional_string_date",
+	155: "optional_string_date-time",
+	156: "optional_string_duration",
+	157: "optional_string_email",
+	158: "optional_string_hostname",
+	159: "optional_string_int32",
+	160: "optional_string_int64",
+	161: "optional_string_ip",
+	162: "optional_string_ipv4",
+	163: "optional_string_ipv6",
+	164: "optional_string_password",
+	165: "optional_string_time",
+	166: "optional_string_uri",
+	167: "optional_string_uuid",
 }
 
 // Decode decodes TestRequestRequiredFormatTestReq from json.
@@ -8847,7 +9332,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode TestRequestRequiredFormatTestReq to nil")
 	}
-	var requiredBitSet [20]uint8
+	var requiredBitSet [21]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -9241,8 +9726,48 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
 			}
-		case "required_array_string_ip":
+		case "required_array_string_int32":
 			requiredBitSet[2] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
+			}
+		case "required_array_string_int64":
+			requiredBitSet[2] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
+			}
+		case "required_array_string_ip":
+			requiredBitSet[2] |= 1 << 6
 			if err := func() error {
 				s.RequiredArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9262,7 +9787,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
 			}
 		case "required_array_string_ipv4":
-			requiredBitSet[2] |= 1 << 5
+			requiredBitSet[2] |= 1 << 7
 			if err := func() error {
 				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9282,7 +9807,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
 			}
 		case "required_array_string_ipv6":
-			requiredBitSet[2] |= 1 << 6
+			requiredBitSet[3] |= 1 << 0
 			if err := func() error {
 				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9302,7 +9827,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
 			}
 		case "required_array_string_password":
-			requiredBitSet[2] |= 1 << 7
+			requiredBitSet[3] |= 1 << 1
 			if err := func() error {
 				s.RequiredArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9322,7 +9847,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_password\"")
 			}
 		case "required_array_string_time":
-			requiredBitSet[3] |= 1 << 0
+			requiredBitSet[3] |= 1 << 2
 			if err := func() error {
 				s.RequiredArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9342,7 +9867,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_time\"")
 			}
 		case "required_array_string_uri":
-			requiredBitSet[3] |= 1 << 1
+			requiredBitSet[3] |= 1 << 3
 			if err := func() error {
 				s.RequiredArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9362,7 +9887,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
 			}
 		case "required_array_string_uuid":
-			requiredBitSet[3] |= 1 << 2
+			requiredBitSet[3] |= 1 << 4
 			if err := func() error {
 				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9382,7 +9907,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
 			}
 		case "required_boolean":
-			requiredBitSet[3] |= 1 << 3
+			requiredBitSet[3] |= 1 << 5
 			if err := func() error {
 				v, err := d.Bool()
 				s.RequiredBoolean = bool(v)
@@ -9394,7 +9919,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_boolean\"")
 			}
 		case "required_double_array_any":
-			requiredBitSet[3] |= 1 << 4
+			requiredBitSet[3] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9422,7 +9947,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_any\"")
 			}
 		case "required_double_array_boolean":
-			requiredBitSet[3] |= 1 << 5
+			requiredBitSet[3] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9450,7 +9975,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
 			}
 		case "required_double_array_integer":
-			requiredBitSet[3] |= 1 << 6
+			requiredBitSet[4] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9478,7 +10003,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
 			}
 		case "required_double_array_integer_int32":
-			requiredBitSet[3] |= 1 << 7
+			requiredBitSet[4] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9506,7 +10031,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
 			}
 		case "required_double_array_integer_int64":
-			requiredBitSet[4] |= 1 << 0
+			requiredBitSet[4] |= 1 << 2
 			if err := func() error {
 				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9534,7 +10059,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
 			}
 		case "required_double_array_null":
-			requiredBitSet[4] |= 1 << 1
+			requiredBitSet[4] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9560,7 +10085,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_null\"")
 			}
 		case "required_double_array_number":
-			requiredBitSet[4] |= 1 << 2
+			requiredBitSet[4] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9588,7 +10113,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number\"")
 			}
 		case "required_double_array_number_double":
-			requiredBitSet[4] |= 1 << 3
+			requiredBitSet[4] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9616,7 +10141,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
 			}
 		case "required_double_array_number_float":
-			requiredBitSet[4] |= 1 << 4
+			requiredBitSet[4] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9644,7 +10169,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
 			}
 		case "required_double_array_number_int32":
-			requiredBitSet[4] |= 1 << 5
+			requiredBitSet[4] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9672,7 +10197,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
 			}
 		case "required_double_array_number_int64":
-			requiredBitSet[4] |= 1 << 6
+			requiredBitSet[5] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9700,7 +10225,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
 			}
 		case "required_double_array_string":
-			requiredBitSet[4] |= 1 << 7
+			requiredBitSet[5] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9728,7 +10253,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string\"")
 			}
 		case "required_double_array_string_binary":
-			requiredBitSet[5] |= 1 << 0
+			requiredBitSet[5] |= 1 << 2
 			if err := func() error {
 				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9756,7 +10281,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
 			}
 		case "required_double_array_string_byte":
-			requiredBitSet[5] |= 1 << 1
+			requiredBitSet[5] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9784,7 +10309,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
 			}
 		case "required_double_array_string_date":
-			requiredBitSet[5] |= 1 << 2
+			requiredBitSet[5] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9812,7 +10337,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
 			}
 		case "required_double_array_string_date-time":
-			requiredBitSet[5] |= 1 << 3
+			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9840,7 +10365,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
 			}
 		case "required_double_array_string_duration":
-			requiredBitSet[5] |= 1 << 4
+			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9868,7 +10393,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
 			}
 		case "required_double_array_string_email":
-			requiredBitSet[5] |= 1 << 5
+			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9896,7 +10421,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
 			}
 		case "required_double_array_string_hostname":
-			requiredBitSet[5] |= 1 << 6
+			requiredBitSet[6] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9923,8 +10448,64 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
 			}
+		case "required_double_array_string_int32":
+			requiredBitSet[6] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
+			}
+		case "required_double_array_string_int64":
+			requiredBitSet[6] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
+			}
 		case "required_double_array_string_ip":
-			requiredBitSet[5] |= 1 << 7
+			requiredBitSet[6] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9952,7 +10533,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
 			}
 		case "required_double_array_string_ipv4":
-			requiredBitSet[6] |= 1 << 0
+			requiredBitSet[6] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -9980,7 +10561,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
 			}
 		case "required_double_array_string_ipv6":
-			requiredBitSet[6] |= 1 << 1
+			requiredBitSet[6] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -10008,7 +10589,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
 			}
 		case "required_double_array_string_password":
-			requiredBitSet[6] |= 1 << 2
+			requiredBitSet[6] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -10036,7 +10617,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
 			}
 		case "required_double_array_string_time":
-			requiredBitSet[6] |= 1 << 3
+			requiredBitSet[6] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -10064,7 +10645,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
 			}
 		case "required_double_array_string_uri":
-			requiredBitSet[6] |= 1 << 4
+			requiredBitSet[7] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -10092,7 +10673,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
 			}
 		case "required_double_array_string_uuid":
-			requiredBitSet[6] |= 1 << 5
+			requiredBitSet[7] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -10120,7 +10701,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
 			}
 		case "required_integer":
-			requiredBitSet[6] |= 1 << 6
+			requiredBitSet[7] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int()
 				s.RequiredInteger = int(v)
@@ -10132,7 +10713,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer\"")
 			}
 		case "required_integer_int32":
-			requiredBitSet[6] |= 1 << 7
+			requiredBitSet[7] |= 1 << 3
 			if err := func() error {
 				v, err := d.Int32()
 				s.RequiredIntegerInt32 = int32(v)
@@ -10144,7 +10725,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer_int32\"")
 			}
 		case "required_integer_int64":
-			requiredBitSet[7] |= 1 << 0
+			requiredBitSet[7] |= 1 << 4
 			if err := func() error {
 				v, err := d.Int64()
 				s.RequiredIntegerInt64 = int64(v)
@@ -10156,7 +10737,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer_int64\"")
 			}
 		case "required_null":
-			requiredBitSet[7] |= 1 << 1
+			requiredBitSet[7] |= 1 << 5
 			if err := func() error {
 				if err := d.Null(); err != nil {
 					return err
@@ -10166,7 +10747,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_null\"")
 			}
 		case "required_number":
-			requiredBitSet[7] |= 1 << 2
+			requiredBitSet[7] |= 1 << 6
 			if err := func() error {
 				v, err := d.Float64()
 				s.RequiredNumber = float64(v)
@@ -10178,7 +10759,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number\"")
 			}
 		case "required_number_double":
-			requiredBitSet[7] |= 1 << 3
+			requiredBitSet[7] |= 1 << 7
 			if err := func() error {
 				v, err := d.Float64()
 				s.RequiredNumberDouble = float64(v)
@@ -10190,7 +10771,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_double\"")
 			}
 		case "required_number_float":
-			requiredBitSet[7] |= 1 << 4
+			requiredBitSet[8] |= 1 << 0
 			if err := func() error {
 				v, err := d.Float32()
 				s.RequiredNumberFloat = float32(v)
@@ -10202,7 +10783,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_float\"")
 			}
 		case "required_number_int32":
-			requiredBitSet[7] |= 1 << 5
+			requiredBitSet[8] |= 1 << 1
 			if err := func() error {
 				v, err := d.Int32()
 				s.RequiredNumberInt32 = int32(v)
@@ -10214,7 +10795,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_int32\"")
 			}
 		case "required_number_int64":
-			requiredBitSet[7] |= 1 << 6
+			requiredBitSet[8] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int64()
 				s.RequiredNumberInt64 = int64(v)
@@ -10226,7 +10807,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_int64\"")
 			}
 		case "required_string":
-			requiredBitSet[7] |= 1 << 7
+			requiredBitSet[8] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredString = string(v)
@@ -10238,7 +10819,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string\"")
 			}
 		case "required_string_binary":
-			requiredBitSet[8] |= 1 << 0
+			requiredBitSet[8] |= 1 << 4
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringBinary = string(v)
@@ -10250,7 +10831,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_binary\"")
 			}
 		case "required_string_byte":
-			requiredBitSet[8] |= 1 << 1
+			requiredBitSet[8] |= 1 << 5
 			if err := func() error {
 				v, err := d.Base64()
 				s.RequiredStringByte = []byte(v)
@@ -10262,7 +10843,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_byte\"")
 			}
 		case "required_string_date":
-			requiredBitSet[8] |= 1 << 2
+			requiredBitSet[8] |= 1 << 6
 			if err := func() error {
 				v, err := json.DecodeDate(d)
 				s.RequiredStringDate = v
@@ -10274,7 +10855,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_date\"")
 			}
 		case "required_string_date-time":
-			requiredBitSet[8] |= 1 << 3
+			requiredBitSet[8] |= 1 << 7
 			if err := func() error {
 				v, err := json.DecodeDateTime(d)
 				s.RequiredStringDateMinusTime = v
@@ -10286,7 +10867,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_date-time\"")
 			}
 		case "required_string_duration":
-			requiredBitSet[8] |= 1 << 4
+			requiredBitSet[9] |= 1 << 0
 			if err := func() error {
 				v, err := json.DecodeDuration(d)
 				s.RequiredStringDuration = v
@@ -10298,7 +10879,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_duration\"")
 			}
 		case "required_string_email":
-			requiredBitSet[8] |= 1 << 5
+			requiredBitSet[9] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringEmail = string(v)
@@ -10310,7 +10891,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_email\"")
 			}
 		case "required_string_hostname":
-			requiredBitSet[8] |= 1 << 6
+			requiredBitSet[9] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringHostname = string(v)
@@ -10321,8 +10902,32 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_string_hostname\"")
 			}
+		case "required_string_int32":
+			requiredBitSet[9] |= 1 << 3
+			if err := func() error {
+				v, err := json.DecodeStringInt32(d)
+				s.RequiredStringInt32 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int32\"")
+			}
+		case "required_string_int64":
+			requiredBitSet[9] |= 1 << 4
+			if err := func() error {
+				v, err := json.DecodeStringInt64(d)
+				s.RequiredStringInt64 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int64\"")
+			}
 		case "required_string_ip":
-			requiredBitSet[8] |= 1 << 7
+			requiredBitSet[9] |= 1 << 5
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIP = v
@@ -10334,7 +10939,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ip\"")
 			}
 		case "required_string_ipv4":
-			requiredBitSet[9] |= 1 << 0
+			requiredBitSet[9] |= 1 << 6
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIpv4 = v
@@ -10346,7 +10951,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
 			}
 		case "required_string_ipv6":
-			requiredBitSet[9] |= 1 << 1
+			requiredBitSet[9] |= 1 << 7
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIpv6 = v
@@ -10358,7 +10963,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
 			}
 		case "required_string_password":
-			requiredBitSet[9] |= 1 << 2
+			requiredBitSet[10] |= 1 << 0
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringPassword = string(v)
@@ -10370,7 +10975,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_password\"")
 			}
 		case "required_string_time":
-			requiredBitSet[9] |= 1 << 3
+			requiredBitSet[10] |= 1 << 1
 			if err := func() error {
 				v, err := json.DecodeTime(d)
 				s.RequiredStringTime = v
@@ -10382,7 +10987,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_time\"")
 			}
 		case "required_string_uri":
-			requiredBitSet[9] |= 1 << 4
+			requiredBitSet[10] |= 1 << 2
 			if err := func() error {
 				v, err := json.DecodeURI(d)
 				s.RequiredStringURI = v
@@ -10394,7 +10999,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_uri\"")
 			}
 		case "required_string_uuid":
-			requiredBitSet[9] |= 1 << 5
+			requiredBitSet[10] |= 1 << 3
 			if err := func() error {
 				v, err := json.DecodeUUID(d)
 				s.RequiredStringUUID = v
@@ -10774,6 +11379,44 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_array_string_hostname\"")
+			}
+		case "optional_array_string_int32":
+			if err := func() error {
+				s.OptionalArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_array_string_int32\"")
+			}
+		case "optional_array_string_int64":
+			if err := func() error {
+				s.OptionalArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_array_string_int64\"")
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
@@ -11429,6 +12072,60 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_double_array_string_hostname\"")
 			}
+		case "optional_double_array_string_int32":
+			if err := func() error {
+				s.OptionalDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_double_array_string_int32\"")
+			}
+		case "optional_double_array_string_int64":
+			if err := func() error {
+				s.OptionalDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_double_array_string_int64\"")
+			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
 				s.OptionalDoubleArrayStringIP = make([][]netip.Addr, 0)
@@ -11789,6 +12486,26 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_string_hostname\"")
 			}
+		case "optional_string_int32":
+			if err := func() error {
+				s.OptionalStringInt32.Reset()
+				if err := s.OptionalStringInt32.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_string_int32\"")
+			}
+		case "optional_string_int64":
+			if err := func() error {
+				s.OptionalStringInt64.Reset()
+				if err := s.OptionalStringInt64.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_string_int64\"")
+			}
 		case "optional_string_ip":
 			if err := func() error {
 				s.OptionalStringIP.Reset()
@@ -11868,7 +12585,7 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [20]uint8{
+	for i, mask := range [21]uint8{
 		0b11111111,
 		0b11111111,
 		0b11111111,
@@ -11878,7 +12595,8 @@ func (s *TestRequestRequiredFormatTestReq) Decode(d *jx.Decoder) error {
 		0b11111111,
 		0b11111111,
 		0b11111111,
-		0b00111111,
+		0b11111111,
+		0b00001111,
 		0b00000000,
 		0b00000000,
 		0b00000000,
@@ -12171,6 +12889,24 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 	}
 	{
 
+		e.FieldStart("required_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt32 {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredArrayStringInt64 {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+	{
+
 		e.FieldStart("required_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredArrayStringIP {
@@ -12489,6 +13225,32 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 	}
 	{
 
+		e.FieldStart("required_double_array_string_int32")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt32 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
+		e.FieldStart("required_double_array_string_int64")
+		e.ArrStart()
+		for _, elem := range s.RequiredDoubleArrayStringInt64 {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+	{
+
 		e.FieldStart("required_double_array_string_ip")
 		e.ArrStart()
 		for _, elem := range s.RequiredDoubleArrayStringIP {
@@ -12663,6 +13425,16 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 
 		e.FieldStart("required_string_hostname")
 		e.Str(s.RequiredStringHostname)
+	}
+	{
+
+		e.FieldStart("required_string_int32")
+		json.EncodeStringInt32(e, s.RequiredStringInt32)
+	}
+	{
+
+		e.FieldStart("required_string_int64")
+		json.EncodeStringInt64(e, s.RequiredStringInt64)
 	}
 	{
 
@@ -12895,6 +13667,26 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 			e.ArrStart()
 			for _, elem := range s.OptionalArrayStringHostname {
 				e.Str(elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalArrayStringInt32 != nil {
+			e.FieldStart("optional_array_string_int32")
+			e.ArrStart()
+			for _, elem := range s.OptionalArrayStringInt32 {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalArrayStringInt64 != nil {
+			e.FieldStart("optional_array_string_int64")
+			e.ArrStart()
+			for _, elem := range s.OptionalArrayStringInt64 {
+				json.EncodeStringInt64(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -13245,6 +14037,34 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.OptionalDoubleArrayStringInt32 != nil {
+			e.FieldStart("optional_double_array_string_int32")
+			e.ArrStart()
+			for _, elem := range s.OptionalDoubleArrayStringInt32 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt32(e, elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	{
+		if s.OptionalDoubleArrayStringInt64 != nil {
+			e.FieldStart("optional_double_array_string_int64")
+			e.ArrStart()
+			for _, elem := range s.OptionalDoubleArrayStringInt64 {
+				e.ArrStart()
+				for _, elem := range elem {
+					json.EncodeStringInt64(e, elem)
+				}
+				e.ArrEnd()
+			}
+			e.ArrEnd()
+		}
+	}
+	{
 		if s.OptionalDoubleArrayStringIP != nil {
 			e.FieldStart("optional_double_array_string_ip")
 			e.ArrStart()
@@ -13444,6 +14264,18 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
+		if s.OptionalStringInt32.Set {
+			e.FieldStart("optional_string_int32")
+			s.OptionalStringInt32.Encode(e)
+		}
+	}
+	{
+		if s.OptionalStringInt64.Set {
+			e.FieldStart("optional_string_int64")
+			s.OptionalStringInt64.Encode(e)
+		}
+	}
+	{
 		if s.OptionalStringIP.Set {
 			e.FieldStart("optional_string_ip")
 			s.OptionalStringIP.Encode(e)
@@ -13487,7 +14319,7 @@ func (s TestResponseFormatTestOK) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfTestResponseFormatTestOK = [156]string{
+var jsonFieldsNameOfTestResponseFormatTestOK = [168]string{
 	0:   "required_any",
 	1:   "required_array_any",
 	2:   "required_array_boolean",
@@ -13508,142 +14340,154 @@ var jsonFieldsNameOfTestResponseFormatTestOK = [156]string{
 	17:  "required_array_string_duration",
 	18:  "required_array_string_email",
 	19:  "required_array_string_hostname",
-	20:  "required_array_string_ip",
-	21:  "required_array_string_ipv4",
-	22:  "required_array_string_ipv6",
-	23:  "required_array_string_password",
-	24:  "required_array_string_time",
-	25:  "required_array_string_uri",
-	26:  "required_array_string_uuid",
-	27:  "required_boolean",
-	28:  "required_double_array_any",
-	29:  "required_double_array_boolean",
-	30:  "required_double_array_integer",
-	31:  "required_double_array_integer_int32",
-	32:  "required_double_array_integer_int64",
-	33:  "required_double_array_null",
-	34:  "required_double_array_number",
-	35:  "required_double_array_number_double",
-	36:  "required_double_array_number_float",
-	37:  "required_double_array_number_int32",
-	38:  "required_double_array_number_int64",
-	39:  "required_double_array_string",
-	40:  "required_double_array_string_binary",
-	41:  "required_double_array_string_byte",
-	42:  "required_double_array_string_date",
-	43:  "required_double_array_string_date-time",
-	44:  "required_double_array_string_duration",
-	45:  "required_double_array_string_email",
-	46:  "required_double_array_string_hostname",
-	47:  "required_double_array_string_ip",
-	48:  "required_double_array_string_ipv4",
-	49:  "required_double_array_string_ipv6",
-	50:  "required_double_array_string_password",
-	51:  "required_double_array_string_time",
-	52:  "required_double_array_string_uri",
-	53:  "required_double_array_string_uuid",
-	54:  "required_integer",
-	55:  "required_integer_int32",
-	56:  "required_integer_int64",
-	57:  "required_null",
-	58:  "required_number",
-	59:  "required_number_double",
-	60:  "required_number_float",
-	61:  "required_number_int32",
-	62:  "required_number_int64",
-	63:  "required_string",
-	64:  "required_string_binary",
-	65:  "required_string_byte",
-	66:  "required_string_date",
-	67:  "required_string_date-time",
-	68:  "required_string_duration",
-	69:  "required_string_email",
-	70:  "required_string_hostname",
-	71:  "required_string_ip",
-	72:  "required_string_ipv4",
-	73:  "required_string_ipv6",
-	74:  "required_string_password",
-	75:  "required_string_time",
-	76:  "required_string_uri",
-	77:  "required_string_uuid",
-	78:  "optional_any",
-	79:  "optional_array_any",
-	80:  "optional_array_boolean",
-	81:  "optional_array_integer",
-	82:  "optional_array_integer_int32",
-	83:  "optional_array_integer_int64",
-	84:  "optional_array_null",
-	85:  "optional_array_number",
-	86:  "optional_array_number_double",
-	87:  "optional_array_number_float",
-	88:  "optional_array_number_int32",
-	89:  "optional_array_number_int64",
-	90:  "optional_array_string",
-	91:  "optional_array_string_binary",
-	92:  "optional_array_string_byte",
-	93:  "optional_array_string_date",
-	94:  "optional_array_string_date-time",
-	95:  "optional_array_string_duration",
-	96:  "optional_array_string_email",
-	97:  "optional_array_string_hostname",
-	98:  "optional_array_string_ip",
-	99:  "optional_array_string_ipv4",
-	100: "optional_array_string_ipv6",
-	101: "optional_array_string_password",
-	102: "optional_array_string_time",
-	103: "optional_array_string_uri",
-	104: "optional_array_string_uuid",
-	105: "optional_boolean",
-	106: "optional_double_array_any",
-	107: "optional_double_array_boolean",
-	108: "optional_double_array_integer",
-	109: "optional_double_array_integer_int32",
-	110: "optional_double_array_integer_int64",
-	111: "optional_double_array_null",
-	112: "optional_double_array_number",
-	113: "optional_double_array_number_double",
-	114: "optional_double_array_number_float",
-	115: "optional_double_array_number_int32",
-	116: "optional_double_array_number_int64",
-	117: "optional_double_array_string",
-	118: "optional_double_array_string_binary",
-	119: "optional_double_array_string_byte",
-	120: "optional_double_array_string_date",
-	121: "optional_double_array_string_date-time",
-	122: "optional_double_array_string_duration",
-	123: "optional_double_array_string_email",
-	124: "optional_double_array_string_hostname",
-	125: "optional_double_array_string_ip",
-	126: "optional_double_array_string_ipv4",
-	127: "optional_double_array_string_ipv6",
-	128: "optional_double_array_string_password",
-	129: "optional_double_array_string_time",
-	130: "optional_double_array_string_uri",
-	131: "optional_double_array_string_uuid",
-	132: "optional_integer",
-	133: "optional_integer_int32",
-	134: "optional_integer_int64",
-	135: "optional_null",
-	136: "optional_number",
-	137: "optional_number_double",
-	138: "optional_number_float",
-	139: "optional_number_int32",
-	140: "optional_number_int64",
-	141: "optional_string",
-	142: "optional_string_binary",
-	143: "optional_string_byte",
-	144: "optional_string_date",
-	145: "optional_string_date-time",
-	146: "optional_string_duration",
-	147: "optional_string_email",
-	148: "optional_string_hostname",
-	149: "optional_string_ip",
-	150: "optional_string_ipv4",
-	151: "optional_string_ipv6",
-	152: "optional_string_password",
-	153: "optional_string_time",
-	154: "optional_string_uri",
-	155: "optional_string_uuid",
+	20:  "required_array_string_int32",
+	21:  "required_array_string_int64",
+	22:  "required_array_string_ip",
+	23:  "required_array_string_ipv4",
+	24:  "required_array_string_ipv6",
+	25:  "required_array_string_password",
+	26:  "required_array_string_time",
+	27:  "required_array_string_uri",
+	28:  "required_array_string_uuid",
+	29:  "required_boolean",
+	30:  "required_double_array_any",
+	31:  "required_double_array_boolean",
+	32:  "required_double_array_integer",
+	33:  "required_double_array_integer_int32",
+	34:  "required_double_array_integer_int64",
+	35:  "required_double_array_null",
+	36:  "required_double_array_number",
+	37:  "required_double_array_number_double",
+	38:  "required_double_array_number_float",
+	39:  "required_double_array_number_int32",
+	40:  "required_double_array_number_int64",
+	41:  "required_double_array_string",
+	42:  "required_double_array_string_binary",
+	43:  "required_double_array_string_byte",
+	44:  "required_double_array_string_date",
+	45:  "required_double_array_string_date-time",
+	46:  "required_double_array_string_duration",
+	47:  "required_double_array_string_email",
+	48:  "required_double_array_string_hostname",
+	49:  "required_double_array_string_int32",
+	50:  "required_double_array_string_int64",
+	51:  "required_double_array_string_ip",
+	52:  "required_double_array_string_ipv4",
+	53:  "required_double_array_string_ipv6",
+	54:  "required_double_array_string_password",
+	55:  "required_double_array_string_time",
+	56:  "required_double_array_string_uri",
+	57:  "required_double_array_string_uuid",
+	58:  "required_integer",
+	59:  "required_integer_int32",
+	60:  "required_integer_int64",
+	61:  "required_null",
+	62:  "required_number",
+	63:  "required_number_double",
+	64:  "required_number_float",
+	65:  "required_number_int32",
+	66:  "required_number_int64",
+	67:  "required_string",
+	68:  "required_string_binary",
+	69:  "required_string_byte",
+	70:  "required_string_date",
+	71:  "required_string_date-time",
+	72:  "required_string_duration",
+	73:  "required_string_email",
+	74:  "required_string_hostname",
+	75:  "required_string_int32",
+	76:  "required_string_int64",
+	77:  "required_string_ip",
+	78:  "required_string_ipv4",
+	79:  "required_string_ipv6",
+	80:  "required_string_password",
+	81:  "required_string_time",
+	82:  "required_string_uri",
+	83:  "required_string_uuid",
+	84:  "optional_any",
+	85:  "optional_array_any",
+	86:  "optional_array_boolean",
+	87:  "optional_array_integer",
+	88:  "optional_array_integer_int32",
+	89:  "optional_array_integer_int64",
+	90:  "optional_array_null",
+	91:  "optional_array_number",
+	92:  "optional_array_number_double",
+	93:  "optional_array_number_float",
+	94:  "optional_array_number_int32",
+	95:  "optional_array_number_int64",
+	96:  "optional_array_string",
+	97:  "optional_array_string_binary",
+	98:  "optional_array_string_byte",
+	99:  "optional_array_string_date",
+	100: "optional_array_string_date-time",
+	101: "optional_array_string_duration",
+	102: "optional_array_string_email",
+	103: "optional_array_string_hostname",
+	104: "optional_array_string_int32",
+	105: "optional_array_string_int64",
+	106: "optional_array_string_ip",
+	107: "optional_array_string_ipv4",
+	108: "optional_array_string_ipv6",
+	109: "optional_array_string_password",
+	110: "optional_array_string_time",
+	111: "optional_array_string_uri",
+	112: "optional_array_string_uuid",
+	113: "optional_boolean",
+	114: "optional_double_array_any",
+	115: "optional_double_array_boolean",
+	116: "optional_double_array_integer",
+	117: "optional_double_array_integer_int32",
+	118: "optional_double_array_integer_int64",
+	119: "optional_double_array_null",
+	120: "optional_double_array_number",
+	121: "optional_double_array_number_double",
+	122: "optional_double_array_number_float",
+	123: "optional_double_array_number_int32",
+	124: "optional_double_array_number_int64",
+	125: "optional_double_array_string",
+	126: "optional_double_array_string_binary",
+	127: "optional_double_array_string_byte",
+	128: "optional_double_array_string_date",
+	129: "optional_double_array_string_date-time",
+	130: "optional_double_array_string_duration",
+	131: "optional_double_array_string_email",
+	132: "optional_double_array_string_hostname",
+	133: "optional_double_array_string_int32",
+	134: "optional_double_array_string_int64",
+	135: "optional_double_array_string_ip",
+	136: "optional_double_array_string_ipv4",
+	137: "optional_double_array_string_ipv6",
+	138: "optional_double_array_string_password",
+	139: "optional_double_array_string_time",
+	140: "optional_double_array_string_uri",
+	141: "optional_double_array_string_uuid",
+	142: "optional_integer",
+	143: "optional_integer_int32",
+	144: "optional_integer_int64",
+	145: "optional_null",
+	146: "optional_number",
+	147: "optional_number_double",
+	148: "optional_number_float",
+	149: "optional_number_int32",
+	150: "optional_number_int64",
+	151: "optional_string",
+	152: "optional_string_binary",
+	153: "optional_string_byte",
+	154: "optional_string_date",
+	155: "optional_string_date-time",
+	156: "optional_string_duration",
+	157: "optional_string_email",
+	158: "optional_string_hostname",
+	159: "optional_string_int32",
+	160: "optional_string_int64",
+	161: "optional_string_ip",
+	162: "optional_string_ipv4",
+	163: "optional_string_ipv6",
+	164: "optional_string_password",
+	165: "optional_string_time",
+	166: "optional_string_uri",
+	167: "optional_string_uuid",
 }
 
 // Decode decodes TestResponseFormatTestOK from json.
@@ -13651,7 +14495,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode TestResponseFormatTestOK to nil")
 	}
-	var requiredBitSet [20]uint8
+	var requiredBitSet [21]uint8
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -14045,8 +14889,48 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_array_string_hostname\"")
 			}
-		case "required_array_string_ip":
+		case "required_array_string_int32":
 			requiredBitSet[2] |= 1 << 4
+			if err := func() error {
+				s.RequiredArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int32\"")
+			}
+		case "required_array_string_int64":
+			requiredBitSet[2] |= 1 << 5
+			if err := func() error {
+				s.RequiredArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_array_string_int64\"")
+			}
+		case "required_array_string_ip":
+			requiredBitSet[2] |= 1 << 6
 			if err := func() error {
 				s.RequiredArrayStringIP = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14066,7 +14950,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ip\"")
 			}
 		case "required_array_string_ipv4":
-			requiredBitSet[2] |= 1 << 5
+			requiredBitSet[2] |= 1 << 7
 			if err := func() error {
 				s.RequiredArrayStringIpv4 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14086,7 +14970,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ipv4\"")
 			}
 		case "required_array_string_ipv6":
-			requiredBitSet[2] |= 1 << 6
+			requiredBitSet[3] |= 1 << 0
 			if err := func() error {
 				s.RequiredArrayStringIpv6 = make([]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14106,7 +14990,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_ipv6\"")
 			}
 		case "required_array_string_password":
-			requiredBitSet[2] |= 1 << 7
+			requiredBitSet[3] |= 1 << 1
 			if err := func() error {
 				s.RequiredArrayStringPassword = make([]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14126,7 +15010,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_password\"")
 			}
 		case "required_array_string_time":
-			requiredBitSet[3] |= 1 << 0
+			requiredBitSet[3] |= 1 << 2
 			if err := func() error {
 				s.RequiredArrayStringTime = make([]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14146,7 +15030,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_time\"")
 			}
 		case "required_array_string_uri":
-			requiredBitSet[3] |= 1 << 1
+			requiredBitSet[3] |= 1 << 3
 			if err := func() error {
 				s.RequiredArrayStringURI = make([]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14166,7 +15050,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_uri\"")
 			}
 		case "required_array_string_uuid":
-			requiredBitSet[3] |= 1 << 2
+			requiredBitSet[3] |= 1 << 4
 			if err := func() error {
 				s.RequiredArrayStringUUID = make([]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14186,7 +15070,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_array_string_uuid\"")
 			}
 		case "required_boolean":
-			requiredBitSet[3] |= 1 << 3
+			requiredBitSet[3] |= 1 << 5
 			if err := func() error {
 				v, err := d.Bool()
 				s.RequiredBoolean = bool(v)
@@ -14198,7 +15082,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_boolean\"")
 			}
 		case "required_double_array_any":
-			requiredBitSet[3] |= 1 << 4
+			requiredBitSet[3] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayAny = make([][]jx.Raw, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14226,7 +15110,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_any\"")
 			}
 		case "required_double_array_boolean":
-			requiredBitSet[3] |= 1 << 5
+			requiredBitSet[3] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayBoolean = make([][]bool, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14254,7 +15138,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_boolean\"")
 			}
 		case "required_double_array_integer":
-			requiredBitSet[3] |= 1 << 6
+			requiredBitSet[4] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayInteger = make([][]int, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14282,7 +15166,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer\"")
 			}
 		case "required_double_array_integer_int32":
-			requiredBitSet[3] |= 1 << 7
+			requiredBitSet[4] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayIntegerInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14310,7 +15194,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer_int32\"")
 			}
 		case "required_double_array_integer_int64":
-			requiredBitSet[4] |= 1 << 0
+			requiredBitSet[4] |= 1 << 2
 			if err := func() error {
 				s.RequiredDoubleArrayIntegerInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14338,7 +15222,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_integer_int64\"")
 			}
 		case "required_double_array_null":
-			requiredBitSet[4] |= 1 << 1
+			requiredBitSet[4] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayNull = make([][]struct{}, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14364,7 +15248,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_null\"")
 			}
 		case "required_double_array_number":
-			requiredBitSet[4] |= 1 << 2
+			requiredBitSet[4] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayNumber = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14392,7 +15276,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number\"")
 			}
 		case "required_double_array_number_double":
-			requiredBitSet[4] |= 1 << 3
+			requiredBitSet[4] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayNumberDouble = make([][]float64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14420,7 +15304,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_double\"")
 			}
 		case "required_double_array_number_float":
-			requiredBitSet[4] |= 1 << 4
+			requiredBitSet[4] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayNumberFloat = make([][]float32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14448,7 +15332,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_float\"")
 			}
 		case "required_double_array_number_int32":
-			requiredBitSet[4] |= 1 << 5
+			requiredBitSet[4] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayNumberInt32 = make([][]int32, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14476,7 +15360,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_int32\"")
 			}
 		case "required_double_array_number_int64":
-			requiredBitSet[4] |= 1 << 6
+			requiredBitSet[5] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayNumberInt64 = make([][]int64, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14504,7 +15388,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_number_int64\"")
 			}
 		case "required_double_array_string":
-			requiredBitSet[4] |= 1 << 7
+			requiredBitSet[5] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayString = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14532,7 +15416,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string\"")
 			}
 		case "required_double_array_string_binary":
-			requiredBitSet[5] |= 1 << 0
+			requiredBitSet[5] |= 1 << 2
 			if err := func() error {
 				s.RequiredDoubleArrayStringBinary = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14560,7 +15444,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_binary\"")
 			}
 		case "required_double_array_string_byte":
-			requiredBitSet[5] |= 1 << 1
+			requiredBitSet[5] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayStringByte = make([][][]byte, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14588,7 +15472,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_byte\"")
 			}
 		case "required_double_array_string_date":
-			requiredBitSet[5] |= 1 << 2
+			requiredBitSet[5] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayStringDate = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14616,7 +15500,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_date\"")
 			}
 		case "required_double_array_string_date-time":
-			requiredBitSet[5] |= 1 << 3
+			requiredBitSet[5] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayStringDateMinusTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14644,7 +15528,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_date-time\"")
 			}
 		case "required_double_array_string_duration":
-			requiredBitSet[5] |= 1 << 4
+			requiredBitSet[5] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayStringDuration = make([][]time.Duration, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14672,7 +15556,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_duration\"")
 			}
 		case "required_double_array_string_email":
-			requiredBitSet[5] |= 1 << 5
+			requiredBitSet[5] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayStringEmail = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14700,7 +15584,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_email\"")
 			}
 		case "required_double_array_string_hostname":
-			requiredBitSet[5] |= 1 << 6
+			requiredBitSet[6] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayStringHostname = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14727,8 +15611,64 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_double_array_string_hostname\"")
 			}
+		case "required_double_array_string_int32":
+			requiredBitSet[6] |= 1 << 1
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int32\"")
+			}
+		case "required_double_array_string_int64":
+			requiredBitSet[6] |= 1 << 2
+			if err := func() error {
+				s.RequiredDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_double_array_string_int64\"")
+			}
 		case "required_double_array_string_ip":
-			requiredBitSet[5] |= 1 << 7
+			requiredBitSet[6] |= 1 << 3
 			if err := func() error {
 				s.RequiredDoubleArrayStringIP = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14756,7 +15696,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ip\"")
 			}
 		case "required_double_array_string_ipv4":
-			requiredBitSet[6] |= 1 << 0
+			requiredBitSet[6] |= 1 << 4
 			if err := func() error {
 				s.RequiredDoubleArrayStringIpv4 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14784,7 +15724,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ipv4\"")
 			}
 		case "required_double_array_string_ipv6":
-			requiredBitSet[6] |= 1 << 1
+			requiredBitSet[6] |= 1 << 5
 			if err := func() error {
 				s.RequiredDoubleArrayStringIpv6 = make([][]netip.Addr, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14812,7 +15752,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_ipv6\"")
 			}
 		case "required_double_array_string_password":
-			requiredBitSet[6] |= 1 << 2
+			requiredBitSet[6] |= 1 << 6
 			if err := func() error {
 				s.RequiredDoubleArrayStringPassword = make([][]string, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14840,7 +15780,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_password\"")
 			}
 		case "required_double_array_string_time":
-			requiredBitSet[6] |= 1 << 3
+			requiredBitSet[6] |= 1 << 7
 			if err := func() error {
 				s.RequiredDoubleArrayStringTime = make([][]time.Time, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14868,7 +15808,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_time\"")
 			}
 		case "required_double_array_string_uri":
-			requiredBitSet[6] |= 1 << 4
+			requiredBitSet[7] |= 1 << 0
 			if err := func() error {
 				s.RequiredDoubleArrayStringURI = make([][]url.URL, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14896,7 +15836,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_uri\"")
 			}
 		case "required_double_array_string_uuid":
-			requiredBitSet[6] |= 1 << 5
+			requiredBitSet[7] |= 1 << 1
 			if err := func() error {
 				s.RequiredDoubleArrayStringUUID = make([][]uuid.UUID, 0)
 				if err := d.Arr(func(d *jx.Decoder) error {
@@ -14924,7 +15864,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_double_array_string_uuid\"")
 			}
 		case "required_integer":
-			requiredBitSet[6] |= 1 << 6
+			requiredBitSet[7] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int()
 				s.RequiredInteger = int(v)
@@ -14936,7 +15876,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer\"")
 			}
 		case "required_integer_int32":
-			requiredBitSet[6] |= 1 << 7
+			requiredBitSet[7] |= 1 << 3
 			if err := func() error {
 				v, err := d.Int32()
 				s.RequiredIntegerInt32 = int32(v)
@@ -14948,7 +15888,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer_int32\"")
 			}
 		case "required_integer_int64":
-			requiredBitSet[7] |= 1 << 0
+			requiredBitSet[7] |= 1 << 4
 			if err := func() error {
 				v, err := d.Int64()
 				s.RequiredIntegerInt64 = int64(v)
@@ -14960,7 +15900,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_integer_int64\"")
 			}
 		case "required_null":
-			requiredBitSet[7] |= 1 << 1
+			requiredBitSet[7] |= 1 << 5
 			if err := func() error {
 				if err := d.Null(); err != nil {
 					return err
@@ -14970,7 +15910,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_null\"")
 			}
 		case "required_number":
-			requiredBitSet[7] |= 1 << 2
+			requiredBitSet[7] |= 1 << 6
 			if err := func() error {
 				v, err := d.Float64()
 				s.RequiredNumber = float64(v)
@@ -14982,7 +15922,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number\"")
 			}
 		case "required_number_double":
-			requiredBitSet[7] |= 1 << 3
+			requiredBitSet[7] |= 1 << 7
 			if err := func() error {
 				v, err := d.Float64()
 				s.RequiredNumberDouble = float64(v)
@@ -14994,7 +15934,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_double\"")
 			}
 		case "required_number_float":
-			requiredBitSet[7] |= 1 << 4
+			requiredBitSet[8] |= 1 << 0
 			if err := func() error {
 				v, err := d.Float32()
 				s.RequiredNumberFloat = float32(v)
@@ -15006,7 +15946,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_float\"")
 			}
 		case "required_number_int32":
-			requiredBitSet[7] |= 1 << 5
+			requiredBitSet[8] |= 1 << 1
 			if err := func() error {
 				v, err := d.Int32()
 				s.RequiredNumberInt32 = int32(v)
@@ -15018,7 +15958,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_int32\"")
 			}
 		case "required_number_int64":
-			requiredBitSet[7] |= 1 << 6
+			requiredBitSet[8] |= 1 << 2
 			if err := func() error {
 				v, err := d.Int64()
 				s.RequiredNumberInt64 = int64(v)
@@ -15030,7 +15970,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_number_int64\"")
 			}
 		case "required_string":
-			requiredBitSet[7] |= 1 << 7
+			requiredBitSet[8] |= 1 << 3
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredString = string(v)
@@ -15042,7 +15982,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string\"")
 			}
 		case "required_string_binary":
-			requiredBitSet[8] |= 1 << 0
+			requiredBitSet[8] |= 1 << 4
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringBinary = string(v)
@@ -15054,7 +15994,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_binary\"")
 			}
 		case "required_string_byte":
-			requiredBitSet[8] |= 1 << 1
+			requiredBitSet[8] |= 1 << 5
 			if err := func() error {
 				v, err := d.Base64()
 				s.RequiredStringByte = []byte(v)
@@ -15066,7 +16006,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_byte\"")
 			}
 		case "required_string_date":
-			requiredBitSet[8] |= 1 << 2
+			requiredBitSet[8] |= 1 << 6
 			if err := func() error {
 				v, err := json.DecodeDate(d)
 				s.RequiredStringDate = v
@@ -15078,7 +16018,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_date\"")
 			}
 		case "required_string_date-time":
-			requiredBitSet[8] |= 1 << 3
+			requiredBitSet[8] |= 1 << 7
 			if err := func() error {
 				v, err := json.DecodeDateTime(d)
 				s.RequiredStringDateMinusTime = v
@@ -15090,7 +16030,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_date-time\"")
 			}
 		case "required_string_duration":
-			requiredBitSet[8] |= 1 << 4
+			requiredBitSet[9] |= 1 << 0
 			if err := func() error {
 				v, err := json.DecodeDuration(d)
 				s.RequiredStringDuration = v
@@ -15102,7 +16042,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_duration\"")
 			}
 		case "required_string_email":
-			requiredBitSet[8] |= 1 << 5
+			requiredBitSet[9] |= 1 << 1
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringEmail = string(v)
@@ -15114,7 +16054,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_email\"")
 			}
 		case "required_string_hostname":
-			requiredBitSet[8] |= 1 << 6
+			requiredBitSet[9] |= 1 << 2
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringHostname = string(v)
@@ -15125,8 +16065,32 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"required_string_hostname\"")
 			}
+		case "required_string_int32":
+			requiredBitSet[9] |= 1 << 3
+			if err := func() error {
+				v, err := json.DecodeStringInt32(d)
+				s.RequiredStringInt32 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int32\"")
+			}
+		case "required_string_int64":
+			requiredBitSet[9] |= 1 << 4
+			if err := func() error {
+				v, err := json.DecodeStringInt64(d)
+				s.RequiredStringInt64 = v
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"required_string_int64\"")
+			}
 		case "required_string_ip":
-			requiredBitSet[8] |= 1 << 7
+			requiredBitSet[9] |= 1 << 5
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIP = v
@@ -15138,7 +16102,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ip\"")
 			}
 		case "required_string_ipv4":
-			requiredBitSet[9] |= 1 << 0
+			requiredBitSet[9] |= 1 << 6
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIpv4 = v
@@ -15150,7 +16114,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ipv4\"")
 			}
 		case "required_string_ipv6":
-			requiredBitSet[9] |= 1 << 1
+			requiredBitSet[9] |= 1 << 7
 			if err := func() error {
 				v, err := json.DecodeIP(d)
 				s.RequiredStringIpv6 = v
@@ -15162,7 +16126,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_ipv6\"")
 			}
 		case "required_string_password":
-			requiredBitSet[9] |= 1 << 2
+			requiredBitSet[10] |= 1 << 0
 			if err := func() error {
 				v, err := d.Str()
 				s.RequiredStringPassword = string(v)
@@ -15174,7 +16138,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_password\"")
 			}
 		case "required_string_time":
-			requiredBitSet[9] |= 1 << 3
+			requiredBitSet[10] |= 1 << 1
 			if err := func() error {
 				v, err := json.DecodeTime(d)
 				s.RequiredStringTime = v
@@ -15186,7 +16150,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_time\"")
 			}
 		case "required_string_uri":
-			requiredBitSet[9] |= 1 << 4
+			requiredBitSet[10] |= 1 << 2
 			if err := func() error {
 				v, err := json.DecodeURI(d)
 				s.RequiredStringURI = v
@@ -15198,7 +16162,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"required_string_uri\"")
 			}
 		case "required_string_uuid":
-			requiredBitSet[9] |= 1 << 5
+			requiredBitSet[10] |= 1 << 3
 			if err := func() error {
 				v, err := json.DecodeUUID(d)
 				s.RequiredStringUUID = v
@@ -15578,6 +16542,44 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_array_string_hostname\"")
+			}
+		case "optional_array_string_int32":
+			if err := func() error {
+				s.OptionalArrayStringInt32 = make([]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int32
+					v, err := json.DecodeStringInt32(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_array_string_int32\"")
+			}
+		case "optional_array_string_int64":
+			if err := func() error {
+				s.OptionalArrayStringInt64 = make([]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem int64
+					v, err := json.DecodeStringInt64(d)
+					elem = v
+					if err != nil {
+						return err
+					}
+					s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_array_string_int64\"")
 			}
 		case "optional_array_string_ip":
 			if err := func() error {
@@ -16233,6 +17235,60 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_double_array_string_hostname\"")
 			}
+		case "optional_double_array_string_int32":
+			if err := func() error {
+				s.OptionalDoubleArrayStringInt32 = make([][]int32, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int32
+					elem = make([]int32, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int32
+						v, err := json.DecodeStringInt32(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_double_array_string_int32\"")
+			}
+		case "optional_double_array_string_int64":
+			if err := func() error {
+				s.OptionalDoubleArrayStringInt64 = make([][]int64, 0)
+				if err := d.Arr(func(d *jx.Decoder) error {
+					var elem []int64
+					elem = make([]int64, 0)
+					if err := d.Arr(func(d *jx.Decoder) error {
+						var elemElem int64
+						v, err := json.DecodeStringInt64(d)
+						elemElem = v
+						if err != nil {
+							return err
+						}
+						elem = append(elem, elemElem)
+						return nil
+					}); err != nil {
+						return err
+					}
+					s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+					return nil
+				}); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_double_array_string_int64\"")
+			}
 		case "optional_double_array_string_ip":
 			if err := func() error {
 				s.OptionalDoubleArrayStringIP = make([][]netip.Addr, 0)
@@ -16593,6 +17649,26 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"optional_string_hostname\"")
 			}
+		case "optional_string_int32":
+			if err := func() error {
+				s.OptionalStringInt32.Reset()
+				if err := s.OptionalStringInt32.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_string_int32\"")
+			}
+		case "optional_string_int64":
+			if err := func() error {
+				s.OptionalStringInt64.Reset()
+				if err := s.OptionalStringInt64.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"optional_string_int64\"")
+			}
 		case "optional_string_ip":
 			if err := func() error {
 				s.OptionalStringIP.Reset()
@@ -16672,7 +17748,7 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 	}
 	// Validate required fields.
 	var failures []validate.FieldError
-	for i, mask := range [20]uint8{
+	for i, mask := range [21]uint8{
 		0b11111111,
 		0b11111111,
 		0b11111111,
@@ -16682,7 +17758,8 @@ func (s *TestResponseFormatTestOK) Decode(d *jx.Decoder) error {
 		0b11111111,
 		0b11111111,
 		0b11111111,
-		0b00111111,
+		0b11111111,
+		0b00001111,
 		0b00000000,
 		0b00000000,
 		0b00000000,

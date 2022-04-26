@@ -12680,6 +12680,822 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 	return result, nil
 }
 
+// TestRequestRequiredStringInt32 invokes test_request_required_string_int32 operation.
+//
+// POST /test_request_required_string_int32
+func (c *Client) TestRequestRequiredStringInt32(ctx context.Context, request int32) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int32"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt32RequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int32"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt32Response(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt32Array invokes test_request_required_string_int32_array operation.
+//
+// POST /test_request_required_string_int32_array
+func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, request []int32) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int32_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt32ArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int32_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt32ArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt32ArrayArray invokes test_request_required_string_int32_array_array operation.
+//
+// POST /test_request_required_string_int32_array_array
+func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int32_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt32ArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int32_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt32ArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt32Nullable invokes test_request_required_string_int32_nullable operation.
+//
+// POST /test_request_required_string_int32_nullable
+func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, request NilInt32) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int32_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt32NullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int32_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt32NullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt32NullableArray invokes test_request_required_string_int32_nullable_array operation.
+//
+// POST /test_request_required_string_int32_nullable_array
+func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int32_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt32NullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int32_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt32NullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt32NullableArrayArray invokes test_request_required_string_int32_nullable_array_array operation.
+//
+// POST /test_request_required_string_int32_nullable_array_array
+func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int32_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt32NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt32NullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int32_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt32NullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt64 invokes test_request_required_string_int64 operation.
+//
+// POST /test_request_required_string_int64
+func (c *Client) TestRequestRequiredStringInt64(ctx context.Context, request int64) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int64"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt64RequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int64"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt64Response(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt64Array invokes test_request_required_string_int64_array operation.
+//
+// POST /test_request_required_string_int64_array
+func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, request []int64) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int64_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt64ArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int64_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt64ArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt64ArrayArray invokes test_request_required_string_int64_array_array operation.
+//
+// POST /test_request_required_string_int64_array_array
+func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int64_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt64ArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int64_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt64ArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt64Nullable invokes test_request_required_string_int64_nullable operation.
+//
+// POST /test_request_required_string_int64_nullable
+func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, request NilInt64) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int64_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt64NullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int64_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt64NullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt64NullableArray invokes test_request_required_string_int64_nullable_array operation.
+//
+// POST /test_request_required_string_int64_nullable_array
+func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int64_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt64NullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int64_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt64NullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringInt64NullableArrayArray invokes test_request_required_string_int64_nullable_array_array operation.
+//
+// POST /test_request_required_string_int64_nullable_array_array
+func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_int64_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringInt64NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringInt64NullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_int64_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringInt64NullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestRequestRequiredStringIpv4 invokes test_request_required_string_ipv4 operation.
 //
 // POST /test_request_required_string_ipv4
@@ -18922,6 +19738,778 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 	defer resp.Body.Close()
 
 	result, err := decodeTestRequestStringIPNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt32 invokes test_request_string_int32 operation.
+//
+// POST /test_request_string_int32
+func (c *Client) TestRequestStringInt32(ctx context.Context, request OptInt32) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int32"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt32RequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int32"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt32Response(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt32Array invokes test_request_string_int32_array operation.
+//
+// POST /test_request_string_int32_array
+func (c *Client) TestRequestStringInt32Array(ctx context.Context, request []int32) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int32_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt32ArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int32_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt32ArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt32ArrayArray invokes test_request_string_int32_array_array operation.
+//
+// POST /test_request_string_int32_array_array
+func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int32_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt32ArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int32_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt32ArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt32Nullable invokes test_request_string_int32_nullable operation.
+//
+// POST /test_request_string_int32_nullable
+func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request OptNilInt32) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int32_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt32NullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int32_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt32NullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt32NullableArray invokes test_request_string_int32_nullable_array operation.
+//
+// POST /test_request_string_int32_nullable_array
+func (c *Client) TestRequestStringInt32NullableArray(ctx context.Context, request []int32) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int32_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt32NullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int32_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt32NullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt32NullableArrayArray invokes test_request_string_int32_nullable_array_array operation.
+//
+// POST /test_request_string_int32_nullable_array_array
+func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, request [][]int32) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int32_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt32NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt32NullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int32_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt32NullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt64 invokes test_request_string_int64 operation.
+//
+// POST /test_request_string_int64
+func (c *Client) TestRequestStringInt64(ctx context.Context, request OptInt64) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int64"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt64RequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int64"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt64Response(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt64Array invokes test_request_string_int64_array operation.
+//
+// POST /test_request_string_int64_array
+func (c *Client) TestRequestStringInt64Array(ctx context.Context, request []int64) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int64_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt64ArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int64_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt64ArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt64ArrayArray invokes test_request_string_int64_array_array operation.
+//
+// POST /test_request_string_int64_array_array
+func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int64_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt64ArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int64_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt64ArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt64Nullable invokes test_request_string_int64_nullable operation.
+//
+// POST /test_request_string_int64_nullable
+func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request OptNilInt64) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int64_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt64NullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int64_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt64NullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt64NullableArray invokes test_request_string_int64_nullable_array operation.
+//
+// POST /test_request_string_int64_nullable_array
+func (c *Client) TestRequestStringInt64NullableArray(ctx context.Context, request []int64) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int64_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt64NullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int64_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt64NullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringInt64NullableArrayArray invokes test_request_string_int64_nullable_array_array operation.
+//
+// POST /test_request_string_int64_nullable_array_array
+func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, request [][]int64) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_int64_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringInt64NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringInt64NullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_int64_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringInt64NullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -27929,6 +29517,690 @@ func (c *Client) TestResponseStringIPNullableArrayArray(ctx context.Context, req
 	defer resp.Body.Close()
 
 	result, err := decodeTestResponseStringIPNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt32 invokes test_response_string_int32 operation.
+//
+// POST /test_response_string_int32
+func (c *Client) TestResponseStringInt32(ctx context.Context, request string) (res int32, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int32"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt32RequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int32"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt32Response(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt32Array invokes test_response_string_int32_array operation.
+//
+// POST /test_response_string_int32_array
+func (c *Client) TestResponseStringInt32Array(ctx context.Context, request string) (res []int32, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int32_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt32ArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int32_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt32ArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt32ArrayArray invokes test_response_string_int32_array_array operation.
+//
+// POST /test_response_string_int32_array_array
+func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int32_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt32ArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int32_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt32ArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt32Nullable invokes test_response_string_int32_nullable operation.
+//
+// POST /test_response_string_int32_nullable
+func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request string) (res NilInt32, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int32_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt32NullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int32_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt32NullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt32NullableArray invokes test_response_string_int32_nullable_array operation.
+//
+// POST /test_response_string_int32_nullable_array
+func (c *Client) TestResponseStringInt32NullableArray(ctx context.Context, request string) (res []int32, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int32_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt32NullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int32_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt32NullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt32NullableArrayArray invokes test_response_string_int32_nullable_array_array operation.
+//
+// POST /test_response_string_int32_nullable_array_array
+func (c *Client) TestResponseStringInt32NullableArrayArray(ctx context.Context, request string) (res [][]int32, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int32_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt32NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt32NullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int32_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt32NullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt64 invokes test_response_string_int64 operation.
+//
+// POST /test_response_string_int64
+func (c *Client) TestResponseStringInt64(ctx context.Context, request string) (res int64, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int64"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt64RequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int64"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt64Response(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt64Array invokes test_response_string_int64_array operation.
+//
+// POST /test_response_string_int64_array
+func (c *Client) TestResponseStringInt64Array(ctx context.Context, request string) (res []int64, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int64_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64Array",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt64ArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int64_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt64ArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt64ArrayArray invokes test_response_string_int64_array_array operation.
+//
+// POST /test_response_string_int64_array_array
+func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int64_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64ArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt64ArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int64_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt64ArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt64Nullable invokes test_response_string_int64_nullable operation.
+//
+// POST /test_response_string_int64_nullable
+func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request string) (res NilInt64, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int64_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64Nullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt64NullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int64_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt64NullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt64NullableArray invokes test_response_string_int64_nullable_array operation.
+//
+// POST /test_response_string_int64_nullable_array
+func (c *Client) TestResponseStringInt64NullableArray(ctx context.Context, request string) (res []int64, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int64_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64NullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt64NullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int64_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt64NullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringInt64NullableArrayArray invokes test_response_string_int64_nullable_array_array operation.
+//
+// POST /test_response_string_int64_nullable_array_array
+func (c *Client) TestResponseStringInt64NullableArrayArray(ctx context.Context, request string) (res [][]int64, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_int64_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringInt64NullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringInt64NullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_int64_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringInt64NullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

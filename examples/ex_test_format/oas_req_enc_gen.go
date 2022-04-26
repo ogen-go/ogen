@@ -2190,6 +2190,150 @@ func encodeTestRequestRequiredStringIPNullableArrayArrayRequestJSON(req [][]neti
 	return e, nil
 }
 
+func encodeTestRequestRequiredStringInt32RequestJSON(req int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	json.EncodeStringInt32(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt32ArrayRequestJSON(req []int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeStringInt32(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt32ArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt32NullableRequestJSON(req NilInt32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt32NullableArrayRequestJSON(req []int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeStringInt32(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt32NullableArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt64RequestJSON(req int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	json.EncodeStringInt64(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt64ArrayRequestJSON(req []int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeStringInt64(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt64ArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt64NullableRequestJSON(req NilInt64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt64NullableArrayRequestJSON(req []int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeStringInt64(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringInt64NullableArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
 func encodeTestRequestRequiredStringIpv4RequestJSON(req netip.Addr, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
@@ -3311,6 +3455,162 @@ func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req [][]netip.Addr, 
 			e.ArrStart()
 			for _, elem := range elem {
 				json.EncodeIP(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt32RequestJSON(req OptInt32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt32ArrayRequestJSON(req []int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt32ArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt32NullableRequestJSON(req OptNilInt32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt32NullableArrayRequestJSON(req []int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringInt32(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt32NullableArrayArrayRequestJSON(req [][]int32, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt32(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt64RequestJSON(req OptInt64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt64ArrayRequestJSON(req []int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt64ArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt64NullableRequestJSON(req OptNilInt64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt64NullableArrayRequestJSON(req []int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeStringInt64(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringInt64NullableArrayArrayRequestJSON(req [][]int64, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeStringInt64(e, elem)
 			}
 			e.ArrEnd()
 		}
@@ -4732,6 +5032,102 @@ func encodeTestResponseStringIPNullableArrayRequestJSON(req string, span trace.S
 }
 
 func encodeTestResponseStringIPNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt32RequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt32ArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt32ArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt32NullableRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt32NullableArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt32NullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt64RequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt64ArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt64ArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt64NullableRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt64NullableArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringInt64NullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.Str(req)

@@ -610,6 +610,30 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
@@ -1060,6 +1084,44 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []netip.Addr
@@ -1274,6 +1336,16 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt64 = int64(0)
 		}
 	}
 	{
@@ -1541,6 +1613,30 @@ func (s *TestRequestFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
 			}
 		}
 	}
@@ -1996,6 +2092,44 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []netip.Addr
@@ -2210,6 +2344,16 @@ func (s *TestRequestFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt64.SetFake()
 		}
 	}
 	{
@@ -2490,6 +2634,30 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
@@ -2940,6 +3108,44 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []netip.Addr
@@ -3154,6 +3360,16 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt64 = int64(0)
 		}
 	}
 	{
@@ -3421,6 +3637,30 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
 			}
 		}
 	}
@@ -3876,6 +4116,44 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []netip.Addr
@@ -4090,6 +4368,16 @@ func (s *TestRequestRequiredFormatTestReq) SetFake() {
 	{
 		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt64.SetFake()
 		}
 	}
 	{
@@ -4370,6 +4658,30 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.RequiredArrayStringInt32 = append(s.RequiredArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.RequiredArrayStringInt64 = append(s.RequiredArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem netip.Addr
@@ -4820,6 +5132,44 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.RequiredDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt32 = append(s.RequiredDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.RequiredDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.RequiredDoubleArrayStringInt64 = append(s.RequiredDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.RequiredDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []netip.Addr
@@ -5034,6 +5384,16 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.RequiredStringHostname = "string"
+		}
+	}
+	{
+		{
+			s.RequiredStringInt32 = int32(0)
+		}
+	}
+	{
+		{
+			s.RequiredStringInt64 = int64(0)
 		}
 	}
 	{
@@ -5301,6 +5661,30 @@ func (s *TestResponseFormatTestOK) SetFake() {
 					elem = "string"
 				}
 				s.OptionalArrayStringHostname = append(s.OptionalArrayStringHostname, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem int32
+				{
+					elem = int32(0)
+				}
+				s.OptionalArrayStringInt32 = append(s.OptionalArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem int64
+				{
+					elem = int64(0)
+				}
+				s.OptionalArrayStringInt64 = append(s.OptionalArrayStringInt64, elem)
 			}
 		}
 	}
@@ -5756,6 +6140,44 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	}
 	{
 		{
+			s.OptionalDoubleArrayStringInt32 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int32
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int32
+						{
+							elemElem = int32(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt32 = append(s.OptionalDoubleArrayStringInt32, elem)
+			}
+		}
+	}
+	{
+		{
+			s.OptionalDoubleArrayStringInt64 = nil
+			for i := 0; i < 0; i++ {
+				var elem []int64
+				{
+					elem = nil
+					for i := 0; i < 0; i++ {
+						var elemElem int64
+						{
+							elemElem = int64(0)
+						}
+						elem = append(elem, elemElem)
+					}
+				}
+				s.OptionalDoubleArrayStringInt64 = append(s.OptionalDoubleArrayStringInt64, elem)
+			}
+		}
+	}
+	{
+		{
 			s.OptionalDoubleArrayStringIP = nil
 			for i := 0; i < 0; i++ {
 				var elem []netip.Addr
@@ -5970,6 +6392,16 @@ func (s *TestResponseFormatTestOK) SetFake() {
 	{
 		{
 			s.OptionalStringHostname.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt32.SetFake()
+		}
+	}
+	{
+		{
+			s.OptionalStringInt64.SetFake()
 		}
 	}
 	{
