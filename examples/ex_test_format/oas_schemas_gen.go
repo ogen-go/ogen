@@ -511,6 +511,82 @@ func (o NilString) Or(d string) string {
 	return d
 }
 
+// NewNilStringInt32 returns new NilStringInt32 with value set to v.
+func NewNilStringInt32(v int32) NilStringInt32 {
+	return NilStringInt32{
+		Value: v,
+	}
+}
+
+// NilStringInt32 is nullable int32.
+type NilStringInt32 struct {
+	Value int32
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringInt32) SetTo(v int32) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringInt32) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringInt32) Get() (v int32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewNilStringInt64 returns new NilStringInt64 with value set to v.
+func NewNilStringInt64(v int64) NilStringInt64 {
+	return NilStringInt64{
+		Value: v,
+	}
+}
+
+// NilStringInt64 is nullable int64.
+type NilStringInt64 struct {
+	Value int64
+	Null  bool
+}
+
+// SetTo sets value to v.
+func (o *NilStringInt64) SetTo(v int64) {
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o NilStringInt64) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o NilStringInt64) Get() (v int64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o NilStringInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewNilTime returns new NilTime with value set to v.
 func NewNilTime(v time.Time) NilTime {
 	return NilTime{
@@ -1947,6 +2023,116 @@ func (o OptNilString) Or(d string) string {
 	return d
 }
 
+// NewOptNilStringInt32 returns new OptNilStringInt32 with value set to v.
+func NewOptNilStringInt32(v int32) OptNilStringInt32 {
+	return OptNilStringInt32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringInt32 is optional nullable int32.
+type OptNilStringInt32 struct {
+	Value int32
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringInt32 was set.
+func (o OptNilStringInt32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringInt32) Reset() {
+	var v int32
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringInt32) SetTo(v int32) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringInt32) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringInt32) Get() (v int32, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptNilStringInt64 returns new OptNilStringInt64 with value set to v.
+func NewOptNilStringInt64(v int64) OptNilStringInt64 {
+	return OptNilStringInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptNilStringInt64 is optional nullable int64.
+type OptNilStringInt64 struct {
+	Value int64
+	Set   bool
+	Null  bool
+}
+
+// IsSet returns true if OptNilStringInt64 was set.
+func (o OptNilStringInt64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptNilStringInt64) Reset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+	o.Null = false
+}
+
+// SetTo sets value to v.
+func (o *OptNilStringInt64) SetTo(v int64) {
+	o.Set = true
+	o.Null = false
+	o.Value = v
+}
+
+// IsSet returns true if value is Null.
+func (o OptNilStringInt64) IsNull() bool { return o.Null }
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptNilStringInt64) Get() (v int64, ok bool) {
+	if o.Null {
+		return v, false
+	}
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptNilStringInt64) Or(d int64) int64 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptNilTime returns new OptNilTime with value set to v.
 func NewOptNilTime(v time.Time) OptNilTime {
 	return OptNilTime{
@@ -2198,6 +2384,98 @@ func (o OptString) Get() (v string, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptString) Or(d string) string {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringInt32 returns new OptStringInt32 with value set to v.
+func NewOptStringInt32(v int32) OptStringInt32 {
+	return OptStringInt32{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringInt32 is optional int32.
+type OptStringInt32 struct {
+	Value int32
+	Set   bool
+}
+
+// IsSet returns true if OptStringInt32 was set.
+func (o OptStringInt32) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringInt32) Reset() {
+	var v int32
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringInt32) SetTo(v int32) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringInt32) Get() (v int32, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringInt32) Or(d int32) int32 {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptStringInt64 returns new OptStringInt64 with value set to v.
+func NewOptStringInt64(v int64) OptStringInt64 {
+	return OptStringInt64{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptStringInt64 is optional int64.
+type OptStringInt64 struct {
+	Value int64
+	Set   bool
+}
+
+// IsSet returns true if OptStringInt64 was set.
+func (o OptStringInt64) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptStringInt64) Reset() {
+	var v int64
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptStringInt64) SetTo(v int64) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptStringInt64) Get() (v int64, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptStringInt64) Or(d int64) int64 {
 	if v, ok := o.Get(); ok {
 		return v
 	}
@@ -2550,8 +2828,8 @@ type TestRequestFormatTestReq struct {
 	OptionalStringDuration                 OptDuration       "json:\"optional_string_duration\""
 	OptionalStringEmail                    OptString         "json:\"optional_string_email\""
 	OptionalStringHostname                 OptString         "json:\"optional_string_hostname\""
-	OptionalStringInt32                    OptInt32          "json:\"optional_string_int32\""
-	OptionalStringInt64                    OptInt64          "json:\"optional_string_int64\""
+	OptionalStringInt32                    OptStringInt32    "json:\"optional_string_int32\""
+	OptionalStringInt64                    OptStringInt64    "json:\"optional_string_int64\""
 	OptionalStringIP                       OptIP             "json:\"optional_string_ip\""
 	OptionalStringIpv4                     OptIPv4           "json:\"optional_string_ipv4\""
 	OptionalStringIpv6                     OptIPv6           "json:\"optional_string_ipv6\""
@@ -2723,8 +3001,8 @@ type TestRequestRequiredFormatTestReq struct {
 	OptionalStringDuration                 OptDuration       "json:\"optional_string_duration\""
 	OptionalStringEmail                    OptString         "json:\"optional_string_email\""
 	OptionalStringHostname                 OptString         "json:\"optional_string_hostname\""
-	OptionalStringInt32                    OptInt32          "json:\"optional_string_int32\""
-	OptionalStringInt64                    OptInt64          "json:\"optional_string_int64\""
+	OptionalStringInt32                    OptStringInt32    "json:\"optional_string_int32\""
+	OptionalStringInt64                    OptStringInt64    "json:\"optional_string_int64\""
 	OptionalStringIP                       OptIP             "json:\"optional_string_ip\""
 	OptionalStringIpv4                     OptIPv4           "json:\"optional_string_ipv4\""
 	OptionalStringIpv6                     OptIPv6           "json:\"optional_string_ipv6\""
@@ -2896,8 +3174,8 @@ type TestResponseFormatTestOK struct {
 	OptionalStringDuration                 OptDuration       "json:\"optional_string_duration\""
 	OptionalStringEmail                    OptString         "json:\"optional_string_email\""
 	OptionalStringHostname                 OptString         "json:\"optional_string_hostname\""
-	OptionalStringInt32                    OptInt32          "json:\"optional_string_int32\""
-	OptionalStringInt64                    OptInt64          "json:\"optional_string_int64\""
+	OptionalStringInt32                    OptStringInt32    "json:\"optional_string_int32\""
+	OptionalStringInt64                    OptStringInt64    "json:\"optional_string_int64\""
 	OptionalStringIP                       OptIP             "json:\"optional_string_ip\""
 	OptionalStringIpv4                     OptIPv4           "json:\"optional_string_ipv4\""
 	OptionalStringIpv6                     OptIPv6           "json:\"optional_string_ipv6\""

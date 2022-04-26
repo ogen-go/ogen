@@ -740,7 +740,7 @@ type Handler interface {
 	// TestRequestRequiredStringInt32Nullable implements test_request_required_string_int32_nullable operation.
 	//
 	// POST /test_request_required_string_int32_nullable
-	TestRequestRequiredStringInt32Nullable(ctx context.Context, req NilInt32) (Error, error)
+	TestRequestRequiredStringInt32Nullable(ctx context.Context, req NilStringInt32) (Error, error)
 	// TestRequestRequiredStringInt32NullableArray implements test_request_required_string_int32_nullable_array operation.
 	//
 	// POST /test_request_required_string_int32_nullable_array
@@ -764,7 +764,7 @@ type Handler interface {
 	// TestRequestRequiredStringInt64Nullable implements test_request_required_string_int64_nullable operation.
 	//
 	// POST /test_request_required_string_int64_nullable
-	TestRequestRequiredStringInt64Nullable(ctx context.Context, req NilInt64) (Error, error)
+	TestRequestRequiredStringInt64Nullable(ctx context.Context, req NilStringInt64) (Error, error)
 	// TestRequestRequiredStringInt64NullableArray implements test_request_required_string_int64_nullable_array operation.
 	//
 	// POST /test_request_required_string_int64_nullable_array
@@ -1136,7 +1136,7 @@ type Handler interface {
 	// TestRequestStringInt32 implements test_request_string_int32 operation.
 	//
 	// POST /test_request_string_int32
-	TestRequestStringInt32(ctx context.Context, req OptInt32) (Error, error)
+	TestRequestStringInt32(ctx context.Context, req OptStringInt32) (Error, error)
 	// TestRequestStringInt32Array implements test_request_string_int32_array operation.
 	//
 	// POST /test_request_string_int32_array
@@ -1148,7 +1148,7 @@ type Handler interface {
 	// TestRequestStringInt32Nullable implements test_request_string_int32_nullable operation.
 	//
 	// POST /test_request_string_int32_nullable
-	TestRequestStringInt32Nullable(ctx context.Context, req OptNilInt32) (Error, error)
+	TestRequestStringInt32Nullable(ctx context.Context, req OptNilStringInt32) (Error, error)
 	// TestRequestStringInt32NullableArray implements test_request_string_int32_nullable_array operation.
 	//
 	// POST /test_request_string_int32_nullable_array
@@ -1160,7 +1160,7 @@ type Handler interface {
 	// TestRequestStringInt64 implements test_request_string_int64 operation.
 	//
 	// POST /test_request_string_int64
-	TestRequestStringInt64(ctx context.Context, req OptInt64) (Error, error)
+	TestRequestStringInt64(ctx context.Context, req OptStringInt64) (Error, error)
 	// TestRequestStringInt64Array implements test_request_string_int64_array operation.
 	//
 	// POST /test_request_string_int64_array
@@ -1172,7 +1172,7 @@ type Handler interface {
 	// TestRequestStringInt64Nullable implements test_request_string_int64_nullable operation.
 	//
 	// POST /test_request_string_int64_nullable
-	TestRequestStringInt64Nullable(ctx context.Context, req OptNilInt64) (Error, error)
+	TestRequestStringInt64Nullable(ctx context.Context, req OptNilStringInt64) (Error, error)
 	// TestRequestStringInt64NullableArray implements test_request_string_int64_nullable_array operation.
 	//
 	// POST /test_request_string_int64_nullable_array
@@ -1808,7 +1808,7 @@ type Handler interface {
 	// TestResponseStringInt32Nullable implements test_response_string_int32_nullable operation.
 	//
 	// POST /test_response_string_int32_nullable
-	TestResponseStringInt32Nullable(ctx context.Context, req string) (NilInt32, error)
+	TestResponseStringInt32Nullable(ctx context.Context, req string) (NilStringInt32, error)
 	// TestResponseStringInt32NullableArray implements test_response_string_int32_nullable_array operation.
 	//
 	// POST /test_response_string_int32_nullable_array
@@ -1832,7 +1832,7 @@ type Handler interface {
 	// TestResponseStringInt64Nullable implements test_response_string_int64_nullable operation.
 	//
 	// POST /test_response_string_int64_nullable
-	TestResponseStringInt64Nullable(ctx context.Context, req string) (NilInt64, error)
+	TestResponseStringInt64Nullable(ctx context.Context, req string) (NilStringInt64, error)
 	// TestResponseStringInt64NullableArray implements test_response_string_int64_nullable_array operation.
 	//
 	// POST /test_response_string_int64_nullable_array

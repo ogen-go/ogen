@@ -1282,7 +1282,7 @@ func (UnimplementedHandler) TestRequestRequiredStringInt32ArrayArray(ctx context
 // TestRequestRequiredStringInt32Nullable implements test_request_required_string_int32_nullable operation.
 //
 // POST /test_request_required_string_int32_nullable
-func (UnimplementedHandler) TestRequestRequiredStringInt32Nullable(ctx context.Context, req NilInt32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringInt32Nullable(ctx context.Context, req NilStringInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1324,7 +1324,7 @@ func (UnimplementedHandler) TestRequestRequiredStringInt64ArrayArray(ctx context
 // TestRequestRequiredStringInt64Nullable implements test_request_required_string_int64_nullable operation.
 //
 // POST /test_request_required_string_int64_nullable
-func (UnimplementedHandler) TestRequestRequiredStringInt64Nullable(ctx context.Context, req NilInt64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestRequiredStringInt64Nullable(ctx context.Context, req NilStringInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1975,7 +1975,7 @@ func (UnimplementedHandler) TestRequestStringIPNullableArrayArray(ctx context.Co
 // TestRequestStringInt32 implements test_request_string_int32 operation.
 //
 // POST /test_request_string_int32
-func (UnimplementedHandler) TestRequestStringInt32(ctx context.Context, req OptInt32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringInt32(ctx context.Context, req OptStringInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1996,7 +1996,7 @@ func (UnimplementedHandler) TestRequestStringInt32ArrayArray(ctx context.Context
 // TestRequestStringInt32Nullable implements test_request_string_int32_nullable operation.
 //
 // POST /test_request_string_int32_nullable
-func (UnimplementedHandler) TestRequestStringInt32Nullable(ctx context.Context, req OptNilInt32) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringInt32Nullable(ctx context.Context, req OptNilStringInt32) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2017,7 +2017,7 @@ func (UnimplementedHandler) TestRequestStringInt32NullableArrayArray(ctx context
 // TestRequestStringInt64 implements test_request_string_int64 operation.
 //
 // POST /test_request_string_int64
-func (UnimplementedHandler) TestRequestStringInt64(ctx context.Context, req OptInt64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringInt64(ctx context.Context, req OptStringInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2038,7 +2038,7 @@ func (UnimplementedHandler) TestRequestStringInt64ArrayArray(ctx context.Context
 // TestRequestStringInt64Nullable implements test_request_string_int64_nullable operation.
 //
 // POST /test_request_string_int64_nullable
-func (UnimplementedHandler) TestRequestStringInt64Nullable(ctx context.Context, req OptNilInt64) (r Error, _ error) {
+func (UnimplementedHandler) TestRequestStringInt64Nullable(ctx context.Context, req OptNilStringInt64) (r Error, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3151,7 +3151,7 @@ func (UnimplementedHandler) TestResponseStringInt32ArrayArray(ctx context.Contex
 // TestResponseStringInt32Nullable implements test_response_string_int32_nullable operation.
 //
 // POST /test_response_string_int32_nullable
-func (UnimplementedHandler) TestResponseStringInt32Nullable(ctx context.Context, req string) (r NilInt32, _ error) {
+func (UnimplementedHandler) TestResponseStringInt32Nullable(ctx context.Context, req string) (r NilStringInt32, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3193,7 +3193,7 @@ func (UnimplementedHandler) TestResponseStringInt64ArrayArray(ctx context.Contex
 // TestResponseStringInt64Nullable implements test_response_string_int64_nullable operation.
 //
 // POST /test_response_string_int64_nullable
-func (UnimplementedHandler) TestResponseStringInt64Nullable(ctx context.Context, req string) (r NilInt64, _ error) {
+func (UnimplementedHandler) TestResponseStringInt64Nullable(ctx context.Context, req string) (r NilStringInt64, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

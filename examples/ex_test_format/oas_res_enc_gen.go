@@ -7186,7 +7186,7 @@ func encodeTestResponseStringInt32ArrayArrayResponse(response [][]int32, w http.
 	return nil
 }
 
-func encodeTestResponseStringInt32NullableResponse(response NilInt32, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringInt32NullableResponse(response NilStringInt32, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
@@ -7300,7 +7300,7 @@ func encodeTestResponseStringInt64ArrayArrayResponse(response [][]int64, w http.
 	return nil
 }
 
-func encodeTestResponseStringInt64NullableResponse(response NilInt64, w http.ResponseWriter, span trace.Span) error {
+func encodeTestResponseStringInt64NullableResponse(response NilStringInt64, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

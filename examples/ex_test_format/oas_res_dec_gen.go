@@ -16313,7 +16313,7 @@ func decodeTestResponseStringInt32ArrayArrayResponse(resp *http.Response, span t
 	}
 }
 
-func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span trace.Span) (res NilInt32, err error) {
+func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span trace.Span) (res NilStringInt32, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -16328,7 +16328,7 @@ func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span tra
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response NilInt32
+			var response NilStringInt32
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err
@@ -16575,7 +16575,7 @@ func decodeTestResponseStringInt64ArrayArrayResponse(resp *http.Response, span t
 	}
 }
 
-func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span trace.Span) (res NilInt64, err error) {
+func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span trace.Span) (res NilStringInt64, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -16590,7 +16590,7 @@ func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span tra
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response NilInt64
+			var response NilStringInt64
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err

@@ -91,6 +91,16 @@ func (s *NilString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *NilStringInt32) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
+func (s *NilStringInt64) SetFake() {
+	s.Null = true
+}
+
+// SetFake set fake values.
 func (s *NilTime) SetFake() {
 	s.Null = true
 }
@@ -298,6 +308,18 @@ func (s *OptNilString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OptNilStringInt32) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
+func (s *OptNilStringInt64) SetFake() {
+	s.Null = true
+	s.Set = true
+}
+
+// SetFake set fake values.
 func (s *OptNilTime) SetFake() {
 	s.Null = true
 	s.Set = true
@@ -329,6 +351,24 @@ func (s *OptString) SetFake() {
 	var elem string
 	{
 		elem = "string"
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringInt32) SetFake() {
+	var elem int32
+	{
+		elem = int32(0)
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptStringInt64) SetFake() {
+	var elem int64
+	{
+		elem = int64(0)
 	}
 	s.SetTo(elem)
 }

@@ -2226,7 +2226,7 @@ func encodeTestRequestRequiredStringInt32ArrayArrayRequestJSON(req [][]int32, sp
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringInt32NullableRequestJSON(req NilInt32, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringInt32NullableRequestJSON(req NilStringInt32, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
@@ -2298,7 +2298,7 @@ func encodeTestRequestRequiredStringInt64ArrayArrayRequestJSON(req [][]int64, sp
 	return e, nil
 }
 
-func encodeTestRequestRequiredStringInt64NullableRequestJSON(req NilInt64, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestRequiredStringInt64NullableRequestJSON(req NilStringInt64, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
@@ -3464,7 +3464,7 @@ func encodeTestRequestStringIPNullableArrayArrayRequestJSON(req [][]netip.Addr, 
 	return e, nil
 }
 
-func encodeTestRequestStringInt32RequestJSON(req OptInt32, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringInt32RequestJSON(req OptStringInt32, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -3503,7 +3503,7 @@ func encodeTestRequestStringInt32ArrayArrayRequestJSON(req [][]int32, span trace
 	return e, nil
 }
 
-func encodeTestRequestStringInt32NullableRequestJSON(req OptNilInt32, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringInt32NullableRequestJSON(req OptNilStringInt32, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -3542,7 +3542,7 @@ func encodeTestRequestStringInt32NullableArrayArrayRequestJSON(req [][]int32, sp
 	return e, nil
 }
 
-func encodeTestRequestStringInt64RequestJSON(req OptInt64, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringInt64RequestJSON(req OptStringInt64, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
@@ -3581,7 +3581,7 @@ func encodeTestRequestStringInt64ArrayArrayRequestJSON(req [][]int64, span trace
 	return e, nil
 }
 
-func encodeTestRequestStringInt64NullableRequestJSON(req OptNilInt64, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestRequestStringInt64NullableRequestJSON(req OptNilStringInt64, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)

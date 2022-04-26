@@ -12887,7 +12887,7 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 // TestRequestRequiredStringInt32Nullable invokes test_request_required_string_int32_nullable operation.
 //
 // POST /test_request_required_string_int32_nullable
-func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, request NilInt32) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringInt32Nullable(ctx context.Context, request NilStringInt32) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int32_nullable"),
@@ -13295,7 +13295,7 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 // TestRequestRequiredStringInt64Nullable invokes test_request_required_string_int64_nullable operation.
 //
 // POST /test_request_required_string_int64_nullable
-func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, request NilInt64) (res Error, err error) {
+func (c *Client) TestRequestRequiredStringInt64Nullable(ctx context.Context, request NilStringInt64) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_required_string_int64_nullable"),
@@ -19748,7 +19748,7 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 // TestRequestStringInt32 invokes test_request_string_int32 operation.
 //
 // POST /test_request_string_int32
-func (c *Client) TestRequestStringInt32(ctx context.Context, request OptInt32) (res Error, err error) {
+func (c *Client) TestRequestStringInt32(ctx context.Context, request OptStringInt32) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32"),
@@ -19941,7 +19941,7 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 // TestRequestStringInt32Nullable invokes test_request_string_int32_nullable operation.
 //
 // POST /test_request_string_int32_nullable
-func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request OptNilInt32) (res Error, err error) {
+func (c *Client) TestRequestStringInt32Nullable(ctx context.Context, request OptNilStringInt32) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int32_nullable"),
@@ -20134,7 +20134,7 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 // TestRequestStringInt64 invokes test_request_string_int64 operation.
 //
 // POST /test_request_string_int64
-func (c *Client) TestRequestStringInt64(ctx context.Context, request OptInt64) (res Error, err error) {
+func (c *Client) TestRequestStringInt64(ctx context.Context, request OptStringInt64) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64"),
@@ -20327,7 +20327,7 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 // TestRequestStringInt64Nullable invokes test_request_string_int64_nullable operation.
 //
 // POST /test_request_string_int64_nullable
-func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request OptNilInt64) (res Error, err error) {
+func (c *Client) TestRequestStringInt64Nullable(ctx context.Context, request OptNilStringInt64) (res Error, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_request_string_int64_nullable"),
@@ -29698,7 +29698,7 @@ func (c *Client) TestResponseStringInt32ArrayArray(ctx context.Context, request 
 // TestResponseStringInt32Nullable invokes test_response_string_int32_nullable operation.
 //
 // POST /test_response_string_int32_nullable
-func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request string) (res NilInt32, err error) {
+func (c *Client) TestResponseStringInt32Nullable(ctx context.Context, request string) (res NilStringInt32, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int32_nullable"),
@@ -30040,7 +30040,7 @@ func (c *Client) TestResponseStringInt64ArrayArray(ctx context.Context, request 
 // TestResponseStringInt64Nullable invokes test_response_string_int64_nullable operation.
 //
 // POST /test_response_string_int64_nullable
-func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request string) (res NilInt64, err error) {
+func (c *Client) TestResponseStringInt64Nullable(ctx context.Context, request string) (res NilStringInt64, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("test_response_string_int64_nullable"),
