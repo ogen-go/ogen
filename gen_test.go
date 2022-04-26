@@ -17,44 +17,40 @@ import (
 //go:embed _testdata
 var testdata embed.FS
 
-func testGenerate(t *testing.T, _ bool, name string, ignore ...string) {
-	t.Helper()
+func testGenerate(_ bool, name string, ignore ...string) func(t *testing.T) {
+	return func(t *testing.T) {
+		t.Helper()
+		t.Parallel()
 
-	data, err := testdata.ReadFile(name)
-	require.NoError(t, err)
-	spec, err := ogen.Parse(data)
-	require.NoError(t, err)
-	opt := gen.Options{
-		IgnoreNotImplemented: ignore,
-		InferSchemaType:      true,
-	}
-	t.Run("Gen", func(t *testing.T) {
-		defer func() {
-			if rr := recover(); rr != nil {
-				t.Fatalf("panic: %+v", rr)
-			}
-		}()
-
-		g, err := gen.NewGenerator(spec, opt)
+		data, err := testdata.ReadFile(name)
 		require.NoError(t, err)
-		require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
-	})
-	if len(opt.IgnoreNotImplemented) > 0 {
-		t.Run("Full", func(t *testing.T) {
-			t.Skipf("Ignoring: %s", opt.IgnoreNotImplemented)
+		spec, err := ogen.Parse(data)
+		require.NoError(t, err)
+		opt := gen.Options{
+			IgnoreNotImplemented: ignore,
+			InferSchemaType:      true,
+		}
+		t.Run("Gen", func(t *testing.T) {
+			defer func() {
+				if rr := recover(); rr != nil {
+					t.Fatalf("panic: %+v", rr)
+				}
+			}()
+
+			g, err := gen.NewGenerator(spec, opt)
+			require.NoError(t, err)
+			require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
 		})
+		if len(opt.IgnoreNotImplemented) > 0 {
+			t.Run("Full", func(t *testing.T) {
+				t.Skipf("Ignoring: %s", opt.IgnoreNotImplemented)
+			})
+		}
 	}
 }
 
 func TestGenerate(t *testing.T) {
 	t.Parallel()
-	g := func(name string, build bool, ignore ...string) func(t *testing.T) {
-		return func(t *testing.T) {
-			t.Helper()
-			t.Parallel()
-			testGenerate(t, build, name, ignore...)
-		}
-	}
 
 	skipSets := map[string][]string{
 		"petstore.yaml": {},
@@ -130,7 +126,7 @@ func TestGenerate(t *testing.T) {
 		testName = strings.TrimSuffix(testName, ".yml")
 		testName = strings.TrimSuffix(testName, ".yaml")
 
-		t.Run(testName, g(path, build, skip...))
+		t.Run(testName, testGenerate(build, path, skip...))
 		return nil
 	}); err != nil {
 		t.Fatal(err)

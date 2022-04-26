@@ -144,6 +144,10 @@ func TypeFormatMapping() map[jsonschema.SchemaType]map[string]ir.PrimitiveType {
 			"binary":    ir.String,
 			"hostname":  ir.String,
 			"":          ir.String,
+
+			// Custom format, see https://github.com/ogen-go/ogen/issues/309.
+			"int32": ir.Int32,
+			"int64": ir.Int64,
 		},
 		jsonschema.Boolean: {
 			"": ir.Bool,

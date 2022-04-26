@@ -76,17 +76,17 @@ if err := d.Arr(func(d *jx.Decoder) error {
 		if err := d.Null(); err != nil {
 			return err
 		}
-	{{- else if $j.Fn }}
-		v, err := d.{{ $j.Decode }}
-		{{ $.Var }} = {{ $t.Go }}(v)
-		if err != nil {
-			return err
-		}
 	{{- else if $j.Format }}
 		v, err := json.Decode{{ $j.Format }}(d)
 		{{ $.Var }} = v
 		if err != nil {
 			 return err
+		}
+	{{- else if $j.Fn }}
+		v, err := d.{{ $j.Decode }}
+		{{ $.Var }} = {{ $t.Go }}(v)
+		if err != nil {
+			return err
 		}
 	{{- else }}
         {{ errorf "unsupported kind: %s" $t.Kind }}

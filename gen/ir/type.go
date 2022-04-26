@@ -5,6 +5,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/ogen-go/ogen/internal/capitalize"
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
@@ -160,7 +161,8 @@ func (t *Type) NamePostfix() string {
 		if t.Primitive == Null {
 			return "Null"
 		}
-		switch t.Schema.Format {
+		s := t.Schema
+		switch f := s.Format; f {
 		case "uuid":
 			return "UUID"
 		case "date":
@@ -179,6 +181,11 @@ func (t *Type) NamePostfix() string {
 			return "IPv6"
 		case "uri":
 			return "URI"
+		case "int32", "int64":
+			if s.Type != jsonschema.String {
+				return t.Primitive.String()
+			}
+			return "String" + capitalize.Capitalize(f)
 		default:
 			return t.Primitive.String()
 		}
