@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/ogen-go/ogen/internal/capitalize"
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 // JSON returns json encoding/decoding rules for t.
@@ -116,10 +117,11 @@ func (j JSON) PatternProps() (fields []*Field) {
 // Mostly used for encoding or decoding of string formats, like `json.EncodeUUID`,
 // where UUID is Format.
 func (j JSON) Format() string {
-	if j.t.Schema == nil {
+	s := j.t.Schema
+	if s == nil {
 		return ""
 	}
-	switch j.t.Schema.Format {
+	switch f := s.Format; f {
 	case "uuid":
 		return "UUID"
 	case "date":
@@ -134,6 +136,11 @@ func (j JSON) Format() string {
 		return "IP"
 	case "uri":
 		return "URI"
+	case "int32", "int64":
+		if s.Type != jsonschema.String {
+			return ""
+		}
+		return "String" + capitalize.Capitalize(f)
 	default:
 		return ""
 	}
@@ -178,6 +185,9 @@ func (j JSON) SumTypes() string {
 
 func jsonType(t *Type) string {
 	if t.IsNumeric() {
+		if s := t.Schema; s != nil && s.Type == "string" {
+			return "String"
+		}
 		return "Number"
 	}
 	if t.Is(KindArray) {
