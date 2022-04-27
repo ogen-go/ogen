@@ -141,6 +141,14 @@ func (j JSON) Format() string {
 			return ""
 		}
 		return "String" + capitalize.Capitalize(f)
+	case "unix", "unix-seconds":
+		return "UnixSeconds"
+	case "unix-nano":
+		return "UnixNano"
+	case "unix-micro":
+		return "UnixMicro"
+	case "unix-milli":
+		return "UnixMilli"
 	default:
 		return ""
 	}

@@ -2802,6 +2802,366 @@ func encodeTestRequestRequiredStringUUIDNullableArrayArrayRequestJSON(req [][]uu
 	return e, nil
 }
 
+func encodeTestRequestRequiredStringUnixRequestJSON(req time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	json.EncodeUnixSeconds(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixSeconds(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMicroRequestJSON(req time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	json.EncodeUnixMicro(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMicroArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixMicro(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMicroArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMicroNullableRequestJSON(req NilUnixMicro, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	req.Encode(e, json.EncodeUnixMicro)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMicroNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixMicro(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMilliRequestJSON(req time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	json.EncodeUnixMilli(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMilliArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixMilli(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMilliArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMilliNullableRequestJSON(req NilUnixMilli, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	req.Encode(e, json.EncodeUnixMilli)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMilliNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixMilli(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNanoRequestJSON(req time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	json.EncodeUnixNano(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNanoArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixNano(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNanoArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNanoNullableRequestJSON(req NilUnixNano, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	req.Encode(e, json.EncodeUnixNano)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNanoNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixNano(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNullableRequestJSON(req NilUnixSeconds, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	req.Encode(e, json.EncodeUnixSeconds)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixSeconds(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixSecondsRequestJSON(req time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	json.EncodeUnixSeconds(e, req)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixSecondsArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixSeconds(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixSecondsArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixSecondsNullableRequestJSON(req NilUnixSeconds, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	req.Encode(e, json.EncodeUnixSeconds)
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixSecondsNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		json.EncodeUnixSeconds(e, elem)
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
+func encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.ArrStart()
+	for _, elem := range req {
+		e.ArrStart()
+		for _, elem := range elem {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+	e.ArrEnd()
+
+	return e, nil
+}
+
 func encodeTestRequestStringRequestJSON(req OptString, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 	if req.Set {
@@ -4127,6 +4487,396 @@ func encodeTestRequestStringUUIDNullableArrayArrayRequestJSON(req [][]uuid.UUID,
 	return e, nil
 }
 
+func encodeTestRequestStringUnixRequestJSON(req OptUnixSeconds, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixSeconds)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMicroRequestJSON(req OptUnixMicro, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixMicro)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMicroArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMicroArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMicroNullableRequestJSON(req OptNilUnixMicro, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixMicro)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMicroNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixMicro(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMicroNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMicro(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMilliRequestJSON(req OptUnixMilli, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixMilli)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMilliArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMilliArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMilliNullableRequestJSON(req OptNilUnixMilli, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixMilli)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMilliNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixMilli(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixMilliNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixMilli(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNanoRequestJSON(req OptUnixNano, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixNano)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNanoArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNanoArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNanoNullableRequestJSON(req OptNilUnixNano, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixNano)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNanoNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixNano(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNanoNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixNano(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNullableRequestJSON(req OptNilUnixSeconds, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixSeconds)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixSecondsRequestJSON(req OptUnixSeconds, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixSeconds)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixSecondsArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixSecondsArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixSecondsNullableRequestJSON(req OptNilUnixSeconds, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req.Set {
+		req.Encode(e, json.EncodeUnixSeconds)
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(req []time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			json.EncodeUnixSeconds(e, elem)
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
+func encodeTestRequestStringUnixSecondsNullableArrayArrayRequestJSON(req [][]time.Time, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+	if req != nil {
+		e.ArrStart()
+		for _, elem := range req {
+			e.ArrStart()
+			for _, elem := range elem {
+				json.EncodeUnixSeconds(e, elem)
+			}
+			e.ArrEnd()
+		}
+		e.ArrEnd()
+	}
+
+	return e, nil
+}
+
 func encodeTestResponseAnyRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
@@ -5440,6 +6190,246 @@ func encodeTestResponseStringUUIDNullableArrayRequestJSON(req string, span trace
 }
 
 func encodeTestResponseStringUUIDNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMicroRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMicroArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMicroArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMicroNullableRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMicroNullableArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMicroNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMilliRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMilliArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMilliArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMilliNullableRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMilliNullableArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixMilliNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNanoRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNanoArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNanoArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNanoNullableRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNanoNullableArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNanoNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNullableRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNullableArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixSecondsRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixSecondsArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixSecondsArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixSecondsNullableRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixSecondsNullableArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
+	e := jx.GetEncoder()
+
+	e.Str(req)
+
+	return e, nil
+}
+
+func encodeTestResponseStringUnixSecondsNullableArrayArrayRequestJSON(req string, span trace.Span) (data *jx.Encoder, err error) {
 	e := jx.GetEncoder()
 
 	e.Str(req)

@@ -229,6 +229,41 @@
 											"format": "time"
 										}
 									},
+									"required_array_string_unix": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix"
+										}
+									},
+									"required_array_string_unix-micro": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-micro"
+										}
+									},
+									"required_array_string_unix-milli": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-milli"
+										}
+									},
+									"required_array_string_unix-nano": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-nano"
+										}
+									},
+									"required_array_string_unix-seconds": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-seconds"
+										}
+									},
 									"required_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -498,6 +533,56 @@
 											}
 										}
 									},
+									"required_double_array_string_unix": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix"
+											}
+										}
+									},
+									"required_double_array_string_unix-micro": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-micro"
+											}
+										}
+									},
+									"required_double_array_string_unix-milli": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-milli"
+											}
+										}
+									},
+									"required_double_array_string_unix-nano": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-nano"
+											}
+										}
+									},
+									"required_double_array_string_unix-seconds": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-seconds"
+											}
+										}
+									},
 									"required_double_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -609,6 +694,26 @@
 									"required_string_time": {
 										"type": "string",
 										"format": "time"
+									},
+									"required_string_unix": {
+										"type": "string",
+										"format": "unix"
+									},
+									"required_string_unix-micro": {
+										"type": "string",
+										"format": "unix-micro"
+									},
+									"required_string_unix-milli": {
+										"type": "string",
+										"format": "unix-milli"
+									},
+									"required_string_unix-nano": {
+										"type": "string",
+										"format": "unix-nano"
+									},
+									"required_string_unix-seconds": {
+										"type": "string",
+										"format": "unix-seconds"
 									},
 									"required_string_uri": {
 										"type": "string",
@@ -791,6 +896,41 @@
 										"items": {
 											"type": "string",
 											"format": "time"
+										}
+									},
+									"optional_array_string_unix": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix"
+										}
+									},
+									"optional_array_string_unix-micro": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-micro"
+										}
+									},
+									"optional_array_string_unix-milli": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-milli"
+										}
+									},
+									"optional_array_string_unix-nano": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-nano"
+										}
+									},
+									"optional_array_string_unix-seconds": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-seconds"
 										}
 									},
 									"optional_array_string_uri": {
@@ -1062,6 +1202,56 @@
 											}
 										}
 									},
+									"optional_double_array_string_unix": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix"
+											}
+										}
+									},
+									"optional_double_array_string_unix-micro": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-micro"
+											}
+										}
+									},
+									"optional_double_array_string_unix-milli": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-milli"
+											}
+										}
+									},
+									"optional_double_array_string_unix-nano": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-nano"
+											}
+										}
+									},
+									"optional_double_array_string_unix-seconds": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-seconds"
+											}
+										}
+									},
 									"optional_double_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -1174,6 +1364,26 @@
 										"type": "string",
 										"format": "time"
 									},
+									"optional_string_unix": {
+										"type": "string",
+										"format": "unix"
+									},
+									"optional_string_unix-micro": {
+										"type": "string",
+										"format": "unix-micro"
+									},
+									"optional_string_unix-milli": {
+										"type": "string",
+										"format": "unix-milli"
+									},
+									"optional_string_unix-nano": {
+										"type": "string",
+										"format": "unix-nano"
+									},
+									"optional_string_unix-seconds": {
+										"type": "string",
+										"format": "unix-seconds"
+									},
 									"optional_string_uri": {
 										"type": "string",
 										"format": "uri"
@@ -1211,6 +1421,11 @@
 									"required_array_string_ipv6",
 									"required_array_string_password",
 									"required_array_string_time",
+									"required_array_string_unix",
+									"required_array_string_unix-micro",
+									"required_array_string_unix-milli",
+									"required_array_string_unix-nano",
+									"required_array_string_unix-seconds",
 									"required_array_string_uri",
 									"required_array_string_uuid",
 									"required_boolean",
@@ -1240,6 +1455,11 @@
 									"required_double_array_string_ipv6",
 									"required_double_array_string_password",
 									"required_double_array_string_time",
+									"required_double_array_string_unix",
+									"required_double_array_string_unix-micro",
+									"required_double_array_string_unix-milli",
+									"required_double_array_string_unix-nano",
+									"required_double_array_string_unix-seconds",
 									"required_double_array_string_uri",
 									"required_double_array_string_uuid",
 									"required_integer",
@@ -1266,6 +1486,11 @@
 									"required_string_ipv6",
 									"required_string_password",
 									"required_string_time",
+									"required_string_unix",
+									"required_string_unix-micro",
+									"required_string_unix-milli",
+									"required_string_unix-nano",
+									"required_string_unix-seconds",
 									"required_string_uri",
 									"required_string_uuid"
 								]
@@ -2951,6 +3176,41 @@
 											"format": "time"
 										}
 									},
+									"required_array_string_unix": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix"
+										}
+									},
+									"required_array_string_unix-micro": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-micro"
+										}
+									},
+									"required_array_string_unix-milli": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-milli"
+										}
+									},
+									"required_array_string_unix-nano": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-nano"
+										}
+									},
+									"required_array_string_unix-seconds": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-seconds"
+										}
+									},
 									"required_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -3220,6 +3480,56 @@
 											}
 										}
 									},
+									"required_double_array_string_unix": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix"
+											}
+										}
+									},
+									"required_double_array_string_unix-micro": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-micro"
+											}
+										}
+									},
+									"required_double_array_string_unix-milli": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-milli"
+											}
+										}
+									},
+									"required_double_array_string_unix-nano": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-nano"
+											}
+										}
+									},
+									"required_double_array_string_unix-seconds": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-seconds"
+											}
+										}
+									},
 									"required_double_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -3331,6 +3641,26 @@
 									"required_string_time": {
 										"type": "string",
 										"format": "time"
+									},
+									"required_string_unix": {
+										"type": "string",
+										"format": "unix"
+									},
+									"required_string_unix-micro": {
+										"type": "string",
+										"format": "unix-micro"
+									},
+									"required_string_unix-milli": {
+										"type": "string",
+										"format": "unix-milli"
+									},
+									"required_string_unix-nano": {
+										"type": "string",
+										"format": "unix-nano"
+									},
+									"required_string_unix-seconds": {
+										"type": "string",
+										"format": "unix-seconds"
 									},
 									"required_string_uri": {
 										"type": "string",
@@ -3513,6 +3843,41 @@
 										"items": {
 											"type": "string",
 											"format": "time"
+										}
+									},
+									"optional_array_string_unix": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix"
+										}
+									},
+									"optional_array_string_unix-micro": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-micro"
+										}
+									},
+									"optional_array_string_unix-milli": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-milli"
+										}
+									},
+									"optional_array_string_unix-nano": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-nano"
+										}
+									},
+									"optional_array_string_unix-seconds": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-seconds"
 										}
 									},
 									"optional_array_string_uri": {
@@ -3784,6 +4149,56 @@
 											}
 										}
 									},
+									"optional_double_array_string_unix": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix"
+											}
+										}
+									},
+									"optional_double_array_string_unix-micro": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-micro"
+											}
+										}
+									},
+									"optional_double_array_string_unix-milli": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-milli"
+											}
+										}
+									},
+									"optional_double_array_string_unix-nano": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-nano"
+											}
+										}
+									},
+									"optional_double_array_string_unix-seconds": {
+										"type": "array",
+										"items": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-seconds"
+											}
+										}
+									},
 									"optional_double_array_string_uri": {
 										"type": "array",
 										"items": {
@@ -3896,6 +4311,26 @@
 										"type": "string",
 										"format": "time"
 									},
+									"optional_string_unix": {
+										"type": "string",
+										"format": "unix"
+									},
+									"optional_string_unix-micro": {
+										"type": "string",
+										"format": "unix-micro"
+									},
+									"optional_string_unix-milli": {
+										"type": "string",
+										"format": "unix-milli"
+									},
+									"optional_string_unix-nano": {
+										"type": "string",
+										"format": "unix-nano"
+									},
+									"optional_string_unix-seconds": {
+										"type": "string",
+										"format": "unix-seconds"
+									},
 									"optional_string_uri": {
 										"type": "string",
 										"format": "uri"
@@ -3933,6 +4368,11 @@
 									"required_array_string_ipv6",
 									"required_array_string_password",
 									"required_array_string_time",
+									"required_array_string_unix",
+									"required_array_string_unix-micro",
+									"required_array_string_unix-milli",
+									"required_array_string_unix-nano",
+									"required_array_string_unix-seconds",
 									"required_array_string_uri",
 									"required_array_string_uuid",
 									"required_boolean",
@@ -3962,6 +4402,11 @@
 									"required_double_array_string_ipv6",
 									"required_double_array_string_password",
 									"required_double_array_string_time",
+									"required_double_array_string_unix",
+									"required_double_array_string_unix-micro",
+									"required_double_array_string_unix-milli",
+									"required_double_array_string_unix-nano",
+									"required_double_array_string_unix-seconds",
 									"required_double_array_string_uri",
 									"required_double_array_string_uuid",
 									"required_integer",
@@ -3988,6 +4433,11 @@
 									"required_string_ipv6",
 									"required_string_password",
 									"required_string_time",
+									"required_string_unix",
+									"required_string_unix-micro",
+									"required_string_unix-milli",
+									"required_string_unix-nano",
+									"required_string_unix-seconds",
 									"required_string_uri",
 									"required_string_uuid"
 								]
@@ -7798,6 +8248,771 @@
 				}
 			}
 		},
+		"/test_request_required_string_unix": {
+			"post": {
+				"operationId": "test_request_required_string_unix",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-micro": {
+			"post": {
+				"operationId": "test_request_required_string_unix-micro",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-micro"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-micro_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-micro_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-micro"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-micro_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-micro_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-micro"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-micro_nullable": {
+			"post": {
+				"operationId": "test_request_required_string_unix-micro_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-micro",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-micro_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-micro_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-micro",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-micro_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-micro_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-micro",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-milli": {
+			"post": {
+				"operationId": "test_request_required_string_unix-milli",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-milli"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-milli_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-milli_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-milli"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-milli_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-milli_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-milli"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-milli_nullable": {
+			"post": {
+				"operationId": "test_request_required_string_unix-milli_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-milli",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-milli_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-milli_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-milli",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-milli_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-milli_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-milli",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-nano": {
+			"post": {
+				"operationId": "test_request_required_string_unix-nano",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-nano"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-nano_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-nano_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-nano"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-nano_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-nano_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-nano"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-nano_nullable": {
+			"post": {
+				"operationId": "test_request_required_string_unix-nano_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-nano",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-nano_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-nano_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-nano",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-nano_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-nano_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-nano",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-seconds": {
+			"post": {
+				"operationId": "test_request_required_string_unix-seconds",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-seconds"
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-seconds_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-seconds_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-seconds"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-seconds_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-seconds_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-seconds"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-seconds_nullable": {
+			"post": {
+				"operationId": "test_request_required_string_unix-seconds_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-seconds",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-seconds_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-seconds_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-seconds",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix-seconds_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix-seconds_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-seconds",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix"
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix"
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix_nullable": {
+			"post": {
+				"operationId": "test_request_required_string_unix_nullable",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix",
+								"nullable": true
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix_nullable_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix_nullable_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix",
+									"nullable": true
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_required_string_unix_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_required_string_unix_nullable_array_array",
+				"requestBody": {
+					"description": "Required request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix",
+										"nullable": true
+									}
+								}
+							}
+						}
+					},
+					"required": true
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
 		"/test_request_required_string_uri": {
 			"post": {
 				"operationId": "test_request_required_string_uri",
@@ -10303,6 +11518,741 @@
 				}
 			}
 		},
+		"/test_request_string_unix": {
+			"post": {
+				"operationId": "test_request_string_unix",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-micro": {
+			"post": {
+				"operationId": "test_request_string_unix-micro",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-micro"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-micro_array": {
+			"post": {
+				"operationId": "test_request_string_unix-micro_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-micro"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-micro_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix-micro_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-micro"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-micro_nullable": {
+			"post": {
+				"operationId": "test_request_string_unix-micro_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-micro",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-micro_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_unix-micro_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-micro",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-micro_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix-micro_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-micro",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-milli": {
+			"post": {
+				"operationId": "test_request_string_unix-milli",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-milli"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-milli_array": {
+			"post": {
+				"operationId": "test_request_string_unix-milli_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-milli"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-milli_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix-milli_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-milli"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-milli_nullable": {
+			"post": {
+				"operationId": "test_request_string_unix-milli_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-milli",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-milli_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_unix-milli_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-milli",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-milli_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix-milli_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-milli",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-nano": {
+			"post": {
+				"operationId": "test_request_string_unix-nano",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-nano"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-nano_array": {
+			"post": {
+				"operationId": "test_request_string_unix-nano_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-nano"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-nano_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix-nano_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-nano"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-nano_nullable": {
+			"post": {
+				"operationId": "test_request_string_unix-nano_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-nano",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-nano_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_unix-nano_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-nano",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-nano_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix-nano_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-nano",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-seconds": {
+			"post": {
+				"operationId": "test_request_string_unix-seconds",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-seconds"
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-seconds_array": {
+			"post": {
+				"operationId": "test_request_string_unix-seconds_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-seconds"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-seconds_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix-seconds_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-seconds"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-seconds_nullable": {
+			"post": {
+				"operationId": "test_request_string_unix-seconds_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix-seconds",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-seconds_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_unix-seconds_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix-seconds",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix-seconds_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix-seconds_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-seconds",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix_array": {
+			"post": {
+				"operationId": "test_request_string_unix_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix"
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix"
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix_nullable": {
+			"post": {
+				"operationId": "test_request_string_unix_nullable",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "string",
+								"format": "unix",
+								"nullable": true
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix_nullable_array": {
+			"post": {
+				"operationId": "test_request_string_unix_nullable_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "string",
+									"format": "unix",
+									"nullable": true
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
+		"/test_request_string_unix_nullable_array_array": {
+			"post": {
+				"operationId": "test_request_string_unix_nullable_array_array",
+				"requestBody": {
+					"description": "Optional request body",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "array",
+								"items": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"$ref": "#/components/responses/error"
+					}
+				}
+			}
+		},
 		"/test_request_string_uri": {
 			"post": {
 				"operationId": "test_request_string_uri",
@@ -10824,6 +12774,41 @@
 												"format": "time"
 											}
 										},
+										"required_array_string_unix": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix"
+											}
+										},
+										"required_array_string_unix-micro": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-micro"
+											}
+										},
+										"required_array_string_unix-milli": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-milli"
+											}
+										},
+										"required_array_string_unix-nano": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-nano"
+											}
+										},
+										"required_array_string_unix-seconds": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-seconds"
+											}
+										},
 										"required_array_string_uri": {
 											"type": "array",
 											"items": {
@@ -11093,6 +13078,56 @@
 												}
 											}
 										},
+										"required_double_array_string_unix": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix"
+												}
+											}
+										},
+										"required_double_array_string_unix-micro": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix-micro"
+												}
+											}
+										},
+										"required_double_array_string_unix-milli": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix-milli"
+												}
+											}
+										},
+										"required_double_array_string_unix-nano": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix-nano"
+												}
+											}
+										},
+										"required_double_array_string_unix-seconds": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix-seconds"
+												}
+											}
+										},
 										"required_double_array_string_uri": {
 											"type": "array",
 											"items": {
@@ -11204,6 +13239,26 @@
 										"required_string_time": {
 											"type": "string",
 											"format": "time"
+										},
+										"required_string_unix": {
+											"type": "string",
+											"format": "unix"
+										},
+										"required_string_unix-micro": {
+											"type": "string",
+											"format": "unix-micro"
+										},
+										"required_string_unix-milli": {
+											"type": "string",
+											"format": "unix-milli"
+										},
+										"required_string_unix-nano": {
+											"type": "string",
+											"format": "unix-nano"
+										},
+										"required_string_unix-seconds": {
+											"type": "string",
+											"format": "unix-seconds"
 										},
 										"required_string_uri": {
 											"type": "string",
@@ -11386,6 +13441,41 @@
 											"items": {
 												"type": "string",
 												"format": "time"
+											}
+										},
+										"optional_array_string_unix": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix"
+											}
+										},
+										"optional_array_string_unix-micro": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-micro"
+											}
+										},
+										"optional_array_string_unix-milli": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-milli"
+											}
+										},
+										"optional_array_string_unix-nano": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-nano"
+											}
+										},
+										"optional_array_string_unix-seconds": {
+											"type": "array",
+											"items": {
+												"type": "string",
+												"format": "unix-seconds"
 											}
 										},
 										"optional_array_string_uri": {
@@ -11657,6 +13747,56 @@
 												}
 											}
 										},
+										"optional_double_array_string_unix": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix"
+												}
+											}
+										},
+										"optional_double_array_string_unix-micro": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix-micro"
+												}
+											}
+										},
+										"optional_double_array_string_unix-milli": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix-milli"
+												}
+											}
+										},
+										"optional_double_array_string_unix-nano": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix-nano"
+												}
+											}
+										},
+										"optional_double_array_string_unix-seconds": {
+											"type": "array",
+											"items": {
+												"type": "array",
+												"items": {
+													"type": "string",
+													"format": "unix-seconds"
+												}
+											}
+										},
 										"optional_double_array_string_uri": {
 											"type": "array",
 											"items": {
@@ -11769,6 +13909,26 @@
 											"type": "string",
 											"format": "time"
 										},
+										"optional_string_unix": {
+											"type": "string",
+											"format": "unix"
+										},
+										"optional_string_unix-micro": {
+											"type": "string",
+											"format": "unix-micro"
+										},
+										"optional_string_unix-milli": {
+											"type": "string",
+											"format": "unix-milli"
+										},
+										"optional_string_unix-nano": {
+											"type": "string",
+											"format": "unix-nano"
+										},
+										"optional_string_unix-seconds": {
+											"type": "string",
+											"format": "unix-seconds"
+										},
 										"optional_string_uri": {
 											"type": "string",
 											"format": "uri"
@@ -11806,6 +13966,11 @@
 										"required_array_string_ipv6",
 										"required_array_string_password",
 										"required_array_string_time",
+										"required_array_string_unix",
+										"required_array_string_unix-micro",
+										"required_array_string_unix-milli",
+										"required_array_string_unix-nano",
+										"required_array_string_unix-seconds",
 										"required_array_string_uri",
 										"required_array_string_uuid",
 										"required_boolean",
@@ -11835,6 +14000,11 @@
 										"required_double_array_string_ipv6",
 										"required_double_array_string_password",
 										"required_double_array_string_time",
+										"required_double_array_string_unix",
+										"required_double_array_string_unix-micro",
+										"required_double_array_string_unix-milli",
+										"required_double_array_string_unix-nano",
+										"required_double_array_string_unix-seconds",
 										"required_double_array_string_uri",
 										"required_double_array_string_uuid",
 										"required_integer",
@@ -11861,6 +14031,11 @@
 										"required_string_ipv6",
 										"required_string_password",
 										"required_string_time",
+										"required_string_unix",
+										"required_string_unix-micro",
+										"required_string_unix-milli",
+										"required_string_unix-nano",
+										"required_string_unix-seconds",
 										"required_string_uri",
 										"required_string_uuid"
 									]
@@ -15506,6 +17681,741 @@
 										"items": {
 											"type": "string",
 											"format": "time",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix": {
+			"post": {
+				"operationId": "test_response_string_unix",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-micro": {
+			"post": {
+				"operationId": "test_response_string_unix-micro",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix-micro"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-micro_array": {
+			"post": {
+				"operationId": "test_response_string_unix-micro_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-micro"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-micro_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix-micro_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-micro"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-micro_nullable": {
+			"post": {
+				"operationId": "test_response_string_unix-micro_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix-micro",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-micro_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_unix-micro_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-micro",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-micro_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix-micro_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-micro",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-milli": {
+			"post": {
+				"operationId": "test_response_string_unix-milli",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix-milli"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-milli_array": {
+			"post": {
+				"operationId": "test_response_string_unix-milli_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-milli"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-milli_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix-milli_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-milli"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-milli_nullable": {
+			"post": {
+				"operationId": "test_response_string_unix-milli_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix-milli",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-milli_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_unix-milli_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-milli",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-milli_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix-milli_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-milli",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-nano": {
+			"post": {
+				"operationId": "test_response_string_unix-nano",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix-nano"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-nano_array": {
+			"post": {
+				"operationId": "test_response_string_unix-nano_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-nano"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-nano_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix-nano_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-nano"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-nano_nullable": {
+			"post": {
+				"operationId": "test_response_string_unix-nano_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix-nano",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-nano_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_unix-nano_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-nano",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-nano_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix-nano_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-nano",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-seconds": {
+			"post": {
+				"operationId": "test_response_string_unix-seconds",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix-seconds"
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-seconds_array": {
+			"post": {
+				"operationId": "test_response_string_unix-seconds_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-seconds"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-seconds_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix-seconds_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-seconds"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-seconds_nullable": {
+			"post": {
+				"operationId": "test_response_string_unix-seconds_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix-seconds",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-seconds_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_unix-seconds_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix-seconds",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix-seconds_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix-seconds_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix-seconds",
+											"nullable": true
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix_array": {
+			"post": {
+				"operationId": "test_response_string_unix_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix"
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix_nullable": {
+			"post": {
+				"operationId": "test_response_string_unix_nullable",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "string",
+									"format": "unix",
+									"nullable": true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix_nullable_array": {
+			"post": {
+				"operationId": "test_response_string_unix_nullable_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "string",
+										"format": "unix",
+										"nullable": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/test_response_string_unix_nullable_array_array": {
+			"post": {
+				"operationId": "test_response_string_unix_nullable_array_array",
+				"requestBody": {
+					"$ref": "#/components/requestBodies/defaultBody"
+				},
+				"responses": {
+					"200": {
+						"description": "Response",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "array",
+									"items": {
+										"type": "array",
+										"items": {
+											"type": "string",
+											"format": "unix",
 											"nullable": true
 										}
 									}

@@ -11,6 +11,7 @@ const (
 	timeLayout = "15:04:05"
 )
 
+// DecodeDate decodes date from json.
 func DecodeDate(i *jx.Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
@@ -19,12 +20,14 @@ func DecodeDate(i *jx.Decoder) (v time.Time, err error) {
 	return time.Parse(dateLayout, s)
 }
 
+// EncodeDate encodes date to json.
 func EncodeDate(s *jx.Encoder, v time.Time) {
 	b := make([]byte, 64)
 	b = v.AppendFormat(b[:0], dateLayout)
 	s.ByteStr(b)
 }
 
+// DecodeTime decodes time from json.
 func DecodeTime(i *jx.Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
@@ -33,12 +36,14 @@ func DecodeTime(i *jx.Decoder) (v time.Time, err error) {
 	return time.Parse(timeLayout, s)
 }
 
+// EncodeTime encodes time to json.
 func EncodeTime(s *jx.Encoder, v time.Time) {
 	b := make([]byte, 64)
 	b = v.AppendFormat(b[:0], timeLayout)
 	s.ByteStr(b)
 }
 
+// DecodeDateTime decodes date-time from json.
 func DecodeDateTime(i *jx.Decoder) (v time.Time, err error) {
 	s, err := i.Str()
 	if err != nil {
@@ -47,12 +52,14 @@ func DecodeDateTime(i *jx.Decoder) (v time.Time, err error) {
 	return time.Parse(time.RFC3339, s)
 }
 
+// EncodeDateTime encodes date-time to json.
 func EncodeDateTime(s *jx.Encoder, v time.Time) {
 	b := make([]byte, 64)
 	b = v.AppendFormat(b[:0], time.RFC3339)
 	s.ByteStr(b)
 }
 
+// DecodeDuration decodes duration from json.
 func DecodeDuration(i *jx.Decoder) (v time.Duration, err error) {
 	s, err := i.Str()
 	if err != nil {
@@ -61,6 +68,7 @@ func DecodeDuration(i *jx.Decoder) (v time.Duration, err error) {
 	return time.ParseDuration(s)
 }
 
+// EncodeDuration encodes duration to json.
 func EncodeDuration(s *jx.Encoder, v time.Duration) {
 	var buf [32]byte
 	w := formatDuration(&buf, v)
