@@ -186,6 +186,14 @@ func (t *Type) NamePostfix() string {
 				return t.Primitive.String()
 			}
 			return "String" + capitalize.Capitalize(f)
+		case "unix", "unix-seconds":
+			return "UnixSeconds"
+		case "unix-nano":
+			return "UnixNano"
+		case "unix-micro":
+			return "UnixMicro"
+		case "unix-milli":
+			return "UnixMilli"
 		default:
 			return t.Primitive.String()
 		}
