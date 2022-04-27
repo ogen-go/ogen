@@ -16148,6 +16148,2046 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 	return result, nil
 }
 
+// TestRequestRequiredStringUnix invokes test_request_required_string_unix operation.
+//
+// POST /test_request_required_string_unix
+func (c *Client) TestRequestRequiredStringUnix(ctx context.Context, request time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnix",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixArray invokes test_request_required_string_unix_array operation.
+//
+// POST /test_request_required_string_unix_array
+func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixArrayArray invokes test_request_required_string_unix_array_array operation.
+//
+// POST /test_request_required_string_unix_array_array
+func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMicro invokes test_request_required_string_unix-micro operation.
+//
+// POST /test_request_required_string_unix-micro
+func (c *Client) TestRequestRequiredStringUnixMicro(ctx context.Context, request time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-micro"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicro",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMicroRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-micro"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMicroResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMicroArray invokes test_request_required_string_unix-micro_array operation.
+//
+// POST /test_request_required_string_unix-micro_array
+func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-micro_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMicroArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-micro_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMicroArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMicroArrayArray invokes test_request_required_string_unix-micro_array_array operation.
+//
+// POST /test_request_required_string_unix-micro_array_array
+func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-micro_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMicroArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-micro_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMicroArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMicroNullable invokes test_request_required_string_unix-micro_nullable operation.
+//
+// POST /test_request_required_string_unix-micro_nullable
+func (c *Client) TestRequestRequiredStringUnixMicroNullable(ctx context.Context, request NilUnixMicro) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-micro_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMicroNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-micro_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMicroNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMicroNullableArray invokes test_request_required_string_unix-micro_nullable_array operation.
+//
+// POST /test_request_required_string_unix-micro_nullable_array
+func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMicroNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-micro_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMicroNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMicroNullableArrayArray invokes test_request_required_string_unix-micro_nullable_array_array operation.
+//
+// POST /test_request_required_string_unix-micro_nullable_array_array
+func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-micro_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMicroNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-micro_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMilli invokes test_request_required_string_unix-milli operation.
+//
+// POST /test_request_required_string_unix-milli
+func (c *Client) TestRequestRequiredStringUnixMilli(ctx context.Context, request time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-milli"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilli",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMilliRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-milli"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMilliResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMilliArray invokes test_request_required_string_unix-milli_array operation.
+//
+// POST /test_request_required_string_unix-milli_array
+func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-milli_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMilliArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-milli_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMilliArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMilliArrayArray invokes test_request_required_string_unix-milli_array_array operation.
+//
+// POST /test_request_required_string_unix-milli_array_array
+func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-milli_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMilliArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-milli_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMilliArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMilliNullable invokes test_request_required_string_unix-milli_nullable operation.
+//
+// POST /test_request_required_string_unix-milli_nullable
+func (c *Client) TestRequestRequiredStringUnixMilliNullable(ctx context.Context, request NilUnixMilli) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-milli_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMilliNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-milli_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMilliNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMilliNullableArray invokes test_request_required_string_unix-milli_nullable_array operation.
+//
+// POST /test_request_required_string_unix-milli_nullable_array
+func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMilliNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-milli_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMilliNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixMilliNullableArrayArray invokes test_request_required_string_unix-milli_nullable_array_array operation.
+//
+// POST /test_request_required_string_unix-milli_nullable_array_array
+func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-milli_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixMilliNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-milli_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNano invokes test_request_required_string_unix-nano operation.
+//
+// POST /test_request_required_string_unix-nano
+func (c *Client) TestRequestRequiredStringUnixNano(ctx context.Context, request time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-nano"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNano",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNanoRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-nano"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNanoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNanoArray invokes test_request_required_string_unix-nano_array operation.
+//
+// POST /test_request_required_string_unix-nano_array
+func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-nano_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNanoArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-nano_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNanoArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNanoArrayArray invokes test_request_required_string_unix-nano_array_array operation.
+//
+// POST /test_request_required_string_unix-nano_array_array
+func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-nano_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNanoArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-nano_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNanoArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNanoNullable invokes test_request_required_string_unix-nano_nullable operation.
+//
+// POST /test_request_required_string_unix-nano_nullable
+func (c *Client) TestRequestRequiredStringUnixNanoNullable(ctx context.Context, request NilUnixNano) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-nano_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNanoNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-nano_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNanoNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNanoNullableArray invokes test_request_required_string_unix-nano_nullable_array operation.
+//
+// POST /test_request_required_string_unix-nano_nullable_array
+func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNanoNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-nano_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNanoNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNanoNullableArrayArray invokes test_request_required_string_unix-nano_nullable_array_array operation.
+//
+// POST /test_request_required_string_unix-nano_nullable_array_array
+func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-nano_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNanoNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-nano_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNullable invokes test_request_required_string_unix_nullable operation.
+//
+// POST /test_request_required_string_unix_nullable
+func (c *Client) TestRequestRequiredStringUnixNullable(ctx context.Context, request NilUnixSeconds) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNullableArray invokes test_request_required_string_unix_nullable_array operation.
+//
+// POST /test_request_required_string_unix_nullable_array
+func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixNullableArrayArray invokes test_request_required_string_unix_nullable_array_array operation.
+//
+// POST /test_request_required_string_unix_nullable_array_array
+func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixSeconds invokes test_request_required_string_unix-seconds operation.
+//
+// POST /test_request_required_string_unix-seconds
+func (c *Client) TestRequestRequiredStringUnixSeconds(ctx context.Context, request time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-seconds"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSeconds",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixSecondsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-seconds"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixSecondsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixSecondsArray invokes test_request_required_string_unix-seconds_array operation.
+//
+// POST /test_request_required_string_unix-seconds_array
+func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-seconds_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixSecondsArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-seconds_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixSecondsArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixSecondsArrayArray invokes test_request_required_string_unix-seconds_array_array operation.
+//
+// POST /test_request_required_string_unix-seconds_array_array
+func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-seconds_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixSecondsArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-seconds_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixSecondsNullable invokes test_request_required_string_unix-seconds_nullable operation.
+//
+// POST /test_request_required_string_unix-seconds_nullable
+func (c *Client) TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, request NilUnixSeconds) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-seconds_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixSecondsNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-seconds_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixSecondsNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixSecondsNullableArray invokes test_request_required_string_unix-seconds_nullable_array operation.
+//
+// POST /test_request_required_string_unix-seconds_nullable_array
+func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixSecondsNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-seconds_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestRequiredStringUnixSecondsNullableArrayArray invokes test_request_required_string_unix-seconds_nullable_array_array operation.
+//
+// POST /test_request_required_string_unix-seconds_nullable_array_array
+func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		if request == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_required_string_unix-seconds_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestRequiredStringUnixSecondsNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_required_string_unix-seconds_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestRequestString invokes test_request_string operation.
 //
 // POST /test_request_string
@@ -23019,6 +25059,1936 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 	defer resp.Body.Close()
 
 	result, err := decodeTestRequestStringUUIDNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnix invokes test_request_string_unix operation.
+//
+// POST /test_request_string_unix
+func (c *Client) TestRequestStringUnix(ctx context.Context, request OptUnixSeconds) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnix",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixArray invokes test_request_string_unix_array operation.
+//
+// POST /test_request_string_unix_array
+func (c *Client) TestRequestStringUnixArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixArrayArray invokes test_request_string_unix_array_array operation.
+//
+// POST /test_request_string_unix_array_array
+func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMicro invokes test_request_string_unix-micro operation.
+//
+// POST /test_request_string_unix-micro
+func (c *Client) TestRequestStringUnixMicro(ctx context.Context, request OptUnixMicro) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-micro"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicro",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMicroRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-micro"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMicroResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMicroArray invokes test_request_string_unix-micro_array operation.
+//
+// POST /test_request_string_unix-micro_array
+func (c *Client) TestRequestStringUnixMicroArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-micro_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMicroArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-micro_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMicroArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMicroArrayArray invokes test_request_string_unix-micro_array_array operation.
+//
+// POST /test_request_string_unix-micro_array_array
+func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-micro_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMicroArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-micro_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMicroArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMicroNullable invokes test_request_string_unix-micro_nullable operation.
+//
+// POST /test_request_string_unix-micro_nullable
+func (c *Client) TestRequestStringUnixMicroNullable(ctx context.Context, request OptNilUnixMicro) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-micro_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMicroNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-micro_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMicroNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMicroNullableArray invokes test_request_string_unix-micro_nullable_array operation.
+//
+// POST /test_request_string_unix-micro_nullable_array
+func (c *Client) TestRequestStringUnixMicroNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-micro_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMicroNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-micro_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMicroNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMicroNullableArrayArray invokes test_request_string_unix-micro_nullable_array_array operation.
+//
+// POST /test_request_string_unix-micro_nullable_array_array
+func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-micro_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMicroNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMicroNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-micro_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMicroNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMilli invokes test_request_string_unix-milli operation.
+//
+// POST /test_request_string_unix-milli
+func (c *Client) TestRequestStringUnixMilli(ctx context.Context, request OptUnixMilli) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-milli"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilli",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMilliRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-milli"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMilliResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMilliArray invokes test_request_string_unix-milli_array operation.
+//
+// POST /test_request_string_unix-milli_array
+func (c *Client) TestRequestStringUnixMilliArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-milli_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMilliArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-milli_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMilliArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMilliArrayArray invokes test_request_string_unix-milli_array_array operation.
+//
+// POST /test_request_string_unix-milli_array_array
+func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-milli_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMilliArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-milli_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMilliArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMilliNullable invokes test_request_string_unix-milli_nullable operation.
+//
+// POST /test_request_string_unix-milli_nullable
+func (c *Client) TestRequestStringUnixMilliNullable(ctx context.Context, request OptNilUnixMilli) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-milli_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMilliNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-milli_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMilliNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMilliNullableArray invokes test_request_string_unix-milli_nullable_array operation.
+//
+// POST /test_request_string_unix-milli_nullable_array
+func (c *Client) TestRequestStringUnixMilliNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-milli_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMilliNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-milli_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMilliNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixMilliNullableArrayArray invokes test_request_string_unix-milli_nullable_array_array operation.
+//
+// POST /test_request_string_unix-milli_nullable_array_array
+func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-milli_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixMilliNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixMilliNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-milli_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixMilliNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNano invokes test_request_string_unix-nano operation.
+//
+// POST /test_request_string_unix-nano
+func (c *Client) TestRequestStringUnixNano(ctx context.Context, request OptUnixNano) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-nano"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNano",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNanoRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-nano"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNanoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNanoArray invokes test_request_string_unix-nano_array operation.
+//
+// POST /test_request_string_unix-nano_array
+func (c *Client) TestRequestStringUnixNanoArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-nano_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNanoArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-nano_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNanoArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNanoArrayArray invokes test_request_string_unix-nano_array_array operation.
+//
+// POST /test_request_string_unix-nano_array_array
+func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-nano_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNanoArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-nano_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNanoArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNanoNullable invokes test_request_string_unix-nano_nullable operation.
+//
+// POST /test_request_string_unix-nano_nullable
+func (c *Client) TestRequestStringUnixNanoNullable(ctx context.Context, request OptNilUnixNano) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-nano_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNanoNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-nano_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNanoNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNanoNullableArray invokes test_request_string_unix-nano_nullable_array operation.
+//
+// POST /test_request_string_unix-nano_nullable_array
+func (c *Client) TestRequestStringUnixNanoNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-nano_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNanoNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-nano_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNanoNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNanoNullableArrayArray invokes test_request_string_unix-nano_nullable_array_array operation.
+//
+// POST /test_request_string_unix-nano_nullable_array_array
+func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-nano_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNanoNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNanoNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-nano_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNanoNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNullable invokes test_request_string_unix_nullable operation.
+//
+// POST /test_request_string_unix_nullable
+func (c *Client) TestRequestStringUnixNullable(ctx context.Context, request OptNilUnixSeconds) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNullableArray invokes test_request_string_unix_nullable_array operation.
+//
+// POST /test_request_string_unix_nullable_array
+func (c *Client) TestRequestStringUnixNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixNullableArrayArray invokes test_request_string_unix_nullable_array_array operation.
+//
+// POST /test_request_string_unix_nullable_array_array
+func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixSeconds invokes test_request_string_unix-seconds operation.
+//
+// POST /test_request_string_unix-seconds
+func (c *Client) TestRequestStringUnixSeconds(ctx context.Context, request OptUnixSeconds) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-seconds"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSeconds",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixSecondsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-seconds"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixSecondsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixSecondsArray invokes test_request_string_unix-seconds_array operation.
+//
+// POST /test_request_string_unix-seconds_array
+func (c *Client) TestRequestStringUnixSecondsArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-seconds_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixSecondsArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-seconds_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixSecondsArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixSecondsArrayArray invokes test_request_string_unix-seconds_array_array operation.
+//
+// POST /test_request_string_unix-seconds_array_array
+func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-seconds_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixSecondsArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-seconds_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixSecondsArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixSecondsNullable invokes test_request_string_unix-seconds_nullable operation.
+//
+// POST /test_request_string_unix-seconds_nullable
+func (c *Client) TestRequestStringUnixSecondsNullable(ctx context.Context, request OptNilUnixSeconds) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-seconds_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixSecondsNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-seconds_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixSecondsNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixSecondsNullableArray invokes test_request_string_unix-seconds_nullable_array operation.
+//
+// POST /test_request_string_unix-seconds_nullable_array
+func (c *Client) TestRequestStringUnixSecondsNullableArray(ctx context.Context, request []time.Time) (res Error, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-seconds_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixSecondsNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-seconds_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixSecondsNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestRequestStringUnixSecondsNullableArrayArray invokes test_request_string_unix-seconds_nullable_array_array operation.
+//
+// POST /test_request_string_unix-seconds_nullable_array_array
+func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, request [][]time.Time) (res Error, err error) {
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range request {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		return res, errors.Wrap(err, "validate")
+	}
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_request_string_unix-seconds_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestRequestStringUnixSecondsNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestRequestStringUnixSecondsNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_request_string_unix-seconds_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestRequestStringUnixSecondsNullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
@@ -32424,6 +36394,1716 @@ func (c *Client) TestResponseStringUUIDNullableArrayArray(ctx context.Context, r
 	defer resp.Body.Close()
 
 	result, err := decodeTestResponseStringUUIDNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnix invokes test_response_string_unix operation.
+//
+// POST /test_response_string_unix
+func (c *Client) TestResponseStringUnix(ctx context.Context, request string) (res time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnix",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixArray invokes test_response_string_unix_array operation.
+//
+// POST /test_response_string_unix_array
+func (c *Client) TestResponseStringUnixArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixArrayArray invokes test_response_string_unix_array_array operation.
+//
+// POST /test_response_string_unix_array_array
+func (c *Client) TestResponseStringUnixArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMicro invokes test_response_string_unix-micro operation.
+//
+// POST /test_response_string_unix-micro
+func (c *Client) TestResponseStringUnixMicro(ctx context.Context, request string) (res time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-micro"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicro",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMicroRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-micro"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMicroResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMicroArray invokes test_response_string_unix-micro_array operation.
+//
+// POST /test_response_string_unix-micro_array
+func (c *Client) TestResponseStringUnixMicroArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-micro_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMicroArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-micro_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMicroArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMicroArrayArray invokes test_response_string_unix-micro_array_array operation.
+//
+// POST /test_response_string_unix-micro_array_array
+func (c *Client) TestResponseStringUnixMicroArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-micro_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMicroArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-micro_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMicroArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMicroNullable invokes test_response_string_unix-micro_nullable operation.
+//
+// POST /test_response_string_unix-micro_nullable
+func (c *Client) TestResponseStringUnixMicroNullable(ctx context.Context, request string) (res NilUnixMicro, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-micro_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMicroNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-micro_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMicroNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMicroNullableArray invokes test_response_string_unix-micro_nullable_array operation.
+//
+// POST /test_response_string_unix-micro_nullable_array
+func (c *Client) TestResponseStringUnixMicroNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-micro_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMicroNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-micro_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMicroNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMicroNullableArrayArray invokes test_response_string_unix-micro_nullable_array_array operation.
+//
+// POST /test_response_string_unix-micro_nullable_array_array
+func (c *Client) TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-micro_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMicroNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMicroNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-micro_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMilli invokes test_response_string_unix-milli operation.
+//
+// POST /test_response_string_unix-milli
+func (c *Client) TestResponseStringUnixMilli(ctx context.Context, request string) (res time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-milli"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilli",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMilliRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-milli"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMilliResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMilliArray invokes test_response_string_unix-milli_array operation.
+//
+// POST /test_response_string_unix-milli_array
+func (c *Client) TestResponseStringUnixMilliArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-milli_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMilliArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-milli_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMilliArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMilliArrayArray invokes test_response_string_unix-milli_array_array operation.
+//
+// POST /test_response_string_unix-milli_array_array
+func (c *Client) TestResponseStringUnixMilliArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-milli_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMilliArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-milli_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMilliArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMilliNullable invokes test_response_string_unix-milli_nullable operation.
+//
+// POST /test_response_string_unix-milli_nullable
+func (c *Client) TestResponseStringUnixMilliNullable(ctx context.Context, request string) (res NilUnixMilli, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-milli_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMilliNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-milli_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMilliNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMilliNullableArray invokes test_response_string_unix-milli_nullable_array operation.
+//
+// POST /test_response_string_unix-milli_nullable_array
+func (c *Client) TestResponseStringUnixMilliNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-milli_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMilliNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-milli_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMilliNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixMilliNullableArrayArray invokes test_response_string_unix-milli_nullable_array_array operation.
+//
+// POST /test_response_string_unix-milli_nullable_array_array
+func (c *Client) TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-milli_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixMilliNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixMilliNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-milli_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNano invokes test_response_string_unix-nano operation.
+//
+// POST /test_response_string_unix-nano
+func (c *Client) TestResponseStringUnixNano(ctx context.Context, request string) (res time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-nano"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNano",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNanoRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-nano"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNanoResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNanoArray invokes test_response_string_unix-nano_array operation.
+//
+// POST /test_response_string_unix-nano_array
+func (c *Client) TestResponseStringUnixNanoArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-nano_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNanoArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-nano_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNanoArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNanoArrayArray invokes test_response_string_unix-nano_array_array operation.
+//
+// POST /test_response_string_unix-nano_array_array
+func (c *Client) TestResponseStringUnixNanoArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-nano_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNanoArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-nano_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNanoArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNanoNullable invokes test_response_string_unix-nano_nullable operation.
+//
+// POST /test_response_string_unix-nano_nullable
+func (c *Client) TestResponseStringUnixNanoNullable(ctx context.Context, request string) (res NilUnixNano, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-nano_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNanoNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-nano_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNanoNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNanoNullableArray invokes test_response_string_unix-nano_nullable_array operation.
+//
+// POST /test_response_string_unix-nano_nullable_array
+func (c *Client) TestResponseStringUnixNanoNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-nano_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNanoNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-nano_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNanoNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNanoNullableArrayArray invokes test_response_string_unix-nano_nullable_array_array operation.
+//
+// POST /test_response_string_unix-nano_nullable_array_array
+func (c *Client) TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-nano_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNanoNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNanoNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-nano_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNullable invokes test_response_string_unix_nullable operation.
+//
+// POST /test_response_string_unix_nullable
+func (c *Client) TestResponseStringUnixNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNullableArray invokes test_response_string_unix_nullable_array operation.
+//
+// POST /test_response_string_unix_nullable_array
+func (c *Client) TestResponseStringUnixNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixNullableArrayArray invokes test_response_string_unix_nullable_array_array operation.
+//
+// POST /test_response_string_unix_nullable_array_array
+func (c *Client) TestResponseStringUnixNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixNullableArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixSeconds invokes test_response_string_unix-seconds operation.
+//
+// POST /test_response_string_unix-seconds
+func (c *Client) TestResponseStringUnixSeconds(ctx context.Context, request string) (res time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-seconds"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSeconds",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixSecondsRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-seconds"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixSecondsResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixSecondsArray invokes test_response_string_unix-seconds_array operation.
+//
+// POST /test_response_string_unix-seconds_array
+func (c *Client) TestResponseStringUnixSecondsArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-seconds_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixSecondsArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-seconds_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixSecondsArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixSecondsArrayArray invokes test_response_string_unix-seconds_array_array operation.
+//
+// POST /test_response_string_unix-seconds_array_array
+func (c *Client) TestResponseStringUnixSecondsArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-seconds_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixSecondsArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-seconds_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixSecondsArrayArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixSecondsNullable invokes test_response_string_unix-seconds_nullable operation.
+//
+// POST /test_response_string_unix-seconds_nullable
+func (c *Client) TestResponseStringUnixSecondsNullable(ctx context.Context, request string) (res NilUnixSeconds, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-seconds_nullable"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullable",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixSecondsNullableRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-seconds_nullable"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixSecondsNullableResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixSecondsNullableArray invokes test_response_string_unix-seconds_nullable_array operation.
+//
+// POST /test_response_string_unix-seconds_nullable_array
+func (c *Client) TestResponseStringUnixSecondsNullableArray(ctx context.Context, request string) (res []time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-seconds_nullable_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullableArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixSecondsNullableArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-seconds_nullable_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixSecondsNullableArrayResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// TestResponseStringUnixSecondsNullableArrayArray invokes test_response_string_unix-seconds_nullable_array_array operation.
+//
+// POST /test_response_string_unix-seconds_nullable_array_array
+func (c *Client) TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, request string) (res [][]time.Time, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("test_response_string_unix-seconds_nullable_array_array"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestResponseStringUnixSecondsNullableArrayArray",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/json"
+	buf, err := encodeTestResponseStringUnixSecondsNullableArrayArrayRequestJSON(request, span)
+	if err != nil {
+		return res, err
+	}
+	defer jx.PutEncoder(buf)
+	reqBody = bytes.NewReader(buf.Bytes())
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/test_response_string_unix-seconds_nullable_array_array"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

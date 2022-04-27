@@ -400,6 +400,61 @@ func (s TestRequestFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringUnix == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusMicro == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusMilli == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusNano == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusSeconds == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-seconds",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringURI == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -1247,6 +1302,146 @@ func (s TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnix == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnix {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusMicro == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusMilli == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusNano == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusSeconds == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-seconds",
 			Error: err,
 		})
 	}
@@ -2266,6 +2461,131 @@ func (s TestRequestFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnix {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusMicro {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusMilli {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusNano {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusSeconds {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-seconds",
 			Error: err,
 		})
 	}
@@ -2825,6 +3145,61 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringUnix == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusMicro == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusMilli == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusNano == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusSeconds == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-seconds",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringURI == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -3672,6 +4047,146 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnix == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnix {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusMicro == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusMilli == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusNano == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusSeconds == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-seconds",
 			Error: err,
 		})
 	}
@@ -4691,6 +5206,131 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnix {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusMicro {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusMilli {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusNano {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusSeconds {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-seconds",
 			Error: err,
 		})
 	}
@@ -5250,6 +5890,61 @@ func (s TestResponseFormatTestOK) Validate() error {
 		})
 	}
 	if err := func() error {
+		if s.RequiredArrayStringUnix == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusMicro == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusMilli == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusNano == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredArrayStringUnixMinusSeconds == nil {
+			return errors.New("nil is invalid value")
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_array_string_unix-seconds",
+			Error: err,
+		})
+	}
+	if err := func() error {
 		if s.RequiredArrayStringURI == nil {
 			return errors.New("nil is invalid value")
 		}
@@ -6097,6 +6792,146 @@ func (s TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnix == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnix {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusMicro == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusMicro {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusMilli == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusMilli {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusNano == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusNano {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		if s.RequiredDoubleArrayStringUnixMinusSeconds == nil {
+			return errors.New("nil is invalid value")
+		}
+		var failures []validate.FieldError
+		for i, elem := range s.RequiredDoubleArrayStringUnixMinusSeconds {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "required_double_array_string_unix-seconds",
 			Error: err,
 		})
 	}
@@ -7116,6 +7951,131 @@ func (s TestResponseFormatTestOK) Validate() error {
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_double_array_string_time",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnix {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusMicro {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-micro",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusMilli {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-milli",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusNano {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-nano",
+			Error: err,
+		})
+	}
+	if err := func() error {
+		var failures []validate.FieldError
+		for i, elem := range s.OptionalDoubleArrayStringUnixMinusSeconds {
+			if err := func() error {
+				if elem == nil {
+					return errors.New("nil is invalid value")
+				}
+				return nil
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
+		}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
+		return nil
+	}(); err != nil {
+		failures = append(failures, validate.FieldError{
+			Name:  "optional_double_array_string_unix-seconds",
 			Error: err,
 		})
 	}

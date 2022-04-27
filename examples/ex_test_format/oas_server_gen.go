@@ -929,6 +929,126 @@ type Handler interface {
 	//
 	// POST /test_request_required_string_uuid_nullable_array_array
 	TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Context, req [][]uuid.UUID) (Error, error)
+	// TestRequestRequiredStringUnix implements test_request_required_string_unix operation.
+	//
+	// POST /test_request_required_string_unix
+	TestRequestRequiredStringUnix(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredStringUnixArray implements test_request_required_string_unix_array operation.
+	//
+	// POST /test_request_required_string_unix_array
+	TestRequestRequiredStringUnixArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixArrayArray implements test_request_required_string_unix_array_array operation.
+	//
+	// POST /test_request_required_string_unix_array_array
+	TestRequestRequiredStringUnixArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMicro implements test_request_required_string_unix-micro operation.
+	//
+	// POST /test_request_required_string_unix-micro
+	TestRequestRequiredStringUnixMicro(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMicroArray implements test_request_required_string_unix-micro_array operation.
+	//
+	// POST /test_request_required_string_unix-micro_array
+	TestRequestRequiredStringUnixMicroArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMicroArrayArray implements test_request_required_string_unix-micro_array_array operation.
+	//
+	// POST /test_request_required_string_unix-micro_array_array
+	TestRequestRequiredStringUnixMicroArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMicroNullable implements test_request_required_string_unix-micro_nullable operation.
+	//
+	// POST /test_request_required_string_unix-micro_nullable
+	TestRequestRequiredStringUnixMicroNullable(ctx context.Context, req NilUnixMicro) (Error, error)
+	// TestRequestRequiredStringUnixMicroNullableArray implements test_request_required_string_unix-micro_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix-micro_nullable_array
+	TestRequestRequiredStringUnixMicroNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMicroNullableArrayArray implements test_request_required_string_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix-micro_nullable_array_array
+	TestRequestRequiredStringUnixMicroNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMilli implements test_request_required_string_unix-milli operation.
+	//
+	// POST /test_request_required_string_unix-milli
+	TestRequestRequiredStringUnixMilli(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMilliArray implements test_request_required_string_unix-milli_array operation.
+	//
+	// POST /test_request_required_string_unix-milli_array
+	TestRequestRequiredStringUnixMilliArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMilliArrayArray implements test_request_required_string_unix-milli_array_array operation.
+	//
+	// POST /test_request_required_string_unix-milli_array_array
+	TestRequestRequiredStringUnixMilliArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMilliNullable implements test_request_required_string_unix-milli_nullable operation.
+	//
+	// POST /test_request_required_string_unix-milli_nullable
+	TestRequestRequiredStringUnixMilliNullable(ctx context.Context, req NilUnixMilli) (Error, error)
+	// TestRequestRequiredStringUnixMilliNullableArray implements test_request_required_string_unix-milli_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix-milli_nullable_array
+	TestRequestRequiredStringUnixMilliNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixMilliNullableArrayArray implements test_request_required_string_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix-milli_nullable_array_array
+	TestRequestRequiredStringUnixMilliNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixNano implements test_request_required_string_unix-nano operation.
+	//
+	// POST /test_request_required_string_unix-nano
+	TestRequestRequiredStringUnixNano(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredStringUnixNanoArray implements test_request_required_string_unix-nano_array operation.
+	//
+	// POST /test_request_required_string_unix-nano_array
+	TestRequestRequiredStringUnixNanoArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixNanoArrayArray implements test_request_required_string_unix-nano_array_array operation.
+	//
+	// POST /test_request_required_string_unix-nano_array_array
+	TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixNanoNullable implements test_request_required_string_unix-nano_nullable operation.
+	//
+	// POST /test_request_required_string_unix-nano_nullable
+	TestRequestRequiredStringUnixNanoNullable(ctx context.Context, req NilUnixNano) (Error, error)
+	// TestRequestRequiredStringUnixNanoNullableArray implements test_request_required_string_unix-nano_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix-nano_nullable_array
+	TestRequestRequiredStringUnixNanoNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixNanoNullableArrayArray implements test_request_required_string_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix-nano_nullable_array_array
+	TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixNullable implements test_request_required_string_unix_nullable operation.
+	//
+	// POST /test_request_required_string_unix_nullable
+	TestRequestRequiredStringUnixNullable(ctx context.Context, req NilUnixSeconds) (Error, error)
+	// TestRequestRequiredStringUnixNullableArray implements test_request_required_string_unix_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix_nullable_array
+	TestRequestRequiredStringUnixNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixNullableArrayArray implements test_request_required_string_unix_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix_nullable_array_array
+	TestRequestRequiredStringUnixNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixSeconds implements test_request_required_string_unix-seconds operation.
+	//
+	// POST /test_request_required_string_unix-seconds
+	TestRequestRequiredStringUnixSeconds(ctx context.Context, req time.Time) (Error, error)
+	// TestRequestRequiredStringUnixSecondsArray implements test_request_required_string_unix-seconds_array operation.
+	//
+	// POST /test_request_required_string_unix-seconds_array
+	TestRequestRequiredStringUnixSecondsArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixSecondsArrayArray implements test_request_required_string_unix-seconds_array_array operation.
+	//
+	// POST /test_request_required_string_unix-seconds_array_array
+	TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestRequiredStringUnixSecondsNullable implements test_request_required_string_unix-seconds_nullable operation.
+	//
+	// POST /test_request_required_string_unix-seconds_nullable
+	TestRequestRequiredStringUnixSecondsNullable(ctx context.Context, req NilUnixSeconds) (Error, error)
+	// TestRequestRequiredStringUnixSecondsNullableArray implements test_request_required_string_unix-seconds_nullable_array operation.
+	//
+	// POST /test_request_required_string_unix-seconds_nullable_array
+	TestRequestRequiredStringUnixSecondsNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestRequiredStringUnixSecondsNullableArrayArray implements test_request_required_string_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_request_required_string_unix-seconds_nullable_array_array
+	TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
 	// TestRequestString implements test_request_string operation.
 	//
 	// POST /test_request_string
@@ -1337,6 +1457,126 @@ type Handler interface {
 	//
 	// POST /test_request_string_uuid_nullable_array_array
 	TestRequestStringUUIDNullableArrayArray(ctx context.Context, req [][]uuid.UUID) (Error, error)
+	// TestRequestStringUnix implements test_request_string_unix operation.
+	//
+	// POST /test_request_string_unix
+	TestRequestStringUnix(ctx context.Context, req OptUnixSeconds) (Error, error)
+	// TestRequestStringUnixArray implements test_request_string_unix_array operation.
+	//
+	// POST /test_request_string_unix_array
+	TestRequestStringUnixArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixArrayArray implements test_request_string_unix_array_array operation.
+	//
+	// POST /test_request_string_unix_array_array
+	TestRequestStringUnixArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixMicro implements test_request_string_unix-micro operation.
+	//
+	// POST /test_request_string_unix-micro
+	TestRequestStringUnixMicro(ctx context.Context, req OptUnixMicro) (Error, error)
+	// TestRequestStringUnixMicroArray implements test_request_string_unix-micro_array operation.
+	//
+	// POST /test_request_string_unix-micro_array
+	TestRequestStringUnixMicroArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixMicroArrayArray implements test_request_string_unix-micro_array_array operation.
+	//
+	// POST /test_request_string_unix-micro_array_array
+	TestRequestStringUnixMicroArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixMicroNullable implements test_request_string_unix-micro_nullable operation.
+	//
+	// POST /test_request_string_unix-micro_nullable
+	TestRequestStringUnixMicroNullable(ctx context.Context, req OptNilUnixMicro) (Error, error)
+	// TestRequestStringUnixMicroNullableArray implements test_request_string_unix-micro_nullable_array operation.
+	//
+	// POST /test_request_string_unix-micro_nullable_array
+	TestRequestStringUnixMicroNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixMicroNullableArrayArray implements test_request_string_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix-micro_nullable_array_array
+	TestRequestStringUnixMicroNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixMilli implements test_request_string_unix-milli operation.
+	//
+	// POST /test_request_string_unix-milli
+	TestRequestStringUnixMilli(ctx context.Context, req OptUnixMilli) (Error, error)
+	// TestRequestStringUnixMilliArray implements test_request_string_unix-milli_array operation.
+	//
+	// POST /test_request_string_unix-milli_array
+	TestRequestStringUnixMilliArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixMilliArrayArray implements test_request_string_unix-milli_array_array operation.
+	//
+	// POST /test_request_string_unix-milli_array_array
+	TestRequestStringUnixMilliArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixMilliNullable implements test_request_string_unix-milli_nullable operation.
+	//
+	// POST /test_request_string_unix-milli_nullable
+	TestRequestStringUnixMilliNullable(ctx context.Context, req OptNilUnixMilli) (Error, error)
+	// TestRequestStringUnixMilliNullableArray implements test_request_string_unix-milli_nullable_array operation.
+	//
+	// POST /test_request_string_unix-milli_nullable_array
+	TestRequestStringUnixMilliNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixMilliNullableArrayArray implements test_request_string_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix-milli_nullable_array_array
+	TestRequestStringUnixMilliNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixNano implements test_request_string_unix-nano operation.
+	//
+	// POST /test_request_string_unix-nano
+	TestRequestStringUnixNano(ctx context.Context, req OptUnixNano) (Error, error)
+	// TestRequestStringUnixNanoArray implements test_request_string_unix-nano_array operation.
+	//
+	// POST /test_request_string_unix-nano_array
+	TestRequestStringUnixNanoArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixNanoArrayArray implements test_request_string_unix-nano_array_array operation.
+	//
+	// POST /test_request_string_unix-nano_array_array
+	TestRequestStringUnixNanoArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixNanoNullable implements test_request_string_unix-nano_nullable operation.
+	//
+	// POST /test_request_string_unix-nano_nullable
+	TestRequestStringUnixNanoNullable(ctx context.Context, req OptNilUnixNano) (Error, error)
+	// TestRequestStringUnixNanoNullableArray implements test_request_string_unix-nano_nullable_array operation.
+	//
+	// POST /test_request_string_unix-nano_nullable_array
+	TestRequestStringUnixNanoNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixNanoNullableArrayArray implements test_request_string_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix-nano_nullable_array_array
+	TestRequestStringUnixNanoNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixNullable implements test_request_string_unix_nullable operation.
+	//
+	// POST /test_request_string_unix_nullable
+	TestRequestStringUnixNullable(ctx context.Context, req OptNilUnixSeconds) (Error, error)
+	// TestRequestStringUnixNullableArray implements test_request_string_unix_nullable_array operation.
+	//
+	// POST /test_request_string_unix_nullable_array
+	TestRequestStringUnixNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixNullableArrayArray implements test_request_string_unix_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix_nullable_array_array
+	TestRequestStringUnixNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixSeconds implements test_request_string_unix-seconds operation.
+	//
+	// POST /test_request_string_unix-seconds
+	TestRequestStringUnixSeconds(ctx context.Context, req OptUnixSeconds) (Error, error)
+	// TestRequestStringUnixSecondsArray implements test_request_string_unix-seconds_array operation.
+	//
+	// POST /test_request_string_unix-seconds_array
+	TestRequestStringUnixSecondsArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixSecondsArrayArray implements test_request_string_unix-seconds_array_array operation.
+	//
+	// POST /test_request_string_unix-seconds_array_array
+	TestRequestStringUnixSecondsArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
+	// TestRequestStringUnixSecondsNullable implements test_request_string_unix-seconds_nullable operation.
+	//
+	// POST /test_request_string_unix-seconds_nullable
+	TestRequestStringUnixSecondsNullable(ctx context.Context, req OptNilUnixSeconds) (Error, error)
+	// TestRequestStringUnixSecondsNullableArray implements test_request_string_unix-seconds_nullable_array operation.
+	//
+	// POST /test_request_string_unix-seconds_nullable_array
+	TestRequestStringUnixSecondsNullableArray(ctx context.Context, req []time.Time) (Error, error)
+	// TestRequestStringUnixSecondsNullableArrayArray implements test_request_string_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_request_string_unix-seconds_nullable_array_array
+	TestRequestStringUnixSecondsNullableArrayArray(ctx context.Context, req [][]time.Time) (Error, error)
 	// TestResponseAny implements test_response_Any operation.
 	//
 	// POST /test_response_Any
@@ -1997,6 +2237,126 @@ type Handler interface {
 	//
 	// POST /test_response_string_uuid_nullable_array_array
 	TestResponseStringUUIDNullableArrayArray(ctx context.Context, req string) ([][]uuid.UUID, error)
+	// TestResponseStringUnix implements test_response_string_unix operation.
+	//
+	// POST /test_response_string_unix
+	TestResponseStringUnix(ctx context.Context, req string) (time.Time, error)
+	// TestResponseStringUnixArray implements test_response_string_unix_array operation.
+	//
+	// POST /test_response_string_unix_array
+	TestResponseStringUnixArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixArrayArray implements test_response_string_unix_array_array operation.
+	//
+	// POST /test_response_string_unix_array_array
+	TestResponseStringUnixArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixMicro implements test_response_string_unix-micro operation.
+	//
+	// POST /test_response_string_unix-micro
+	TestResponseStringUnixMicro(ctx context.Context, req string) (time.Time, error)
+	// TestResponseStringUnixMicroArray implements test_response_string_unix-micro_array operation.
+	//
+	// POST /test_response_string_unix-micro_array
+	TestResponseStringUnixMicroArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixMicroArrayArray implements test_response_string_unix-micro_array_array operation.
+	//
+	// POST /test_response_string_unix-micro_array_array
+	TestResponseStringUnixMicroArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixMicroNullable implements test_response_string_unix-micro_nullable operation.
+	//
+	// POST /test_response_string_unix-micro_nullable
+	TestResponseStringUnixMicroNullable(ctx context.Context, req string) (NilUnixMicro, error)
+	// TestResponseStringUnixMicroNullableArray implements test_response_string_unix-micro_nullable_array operation.
+	//
+	// POST /test_response_string_unix-micro_nullable_array
+	TestResponseStringUnixMicroNullableArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixMicroNullableArrayArray implements test_response_string_unix-micro_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix-micro_nullable_array_array
+	TestResponseStringUnixMicroNullableArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixMilli implements test_response_string_unix-milli operation.
+	//
+	// POST /test_response_string_unix-milli
+	TestResponseStringUnixMilli(ctx context.Context, req string) (time.Time, error)
+	// TestResponseStringUnixMilliArray implements test_response_string_unix-milli_array operation.
+	//
+	// POST /test_response_string_unix-milli_array
+	TestResponseStringUnixMilliArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixMilliArrayArray implements test_response_string_unix-milli_array_array operation.
+	//
+	// POST /test_response_string_unix-milli_array_array
+	TestResponseStringUnixMilliArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixMilliNullable implements test_response_string_unix-milli_nullable operation.
+	//
+	// POST /test_response_string_unix-milli_nullable
+	TestResponseStringUnixMilliNullable(ctx context.Context, req string) (NilUnixMilli, error)
+	// TestResponseStringUnixMilliNullableArray implements test_response_string_unix-milli_nullable_array operation.
+	//
+	// POST /test_response_string_unix-milli_nullable_array
+	TestResponseStringUnixMilliNullableArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixMilliNullableArrayArray implements test_response_string_unix-milli_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix-milli_nullable_array_array
+	TestResponseStringUnixMilliNullableArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixNano implements test_response_string_unix-nano operation.
+	//
+	// POST /test_response_string_unix-nano
+	TestResponseStringUnixNano(ctx context.Context, req string) (time.Time, error)
+	// TestResponseStringUnixNanoArray implements test_response_string_unix-nano_array operation.
+	//
+	// POST /test_response_string_unix-nano_array
+	TestResponseStringUnixNanoArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixNanoArrayArray implements test_response_string_unix-nano_array_array operation.
+	//
+	// POST /test_response_string_unix-nano_array_array
+	TestResponseStringUnixNanoArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixNanoNullable implements test_response_string_unix-nano_nullable operation.
+	//
+	// POST /test_response_string_unix-nano_nullable
+	TestResponseStringUnixNanoNullable(ctx context.Context, req string) (NilUnixNano, error)
+	// TestResponseStringUnixNanoNullableArray implements test_response_string_unix-nano_nullable_array operation.
+	//
+	// POST /test_response_string_unix-nano_nullable_array
+	TestResponseStringUnixNanoNullableArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixNanoNullableArrayArray implements test_response_string_unix-nano_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix-nano_nullable_array_array
+	TestResponseStringUnixNanoNullableArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixNullable implements test_response_string_unix_nullable operation.
+	//
+	// POST /test_response_string_unix_nullable
+	TestResponseStringUnixNullable(ctx context.Context, req string) (NilUnixSeconds, error)
+	// TestResponseStringUnixNullableArray implements test_response_string_unix_nullable_array operation.
+	//
+	// POST /test_response_string_unix_nullable_array
+	TestResponseStringUnixNullableArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixNullableArrayArray implements test_response_string_unix_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix_nullable_array_array
+	TestResponseStringUnixNullableArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixSeconds implements test_response_string_unix-seconds operation.
+	//
+	// POST /test_response_string_unix-seconds
+	TestResponseStringUnixSeconds(ctx context.Context, req string) (time.Time, error)
+	// TestResponseStringUnixSecondsArray implements test_response_string_unix-seconds_array operation.
+	//
+	// POST /test_response_string_unix-seconds_array
+	TestResponseStringUnixSecondsArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixSecondsArrayArray implements test_response_string_unix-seconds_array_array operation.
+	//
+	// POST /test_response_string_unix-seconds_array_array
+	TestResponseStringUnixSecondsArrayArray(ctx context.Context, req string) ([][]time.Time, error)
+	// TestResponseStringUnixSecondsNullable implements test_response_string_unix-seconds_nullable operation.
+	//
+	// POST /test_response_string_unix-seconds_nullable
+	TestResponseStringUnixSecondsNullable(ctx context.Context, req string) (NilUnixSeconds, error)
+	// TestResponseStringUnixSecondsNullableArray implements test_response_string_unix-seconds_nullable_array operation.
+	//
+	// POST /test_response_string_unix-seconds_nullable_array
+	TestResponseStringUnixSecondsNullableArray(ctx context.Context, req string) ([]time.Time, error)
+	// TestResponseStringUnixSecondsNullableArrayArray implements test_response_string_unix-seconds_nullable_array_array operation.
+	//
+	// POST /test_response_string_unix-seconds_nullable_array_array
+	TestResponseStringUnixSecondsNullableArrayArray(ctx context.Context, req string) ([][]time.Time, error)
 }
 
 // Server implements http server based on OpenAPI v3 specification and
