@@ -224,15 +224,18 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 		})
 
 		if ap := schema.AdditionalProperties; ap != nil {
-			// TODO(tdakkota): handle additionalProperties: false
-			s.AdditionalProperties = true
-			if !ap.Bool {
+			var additional bool
+			if val := ap.Bool; val != nil {
+				additional = *val
+			} else {
+				additional = true
 				item, err := p.parse(&ap.Schema, ctx)
 				if err != nil {
 					return nil, errors.Wrapf(err, "additionalProperties")
 				}
 				s.Item = item
 			}
+			s.AdditionalProperties = &additional
 		}
 
 		if pp := schema.PatternProperties; len(pp) > 0 {

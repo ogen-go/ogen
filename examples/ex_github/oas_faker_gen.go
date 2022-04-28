@@ -223,13 +223,6 @@ func (s *ActionsBillingUsageMinutesUsedBreakdown) SetFake() {
 
 // SetFake set fake values.
 func (s *ActionsCancelWorkflowRunAccepted) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -284,13 +277,6 @@ func (s *ActionsCreateOrUpdateOrgSecretReqVisibility) SetFake() {
 
 // SetFake set fake values.
 func (s *ActionsCreateOrUpdateRepoSecretCreated) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -758,13 +744,6 @@ func (s *ActionsPublicKey) SetFake() {
 
 // SetFake set fake values.
 func (s *ActionsReRunWorkflowCreated) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -788,13 +767,6 @@ func (s *ActionsRepositoryPermissions) SetFake() {
 
 // SetFake set fake values.
 func (s *ActionsRetryWorkflowCreated) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -4237,13 +4209,6 @@ func (s *ChecksListSuitesForRefOK) SetFake() {
 
 // SetFake set fake values.
 func (s *ChecksRerequestSuiteCreated) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -6951,13 +6916,6 @@ func (s *EmojisGetOK) SetFake() {
 
 // SetFake set fake values.
 func (s *EmptyObject) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -9196,13 +9154,6 @@ func (s *GistSimpleForksItem) SetFake() {
 
 // SetFake set fake values.
 func (s *GistsCheckIsStarredNotFound) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -14292,22 +14243,6 @@ func (s *MigrationsMapCommitAuthorReq) SetFake() {
 		{
 			s.Name.SetFake()
 		}
-	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *MigrationsMapCommitAuthorReqAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
@@ -21266,13 +21201,6 @@ func (s *OrganizationSimple) SetFake() {
 
 // SetFake set fake values.
 func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -21707,22 +21635,6 @@ func (s *OrgsUpdateWebhookConfigForOrgReq) SetFake() {
 		{
 			s.InsecureSsl.SetFake()
 		}
-	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *OrgsUpdateWebhookConfigForOrgReqAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
@@ -24144,13 +24056,6 @@ func (s *ProjectsListForUserOKApplicationJSON) SetFake() {
 
 // SetFake set fake values.
 func (s *ProjectsMoveCardCreated) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -24282,13 +24187,6 @@ func (s *ProjectsMoveColumnApplicationJSONUnauthorized) SetFake() {
 
 // SetFake set fake values.
 func (s *ProjectsMoveColumnCreated) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -24548,22 +24446,6 @@ func (s *ProtectedBranchAllowDeletions) SetFake() {
 			s.Enabled = true
 		}
 	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *ProtectedBranchAllowDeletionsAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -24572,22 +24454,6 @@ func (s *ProtectedBranchAllowForcePushes) SetFake() {
 		{
 			s.Enabled = true
 		}
-	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *ProtectedBranchAllowForcePushesAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
@@ -24602,22 +24468,6 @@ func (s *ProtectedBranchEnforceAdmins) SetFake() {
 		{
 			s.Enabled = true
 		}
-	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *ProtectedBranchEnforceAdminsAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
@@ -24700,22 +24550,6 @@ func (s *ProtectedBranchRequiredConversationResolution) SetFake() {
 			s.Enabled.SetFake()
 		}
 	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *ProtectedBranchRequiredConversationResolutionAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -24724,22 +24558,6 @@ func (s *ProtectedBranchRequiredLinearHistory) SetFake() {
 		{
 			s.Enabled = true
 		}
-	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *ProtectedBranchRequiredLinearHistoryAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
@@ -25025,22 +24843,6 @@ func (s *PublicUser) SetFake() {
 		{
 			s.Collaborators.SetFake()
 		}
-	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *PublicUserAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
@@ -30244,22 +30046,6 @@ func (s *ReposCreateWebhookReq) SetFake() {
 			s.Active.SetFake()
 		}
 	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *ReposCreateWebhookReqAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
-	}
 }
 
 // SetFake set fake values.
@@ -31912,22 +31698,6 @@ func (s *ReposUpdateWebhookConfigForRepoReq) SetFake() {
 		{
 			s.InsecureSsl.SetFake()
 		}
-	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *ReposUpdateWebhookConfigForRepoReqAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
@@ -36189,22 +35959,6 @@ func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq) SetFake() {
 				s.Groups = append(s.Groups, elem)
 			}
 		}
-	}
-	{
-		{
-			s.AdditionalProps.SetFake()
-		}
-	}
-}
-
-// SetFake set fake values.
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional) SetFake() {
-	var (
-		elem jx.Raw
-		m    map[string]jx.Raw = s.init()
-	)
-	for i := 0; i < 0; i++ {
-		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 

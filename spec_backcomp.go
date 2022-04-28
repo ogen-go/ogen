@@ -70,8 +70,13 @@ func (p *AdditionalProperties) ToJSONSchema() *jsonschema.AdditionalProperties {
 		return nil
 	}
 
+	var val *bool
+	if p.Bool != nil {
+		val = new(bool)
+		*val = *p.Bool
+	}
 	return &jsonschema.AdditionalProperties{
-		Bool:   p.Bool,
+		Bool:   val,
 		Schema: *p.Schema.ToJSONSchema(),
 	}
 }

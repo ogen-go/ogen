@@ -40,20 +40,8 @@ func (s *AnysOrExpressions) init() AnysOrExpressions {
 // evaluated at runtime, that identifies a URL to use for the callback operation.
 // Ref: #/definitions/callback
 type Callback struct {
-	AdditionalProps CallbackAdditional
-	Pattern0Props   CallbackPattern0
-	Pattern1Props   CallbackPattern1
-}
-
-type CallbackAdditional map[string]jx.Raw
-
-func (s *CallbackAdditional) init() CallbackAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Pattern0Props CallbackPattern0
+	Pattern1Props CallbackPattern1
 }
 
 // Ref: #/definitions/callbackOrReference
@@ -169,19 +157,7 @@ type Components struct {
 	SecuritySchemes OptSecuritySchemesOrReferences "json:\"securitySchemes\""
 	Links           OptLinksOrReferences           "json:\"links\""
 	Callbacks       OptCallbacksOrReferences       "json:\"callbacks\""
-	AdditionalProps ComponentsAdditional
 	Pattern0Props   ComponentsPattern0
-}
-
-type ComponentsAdditional map[string]jx.Raw
-
-func (s *ComponentsAdditional) init() ComponentsAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
 }
 
 type ComponentsPattern0 map[string]jx.Raw
@@ -198,22 +174,10 @@ func (s *ComponentsPattern0) init() ComponentsPattern0 {
 // Contact information for the exposed API.
 // Ref: #/definitions/contact
 type Contact struct {
-	Name            OptString "json:\"name\""
-	URL             OptString "json:\"url\""
-	Email           OptString "json:\"email\""
-	AdditionalProps ContactAdditional
-	Pattern0Props   ContactPattern0
-}
-
-type ContactAdditional map[string]jx.Raw
-
-func (s *ContactAdditional) init() ContactAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Name          OptString "json:\"name\""
+	URL           OptString "json:\"url\""
+	Email         OptString "json:\"email\""
+	Pattern0Props ContactPattern0
 }
 
 type ContactPattern0 map[string]jx.Raw
@@ -234,43 +198,19 @@ func (s *ContactPattern0) init() ContactPattern0 {
 // discriminator, _inline_ schemas will not be considered.
 // Ref: #/definitions/discriminator
 type Discriminator struct {
-	PropertyName    string     "json:\"propertyName\""
-	Mapping         OptStrings "json:\"mapping\""
-	AdditionalProps DiscriminatorAdditional
-}
-
-type DiscriminatorAdditional map[string]jx.Raw
-
-func (s *DiscriminatorAdditional) init() DiscriminatorAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	PropertyName string     "json:\"propertyName\""
+	Mapping      OptStrings "json:\"mapping\""
 }
 
 // A single encoding definition applied to a single schema property.
 // Ref: #/definitions/encoding
 type Encoding struct {
-	ContentType     OptString              "json:\"contentType\""
-	Headers         OptHeadersOrReferences "json:\"headers\""
-	Style           OptString              "json:\"style\""
-	Explode         OptBool                "json:\"explode\""
-	AllowReserved   OptBool                "json:\"allowReserved\""
-	AdditionalProps EncodingAdditional
-	Pattern0Props   EncodingPattern0
-}
-
-type EncodingAdditional map[string]jx.Raw
-
-func (s *EncodingAdditional) init() EncodingAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	ContentType   OptString              "json:\"contentType\""
+	Headers       OptHeadersOrReferences "json:\"headers\""
+	Style         OptString              "json:\"style\""
+	Explode       OptBool                "json:\"explode\""
+	AllowReserved OptBool                "json:\"allowReserved\""
+	Pattern0Props EncodingPattern0
 }
 
 type EncodingPattern0 map[string]jx.Raw
@@ -298,23 +238,11 @@ func (s *Encodings) init() Encodings {
 
 // Ref: #/definitions/example
 type Example struct {
-	Summary         OptString "json:\"summary\""
-	Description     OptString "json:\"description\""
-	Value           jx.Raw    "json:\"value\""
-	ExternalValue   OptString "json:\"externalValue\""
-	AdditionalProps ExampleAdditional
-	Pattern0Props   ExamplePattern0
-}
-
-type ExampleAdditional map[string]jx.Raw
-
-func (s *ExampleAdditional) init() ExampleAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Summary       OptString "json:\"summary\""
+	Description   OptString "json:\"description\""
+	Value         jx.Raw    "json:\"value\""
+	ExternalValue OptString "json:\"externalValue\""
+	Pattern0Props ExamplePattern0
 }
 
 // Ref: #/definitions/exampleOrReference
@@ -408,21 +336,9 @@ func (s *ExamplesOrReferences) init() ExamplesOrReferences {
 // Allows referencing an external resource for extended documentation.
 // Ref: #/definitions/externalDocs
 type ExternalDocs struct {
-	Description     OptString "json:\"description\""
-	URL             string    "json:\"url\""
-	AdditionalProps ExternalDocsAdditional
-	Pattern0Props   ExternalDocsPattern0
-}
-
-type ExternalDocsAdditional map[string]jx.Raw
-
-func (s *ExternalDocsAdditional) init() ExternalDocsAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Description   OptString "json:\"description\""
+	URL           string    "json:\"url\""
+	Pattern0Props ExternalDocsPattern0
 }
 
 type ExternalDocsPattern0 map[string]jx.Raw
@@ -453,19 +369,7 @@ type Header struct {
 	Example         jx.Raw                  "json:\"example\""
 	Examples        OptExamplesOrReferences "json:\"examples\""
 	Content         OptMediaTypes           "json:\"content\""
-	AdditionalProps HeaderAdditional
 	Pattern0Props   HeaderPattern0
-}
-
-type HeaderAdditional map[string]jx.Raw
-
-func (s *HeaderAdditional) init() HeaderAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
 }
 
 // Ref: #/definitions/headerOrReference
@@ -560,25 +464,13 @@ func (s *HeadersOrReferences) init() HeadersOrReferences {
 // MAY be presented in editing or documentation generation tools for convenience.
 // Ref: #/definitions/info
 type Info struct {
-	Title           string     "json:\"title\""
-	Description     OptString  "json:\"description\""
-	TermsOfService  OptString  "json:\"termsOfService\""
-	Contact         OptContact "json:\"contact\""
-	License         OptLicense "json:\"license\""
-	Version         string     "json:\"version\""
-	AdditionalProps InfoAdditional
-	Pattern0Props   InfoPattern0
-}
-
-type InfoAdditional map[string]jx.Raw
-
-func (s *InfoAdditional) init() InfoAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Title          string     "json:\"title\""
+	Description    OptString  "json:\"description\""
+	TermsOfService OptString  "json:\"termsOfService\""
+	Contact        OptContact "json:\"contact\""
+	License        OptLicense "json:\"license\""
+	Version        string     "json:\"version\""
+	Pattern0Props  InfoPattern0
 }
 
 type InfoPattern0 map[string]jx.Raw
@@ -613,21 +505,9 @@ type JsonschemaDraft4PropertiesUniqueItems bool
 // License information for the exposed API.
 // Ref: #/definitions/license
 type License struct {
-	Name            string    "json:\"name\""
-	URL             OptString "json:\"url\""
-	AdditionalProps LicenseAdditional
-	Pattern0Props   LicensePattern0
-}
-
-type LicenseAdditional map[string]jx.Raw
-
-func (s *LicenseAdditional) init() LicenseAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Name          string    "json:\"name\""
+	URL           OptString "json:\"url\""
+	Pattern0Props LicensePattern0
 }
 
 type LicensePattern0 map[string]jx.Raw
@@ -650,25 +530,13 @@ func (s *LicensePattern0) init() LicensePattern0 {
 // as parameters while invoking the linked operation.
 // Ref: #/definitions/link
 type Link struct {
-	OperationRef    OptString            "json:\"operationRef\""
-	OperationId     OptString            "json:\"operationId\""
-	Parameters      OptAnysOrExpressions "json:\"parameters\""
-	RequestBody     jx.Raw               "json:\"requestBody\""
-	Description     OptString            "json:\"description\""
-	Server          OptServer            "json:\"server\""
-	AdditionalProps LinkAdditional
-	Pattern0Props   LinkPattern0
-}
-
-type LinkAdditional map[string]jx.Raw
-
-func (s *LinkAdditional) init() LinkAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	OperationRef  OptString            "json:\"operationRef\""
+	OperationId   OptString            "json:\"operationId\""
+	Parameters    OptAnysOrExpressions "json:\"parameters\""
+	RequestBody   jx.Raw               "json:\"requestBody\""
+	Description   OptString            "json:\"description\""
+	Server        OptServer            "json:\"server\""
+	Pattern0Props LinkPattern0
 }
 
 // Ref: #/definitions/linkOrReference
@@ -762,23 +630,11 @@ func (s *LinksOrReferences) init() LinksOrReferences {
 // Each Media Type Object provides schema and examples for the media type identified by its key.
 // Ref: #/definitions/mediaType
 type MediaType struct {
-	Schema          OptSchemaOrReference    "json:\"schema\""
-	Example         jx.Raw                  "json:\"example\""
-	Examples        OptExamplesOrReferences "json:\"examples\""
-	Encoding        OptEncodings            "json:\"encoding\""
-	AdditionalProps MediaTypeAdditional
-	Pattern0Props   MediaTypePattern0
-}
-
-type MediaTypeAdditional map[string]jx.Raw
-
-func (s *MediaTypeAdditional) init() MediaTypeAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Schema        OptSchemaOrReference    "json:\"schema\""
+	Example       jx.Raw                  "json:\"example\""
+	Examples      OptExamplesOrReferences "json:\"examples\""
+	Encoding      OptEncodings            "json:\"encoding\""
+	Pattern0Props MediaTypePattern0
 }
 
 type MediaTypePattern0 map[string]jx.Raw
@@ -811,19 +667,7 @@ type OauthFlow struct {
 	TokenUrl         OptString  "json:\"tokenUrl\""
 	RefreshUrl       OptString  "json:\"refreshUrl\""
 	Scopes           OptStrings "json:\"scopes\""
-	AdditionalProps  OauthFlowAdditional
 	Pattern0Props    OauthFlowPattern0
-}
-
-type OauthFlowAdditional map[string]jx.Raw
-
-func (s *OauthFlowAdditional) init() OauthFlowAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
 }
 
 type OauthFlowPattern0 map[string]jx.Raw
@@ -844,19 +688,7 @@ type OauthFlows struct {
 	Password          OptOauthFlow "json:\"password\""
 	ClientCredentials OptOauthFlow "json:\"clientCredentials\""
 	AuthorizationCode OptOauthFlow "json:\"authorizationCode\""
-	AdditionalProps   OauthFlowsAdditional
 	Pattern0Props     OauthFlowsPattern0
-}
-
-type OauthFlowsAdditional map[string]jx.Raw
-
-func (s *OauthFlowsAdditional) init() OauthFlowsAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
 }
 
 type OauthFlowsPattern0 map[string]jx.Raw
@@ -873,31 +705,19 @@ func (s *OauthFlowsPattern0) init() OauthFlowsPattern0 {
 // Describes a single API operation on a path.
 // Ref: #/definitions/operation
 type Operation struct {
-	Tags            []string                  "json:\"tags\""
-	Summary         OptString                 "json:\"summary\""
-	Description     OptString                 "json:\"description\""
-	ExternalDocs    OptExternalDocs           "json:\"externalDocs\""
-	OperationId     OptString                 "json:\"operationId\""
-	Parameters      []ParameterOrReference    "json:\"parameters\""
-	RequestBody     OptRequestBodyOrReference "json:\"requestBody\""
-	Responses       Responses                 "json:\"responses\""
-	Callbacks       OptCallbacksOrReferences  "json:\"callbacks\""
-	Deprecated      OptBool                   "json:\"deprecated\""
-	Security        []SecurityRequirement     "json:\"security\""
-	Servers         []Server                  "json:\"servers\""
-	AdditionalProps OperationAdditional
-	Pattern0Props   OperationPattern0
-}
-
-type OperationAdditional map[string]jx.Raw
-
-func (s *OperationAdditional) init() OperationAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Tags          []string                  "json:\"tags\""
+	Summary       OptString                 "json:\"summary\""
+	Description   OptString                 "json:\"description\""
+	ExternalDocs  OptExternalDocs           "json:\"externalDocs\""
+	OperationId   OptString                 "json:\"operationId\""
+	Parameters    []ParameterOrReference    "json:\"parameters\""
+	RequestBody   OptRequestBodyOrReference "json:\"requestBody\""
+	Responses     Responses                 "json:\"responses\""
+	Callbacks     OptCallbacksOrReferences  "json:\"callbacks\""
+	Deprecated    OptBool                   "json:\"deprecated\""
+	Security      []SecurityRequirement     "json:\"security\""
+	Servers       []Server                  "json:\"servers\""
+	Pattern0Props OperationPattern0
 }
 
 type OperationPattern0 map[string]jx.Raw
@@ -2814,19 +2634,7 @@ type Parameter struct {
 	Example         jx.Raw                  "json:\"example\""
 	Examples        OptExamplesOrReferences "json:\"examples\""
 	Content         OptMediaTypes           "json:\"content\""
-	AdditionalProps ParameterAdditional
 	Pattern0Props   ParameterPattern0
-}
-
-type ParameterAdditional map[string]jx.Raw
-
-func (s *ParameterAdditional) init() ParameterAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
 }
 
 type ParameterIn string
@@ -2943,32 +2751,20 @@ func (s *ParametersOrReferences) init() ParametersOrReferences {
 // which operations and parameters are available.
 // Ref: #/definitions/pathItem
 type PathItem struct {
-	Ref             OptString              "json:\"$ref\""
-	Summary         OptString              "json:\"summary\""
-	Description     OptString              "json:\"description\""
-	Get             OptOperation           "json:\"get\""
-	Put             OptOperation           "json:\"put\""
-	Post            OptOperation           "json:\"post\""
-	Delete          OptOperation           "json:\"delete\""
-	Options         OptOperation           "json:\"options\""
-	Head            OptOperation           "json:\"head\""
-	Patch           OptOperation           "json:\"patch\""
-	Trace           OptOperation           "json:\"trace\""
-	Servers         []Server               "json:\"servers\""
-	Parameters      []ParameterOrReference "json:\"parameters\""
-	AdditionalProps PathItemAdditional
-	Pattern0Props   PathItemPattern0
-}
-
-type PathItemAdditional map[string]jx.Raw
-
-func (s *PathItemAdditional) init() PathItemAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Ref           OptString              "json:\"$ref\""
+	Summary       OptString              "json:\"summary\""
+	Description   OptString              "json:\"description\""
+	Get           OptOperation           "json:\"get\""
+	Put           OptOperation           "json:\"put\""
+	Post          OptOperation           "json:\"post\""
+	Delete        OptOperation           "json:\"delete\""
+	Options       OptOperation           "json:\"options\""
+	Head          OptOperation           "json:\"head\""
+	Patch         OptOperation           "json:\"patch\""
+	Trace         OptOperation           "json:\"trace\""
+	Servers       []Server               "json:\"servers\""
+	Parameters    []ParameterOrReference "json:\"parameters\""
+	Pattern0Props PathItemPattern0
 }
 
 type PathItemPattern0 map[string]jx.Raw
@@ -2987,20 +2783,8 @@ func (s *PathItemPattern0) init() PathItemPattern0 {
 // to ACL constraints.
 // Ref: #/definitions/paths
 type Paths struct {
-	AdditionalProps PathsAdditional
-	Pattern0Props   PathsPattern0
-	Pattern1Props   PathsPattern1
-}
-
-type PathsAdditional map[string]jx.Raw
-
-func (s *PathsAdditional) init() PathsAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Pattern0Props PathsPattern0
+	Pattern1Props PathsPattern1
 }
 
 type PathsPattern0 map[string]PathItem
@@ -3033,19 +2817,7 @@ type PositiveInteger int
 // the JSON Reference specification and not by the JSON Schema specification.
 // Ref: #/definitions/reference
 type Reference struct {
-	Ref             string "json:\"$ref\""
-	AdditionalProps ReferenceAdditional
-}
-
-type ReferenceAdditional map[string]jx.Raw
-
-func (s *ReferenceAdditional) init() ReferenceAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Ref string "json:\"$ref\""
 }
 
 // Ref: #/definitions/requestBodiesOrReferences
@@ -3063,22 +2835,10 @@ func (s *RequestBodiesOrReferences) init() RequestBodiesOrReferences {
 // Describes a single request body.
 // Ref: #/definitions/requestBody
 type RequestBody struct {
-	Description     OptString  "json:\"description\""
-	Content         MediaTypes "json:\"content\""
-	Required        OptBool    "json:\"required\""
-	AdditionalProps RequestBodyAdditional
-	Pattern0Props   RequestBodyPattern0
-}
-
-type RequestBodyAdditional map[string]jx.Raw
-
-func (s *RequestBodyAdditional) init() RequestBodyAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Description   OptString  "json:\"description\""
+	Content       MediaTypes "json:\"content\""
+	Required      OptBool    "json:\"required\""
+	Pattern0Props RequestBodyPattern0
 }
 
 // Ref: #/definitions/requestBodyOrReference
@@ -3163,23 +2923,11 @@ func (s *RequestBodyPattern0) init() RequestBodyPattern0 {
 // operations based on the response.
 // Ref: #/definitions/response
 type Response struct {
-	Description     string                 "json:\"description\""
-	Headers         OptHeadersOrReferences "json:\"headers\""
-	Content         OptMediaTypes          "json:\"content\""
-	Links           OptLinksOrReferences   "json:\"links\""
-	AdditionalProps ResponseAdditional
-	Pattern0Props   ResponsePattern0
-}
-
-type ResponseAdditional map[string]jx.Raw
-
-func (s *ResponseAdditional) init() ResponseAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Description   string                 "json:\"description\""
+	Headers       OptHeadersOrReferences "json:\"headers\""
+	Content       OptMediaTypes          "json:\"content\""
+	Links         OptLinksOrReferences   "json:\"links\""
+	Pattern0Props ResponsePattern0
 }
 
 // Ref: #/definitions/responseOrReference
@@ -3267,21 +3015,9 @@ func (s *ResponsePattern0) init() ResponsePattern0 {
 // for a successful operation call.
 // Ref: #/definitions/responses
 type Responses struct {
-	Default         OptResponseOrReference "json:\"default\""
-	AdditionalProps ResponsesAdditional
-	Pattern0Props   ResponsesPattern0
-	Pattern1Props   ResponsesPattern1
-}
-
-type ResponsesAdditional map[string]jx.Raw
-
-func (s *ResponsesAdditional) init() ResponsesAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Default       OptResponseOrReference "json:\"default\""
+	Pattern0Props ResponsesPattern0
+	Pattern1Props ResponsesPattern1
 }
 
 // Ref: #/definitions/responsesOrReferences
@@ -3360,19 +3096,7 @@ type Schema struct {
 	Default              jx.Raw                                        "json:\"default\""
 	Description          OptString                                     "json:\"description\""
 	Format               OptString                                     "json:\"format\""
-	AdditionalProps      SchemaAdditional
 	Pattern0Props        SchemaPattern0
-}
-
-type SchemaAdditional map[string]jx.Raw
-
-func (s *SchemaAdditional) init() SchemaAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
 }
 
 // SchemaAdditionalProperties represents sum type.
@@ -3560,25 +3284,9 @@ func (s *SchemasOrReferences) init() SchemasOrReferences {
 // Requirement Objects is defined on the Open API object or Operation Object, only one of Security
 // Requirement Objects in the list needs to be satisfied to authorize the request.
 // Ref: #/definitions/securityRequirement
-type SecurityRequirement struct {
-	AdditionalProps SecurityRequirementAdditional
-	Pattern0Props   SecurityRequirementPattern0
-}
+type SecurityRequirement map[string][]string
 
-type SecurityRequirementAdditional map[string]jx.Raw
-
-func (s *SecurityRequirementAdditional) init() SecurityRequirementAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-type SecurityRequirementPattern0 map[string][]string
-
-func (s *SecurityRequirementPattern0) init() SecurityRequirementPattern0 {
+func (s *SecurityRequirement) init() SecurityRequirement {
 	m := *s
 	if m == nil {
 		m = map[string][]string{}
@@ -3601,19 +3309,7 @@ type SecurityScheme struct {
 	BearerFormat     OptString     "json:\"bearerFormat\""
 	Flows            OptOauthFlows "json:\"flows\""
 	OpenIdConnectUrl OptString     "json:\"openIdConnectUrl\""
-	AdditionalProps  SecuritySchemeAdditional
 	Pattern0Props    SecuritySchemePattern0
-}
-
-type SecuritySchemeAdditional map[string]jx.Raw
-
-func (s *SecuritySchemeAdditional) init() SecuritySchemeAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
 }
 
 // Ref: #/definitions/securitySchemeOrReference
@@ -3711,22 +3407,10 @@ func (s *SecuritySchemesOrReferences) init() SecuritySchemesOrReferences {
 // An object representing a Server.
 // Ref: #/definitions/server
 type Server struct {
-	URL             string             "json:\"url\""
-	Description     OptString          "json:\"description\""
-	Variables       OptServerVariables "json:\"variables\""
-	AdditionalProps ServerAdditional
-	Pattern0Props   ServerPattern0
-}
-
-type ServerAdditional map[string]jx.Raw
-
-func (s *ServerAdditional) init() ServerAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	URL           string             "json:\"url\""
+	Description   OptString          "json:\"description\""
+	Variables     OptServerVariables "json:\"variables\""
+	Pattern0Props ServerPattern0
 }
 
 type ServerPattern0 map[string]jx.Raw
@@ -3743,22 +3427,10 @@ func (s *ServerPattern0) init() ServerPattern0 {
 // An object representing a Server Variable for server URL template substitution.
 // Ref: #/definitions/serverVariable
 type ServerVariable struct {
-	Enum            []string  "json:\"enum\""
-	Default         string    "json:\"default\""
-	Description     OptString "json:\"description\""
-	AdditionalProps ServerVariableAdditional
-	Pattern0Props   ServerVariablePattern0
-}
-
-type ServerVariableAdditional map[string]jx.Raw
-
-func (s *ServerVariableAdditional) init() ServerVariableAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Enum          []string  "json:\"enum\""
+	Default       string    "json:\"default\""
+	Description   OptString "json:\"description\""
+	Pattern0Props ServerVariablePattern0
 }
 
 type ServerVariablePattern0 map[string]jx.Raw
@@ -3786,27 +3458,15 @@ func (s *ServerVariables) init() ServerVariables {
 
 // This is the root document object of the OpenAPI document.
 type Spec struct {
-	Openapi         string                "json:\"openapi\""
-	Info            Info                  "json:\"info\""
-	Servers         []Server              "json:\"servers\""
-	Paths           Paths                 "json:\"paths\""
-	Components      OptComponents         "json:\"components\""
-	Security        []SecurityRequirement "json:\"security\""
-	Tags            []Tag                 "json:\"tags\""
-	ExternalDocs    OptExternalDocs       "json:\"externalDocs\""
-	AdditionalProps SpecAdditional
-	Pattern0Props   SpecPattern0
-}
-
-type SpecAdditional map[string]jx.Raw
-
-func (s *SpecAdditional) init() SpecAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Openapi       string                "json:\"openapi\""
+	Info          Info                  "json:\"info\""
+	Servers       []Server              "json:\"servers\""
+	Paths         Paths                 "json:\"paths\""
+	Components    OptComponents         "json:\"components\""
+	Security      []SecurityRequirement "json:\"security\""
+	Tags          []Tag                 "json:\"tags\""
+	ExternalDocs  OptExternalDocs       "json:\"externalDocs\""
+	Pattern0Props SpecPattern0
 }
 
 type SpecPattern0 map[string]jx.Raw
@@ -3838,22 +3498,10 @@ func (s *Strings) init() Strings {
 // Tag Object per tag defined in the Operation Object instances.
 // Ref: #/definitions/tag
 type Tag struct {
-	Name            string          "json:\"name\""
-	Description     OptString       "json:\"description\""
-	ExternalDocs    OptExternalDocs "json:\"externalDocs\""
-	AdditionalProps TagAdditional
-	Pattern0Props   TagPattern0
-}
-
-type TagAdditional map[string]jx.Raw
-
-func (s *TagAdditional) init() TagAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Name          string          "json:\"name\""
+	Description   OptString       "json:\"description\""
+	ExternalDocs  OptExternalDocs "json:\"externalDocs\""
+	Pattern0Props TagPattern0
 }
 
 type TagPattern0 map[string]jx.Raw
@@ -3872,24 +3520,12 @@ func (s *TagPattern0) init() TagPattern0 {
 // used to add that information. See examples for expected behavior.
 // Ref: #/definitions/xml
 type XML struct {
-	Name            OptString "json:\"name\""
-	Namespace       OptString "json:\"namespace\""
-	Prefix          OptString "json:\"prefix\""
-	Attribute       OptBool   "json:\"attribute\""
-	Wrapped         OptBool   "json:\"wrapped\""
-	AdditionalProps XMLAdditional
-	Pattern0Props   XMLPattern0
-}
-
-type XMLAdditional map[string]jx.Raw
-
-func (s *XMLAdditional) init() XMLAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Name          OptString "json:\"name\""
+	Namespace     OptString "json:\"namespace\""
+	Prefix        OptString "json:\"prefix\""
+	Attribute     OptBool   "json:\"attribute\""
+	Wrapped       OptBool   "json:\"wrapped\""
+	Pattern0Props XMLPattern0
 }
 
 type XMLPattern0 map[string]jx.Raw
@@ -3989,13 +3625,6 @@ func (s Callback) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s Callback) encodeFields(e *jx.Encoder) {
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -4017,7 +3646,6 @@ func (s *Callback) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Callback to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]PathItem{}
 	s.Pattern1Props = map[string]jx.Raw{}
 
@@ -4056,18 +3684,7 @@ func (s *Callback) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -4086,64 +3703,6 @@ func (s Callback) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Callback) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s CallbackAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s CallbackAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes CallbackAdditional from json.
-func (s *CallbackAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode CallbackAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode CallbackAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s CallbackAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *CallbackAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -4452,13 +4011,6 @@ func (s Components) encodeFields(e *jx.Encoder) {
 			s.Callbacks.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -4485,7 +4037,6 @@ func (s *Components) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Components to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -4600,18 +4151,7 @@ func (s *Components) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -4630,64 +4170,6 @@ func (s Components) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Components) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ComponentsAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ComponentsAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ComponentsAdditional from json.
-func (s *ComponentsAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ComponentsAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ComponentsAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ComponentsAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ComponentsAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -4781,13 +4263,6 @@ func (s Contact) encodeFields(e *jx.Encoder) {
 			s.Email.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -4808,7 +4283,6 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Contact to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -4863,18 +4337,7 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -4893,64 +4356,6 @@ func (s Contact) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Contact) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ContactAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ContactAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ContactAdditional from json.
-func (s *ContactAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ContactAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ContactAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ContactAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ContactAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -5037,13 +4442,6 @@ func (s Discriminator) encodeFields(e *jx.Encoder) {
 			s.Mapping.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 }
 
 var jsonFieldsNameOfDiscriminator = [2]string{
@@ -5057,7 +4455,6 @@ func (s *Discriminator) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Discriminator to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -5084,18 +4481,7 @@ func (s *Discriminator) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"mapping\"")
 			}
 		default:
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -5151,64 +4537,6 @@ func (s *Discriminator) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s DiscriminatorAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s DiscriminatorAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes DiscriminatorAdditional from json.
-func (s *DiscriminatorAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode DiscriminatorAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode DiscriminatorAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s DiscriminatorAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *DiscriminatorAdditional) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
 func (s Encoding) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
@@ -5247,13 +4575,6 @@ func (s Encoding) encodeFields(e *jx.Encoder) {
 			s.AllowReserved.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -5276,7 +4597,6 @@ func (s *Encoding) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Encoding to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -5351,18 +4671,7 @@ func (s *Encoding) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -5381,64 +4690,6 @@ func (s Encoding) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Encoding) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s EncodingAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s EncodingAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes EncodingAdditional from json.
-func (s *EncodingAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode EncodingAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode EncodingAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s EncodingAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *EncodingAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -5593,13 +4844,6 @@ func (s Example) encodeFields(e *jx.Encoder) {
 			s.ExternalValue.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -5621,7 +4865,6 @@ func (s *Example) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Example to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -5687,18 +4930,7 @@ func (s *Example) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -5717,64 +4949,6 @@ func (s Example) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Example) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ExampleAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ExampleAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ExampleAdditional from json.
-func (s *ExampleAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ExampleAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ExampleAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ExampleAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ExampleAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -5994,13 +5168,6 @@ func (s ExternalDocs) encodeFields(e *jx.Encoder) {
 		e.FieldStart("url")
 		e.Str(s.URL)
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -6021,7 +5188,6 @@ func (s *ExternalDocs) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ExternalDocs to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -6068,18 +5234,7 @@ func (s *ExternalDocs) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -6130,64 +5285,6 @@ func (s ExternalDocs) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *ExternalDocs) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ExternalDocsAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ExternalDocsAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ExternalDocsAdditional from json.
-func (s *ExternalDocsAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ExternalDocsAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ExternalDocsAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ExternalDocsAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ExternalDocsAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -6330,13 +5427,6 @@ func (s Header) encodeFields(e *jx.Encoder) {
 			s.Content.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -6365,7 +5455,6 @@ func (s *Header) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Header to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -6501,18 +5590,7 @@ func (s *Header) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -6531,64 +5609,6 @@ func (s Header) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Header) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s HeaderAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s HeaderAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes HeaderAdditional from json.
-func (s *HeaderAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode HeaderAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode HeaderAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s HeaderAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *HeaderAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -6852,13 +5872,6 @@ func (s Info) encodeFields(e *jx.Encoder) {
 		e.FieldStart("version")
 		e.Str(s.Version)
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -6883,7 +5896,6 @@ func (s *Info) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Info to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -6972,18 +5984,7 @@ func (s *Info) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -7034,64 +6035,6 @@ func (s Info) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Info) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s InfoAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s InfoAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes InfoAdditional from json.
-func (s *InfoAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode InfoAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode InfoAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s InfoAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *InfoAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -7543,13 +6486,6 @@ func (s License) encodeFields(e *jx.Encoder) {
 			s.URL.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -7570,7 +6506,6 @@ func (s *License) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode License to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -7617,18 +6552,7 @@ func (s *License) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -7679,64 +6603,6 @@ func (s License) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *License) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s LicenseAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s LicenseAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes LicenseAdditional from json.
-func (s *LicenseAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode LicenseAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode LicenseAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s LicenseAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *LicenseAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -7849,13 +6715,6 @@ func (s Link) encodeFields(e *jx.Encoder) {
 			s.Server.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -7879,7 +6738,6 @@ func (s *Link) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Link to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -7965,18 +6823,7 @@ func (s *Link) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -7995,64 +6842,6 @@ func (s Link) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Link) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s LinkAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s LinkAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes LinkAdditional from json.
-func (s *LinkAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode LinkAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode LinkAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s LinkAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *LinkAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -8292,13 +7081,6 @@ func (s MediaType) encodeFields(e *jx.Encoder) {
 			s.Encoding.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -8320,7 +7102,6 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode MediaType to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -8386,18 +7167,7 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -8416,64 +7186,6 @@ func (s MediaType) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *MediaType) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s MediaTypeAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s MediaTypeAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes MediaTypeAdditional from json.
-func (s *MediaTypeAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode MediaTypeAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode MediaTypeAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s MediaTypeAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *MediaTypeAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -8627,13 +7339,6 @@ func (s OauthFlow) encodeFields(e *jx.Encoder) {
 			s.Scopes.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -8655,7 +7360,6 @@ func (s *OauthFlow) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode OauthFlow to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -8720,18 +7424,7 @@ func (s *OauthFlow) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -8750,64 +7443,6 @@ func (s OauthFlow) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OauthFlow) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s OauthFlowAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s OauthFlowAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes OauthFlowAdditional from json.
-func (s *OauthFlowAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OauthFlowAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode OauthFlowAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OauthFlowAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OauthFlowAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -8907,13 +7542,6 @@ func (s OauthFlows) encodeFields(e *jx.Encoder) {
 			s.AuthorizationCode.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -8935,7 +7563,6 @@ func (s *OauthFlows) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode OauthFlows to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -9000,18 +7627,7 @@ func (s *OauthFlows) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -9030,64 +7646,6 @@ func (s OauthFlows) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OauthFlows) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s OauthFlowsAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s OauthFlowsAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes OauthFlowsAdditional from json.
-func (s *OauthFlowsAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OauthFlowsAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode OauthFlowsAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OauthFlowsAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OauthFlowsAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -9250,13 +7808,6 @@ func (s Operation) encodeFields(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -9287,7 +7838,6 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Operation to nil")
 	}
 	var requiredBitSet [2]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -9462,18 +8012,7 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -9525,64 +8064,6 @@ func (s Operation) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Operation) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s OperationAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s OperationAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes OperationAdditional from json.
-func (s *OperationAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode OperationAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode OperationAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s OperationAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *OperationAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -11107,13 +9588,6 @@ func (s Parameter) encodeFields(e *jx.Encoder) {
 			s.Content.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -11145,7 +9619,6 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Parameter to nil")
 	}
 	var requiredBitSet [2]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -11303,18 +9776,7 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -11366,64 +9828,6 @@ func (s Parameter) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Parameter) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ParameterAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ParameterAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ParameterAdditional from json.
-func (s *ParameterAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ParameterAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ParameterAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ParameterAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ParameterAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -11839,13 +10243,6 @@ func (s PathItem) encodeFields(e *jx.Encoder) {
 			e.ArrEnd()
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -11876,7 +10273,6 @@ func (s *PathItem) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode PathItem to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -12045,18 +10441,7 @@ func (s *PathItem) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -12075,64 +10460,6 @@ func (s PathItem) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *PathItem) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s PathItemAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s PathItemAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes PathItemAdditional from json.
-func (s *PathItemAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PathItemAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode PathItemAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s PathItemAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *PathItemAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -12208,13 +10535,6 @@ func (s Paths) Encode(e *jx.Encoder) {
 
 // encodeFields encodes fields.
 func (s Paths) encodeFields(e *jx.Encoder) {
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -12236,7 +10556,6 @@ func (s *Paths) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Paths to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]PathItem{}
 	s.Pattern1Props = map[string]jx.Raw{}
 
@@ -12275,18 +10594,7 @@ func (s *Paths) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -12305,64 +10613,6 @@ func (s Paths) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Paths) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s PathsAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s PathsAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes PathsAdditional from json.
-func (s *PathsAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode PathsAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode PathsAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s PathsAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *PathsAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -12540,13 +10790,6 @@ func (s Reference) encodeFields(e *jx.Encoder) {
 		e.FieldStart("$ref")
 		e.Str(s.Ref)
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 }
 
 var jsonFieldsNameOfReference = [1]string{
@@ -12559,7 +10802,6 @@ func (s *Reference) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Reference to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -12576,18 +10818,7 @@ func (s *Reference) Decode(d *jx.Decoder) error {
 				return errors.Wrap(err, "decode field \"$ref\"")
 			}
 		default:
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -12638,64 +10869,6 @@ func (s Reference) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Reference) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ReferenceAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ReferenceAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ReferenceAdditional from json.
-func (s *ReferenceAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ReferenceAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ReferenceAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ReferenceAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ReferenceAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -12780,13 +10953,6 @@ func (s RequestBody) encodeFields(e *jx.Encoder) {
 			s.Required.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -12808,7 +10974,6 @@ func (s *RequestBody) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode RequestBody to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -12863,18 +11028,7 @@ func (s *RequestBody) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -12925,64 +11079,6 @@ func (s RequestBody) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *RequestBody) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s RequestBodyAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s RequestBodyAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes RequestBodyAdditional from json.
-func (s *RequestBodyAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode RequestBodyAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode RequestBodyAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s RequestBodyAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *RequestBodyAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -13157,13 +11253,6 @@ func (s Response) encodeFields(e *jx.Encoder) {
 			s.Links.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -13186,7 +11275,6 @@ func (s *Response) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Response to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -13253,18 +11341,7 @@ func (s *Response) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -13315,64 +11392,6 @@ func (s Response) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Response) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ResponseAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ResponseAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ResponseAdditional from json.
-func (s *ResponseAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ResponseAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ResponseAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ResponseAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ResponseAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -13533,13 +11552,6 @@ func (s Responses) encodeFields(e *jx.Encoder) {
 			s.Default.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -13563,7 +11575,6 @@ func (s *Responses) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Responses to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]ResponseOrReference{}
 	s.Pattern1Props = map[string]jx.Raw{}
 
@@ -13612,18 +11623,7 @@ func (s *Responses) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -13642,64 +11642,6 @@ func (s Responses) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Responses) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ResponsesAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ResponsesAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ResponsesAdditional from json.
-func (s *ResponsesAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ResponsesAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ResponsesAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ResponsesAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ResponsesAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -14111,13 +12053,6 @@ func (s Schema) encodeFields(e *jx.Encoder) {
 			s.Format.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -14171,7 +12106,6 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Schema to nil")
 	}
 	s.setDefaults()
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -14579,18 +12513,7 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -14609,64 +12532,6 @@ func (s Schema) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Schema) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s SchemaAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s SchemaAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes SchemaAdditional from json.
-func (s *SchemaAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode SchemaAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode SchemaAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s SchemaAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *SchemaAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -15118,16 +12983,9 @@ func (s SecurityRequirement) Encode(e *jx.Encoder) {
 	e.ObjEnd()
 }
 
-// encodeFields encodes fields.
+// encodeFields implements json.Marshaler.
 func (s SecurityRequirement) encodeFields(e *jx.Encoder) {
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-	for k, elem := range s.Pattern0Props {
+	for k, elem := range s {
 		e.FieldStart(k)
 
 		e.ArrStart()
@@ -15137,169 +12995,17 @@ func (s SecurityRequirement) encodeFields(e *jx.Encoder) {
 		e.ArrEnd()
 	}
 }
-
-var jsonFieldsNameOfSecurityRequirement = [0]string{}
 
 // Decode decodes SecurityRequirement from json.
 func (s *SecurityRequirement) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode SecurityRequirement to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
-	s.Pattern0Props = map[string][]string{}
-
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		switch string(k) {
-		default:
-			var handled bool
-			if pattern := regexMap["^[a-zA-Z0-9\\.\\-_]+$"]; pattern.Match(k) {
-				handled = true
-				var elem []string
-				if err := func() error {
-					elem = make([]string, 0)
-					if err := d.Arr(func(d *jx.Decoder) error {
-						var elemElem string
-						v, err := d.Str()
-						elemElem = string(v)
-						if err != nil {
-							return err
-						}
-						elem = append(elem, elemElem)
-						return nil
-					}); err != nil {
-						return err
-					}
-					return nil
-				}(); err != nil {
-					return errors.Wrapf(err, "decode field %q", k)
-				}
-				s.Pattern0Props[string(k)] = elem
-			}
-			if handled {
-				return nil
-			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode SecurityRequirement")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s SecurityRequirement) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *SecurityRequirement) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s SecurityRequirementAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s SecurityRequirementAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes SecurityRequirementAdditional from json.
-func (s *SecurityRequirementAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode SecurityRequirementAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode SecurityRequirementAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s SecurityRequirementAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *SecurityRequirementAdditional) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s SecurityRequirementPattern0) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s SecurityRequirementPattern0) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		e.ArrStart()
-		for _, elem := range elem {
-			e.Str(elem)
-		}
-		e.ArrEnd()
-	}
-}
-
-// Decode decodes SecurityRequirementPattern0 from json.
-func (s *SecurityRequirementPattern0) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode SecurityRequirementPattern0 to nil")
-	}
 	m := s.init()
 	pattern := regexMap["^[a-zA-Z0-9\\.\\-_]+$"]
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		if !pattern.Match(k) {
-			return d.Skip()
+			return errors.Errorf("unexpected field %q", k)
 		}
 		var elem []string
 		if err := func() error {
@@ -15323,21 +13029,21 @@ func (s *SecurityRequirementPattern0) Decode(d *jx.Decoder) error {
 		m[string(k)] = elem
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode SecurityRequirementPattern0")
+		return errors.Wrap(err, "decode SecurityRequirement")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s SecurityRequirementPattern0) MarshalJSON() ([]byte, error) {
+func (s SecurityRequirement) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *SecurityRequirementPattern0) UnmarshalJSON(data []byte) error {
+func (s *SecurityRequirement) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -15398,13 +13104,6 @@ func (s SecurityScheme) encodeFields(e *jx.Encoder) {
 			s.OpenIdConnectUrl.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -15431,7 +13130,6 @@ func (s *SecurityScheme) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SecurityScheme to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -15538,18 +13236,7 @@ func (s *SecurityScheme) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -15600,64 +13287,6 @@ func (s SecurityScheme) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *SecurityScheme) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s SecuritySchemeAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s SecuritySchemeAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes SecuritySchemeAdditional from json.
-func (s *SecuritySchemeAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode SecuritySchemeAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode SecuritySchemeAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s SecuritySchemeAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *SecuritySchemeAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -15895,13 +13524,6 @@ func (s Server) encodeFields(e *jx.Encoder) {
 			s.Variables.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -15923,7 +13545,6 @@ func (s *Server) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Server to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -15980,18 +13601,7 @@ func (s *Server) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -16042,64 +13652,6 @@ func (s Server) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Server) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ServerAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ServerAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ServerAdditional from json.
-func (s *ServerAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ServerAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ServerAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ServerAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ServerAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -16196,13 +13748,6 @@ func (s ServerVariable) encodeFields(e *jx.Encoder) {
 			s.Description.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -16224,7 +13769,6 @@ func (s *ServerVariable) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ServerVariable to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -16290,18 +13834,7 @@ func (s *ServerVariable) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -16352,64 +13885,6 @@ func (s ServerVariable) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *ServerVariable) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s ServerVariableAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s ServerVariableAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes ServerVariableAdditional from json.
-func (s *ServerVariableAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode ServerVariableAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode ServerVariableAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s ServerVariableAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *ServerVariableAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -16596,13 +14071,6 @@ func (s Spec) encodeFields(e *jx.Encoder) {
 			s.ExternalDocs.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -16629,7 +14097,6 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Spec to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -16757,18 +14224,7 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -16819,64 +14275,6 @@ func (s Spec) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Spec) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s SpecAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s SpecAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes SpecAdditional from json.
-func (s *SpecAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode SpecAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode SpecAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s SpecAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *SpecAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -17076,13 +14474,6 @@ func (s Tag) encodeFields(e *jx.Encoder) {
 			s.ExternalDocs.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -17104,7 +14495,6 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Tag to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -17161,18 +14551,7 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -17223,64 +14602,6 @@ func (s Tag) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *Tag) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s TagAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s TagAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes TagAdditional from json.
-func (s *TagAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode TagAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode TagAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s TagAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *TagAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -17386,13 +14707,6 @@ func (s XML) encodeFields(e *jx.Encoder) {
 			s.Wrapped.Encode(e)
 		}
 	}
-	for k, elem := range s.AdditionalProps {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
@@ -17415,7 +14729,6 @@ func (s *XML) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode XML to nil")
 	}
-	s.AdditionalProps = map[string]jx.Raw{}
 	s.Pattern0Props = map[string]jx.Raw{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -17490,18 +14803,7 @@ func (s *XML) Decode(d *jx.Decoder) error {
 			if handled {
 				return nil
 			}
-			var elem jx.Raw
-			if err := func() error {
-				v, err := d.RawAppend(nil)
-				elem = jx.Raw(v)
-				if err != nil {
-					return err
-				}
-				return nil
-			}(); err != nil {
-				return errors.Wrapf(err, "decode field %q", k)
-			}
-			s.AdditionalProps[string(k)] = elem
+			return errors.Errorf("unexpected field %q", k)
 		}
 		return nil
 	}); err != nil {
@@ -17520,64 +14822,6 @@ func (s XML) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *XML) UnmarshalJSON(data []byte) error {
-	d := jx.DecodeBytes(data)
-	return s.Decode(d)
-}
-
-// Encode implements json.Marshaler.
-func (s XMLAdditional) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
-
-// encodeFields implements json.Marshaler.
-func (s XMLAdditional) encodeFields(e *jx.Encoder) {
-	for k, elem := range s {
-		e.FieldStart(k)
-
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
-	}
-}
-
-// Decode decodes XMLAdditional from json.
-func (s *XMLAdditional) Decode(d *jx.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode XMLAdditional to nil")
-	}
-	m := s.init()
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
-		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
-				return err
-			}
-			return nil
-		}(); err != nil {
-			return errors.Wrapf(err, "decode field %q", k)
-		}
-		m[string(k)] = elem
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode XMLAdditional")
-	}
-
-	return nil
-}
-
-// MarshalJSON implements stdjson.Marshaler.
-func (s XMLAdditional) MarshalJSON() ([]byte, error) {
-	e := jx.Encoder{}
-	s.Encode(&e)
-	return e.Bytes(), nil
-}
-
-// UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *XMLAdditional) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -19254,24 +16498,6 @@ func (s SchemasOrReferences) Validate() error {
 	return nil
 }
 func (s SecurityRequirement) Validate() error {
-	var failures []validate.FieldError
-	if err := func() error {
-		if err := s.Pattern0Props.Validate(); err != nil {
-			return err
-		}
-		return nil
-	}(); err != nil {
-		failures = append(failures, validate.FieldError{
-			Name:  "Pattern0Props",
-			Error: err,
-		})
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-	return nil
-}
-func (s SecurityRequirementPattern0) Validate() error {
 	var failures []validate.FieldError
 	for key, elem := range s {
 		if err := func() error {

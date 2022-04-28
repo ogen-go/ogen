@@ -704,6 +704,13 @@ func (o NilString) Or(d string) string {
 	return d
 }
 
+// Ref: #/components/schemas/NoAdditionalProperiesTest
+type NoAdditionalProperiesTest struct {
+	Empty         *OnlyEmptyObject            "json:\"empty\""
+	OneProperty   OptOnePropertyObject        "json:\"oneProperty\""
+	OnlyPatterned OptOnlyPatternedPropsObject "json:\"onlyPatterned\""
+}
+
 // Ref: #/components/responses/NotFound
 type NotFound struct{}
 
@@ -914,6 +921,11 @@ const (
 	OneOfUUIDAndIntEnum11 OneOfUUIDAndIntEnum1 = 1
 )
 
+// Ref: #/components/schemas/OnePropertyObject
+type OnePropertyObject struct {
+	Foo string "json:\"foo\""
+}
+
 // Ref: #/components/schemas/OneVariantHasNoUniqueFields
 // OneVariantHasNoUniqueFields represents sum type.
 type OneVariantHasNoUniqueFields struct {
@@ -998,6 +1010,21 @@ type OneVariantHasNoUniqueFields1 struct {
 
 // OneofBugOK is response for OneofBug operation.
 type OneofBugOK struct{}
+
+// Ref: #/components/schemas/OnlyEmptyObject
+type OnlyEmptyObject struct{}
+
+// Ref: #/components/schemas/OnlyPatternedPropsObject
+type OnlyPatternedPropsObject map[string]string
+
+func (s *OnlyPatternedPropsObject) init() OnlyPatternedPropsObject {
+	m := *s
+	if m == nil {
+		m = map[string]string{}
+		*s = m
+	}
+	return m
+}
 
 // NewOptAnyOfTest returns new OptAnyOfTest with value set to v.
 func NewOptAnyOfTest(v AnyOfTest) OptAnyOfTest {
@@ -2161,6 +2188,98 @@ func (o OptOneOfUUIDAndIntEnum) Get() (v OneOfUUIDAndIntEnum, ok bool) {
 
 // Or returns value if set, or given parameter if does not.
 func (o OptOneOfUUIDAndIntEnum) Or(d OneOfUUIDAndIntEnum) OneOfUUIDAndIntEnum {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptOnePropertyObject returns new OptOnePropertyObject with value set to v.
+func NewOptOnePropertyObject(v OnePropertyObject) OptOnePropertyObject {
+	return OptOnePropertyObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOnePropertyObject is optional OnePropertyObject.
+type OptOnePropertyObject struct {
+	Value OnePropertyObject
+	Set   bool
+}
+
+// IsSet returns true if OptOnePropertyObject was set.
+func (o OptOnePropertyObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOnePropertyObject) Reset() {
+	var v OnePropertyObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOnePropertyObject) SetTo(v OnePropertyObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOnePropertyObject) Get() (v OnePropertyObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOnePropertyObject) Or(d OnePropertyObject) OnePropertyObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptOnlyPatternedPropsObject returns new OptOnlyPatternedPropsObject with value set to v.
+func NewOptOnlyPatternedPropsObject(v OnlyPatternedPropsObject) OptOnlyPatternedPropsObject {
+	return OptOnlyPatternedPropsObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptOnlyPatternedPropsObject is optional OnlyPatternedPropsObject.
+type OptOnlyPatternedPropsObject struct {
+	Value OnlyPatternedPropsObject
+	Set   bool
+}
+
+// IsSet returns true if OptOnlyPatternedPropsObject was set.
+func (o OptOnlyPatternedPropsObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptOnlyPatternedPropsObject) Reset() {
+	var v OnlyPatternedPropsObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptOnlyPatternedPropsObject) SetTo(v OnlyPatternedPropsObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptOnlyPatternedPropsObject) Get() (v OnlyPatternedPropsObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptOnlyPatternedPropsObject) Or(d OnlyPatternedPropsObject) OnlyPatternedPropsObject {
 	if v, ok := o.Get(); ok {
 		return v
 	}

@@ -703,6 +703,23 @@
         }
       }
     },
+    "/noAdditionalProperiesTest": {
+      "get": {
+        "operationId": "noAdditionalProperiesTest",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoAdditionalProperiesTest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/defaultTest": {
       "post": {
         "operationId": "defaultTest",
@@ -755,7 +772,7 @@
       }
     },
     "/securityTest": {
-      "get":{
+      "get": {
         "operationId": "securityTest",
         "security": [
           {
@@ -1402,7 +1419,8 @@
           },
           {
             "enum": [
-              0, 1
+              0,
+              1
             ],
             "type": "integer"
           }
@@ -1572,6 +1590,44 @@
             "default": "aGVsbG8sIHdvcmxkIQ=="
           }
         }
+      },
+      "NoAdditionalProperiesTest": {
+        "properties": {
+          "empty": {
+            "$ref": "#/components/schemas/OnlyEmptyObject"
+          },
+          "oneProperty": {
+            "$ref": "#/components/schemas/OnePropertyObject"
+          },
+          "onlyPatterned": {
+            "$ref": "#/components/schemas/OnlyPatternedPropsObject"
+          }
+        }
+      },
+      "OnlyEmptyObject": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "OnePropertyObject": {
+        "type": "object",
+        "required": [
+          "foo"
+        ],
+        "properties": {
+          "foo": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OnlyPatternedPropsObject": {
+        "type": "object",
+        "patternProperties": {
+          "string_.*": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
       }
     },
     "parameters": {

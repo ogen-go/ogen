@@ -552,6 +552,49 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	return result, nil
 }
 
+// NoAdditionalProperiesTest invokes noAdditionalProperiesTest operation.
+//
+// GET /noAdditionalProperiesTest
+func (c *Client) NoAdditionalProperiesTest(ctx context.Context) (res NoAdditionalProperiesTest, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("noAdditionalProperiesTest"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "NoAdditionalProperiesTest",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/noAdditionalProperiesTest"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeNoAdditionalProperiesTestResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // NullableDefaultResponse invokes nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse
