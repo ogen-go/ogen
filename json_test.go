@@ -533,6 +533,91 @@ func TestJSONAdditionalProperties(t *testing.T) {
 	})
 }
 
+func TestJSONNoAdditionalProperties(t *testing.T) {
+	t.Run("Decode", func(t *testing.T) {
+		empty := func() json.Unmarshaler {
+			return &api.OnlyEmptyObject{}
+		}
+		one := func() json.Unmarshaler {
+			return &api.OnePropertyObject{}
+		}
+		patterned := func() json.Unmarshaler {
+			return &api.OnlyPatternedPropsObject{}
+		}
+		for i, tc := range []struct {
+			Input    string
+			Expected json.Unmarshaler
+			Creator  func() json.Unmarshaler
+			Error    bool
+		}{
+			{
+				`{}`,
+				&api.OnlyEmptyObject{},
+				empty,
+				false,
+			},
+			{
+				`{"foo":"bar"}`,
+				nil,
+				empty,
+				true,
+			},
+
+			{
+				`{"foo":"bar"}`,
+				&api.OnePropertyObject{Foo: "bar"},
+				one,
+				false,
+			},
+			{
+				`{}`,
+				nil,
+				one,
+				true,
+			},
+			{
+				`{"bar":"bar"}`,
+				nil,
+				one,
+				true,
+			},
+
+			{
+				`{}`,
+				&api.OnlyPatternedPropsObject{},
+				patterned,
+				false,
+			},
+			{
+				`{"string_foo":"bar"}`,
+				&api.OnlyPatternedPropsObject{
+					"string_foo": "bar",
+				},
+				patterned,
+				false,
+			},
+			{
+				`{"bar":"bar"}`,
+				nil,
+				patterned,
+				true,
+			},
+		} {
+			// Make range value copy to prevent data races.
+			tc := tc
+			t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+				r := tc.Creator()
+				if err := r.Decode(jx.DecodeStr(tc.Input)); tc.Error {
+					require.Error(t, err)
+				} else {
+					require.NoError(t, err)
+					require.Equal(t, tc.Expected, r)
+				}
+			})
+		}
+	})
+}
+
 func TestJSONPatternProperties(t *testing.T) {
 	t.Run("Decode", func(t *testing.T) {
 		t.Run("PatternRecursiveMap", func(t *testing.T) {
@@ -580,7 +665,7 @@ func TestJSONPatternProperties(t *testing.T) {
 				})
 			}
 		})
-		t.Run("", func(t *testing.T) {
+		t.Run("StringIntMap", func(t *testing.T) {
 			for i, tc := range []struct {
 				Input    string
 				Expected api.StringIntMap
