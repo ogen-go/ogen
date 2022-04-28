@@ -49,26 +49,27 @@ type SumSpec struct {
 }
 
 type Type struct {
-	Doc              string              // ogen documentation
-	Kind             Kind                // kind
-	Name             string              // only for struct, alias, interface, enum
-	Primitive        PrimitiveType       // only for primitive, enum
-	AliasTo          *Type               // only for alias
-	PointerTo        *Type               // only for pointer
-	SumOf            []*Type             // only for sum
-	SumSpec          SumSpec             // only for sum
-	Item             *Type               // only for array, map
-	EnumVariants     []*EnumVariant      // only for enum
-	Fields           []*Field            // only for struct
-	Implements       map[*Type]struct{}  // only for struct, alias, enum
-	Implementations  map[*Type]struct{}  // only for interface
-	InterfaceMethods map[string]struct{} // only for interface
-	Schema           *jsonschema.Schema  // for all kinds except pointer, interface. Can be nil.
-	NilSemantic      NilSemantic         // only for pointer
-	GenericOf        *Type               // only for generic
-	GenericVariant   GenericVariant      // only for generic
-	MapPattern       *regexp.Regexp      // only for map
-	Validators       Validators
+	Doc                 string              // ogen documentation
+	Kind                Kind                // kind
+	Name                string              // only for struct, alias, interface, enum
+	Primitive           PrimitiveType       // only for primitive, enum
+	AliasTo             *Type               // only for alias
+	PointerTo           *Type               // only for pointer
+	SumOf               []*Type             // only for sum
+	SumSpec             SumSpec             // only for sum
+	Item                *Type               // only for array, map
+	EnumVariants        []*EnumVariant      // only for enum
+	Fields              []*Field            // only for struct
+	Implements          map[*Type]struct{}  // only for struct, alias, enum
+	Implementations     map[*Type]struct{}  // only for interface
+	InterfaceMethods    map[string]struct{} // only for interface
+	Schema              *jsonschema.Schema  // for all kinds except pointer, interface. Can be nil.
+	NilSemantic         NilSemantic         // only for pointer
+	GenericOf           *Type               // only for generic
+	GenericVariant      GenericVariant      // only for generic
+	MapPattern          *regexp.Regexp      // only for map
+	DenyAdditionalProps bool                // only for map and struct
+	Validators          Validators
 
 	// Features contains a set of features the type must implement.
 	// Available features: 'json', 'uri'.

@@ -121,6 +121,8 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 				return errors.Wrapf(err, "decode field %q", k)
 			}
 			s.{{ $additional.Name }}[string(k)] = elem
+            {{- else if $.DenyAdditionalProps }}
+			return errors.Errorf("unexpected field %q", k)
 			{{- else }}
 			return d.Skip()
 			{{- end }}

@@ -29,7 +29,7 @@ type Schema struct {
 	Ref         string // Whether schema is referenced.
 
 	Item                 *Schema           // Only for Array and Object with additional properties.
-	AdditionalProperties bool              // Whether Object has additional properties.
+	AdditionalProperties *bool             // Whether Object has additional properties.
 	PatternProperties    []PatternProperty // Only for Object.
 	Enum                 []interface{}     // Only for Enum.
 	Properties           []Property        // Only for Object.

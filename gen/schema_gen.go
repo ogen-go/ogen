@@ -89,7 +89,12 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 		kind := ir.KindStruct
 
 		hasProps := len(schema.Properties) > 0
-		hasAdditionalProps := schema.AdditionalProperties
+		hasAdditionalProps := false
+		denyAdditionalProps := false
+		if p := schema.AdditionalProperties; p != nil {
+			hasAdditionalProps = *p
+			denyAdditionalProps = !*p
+		}
 		hasPatternProps := len(schema.PatternProperties) > 0
 		isPatternSingle := len(schema.PatternProperties) == 1
 
@@ -100,9 +105,10 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 		}
 
 		s := g.regtype(name, &ir.Type{
-			Kind:   kind,
-			Name:   name,
-			Schema: schema,
+			Kind:                kind,
+			Name:                name,
+			Schema:              schema,
+			DenyAdditionalProps: denyAdditionalProps,
 		})
 		s.Validators.SetObject(schema)
 

@@ -136,12 +136,12 @@ func (p *RawProperties) UnmarshalJSON(data []byte) error {
 }
 
 type AdditionalProperties struct {
-	Bool   bool
+	Bool   *bool
 	Schema RawSchema
 }
 
 func (p AdditionalProperties) MarshalJSON() ([]byte, error) {
-	if p.Bool {
+	if p.Bool != nil {
 		return json.Marshal(p.Bool)
 	}
 	return json.Marshal(p.Schema)
@@ -152,7 +152,11 @@ func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
 	switch tt := d.Next(); tt {
 	case jx.Object:
 	case jx.Bool:
-		p.Bool = true
+		val, err := d.Bool()
+		if err != nil {
+			return err
+		}
+		p.Bool = &val
 		return nil
 	default:
 		return errors.Errorf("unexpected type %s", tt.String())
