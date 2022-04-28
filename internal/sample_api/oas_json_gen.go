@@ -3013,6 +3013,105 @@ func (s *NilString) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode implements json.Marshaler.
+func (s NoAdditionalProperiesTest) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s NoAdditionalProperiesTest) encodeFields(e *jx.Encoder) {
+	{
+		if s.Empty != nil {
+			e.FieldStart("empty")
+			s.Empty.Encode(e)
+		}
+	}
+	{
+		if s.OneProperty.Set {
+			e.FieldStart("oneProperty")
+			s.OneProperty.Encode(e)
+		}
+	}
+	{
+		if s.OnlyPatterned.Set {
+			e.FieldStart("onlyPatterned")
+			s.OnlyPatterned.Encode(e)
+		}
+	}
+}
+
+var jsonFieldsNameOfNoAdditionalProperiesTest = [3]string{
+	0: "empty",
+	1: "oneProperty",
+	2: "onlyPatterned",
+}
+
+// Decode decodes NoAdditionalProperiesTest from json.
+func (s *NoAdditionalProperiesTest) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode NoAdditionalProperiesTest to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "empty":
+			if err := func() error {
+				s.Empty = nil
+				var elem OnlyEmptyObject
+				if err := elem.Decode(d); err != nil {
+					return err
+				}
+				s.Empty = &elem
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"empty\"")
+			}
+		case "oneProperty":
+			if err := func() error {
+				s.OneProperty.Reset()
+				if err := s.OneProperty.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"oneProperty\"")
+			}
+		case "onlyPatterned":
+			if err := func() error {
+				s.OnlyPatterned.Reset()
+				if err := s.OnlyPatterned.Decode(d); err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"onlyPatterned\"")
+			}
+		default:
+			return d.Skip()
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode NoAdditionalProperiesTest")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s NoAdditionalProperiesTest) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *NoAdditionalProperiesTest) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes NullValue as json.
 func (s NullValue) Encode(e *jx.Encoder) {
 	unwrapped := struct{}(s)
@@ -3818,6 +3917,103 @@ func (s *OneOfUUIDAndIntEnum1) UnmarshalJSON(data []byte) error {
 	return s.Decode(d)
 }
 
+// Encode implements json.Marshaler.
+func (s OnePropertyObject) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s OnePropertyObject) encodeFields(e *jx.Encoder) {
+	{
+
+		e.FieldStart("foo")
+		e.Str(s.Foo)
+	}
+}
+
+var jsonFieldsNameOfOnePropertyObject = [1]string{
+	0: "foo",
+}
+
+// Decode decodes OnePropertyObject from json.
+func (s *OnePropertyObject) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OnePropertyObject to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		case "foo":
+			requiredBitSet[0] |= 1 << 0
+			if err := func() error {
+				v, err := d.Str()
+				s.Foo = string(v)
+				if err != nil {
+					return err
+				}
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"foo\"")
+			}
+		default:
+			return errors.Errorf("unexpected field %q", k)
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode OnePropertyObject")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000001,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(jsonFieldsNameOfOnePropertyObject) {
+					name = jsonFieldsNameOfOnePropertyObject[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OnePropertyObject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OnePropertyObject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode encodes OneVariantHasNoUniqueFields as json.
 func (s OneVariantHasNoUniqueFields) Encode(e *jx.Encoder) {
 	switch s.Type {
@@ -4162,6 +4358,111 @@ func (s OneVariantHasNoUniqueFields1) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OneVariantHasNoUniqueFields1) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s OnlyEmptyObject) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields encodes fields.
+func (s OnlyEmptyObject) encodeFields(e *jx.Encoder) {
+}
+
+var jsonFieldsNameOfOnlyEmptyObject = [0]string{}
+
+// Decode decodes OnlyEmptyObject from json.
+func (s *OnlyEmptyObject) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OnlyEmptyObject to nil")
+	}
+
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		switch string(k) {
+		default:
+			return errors.Errorf("unexpected field %q", k)
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode OnlyEmptyObject")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OnlyEmptyObject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OnlyEmptyObject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode implements json.Marshaler.
+func (s OnlyPatternedPropsObject) Encode(e *jx.Encoder) {
+	e.ObjStart()
+	s.encodeFields(e)
+	e.ObjEnd()
+}
+
+// encodeFields implements json.Marshaler.
+func (s OnlyPatternedPropsObject) encodeFields(e *jx.Encoder) {
+	for k, elem := range s {
+		e.FieldStart(k)
+
+		e.Str(elem)
+	}
+}
+
+// Decode decodes OnlyPatternedPropsObject from json.
+func (s *OnlyPatternedPropsObject) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode OnlyPatternedPropsObject to nil")
+	}
+	m := s.init()
+	pattern := regexMap["string_.*"]
+	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+		if !pattern.Match(k) {
+			return errors.Errorf("unexpected field %q", k)
+		}
+		var elem string
+		if err := func() error {
+			v, err := d.Str()
+			elem = string(v)
+			if err != nil {
+				return err
+			}
+			return nil
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode OnlyPatternedPropsObject")
+	}
+
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OnlyPatternedPropsObject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OnlyPatternedPropsObject) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -5055,6 +5356,73 @@ func (s OptOneOfUUIDAndIntEnum) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *OptOneOfUUIDAndIntEnum) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes OnePropertyObject as json.
+func (o OptOnePropertyObject) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes OnePropertyObject from json.
+func (o *OptOnePropertyObject) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOnePropertyObject to nil")
+	}
+	o.Set = true
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptOnePropertyObject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptOnePropertyObject) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes OnlyPatternedPropsObject as json.
+func (o OptOnlyPatternedPropsObject) Encode(e *jx.Encoder) {
+	if !o.Set {
+		return
+	}
+	o.Value.Encode(e)
+}
+
+// Decode decodes OnlyPatternedPropsObject from json.
+func (o *OptOnlyPatternedPropsObject) Decode(d *jx.Decoder) error {
+	if o == nil {
+		return errors.New("invalid: unable to decode OptOnlyPatternedPropsObject to nil")
+	}
+	o.Set = true
+	o.Value = make(OnlyPatternedPropsObject)
+	if err := o.Value.Decode(d); err != nil {
+		return err
+	}
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s OptOnlyPatternedPropsObject) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *OptOnlyPatternedPropsObject) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

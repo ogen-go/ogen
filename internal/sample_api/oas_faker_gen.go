@@ -499,6 +499,25 @@ func (s *NilString) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *NoAdditionalProperiesTest) SetFake() {
+	{
+		{ // Keep pointer nil to prevent infinite recursion.
+			s.Empty = nil
+		}
+	}
+	{
+		{
+			s.OneProperty.SetFake()
+		}
+	}
+	{
+		{
+			s.OnlyPatterned.SetFake()
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *NullValue) SetFake() {
 	var unwrapped struct{}
 	{
@@ -623,6 +642,15 @@ func (s *OneOfUUIDAndIntEnum1) SetFake() {
 }
 
 // SetFake set fake values.
+func (s *OnePropertyObject) SetFake() {
+	{
+		{
+			s.Foo = "string"
+		}
+	}
+}
+
+// SetFake set fake values.
 func (s *OneVariantHasNoUniqueFields) SetFake() {
 	var elem OneVariantHasNoUniqueFields0
 
@@ -672,6 +700,21 @@ func (s *OneVariantHasNoUniqueFields1) SetFake() {
 		{
 			s.D.SetFake()
 		}
+	}
+}
+
+// SetFake set fake values.
+func (s *OnlyEmptyObject) SetFake() {
+}
+
+// SetFake set fake values.
+func (s *OnlyPatternedPropsObject) SetFake() {
+	var (
+		elem string
+		m    map[string]string = s.init()
+	)
+	for i := 0; i < 0; i++ {
+		m[fmt.Sprintf("fake%d", i)] = elem
 	}
 }
 
@@ -888,6 +931,24 @@ func (s *OptOneOfMappingReference) SetFake() {
 // SetFake set fake values.
 func (s *OptOneOfUUIDAndIntEnum) SetFake() {
 	var elem OneOfUUIDAndIntEnum
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptOnePropertyObject) SetFake() {
+	var elem OnePropertyObject
+	{
+		elem.SetFake()
+	}
+	s.SetTo(elem)
+}
+
+// SetFake set fake values.
+func (s *OptOnlyPatternedPropsObject) SetFake() {
+	var elem OnlyPatternedPropsObject
 	{
 		elem.SetFake()
 	}

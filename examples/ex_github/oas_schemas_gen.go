@@ -89,16 +89,7 @@ type ActionsBillingUsageMinutesUsedBreakdown struct {
 	WINDOWS OptInt "json:\"WINDOWS\""
 }
 
-type ActionsCancelWorkflowRunAccepted map[string]jx.Raw
-
-func (s *ActionsCancelWorkflowRunAccepted) init() ActionsCancelWorkflowRunAccepted {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type ActionsCancelWorkflowRunAccepted struct{}
 
 // ActionsCreateOrUpdateEnvironmentSecretNoContent is response for ActionsCreateOrUpdateEnvironmentSecret operation.
 type ActionsCreateOrUpdateEnvironmentSecretNoContent struct{}
@@ -155,18 +146,9 @@ const (
 	ActionsCreateOrUpdateOrgSecretReqVisibilitySelected ActionsCreateOrUpdateOrgSecretReqVisibility = "selected"
 )
 
-type ActionsCreateOrUpdateRepoSecretCreated map[string]jx.Raw
+type ActionsCreateOrUpdateRepoSecretCreated struct{}
 
-func (s *ActionsCreateOrUpdateRepoSecretCreated) init() ActionsCreateOrUpdateRepoSecretCreated {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-func (ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
+func (*ActionsCreateOrUpdateRepoSecretCreated) actionsCreateOrUpdateRepoSecretRes() {}
 
 // ActionsCreateOrUpdateRepoSecretNoContent is response for ActionsCreateOrUpdateRepoSecret operation.
 type ActionsCreateOrUpdateRepoSecretNoContent struct{}
@@ -381,16 +363,7 @@ type ActionsPublicKey struct {
 	CreatedAt OptString "json:\"created_at\""
 }
 
-type ActionsReRunWorkflowCreated map[string]jx.Raw
-
-func (s *ActionsReRunWorkflowCreated) init() ActionsReRunWorkflowCreated {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type ActionsReRunWorkflowCreated struct{}
 
 // ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent is response for ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg operation.
 type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgNoContent struct{}
@@ -415,16 +388,7 @@ type ActionsRepositoryPermissions struct {
 	SelectedActionsURL OptSelectedActionsURL "json:\"selected_actions_url\""
 }
 
-type ActionsRetryWorkflowCreated map[string]jx.Raw
-
-func (s *ActionsRetryWorkflowCreated) init() ActionsRetryWorkflowCreated {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type ActionsRetryWorkflowCreated struct{}
 
 type ActionsReviewPendingDeploymentsForRunReq struct {
 	// The list of environment ids to approve or reject.
@@ -2334,16 +2298,7 @@ type ChecksListSuitesForRefOK struct {
 	CheckSuites []CheckSuite "json:\"check_suites\""
 }
 
-type ChecksRerequestSuiteCreated map[string]jx.Raw
-
-func (s *ChecksRerequestSuiteCreated) init() ChecksRerequestSuiteCreated {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
+type ChecksRerequestSuiteCreated struct{}
 
 type ChecksSetSuitesPreferencesReq struct {
 	// Enables or disables automatic creation of CheckSuite events upon pushes to the repository. Enabled
@@ -3414,21 +3369,12 @@ func (EmojisGetOK) emojisGetRes() {}
 
 // An object without any properties.
 // Ref: #/components/schemas/empty-object
-type EmptyObject map[string]jx.Raw
+type EmptyObject struct{}
 
-func (s *EmptyObject) init() EmptyObject {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-func (EmptyObject) actionsApproveWorkflowRunRes()              {}
-func (EmptyObject) actionsCreateOrUpdateEnvironmentSecretRes() {}
-func (EmptyObject) actionsCreateOrUpdateOrgSecretRes()         {}
-func (EmptyObject) reposGetPagesHealthCheckRes()               {}
+func (*EmptyObject) actionsApproveWorkflowRunRes()              {}
+func (*EmptyObject) actionsCreateOrUpdateEnvironmentSecretRes() {}
+func (*EmptyObject) actionsCreateOrUpdateOrgSecretRes()         {}
+func (*EmptyObject) reposGetPagesHealthCheckRes()               {}
 
 // The policy that controls the organizations in the enterprise that are allowed to run GitHub
 // Actions. Can be one of: `all`, `none`, or `selected`.
@@ -4300,18 +4246,9 @@ type GistsCheckIsStarredNoContent struct{}
 
 func (*GistsCheckIsStarredNoContent) gistsCheckIsStarredRes() {}
 
-type GistsCheckIsStarredNotFound map[string]jx.Raw
+type GistsCheckIsStarredNotFound struct{}
 
-func (s *GistsCheckIsStarredNotFound) init() GistsCheckIsStarredNotFound {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-func (GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
+func (*GistsCheckIsStarredNotFound) gistsCheckIsStarredRes() {}
 
 type GistsCreateApplicationJSONForbidden BasicError
 
@@ -7047,19 +6984,7 @@ type MigrationsMapCommitAuthorReq struct {
 	// The new Git author email.
 	Email OptString "json:\"email\""
 	// The new Git author name.
-	Name            OptString "json:\"name\""
-	AdditionalProps MigrationsMapCommitAuthorReqAdditional
-}
-
-type MigrationsMapCommitAuthorReqAdditional map[string]jx.Raw
-
-func (s *MigrationsMapCommitAuthorReqAdditional) init() MigrationsMapCommitAuthorReqAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Name OptString "json:\"name\""
 }
 
 type MigrationsSetLfsPreferenceReq struct {
@@ -30142,18 +30067,9 @@ type OrgsCheckPublicMembershipForUserNotFound struct{}
 
 func (*OrgsCheckPublicMembershipForUserNotFound) orgsCheckPublicMembershipForUserRes() {}
 
-type OrgsConvertMemberToOutsideCollaboratorAccepted map[string]jx.Raw
+type OrgsConvertMemberToOutsideCollaboratorAccepted struct{}
 
-func (s *OrgsConvertMemberToOutsideCollaboratorAccepted) init() OrgsConvertMemberToOutsideCollaboratorAccepted {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-func (OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorRes() {}
+func (*OrgsConvertMemberToOutsideCollaboratorAccepted) orgsConvertMemberToOutsideCollaboratorRes() {}
 
 // OrgsConvertMemberToOutsideCollaboratorForbidden is response for OrgsConvertMemberToOutsideCollaborator operation.
 type OrgsConvertMemberToOutsideCollaboratorForbidden struct{}
@@ -30446,22 +30362,10 @@ const (
 )
 
 type OrgsUpdateWebhookConfigForOrgReq struct {
-	URL             OptWebhookConfigURL         "json:\"url\""
-	ContentType     OptWebhookConfigContentType "json:\"content_type\""
-	Secret          OptWebhookConfigSecret      "json:\"secret\""
-	InsecureSsl     OptWebhookConfigInsecureSsl "json:\"insecure_ssl\""
-	AdditionalProps OrgsUpdateWebhookConfigForOrgReqAdditional
-}
-
-type OrgsUpdateWebhookConfigForOrgReqAdditional map[string]jx.Raw
-
-func (s *OrgsUpdateWebhookConfigForOrgReqAdditional) init() OrgsUpdateWebhookConfigForOrgReqAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	URL         OptWebhookConfigURL         "json:\"url\""
+	ContentType OptWebhookConfigContentType "json:\"content_type\""
+	Secret      OptWebhookConfigSecret      "json:\"secret\""
+	InsecureSsl OptWebhookConfigInsecureSsl "json:\"insecure_ssl\""
 }
 
 type OrgsUpdateWebhookReq struct {
@@ -31894,18 +31798,9 @@ const (
 	ProjectsListForUserStateAll    ProjectsListForUserState = "all"
 )
 
-type ProjectsMoveCardCreated map[string]jx.Raw
+type ProjectsMoveCardCreated struct{}
 
-func (s *ProjectsMoveCardCreated) init() ProjectsMoveCardCreated {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-func (ProjectsMoveCardCreated) projectsMoveCardRes() {}
+func (*ProjectsMoveCardCreated) projectsMoveCardRes() {}
 
 type ProjectsMoveCardForbidden struct {
 	Message          OptString                             "json:\"message\""
@@ -31952,18 +31847,9 @@ type ProjectsMoveColumnApplicationJSONUnauthorized BasicError
 
 func (*ProjectsMoveColumnApplicationJSONUnauthorized) projectsMoveColumnRes() {}
 
-type ProjectsMoveColumnCreated map[string]jx.Raw
+type ProjectsMoveColumnCreated struct{}
 
-func (s *ProjectsMoveColumnCreated) init() ProjectsMoveColumnCreated {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
-}
-
-func (ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
+func (*ProjectsMoveColumnCreated) projectsMoveColumnRes() {}
 
 type ProjectsMoveColumnReq struct {
 	// The position of the column in a project. Can be one of: `first`, `last`, or `after:<column_id>` to
@@ -32092,52 +31978,16 @@ func (*ProtectedBranchAdminEnforced) reposCreateCommitSignatureProtectionRes() {
 func (*ProtectedBranchAdminEnforced) reposGetCommitSignatureProtectionRes()    {}
 
 type ProtectedBranchAllowDeletions struct {
-	Enabled         bool "json:\"enabled\""
-	AdditionalProps ProtectedBranchAllowDeletionsAdditional
-}
-
-type ProtectedBranchAllowDeletionsAdditional map[string]jx.Raw
-
-func (s *ProtectedBranchAllowDeletionsAdditional) init() ProtectedBranchAllowDeletionsAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Enabled bool "json:\"enabled\""
 }
 
 type ProtectedBranchAllowForcePushes struct {
-	Enabled         bool "json:\"enabled\""
-	AdditionalProps ProtectedBranchAllowForcePushesAdditional
-}
-
-type ProtectedBranchAllowForcePushesAdditional map[string]jx.Raw
-
-func (s *ProtectedBranchAllowForcePushesAdditional) init() ProtectedBranchAllowForcePushesAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Enabled bool "json:\"enabled\""
 }
 
 type ProtectedBranchEnforceAdmins struct {
-	URL             url.URL "json:\"url\""
-	Enabled         bool    "json:\"enabled\""
-	AdditionalProps ProtectedBranchEnforceAdminsAdditional
-}
-
-type ProtectedBranchEnforceAdminsAdditional map[string]jx.Raw
-
-func (s *ProtectedBranchEnforceAdminsAdditional) init() ProtectedBranchEnforceAdminsAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	URL     url.URL "json:\"url\""
+	Enabled bool    "json:\"enabled\""
 }
 
 // Protected Branch Pull Request Review.
@@ -32163,35 +32013,11 @@ type ProtectedBranchPullRequestReviewDismissalRestrictions struct {
 }
 
 type ProtectedBranchRequiredConversationResolution struct {
-	Enabled         OptBool "json:\"enabled\""
-	AdditionalProps ProtectedBranchRequiredConversationResolutionAdditional
-}
-
-type ProtectedBranchRequiredConversationResolutionAdditional map[string]jx.Raw
-
-func (s *ProtectedBranchRequiredConversationResolutionAdditional) init() ProtectedBranchRequiredConversationResolutionAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Enabled OptBool "json:\"enabled\""
 }
 
 type ProtectedBranchRequiredLinearHistory struct {
-	Enabled         bool "json:\"enabled\""
-	AdditionalProps ProtectedBranchRequiredLinearHistoryAdditional
-}
-
-type ProtectedBranchRequiredLinearHistoryAdditional map[string]jx.Raw
-
-func (s *ProtectedBranchRequiredLinearHistoryAdditional) init() ProtectedBranchRequiredLinearHistoryAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Enabled bool "json:\"enabled\""
 }
 
 type ProtectedBranchRequiredPullRequestReviews struct {
@@ -32257,18 +32083,6 @@ type PublicUser struct {
 	OwnedPrivateRepos OptInt            "json:\"owned_private_repos\""
 	DiskUsage         OptInt            "json:\"disk_usage\""
 	Collaborators     OptInt            "json:\"collaborators\""
-	AdditionalProps   PublicUserAdditional
-}
-
-type PublicUserAdditional map[string]jx.Raw
-
-func (s *PublicUserAdditional) init() PublicUserAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
 }
 
 type PublicUserPlan struct {
@@ -34916,19 +34730,7 @@ type ReposCreateWebhookReq struct {
 	Events []string "json:\"events\""
 	// Determines if notifications are sent when the webhook is triggered. Set to `true` to send
 	// notifications.
-	Active          OptBool "json:\"active\""
-	AdditionalProps ReposCreateWebhookReqAdditional
-}
-
-type ReposCreateWebhookReqAdditional map[string]jx.Raw
-
-func (s *ReposCreateWebhookReqAdditional) init() ReposCreateWebhookReqAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Active OptBool "json:\"active\""
 }
 
 // Key/value pairs to provide settings for this webhook. [These are defined below](https://docs.
@@ -36397,22 +36199,10 @@ type ReposUpdateStatusCheckProtectionReq struct {
 }
 
 type ReposUpdateWebhookConfigForRepoReq struct {
-	URL             OptWebhookConfigURL         "json:\"url\""
-	ContentType     OptWebhookConfigContentType "json:\"content_type\""
-	Secret          OptWebhookConfigSecret      "json:\"secret\""
-	InsecureSsl     OptWebhookConfigInsecureSsl "json:\"insecure_ssl\""
-	AdditionalProps ReposUpdateWebhookConfigForRepoReqAdditional
-}
-
-type ReposUpdateWebhookConfigForRepoReqAdditional map[string]jx.Raw
-
-func (s *ReposUpdateWebhookConfigForRepoReqAdditional) init() ReposUpdateWebhookConfigForRepoReqAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	URL         OptWebhookConfigURL         "json:\"url\""
+	ContentType OptWebhookConfigContentType "json:\"content_type\""
+	Secret      OptWebhookConfigSecret      "json:\"secret\""
+	InsecureSsl OptWebhookConfigInsecureSsl "json:\"insecure_ssl\""
 }
 
 type ReposUpdateWebhookReq struct {
@@ -38082,19 +37872,7 @@ type TeamsCreateDiscussionLegacyReq struct {
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq struct {
 	// The IdP groups you want to connect to a GitHub team. When updating, the new `groups` object will
 	// replace the original one. You must include any existing groups that you don't want to remove.
-	Groups          []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem "json:\"groups\""
-	AdditionalProps TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional
-}
-
-type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional map[string]jx.Raw
-
-func (s *TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional) init() TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional {
-	m := *s
-	if m == nil {
-		m = map[string]jx.Raw{}
-		*s = m
-	}
-	return m
+	Groups []TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem "json:\"groups\""
 }
 
 type TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem struct {

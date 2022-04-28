@@ -72,6 +72,13 @@ func (UnimplementedHandler) GetHeader(ctx context.Context, params GetHeaderParam
 	return r, ht.ErrNotImplemented
 }
 
+// NoAdditionalProperiesTest implements noAdditionalProperiesTest operation.
+//
+// GET /noAdditionalProperiesTest
+func (UnimplementedHandler) NoAdditionalProperiesTest(ctx context.Context) (r NoAdditionalProperiesTest, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // NullableDefaultResponse implements nullableDefaultResponse operation.
 //
 // GET /nullableDefaultResponse

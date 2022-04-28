@@ -162,7 +162,6 @@ func TestActionsBillingUsageMinutesUsedBreakdown_EncodeDecode(t *testing.T) {
 }
 func TestActionsCancelWorkflowRunAccepted_EncodeDecode(t *testing.T) {
 	var typ ActionsCancelWorkflowRunAccepted
-	typ = make(ActionsCancelWorkflowRunAccepted)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -171,7 +170,6 @@ func TestActionsCancelWorkflowRunAccepted_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ActionsCancelWorkflowRunAccepted
-	typ2 = make(ActionsCancelWorkflowRunAccepted)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestActionsCreateOrUpdateEnvironmentSecretReq_EncodeDecode(t *testing.T) {
@@ -212,7 +210,6 @@ func TestActionsCreateOrUpdateOrgSecretReqVisibility_EncodeDecode(t *testing.T) 
 }
 func TestActionsCreateOrUpdateRepoSecretCreated_EncodeDecode(t *testing.T) {
 	var typ ActionsCreateOrUpdateRepoSecretCreated
-	typ = make(ActionsCreateOrUpdateRepoSecretCreated)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -221,7 +218,6 @@ func TestActionsCreateOrUpdateRepoSecretCreated_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ActionsCreateOrUpdateRepoSecretCreated
-	typ2 = make(ActionsCreateOrUpdateRepoSecretCreated)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestActionsCreateOrUpdateRepoSecretReq_EncodeDecode(t *testing.T) {
@@ -1030,7 +1026,6 @@ func TestActionsPublicKey_Examples(t *testing.T) {
 }
 func TestActionsReRunWorkflowCreated_EncodeDecode(t *testing.T) {
 	var typ ActionsReRunWorkflowCreated
-	typ = make(ActionsReRunWorkflowCreated)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -1039,7 +1034,6 @@ func TestActionsReRunWorkflowCreated_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ActionsReRunWorkflowCreated
-	typ2 = make(ActionsReRunWorkflowCreated)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestActionsRepositoryPermissions_EncodeDecode(t *testing.T) {
@@ -1086,7 +1080,6 @@ func TestActionsRepositoryPermissions_Examples(t *testing.T) {
 }
 func TestActionsRetryWorkflowCreated_EncodeDecode(t *testing.T) {
 	var typ ActionsRetryWorkflowCreated
-	typ = make(ActionsRetryWorkflowCreated)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -1095,7 +1088,6 @@ func TestActionsRetryWorkflowCreated_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ActionsRetryWorkflowCreated
-	typ2 = make(ActionsRetryWorkflowCreated)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestActionsReviewPendingDeploymentsForRunReq_EncodeDecode(t *testing.T) {
@@ -4205,7 +4197,6 @@ func TestChecksListSuitesForRefOK_Examples(t *testing.T) {
 }
 func TestChecksRerequestSuiteCreated_EncodeDecode(t *testing.T) {
 	var typ ChecksRerequestSuiteCreated
-	typ = make(ChecksRerequestSuiteCreated)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -4214,7 +4205,6 @@ func TestChecksRerequestSuiteCreated_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ChecksRerequestSuiteCreated
-	typ2 = make(ChecksRerequestSuiteCreated)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestChecksSetSuitesPreferencesReq_EncodeDecode(t *testing.T) {
@@ -6103,7 +6093,6 @@ func TestEmojisGetOK_EncodeDecode(t *testing.T) {
 }
 func TestEmptyObject_EncodeDecode(t *testing.T) {
 	var typ EmptyObject
-	typ = make(EmptyObject)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -6112,7 +6101,6 @@ func TestEmptyObject_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 EmptyObject
-	typ2 = make(EmptyObject)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestEnabledOrganizations_EncodeDecode(t *testing.T) {
@@ -7330,7 +7318,6 @@ func TestGistSimpleForksItem_EncodeDecode(t *testing.T) {
 }
 func TestGistsCheckIsStarredNotFound_EncodeDecode(t *testing.T) {
 	var typ GistsCheckIsStarredNotFound
-	typ = make(GistsCheckIsStarredNotFound)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -7339,7 +7326,6 @@ func TestGistsCheckIsStarredNotFound_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 GistsCheckIsStarredNotFound
-	typ2 = make(GistsCheckIsStarredNotFound)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestGistsCreateApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -11055,20 +11041,6 @@ func TestMigrationsMapCommitAuthorReq_EncodeDecode(t *testing.T) {
 	var typ2 MigrationsMapCommitAuthorReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestMigrationsMapCommitAuthorReqAdditional_EncodeDecode(t *testing.T) {
-	var typ MigrationsMapCommitAuthorReqAdditional
-	typ = make(MigrationsMapCommitAuthorReqAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 MigrationsMapCommitAuthorReqAdditional
-	typ2 = make(MigrationsMapCommitAuthorReqAdditional)
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestMigrationsSetLfsPreferenceReq_EncodeDecode(t *testing.T) {
 	var typ MigrationsSetLfsPreferenceReq
 	typ.SetFake()
@@ -12486,7 +12458,6 @@ func TestOrganizationSimple_EncodeDecode(t *testing.T) {
 }
 func TestOrgsConvertMemberToOutsideCollaboratorAccepted_EncodeDecode(t *testing.T) {
 	var typ OrgsConvertMemberToOutsideCollaboratorAccepted
-	typ = make(OrgsConvertMemberToOutsideCollaboratorAccepted)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -12495,7 +12466,6 @@ func TestOrgsConvertMemberToOutsideCollaboratorAccepted_EncodeDecode(t *testing.
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 OrgsConvertMemberToOutsideCollaboratorAccepted
-	typ2 = make(OrgsConvertMemberToOutsideCollaboratorAccepted)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOrgsCreateInvitationReq_EncodeDecode(t *testing.T) {
@@ -12941,20 +12911,6 @@ func TestOrgsUpdateWebhookConfigForOrgReq_Examples(t *testing.T) {
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
-}
-func TestOrgsUpdateWebhookConfigForOrgReqAdditional_EncodeDecode(t *testing.T) {
-	var typ OrgsUpdateWebhookConfigForOrgReqAdditional
-	typ = make(OrgsUpdateWebhookConfigForOrgReqAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsUpdateWebhookConfigForOrgReqAdditional
-	typ2 = make(OrgsUpdateWebhookConfigForOrgReqAdditional)
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOrgsUpdateWebhookReq_EncodeDecode(t *testing.T) {
 	var typ OrgsUpdateWebhookReq
@@ -15304,7 +15260,6 @@ func TestProjectsListForUserOKApplicationJSON_EncodeDecode(t *testing.T) {
 }
 func TestProjectsMoveCardCreated_EncodeDecode(t *testing.T) {
 	var typ ProjectsMoveCardCreated
-	typ = make(ProjectsMoveCardCreated)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -15313,7 +15268,6 @@ func TestProjectsMoveCardCreated_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ProjectsMoveCardCreated
-	typ2 = make(ProjectsMoveCardCreated)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestProjectsMoveCardForbidden_EncodeDecode(t *testing.T) {
@@ -15402,7 +15356,6 @@ func TestProjectsMoveColumnApplicationJSONUnauthorized_EncodeDecode(t *testing.T
 }
 func TestProjectsMoveColumnCreated_EncodeDecode(t *testing.T) {
 	var typ ProjectsMoveColumnCreated
-	typ = make(ProjectsMoveColumnCreated)
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -15411,7 +15364,6 @@ func TestProjectsMoveColumnCreated_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ProjectsMoveColumnCreated
-	typ2 = make(ProjectsMoveColumnCreated)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestProjectsMoveColumnReq_EncodeDecode(t *testing.T) {
@@ -15673,20 +15625,6 @@ func TestProtectedBranchAllowDeletions_EncodeDecode(t *testing.T) {
 	var typ2 ProtectedBranchAllowDeletions
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestProtectedBranchAllowDeletionsAdditional_EncodeDecode(t *testing.T) {
-	var typ ProtectedBranchAllowDeletionsAdditional
-	typ = make(ProtectedBranchAllowDeletionsAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProtectedBranchAllowDeletionsAdditional
-	typ2 = make(ProtectedBranchAllowDeletionsAdditional)
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestProtectedBranchAllowForcePushes_EncodeDecode(t *testing.T) {
 	var typ ProtectedBranchAllowForcePushes
 	typ.SetFake()
@@ -15699,20 +15637,6 @@ func TestProtectedBranchAllowForcePushes_EncodeDecode(t *testing.T) {
 	var typ2 ProtectedBranchAllowForcePushes
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestProtectedBranchAllowForcePushesAdditional_EncodeDecode(t *testing.T) {
-	var typ ProtectedBranchAllowForcePushesAdditional
-	typ = make(ProtectedBranchAllowForcePushesAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProtectedBranchAllowForcePushesAdditional
-	typ2 = make(ProtectedBranchAllowForcePushesAdditional)
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestProtectedBranchEnforceAdmins_EncodeDecode(t *testing.T) {
 	var typ ProtectedBranchEnforceAdmins
 	typ.SetFake()
@@ -15723,20 +15647,6 @@ func TestProtectedBranchEnforceAdmins_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ProtectedBranchEnforceAdmins
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestProtectedBranchEnforceAdminsAdditional_EncodeDecode(t *testing.T) {
-	var typ ProtectedBranchEnforceAdminsAdditional
-	typ = make(ProtectedBranchEnforceAdminsAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProtectedBranchEnforceAdminsAdditional
-	typ2 = make(ProtectedBranchEnforceAdminsAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestProtectedBranchPullRequestReview_EncodeDecode(t *testing.T) {
@@ -15805,20 +15715,6 @@ func TestProtectedBranchRequiredConversationResolution_EncodeDecode(t *testing.T
 	var typ2 ProtectedBranchRequiredConversationResolution
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestProtectedBranchRequiredConversationResolutionAdditional_EncodeDecode(t *testing.T) {
-	var typ ProtectedBranchRequiredConversationResolutionAdditional
-	typ = make(ProtectedBranchRequiredConversationResolutionAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProtectedBranchRequiredConversationResolutionAdditional
-	typ2 = make(ProtectedBranchRequiredConversationResolutionAdditional)
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestProtectedBranchRequiredLinearHistory_EncodeDecode(t *testing.T) {
 	var typ ProtectedBranchRequiredLinearHistory
 	typ.SetFake()
@@ -15829,20 +15725,6 @@ func TestProtectedBranchRequiredLinearHistory_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ProtectedBranchRequiredLinearHistory
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestProtectedBranchRequiredLinearHistoryAdditional_EncodeDecode(t *testing.T) {
-	var typ ProtectedBranchRequiredLinearHistoryAdditional
-	typ = make(ProtectedBranchRequiredLinearHistoryAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProtectedBranchRequiredLinearHistoryAdditional
-	typ2 = make(ProtectedBranchRequiredLinearHistoryAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestProtectedBranchRequiredPullRequestReviews_EncodeDecode(t *testing.T) {
@@ -15891,20 +15773,6 @@ func TestPublicUser_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 PublicUser
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestPublicUserAdditional_EncodeDecode(t *testing.T) {
-	var typ PublicUserAdditional
-	typ = make(PublicUserAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 PublicUserAdditional
-	typ2 = make(PublicUserAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestPublicUserPlan_EncodeDecode(t *testing.T) {
@@ -18723,20 +18591,6 @@ func TestReposCreateWebhookReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateWebhookReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestReposCreateWebhookReqAdditional_EncodeDecode(t *testing.T) {
-	var typ ReposCreateWebhookReqAdditional
-	typ = make(ReposCreateWebhookReqAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposCreateWebhookReqAdditional
-	typ2 = make(ReposCreateWebhookReqAdditional)
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestReposCreateWebhookReqConfig_EncodeDecode(t *testing.T) {
 	var typ ReposCreateWebhookReqConfig
 	typ.SetFake()
@@ -20344,20 +20198,6 @@ func TestReposUpdateWebhookConfigForRepoReq_Examples(t *testing.T) {
 			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
 		})
 	}
-}
-func TestReposUpdateWebhookConfigForRepoReqAdditional_EncodeDecode(t *testing.T) {
-	var typ ReposUpdateWebhookConfigForRepoReqAdditional
-	typ = make(ReposUpdateWebhookConfigForRepoReqAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposUpdateWebhookConfigForRepoReqAdditional
-	typ2 = make(ReposUpdateWebhookConfigForRepoReqAdditional)
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestReposUpdateWebhookReq_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateWebhookReq
@@ -22683,20 +22523,6 @@ func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReq_EncodeDecode(t *testing.
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional_EncodeDecode(t *testing.T) {
-	var typ TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional
-	typ = make(TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional)
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional
-	typ2 = make(TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqAdditional)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem_EncodeDecode(t *testing.T) {

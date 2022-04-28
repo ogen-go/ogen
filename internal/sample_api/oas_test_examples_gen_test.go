@@ -293,6 +293,18 @@ func TestMaxPropertiesTest_EncodeDecode(t *testing.T) {
 	var typ2 MaxPropertiesTest
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestNoAdditionalProperiesTest_EncodeDecode(t *testing.T) {
+	var typ NoAdditionalProperiesTest
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 NoAdditionalProperiesTest
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestNullValue_EncodeDecode(t *testing.T) {
 	var typ NullValue
 	typ.SetFake()
@@ -437,6 +449,18 @@ func TestOneOfUUIDAndIntEnum1_EncodeDecode(t *testing.T) {
 	var typ2 OneOfUUIDAndIntEnum1
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+func TestOnePropertyObject_EncodeDecode(t *testing.T) {
+	var typ OnePropertyObject
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OnePropertyObject
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
 func TestOneVariantHasNoUniqueFields_EncodeDecode(t *testing.T) {
 	var typ OneVariantHasNoUniqueFields
 	typ.SetFake()
@@ -471,6 +495,32 @@ func TestOneVariantHasNoUniqueFields1_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 OneVariantHasNoUniqueFields1
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOnlyEmptyObject_EncodeDecode(t *testing.T) {
+	var typ OnlyEmptyObject
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OnlyEmptyObject
+	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+func TestOnlyPatternedPropsObject_EncodeDecode(t *testing.T) {
+	var typ OnlyPatternedPropsObject
+	typ = make(OnlyPatternedPropsObject)
+	typ.SetFake()
+
+	e := jx.Encoder{}
+	typ.Encode(&e)
+	data := e.Bytes()
+	require.True(t, std.Valid(data), "Encoded: %s", data)
+
+	var typ2 OnlyPatternedPropsObject
+	typ2 = make(OnlyPatternedPropsObject)
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestPatternRecursiveMap_EncodeDecode(t *testing.T) {
