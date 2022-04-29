@@ -89,3 +89,45 @@ func TestStringInt64(t *testing.T) {
 		})
 	}
 }
+
+func BenchmarkDecodeStringInt32(b *testing.B) {
+	var (
+		d     = jx.GetDecoder()
+		input = []byte(`"1234567890"`)
+		val   int32
+		err   error
+	)
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		d.ResetBytes(input)
+		val, err = DecodeStringInt32(d)
+	}
+
+	if val != 1234567890 || err != nil {
+		b.Fatal(val, err)
+	}
+}
+
+func BenchmarkDecodeStringInt64(b *testing.B) {
+	var (
+		d     = jx.GetDecoder()
+		input = []byte(`"1234567890"`)
+		val   int64
+		err   error
+	)
+
+	b.ReportAllocs()
+	b.ResetTimer()
+
+	for i := 0; i < b.N; i++ {
+		d.ResetBytes(input)
+		val, err = DecodeStringInt64(d)
+	}
+
+	if val != 1234567890 || err != nil {
+		b.Fatal(val, err)
+	}
+}

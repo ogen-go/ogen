@@ -8,15 +8,11 @@ import (
 
 // DecodeStringInt32 decodes string int32 from json.
 func DecodeStringInt32(d *jx.Decoder) (v int32, err error) {
-	s, err := d.Str()
+	s, err := d.StrBytes()
 	if err != nil {
 		return 0, err
 	}
-	val, err := strconv.ParseInt(s, 10, 32)
-	if err != nil {
-		return 0, err
-	}
-	return int32(val), nil
+	return jx.DecodeBytes(s).Int32()
 }
 
 // EncodeStringInt32 encodes string int32 to json.
@@ -38,15 +34,11 @@ func EncodeStringInt32(e *jx.Encoder, v int32) {
 
 // DecodeStringInt64 decodes string int64 from json.
 func DecodeStringInt64(d *jx.Decoder) (v int64, err error) {
-	s, err := d.Str()
+	s, err := d.StrBytes()
 	if err != nil {
 		return 0, err
 	}
-	val, err := strconv.ParseInt(s, 10, 64)
-	if err != nil {
-		return 0, err
-	}
-	return int64(val), nil
+	return jx.DecodeBytes(s).Int64()
 }
 
 // EncodeStringInt64 encodes string int64 to json.
