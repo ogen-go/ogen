@@ -16,7 +16,7 @@ func (s AnyOfTest) Validate() error {
 		if err := s.SizeLimit.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "sizeLimit",
@@ -44,7 +44,7 @@ func (s AnyOfTestSizeLimit) Validate() error {
 		}).Validate(string(s.String)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
@@ -56,7 +56,7 @@ func (s ArrayTest) Validate() error {
 		if s.Required == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required",
@@ -69,13 +69,13 @@ func (s ArrayTest) Validate() error {
 				if s.NullableOptional.Value == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nullable_optional",
@@ -101,7 +101,7 @@ func (s Data) Validate() error {
 		}).Validate(string(s.Email)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "email",
@@ -120,7 +120,7 @@ func (s Data) Validate() error {
 		}).Validate(string(s.Hostname)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "hostname",
@@ -139,7 +139,7 @@ func (s Data) Validate() error {
 		}).Validate(string(s.Format)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "format",
@@ -152,13 +152,13 @@ func (s Data) Validate() error {
 				if err := s.NullableEnum.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nullable_enum",
@@ -178,13 +178,13 @@ func (s DefaultTest) Validate() error {
 				if err := s.Enum.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "enum",
@@ -205,13 +205,13 @@ func (s DefaultTest) Validate() error {
 				}).Validate(string(s.Email.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "email",
@@ -232,13 +232,13 @@ func (s DefaultTest) Validate() error {
 				}).Validate(string(s.Hostname.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "hostname",
@@ -259,13 +259,13 @@ func (s DefaultTest) Validate() error {
 				}).Validate(string(s.Format.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "format",
@@ -301,7 +301,7 @@ func (s Hash) Validate() error {
 		}).Validate(string(s.Hex)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "hex",
@@ -321,13 +321,13 @@ func (s MapWithProperties) Validate() error {
 				if err := s.SubMap.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "sub_map",
@@ -340,13 +340,13 @@ func (s MapWithProperties) Validate() error {
 				if err := s.MapValidation.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "map_validation",
@@ -365,8 +365,8 @@ func (s NullableEnums) Validate() error {
 		if err := s.OnlyNullable.Value.Validate(); err != nil {
 			return err
 		}
-		return nil
-		return nil
+		return nil // return 1
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "only_nullable",
@@ -377,8 +377,8 @@ func (s NullableEnums) Validate() error {
 		if err := s.OnlyNullValue.Value.Validate(); err != nil {
 			return err
 		}
-		return nil
-		return nil
+		return nil // return 1
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "only_null_value",
@@ -389,8 +389,8 @@ func (s NullableEnums) Validate() error {
 		if err := s.Both.Value.Validate(); err != nil {
 			return err
 		}
-		return nil
-		return nil
+		return nil // return 1
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "both",
@@ -440,13 +440,13 @@ func (s OneOfBugs) Validate() error {
 				if err := s.OneOfMinusUUIDMinusIntMinusEnum.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "oneOf-uuid-int-enum",
@@ -466,7 +466,7 @@ func (s OneOfUUIDAndIntEnum) Validate() error {
 		if err := s.OneOfUUIDAndIntEnum1.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
@@ -493,11 +493,11 @@ func (s Pet) Validate() error {
 			if err := s.Primary.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "primary",
@@ -517,7 +517,7 @@ func (s Pet) Validate() error {
 		}).Validate(int64(s.ID)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -536,7 +536,7 @@ func (s Pet) Validate() error {
 		}).Validate(string(s.Name)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "name",
@@ -549,13 +549,13 @@ func (s Pet) Validate() error {
 				if err := s.Type.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -566,7 +566,7 @@ func (s Pet) Validate() error {
 		if err := s.Kind.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "kind",
@@ -588,7 +588,7 @@ func (s Pet) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -599,7 +599,7 @@ func (s Pet) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "friends",
@@ -612,13 +612,13 @@ func (s Pet) Validate() error {
 				if err := s.Next.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "next",
@@ -640,13 +640,13 @@ func (s Pet) Validate() error {
 				}).Validate(int64(s.TestInteger1.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testInteger1",
@@ -668,13 +668,13 @@ func (s Pet) Validate() error {
 				}).Validate(float64(s.TestFloat1.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testFloat1",
@@ -710,7 +710,7 @@ func (s Pet) Validate() error {
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil
+						return nil // return 1
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -721,7 +721,7 @@ func (s Pet) Validate() error {
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -732,7 +732,7 @@ func (s Pet) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testArray1",
@@ -745,13 +745,13 @@ func (s Pet) Validate() error {
 				if err := s.TestArray2.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testArray2",
@@ -764,13 +764,13 @@ func (s Pet) Validate() error {
 				if err := s.TestMap.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testMap",
@@ -783,13 +783,13 @@ func (s Pet) Validate() error {
 				if err := s.TestMapWithProps.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testMapWithProps",
@@ -802,13 +802,13 @@ func (s Pet) Validate() error {
 				if err := s.TestAnyOf.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testAnyOf",
@@ -842,7 +842,7 @@ func (s PetName) Validate() error {
 	}).Validate(string(s)); err != nil {
 		return errors.Wrap(err, "string")
 	}
-	return nil
+	return nil // return 1
 }
 func (s PetType) Validate() error {
 	switch s {
@@ -864,7 +864,7 @@ func (s RecursiveArray) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  fmt.Sprintf("[%d]", i),
@@ -875,7 +875,7 @@ func (s RecursiveArray) Validate() error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
-	return nil
+	return nil // return 1
 }
 func (s StringMap) Validate() error {
 	var failures []validate.FieldError
@@ -892,7 +892,7 @@ func (s StringMap) Validate() error {
 			}).Validate(string(elem)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -913,7 +913,7 @@ func (s StringStringMap) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -942,7 +942,7 @@ func (s TestFloatValidation) Validate() error {
 		}).Validate(float64(s.Minmax)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minmax",
@@ -962,7 +962,7 @@ func (s TestFloatValidation) Validate() error {
 		}).Validate(float64(s.MultipleOf)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "multipleOf",
@@ -989,7 +989,7 @@ func (s ValidationStringMap) Validate() error {
 			}).Validate(string(elem)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
