@@ -18,8 +18,8 @@
 				}(); err != nil {
 					return err
 				}
-			}
-			return nil
+			}      
+			return nil // return 2
         {{- else }}
             {{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
         {{- end }}
@@ -130,7 +130,7 @@
 	{{- if not $validated }}
 	{{ errorf "validation expected %s" $t }}
 	{{- end }}
-	return nil
+	return nil // return 1
 {{- end }}
 
 {{ define "validators/body" }}
