@@ -409,7 +409,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 				}).Validate(int64(params.PetID)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: petID: invalid")
 			}
