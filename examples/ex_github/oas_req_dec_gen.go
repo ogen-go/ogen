@@ -47,7 +47,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span t
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsCreateOrUpdateEnvironmentSecret request")
 		}
@@ -91,7 +91,7 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Spa
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsCreateOrUpdateOrgSecret request")
 		}
@@ -135,7 +135,7 @@ func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Sp
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsCreateOrUpdateRepoSecret request")
 		}
@@ -179,7 +179,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsCreateSelfHostedRunnerGroupForOrg request")
 		}
@@ -223,7 +223,7 @@ func decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Request, span tr
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsReviewPendingDeploymentsForRun request")
 		}
@@ -341,7 +341,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsSetGithubActionsPermissionsOrganization request")
 		}
@@ -385,7 +385,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, 
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsSetGithubActionsPermissionsRepository request")
 		}
@@ -429,7 +429,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg request")
 		}
@@ -473,7 +473,7 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trac
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsSetSelectedReposForOrgSecret request")
 		}
@@ -517,7 +517,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization request")
 		}
@@ -561,7 +561,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsSetSelfHostedRunnersInGroupForOrg request")
 		}
@@ -605,7 +605,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ActionsUpdateSelfHostedRunnerGroupForOrg request")
 		}
@@ -833,7 +833,7 @@ func decodeAppsCreateContentAttachmentRequest(r *http.Request, span trace.Span) 
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate AppsCreateContentAttachment request")
 		}
@@ -880,13 +880,13 @@ func decodeAppsCreateInstallationAccessTokenRequest(r *http.Request, span trace.
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate AppsCreateInstallationAccessToken request")
 		}
@@ -1038,7 +1038,7 @@ func decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (req AppsScop
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate AppsScopeToken request")
 		}
@@ -1085,13 +1085,13 @@ func decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate AppsUpdateWebhookConfigForApp request")
 		}
@@ -1207,7 +1207,7 @@ func decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (req
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate CodeScanningUpdateAlert request")
 		}
@@ -1251,7 +1251,7 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (req
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate CodeScanningUploadSarif request")
 		}
@@ -1295,7 +1295,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise request")
 		}
@@ -1339,7 +1339,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Reque
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminProvisionAndInviteEnterpriseGroup request")
 		}
@@ -1383,7 +1383,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Reques
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminProvisionAndInviteEnterpriseUser request")
 		}
@@ -1463,7 +1463,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminSetGithubActionsPermissionsEnterprise request")
 		}
@@ -1507,7 +1507,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminSetInformationForProvisionedEnterpriseGroup request")
 		}
@@ -1551,7 +1551,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *h
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminSetInformationForProvisionedEnterpriseUser request")
 		}
@@ -1595,7 +1595,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise request")
 		}
@@ -1639,7 +1639,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise request")
 		}
@@ -1683,7 +1683,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise request")
 		}
@@ -1727,7 +1727,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r *http.Reque
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminUpdateAttributeForEnterpriseGroup request")
 		}
@@ -1771,7 +1771,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Reques
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminUpdateAttributeForEnterpriseUser request")
 		}
@@ -1818,13 +1818,13 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise request")
 		}
@@ -1868,7 +1868,7 @@ func decodeGistsCreateRequest(r *http.Request, span trace.Span) (req GistsCreate
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate GistsCreate request")
 		}
@@ -1912,7 +1912,7 @@ func decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate GistsCreateComment request")
 		}
@@ -1956,7 +1956,7 @@ func decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate GistsUpdateComment request")
 		}
@@ -2108,7 +2108,7 @@ func decodeGitCreateTagRequest(r *http.Request, span trace.Span) (req GitCreateT
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate GitCreateTag request")
 		}
@@ -2152,7 +2152,7 @@ func decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (req GitCreate
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate GitCreateTree request")
 		}
@@ -2232,7 +2232,7 @@ func decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r *http.Reques
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate InteractionsSetRestrictionsForAuthenticatedUser request")
 		}
@@ -2276,7 +2276,7 @@ func decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request, span trace.
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate InteractionsSetRestrictionsForOrg request")
 		}
@@ -2320,7 +2320,7 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate InteractionsSetRestrictionsForRepo request")
 		}
@@ -2509,7 +2509,7 @@ func decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.Span) (req I
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate IssuesCreateMilestone request")
 		}
@@ -2556,13 +2556,13 @@ func decodeIssuesLockRequest(r *http.Request, span trace.Span) (req OptNilIssues
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate IssuesLock request")
 		}
@@ -2646,13 +2646,13 @@ func decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (req OptIssuesU
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate IssuesUpdate request")
 		}
@@ -2772,13 +2772,13 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req O
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate IssuesUpdateMilestone request")
 		}
@@ -2859,7 +2859,7 @@ func decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span trace.Span) (
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate MigrationsSetLfsPreference request")
 		}
@@ -2903,7 +2903,7 @@ func decodeMigrationsStartForAuthenticatedUserRequest(r *http.Request, span trac
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate MigrationsStartForAuthenticatedUser request")
 		}
@@ -2947,7 +2947,7 @@ func decodeMigrationsStartForOrgRequest(r *http.Request, span trace.Span) (req M
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate MigrationsStartForOrg request")
 		}
@@ -2991,7 +2991,7 @@ func decodeMigrationsStartImportRequest(r *http.Request, span trace.Span) (req M
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate MigrationsStartImport request")
 		}
@@ -3075,13 +3075,13 @@ func decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Request, span t
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OAuthAuthorizationsCreateAuthorization request")
 		}
@@ -3125,7 +3125,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r *http.Requ
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OAuthAuthorizationsGetOrCreateAuthorizationForApp request")
 		}
@@ -3169,7 +3169,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReques
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint request")
 		}
@@ -3216,13 +3216,13 @@ func decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Request, span t
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OAuthAuthorizationsUpdateAuthorization request")
 		}
@@ -3269,13 +3269,13 @@ func decodeOrgsCreateInvitationRequest(r *http.Request, span trace.Span) (req Op
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsCreateInvitation request")
 		}
@@ -3319,7 +3319,7 @@ func decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span) (req OrgsC
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsCreateWebhook request")
 		}
@@ -3366,13 +3366,13 @@ func decodeOrgsSetMembershipForUserRequest(r *http.Request, span trace.Span) (re
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsSetMembershipForUser request")
 		}
@@ -3416,7 +3416,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.Request, span
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsUpdateMembershipForAuthenticatedUser request")
 		}
@@ -3463,13 +3463,13 @@ func decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptOr
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsUpdateWebhook request")
 		}
@@ -3516,13 +3516,13 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsUpdateWebhookConfigForOrg request")
 		}
@@ -3569,13 +3569,13 @@ func decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (req
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ProjectsAddCollaborator request")
 		}
@@ -3763,7 +3763,7 @@ func decodeProjectsMoveCardRequest(r *http.Request, span trace.Span) (req Projec
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ProjectsMoveCard request")
 		}
@@ -3807,7 +3807,7 @@ func decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (req Proj
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ProjectsMoveColumn request")
 		}
@@ -3854,13 +3854,13 @@ func decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (req OptProje
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ProjectsUpdate request")
 		}
@@ -4052,13 +4052,13 @@ func decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (req OptPu
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsCreateReview request")
 		}
@@ -4102,7 +4102,7 @@ func decodePullsCreateReviewCommentRequest(r *http.Request, span trace.Span) (re
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsCreateReviewComment request")
 		}
@@ -4185,13 +4185,13 @@ func decodePullsMergeRequest(r *http.Request, span trace.Span) (req OptNilPullsM
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsMerge request")
 		}
@@ -4235,7 +4235,7 @@ func decodePullsRemoveRequestedReviewersRequest(r *http.Request, span trace.Span
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsRemoveRequestedReviewers request")
 		}
@@ -4279,7 +4279,7 @@ func decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsSubmitReview request")
 		}
@@ -4326,13 +4326,13 @@ func decodePullsUpdateRequest(r *http.Request, span trace.Span) (req OptPullsUpd
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsUpdate request")
 		}
@@ -4485,7 +4485,7 @@ func decodeReactionsCreateForCommitCommentRequest(r *http.Request, span trace.Sp
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForCommitComment request")
 		}
@@ -4529,7 +4529,7 @@ func decodeReactionsCreateForIssueRequest(r *http.Request, span trace.Span) (req
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForIssue request")
 		}
@@ -4573,7 +4573,7 @@ func decodeReactionsCreateForIssueCommentRequest(r *http.Request, span trace.Spa
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForIssueComment request")
 		}
@@ -4617,7 +4617,7 @@ func decodeReactionsCreateForPullRequestReviewCommentRequest(r *http.Request, sp
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForPullRequestReviewComment request")
 		}
@@ -4661,7 +4661,7 @@ func decodeReactionsCreateForReleaseRequest(r *http.Request, span trace.Span) (r
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForRelease request")
 		}
@@ -4705,7 +4705,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, 
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForTeamDiscussionCommentInOrg request")
 		}
@@ -4749,7 +4749,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request,
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForTeamDiscussionCommentLegacy request")
 		}
@@ -4793,7 +4793,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span tr
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForTeamDiscussionInOrg request")
 		}
@@ -4837,7 +4837,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span t
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReactionsCreateForTeamDiscussionLegacy request")
 		}
@@ -4884,13 +4884,13 @@ func decodeReposAddAppAccessRestrictionsRequest(r *http.Request, span trace.Span
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddAppAccessRestrictions request")
 		}
@@ -4937,13 +4937,13 @@ func decodeReposAddCollaboratorRequest(r *http.Request, span trace.Span) (req Op
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddCollaborator request")
 		}
@@ -4990,13 +4990,13 @@ func decodeReposAddStatusCheckContextsRequest(r *http.Request, span trace.Span) 
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddStatusCheckContexts request")
 		}
@@ -5043,13 +5043,13 @@ func decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, span trace.Spa
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddTeamAccessRestrictions request")
 		}
@@ -5096,13 +5096,13 @@ func decodeReposAddUserAccessRestrictionsRequest(r *http.Request, span trace.Spa
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddUserAccessRestrictions request")
 		}
@@ -5218,7 +5218,7 @@ func decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (req
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreateCommitStatus request")
 		}
@@ -5334,7 +5334,7 @@ func decodeReposCreateDeploymentStatusRequest(r *http.Request, span trace.Span) 
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreateDeploymentStatus request")
 		}
@@ -5378,7 +5378,7 @@ func decodeReposCreateDispatchEventRequest(r *http.Request, span trace.Span) (re
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreateDispatchEvent request")
 		}
@@ -5495,7 +5495,7 @@ func decodeReposCreateInOrgRequest(r *http.Request, span trace.Span) (req ReposC
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreateInOrg request")
 		}
@@ -5575,8 +5575,8 @@ func decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (req Ni
 			if err := request.Value.Validate(); err != nil {
 				return err
 			}
-			return nil
-			return nil
+			return nil // return 1
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreatePagesSite request")
 		}
@@ -5695,13 +5695,13 @@ func decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptN
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreateWebhook request")
 		}
@@ -5856,13 +5856,13 @@ func decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, span trace.S
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposRemoveAppAccessRestrictions request")
 		}
@@ -5909,13 +5909,13 @@ func decodeReposRemoveStatusCheckContextsRequest(r *http.Request, span trace.Spa
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposRemoveStatusCheckContexts request")
 		}
@@ -5962,13 +5962,13 @@ func decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request, span trace.
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposRemoveTeamAccessRestrictions request")
 		}
@@ -6015,13 +6015,13 @@ func decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request, span trace.
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposRemoveUserAccessRestrictions request")
 		}
@@ -6102,7 +6102,7 @@ func decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (req R
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposReplaceAllTopics request")
 		}
@@ -6149,13 +6149,13 @@ func decodeReposSetAppAccessRestrictionsRequest(r *http.Request, span trace.Span
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposSetAppAccessRestrictions request")
 		}
@@ -6202,13 +6202,13 @@ func decodeReposSetStatusCheckContextsRequest(r *http.Request, span trace.Span) 
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposSetStatusCheckContexts request")
 		}
@@ -6255,13 +6255,13 @@ func decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, span trace.Spa
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposSetTeamAccessRestrictions request")
 		}
@@ -6308,13 +6308,13 @@ func decodeReposSetUserAccessRestrictionsRequest(r *http.Request, span trace.Spa
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposSetUserAccessRestrictions request")
 		}
@@ -6397,13 +6397,13 @@ func decodeReposUpdateRequest(r *http.Request, span trace.Span) (req OptReposUpd
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdate request")
 		}
@@ -6447,7 +6447,7 @@ func decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) 
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdateBranchProtection request")
 		}
@@ -6530,13 +6530,13 @@ func decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (req O
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdateInvitation request")
 		}
@@ -6731,13 +6731,13 @@ func decodeReposUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptR
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdateWebhook request")
 		}
@@ -6784,13 +6784,13 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdateWebhookConfigForRepo request")
 		}
@@ -6834,7 +6834,7 @@ func decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (r
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate SecretScanningUpdateAlert request")
 		}
@@ -6881,13 +6881,13 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span t
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateMembershipForUserInOrg request")
 		}
@@ -6934,13 +6934,13 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span 
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateMembershipForUserLegacy request")
 		}
@@ -6987,13 +6987,13 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span 
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateProjectPermissionsInOrg request")
 		}
@@ -7040,13 +7040,13 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.Request, span
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateProjectPermissionsLegacy request")
 		}
@@ -7093,13 +7093,13 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span tra
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateRepoPermissionsInOrg request")
 		}
@@ -7146,13 +7146,13 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Request, span tr
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateRepoPermissionsLegacy request")
 		}
@@ -7196,7 +7196,7 @@ func decodeTeamsCreateRequest(r *http.Request, span trace.Span) (req TeamsCreate
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsCreate request")
 		}
@@ -7420,7 +7420,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *http.Request, 
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsCreateOrUpdateIdpGroupConnectionsLegacy request")
 		}
@@ -7613,13 +7613,13 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (req OptTea
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsUpdateInOrg request")
 		}
@@ -7663,7 +7663,7 @@ func decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span) (req Teams
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsUpdateLegacy request")
 		}
@@ -7710,13 +7710,13 @@ func decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, span trace.Span
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate UsersAddEmailForAuthenticated request")
 		}
@@ -7796,7 +7796,7 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Request, span 
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate UsersCreatePublicSSHKeyForAuthenticated request")
 		}
@@ -7843,13 +7843,13 @@ func decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, span trace.S
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil
+					return nil // return 1
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil
-			return nil
+			return nil // return 2
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate UsersDeleteEmailForAuthenticated request")
 		}
@@ -7893,7 +7893,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *http.Request
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate UsersSetPrimaryEmailVisibilityForAuthenticated request")
 		}

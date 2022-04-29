@@ -585,7 +585,7 @@ func (c *Client) ActionsCreateOrUpdateEnvironmentSecret(ctx context.Context, req
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -749,7 +749,7 @@ func (c *Client) ActionsCreateOrUpdateOrgSecret(ctx context.Context, request Act
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -898,7 +898,7 @@ func (c *Client) ActionsCreateOrUpdateRepoSecret(ctx context.Context, request Ac
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1315,7 +1315,7 @@ func (c *Client) ActionsCreateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6474,7 +6474,7 @@ func (c *Client) ActionsReviewPendingDeploymentsForRun(ctx context.Context, requ
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6773,7 +6773,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsOrganization(ctx context.Cont
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6861,7 +6861,7 @@ func (c *Client) ActionsSetGithubActionsPermissionsRepository(ctx context.Contex
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6963,7 +6963,7 @@ func (c *Client) ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.Co
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7064,7 +7064,7 @@ func (c *Client) ActionsSetSelectedReposForOrgSecret(ctx context.Context, reques
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7166,7 +7166,7 @@ func (c *Client) ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization(
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7252,7 +7252,7 @@ func (c *Client) ActionsSetSelfHostedRunnersInGroupForOrg(ctx context.Context, r
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7353,7 +7353,7 @@ func (c *Client) ActionsUpdateSelfHostedRunnerGroupForOrg(ctx context.Context, r
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10214,7 +10214,7 @@ func (c *Client) AppsCreateContentAttachment(ctx context.Context, request AppsCr
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10337,13 +10337,13 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12161,7 +12161,7 @@ func (c *Client) AppsScopeToken(ctx context.Context, request AppsScopeTokenReq, 
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12377,13 +12377,13 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15176,7 +15176,7 @@ func (c *Client) CodeScanningUpdateAlert(ctx context.Context, request CodeScanni
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15316,7 +15316,7 @@ func (c *Client) CodeScanningUploadSarif(ctx context.Context, request CodeScanni
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15879,7 +15879,7 @@ func (c *Client) EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise(ctx con
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17881,7 +17881,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseGroup(ctx context.Co
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17969,7 +17969,7 @@ func (c *Client) EnterpriseAdminProvisionAndInviteEnterpriseUser(ctx context.Con
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18314,7 +18314,7 @@ func (c *Client) EnterpriseAdminSetGithubActionsPermissionsEnterprise(ctx contex
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18402,7 +18402,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseGroup(ctx 
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18507,7 +18507,7 @@ func (c *Client) EnterpriseAdminSetInformationForProvisionedEnterpriseUser(ctx c
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18605,7 +18605,7 @@ func (c *Client) EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise(
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18706,7 +18706,7 @@ func (c *Client) EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnte
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18789,7 +18789,7 @@ func (c *Client) EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise(ctx con
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18891,7 +18891,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseGroup(ctx context.Co
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19007,7 +19007,7 @@ func (c *Client) EnterpriseAdminUpdateAttributeForEnterpriseUser(ctx context.Con
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19106,13 +19106,13 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19268,7 +19268,7 @@ func (c *Client) GistsCreate(ctx context.Context, request GistsCreateReq) (res G
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19333,7 +19333,7 @@ func (c *Client) GistsCreateComment(ctx context.Context, request GistsCreateComm
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20605,7 +20605,7 @@ func (c *Client) GistsUpdateComment(ctx context.Context, request GistsUpdateComm
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21037,7 +21037,7 @@ func (c *Client) GitCreateTag(ctx context.Context, request GitCreateTagReq, para
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21140,7 +21140,7 @@ func (c *Client) GitCreateTree(ctx context.Context, request GitCreateTreeReq, pa
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -22395,7 +22395,7 @@ func (c *Client) InteractionsSetRestrictionsForAuthenticatedUser(ctx context.Con
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -22465,7 +22465,7 @@ func (c *Client) InteractionsSetRestrictionsForOrg(ctx context.Context, request 
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -22550,7 +22550,7 @@ func (c *Client) InteractionsSetRestrictionsForRepo(ctx context.Context, request
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -23136,7 +23136,7 @@ func (c *Client) IssuesCreateMilestone(ctx context.Context, request IssuesCreate
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -25879,13 +25879,13 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26386,13 +26386,13 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26705,13 +26705,13 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -28523,7 +28523,7 @@ func (c *Client) MigrationsSetLfsPreference(ctx context.Context, request Migrati
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -28620,7 +28620,7 @@ func (c *Client) MigrationsStartForAuthenticatedUser(ctx context.Context, reques
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -28687,7 +28687,7 @@ func (c *Client) MigrationsStartForOrg(ctx context.Context, request MigrationsSt
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -28769,7 +28769,7 @@ func (c *Client) MigrationsStartImport(ctx context.Context, request MigrationsSt
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -29157,13 +29157,13 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -29523,7 +29523,7 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForApp(ctx context.C
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -29625,7 +29625,7 @@ func (c *Client) OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -29949,13 +29949,13 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -30491,13 +30491,13 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -30579,7 +30579,7 @@ func (c *Client) OrgsCreateWebhook(ctx context.Context, request OrgsCreateWebhoo
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -33248,13 +33248,13 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -33498,7 +33498,7 @@ func (c *Client) OrgsUpdateMembershipForAuthenticatedUser(ctx context.Context, r
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -33585,13 +33585,13 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -33693,13 +33693,13 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -36252,13 +36252,13 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -37740,7 +37740,7 @@ func (c *Client) ProjectsMoveCard(ctx context.Context, request ProjectsMoveCardR
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -37820,7 +37820,7 @@ func (c *Client) ProjectsMoveColumn(ctx context.Context, request ProjectsMoveCol
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -37981,13 +37981,13 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -38550,13 +38550,13 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -38687,7 +38687,7 @@ func (c *Client) PullsCreateReviewComment(ctx context.Context, request PullsCrea
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -40599,13 +40599,13 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -40715,7 +40715,7 @@ func (c *Client) PullsRemoveRequestedReviewers(ctx context.Context, request Pull
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -40825,7 +40825,7 @@ func (c *Client) PullsSubmitReview(ctx context.Context, request PullsSubmitRevie
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -40961,13 +40961,13 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -41454,7 +41454,7 @@ func (c *Client) ReactionsCreateForCommitComment(ctx context.Context, request Re
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -41567,7 +41567,7 @@ func (c *Client) ReactionsCreateForIssue(ctx context.Context, request ReactionsC
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -41681,7 +41681,7 @@ func (c *Client) ReactionsCreateForIssueComment(ctx context.Context, request Rea
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -41795,7 +41795,7 @@ func (c *Client) ReactionsCreateForPullRequestReviewComment(ctx context.Context,
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -41908,7 +41908,7 @@ func (c *Client) ReactionsCreateForRelease(ctx context.Context, request Reaction
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -42026,7 +42026,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentInOrg(ctx context.Contex
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -42161,7 +42161,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionCommentLegacy(ctx context.Conte
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -42278,7 +42278,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionInOrg(ctx context.Context, requ
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -42397,7 +42397,7 @@ func (c *Client) ReactionsCreateForTeamDiscussionLegacy(ctx context.Context, req
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -44438,13 +44438,13 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -44577,13 +44577,13 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -44700,13 +44700,13 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -44832,13 +44832,13 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -44963,13 +44963,13 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -45726,7 +45726,7 @@ func (c *Client) ReposCreateCommitStatus(ctx context.Context, request ReposCreat
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -46070,7 +46070,7 @@ func (c *Client) ReposCreateDeploymentStatus(ctx context.Context, request ReposC
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -46197,7 +46197,7 @@ func (c *Client) ReposCreateDispatchEvent(ctx context.Context, request ReposCrea
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -46458,7 +46458,7 @@ func (c *Client) ReposCreateInOrg(ctx context.Context, request ReposCreateInOrgR
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -46644,8 +46644,8 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 		if err := request.Value.Validate(); err != nil {
 			return err
 		}
-		return nil
-		return nil
+		return nil // return 1
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -46942,13 +46942,13 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -57156,13 +57156,13 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -57367,13 +57367,13 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -57593,13 +57593,13 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -57724,13 +57724,13 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -57956,7 +57956,7 @@ func (c *Client) ReposReplaceAllTopics(ctx context.Context, request ReposReplace
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -58245,13 +58245,13 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -58369,13 +58369,13 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -58502,13 +58502,13 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -58634,13 +58634,13 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -58941,13 +58941,13 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -59050,7 +59050,7 @@ func (c *Client) ReposUpdateBranchProtection(ctx context.Context, request ReposU
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -59263,13 +59263,13 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -59812,13 +59812,13 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -59935,13 +59935,13 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -61452,7 +61452,7 @@ func (c *Client) SecretScanningUpdateAlert(ctx context.Context, request SecretSc
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -61682,13 +61682,13 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -61825,13 +61825,13 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -61933,13 +61933,13 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -62058,13 +62058,13 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -62173,13 +62173,13 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -62318,13 +62318,13 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -62821,7 +62821,7 @@ func (c *Client) TeamsCreate(ctx context.Context, request TeamsCreateReq, params
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -63406,7 +63406,7 @@ func (c *Client) TeamsCreateOrUpdateIdpGroupConnectionsLegacy(ctx context.Contex
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -67899,13 +67899,13 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -68005,7 +68005,7 @@ func (c *Client) TeamsUpdateLegacy(ctx context.Context, request TeamsUpdateLegac
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -68088,13 +68088,13 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -68467,7 +68467,7 @@ func (c *Client) UsersCreatePublicSSHKeyForAuthenticated(ctx context.Context, re
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -68536,13 +68536,13 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -70138,7 +70138,7 @@ func (c *Client) UsersSetPrimaryEmailVisibilityForAuthenticated(ctx context.Cont
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}

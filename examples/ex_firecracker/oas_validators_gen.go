@@ -28,13 +28,13 @@ func (s Drive) Validate() error {
 				if err := s.RateLimiter.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rate_limiter",
@@ -55,7 +55,7 @@ func (s FullVmConfiguration) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -66,7 +66,7 @@ func (s FullVmConfiguration) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "block_devices",
@@ -79,13 +79,13 @@ func (s FullVmConfiguration) Validate() error {
 				if err := s.Logger.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "logger",
@@ -98,13 +98,13 @@ func (s FullVmConfiguration) Validate() error {
 				if err := s.MachineConfig.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "machine_config",
@@ -118,7 +118,7 @@ func (s FullVmConfiguration) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -129,7 +129,7 @@ func (s FullVmConfiguration) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "net_devices",
@@ -142,13 +142,13 @@ func (s FullVmConfiguration) Validate() error {
 				if err := s.VsockDevice.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "vsock_device",
@@ -166,7 +166,7 @@ func (s InstanceActionInfo) Validate() error {
 		if err := s.ActionType.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "action_type",
@@ -196,7 +196,7 @@ func (s InstanceInfo) Validate() error {
 		if err := s.State.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "state",
@@ -228,13 +228,13 @@ func (s Logger) Validate() error {
 				if err := s.Level.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "level",
@@ -268,13 +268,13 @@ func (s MachineConfiguration) Validate() error {
 				if err := s.CPUTemplate.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "cpu_template",
@@ -294,7 +294,7 @@ func (s MachineConfiguration) Validate() error {
 		}).Validate(int64(s.VcpuCount)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "vcpu_count",
@@ -314,13 +314,13 @@ func (s NetworkInterface) Validate() error {
 				if err := s.RxRateLimiter.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rx_rate_limiter",
@@ -333,13 +333,13 @@ func (s NetworkInterface) Validate() error {
 				if err := s.TxRateLimiter.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "tx_rate_limiter",
@@ -360,13 +360,13 @@ func (s PartialDrive) Validate() error {
 				if err := s.RateLimiter.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rate_limiter",
@@ -386,13 +386,13 @@ func (s PartialNetworkInterface) Validate() error {
 				if err := s.RxRateLimiter.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rx_rate_limiter",
@@ -405,13 +405,13 @@ func (s PartialNetworkInterface) Validate() error {
 				if err := s.TxRateLimiter.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "tx_rate_limiter",
@@ -431,13 +431,13 @@ func (s RateLimiter) Validate() error {
 				if err := s.Bandwidth.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "bandwidth",
@@ -450,13 +450,13 @@ func (s RateLimiter) Validate() error {
 				if err := s.Ops.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "ops",
@@ -476,13 +476,13 @@ func (s SnapshotCreateParams) Validate() error {
 				if err := s.SnapshotType.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "snapshot_type",
@@ -521,13 +521,13 @@ func (s TokenBucket) Validate() error {
 				}).Validate(int64(s.OneTimeBurst.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "one_time_burst",
@@ -547,7 +547,7 @@ func (s TokenBucket) Validate() error {
 		}).Validate(int64(s.RefillTime)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "refill_time",
@@ -567,7 +567,7 @@ func (s TokenBucket) Validate() error {
 		}).Validate(int64(s.Size)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "size",
@@ -585,7 +585,7 @@ func (s VM) Validate() error {
 		if err := s.State.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "state",
@@ -622,7 +622,7 @@ func (s Vsock) Validate() error {
 		}).Validate(int64(s.GuestCid)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "guest_cid",

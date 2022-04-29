@@ -34,8 +34,8 @@ func (s *Server) handleActionsAddRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	params, err := decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
-			err,
+			Operation: "ActionsAddRepoAccessToSelfHostedRunnerGroupInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -79,8 +79,8 @@ func (s *Server) handleActionsAddSelectedRepoToOrgSecretRequest(args [3]string, 
 	params, err := decodeActionsAddSelectedRepoToOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsAddSelectedRepoToOrgSecret",
-			err,
+			Operation: "ActionsAddSelectedRepoToOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -124,8 +124,8 @@ func (s *Server) handleActionsAddSelfHostedRunnerToGroupForOrgRequest(args [3]st
 	params, err := decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsAddSelfHostedRunnerToGroupForOrg",
-			err,
+			Operation: "ActionsAddSelfHostedRunnerToGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -169,8 +169,8 @@ func (s *Server) handleActionsApproveWorkflowRunRequest(args [3]string, w http.R
 	params, err := decodeActionsApproveWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsApproveWorkflowRun",
-			err,
+			Operation: "ActionsApproveWorkflowRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -214,8 +214,8 @@ func (s *Server) handleActionsCancelWorkflowRunRequest(args [3]string, w http.Re
 	params, err := decodeActionsCancelWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCancelWorkflowRun",
-			err,
+			Operation: "ActionsCancelWorkflowRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -259,8 +259,8 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	params, err := decodeActionsCreateOrUpdateEnvironmentSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCreateOrUpdateEnvironmentSecret",
-			err,
+			Operation: "ActionsCreateOrUpdateEnvironmentSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -268,8 +268,8 @@ func (s *Server) handleActionsCreateOrUpdateEnvironmentSecretRequest(args [3]str
 	request, err := decodeActionsCreateOrUpdateEnvironmentSecretRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsCreateOrUpdateEnvironmentSecret",
-			err,
+			Operation: "ActionsCreateOrUpdateEnvironmentSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -313,8 +313,8 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	params, err := decodeActionsCreateOrUpdateOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCreateOrUpdateOrgSecret",
-			err,
+			Operation: "ActionsCreateOrUpdateOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -322,8 +322,8 @@ func (s *Server) handleActionsCreateOrUpdateOrgSecretRequest(args [2]string, w h
 	request, err := decodeActionsCreateOrUpdateOrgSecretRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsCreateOrUpdateOrgSecret",
-			err,
+			Operation: "ActionsCreateOrUpdateOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -367,8 +367,8 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	params, err := decodeActionsCreateOrUpdateRepoSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCreateOrUpdateRepoSecret",
-			err,
+			Operation: "ActionsCreateOrUpdateRepoSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -376,8 +376,8 @@ func (s *Server) handleActionsCreateOrUpdateRepoSecretRequest(args [3]string, w 
 	request, err := decodeActionsCreateOrUpdateRepoSecretRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsCreateOrUpdateRepoSecret",
-			err,
+			Operation: "ActionsCreateOrUpdateRepoSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -421,8 +421,8 @@ func (s *Server) handleActionsCreateRegistrationTokenForOrgRequest(args [1]strin
 	params, err := decodeActionsCreateRegistrationTokenForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCreateRegistrationTokenForOrg",
-			err,
+			Operation: "ActionsCreateRegistrationTokenForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -466,8 +466,8 @@ func (s *Server) handleActionsCreateRegistrationTokenForRepoRequest(args [2]stri
 	params, err := decodeActionsCreateRegistrationTokenForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCreateRegistrationTokenForRepo",
-			err,
+			Operation: "ActionsCreateRegistrationTokenForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -511,8 +511,8 @@ func (s *Server) handleActionsCreateRemoveTokenForOrgRequest(args [1]string, w h
 	params, err := decodeActionsCreateRemoveTokenForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCreateRemoveTokenForOrg",
-			err,
+			Operation: "ActionsCreateRemoveTokenForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -556,8 +556,8 @@ func (s *Server) handleActionsCreateRemoveTokenForRepoRequest(args [2]string, w 
 	params, err := decodeActionsCreateRemoveTokenForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCreateRemoveTokenForRepo",
-			err,
+			Operation: "ActionsCreateRemoveTokenForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -601,8 +601,8 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	params, err := decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsCreateSelfHostedRunnerGroupForOrg",
-			err,
+			Operation: "ActionsCreateSelfHostedRunnerGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -610,8 +610,8 @@ func (s *Server) handleActionsCreateSelfHostedRunnerGroupForOrgRequest(args [1]s
 	request, err := decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsCreateSelfHostedRunnerGroupForOrg",
-			err,
+			Operation: "ActionsCreateSelfHostedRunnerGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -655,8 +655,8 @@ func (s *Server) handleActionsDeleteArtifactRequest(args [3]string, w http.Respo
 	params, err := decodeActionsDeleteArtifactParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteArtifact",
-			err,
+			Operation: "ActionsDeleteArtifact",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -700,8 +700,8 @@ func (s *Server) handleActionsDeleteEnvironmentSecretRequest(args [3]string, w h
 	params, err := decodeActionsDeleteEnvironmentSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteEnvironmentSecret",
-			err,
+			Operation: "ActionsDeleteEnvironmentSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -745,8 +745,8 @@ func (s *Server) handleActionsDeleteOrgSecretRequest(args [2]string, w http.Resp
 	params, err := decodeActionsDeleteOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteOrgSecret",
-			err,
+			Operation: "ActionsDeleteOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -790,8 +790,8 @@ func (s *Server) handleActionsDeleteRepoSecretRequest(args [3]string, w http.Res
 	params, err := decodeActionsDeleteRepoSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteRepoSecret",
-			err,
+			Operation: "ActionsDeleteRepoSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -835,8 +835,8 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromOrgRequest(args [2]strin
 	params, err := decodeActionsDeleteSelfHostedRunnerFromOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteSelfHostedRunnerFromOrg",
-			err,
+			Operation: "ActionsDeleteSelfHostedRunnerFromOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -880,8 +880,8 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerFromRepoRequest(args [3]stri
 	params, err := decodeActionsDeleteSelfHostedRunnerFromRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteSelfHostedRunnerFromRepo",
-			err,
+			Operation: "ActionsDeleteSelfHostedRunnerFromRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -925,8 +925,8 @@ func (s *Server) handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest(args [2]
 	params, err := decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteSelfHostedRunnerGroupFromOrg",
-			err,
+			Operation: "ActionsDeleteSelfHostedRunnerGroupFromOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -970,8 +970,8 @@ func (s *Server) handleActionsDeleteWorkflowRunRequest(args [3]string, w http.Re
 	params, err := decodeActionsDeleteWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteWorkflowRun",
-			err,
+			Operation: "ActionsDeleteWorkflowRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1015,8 +1015,8 @@ func (s *Server) handleActionsDeleteWorkflowRunLogsRequest(args [3]string, w htt
 	params, err := decodeActionsDeleteWorkflowRunLogsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDeleteWorkflowRunLogs",
-			err,
+			Operation: "ActionsDeleteWorkflowRunLogs",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1060,8 +1060,8 @@ func (s *Server) handleActionsDisableSelectedRepositoryGithubActionsOrganization
 	params, err := decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDisableSelectedRepositoryGithubActionsOrganization",
-			err,
+			Operation: "ActionsDisableSelectedRepositoryGithubActionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1105,8 +1105,8 @@ func (s *Server) handleActionsDownloadArtifactRequest(args [4]string, w http.Res
 	params, err := decodeActionsDownloadArtifactParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDownloadArtifact",
-			err,
+			Operation: "ActionsDownloadArtifact",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1150,8 +1150,8 @@ func (s *Server) handleActionsDownloadJobLogsForWorkflowRunRequest(args [3]strin
 	params, err := decodeActionsDownloadJobLogsForWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDownloadJobLogsForWorkflowRun",
-			err,
+			Operation: "ActionsDownloadJobLogsForWorkflowRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1195,8 +1195,8 @@ func (s *Server) handleActionsDownloadWorkflowRunLogsRequest(args [3]string, w h
 	params, err := decodeActionsDownloadWorkflowRunLogsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsDownloadWorkflowRunLogs",
-			err,
+			Operation: "ActionsDownloadWorkflowRunLogs",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1240,8 +1240,8 @@ func (s *Server) handleActionsEnableSelectedRepositoryGithubActionsOrganizationR
 	params, err := decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsEnableSelectedRepositoryGithubActionsOrganization",
-			err,
+			Operation: "ActionsEnableSelectedRepositoryGithubActionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1285,8 +1285,8 @@ func (s *Server) handleActionsGetAllowedActionsOrganizationRequest(args [1]strin
 	params, err := decodeActionsGetAllowedActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetAllowedActionsOrganization",
-			err,
+			Operation: "ActionsGetAllowedActionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1330,8 +1330,8 @@ func (s *Server) handleActionsGetAllowedActionsRepositoryRequest(args [2]string,
 	params, err := decodeActionsGetAllowedActionsRepositoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetAllowedActionsRepository",
-			err,
+			Operation: "ActionsGetAllowedActionsRepository",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1375,8 +1375,8 @@ func (s *Server) handleActionsGetArtifactRequest(args [3]string, w http.Response
 	params, err := decodeActionsGetArtifactParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetArtifact",
-			err,
+			Operation: "ActionsGetArtifact",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1420,8 +1420,8 @@ func (s *Server) handleActionsGetEnvironmentPublicKeyRequest(args [2]string, w h
 	params, err := decodeActionsGetEnvironmentPublicKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetEnvironmentPublicKey",
-			err,
+			Operation: "ActionsGetEnvironmentPublicKey",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1465,8 +1465,8 @@ func (s *Server) handleActionsGetEnvironmentSecretRequest(args [3]string, w http
 	params, err := decodeActionsGetEnvironmentSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetEnvironmentSecret",
-			err,
+			Operation: "ActionsGetEnvironmentSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1510,8 +1510,8 @@ func (s *Server) handleActionsGetGithubActionsPermissionsOrganizationRequest(arg
 	params, err := decodeActionsGetGithubActionsPermissionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetGithubActionsPermissionsOrganization",
-			err,
+			Operation: "ActionsGetGithubActionsPermissionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1555,8 +1555,8 @@ func (s *Server) handleActionsGetGithubActionsPermissionsRepositoryRequest(args 
 	params, err := decodeActionsGetGithubActionsPermissionsRepositoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetGithubActionsPermissionsRepository",
-			err,
+			Operation: "ActionsGetGithubActionsPermissionsRepository",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1600,8 +1600,8 @@ func (s *Server) handleActionsGetJobForWorkflowRunRequest(args [3]string, w http
 	params, err := decodeActionsGetJobForWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetJobForWorkflowRun",
-			err,
+			Operation: "ActionsGetJobForWorkflowRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1645,8 +1645,8 @@ func (s *Server) handleActionsGetOrgPublicKeyRequest(args [1]string, w http.Resp
 	params, err := decodeActionsGetOrgPublicKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetOrgPublicKey",
-			err,
+			Operation: "ActionsGetOrgPublicKey",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1690,8 +1690,8 @@ func (s *Server) handleActionsGetOrgSecretRequest(args [2]string, w http.Respons
 	params, err := decodeActionsGetOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetOrgSecret",
-			err,
+			Operation: "ActionsGetOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1735,8 +1735,8 @@ func (s *Server) handleActionsGetRepoPublicKeyRequest(args [2]string, w http.Res
 	params, err := decodeActionsGetRepoPublicKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetRepoPublicKey",
-			err,
+			Operation: "ActionsGetRepoPublicKey",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1780,8 +1780,8 @@ func (s *Server) handleActionsGetRepoSecretRequest(args [3]string, w http.Respon
 	params, err := decodeActionsGetRepoSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetRepoSecret",
-			err,
+			Operation: "ActionsGetRepoSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1825,8 +1825,8 @@ func (s *Server) handleActionsGetReviewsForRunRequest(args [3]string, w http.Res
 	params, err := decodeActionsGetReviewsForRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetReviewsForRun",
-			err,
+			Operation: "ActionsGetReviewsForRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1870,8 +1870,8 @@ func (s *Server) handleActionsGetSelfHostedRunnerForOrgRequest(args [2]string, w
 	params, err := decodeActionsGetSelfHostedRunnerForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetSelfHostedRunnerForOrg",
-			err,
+			Operation: "ActionsGetSelfHostedRunnerForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1915,8 +1915,8 @@ func (s *Server) handleActionsGetSelfHostedRunnerForRepoRequest(args [3]string, 
 	params, err := decodeActionsGetSelfHostedRunnerForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetSelfHostedRunnerForRepo",
-			err,
+			Operation: "ActionsGetSelfHostedRunnerForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1960,8 +1960,8 @@ func (s *Server) handleActionsGetSelfHostedRunnerGroupForOrgRequest(args [2]stri
 	params, err := decodeActionsGetSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetSelfHostedRunnerGroupForOrg",
-			err,
+			Operation: "ActionsGetSelfHostedRunnerGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2005,8 +2005,8 @@ func (s *Server) handleActionsGetWorkflowRunRequest(args [3]string, w http.Respo
 	params, err := decodeActionsGetWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetWorkflowRun",
-			err,
+			Operation: "ActionsGetWorkflowRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2050,8 +2050,8 @@ func (s *Server) handleActionsGetWorkflowRunUsageRequest(args [3]string, w http.
 	params, err := decodeActionsGetWorkflowRunUsageParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsGetWorkflowRunUsage",
-			err,
+			Operation: "ActionsGetWorkflowRunUsage",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2095,8 +2095,8 @@ func (s *Server) handleActionsListArtifactsForRepoRequest(args [2]string, w http
 	params, err := decodeActionsListArtifactsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListArtifactsForRepo",
-			err,
+			Operation: "ActionsListArtifactsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2140,8 +2140,8 @@ func (s *Server) handleActionsListEnvironmentSecretsRequest(args [2]string, w ht
 	params, err := decodeActionsListEnvironmentSecretsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListEnvironmentSecrets",
-			err,
+			Operation: "ActionsListEnvironmentSecrets",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2185,8 +2185,8 @@ func (s *Server) handleActionsListJobsForWorkflowRunRequest(args [3]string, w ht
 	params, err := decodeActionsListJobsForWorkflowRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListJobsForWorkflowRun",
-			err,
+			Operation: "ActionsListJobsForWorkflowRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2230,8 +2230,8 @@ func (s *Server) handleActionsListOrgSecretsRequest(args [1]string, w http.Respo
 	params, err := decodeActionsListOrgSecretsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListOrgSecrets",
-			err,
+			Operation: "ActionsListOrgSecrets",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2275,8 +2275,8 @@ func (s *Server) handleActionsListRepoAccessToSelfHostedRunnerGroupInOrgRequest(
 	params, err := decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
-			err,
+			Operation: "ActionsListRepoAccessToSelfHostedRunnerGroupInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2320,8 +2320,8 @@ func (s *Server) handleActionsListRepoSecretsRequest(args [2]string, w http.Resp
 	params, err := decodeActionsListRepoSecretsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListRepoSecrets",
-			err,
+			Operation: "ActionsListRepoSecrets",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2365,8 +2365,8 @@ func (s *Server) handleActionsListRepoWorkflowsRequest(args [2]string, w http.Re
 	params, err := decodeActionsListRepoWorkflowsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListRepoWorkflows",
-			err,
+			Operation: "ActionsListRepoWorkflows",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2410,8 +2410,8 @@ func (s *Server) handleActionsListRunnerApplicationsForOrgRequest(args [1]string
 	params, err := decodeActionsListRunnerApplicationsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListRunnerApplicationsForOrg",
-			err,
+			Operation: "ActionsListRunnerApplicationsForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2455,8 +2455,8 @@ func (s *Server) handleActionsListRunnerApplicationsForRepoRequest(args [2]strin
 	params, err := decodeActionsListRunnerApplicationsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListRunnerApplicationsForRepo",
-			err,
+			Operation: "ActionsListRunnerApplicationsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2500,8 +2500,8 @@ func (s *Server) handleActionsListSelectedReposForOrgSecretRequest(args [2]strin
 	params, err := decodeActionsListSelectedReposForOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListSelectedReposForOrgSecret",
-			err,
+			Operation: "ActionsListSelectedReposForOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2545,8 +2545,8 @@ func (s *Server) handleActionsListSelectedRepositoriesEnabledGithubActionsOrgani
 	params, err := decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
-			err,
+			Operation: "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2590,8 +2590,8 @@ func (s *Server) handleActionsListSelfHostedRunnerGroupsForOrgRequest(args [1]st
 	params, err := decodeActionsListSelfHostedRunnerGroupsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListSelfHostedRunnerGroupsForOrg",
-			err,
+			Operation: "ActionsListSelfHostedRunnerGroupsForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2635,8 +2635,8 @@ func (s *Server) handleActionsListSelfHostedRunnersForOrgRequest(args [1]string,
 	params, err := decodeActionsListSelfHostedRunnersForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListSelfHostedRunnersForOrg",
-			err,
+			Operation: "ActionsListSelfHostedRunnersForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2680,8 +2680,8 @@ func (s *Server) handleActionsListSelfHostedRunnersForRepoRequest(args [2]string
 	params, err := decodeActionsListSelfHostedRunnersForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListSelfHostedRunnersForRepo",
-			err,
+			Operation: "ActionsListSelfHostedRunnersForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2725,8 +2725,8 @@ func (s *Server) handleActionsListSelfHostedRunnersInGroupForOrgRequest(args [2]
 	params, err := decodeActionsListSelfHostedRunnersInGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListSelfHostedRunnersInGroupForOrg",
-			err,
+			Operation: "ActionsListSelfHostedRunnersInGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2770,8 +2770,8 @@ func (s *Server) handleActionsListWorkflowRunArtifactsRequest(args [3]string, w 
 	params, err := decodeActionsListWorkflowRunArtifactsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListWorkflowRunArtifacts",
-			err,
+			Operation: "ActionsListWorkflowRunArtifacts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2815,8 +2815,8 @@ func (s *Server) handleActionsListWorkflowRunsForRepoRequest(args [2]string, w h
 	params, err := decodeActionsListWorkflowRunsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsListWorkflowRunsForRepo",
-			err,
+			Operation: "ActionsListWorkflowRunsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2860,8 +2860,8 @@ func (s *Server) handleActionsReRunWorkflowRequest(args [3]string, w http.Respon
 	params, err := decodeActionsReRunWorkflowParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsReRunWorkflow",
-			err,
+			Operation: "ActionsReRunWorkflow",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2905,8 +2905,8 @@ func (s *Server) handleActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgReques
 	params, err := decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
-			err,
+			Operation: "ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2950,8 +2950,8 @@ func (s *Server) handleActionsRemoveSelectedRepoFromOrgSecretRequest(args [3]str
 	params, err := decodeActionsRemoveSelectedRepoFromOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsRemoveSelectedRepoFromOrgSecret",
-			err,
+			Operation: "ActionsRemoveSelectedRepoFromOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2995,8 +2995,8 @@ func (s *Server) handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest(args 
 	params, err := decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsRemoveSelfHostedRunnerFromGroupForOrg",
-			err,
+			Operation: "ActionsRemoveSelfHostedRunnerFromGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3040,8 +3040,8 @@ func (s *Server) handleActionsRetryWorkflowRequest(args [3]string, w http.Respon
 	params, err := decodeActionsRetryWorkflowParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsRetryWorkflow",
-			err,
+			Operation: "ActionsRetryWorkflow",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3085,8 +3085,8 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	params, err := decodeActionsReviewPendingDeploymentsForRunParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsReviewPendingDeploymentsForRun",
-			err,
+			Operation: "ActionsReviewPendingDeploymentsForRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3094,8 +3094,8 @@ func (s *Server) handleActionsReviewPendingDeploymentsForRunRequest(args [3]stri
 	request, err := decodeActionsReviewPendingDeploymentsForRunRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsReviewPendingDeploymentsForRun",
-			err,
+			Operation: "ActionsReviewPendingDeploymentsForRun",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3139,8 +3139,8 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	params, err := decodeActionsSetAllowedActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsSetAllowedActionsOrganization",
-			err,
+			Operation: "ActionsSetAllowedActionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3148,8 +3148,8 @@ func (s *Server) handleActionsSetAllowedActionsOrganizationRequest(args [1]strin
 	request, err := decodeActionsSetAllowedActionsOrganizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsSetAllowedActionsOrganization",
-			err,
+			Operation: "ActionsSetAllowedActionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3193,8 +3193,8 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	params, err := decodeActionsSetAllowedActionsRepositoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsSetAllowedActionsRepository",
-			err,
+			Operation: "ActionsSetAllowedActionsRepository",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3202,8 +3202,8 @@ func (s *Server) handleActionsSetAllowedActionsRepositoryRequest(args [2]string,
 	request, err := decodeActionsSetAllowedActionsRepositoryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsSetAllowedActionsRepository",
-			err,
+			Operation: "ActionsSetAllowedActionsRepository",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3247,8 +3247,8 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	params, err := decodeActionsSetGithubActionsPermissionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsSetGithubActionsPermissionsOrganization",
-			err,
+			Operation: "ActionsSetGithubActionsPermissionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3256,8 +3256,8 @@ func (s *Server) handleActionsSetGithubActionsPermissionsOrganizationRequest(arg
 	request, err := decodeActionsSetGithubActionsPermissionsOrganizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsSetGithubActionsPermissionsOrganization",
-			err,
+			Operation: "ActionsSetGithubActionsPermissionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3301,8 +3301,8 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	params, err := decodeActionsSetGithubActionsPermissionsRepositoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsSetGithubActionsPermissionsRepository",
-			err,
+			Operation: "ActionsSetGithubActionsPermissionsRepository",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3310,8 +3310,8 @@ func (s *Server) handleActionsSetGithubActionsPermissionsRepositoryRequest(args 
 	request, err := decodeActionsSetGithubActionsPermissionsRepositoryRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsSetGithubActionsPermissionsRepository",
-			err,
+			Operation: "ActionsSetGithubActionsPermissionsRepository",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3355,8 +3355,8 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	params, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
-			err,
+			Operation: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3364,8 +3364,8 @@ func (s *Server) handleActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(a
 	request, err := decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
-			err,
+			Operation: "ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3409,8 +3409,8 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	params, err := decodeActionsSetSelectedReposForOrgSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsSetSelectedReposForOrgSecret",
-			err,
+			Operation: "ActionsSetSelectedReposForOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3418,8 +3418,8 @@ func (s *Server) handleActionsSetSelectedReposForOrgSecretRequest(args [2]string
 	request, err := decodeActionsSetSelectedReposForOrgSecretRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsSetSelectedReposForOrgSecret",
-			err,
+			Operation: "ActionsSetSelectedReposForOrgSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3463,8 +3463,8 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	params, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
-			err,
+			Operation: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3472,8 +3472,8 @@ func (s *Server) handleActionsSetSelectedRepositoriesEnabledGithubActionsOrganiz
 	request, err := decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
-			err,
+			Operation: "ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3517,8 +3517,8 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	params, err := decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsSetSelfHostedRunnersInGroupForOrg",
-			err,
+			Operation: "ActionsSetSelfHostedRunnersInGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3526,8 +3526,8 @@ func (s *Server) handleActionsSetSelfHostedRunnersInGroupForOrgRequest(args [2]s
 	request, err := decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsSetSelfHostedRunnersInGroupForOrg",
-			err,
+			Operation: "ActionsSetSelfHostedRunnersInGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3571,8 +3571,8 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	params, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActionsUpdateSelfHostedRunnerGroupForOrg",
-			err,
+			Operation: "ActionsUpdateSelfHostedRunnerGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3580,8 +3580,8 @@ func (s *Server) handleActionsUpdateSelfHostedRunnerGroupForOrgRequest(args [2]s
 	request, err := decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActionsUpdateSelfHostedRunnerGroupForOrg",
-			err,
+			Operation: "ActionsUpdateSelfHostedRunnerGroupForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3625,8 +3625,8 @@ func (s *Server) handleActivityCheckRepoIsStarredByAuthenticatedUserRequest(args
 	params, err := decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityCheckRepoIsStarredByAuthenticatedUser",
-			err,
+			Operation: "ActivityCheckRepoIsStarredByAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3670,8 +3670,8 @@ func (s *Server) handleActivityDeleteRepoSubscriptionRequest(args [2]string, w h
 	params, err := decodeActivityDeleteRepoSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityDeleteRepoSubscription",
-			err,
+			Operation: "ActivityDeleteRepoSubscription",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3715,8 +3715,8 @@ func (s *Server) handleActivityDeleteThreadSubscriptionRequest(args [1]string, w
 	params, err := decodeActivityDeleteThreadSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityDeleteThreadSubscription",
-			err,
+			Operation: "ActivityDeleteThreadSubscription",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3796,8 +3796,8 @@ func (s *Server) handleActivityGetRepoSubscriptionRequest(args [2]string, w http
 	params, err := decodeActivityGetRepoSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityGetRepoSubscription",
-			err,
+			Operation: "ActivityGetRepoSubscription",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3841,8 +3841,8 @@ func (s *Server) handleActivityGetThreadRequest(args [1]string, w http.ResponseW
 	params, err := decodeActivityGetThreadParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityGetThread",
-			err,
+			Operation: "ActivityGetThread",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3886,8 +3886,8 @@ func (s *Server) handleActivityGetThreadSubscriptionForAuthenticatedUserRequest(
 	params, err := decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityGetThreadSubscriptionForAuthenticatedUser",
-			err,
+			Operation: "ActivityGetThreadSubscriptionForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3931,8 +3931,8 @@ func (s *Server) handleActivityListEventsForAuthenticatedUserRequest(args [1]str
 	params, err := decodeActivityListEventsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListEventsForAuthenticatedUser",
-			err,
+			Operation: "ActivityListEventsForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3976,8 +3976,8 @@ func (s *Server) handleActivityListNotificationsForAuthenticatedUserRequest(args
 	params, err := decodeActivityListNotificationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListNotificationsForAuthenticatedUser",
-			err,
+			Operation: "ActivityListNotificationsForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4021,8 +4021,8 @@ func (s *Server) handleActivityListOrgEventsForAuthenticatedUserRequest(args [2]
 	params, err := decodeActivityListOrgEventsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListOrgEventsForAuthenticatedUser",
-			err,
+			Operation: "ActivityListOrgEventsForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4066,8 +4066,8 @@ func (s *Server) handleActivityListPublicEventsRequest(args [0]string, w http.Re
 	params, err := decodeActivityListPublicEventsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListPublicEvents",
-			err,
+			Operation: "ActivityListPublicEvents",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4111,8 +4111,8 @@ func (s *Server) handleActivityListPublicEventsForRepoNetworkRequest(args [2]str
 	params, err := decodeActivityListPublicEventsForRepoNetworkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListPublicEventsForRepoNetwork",
-			err,
+			Operation: "ActivityListPublicEventsForRepoNetwork",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4156,8 +4156,8 @@ func (s *Server) handleActivityListPublicEventsForUserRequest(args [1]string, w 
 	params, err := decodeActivityListPublicEventsForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListPublicEventsForUser",
-			err,
+			Operation: "ActivityListPublicEventsForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4201,8 +4201,8 @@ func (s *Server) handleActivityListPublicOrgEventsRequest(args [1]string, w http
 	params, err := decodeActivityListPublicOrgEventsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListPublicOrgEvents",
-			err,
+			Operation: "ActivityListPublicOrgEvents",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4246,8 +4246,8 @@ func (s *Server) handleActivityListReceivedEventsForUserRequest(args [1]string, 
 	params, err := decodeActivityListReceivedEventsForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListReceivedEventsForUser",
-			err,
+			Operation: "ActivityListReceivedEventsForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4291,8 +4291,8 @@ func (s *Server) handleActivityListReceivedPublicEventsForUserRequest(args [1]st
 	params, err := decodeActivityListReceivedPublicEventsForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListReceivedPublicEventsForUser",
-			err,
+			Operation: "ActivityListReceivedPublicEventsForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4336,8 +4336,8 @@ func (s *Server) handleActivityListRepoEventsRequest(args [2]string, w http.Resp
 	params, err := decodeActivityListRepoEventsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListRepoEvents",
-			err,
+			Operation: "ActivityListRepoEvents",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4381,8 +4381,8 @@ func (s *Server) handleActivityListRepoNotificationsForAuthenticatedUserRequest(
 	params, err := decodeActivityListRepoNotificationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListRepoNotificationsForAuthenticatedUser",
-			err,
+			Operation: "ActivityListRepoNotificationsForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4426,8 +4426,8 @@ func (s *Server) handleActivityListReposStarredByAuthenticatedUserRequest(args [
 	params, err := decodeActivityListReposStarredByAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListReposStarredByAuthenticatedUser",
-			err,
+			Operation: "ActivityListReposStarredByAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4471,8 +4471,8 @@ func (s *Server) handleActivityListReposWatchedByUserRequest(args [1]string, w h
 	params, err := decodeActivityListReposWatchedByUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListReposWatchedByUser",
-			err,
+			Operation: "ActivityListReposWatchedByUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4516,8 +4516,8 @@ func (s *Server) handleActivityListWatchedReposForAuthenticatedUserRequest(args 
 	params, err := decodeActivityListWatchedReposForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListWatchedReposForAuthenticatedUser",
-			err,
+			Operation: "ActivityListWatchedReposForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4561,8 +4561,8 @@ func (s *Server) handleActivityListWatchersForRepoRequest(args [2]string, w http
 	params, err := decodeActivityListWatchersForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityListWatchersForRepo",
-			err,
+			Operation: "ActivityListWatchersForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4606,8 +4606,8 @@ func (s *Server) handleActivityMarkNotificationsAsReadRequest(args [0]string, w 
 	request, err := decodeActivityMarkNotificationsAsReadRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActivityMarkNotificationsAsRead",
-			err,
+			Operation: "ActivityMarkNotificationsAsRead",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4651,8 +4651,8 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	params, err := decodeActivityMarkRepoNotificationsAsReadParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityMarkRepoNotificationsAsRead",
-			err,
+			Operation: "ActivityMarkRepoNotificationsAsRead",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4660,8 +4660,8 @@ func (s *Server) handleActivityMarkRepoNotificationsAsReadRequest(args [2]string
 	request, err := decodeActivityMarkRepoNotificationsAsReadRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActivityMarkRepoNotificationsAsRead",
-			err,
+			Operation: "ActivityMarkRepoNotificationsAsRead",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4705,8 +4705,8 @@ func (s *Server) handleActivityMarkThreadAsReadRequest(args [1]string, w http.Re
 	params, err := decodeActivityMarkThreadAsReadParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityMarkThreadAsRead",
-			err,
+			Operation: "ActivityMarkThreadAsRead",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4750,8 +4750,8 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	params, err := decodeActivitySetRepoSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivitySetRepoSubscription",
-			err,
+			Operation: "ActivitySetRepoSubscription",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4759,8 +4759,8 @@ func (s *Server) handleActivitySetRepoSubscriptionRequest(args [2]string, w http
 	request, err := decodeActivitySetRepoSubscriptionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActivitySetRepoSubscription",
-			err,
+			Operation: "ActivitySetRepoSubscription",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4804,8 +4804,8 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	params, err := decodeActivitySetThreadSubscriptionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivitySetThreadSubscription",
-			err,
+			Operation: "ActivitySetThreadSubscription",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4813,8 +4813,8 @@ func (s *Server) handleActivitySetThreadSubscriptionRequest(args [1]string, w ht
 	request, err := decodeActivitySetThreadSubscriptionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ActivitySetThreadSubscription",
-			err,
+			Operation: "ActivitySetThreadSubscription",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4858,8 +4858,8 @@ func (s *Server) handleActivityStarRepoForAuthenticatedUserRequest(args [2]strin
 	params, err := decodeActivityStarRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityStarRepoForAuthenticatedUser",
-			err,
+			Operation: "ActivityStarRepoForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4903,8 +4903,8 @@ func (s *Server) handleActivityUnstarRepoForAuthenticatedUserRequest(args [2]str
 	params, err := decodeActivityUnstarRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ActivityUnstarRepoForAuthenticatedUser",
-			err,
+			Operation: "ActivityUnstarRepoForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4948,8 +4948,8 @@ func (s *Server) handleAppsAddRepoToInstallationRequest(args [2]string, w http.R
 	params, err := decodeAppsAddRepoToInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsAddRepoToInstallation",
-			err,
+			Operation: "AppsAddRepoToInstallation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4993,8 +4993,8 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeAppsCheckTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsCheckToken",
-			err,
+			Operation: "AppsCheckToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5002,8 +5002,8 @@ func (s *Server) handleAppsCheckTokenRequest(args [1]string, w http.ResponseWrit
 	request, err := decodeAppsCheckTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"AppsCheckToken",
-			err,
+			Operation: "AppsCheckToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5047,8 +5047,8 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	params, err := decodeAppsCreateContentAttachmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsCreateContentAttachment",
-			err,
+			Operation: "AppsCreateContentAttachment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5056,8 +5056,8 @@ func (s *Server) handleAppsCreateContentAttachmentRequest(args [3]string, w http
 	request, err := decodeAppsCreateContentAttachmentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"AppsCreateContentAttachment",
-			err,
+			Operation: "AppsCreateContentAttachment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5101,8 +5101,8 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	params, err := decodeAppsCreateInstallationAccessTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsCreateInstallationAccessToken",
-			err,
+			Operation: "AppsCreateInstallationAccessToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5110,8 +5110,8 @@ func (s *Server) handleAppsCreateInstallationAccessTokenRequest(args [1]string, 
 	request, err := decodeAppsCreateInstallationAccessTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"AppsCreateInstallationAccessToken",
-			err,
+			Operation: "AppsCreateInstallationAccessToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5155,8 +5155,8 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	params, err := decodeAppsDeleteAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsDeleteAuthorization",
-			err,
+			Operation: "AppsDeleteAuthorization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5164,8 +5164,8 @@ func (s *Server) handleAppsDeleteAuthorizationRequest(args [1]string, w http.Res
 	request, err := decodeAppsDeleteAuthorizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"AppsDeleteAuthorization",
-			err,
+			Operation: "AppsDeleteAuthorization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5209,8 +5209,8 @@ func (s *Server) handleAppsDeleteInstallationRequest(args [1]string, w http.Resp
 	params, err := decodeAppsDeleteInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsDeleteInstallation",
-			err,
+			Operation: "AppsDeleteInstallation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5254,8 +5254,8 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	params, err := decodeAppsDeleteTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsDeleteToken",
-			err,
+			Operation: "AppsDeleteToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5263,8 +5263,8 @@ func (s *Server) handleAppsDeleteTokenRequest(args [1]string, w http.ResponseWri
 	request, err := decodeAppsDeleteTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"AppsDeleteToken",
-			err,
+			Operation: "AppsDeleteToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5344,8 +5344,8 @@ func (s *Server) handleAppsGetBySlugRequest(args [1]string, w http.ResponseWrite
 	params, err := decodeAppsGetBySlugParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsGetBySlug",
-			err,
+			Operation: "AppsGetBySlug",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5389,8 +5389,8 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountRequest(args [1]string, 
 	params, err := decodeAppsGetSubscriptionPlanForAccountParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsGetSubscriptionPlanForAccount",
-			err,
+			Operation: "AppsGetSubscriptionPlanForAccount",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5434,8 +5434,8 @@ func (s *Server) handleAppsGetSubscriptionPlanForAccountStubbedRequest(args [1]s
 	params, err := decodeAppsGetSubscriptionPlanForAccountStubbedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsGetSubscriptionPlanForAccountStubbed",
-			err,
+			Operation: "AppsGetSubscriptionPlanForAccountStubbed",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5515,8 +5515,8 @@ func (s *Server) handleAppsGetWebhookDeliveryRequest(args [1]string, w http.Resp
 	params, err := decodeAppsGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsGetWebhookDelivery",
-			err,
+			Operation: "AppsGetWebhookDelivery",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5560,8 +5560,8 @@ func (s *Server) handleAppsListAccountsForPlanRequest(args [1]string, w http.Res
 	params, err := decodeAppsListAccountsForPlanParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListAccountsForPlan",
-			err,
+			Operation: "AppsListAccountsForPlan",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5605,8 +5605,8 @@ func (s *Server) handleAppsListAccountsForPlanStubbedRequest(args [1]string, w h
 	params, err := decodeAppsListAccountsForPlanStubbedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListAccountsForPlanStubbed",
-			err,
+			Operation: "AppsListAccountsForPlanStubbed",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5650,8 +5650,8 @@ func (s *Server) handleAppsListInstallationReposForAuthenticatedUserRequest(args
 	params, err := decodeAppsListInstallationReposForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListInstallationReposForAuthenticatedUser",
-			err,
+			Operation: "AppsListInstallationReposForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5695,8 +5695,8 @@ func (s *Server) handleAppsListPlansRequest(args [0]string, w http.ResponseWrite
 	params, err := decodeAppsListPlansParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListPlans",
-			err,
+			Operation: "AppsListPlans",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5740,8 +5740,8 @@ func (s *Server) handleAppsListPlansStubbedRequest(args [0]string, w http.Respon
 	params, err := decodeAppsListPlansStubbedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListPlansStubbed",
-			err,
+			Operation: "AppsListPlansStubbed",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5785,8 +5785,8 @@ func (s *Server) handleAppsListReposAccessibleToInstallationRequest(args [0]stri
 	params, err := decodeAppsListReposAccessibleToInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListReposAccessibleToInstallation",
-			err,
+			Operation: "AppsListReposAccessibleToInstallation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5830,8 +5830,8 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserRequest(args [0]
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListSubscriptionsForAuthenticatedUser",
-			err,
+			Operation: "AppsListSubscriptionsForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5875,8 +5875,8 @@ func (s *Server) handleAppsListSubscriptionsForAuthenticatedUserStubbedRequest(a
 	params, err := decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListSubscriptionsForAuthenticatedUserStubbed",
-			err,
+			Operation: "AppsListSubscriptionsForAuthenticatedUserStubbed",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5920,8 +5920,8 @@ func (s *Server) handleAppsListWebhookDeliveriesRequest(args [0]string, w http.R
 	params, err := decodeAppsListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsListWebhookDeliveries",
-			err,
+			Operation: "AppsListWebhookDeliveries",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5965,8 +5965,8 @@ func (s *Server) handleAppsRedeliverWebhookDeliveryRequest(args [1]string, w htt
 	params, err := decodeAppsRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsRedeliverWebhookDelivery",
-			err,
+			Operation: "AppsRedeliverWebhookDelivery",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6010,8 +6010,8 @@ func (s *Server) handleAppsRemoveRepoFromInstallationRequest(args [2]string, w h
 	params, err := decodeAppsRemoveRepoFromInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsRemoveRepoFromInstallation",
-			err,
+			Operation: "AppsRemoveRepoFromInstallation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6055,8 +6055,8 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeAppsResetTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsResetToken",
-			err,
+			Operation: "AppsResetToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6064,8 +6064,8 @@ func (s *Server) handleAppsResetTokenRequest(args [1]string, w http.ResponseWrit
 	request, err := decodeAppsResetTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"AppsResetToken",
-			err,
+			Operation: "AppsResetToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6145,8 +6145,8 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeAppsScopeTokenParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsScopeToken",
-			err,
+			Operation: "AppsScopeToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6154,8 +6154,8 @@ func (s *Server) handleAppsScopeTokenRequest(args [1]string, w http.ResponseWrit
 	request, err := decodeAppsScopeTokenRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"AppsScopeToken",
-			err,
+			Operation: "AppsScopeToken",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6199,8 +6199,8 @@ func (s *Server) handleAppsSuspendInstallationRequest(args [1]string, w http.Res
 	params, err := decodeAppsSuspendInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsSuspendInstallation",
-			err,
+			Operation: "AppsSuspendInstallation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6244,8 +6244,8 @@ func (s *Server) handleAppsUnsuspendInstallationRequest(args [1]string, w http.R
 	params, err := decodeAppsUnsuspendInstallationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"AppsUnsuspendInstallation",
-			err,
+			Operation: "AppsUnsuspendInstallation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6289,8 +6289,8 @@ func (s *Server) handleAppsUpdateWebhookConfigForAppRequest(args [0]string, w ht
 	request, err := decodeAppsUpdateWebhookConfigForAppRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"AppsUpdateWebhookConfigForApp",
-			err,
+			Operation: "AppsUpdateWebhookConfigForApp",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6334,8 +6334,8 @@ func (s *Server) handleBillingGetGithubActionsBillingGheRequest(args [1]string, 
 	params, err := decodeBillingGetGithubActionsBillingGheParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetGithubActionsBillingGhe",
-			err,
+			Operation: "BillingGetGithubActionsBillingGhe",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6379,8 +6379,8 @@ func (s *Server) handleBillingGetGithubActionsBillingOrgRequest(args [1]string, 
 	params, err := decodeBillingGetGithubActionsBillingOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetGithubActionsBillingOrg",
-			err,
+			Operation: "BillingGetGithubActionsBillingOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6424,8 +6424,8 @@ func (s *Server) handleBillingGetGithubActionsBillingUserRequest(args [1]string,
 	params, err := decodeBillingGetGithubActionsBillingUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetGithubActionsBillingUser",
-			err,
+			Operation: "BillingGetGithubActionsBillingUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6469,8 +6469,8 @@ func (s *Server) handleBillingGetGithubPackagesBillingGheRequest(args [1]string,
 	params, err := decodeBillingGetGithubPackagesBillingGheParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetGithubPackagesBillingGhe",
-			err,
+			Operation: "BillingGetGithubPackagesBillingGhe",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6514,8 +6514,8 @@ func (s *Server) handleBillingGetGithubPackagesBillingOrgRequest(args [1]string,
 	params, err := decodeBillingGetGithubPackagesBillingOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetGithubPackagesBillingOrg",
-			err,
+			Operation: "BillingGetGithubPackagesBillingOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6559,8 +6559,8 @@ func (s *Server) handleBillingGetGithubPackagesBillingUserRequest(args [1]string
 	params, err := decodeBillingGetGithubPackagesBillingUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetGithubPackagesBillingUser",
-			err,
+			Operation: "BillingGetGithubPackagesBillingUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6604,8 +6604,8 @@ func (s *Server) handleBillingGetSharedStorageBillingGheRequest(args [1]string, 
 	params, err := decodeBillingGetSharedStorageBillingGheParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetSharedStorageBillingGhe",
-			err,
+			Operation: "BillingGetSharedStorageBillingGhe",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6649,8 +6649,8 @@ func (s *Server) handleBillingGetSharedStorageBillingOrgRequest(args [1]string, 
 	params, err := decodeBillingGetSharedStorageBillingOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetSharedStorageBillingOrg",
-			err,
+			Operation: "BillingGetSharedStorageBillingOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6694,8 +6694,8 @@ func (s *Server) handleBillingGetSharedStorageBillingUserRequest(args [1]string,
 	params, err := decodeBillingGetSharedStorageBillingUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"BillingGetSharedStorageBillingUser",
-			err,
+			Operation: "BillingGetSharedStorageBillingUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6739,8 +6739,8 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	params, err := decodeChecksCreateSuiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksCreateSuite",
-			err,
+			Operation: "ChecksCreateSuite",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6748,8 +6748,8 @@ func (s *Server) handleChecksCreateSuiteRequest(args [2]string, w http.ResponseW
 	request, err := decodeChecksCreateSuiteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ChecksCreateSuite",
-			err,
+			Operation: "ChecksCreateSuite",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6793,8 +6793,8 @@ func (s *Server) handleChecksGetRequest(args [3]string, w http.ResponseWriter, r
 	params, err := decodeChecksGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksGet",
-			err,
+			Operation: "ChecksGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6838,8 +6838,8 @@ func (s *Server) handleChecksGetSuiteRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeChecksGetSuiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksGetSuite",
-			err,
+			Operation: "ChecksGetSuite",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6883,8 +6883,8 @@ func (s *Server) handleChecksListAnnotationsRequest(args [3]string, w http.Respo
 	params, err := decodeChecksListAnnotationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksListAnnotations",
-			err,
+			Operation: "ChecksListAnnotations",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6928,8 +6928,8 @@ func (s *Server) handleChecksListForRefRequest(args [3]string, w http.ResponseWr
 	params, err := decodeChecksListForRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksListForRef",
-			err,
+			Operation: "ChecksListForRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6973,8 +6973,8 @@ func (s *Server) handleChecksListForSuiteRequest(args [3]string, w http.Response
 	params, err := decodeChecksListForSuiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksListForSuite",
-			err,
+			Operation: "ChecksListForSuite",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7018,8 +7018,8 @@ func (s *Server) handleChecksListSuitesForRefRequest(args [3]string, w http.Resp
 	params, err := decodeChecksListSuitesForRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksListSuitesForRef",
-			err,
+			Operation: "ChecksListSuitesForRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7063,8 +7063,8 @@ func (s *Server) handleChecksRerequestSuiteRequest(args [3]string, w http.Respon
 	params, err := decodeChecksRerequestSuiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksRerequestSuite",
-			err,
+			Operation: "ChecksRerequestSuite",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7108,8 +7108,8 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	params, err := decodeChecksSetSuitesPreferencesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ChecksSetSuitesPreferences",
-			err,
+			Operation: "ChecksSetSuitesPreferences",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7117,8 +7117,8 @@ func (s *Server) handleChecksSetSuitesPreferencesRequest(args [2]string, w http.
 	request, err := decodeChecksSetSuitesPreferencesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ChecksSetSuitesPreferences",
-			err,
+			Operation: "ChecksSetSuitesPreferences",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7162,8 +7162,8 @@ func (s *Server) handleCodeScanningDeleteAnalysisRequest(args [3]string, w http.
 	params, err := decodeCodeScanningDeleteAnalysisParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningDeleteAnalysis",
-			err,
+			Operation: "CodeScanningDeleteAnalysis",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7207,8 +7207,8 @@ func (s *Server) handleCodeScanningGetAlertRequest(args [3]string, w http.Respon
 	params, err := decodeCodeScanningGetAlertParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningGetAlert",
-			err,
+			Operation: "CodeScanningGetAlert",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7252,8 +7252,8 @@ func (s *Server) handleCodeScanningGetAnalysisRequest(args [3]string, w http.Res
 	params, err := decodeCodeScanningGetAnalysisParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningGetAnalysis",
-			err,
+			Operation: "CodeScanningGetAnalysis",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7297,8 +7297,8 @@ func (s *Server) handleCodeScanningGetSarifRequest(args [3]string, w http.Respon
 	params, err := decodeCodeScanningGetSarifParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningGetSarif",
-			err,
+			Operation: "CodeScanningGetSarif",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7342,8 +7342,8 @@ func (s *Server) handleCodeScanningListAlertInstancesRequest(args [3]string, w h
 	params, err := decodeCodeScanningListAlertInstancesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningListAlertInstances",
-			err,
+			Operation: "CodeScanningListAlertInstances",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7387,8 +7387,8 @@ func (s *Server) handleCodeScanningListAlertsForRepoRequest(args [2]string, w ht
 	params, err := decodeCodeScanningListAlertsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningListAlertsForRepo",
-			err,
+			Operation: "CodeScanningListAlertsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7432,8 +7432,8 @@ func (s *Server) handleCodeScanningListRecentAnalysesRequest(args [2]string, w h
 	params, err := decodeCodeScanningListRecentAnalysesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningListRecentAnalyses",
-			err,
+			Operation: "CodeScanningListRecentAnalyses",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7477,8 +7477,8 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	params, err := decodeCodeScanningUpdateAlertParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningUpdateAlert",
-			err,
+			Operation: "CodeScanningUpdateAlert",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7486,8 +7486,8 @@ func (s *Server) handleCodeScanningUpdateAlertRequest(args [3]string, w http.Res
 	request, err := decodeCodeScanningUpdateAlertRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"CodeScanningUpdateAlert",
-			err,
+			Operation: "CodeScanningUpdateAlert",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7531,8 +7531,8 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	params, err := decodeCodeScanningUploadSarifParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodeScanningUploadSarif",
-			err,
+			Operation: "CodeScanningUploadSarif",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7540,8 +7540,8 @@ func (s *Server) handleCodeScanningUploadSarifRequest(args [2]string, w http.Res
 	request, err := decodeCodeScanningUploadSarifRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"CodeScanningUploadSarif",
-			err,
+			Operation: "CodeScanningUploadSarif",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7621,8 +7621,8 @@ func (s *Server) handleCodesOfConductGetConductCodeRequest(args [1]string, w htt
 	params, err := decodeCodesOfConductGetConductCodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CodesOfConductGetConductCode",
-			err,
+			Operation: "CodesOfConductGetConductCode",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7702,8 +7702,8 @@ func (s *Server) handleEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnter
 	params, err := decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			err,
+			Operation: "EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7747,8 +7747,8 @@ func (s *Server) handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseReq
 	params, err := decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7792,8 +7792,8 @@ func (s *Server) handleEnterpriseAdminCreateRegistrationTokenForEnterpriseReques
 	params, err := decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminCreateRegistrationTokenForEnterprise",
-			err,
+			Operation: "EnterpriseAdminCreateRegistrationTokenForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7837,8 +7837,8 @@ func (s *Server) handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest(args
 	params, err := decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminCreateRemoveTokenForEnterprise",
-			err,
+			Operation: "EnterpriseAdminCreateRemoveTokenForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7882,8 +7882,8 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	params, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7891,8 +7891,8 @@ func (s *Server) handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRe
 	request, err := decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7936,8 +7936,8 @@ func (s *Server) handleEnterpriseAdminDeleteScimGroupFromEnterpriseRequest(args 
 	params, err := decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminDeleteScimGroupFromEnterprise",
-			err,
+			Operation: "EnterpriseAdminDeleteScimGroupFromEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7981,8 +7981,8 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseReques
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
-			err,
+			Operation: "EnterpriseAdminDeleteSelfHostedRunnerFromEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8026,8 +8026,8 @@ func (s *Server) handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseR
 	params, err := decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
-			err,
+			Operation: "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8071,8 +8071,8 @@ func (s *Server) handleEnterpriseAdminDeleteUserFromEnterpriseRequest(args [2]st
 	params, err := decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminDeleteUserFromEnterprise",
-			err,
+			Operation: "EnterpriseAdminDeleteUserFromEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8116,8 +8116,8 @@ func (s *Server) handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEn
 	params, err := decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8161,8 +8161,8 @@ func (s *Server) handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnt
 	params, err := decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8206,8 +8206,8 @@ func (s *Server) handleEnterpriseAdminGetAllowedActionsEnterpriseRequest(args [1
 	params, err := decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminGetAllowedActionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminGetAllowedActionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8251,8 +8251,8 @@ func (s *Server) handleEnterpriseAdminGetAuditLogRequest(args [1]string, w http.
 	params, err := decodeEnterpriseAdminGetAuditLogParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminGetAuditLog",
-			err,
+			Operation: "EnterpriseAdminGetAuditLog",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8296,8 +8296,8 @@ func (s *Server) handleEnterpriseAdminGetGithubActionsPermissionsEnterpriseReque
 	params, err := decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminGetGithubActionsPermissionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminGetGithubActionsPermissionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8341,8 +8341,8 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseGro
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
-			err,
+			Operation: "EnterpriseAdminGetProvisioningInformationForEnterpriseGroup",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8386,8 +8386,8 @@ func (s *Server) handleEnterpriseAdminGetProvisioningInformationForEnterpriseUse
 	params, err := decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
-			err,
+			Operation: "EnterpriseAdminGetProvisioningInformationForEnterpriseUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8431,8 +8431,8 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest(ar
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminGetSelfHostedRunnerForEnterprise",
-			err,
+			Operation: "EnterpriseAdminGetSelfHostedRunnerForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8476,8 +8476,8 @@ func (s *Server) handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseReque
 	params, err := decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8521,8 +8521,8 @@ func (s *Server) handleEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnte
 	params, err := decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			err,
+			Operation: "EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8566,8 +8566,8 @@ func (s *Server) handleEnterpriseAdminListProvisionedGroupsEnterpriseRequest(arg
 	params, err := decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminListProvisionedGroupsEnterprise",
-			err,
+			Operation: "EnterpriseAdminListProvisionedGroupsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8611,8 +8611,8 @@ func (s *Server) handleEnterpriseAdminListProvisionedIdentitiesEnterpriseRequest
 	params, err := decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminListProvisionedIdentitiesEnterprise",
-			err,
+			Operation: "EnterpriseAdminListProvisionedIdentitiesEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8656,8 +8656,8 @@ func (s *Server) handleEnterpriseAdminListRunnerApplicationsForEnterpriseRequest
 	params, err := decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminListRunnerApplicationsForEnterprise",
-			err,
+			Operation: "EnterpriseAdminListRunnerApplicationsForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8701,8 +8701,8 @@ func (s *Server) handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActi
 	params, err := decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8746,8 +8746,8 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseReq
 	params, err := decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
-			err,
+			Operation: "EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8791,8 +8791,8 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersForEnterpriseRequest(
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminListSelfHostedRunnersForEnterprise",
-			err,
+			Operation: "EnterpriseAdminListSelfHostedRunnersForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8836,8 +8836,8 @@ func (s *Server) handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseR
 	params, err := decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8881,8 +8881,8 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminProvisionAndInviteEnterpriseGroup",
-			err,
+			Operation: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8890,8 +8890,8 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(a
 	request, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminProvisionAndInviteEnterpriseGroup",
-			err,
+			Operation: "EnterpriseAdminProvisionAndInviteEnterpriseGroup",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8935,8 +8935,8 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	params, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminProvisionAndInviteEnterpriseUser",
-			err,
+			Operation: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8944,8 +8944,8 @@ func (s *Server) handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(ar
 	request, err := decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminProvisionAndInviteEnterpriseUser",
-			err,
+			Operation: "EnterpriseAdminProvisionAndInviteEnterpriseUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8989,8 +8989,8 @@ func (s *Server) handleEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEn
 	params, err := decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			err,
+			Operation: "EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9034,8 +9034,8 @@ func (s *Server) handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpri
 	params, err := decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9079,8 +9079,8 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	params, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminSetAllowedActionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetAllowedActionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9088,8 +9088,8 @@ func (s *Server) handleEnterpriseAdminSetAllowedActionsEnterpriseRequest(args [1
 	request, err := decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminSetAllowedActionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetAllowedActionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9133,8 +9133,8 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	params, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminSetGithubActionsPermissionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9142,8 +9142,8 @@ func (s *Server) handleEnterpriseAdminSetGithubActionsPermissionsEnterpriseReque
 	request, err := decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminSetGithubActionsPermissionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetGithubActionsPermissionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9187,8 +9187,8 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
-			err,
+			Operation: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9196,8 +9196,8 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseGrou
 	request, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
-			err,
+			Operation: "EnterpriseAdminSetInformationForProvisionedEnterpriseGroup",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9241,8 +9241,8 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	params, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
-			err,
+			Operation: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9250,8 +9250,8 @@ func (s *Server) handleEnterpriseAdminSetInformationForProvisionedEnterpriseUser
 	request, err := decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
-			err,
+			Operation: "EnterpriseAdminSetInformationForProvisionedEnterpriseUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9295,8 +9295,8 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	params, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9304,8 +9304,8 @@ func (s *Server) handleEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnter
 	request, err := decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9349,8 +9349,8 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	params, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9358,8 +9358,8 @@ func (s *Server) handleEnterpriseAdminSetSelectedOrganizationsEnabledGithubActio
 	request, err := decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9403,8 +9403,8 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	params, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9412,8 +9412,8 @@ func (s *Server) handleEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRe
 	request, err := decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9457,8 +9457,8 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminUpdateAttributeForEnterpriseGroup",
-			err,
+			Operation: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9466,8 +9466,8 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(a
 	request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminUpdateAttributeForEnterpriseGroup",
-			err,
+			Operation: "EnterpriseAdminUpdateAttributeForEnterpriseGroup",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9511,8 +9511,8 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	params, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminUpdateAttributeForEnterpriseUser",
-			err,
+			Operation: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9520,8 +9520,8 @@ func (s *Server) handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(ar
 	request, err := decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminUpdateAttributeForEnterpriseUser",
-			err,
+			Operation: "EnterpriseAdminUpdateAttributeForEnterpriseUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9565,8 +9565,8 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	params, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9574,8 +9574,8 @@ func (s *Server) handleEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRe
 	request, err := decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
-			err,
+			Operation: "EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9619,8 +9619,8 @@ func (s *Server) handleGistsCheckIsStarredRequest(args [1]string, w http.Respons
 	params, err := decodeGistsCheckIsStarredParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsCheckIsStarred",
-			err,
+			Operation: "GistsCheckIsStarred",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9664,8 +9664,8 @@ func (s *Server) handleGistsCreateRequest(args [0]string, w http.ResponseWriter,
 	request, err := decodeGistsCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GistsCreate",
-			err,
+			Operation: "GistsCreate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9709,8 +9709,8 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	params, err := decodeGistsCreateCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsCreateComment",
-			err,
+			Operation: "GistsCreateComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9718,8 +9718,8 @@ func (s *Server) handleGistsCreateCommentRequest(args [1]string, w http.Response
 	request, err := decodeGistsCreateCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GistsCreateComment",
-			err,
+			Operation: "GistsCreateComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9763,8 +9763,8 @@ func (s *Server) handleGistsDeleteRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeGistsDeleteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsDelete",
-			err,
+			Operation: "GistsDelete",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9808,8 +9808,8 @@ func (s *Server) handleGistsDeleteCommentRequest(args [2]string, w http.Response
 	params, err := decodeGistsDeleteCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsDeleteComment",
-			err,
+			Operation: "GistsDeleteComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9853,8 +9853,8 @@ func (s *Server) handleGistsForkRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeGistsForkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsFork",
-			err,
+			Operation: "GistsFork",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9898,8 +9898,8 @@ func (s *Server) handleGistsGetRequest(args [1]string, w http.ResponseWriter, r 
 	params, err := decodeGistsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsGet",
-			err,
+			Operation: "GistsGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9943,8 +9943,8 @@ func (s *Server) handleGistsGetCommentRequest(args [2]string, w http.ResponseWri
 	params, err := decodeGistsGetCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsGetComment",
-			err,
+			Operation: "GistsGetComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9988,8 +9988,8 @@ func (s *Server) handleGistsGetRevisionRequest(args [2]string, w http.ResponseWr
 	params, err := decodeGistsGetRevisionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsGetRevision",
-			err,
+			Operation: "GistsGetRevision",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10033,8 +10033,8 @@ func (s *Server) handleGistsListRequest(args [0]string, w http.ResponseWriter, r
 	params, err := decodeGistsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsList",
-			err,
+			Operation: "GistsList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10078,8 +10078,8 @@ func (s *Server) handleGistsListCommentsRequest(args [1]string, w http.ResponseW
 	params, err := decodeGistsListCommentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsListComments",
-			err,
+			Operation: "GistsListComments",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10123,8 +10123,8 @@ func (s *Server) handleGistsListCommitsRequest(args [1]string, w http.ResponseWr
 	params, err := decodeGistsListCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsListCommits",
-			err,
+			Operation: "GistsListCommits",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10168,8 +10168,8 @@ func (s *Server) handleGistsListForUserRequest(args [1]string, w http.ResponseWr
 	params, err := decodeGistsListForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsListForUser",
-			err,
+			Operation: "GistsListForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10213,8 +10213,8 @@ func (s *Server) handleGistsListForksRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeGistsListForksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsListForks",
-			err,
+			Operation: "GistsListForks",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10258,8 +10258,8 @@ func (s *Server) handleGistsListPublicRequest(args [0]string, w http.ResponseWri
 	params, err := decodeGistsListPublicParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsListPublic",
-			err,
+			Operation: "GistsListPublic",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10303,8 +10303,8 @@ func (s *Server) handleGistsListStarredRequest(args [0]string, w http.ResponseWr
 	params, err := decodeGistsListStarredParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsListStarred",
-			err,
+			Operation: "GistsListStarred",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10348,8 +10348,8 @@ func (s *Server) handleGistsStarRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeGistsStarParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsStar",
-			err,
+			Operation: "GistsStar",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10393,8 +10393,8 @@ func (s *Server) handleGistsUnstarRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeGistsUnstarParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsUnstar",
-			err,
+			Operation: "GistsUnstar",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10438,8 +10438,8 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	params, err := decodeGistsUpdateCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GistsUpdateComment",
-			err,
+			Operation: "GistsUpdateComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10447,8 +10447,8 @@ func (s *Server) handleGistsUpdateCommentRequest(args [2]string, w http.Response
 	request, err := decodeGistsUpdateCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GistsUpdateComment",
-			err,
+			Operation: "GistsUpdateComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10492,8 +10492,8 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeGitCreateBlobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitCreateBlob",
-			err,
+			Operation: "GitCreateBlob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10501,8 +10501,8 @@ func (s *Server) handleGitCreateBlobRequest(args [2]string, w http.ResponseWrite
 	request, err := decodeGitCreateBlobRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GitCreateBlob",
-			err,
+			Operation: "GitCreateBlob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10546,8 +10546,8 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	params, err := decodeGitCreateCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitCreateCommit",
-			err,
+			Operation: "GitCreateCommit",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10555,8 +10555,8 @@ func (s *Server) handleGitCreateCommitRequest(args [2]string, w http.ResponseWri
 	request, err := decodeGitCreateCommitRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GitCreateCommit",
-			err,
+			Operation: "GitCreateCommit",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10600,8 +10600,8 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	params, err := decodeGitCreateRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitCreateRef",
-			err,
+			Operation: "GitCreateRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10609,8 +10609,8 @@ func (s *Server) handleGitCreateRefRequest(args [2]string, w http.ResponseWriter
 	request, err := decodeGitCreateRefRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GitCreateRef",
-			err,
+			Operation: "GitCreateRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10654,8 +10654,8 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	params, err := decodeGitCreateTagParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitCreateTag",
-			err,
+			Operation: "GitCreateTag",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10663,8 +10663,8 @@ func (s *Server) handleGitCreateTagRequest(args [2]string, w http.ResponseWriter
 	request, err := decodeGitCreateTagRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GitCreateTag",
-			err,
+			Operation: "GitCreateTag",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10708,8 +10708,8 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeGitCreateTreeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitCreateTree",
-			err,
+			Operation: "GitCreateTree",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10717,8 +10717,8 @@ func (s *Server) handleGitCreateTreeRequest(args [2]string, w http.ResponseWrite
 	request, err := decodeGitCreateTreeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GitCreateTree",
-			err,
+			Operation: "GitCreateTree",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10762,8 +10762,8 @@ func (s *Server) handleGitDeleteRefRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeGitDeleteRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitDeleteRef",
-			err,
+			Operation: "GitDeleteRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10807,8 +10807,8 @@ func (s *Server) handleGitGetBlobRequest(args [3]string, w http.ResponseWriter, 
 	params, err := decodeGitGetBlobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitGetBlob",
-			err,
+			Operation: "GitGetBlob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10852,8 +10852,8 @@ func (s *Server) handleGitGetCommitRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeGitGetCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitGetCommit",
-			err,
+			Operation: "GitGetCommit",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10897,8 +10897,8 @@ func (s *Server) handleGitGetRefRequest(args [3]string, w http.ResponseWriter, r
 	params, err := decodeGitGetRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitGetRef",
-			err,
+			Operation: "GitGetRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10942,8 +10942,8 @@ func (s *Server) handleGitGetTagRequest(args [3]string, w http.ResponseWriter, r
 	params, err := decodeGitGetTagParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitGetTag",
-			err,
+			Operation: "GitGetTag",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10987,8 +10987,8 @@ func (s *Server) handleGitGetTreeRequest(args [3]string, w http.ResponseWriter, 
 	params, err := decodeGitGetTreeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitGetTree",
-			err,
+			Operation: "GitGetTree",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11032,8 +11032,8 @@ func (s *Server) handleGitListMatchingRefsRequest(args [3]string, w http.Respons
 	params, err := decodeGitListMatchingRefsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitListMatchingRefs",
-			err,
+			Operation: "GitListMatchingRefs",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11077,8 +11077,8 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeGitUpdateRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitUpdateRef",
-			err,
+			Operation: "GitUpdateRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11086,8 +11086,8 @@ func (s *Server) handleGitUpdateRefRequest(args [3]string, w http.ResponseWriter
 	request, err := decodeGitUpdateRefRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"GitUpdateRef",
-			err,
+			Operation: "GitUpdateRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11167,8 +11167,8 @@ func (s *Server) handleGitignoreGetTemplateRequest(args [1]string, w http.Respon
 	params, err := decodeGitignoreGetTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GitignoreGetTemplate",
-			err,
+			Operation: "GitignoreGetTemplate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11248,8 +11248,8 @@ func (s *Server) handleInteractionsRemoveRestrictionsForOrgRequest(args [1]strin
 	params, err := decodeInteractionsRemoveRestrictionsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"InteractionsRemoveRestrictionsForOrg",
-			err,
+			Operation: "InteractionsRemoveRestrictionsForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11293,8 +11293,8 @@ func (s *Server) handleInteractionsRemoveRestrictionsForRepoRequest(args [2]stri
 	params, err := decodeInteractionsRemoveRestrictionsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"InteractionsRemoveRestrictionsForRepo",
-			err,
+			Operation: "InteractionsRemoveRestrictionsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11338,8 +11338,8 @@ func (s *Server) handleInteractionsSetRestrictionsForAuthenticatedUserRequest(ar
 	request, err := decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"InteractionsSetRestrictionsForAuthenticatedUser",
-			err,
+			Operation: "InteractionsSetRestrictionsForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11383,8 +11383,8 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	params, err := decodeInteractionsSetRestrictionsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"InteractionsSetRestrictionsForOrg",
-			err,
+			Operation: "InteractionsSetRestrictionsForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11392,8 +11392,8 @@ func (s *Server) handleInteractionsSetRestrictionsForOrgRequest(args [1]string, 
 	request, err := decodeInteractionsSetRestrictionsForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"InteractionsSetRestrictionsForOrg",
-			err,
+			Operation: "InteractionsSetRestrictionsForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11437,8 +11437,8 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	params, err := decodeInteractionsSetRestrictionsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"InteractionsSetRestrictionsForRepo",
-			err,
+			Operation: "InteractionsSetRestrictionsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11446,8 +11446,8 @@ func (s *Server) handleInteractionsSetRestrictionsForRepoRequest(args [2]string,
 	request, err := decodeInteractionsSetRestrictionsForRepoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"InteractionsSetRestrictionsForRepo",
-			err,
+			Operation: "InteractionsSetRestrictionsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11491,8 +11491,8 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	params, err := decodeIssuesAddAssigneesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesAddAssignees",
-			err,
+			Operation: "IssuesAddAssignees",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11500,8 +11500,8 @@ func (s *Server) handleIssuesAddAssigneesRequest(args [3]string, w http.Response
 	request, err := decodeIssuesAddAssigneesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesAddAssignees",
-			err,
+			Operation: "IssuesAddAssignees",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11545,8 +11545,8 @@ func (s *Server) handleIssuesCheckUserCanBeAssignedRequest(args [3]string, w htt
 	params, err := decodeIssuesCheckUserCanBeAssignedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesCheckUserCanBeAssigned",
-			err,
+			Operation: "IssuesCheckUserCanBeAssigned",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11590,8 +11590,8 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	params, err := decodeIssuesCreateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesCreate",
-			err,
+			Operation: "IssuesCreate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11599,8 +11599,8 @@ func (s *Server) handleIssuesCreateRequest(args [2]string, w http.ResponseWriter
 	request, err := decodeIssuesCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesCreate",
-			err,
+			Operation: "IssuesCreate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11644,8 +11644,8 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	params, err := decodeIssuesCreateCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesCreateComment",
-			err,
+			Operation: "IssuesCreateComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11653,8 +11653,8 @@ func (s *Server) handleIssuesCreateCommentRequest(args [3]string, w http.Respons
 	request, err := decodeIssuesCreateCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesCreateComment",
-			err,
+			Operation: "IssuesCreateComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11698,8 +11698,8 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	params, err := decodeIssuesCreateLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesCreateLabel",
-			err,
+			Operation: "IssuesCreateLabel",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11707,8 +11707,8 @@ func (s *Server) handleIssuesCreateLabelRequest(args [2]string, w http.ResponseW
 	request, err := decodeIssuesCreateLabelRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesCreateLabel",
-			err,
+			Operation: "IssuesCreateLabel",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11752,8 +11752,8 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	params, err := decodeIssuesCreateMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesCreateMilestone",
-			err,
+			Operation: "IssuesCreateMilestone",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11761,8 +11761,8 @@ func (s *Server) handleIssuesCreateMilestoneRequest(args [2]string, w http.Respo
 	request, err := decodeIssuesCreateMilestoneRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesCreateMilestone",
-			err,
+			Operation: "IssuesCreateMilestone",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11806,8 +11806,8 @@ func (s *Server) handleIssuesDeleteCommentRequest(args [3]string, w http.Respons
 	params, err := decodeIssuesDeleteCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesDeleteComment",
-			err,
+			Operation: "IssuesDeleteComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11851,8 +11851,8 @@ func (s *Server) handleIssuesDeleteLabelRequest(args [3]string, w http.ResponseW
 	params, err := decodeIssuesDeleteLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesDeleteLabel",
-			err,
+			Operation: "IssuesDeleteLabel",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11896,8 +11896,8 @@ func (s *Server) handleIssuesDeleteMilestoneRequest(args [3]string, w http.Respo
 	params, err := decodeIssuesDeleteMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesDeleteMilestone",
-			err,
+			Operation: "IssuesDeleteMilestone",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11941,8 +11941,8 @@ func (s *Server) handleIssuesGetRequest(args [3]string, w http.ResponseWriter, r
 	params, err := decodeIssuesGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesGet",
-			err,
+			Operation: "IssuesGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11986,8 +11986,8 @@ func (s *Server) handleIssuesGetCommentRequest(args [3]string, w http.ResponseWr
 	params, err := decodeIssuesGetCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesGetComment",
-			err,
+			Operation: "IssuesGetComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12031,8 +12031,8 @@ func (s *Server) handleIssuesGetEventRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeIssuesGetEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesGetEvent",
-			err,
+			Operation: "IssuesGetEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12076,8 +12076,8 @@ func (s *Server) handleIssuesGetLabelRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeIssuesGetLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesGetLabel",
-			err,
+			Operation: "IssuesGetLabel",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12121,8 +12121,8 @@ func (s *Server) handleIssuesGetMilestoneRequest(args [3]string, w http.Response
 	params, err := decodeIssuesGetMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesGetMilestone",
-			err,
+			Operation: "IssuesGetMilestone",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12166,8 +12166,8 @@ func (s *Server) handleIssuesListRequest(args [0]string, w http.ResponseWriter, 
 	params, err := decodeIssuesListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesList",
-			err,
+			Operation: "IssuesList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12211,8 +12211,8 @@ func (s *Server) handleIssuesListAssigneesRequest(args [2]string, w http.Respons
 	params, err := decodeIssuesListAssigneesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListAssignees",
-			err,
+			Operation: "IssuesListAssignees",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12256,8 +12256,8 @@ func (s *Server) handleIssuesListCommentsRequest(args [3]string, w http.Response
 	params, err := decodeIssuesListCommentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListComments",
-			err,
+			Operation: "IssuesListComments",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12301,8 +12301,8 @@ func (s *Server) handleIssuesListCommentsForRepoRequest(args [2]string, w http.R
 	params, err := decodeIssuesListCommentsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListCommentsForRepo",
-			err,
+			Operation: "IssuesListCommentsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12346,8 +12346,8 @@ func (s *Server) handleIssuesListEventsForRepoRequest(args [2]string, w http.Res
 	params, err := decodeIssuesListEventsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListEventsForRepo",
-			err,
+			Operation: "IssuesListEventsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12391,8 +12391,8 @@ func (s *Server) handleIssuesListForAuthenticatedUserRequest(args [0]string, w h
 	params, err := decodeIssuesListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListForAuthenticatedUser",
-			err,
+			Operation: "IssuesListForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12436,8 +12436,8 @@ func (s *Server) handleIssuesListForOrgRequest(args [1]string, w http.ResponseWr
 	params, err := decodeIssuesListForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListForOrg",
-			err,
+			Operation: "IssuesListForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12481,8 +12481,8 @@ func (s *Server) handleIssuesListForRepoRequest(args [2]string, w http.ResponseW
 	params, err := decodeIssuesListForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListForRepo",
-			err,
+			Operation: "IssuesListForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12526,8 +12526,8 @@ func (s *Server) handleIssuesListLabelsForMilestoneRequest(args [3]string, w htt
 	params, err := decodeIssuesListLabelsForMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListLabelsForMilestone",
-			err,
+			Operation: "IssuesListLabelsForMilestone",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12571,8 +12571,8 @@ func (s *Server) handleIssuesListLabelsForRepoRequest(args [2]string, w http.Res
 	params, err := decodeIssuesListLabelsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListLabelsForRepo",
-			err,
+			Operation: "IssuesListLabelsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12616,8 +12616,8 @@ func (s *Server) handleIssuesListLabelsOnIssueRequest(args [3]string, w http.Res
 	params, err := decodeIssuesListLabelsOnIssueParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListLabelsOnIssue",
-			err,
+			Operation: "IssuesListLabelsOnIssue",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12661,8 +12661,8 @@ func (s *Server) handleIssuesListMilestonesRequest(args [2]string, w http.Respon
 	params, err := decodeIssuesListMilestonesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesListMilestones",
-			err,
+			Operation: "IssuesListMilestones",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12706,8 +12706,8 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	params, err := decodeIssuesLockParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesLock",
-			err,
+			Operation: "IssuesLock",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12715,8 +12715,8 @@ func (s *Server) handleIssuesLockRequest(args [3]string, w http.ResponseWriter, 
 	request, err := decodeIssuesLockRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesLock",
-			err,
+			Operation: "IssuesLock",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12760,8 +12760,8 @@ func (s *Server) handleIssuesRemoveAllLabelsRequest(args [3]string, w http.Respo
 	params, err := decodeIssuesRemoveAllLabelsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesRemoveAllLabels",
-			err,
+			Operation: "IssuesRemoveAllLabels",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12805,8 +12805,8 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	params, err := decodeIssuesRemoveAssigneesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesRemoveAssignees",
-			err,
+			Operation: "IssuesRemoveAssignees",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12814,8 +12814,8 @@ func (s *Server) handleIssuesRemoveAssigneesRequest(args [3]string, w http.Respo
 	request, err := decodeIssuesRemoveAssigneesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesRemoveAssignees",
-			err,
+			Operation: "IssuesRemoveAssignees",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12859,8 +12859,8 @@ func (s *Server) handleIssuesRemoveLabelRequest(args [4]string, w http.ResponseW
 	params, err := decodeIssuesRemoveLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesRemoveLabel",
-			err,
+			Operation: "IssuesRemoveLabel",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12904,8 +12904,8 @@ func (s *Server) handleIssuesUnlockRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeIssuesUnlockParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesUnlock",
-			err,
+			Operation: "IssuesUnlock",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12949,8 +12949,8 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	params, err := decodeIssuesUpdateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesUpdate",
-			err,
+			Operation: "IssuesUpdate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12958,8 +12958,8 @@ func (s *Server) handleIssuesUpdateRequest(args [3]string, w http.ResponseWriter
 	request, err := decodeIssuesUpdateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesUpdate",
-			err,
+			Operation: "IssuesUpdate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13003,8 +13003,8 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	params, err := decodeIssuesUpdateCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesUpdateComment",
-			err,
+			Operation: "IssuesUpdateComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13012,8 +13012,8 @@ func (s *Server) handleIssuesUpdateCommentRequest(args [3]string, w http.Respons
 	request, err := decodeIssuesUpdateCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesUpdateComment",
-			err,
+			Operation: "IssuesUpdateComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13057,8 +13057,8 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	params, err := decodeIssuesUpdateLabelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesUpdateLabel",
-			err,
+			Operation: "IssuesUpdateLabel",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13066,8 +13066,8 @@ func (s *Server) handleIssuesUpdateLabelRequest(args [3]string, w http.ResponseW
 	request, err := decodeIssuesUpdateLabelRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesUpdateLabel",
-			err,
+			Operation: "IssuesUpdateLabel",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13111,8 +13111,8 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	params, err := decodeIssuesUpdateMilestoneParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"IssuesUpdateMilestone",
-			err,
+			Operation: "IssuesUpdateMilestone",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13120,8 +13120,8 @@ func (s *Server) handleIssuesUpdateMilestoneRequest(args [3]string, w http.Respo
 	request, err := decodeIssuesUpdateMilestoneRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"IssuesUpdateMilestone",
-			err,
+			Operation: "IssuesUpdateMilestone",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13165,8 +13165,8 @@ func (s *Server) handleLicensesGetRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeLicensesGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"LicensesGet",
-			err,
+			Operation: "LicensesGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13210,8 +13210,8 @@ func (s *Server) handleLicensesGetAllCommonlyUsedRequest(args [0]string, w http.
 	params, err := decodeLicensesGetAllCommonlyUsedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"LicensesGetAllCommonlyUsed",
-			err,
+			Operation: "LicensesGetAllCommonlyUsed",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13255,8 +13255,8 @@ func (s *Server) handleLicensesGetForRepoRequest(args [2]string, w http.Response
 	params, err := decodeLicensesGetForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"LicensesGetForRepo",
-			err,
+			Operation: "LicensesGetForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13372,8 +13372,8 @@ func (s *Server) handleMigrationsCancelImportRequest(args [2]string, w http.Resp
 	params, err := decodeMigrationsCancelImportParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsCancelImport",
-			err,
+			Operation: "MigrationsCancelImport",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13417,8 +13417,8 @@ func (s *Server) handleMigrationsDeleteArchiveForAuthenticatedUserRequest(args [
 	params, err := decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsDeleteArchiveForAuthenticatedUser",
-			err,
+			Operation: "MigrationsDeleteArchiveForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13462,8 +13462,8 @@ func (s *Server) handleMigrationsDeleteArchiveForOrgRequest(args [2]string, w ht
 	params, err := decodeMigrationsDeleteArchiveForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsDeleteArchiveForOrg",
-			err,
+			Operation: "MigrationsDeleteArchiveForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13507,8 +13507,8 @@ func (s *Server) handleMigrationsDownloadArchiveForOrgRequest(args [2]string, w 
 	params, err := decodeMigrationsDownloadArchiveForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsDownloadArchiveForOrg",
-			err,
+			Operation: "MigrationsDownloadArchiveForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13552,8 +13552,8 @@ func (s *Server) handleMigrationsGetArchiveForAuthenticatedUserRequest(args [1]s
 	params, err := decodeMigrationsGetArchiveForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsGetArchiveForAuthenticatedUser",
-			err,
+			Operation: "MigrationsGetArchiveForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13597,8 +13597,8 @@ func (s *Server) handleMigrationsGetCommitAuthorsRequest(args [2]string, w http.
 	params, err := decodeMigrationsGetCommitAuthorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsGetCommitAuthors",
-			err,
+			Operation: "MigrationsGetCommitAuthors",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13642,8 +13642,8 @@ func (s *Server) handleMigrationsGetImportStatusRequest(args [2]string, w http.R
 	params, err := decodeMigrationsGetImportStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsGetImportStatus",
-			err,
+			Operation: "MigrationsGetImportStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13687,8 +13687,8 @@ func (s *Server) handleMigrationsGetLargeFilesRequest(args [2]string, w http.Res
 	params, err := decodeMigrationsGetLargeFilesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsGetLargeFiles",
-			err,
+			Operation: "MigrationsGetLargeFiles",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13732,8 +13732,8 @@ func (s *Server) handleMigrationsGetStatusForAuthenticatedUserRequest(args [1]st
 	params, err := decodeMigrationsGetStatusForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsGetStatusForAuthenticatedUser",
-			err,
+			Operation: "MigrationsGetStatusForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13777,8 +13777,8 @@ func (s *Server) handleMigrationsGetStatusForOrgRequest(args [2]string, w http.R
 	params, err := decodeMigrationsGetStatusForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsGetStatusForOrg",
-			err,
+			Operation: "MigrationsGetStatusForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13822,8 +13822,8 @@ func (s *Server) handleMigrationsListForAuthenticatedUserRequest(args [0]string,
 	params, err := decodeMigrationsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsListForAuthenticatedUser",
-			err,
+			Operation: "MigrationsListForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13867,8 +13867,8 @@ func (s *Server) handleMigrationsListForOrgRequest(args [1]string, w http.Respon
 	params, err := decodeMigrationsListForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsListForOrg",
-			err,
+			Operation: "MigrationsListForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13912,8 +13912,8 @@ func (s *Server) handleMigrationsListReposForOrgRequest(args [2]string, w http.R
 	params, err := decodeMigrationsListReposForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsListReposForOrg",
-			err,
+			Operation: "MigrationsListReposForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13957,8 +13957,8 @@ func (s *Server) handleMigrationsListReposForUserRequest(args [1]string, w http.
 	params, err := decodeMigrationsListReposForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsListReposForUser",
-			err,
+			Operation: "MigrationsListReposForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14002,8 +14002,8 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	params, err := decodeMigrationsMapCommitAuthorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsMapCommitAuthor",
-			err,
+			Operation: "MigrationsMapCommitAuthor",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14011,8 +14011,8 @@ func (s *Server) handleMigrationsMapCommitAuthorRequest(args [3]string, w http.R
 	request, err := decodeMigrationsMapCommitAuthorRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"MigrationsMapCommitAuthor",
-			err,
+			Operation: "MigrationsMapCommitAuthor",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14056,8 +14056,8 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	params, err := decodeMigrationsSetLfsPreferenceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsSetLfsPreference",
-			err,
+			Operation: "MigrationsSetLfsPreference",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14065,8 +14065,8 @@ func (s *Server) handleMigrationsSetLfsPreferenceRequest(args [2]string, w http.
 	request, err := decodeMigrationsSetLfsPreferenceRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"MigrationsSetLfsPreference",
-			err,
+			Operation: "MigrationsSetLfsPreference",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14110,8 +14110,8 @@ func (s *Server) handleMigrationsStartForAuthenticatedUserRequest(args [0]string
 	request, err := decodeMigrationsStartForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"MigrationsStartForAuthenticatedUser",
-			err,
+			Operation: "MigrationsStartForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14155,8 +14155,8 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	params, err := decodeMigrationsStartForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsStartForOrg",
-			err,
+			Operation: "MigrationsStartForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14164,8 +14164,8 @@ func (s *Server) handleMigrationsStartForOrgRequest(args [1]string, w http.Respo
 	request, err := decodeMigrationsStartForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"MigrationsStartForOrg",
-			err,
+			Operation: "MigrationsStartForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14209,8 +14209,8 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	params, err := decodeMigrationsStartImportParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsStartImport",
-			err,
+			Operation: "MigrationsStartImport",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14218,8 +14218,8 @@ func (s *Server) handleMigrationsStartImportRequest(args [2]string, w http.Respo
 	request, err := decodeMigrationsStartImportRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"MigrationsStartImport",
-			err,
+			Operation: "MigrationsStartImport",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14263,8 +14263,8 @@ func (s *Server) handleMigrationsUnlockRepoForAuthenticatedUserRequest(args [2]s
 	params, err := decodeMigrationsUnlockRepoForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsUnlockRepoForAuthenticatedUser",
-			err,
+			Operation: "MigrationsUnlockRepoForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14308,8 +14308,8 @@ func (s *Server) handleMigrationsUnlockRepoForOrgRequest(args [3]string, w http.
 	params, err := decodeMigrationsUnlockRepoForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsUnlockRepoForOrg",
-			err,
+			Operation: "MigrationsUnlockRepoForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14353,8 +14353,8 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	params, err := decodeMigrationsUpdateImportParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MigrationsUpdateImport",
-			err,
+			Operation: "MigrationsUpdateImport",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14362,8 +14362,8 @@ func (s *Server) handleMigrationsUpdateImportRequest(args [2]string, w http.Resp
 	request, err := decodeMigrationsUpdateImportRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"MigrationsUpdateImport",
-			err,
+			Operation: "MigrationsUpdateImport",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14407,8 +14407,8 @@ func (s *Server) handleOAuthAuthorizationsCreateAuthorizationRequest(args [0]str
 	request, err := decodeOAuthAuthorizationsCreateAuthorizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OAuthAuthorizationsCreateAuthorization",
-			err,
+			Operation: "OAuthAuthorizationsCreateAuthorization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14452,8 +14452,8 @@ func (s *Server) handleOAuthAuthorizationsDeleteAuthorizationRequest(args [1]str
 	params, err := decodeOAuthAuthorizationsDeleteAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsDeleteAuthorization",
-			err,
+			Operation: "OAuthAuthorizationsDeleteAuthorization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14497,8 +14497,8 @@ func (s *Server) handleOAuthAuthorizationsDeleteGrantRequest(args [1]string, w h
 	params, err := decodeOAuthAuthorizationsDeleteGrantParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsDeleteGrant",
-			err,
+			Operation: "OAuthAuthorizationsDeleteGrant",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14542,8 +14542,8 @@ func (s *Server) handleOAuthAuthorizationsGetAuthorizationRequest(args [1]string
 	params, err := decodeOAuthAuthorizationsGetAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsGetAuthorization",
-			err,
+			Operation: "OAuthAuthorizationsGetAuthorization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14587,8 +14587,8 @@ func (s *Server) handleOAuthAuthorizationsGetGrantRequest(args [1]string, w http
 	params, err := decodeOAuthAuthorizationsGetGrantParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsGetGrant",
-			err,
+			Operation: "OAuthAuthorizationsGetGrant",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14632,8 +14632,8 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsGetOrCreateAuthorizationForApp",
-			err,
+			Operation: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14641,8 +14641,8 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(
 	request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OAuthAuthorizationsGetOrCreateAuthorizationForApp",
-			err,
+			Operation: "OAuthAuthorizationsGetOrCreateAuthorizationForApp",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14686,8 +14686,8 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	params, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
-			err,
+			Operation: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14695,8 +14695,8 @@ func (s *Server) handleOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFinge
 	request, err := decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
-			err,
+			Operation: "OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14740,8 +14740,8 @@ func (s *Server) handleOAuthAuthorizationsListAuthorizationsRequest(args [0]stri
 	params, err := decodeOAuthAuthorizationsListAuthorizationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsListAuthorizations",
-			err,
+			Operation: "OAuthAuthorizationsListAuthorizations",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14785,8 +14785,8 @@ func (s *Server) handleOAuthAuthorizationsListGrantsRequest(args [0]string, w ht
 	params, err := decodeOAuthAuthorizationsListGrantsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsListGrants",
-			err,
+			Operation: "OAuthAuthorizationsListGrants",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14830,8 +14830,8 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	params, err := decodeOAuthAuthorizationsUpdateAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OAuthAuthorizationsUpdateAuthorization",
-			err,
+			Operation: "OAuthAuthorizationsUpdateAuthorization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14839,8 +14839,8 @@ func (s *Server) handleOAuthAuthorizationsUpdateAuthorizationRequest(args [1]str
 	request, err := decodeOAuthAuthorizationsUpdateAuthorizationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OAuthAuthorizationsUpdateAuthorization",
-			err,
+			Operation: "OAuthAuthorizationsUpdateAuthorization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14884,8 +14884,8 @@ func (s *Server) handleOrgsBlockUserRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeOrgsBlockUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsBlockUser",
-			err,
+			Operation: "OrgsBlockUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14929,8 +14929,8 @@ func (s *Server) handleOrgsCancelInvitationRequest(args [2]string, w http.Respon
 	params, err := decodeOrgsCancelInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsCancelInvitation",
-			err,
+			Operation: "OrgsCancelInvitation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14974,8 +14974,8 @@ func (s *Server) handleOrgsCheckBlockedUserRequest(args [2]string, w http.Respon
 	params, err := decodeOrgsCheckBlockedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsCheckBlockedUser",
-			err,
+			Operation: "OrgsCheckBlockedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15019,8 +15019,8 @@ func (s *Server) handleOrgsCheckMembershipForUserRequest(args [2]string, w http.
 	params, err := decodeOrgsCheckMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsCheckMembershipForUser",
-			err,
+			Operation: "OrgsCheckMembershipForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15064,8 +15064,8 @@ func (s *Server) handleOrgsCheckPublicMembershipForUserRequest(args [2]string, w
 	params, err := decodeOrgsCheckPublicMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsCheckPublicMembershipForUser",
-			err,
+			Operation: "OrgsCheckPublicMembershipForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15109,8 +15109,8 @@ func (s *Server) handleOrgsConvertMemberToOutsideCollaboratorRequest(args [2]str
 	params, err := decodeOrgsConvertMemberToOutsideCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsConvertMemberToOutsideCollaborator",
-			err,
+			Operation: "OrgsConvertMemberToOutsideCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15154,8 +15154,8 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	params, err := decodeOrgsCreateInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsCreateInvitation",
-			err,
+			Operation: "OrgsCreateInvitation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15163,8 +15163,8 @@ func (s *Server) handleOrgsCreateInvitationRequest(args [1]string, w http.Respon
 	request, err := decodeOrgsCreateInvitationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OrgsCreateInvitation",
-			err,
+			Operation: "OrgsCreateInvitation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15208,8 +15208,8 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	params, err := decodeOrgsCreateWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsCreateWebhook",
-			err,
+			Operation: "OrgsCreateWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15217,8 +15217,8 @@ func (s *Server) handleOrgsCreateWebhookRequest(args [1]string, w http.ResponseW
 	request, err := decodeOrgsCreateWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OrgsCreateWebhook",
-			err,
+			Operation: "OrgsCreateWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15262,8 +15262,8 @@ func (s *Server) handleOrgsDeleteWebhookRequest(args [2]string, w http.ResponseW
 	params, err := decodeOrgsDeleteWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsDeleteWebhook",
-			err,
+			Operation: "OrgsDeleteWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15307,8 +15307,8 @@ func (s *Server) handleOrgsGetRequest(args [1]string, w http.ResponseWriter, r *
 	params, err := decodeOrgsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsGet",
-			err,
+			Operation: "OrgsGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15352,8 +15352,8 @@ func (s *Server) handleOrgsGetAuditLogRequest(args [1]string, w http.ResponseWri
 	params, err := decodeOrgsGetAuditLogParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsGetAuditLog",
-			err,
+			Operation: "OrgsGetAuditLog",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15397,8 +15397,8 @@ func (s *Server) handleOrgsGetMembershipForAuthenticatedUserRequest(args [1]stri
 	params, err := decodeOrgsGetMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsGetMembershipForAuthenticatedUser",
-			err,
+			Operation: "OrgsGetMembershipForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15442,8 +15442,8 @@ func (s *Server) handleOrgsGetMembershipForUserRequest(args [2]string, w http.Re
 	params, err := decodeOrgsGetMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsGetMembershipForUser",
-			err,
+			Operation: "OrgsGetMembershipForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15487,8 +15487,8 @@ func (s *Server) handleOrgsGetWebhookRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeOrgsGetWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsGetWebhook",
-			err,
+			Operation: "OrgsGetWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15532,8 +15532,8 @@ func (s *Server) handleOrgsGetWebhookConfigForOrgRequest(args [2]string, w http.
 	params, err := decodeOrgsGetWebhookConfigForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsGetWebhookConfigForOrg",
-			err,
+			Operation: "OrgsGetWebhookConfigForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15577,8 +15577,8 @@ func (s *Server) handleOrgsGetWebhookDeliveryRequest(args [3]string, w http.Resp
 	params, err := decodeOrgsGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsGetWebhookDelivery",
-			err,
+			Operation: "OrgsGetWebhookDelivery",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15622,8 +15622,8 @@ func (s *Server) handleOrgsListRequest(args [0]string, w http.ResponseWriter, r 
 	params, err := decodeOrgsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsList",
-			err,
+			Operation: "OrgsList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15667,8 +15667,8 @@ func (s *Server) handleOrgsListBlockedUsersRequest(args [1]string, w http.Respon
 	params, err := decodeOrgsListBlockedUsersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListBlockedUsers",
-			err,
+			Operation: "OrgsListBlockedUsers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15712,8 +15712,8 @@ func (s *Server) handleOrgsListFailedInvitationsRequest(args [1]string, w http.R
 	params, err := decodeOrgsListFailedInvitationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListFailedInvitations",
-			err,
+			Operation: "OrgsListFailedInvitations",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15757,8 +15757,8 @@ func (s *Server) handleOrgsListForAuthenticatedUserRequest(args [0]string, w htt
 	params, err := decodeOrgsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListForAuthenticatedUser",
-			err,
+			Operation: "OrgsListForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15802,8 +15802,8 @@ func (s *Server) handleOrgsListForUserRequest(args [1]string, w http.ResponseWri
 	params, err := decodeOrgsListForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListForUser",
-			err,
+			Operation: "OrgsListForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15847,8 +15847,8 @@ func (s *Server) handleOrgsListInvitationTeamsRequest(args [2]string, w http.Res
 	params, err := decodeOrgsListInvitationTeamsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListInvitationTeams",
-			err,
+			Operation: "OrgsListInvitationTeams",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15892,8 +15892,8 @@ func (s *Server) handleOrgsListMembersRequest(args [1]string, w http.ResponseWri
 	params, err := decodeOrgsListMembersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListMembers",
-			err,
+			Operation: "OrgsListMembers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15937,8 +15937,8 @@ func (s *Server) handleOrgsListMembershipsForAuthenticatedUserRequest(args [0]st
 	params, err := decodeOrgsListMembershipsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListMembershipsForAuthenticatedUser",
-			err,
+			Operation: "OrgsListMembershipsForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15982,8 +15982,8 @@ func (s *Server) handleOrgsListOutsideCollaboratorsRequest(args [1]string, w htt
 	params, err := decodeOrgsListOutsideCollaboratorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListOutsideCollaborators",
-			err,
+			Operation: "OrgsListOutsideCollaborators",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16027,8 +16027,8 @@ func (s *Server) handleOrgsListPendingInvitationsRequest(args [1]string, w http.
 	params, err := decodeOrgsListPendingInvitationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListPendingInvitations",
-			err,
+			Operation: "OrgsListPendingInvitations",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16072,8 +16072,8 @@ func (s *Server) handleOrgsListPublicMembersRequest(args [1]string, w http.Respo
 	params, err := decodeOrgsListPublicMembersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListPublicMembers",
-			err,
+			Operation: "OrgsListPublicMembers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16117,8 +16117,8 @@ func (s *Server) handleOrgsListSamlSSOAuthorizationsRequest(args [1]string, w ht
 	params, err := decodeOrgsListSamlSSOAuthorizationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListSamlSSOAuthorizations",
-			err,
+			Operation: "OrgsListSamlSSOAuthorizations",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16162,8 +16162,8 @@ func (s *Server) handleOrgsListWebhookDeliveriesRequest(args [2]string, w http.R
 	params, err := decodeOrgsListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListWebhookDeliveries",
-			err,
+			Operation: "OrgsListWebhookDeliveries",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16207,8 +16207,8 @@ func (s *Server) handleOrgsListWebhooksRequest(args [1]string, w http.ResponseWr
 	params, err := decodeOrgsListWebhooksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsListWebhooks",
-			err,
+			Operation: "OrgsListWebhooks",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16252,8 +16252,8 @@ func (s *Server) handleOrgsPingWebhookRequest(args [2]string, w http.ResponseWri
 	params, err := decodeOrgsPingWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsPingWebhook",
-			err,
+			Operation: "OrgsPingWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16297,8 +16297,8 @@ func (s *Server) handleOrgsRedeliverWebhookDeliveryRequest(args [3]string, w htt
 	params, err := decodeOrgsRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsRedeliverWebhookDelivery",
-			err,
+			Operation: "OrgsRedeliverWebhookDelivery",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16342,8 +16342,8 @@ func (s *Server) handleOrgsRemoveMemberRequest(args [2]string, w http.ResponseWr
 	params, err := decodeOrgsRemoveMemberParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsRemoveMember",
-			err,
+			Operation: "OrgsRemoveMember",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16387,8 +16387,8 @@ func (s *Server) handleOrgsRemoveMembershipForUserRequest(args [2]string, w http
 	params, err := decodeOrgsRemoveMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsRemoveMembershipForUser",
-			err,
+			Operation: "OrgsRemoveMembershipForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16432,8 +16432,8 @@ func (s *Server) handleOrgsRemoveOutsideCollaboratorRequest(args [2]string, w ht
 	params, err := decodeOrgsRemoveOutsideCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsRemoveOutsideCollaborator",
-			err,
+			Operation: "OrgsRemoveOutsideCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16477,8 +16477,8 @@ func (s *Server) handleOrgsRemovePublicMembershipForAuthenticatedUserRequest(arg
 	params, err := decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsRemovePublicMembershipForAuthenticatedUser",
-			err,
+			Operation: "OrgsRemovePublicMembershipForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16522,8 +16522,8 @@ func (s *Server) handleOrgsRemoveSamlSSOAuthorizationRequest(args [2]string, w h
 	params, err := decodeOrgsRemoveSamlSSOAuthorizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsRemoveSamlSSOAuthorization",
-			err,
+			Operation: "OrgsRemoveSamlSSOAuthorization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16567,8 +16567,8 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	params, err := decodeOrgsSetMembershipForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsSetMembershipForUser",
-			err,
+			Operation: "OrgsSetMembershipForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16576,8 +16576,8 @@ func (s *Server) handleOrgsSetMembershipForUserRequest(args [2]string, w http.Re
 	request, err := decodeOrgsSetMembershipForUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OrgsSetMembershipForUser",
-			err,
+			Operation: "OrgsSetMembershipForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16621,8 +16621,8 @@ func (s *Server) handleOrgsSetPublicMembershipForAuthenticatedUserRequest(args [
 	params, err := decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsSetPublicMembershipForAuthenticatedUser",
-			err,
+			Operation: "OrgsSetPublicMembershipForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16666,8 +16666,8 @@ func (s *Server) handleOrgsUnblockUserRequest(args [2]string, w http.ResponseWri
 	params, err := decodeOrgsUnblockUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsUnblockUser",
-			err,
+			Operation: "OrgsUnblockUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16711,8 +16711,8 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	params, err := decodeOrgsUpdateMembershipForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsUpdateMembershipForAuthenticatedUser",
-			err,
+			Operation: "OrgsUpdateMembershipForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16720,8 +16720,8 @@ func (s *Server) handleOrgsUpdateMembershipForAuthenticatedUserRequest(args [1]s
 	request, err := decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OrgsUpdateMembershipForAuthenticatedUser",
-			err,
+			Operation: "OrgsUpdateMembershipForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16765,8 +16765,8 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	params, err := decodeOrgsUpdateWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsUpdateWebhook",
-			err,
+			Operation: "OrgsUpdateWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16774,8 +16774,8 @@ func (s *Server) handleOrgsUpdateWebhookRequest(args [2]string, w http.ResponseW
 	request, err := decodeOrgsUpdateWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OrgsUpdateWebhook",
-			err,
+			Operation: "OrgsUpdateWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16819,8 +16819,8 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	params, err := decodeOrgsUpdateWebhookConfigForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrgsUpdateWebhookConfigForOrg",
-			err,
+			Operation: "OrgsUpdateWebhookConfigForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16828,8 +16828,8 @@ func (s *Server) handleOrgsUpdateWebhookConfigForOrgRequest(args [2]string, w ht
 	request, err := decodeOrgsUpdateWebhookConfigForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OrgsUpdateWebhookConfigForOrg",
-			err,
+			Operation: "OrgsUpdateWebhookConfigForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16873,8 +16873,8 @@ func (s *Server) handlePackagesDeletePackageForAuthenticatedUserRequest(args [2]
 	params, err := decodePackagesDeletePackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesDeletePackageForAuthenticatedUser",
-			err,
+			Operation: "PackagesDeletePackageForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16918,8 +16918,8 @@ func (s *Server) handlePackagesDeletePackageForOrgRequest(args [3]string, w http
 	params, err := decodePackagesDeletePackageForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesDeletePackageForOrg",
-			err,
+			Operation: "PackagesDeletePackageForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16963,8 +16963,8 @@ func (s *Server) handlePackagesDeletePackageForUserRequest(args [3]string, w htt
 	params, err := decodePackagesDeletePackageForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesDeletePackageForUser",
-			err,
+			Operation: "PackagesDeletePackageForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17008,8 +17008,8 @@ func (s *Server) handlePackagesDeletePackageVersionForAuthenticatedUserRequest(a
 	params, err := decodePackagesDeletePackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesDeletePackageVersionForAuthenticatedUser",
-			err,
+			Operation: "PackagesDeletePackageVersionForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17053,8 +17053,8 @@ func (s *Server) handlePackagesDeletePackageVersionForOrgRequest(args [4]string,
 	params, err := decodePackagesDeletePackageVersionForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesDeletePackageVersionForOrg",
-			err,
+			Operation: "PackagesDeletePackageVersionForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17098,8 +17098,8 @@ func (s *Server) handlePackagesDeletePackageVersionForUserRequest(args [4]string
 	params, err := decodePackagesDeletePackageVersionForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesDeletePackageVersionForUser",
-			err,
+			Operation: "PackagesDeletePackageVersionForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17143,8 +17143,8 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByAuthenticat
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
-			err,
+			Operation: "PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17188,8 +17188,8 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest(
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetAllPackageVersionsForPackageOwnedByOrg",
-			err,
+			Operation: "PackagesGetAllPackageVersionsForPackageOwnedByOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17233,8 +17233,8 @@ func (s *Server) handlePackagesGetAllPackageVersionsForPackageOwnedByUserRequest
 	params, err := decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetAllPackageVersionsForPackageOwnedByUser",
-			err,
+			Operation: "PackagesGetAllPackageVersionsForPackageOwnedByUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17278,8 +17278,8 @@ func (s *Server) handlePackagesGetPackageForAuthenticatedUserRequest(args [2]str
 	params, err := decodePackagesGetPackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetPackageForAuthenticatedUser",
-			err,
+			Operation: "PackagesGetPackageForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17323,8 +17323,8 @@ func (s *Server) handlePackagesGetPackageForOrganizationRequest(args [3]string, 
 	params, err := decodePackagesGetPackageForOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetPackageForOrganization",
-			err,
+			Operation: "PackagesGetPackageForOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17368,8 +17368,8 @@ func (s *Server) handlePackagesGetPackageForUserRequest(args [3]string, w http.R
 	params, err := decodePackagesGetPackageForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetPackageForUser",
-			err,
+			Operation: "PackagesGetPackageForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17413,8 +17413,8 @@ func (s *Server) handlePackagesGetPackageVersionForAuthenticatedUserRequest(args
 	params, err := decodePackagesGetPackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetPackageVersionForAuthenticatedUser",
-			err,
+			Operation: "PackagesGetPackageVersionForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17458,8 +17458,8 @@ func (s *Server) handlePackagesGetPackageVersionForOrganizationRequest(args [4]s
 	params, err := decodePackagesGetPackageVersionForOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetPackageVersionForOrganization",
-			err,
+			Operation: "PackagesGetPackageVersionForOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17503,8 +17503,8 @@ func (s *Server) handlePackagesGetPackageVersionForUserRequest(args [4]string, w
 	params, err := decodePackagesGetPackageVersionForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesGetPackageVersionForUser",
-			err,
+			Operation: "PackagesGetPackageVersionForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17548,8 +17548,8 @@ func (s *Server) handlePackagesListPackagesForAuthenticatedUserRequest(args [0]s
 	params, err := decodePackagesListPackagesForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesListPackagesForAuthenticatedUser",
-			err,
+			Operation: "PackagesListPackagesForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17593,8 +17593,8 @@ func (s *Server) handlePackagesListPackagesForOrganizationRequest(args [1]string
 	params, err := decodePackagesListPackagesForOrganizationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesListPackagesForOrganization",
-			err,
+			Operation: "PackagesListPackagesForOrganization",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17638,8 +17638,8 @@ func (s *Server) handlePackagesListPackagesForUserRequest(args [1]string, w http
 	params, err := decodePackagesListPackagesForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesListPackagesForUser",
-			err,
+			Operation: "PackagesListPackagesForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17683,8 +17683,8 @@ func (s *Server) handlePackagesRestorePackageForAuthenticatedUserRequest(args [2
 	params, err := decodePackagesRestorePackageForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesRestorePackageForAuthenticatedUser",
-			err,
+			Operation: "PackagesRestorePackageForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17728,8 +17728,8 @@ func (s *Server) handlePackagesRestorePackageForOrgRequest(args [3]string, w htt
 	params, err := decodePackagesRestorePackageForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesRestorePackageForOrg",
-			err,
+			Operation: "PackagesRestorePackageForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17773,8 +17773,8 @@ func (s *Server) handlePackagesRestorePackageForUserRequest(args [3]string, w ht
 	params, err := decodePackagesRestorePackageForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesRestorePackageForUser",
-			err,
+			Operation: "PackagesRestorePackageForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17818,8 +17818,8 @@ func (s *Server) handlePackagesRestorePackageVersionForAuthenticatedUserRequest(
 	params, err := decodePackagesRestorePackageVersionForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesRestorePackageVersionForAuthenticatedUser",
-			err,
+			Operation: "PackagesRestorePackageVersionForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17863,8 +17863,8 @@ func (s *Server) handlePackagesRestorePackageVersionForOrgRequest(args [4]string
 	params, err := decodePackagesRestorePackageVersionForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesRestorePackageVersionForOrg",
-			err,
+			Operation: "PackagesRestorePackageVersionForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17908,8 +17908,8 @@ func (s *Server) handlePackagesRestorePackageVersionForUserRequest(args [4]strin
 	params, err := decodePackagesRestorePackageVersionForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PackagesRestorePackageVersionForUser",
-			err,
+			Operation: "PackagesRestorePackageVersionForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17953,8 +17953,8 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	params, err := decodeProjectsAddCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsAddCollaborator",
-			err,
+			Operation: "ProjectsAddCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17962,8 +17962,8 @@ func (s *Server) handleProjectsAddCollaboratorRequest(args [2]string, w http.Res
 	request, err := decodeProjectsAddCollaboratorRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsAddCollaborator",
-			err,
+			Operation: "ProjectsAddCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18007,8 +18007,8 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	params, err := decodeProjectsCreateColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsCreateColumn",
-			err,
+			Operation: "ProjectsCreateColumn",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18016,8 +18016,8 @@ func (s *Server) handleProjectsCreateColumnRequest(args [1]string, w http.Respon
 	request, err := decodeProjectsCreateColumnRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsCreateColumn",
-			err,
+			Operation: "ProjectsCreateColumn",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18061,8 +18061,8 @@ func (s *Server) handleProjectsCreateForAuthenticatedUserRequest(args [0]string,
 	request, err := decodeProjectsCreateForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsCreateForAuthenticatedUser",
-			err,
+			Operation: "ProjectsCreateForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18106,8 +18106,8 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	params, err := decodeProjectsCreateForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsCreateForOrg",
-			err,
+			Operation: "ProjectsCreateForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18115,8 +18115,8 @@ func (s *Server) handleProjectsCreateForOrgRequest(args [1]string, w http.Respon
 	request, err := decodeProjectsCreateForOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsCreateForOrg",
-			err,
+			Operation: "ProjectsCreateForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18160,8 +18160,8 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	params, err := decodeProjectsCreateForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsCreateForRepo",
-			err,
+			Operation: "ProjectsCreateForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18169,8 +18169,8 @@ func (s *Server) handleProjectsCreateForRepoRequest(args [2]string, w http.Respo
 	request, err := decodeProjectsCreateForRepoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsCreateForRepo",
-			err,
+			Operation: "ProjectsCreateForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18214,8 +18214,8 @@ func (s *Server) handleProjectsDeleteRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeProjectsDeleteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsDelete",
-			err,
+			Operation: "ProjectsDelete",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18259,8 +18259,8 @@ func (s *Server) handleProjectsDeleteCardRequest(args [1]string, w http.Response
 	params, err := decodeProjectsDeleteCardParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsDeleteCard",
-			err,
+			Operation: "ProjectsDeleteCard",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18304,8 +18304,8 @@ func (s *Server) handleProjectsDeleteColumnRequest(args [1]string, w http.Respon
 	params, err := decodeProjectsDeleteColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsDeleteColumn",
-			err,
+			Operation: "ProjectsDeleteColumn",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18349,8 +18349,8 @@ func (s *Server) handleProjectsGetRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeProjectsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsGet",
-			err,
+			Operation: "ProjectsGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18394,8 +18394,8 @@ func (s *Server) handleProjectsGetCardRequest(args [1]string, w http.ResponseWri
 	params, err := decodeProjectsGetCardParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsGetCard",
-			err,
+			Operation: "ProjectsGetCard",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18439,8 +18439,8 @@ func (s *Server) handleProjectsGetColumnRequest(args [1]string, w http.ResponseW
 	params, err := decodeProjectsGetColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsGetColumn",
-			err,
+			Operation: "ProjectsGetColumn",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18484,8 +18484,8 @@ func (s *Server) handleProjectsGetPermissionForUserRequest(args [2]string, w htt
 	params, err := decodeProjectsGetPermissionForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsGetPermissionForUser",
-			err,
+			Operation: "ProjectsGetPermissionForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18529,8 +18529,8 @@ func (s *Server) handleProjectsListCardsRequest(args [1]string, w http.ResponseW
 	params, err := decodeProjectsListCardsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsListCards",
-			err,
+			Operation: "ProjectsListCards",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18574,8 +18574,8 @@ func (s *Server) handleProjectsListCollaboratorsRequest(args [1]string, w http.R
 	params, err := decodeProjectsListCollaboratorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsListCollaborators",
-			err,
+			Operation: "ProjectsListCollaborators",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18619,8 +18619,8 @@ func (s *Server) handleProjectsListColumnsRequest(args [1]string, w http.Respons
 	params, err := decodeProjectsListColumnsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsListColumns",
-			err,
+			Operation: "ProjectsListColumns",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18664,8 +18664,8 @@ func (s *Server) handleProjectsListForOrgRequest(args [1]string, w http.Response
 	params, err := decodeProjectsListForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsListForOrg",
-			err,
+			Operation: "ProjectsListForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18709,8 +18709,8 @@ func (s *Server) handleProjectsListForRepoRequest(args [2]string, w http.Respons
 	params, err := decodeProjectsListForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsListForRepo",
-			err,
+			Operation: "ProjectsListForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18754,8 +18754,8 @@ func (s *Server) handleProjectsListForUserRequest(args [1]string, w http.Respons
 	params, err := decodeProjectsListForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsListForUser",
-			err,
+			Operation: "ProjectsListForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18799,8 +18799,8 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	params, err := decodeProjectsMoveCardParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsMoveCard",
-			err,
+			Operation: "ProjectsMoveCard",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18808,8 +18808,8 @@ func (s *Server) handleProjectsMoveCardRequest(args [1]string, w http.ResponseWr
 	request, err := decodeProjectsMoveCardRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsMoveCard",
-			err,
+			Operation: "ProjectsMoveCard",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18853,8 +18853,8 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	params, err := decodeProjectsMoveColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsMoveColumn",
-			err,
+			Operation: "ProjectsMoveColumn",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18862,8 +18862,8 @@ func (s *Server) handleProjectsMoveColumnRequest(args [1]string, w http.Response
 	request, err := decodeProjectsMoveColumnRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsMoveColumn",
-			err,
+			Operation: "ProjectsMoveColumn",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18907,8 +18907,8 @@ func (s *Server) handleProjectsRemoveCollaboratorRequest(args [2]string, w http.
 	params, err := decodeProjectsRemoveCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsRemoveCollaborator",
-			err,
+			Operation: "ProjectsRemoveCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18952,8 +18952,8 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeProjectsUpdateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsUpdate",
-			err,
+			Operation: "ProjectsUpdate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18961,8 +18961,8 @@ func (s *Server) handleProjectsUpdateRequest(args [1]string, w http.ResponseWrit
 	request, err := decodeProjectsUpdateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsUpdate",
-			err,
+			Operation: "ProjectsUpdate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19006,8 +19006,8 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	params, err := decodeProjectsUpdateCardParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsUpdateCard",
-			err,
+			Operation: "ProjectsUpdateCard",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19015,8 +19015,8 @@ func (s *Server) handleProjectsUpdateCardRequest(args [1]string, w http.Response
 	request, err := decodeProjectsUpdateCardRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsUpdateCard",
-			err,
+			Operation: "ProjectsUpdateCard",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19060,8 +19060,8 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	params, err := decodeProjectsUpdateColumnParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ProjectsUpdateColumn",
-			err,
+			Operation: "ProjectsUpdateColumn",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19069,8 +19069,8 @@ func (s *Server) handleProjectsUpdateColumnRequest(args [1]string, w http.Respon
 	request, err := decodeProjectsUpdateColumnRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ProjectsUpdateColumn",
-			err,
+			Operation: "ProjectsUpdateColumn",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19114,8 +19114,8 @@ func (s *Server) handlePullsCheckIfMergedRequest(args [3]string, w http.Response
 	params, err := decodePullsCheckIfMergedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsCheckIfMerged",
-			err,
+			Operation: "PullsCheckIfMerged",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19159,8 +19159,8 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	params, err := decodePullsCreateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsCreate",
-			err,
+			Operation: "PullsCreate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19168,8 +19168,8 @@ func (s *Server) handlePullsCreateRequest(args [2]string, w http.ResponseWriter,
 	request, err := decodePullsCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsCreate",
-			err,
+			Operation: "PullsCreate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19213,8 +19213,8 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	params, err := decodePullsCreateReplyForReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsCreateReplyForReviewComment",
-			err,
+			Operation: "PullsCreateReplyForReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19222,8 +19222,8 @@ func (s *Server) handlePullsCreateReplyForReviewCommentRequest(args [4]string, w
 	request, err := decodePullsCreateReplyForReviewCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsCreateReplyForReviewComment",
-			err,
+			Operation: "PullsCreateReplyForReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19267,8 +19267,8 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	params, err := decodePullsCreateReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsCreateReview",
-			err,
+			Operation: "PullsCreateReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19276,8 +19276,8 @@ func (s *Server) handlePullsCreateReviewRequest(args [3]string, w http.ResponseW
 	request, err := decodePullsCreateReviewRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsCreateReview",
-			err,
+			Operation: "PullsCreateReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19321,8 +19321,8 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	params, err := decodePullsCreateReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsCreateReviewComment",
-			err,
+			Operation: "PullsCreateReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19330,8 +19330,8 @@ func (s *Server) handlePullsCreateReviewCommentRequest(args [3]string, w http.Re
 	request, err := decodePullsCreateReviewCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsCreateReviewComment",
-			err,
+			Operation: "PullsCreateReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19375,8 +19375,8 @@ func (s *Server) handlePullsDeletePendingReviewRequest(args [4]string, w http.Re
 	params, err := decodePullsDeletePendingReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsDeletePendingReview",
-			err,
+			Operation: "PullsDeletePendingReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19420,8 +19420,8 @@ func (s *Server) handlePullsDeleteReviewCommentRequest(args [3]string, w http.Re
 	params, err := decodePullsDeleteReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsDeleteReviewComment",
-			err,
+			Operation: "PullsDeleteReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19465,8 +19465,8 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	params, err := decodePullsDismissReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsDismissReview",
-			err,
+			Operation: "PullsDismissReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19474,8 +19474,8 @@ func (s *Server) handlePullsDismissReviewRequest(args [4]string, w http.Response
 	request, err := decodePullsDismissReviewRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsDismissReview",
-			err,
+			Operation: "PullsDismissReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19519,8 +19519,8 @@ func (s *Server) handlePullsGetRequest(args [3]string, w http.ResponseWriter, r 
 	params, err := decodePullsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsGet",
-			err,
+			Operation: "PullsGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19564,8 +19564,8 @@ func (s *Server) handlePullsGetReviewRequest(args [4]string, w http.ResponseWrit
 	params, err := decodePullsGetReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsGetReview",
-			err,
+			Operation: "PullsGetReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19609,8 +19609,8 @@ func (s *Server) handlePullsGetReviewCommentRequest(args [3]string, w http.Respo
 	params, err := decodePullsGetReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsGetReviewComment",
-			err,
+			Operation: "PullsGetReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19654,8 +19654,8 @@ func (s *Server) handlePullsListRequest(args [2]string, w http.ResponseWriter, r
 	params, err := decodePullsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsList",
-			err,
+			Operation: "PullsList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19699,8 +19699,8 @@ func (s *Server) handlePullsListCommentsForReviewRequest(args [4]string, w http.
 	params, err := decodePullsListCommentsForReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsListCommentsForReview",
-			err,
+			Operation: "PullsListCommentsForReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19744,8 +19744,8 @@ func (s *Server) handlePullsListCommitsRequest(args [3]string, w http.ResponseWr
 	params, err := decodePullsListCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsListCommits",
-			err,
+			Operation: "PullsListCommits",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19789,8 +19789,8 @@ func (s *Server) handlePullsListFilesRequest(args [3]string, w http.ResponseWrit
 	params, err := decodePullsListFilesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsListFiles",
-			err,
+			Operation: "PullsListFiles",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19834,8 +19834,8 @@ func (s *Server) handlePullsListRequestedReviewersRequest(args [3]string, w http
 	params, err := decodePullsListRequestedReviewersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsListRequestedReviewers",
-			err,
+			Operation: "PullsListRequestedReviewers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19879,8 +19879,8 @@ func (s *Server) handlePullsListReviewCommentsRequest(args [3]string, w http.Res
 	params, err := decodePullsListReviewCommentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsListReviewComments",
-			err,
+			Operation: "PullsListReviewComments",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19924,8 +19924,8 @@ func (s *Server) handlePullsListReviewCommentsForRepoRequest(args [2]string, w h
 	params, err := decodePullsListReviewCommentsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsListReviewCommentsForRepo",
-			err,
+			Operation: "PullsListReviewCommentsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19969,8 +19969,8 @@ func (s *Server) handlePullsListReviewsRequest(args [3]string, w http.ResponseWr
 	params, err := decodePullsListReviewsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsListReviews",
-			err,
+			Operation: "PullsListReviews",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20014,8 +20014,8 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	params, err := decodePullsMergeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsMerge",
-			err,
+			Operation: "PullsMerge",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20023,8 +20023,8 @@ func (s *Server) handlePullsMergeRequest(args [3]string, w http.ResponseWriter, 
 	request, err := decodePullsMergeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsMerge",
-			err,
+			Operation: "PullsMerge",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20068,8 +20068,8 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	params, err := decodePullsRemoveRequestedReviewersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsRemoveRequestedReviewers",
-			err,
+			Operation: "PullsRemoveRequestedReviewers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20077,8 +20077,8 @@ func (s *Server) handlePullsRemoveRequestedReviewersRequest(args [3]string, w ht
 	request, err := decodePullsRemoveRequestedReviewersRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsRemoveRequestedReviewers",
-			err,
+			Operation: "PullsRemoveRequestedReviewers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20122,8 +20122,8 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	params, err := decodePullsSubmitReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsSubmitReview",
-			err,
+			Operation: "PullsSubmitReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20131,8 +20131,8 @@ func (s *Server) handlePullsSubmitReviewRequest(args [4]string, w http.ResponseW
 	request, err := decodePullsSubmitReviewRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsSubmitReview",
-			err,
+			Operation: "PullsSubmitReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20176,8 +20176,8 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	params, err := decodePullsUpdateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsUpdate",
-			err,
+			Operation: "PullsUpdate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20185,8 +20185,8 @@ func (s *Server) handlePullsUpdateRequest(args [3]string, w http.ResponseWriter,
 	request, err := decodePullsUpdateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsUpdate",
-			err,
+			Operation: "PullsUpdate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20230,8 +20230,8 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	params, err := decodePullsUpdateBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsUpdateBranch",
-			err,
+			Operation: "PullsUpdateBranch",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20239,8 +20239,8 @@ func (s *Server) handlePullsUpdateBranchRequest(args [3]string, w http.ResponseW
 	request, err := decodePullsUpdateBranchRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsUpdateBranch",
-			err,
+			Operation: "PullsUpdateBranch",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20284,8 +20284,8 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	params, err := decodePullsUpdateReviewParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsUpdateReview",
-			err,
+			Operation: "PullsUpdateReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20293,8 +20293,8 @@ func (s *Server) handlePullsUpdateReviewRequest(args [4]string, w http.ResponseW
 	request, err := decodePullsUpdateReviewRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsUpdateReview",
-			err,
+			Operation: "PullsUpdateReview",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20338,8 +20338,8 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	params, err := decodePullsUpdateReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PullsUpdateReviewComment",
-			err,
+			Operation: "PullsUpdateReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20347,8 +20347,8 @@ func (s *Server) handlePullsUpdateReviewCommentRequest(args [3]string, w http.Re
 	request, err := decodePullsUpdateReviewCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PullsUpdateReviewComment",
-			err,
+			Operation: "PullsUpdateReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20428,8 +20428,8 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	params, err := decodeReactionsCreateForCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForCommitComment",
-			err,
+			Operation: "ReactionsCreateForCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20437,8 +20437,8 @@ func (s *Server) handleReactionsCreateForCommitCommentRequest(args [3]string, w 
 	request, err := decodeReactionsCreateForCommitCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForCommitComment",
-			err,
+			Operation: "ReactionsCreateForCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20482,8 +20482,8 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	params, err := decodeReactionsCreateForIssueParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForIssue",
-			err,
+			Operation: "ReactionsCreateForIssue",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20491,8 +20491,8 @@ func (s *Server) handleReactionsCreateForIssueRequest(args [3]string, w http.Res
 	request, err := decodeReactionsCreateForIssueRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForIssue",
-			err,
+			Operation: "ReactionsCreateForIssue",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20536,8 +20536,8 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	params, err := decodeReactionsCreateForIssueCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForIssueComment",
-			err,
+			Operation: "ReactionsCreateForIssueComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20545,8 +20545,8 @@ func (s *Server) handleReactionsCreateForIssueCommentRequest(args [3]string, w h
 	request, err := decodeReactionsCreateForIssueCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForIssueComment",
-			err,
+			Operation: "ReactionsCreateForIssueComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20590,8 +20590,8 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	params, err := decodeReactionsCreateForPullRequestReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForPullRequestReviewComment",
-			err,
+			Operation: "ReactionsCreateForPullRequestReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20599,8 +20599,8 @@ func (s *Server) handleReactionsCreateForPullRequestReviewCommentRequest(args [3
 	request, err := decodeReactionsCreateForPullRequestReviewCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForPullRequestReviewComment",
-			err,
+			Operation: "ReactionsCreateForPullRequestReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20644,8 +20644,8 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	params, err := decodeReactionsCreateForReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForRelease",
-			err,
+			Operation: "ReactionsCreateForRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20653,8 +20653,8 @@ func (s *Server) handleReactionsCreateForReleaseRequest(args [3]string, w http.R
 	request, err := decodeReactionsCreateForReleaseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForRelease",
-			err,
+			Operation: "ReactionsCreateForRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20698,8 +20698,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	params, err := decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForTeamDiscussionCommentInOrg",
-			err,
+			Operation: "ReactionsCreateForTeamDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20707,8 +20707,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentInOrgRequest(args 
 	request, err := decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForTeamDiscussionCommentInOrg",
-			err,
+			Operation: "ReactionsCreateForTeamDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20752,8 +20752,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	params, err := decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForTeamDiscussionCommentLegacy",
-			err,
+			Operation: "ReactionsCreateForTeamDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20761,8 +20761,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionCommentLegacyRequest(args
 	request, err := decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForTeamDiscussionCommentLegacy",
-			err,
+			Operation: "ReactionsCreateForTeamDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20806,8 +20806,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	params, err := decodeReactionsCreateForTeamDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForTeamDiscussionInOrg",
-			err,
+			Operation: "ReactionsCreateForTeamDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20815,8 +20815,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionInOrgRequest(args [3]stri
 	request, err := decodeReactionsCreateForTeamDiscussionInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForTeamDiscussionInOrg",
-			err,
+			Operation: "ReactionsCreateForTeamDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20860,8 +20860,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	params, err := decodeReactionsCreateForTeamDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsCreateForTeamDiscussionLegacy",
-			err,
+			Operation: "ReactionsCreateForTeamDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20869,8 +20869,8 @@ func (s *Server) handleReactionsCreateForTeamDiscussionLegacyRequest(args [2]str
 	request, err := decodeReactionsCreateForTeamDiscussionLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReactionsCreateForTeamDiscussionLegacy",
-			err,
+			Operation: "ReactionsCreateForTeamDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20914,8 +20914,8 @@ func (s *Server) handleReactionsDeleteForCommitCommentRequest(args [4]string, w 
 	params, err := decodeReactionsDeleteForCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsDeleteForCommitComment",
-			err,
+			Operation: "ReactionsDeleteForCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20959,8 +20959,8 @@ func (s *Server) handleReactionsDeleteForIssueRequest(args [4]string, w http.Res
 	params, err := decodeReactionsDeleteForIssueParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsDeleteForIssue",
-			err,
+			Operation: "ReactionsDeleteForIssue",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21004,8 +21004,8 @@ func (s *Server) handleReactionsDeleteForIssueCommentRequest(args [4]string, w h
 	params, err := decodeReactionsDeleteForIssueCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsDeleteForIssueComment",
-			err,
+			Operation: "ReactionsDeleteForIssueComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21049,8 +21049,8 @@ func (s *Server) handleReactionsDeleteForPullRequestCommentRequest(args [4]strin
 	params, err := decodeReactionsDeleteForPullRequestCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsDeleteForPullRequestComment",
-			err,
+			Operation: "ReactionsDeleteForPullRequestComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21094,8 +21094,8 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionRequest(args [4]string, w
 	params, err := decodeReactionsDeleteForTeamDiscussionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsDeleteForTeamDiscussion",
-			err,
+			Operation: "ReactionsDeleteForTeamDiscussion",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21139,8 +21139,8 @@ func (s *Server) handleReactionsDeleteForTeamDiscussionCommentRequest(args [5]st
 	params, err := decodeReactionsDeleteForTeamDiscussionCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsDeleteForTeamDiscussionComment",
-			err,
+			Operation: "ReactionsDeleteForTeamDiscussionComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21184,8 +21184,8 @@ func (s *Server) handleReactionsDeleteLegacyRequest(args [1]string, w http.Respo
 	params, err := decodeReactionsDeleteLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsDeleteLegacy",
-			err,
+			Operation: "ReactionsDeleteLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21229,8 +21229,8 @@ func (s *Server) handleReactionsListForCommitCommentRequest(args [3]string, w ht
 	params, err := decodeReactionsListForCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsListForCommitComment",
-			err,
+			Operation: "ReactionsListForCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21274,8 +21274,8 @@ func (s *Server) handleReactionsListForIssueRequest(args [3]string, w http.Respo
 	params, err := decodeReactionsListForIssueParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsListForIssue",
-			err,
+			Operation: "ReactionsListForIssue",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21319,8 +21319,8 @@ func (s *Server) handleReactionsListForIssueCommentRequest(args [3]string, w htt
 	params, err := decodeReactionsListForIssueCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsListForIssueComment",
-			err,
+			Operation: "ReactionsListForIssueComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21364,8 +21364,8 @@ func (s *Server) handleReactionsListForPullRequestReviewCommentRequest(args [3]s
 	params, err := decodeReactionsListForPullRequestReviewCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsListForPullRequestReviewComment",
-			err,
+			Operation: "ReactionsListForPullRequestReviewComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21409,8 +21409,8 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentInOrgRequest(args [4
 	params, err := decodeReactionsListForTeamDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsListForTeamDiscussionCommentInOrg",
-			err,
+			Operation: "ReactionsListForTeamDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21454,8 +21454,8 @@ func (s *Server) handleReactionsListForTeamDiscussionCommentLegacyRequest(args [
 	params, err := decodeReactionsListForTeamDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsListForTeamDiscussionCommentLegacy",
-			err,
+			Operation: "ReactionsListForTeamDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21499,8 +21499,8 @@ func (s *Server) handleReactionsListForTeamDiscussionInOrgRequest(args [3]string
 	params, err := decodeReactionsListForTeamDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsListForTeamDiscussionInOrg",
-			err,
+			Operation: "ReactionsListForTeamDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21544,8 +21544,8 @@ func (s *Server) handleReactionsListForTeamDiscussionLegacyRequest(args [2]strin
 	params, err := decodeReactionsListForTeamDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReactionsListForTeamDiscussionLegacy",
-			err,
+			Operation: "ReactionsListForTeamDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21589,8 +21589,8 @@ func (s *Server) handleReposAcceptInvitationRequest(args [1]string, w http.Respo
 	params, err := decodeReposAcceptInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposAcceptInvitation",
-			err,
+			Operation: "ReposAcceptInvitation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21634,8 +21634,8 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	params, err := decodeReposAddAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposAddAppAccessRestrictions",
-			err,
+			Operation: "ReposAddAppAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21643,8 +21643,8 @@ func (s *Server) handleReposAddAppAccessRestrictionsRequest(args [3]string, w ht
 	request, err := decodeReposAddAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposAddAppAccessRestrictions",
-			err,
+			Operation: "ReposAddAppAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21688,8 +21688,8 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	params, err := decodeReposAddCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposAddCollaborator",
-			err,
+			Operation: "ReposAddCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21697,8 +21697,8 @@ func (s *Server) handleReposAddCollaboratorRequest(args [3]string, w http.Respon
 	request, err := decodeReposAddCollaboratorRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposAddCollaborator",
-			err,
+			Operation: "ReposAddCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21742,8 +21742,8 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	params, err := decodeReposAddStatusCheckContextsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposAddStatusCheckContexts",
-			err,
+			Operation: "ReposAddStatusCheckContexts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21751,8 +21751,8 @@ func (s *Server) handleReposAddStatusCheckContextsRequest(args [3]string, w http
 	request, err := decodeReposAddStatusCheckContextsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposAddStatusCheckContexts",
-			err,
+			Operation: "ReposAddStatusCheckContexts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21796,8 +21796,8 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	params, err := decodeReposAddTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposAddTeamAccessRestrictions",
-			err,
+			Operation: "ReposAddTeamAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21805,8 +21805,8 @@ func (s *Server) handleReposAddTeamAccessRestrictionsRequest(args [3]string, w h
 	request, err := decodeReposAddTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposAddTeamAccessRestrictions",
-			err,
+			Operation: "ReposAddTeamAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21850,8 +21850,8 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	params, err := decodeReposAddUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposAddUserAccessRestrictions",
-			err,
+			Operation: "ReposAddUserAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21859,8 +21859,8 @@ func (s *Server) handleReposAddUserAccessRestrictionsRequest(args [3]string, w h
 	request, err := decodeReposAddUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposAddUserAccessRestrictions",
-			err,
+			Operation: "ReposAddUserAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21904,8 +21904,8 @@ func (s *Server) handleReposCheckCollaboratorRequest(args [3]string, w http.Resp
 	params, err := decodeReposCheckCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCheckCollaborator",
-			err,
+			Operation: "ReposCheckCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21949,8 +21949,8 @@ func (s *Server) handleReposCheckVulnerabilityAlertsRequest(args [2]string, w ht
 	params, err := decodeReposCheckVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCheckVulnerabilityAlerts",
-			err,
+			Operation: "ReposCheckVulnerabilityAlerts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21994,8 +21994,8 @@ func (s *Server) handleReposCompareCommitsRequest(args [3]string, w http.Respons
 	params, err := decodeReposCompareCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCompareCommits",
-			err,
+			Operation: "ReposCompareCommits",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22039,8 +22039,8 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	params, err := decodeReposCreateAutolinkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateAutolink",
-			err,
+			Operation: "ReposCreateAutolink",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22048,8 +22048,8 @@ func (s *Server) handleReposCreateAutolinkRequest(args [2]string, w http.Respons
 	request, err := decodeReposCreateAutolinkRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateAutolink",
-			err,
+			Operation: "ReposCreateAutolink",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22093,8 +22093,8 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	params, err := decodeReposCreateCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateCommitComment",
-			err,
+			Operation: "ReposCreateCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22102,8 +22102,8 @@ func (s *Server) handleReposCreateCommitCommentRequest(args [3]string, w http.Re
 	request, err := decodeReposCreateCommitCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateCommitComment",
-			err,
+			Operation: "ReposCreateCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22147,8 +22147,8 @@ func (s *Server) handleReposCreateCommitSignatureProtectionRequest(args [3]strin
 	params, err := decodeReposCreateCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateCommitSignatureProtection",
-			err,
+			Operation: "ReposCreateCommitSignatureProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22192,8 +22192,8 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	params, err := decodeReposCreateCommitStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateCommitStatus",
-			err,
+			Operation: "ReposCreateCommitStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22201,8 +22201,8 @@ func (s *Server) handleReposCreateCommitStatusRequest(args [3]string, w http.Res
 	request, err := decodeReposCreateCommitStatusRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateCommitStatus",
-			err,
+			Operation: "ReposCreateCommitStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22246,8 +22246,8 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	params, err := decodeReposCreateDeployKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateDeployKey",
-			err,
+			Operation: "ReposCreateDeployKey",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22255,8 +22255,8 @@ func (s *Server) handleReposCreateDeployKeyRequest(args [2]string, w http.Respon
 	request, err := decodeReposCreateDeployKeyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateDeployKey",
-			err,
+			Operation: "ReposCreateDeployKey",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22300,8 +22300,8 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	params, err := decodeReposCreateDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateDeployment",
-			err,
+			Operation: "ReposCreateDeployment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22309,8 +22309,8 @@ func (s *Server) handleReposCreateDeploymentRequest(args [2]string, w http.Respo
 	request, err := decodeReposCreateDeploymentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateDeployment",
-			err,
+			Operation: "ReposCreateDeployment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22354,8 +22354,8 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	params, err := decodeReposCreateDeploymentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateDeploymentStatus",
-			err,
+			Operation: "ReposCreateDeploymentStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22363,8 +22363,8 @@ func (s *Server) handleReposCreateDeploymentStatusRequest(args [3]string, w http
 	request, err := decodeReposCreateDeploymentStatusRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateDeploymentStatus",
-			err,
+			Operation: "ReposCreateDeploymentStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22408,8 +22408,8 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	params, err := decodeReposCreateDispatchEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateDispatchEvent",
-			err,
+			Operation: "ReposCreateDispatchEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22417,8 +22417,8 @@ func (s *Server) handleReposCreateDispatchEventRequest(args [2]string, w http.Re
 	request, err := decodeReposCreateDispatchEventRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateDispatchEvent",
-			err,
+			Operation: "ReposCreateDispatchEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22462,8 +22462,8 @@ func (s *Server) handleReposCreateForAuthenticatedUserRequest(args [0]string, w 
 	request, err := decodeReposCreateForAuthenticatedUserRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateForAuthenticatedUser",
-			err,
+			Operation: "ReposCreateForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22507,8 +22507,8 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	params, err := decodeReposCreateForkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateFork",
-			err,
+			Operation: "ReposCreateFork",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22516,8 +22516,8 @@ func (s *Server) handleReposCreateForkRequest(args [2]string, w http.ResponseWri
 	request, err := decodeReposCreateForkRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateFork",
-			err,
+			Operation: "ReposCreateFork",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22561,8 +22561,8 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	params, err := decodeReposCreateInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateInOrg",
-			err,
+			Operation: "ReposCreateInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22570,8 +22570,8 @@ func (s *Server) handleReposCreateInOrgRequest(args [1]string, w http.ResponseWr
 	request, err := decodeReposCreateInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateInOrg",
-			err,
+			Operation: "ReposCreateInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22615,8 +22615,8 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	params, err := decodeReposCreateOrUpdateFileContentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateOrUpdateFileContents",
-			err,
+			Operation: "ReposCreateOrUpdateFileContents",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22624,8 +22624,8 @@ func (s *Server) handleReposCreateOrUpdateFileContentsRequest(args [3]string, w 
 	request, err := decodeReposCreateOrUpdateFileContentsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateOrUpdateFileContents",
-			err,
+			Operation: "ReposCreateOrUpdateFileContents",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22669,8 +22669,8 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	params, err := decodeReposCreatePagesSiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreatePagesSite",
-			err,
+			Operation: "ReposCreatePagesSite",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22678,8 +22678,8 @@ func (s *Server) handleReposCreatePagesSiteRequest(args [2]string, w http.Respon
 	request, err := decodeReposCreatePagesSiteRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreatePagesSite",
-			err,
+			Operation: "ReposCreatePagesSite",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22723,8 +22723,8 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	params, err := decodeReposCreateReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateRelease",
-			err,
+			Operation: "ReposCreateRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22732,8 +22732,8 @@ func (s *Server) handleReposCreateReleaseRequest(args [2]string, w http.Response
 	request, err := decodeReposCreateReleaseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateRelease",
-			err,
+			Operation: "ReposCreateRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22777,8 +22777,8 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	params, err := decodeReposCreateUsingTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateUsingTemplate",
-			err,
+			Operation: "ReposCreateUsingTemplate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22786,8 +22786,8 @@ func (s *Server) handleReposCreateUsingTemplateRequest(args [2]string, w http.Re
 	request, err := decodeReposCreateUsingTemplateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateUsingTemplate",
-			err,
+			Operation: "ReposCreateUsingTemplate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22831,8 +22831,8 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	params, err := decodeReposCreateWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposCreateWebhook",
-			err,
+			Operation: "ReposCreateWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22840,8 +22840,8 @@ func (s *Server) handleReposCreateWebhookRequest(args [2]string, w http.Response
 	request, err := decodeReposCreateWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposCreateWebhook",
-			err,
+			Operation: "ReposCreateWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22885,8 +22885,8 @@ func (s *Server) handleReposDeclineInvitationRequest(args [1]string, w http.Resp
 	params, err := decodeReposDeclineInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeclineInvitation",
-			err,
+			Operation: "ReposDeclineInvitation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22930,8 +22930,8 @@ func (s *Server) handleReposDeleteRequest(args [2]string, w http.ResponseWriter,
 	params, err := decodeReposDeleteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDelete",
-			err,
+			Operation: "ReposDelete",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22975,8 +22975,8 @@ func (s *Server) handleReposDeleteAccessRestrictionsRequest(args [3]string, w ht
 	params, err := decodeReposDeleteAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteAccessRestrictions",
-			err,
+			Operation: "ReposDeleteAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23020,8 +23020,8 @@ func (s *Server) handleReposDeleteAdminBranchProtectionRequest(args [3]string, w
 	params, err := decodeReposDeleteAdminBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteAdminBranchProtection",
-			err,
+			Operation: "ReposDeleteAdminBranchProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23065,8 +23065,8 @@ func (s *Server) handleReposDeleteAnEnvironmentRequest(args [3]string, w http.Re
 	params, err := decodeReposDeleteAnEnvironmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteAnEnvironment",
-			err,
+			Operation: "ReposDeleteAnEnvironment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23110,8 +23110,8 @@ func (s *Server) handleReposDeleteAutolinkRequest(args [3]string, w http.Respons
 	params, err := decodeReposDeleteAutolinkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteAutolink",
-			err,
+			Operation: "ReposDeleteAutolink",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23155,8 +23155,8 @@ func (s *Server) handleReposDeleteBranchProtectionRequest(args [3]string, w http
 	params, err := decodeReposDeleteBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteBranchProtection",
-			err,
+			Operation: "ReposDeleteBranchProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23200,8 +23200,8 @@ func (s *Server) handleReposDeleteCommitCommentRequest(args [3]string, w http.Re
 	params, err := decodeReposDeleteCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteCommitComment",
-			err,
+			Operation: "ReposDeleteCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23245,8 +23245,8 @@ func (s *Server) handleReposDeleteCommitSignatureProtectionRequest(args [3]strin
 	params, err := decodeReposDeleteCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteCommitSignatureProtection",
-			err,
+			Operation: "ReposDeleteCommitSignatureProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23290,8 +23290,8 @@ func (s *Server) handleReposDeleteDeployKeyRequest(args [3]string, w http.Respon
 	params, err := decodeReposDeleteDeployKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteDeployKey",
-			err,
+			Operation: "ReposDeleteDeployKey",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23335,8 +23335,8 @@ func (s *Server) handleReposDeleteDeploymentRequest(args [3]string, w http.Respo
 	params, err := decodeReposDeleteDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteDeployment",
-			err,
+			Operation: "ReposDeleteDeployment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23380,8 +23380,8 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	params, err := decodeReposDeleteFileParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteFile",
-			err,
+			Operation: "ReposDeleteFile",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23389,8 +23389,8 @@ func (s *Server) handleReposDeleteFileRequest(args [3]string, w http.ResponseWri
 	request, err := decodeReposDeleteFileRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposDeleteFile",
-			err,
+			Operation: "ReposDeleteFile",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23434,8 +23434,8 @@ func (s *Server) handleReposDeleteInvitationRequest(args [3]string, w http.Respo
 	params, err := decodeReposDeleteInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteInvitation",
-			err,
+			Operation: "ReposDeleteInvitation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23479,8 +23479,8 @@ func (s *Server) handleReposDeletePagesSiteRequest(args [2]string, w http.Respon
 	params, err := decodeReposDeletePagesSiteParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeletePagesSite",
-			err,
+			Operation: "ReposDeletePagesSite",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23524,8 +23524,8 @@ func (s *Server) handleReposDeletePullRequestReviewProtectionRequest(args [3]str
 	params, err := decodeReposDeletePullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeletePullRequestReviewProtection",
-			err,
+			Operation: "ReposDeletePullRequestReviewProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23569,8 +23569,8 @@ func (s *Server) handleReposDeleteReleaseRequest(args [3]string, w http.Response
 	params, err := decodeReposDeleteReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteRelease",
-			err,
+			Operation: "ReposDeleteRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23614,8 +23614,8 @@ func (s *Server) handleReposDeleteReleaseAssetRequest(args [3]string, w http.Res
 	params, err := decodeReposDeleteReleaseAssetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteReleaseAsset",
-			err,
+			Operation: "ReposDeleteReleaseAsset",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23659,8 +23659,8 @@ func (s *Server) handleReposDeleteWebhookRequest(args [3]string, w http.Response
 	params, err := decodeReposDeleteWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDeleteWebhook",
-			err,
+			Operation: "ReposDeleteWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23704,8 +23704,8 @@ func (s *Server) handleReposDisableAutomatedSecurityFixesRequest(args [2]string,
 	params, err := decodeReposDisableAutomatedSecurityFixesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDisableAutomatedSecurityFixes",
-			err,
+			Operation: "ReposDisableAutomatedSecurityFixes",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23749,8 +23749,8 @@ func (s *Server) handleReposDisableLfsForRepoRequest(args [2]string, w http.Resp
 	params, err := decodeReposDisableLfsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDisableLfsForRepo",
-			err,
+			Operation: "ReposDisableLfsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23794,8 +23794,8 @@ func (s *Server) handleReposDisableVulnerabilityAlertsRequest(args [2]string, w 
 	params, err := decodeReposDisableVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDisableVulnerabilityAlerts",
-			err,
+			Operation: "ReposDisableVulnerabilityAlerts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23839,8 +23839,8 @@ func (s *Server) handleReposDownloadTarballArchiveRequest(args [3]string, w http
 	params, err := decodeReposDownloadTarballArchiveParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDownloadTarballArchive",
-			err,
+			Operation: "ReposDownloadTarballArchive",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23884,8 +23884,8 @@ func (s *Server) handleReposDownloadZipballArchiveRequest(args [3]string, w http
 	params, err := decodeReposDownloadZipballArchiveParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposDownloadZipballArchive",
-			err,
+			Operation: "ReposDownloadZipballArchive",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23929,8 +23929,8 @@ func (s *Server) handleReposEnableAutomatedSecurityFixesRequest(args [2]string, 
 	params, err := decodeReposEnableAutomatedSecurityFixesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposEnableAutomatedSecurityFixes",
-			err,
+			Operation: "ReposEnableAutomatedSecurityFixes",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -23974,8 +23974,8 @@ func (s *Server) handleReposEnableLfsForRepoRequest(args [2]string, w http.Respo
 	params, err := decodeReposEnableLfsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposEnableLfsForRepo",
-			err,
+			Operation: "ReposEnableLfsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24019,8 +24019,8 @@ func (s *Server) handleReposEnableVulnerabilityAlertsRequest(args [2]string, w h
 	params, err := decodeReposEnableVulnerabilityAlertsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposEnableVulnerabilityAlerts",
-			err,
+			Operation: "ReposEnableVulnerabilityAlerts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24064,8 +24064,8 @@ func (s *Server) handleReposGetRequest(args [2]string, w http.ResponseWriter, r 
 	params, err := decodeReposGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGet",
-			err,
+			Operation: "ReposGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24109,8 +24109,8 @@ func (s *Server) handleReposGetAccessRestrictionsRequest(args [3]string, w http.
 	params, err := decodeReposGetAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetAccessRestrictions",
-			err,
+			Operation: "ReposGetAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24154,8 +24154,8 @@ func (s *Server) handleReposGetAdminBranchProtectionRequest(args [3]string, w ht
 	params, err := decodeReposGetAdminBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetAdminBranchProtection",
-			err,
+			Operation: "ReposGetAdminBranchProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24199,8 +24199,8 @@ func (s *Server) handleReposGetAllStatusCheckContextsRequest(args [3]string, w h
 	params, err := decodeReposGetAllStatusCheckContextsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetAllStatusCheckContexts",
-			err,
+			Operation: "ReposGetAllStatusCheckContexts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24244,8 +24244,8 @@ func (s *Server) handleReposGetAllTopicsRequest(args [2]string, w http.ResponseW
 	params, err := decodeReposGetAllTopicsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetAllTopics",
-			err,
+			Operation: "ReposGetAllTopics",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24289,8 +24289,8 @@ func (s *Server) handleReposGetAppsWithAccessToProtectedBranchRequest(args [3]st
 	params, err := decodeReposGetAppsWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetAppsWithAccessToProtectedBranch",
-			err,
+			Operation: "ReposGetAppsWithAccessToProtectedBranch",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24334,8 +24334,8 @@ func (s *Server) handleReposGetAutolinkRequest(args [3]string, w http.ResponseWr
 	params, err := decodeReposGetAutolinkParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetAutolink",
-			err,
+			Operation: "ReposGetAutolink",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24379,8 +24379,8 @@ func (s *Server) handleReposGetBranchRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeReposGetBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetBranch",
-			err,
+			Operation: "ReposGetBranch",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24424,8 +24424,8 @@ func (s *Server) handleReposGetBranchProtectionRequest(args [3]string, w http.Re
 	params, err := decodeReposGetBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetBranchProtection",
-			err,
+			Operation: "ReposGetBranchProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24469,8 +24469,8 @@ func (s *Server) handleReposGetClonesRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeReposGetClonesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetClones",
-			err,
+			Operation: "ReposGetClones",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24514,8 +24514,8 @@ func (s *Server) handleReposGetCodeFrequencyStatsRequest(args [2]string, w http.
 	params, err := decodeReposGetCodeFrequencyStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetCodeFrequencyStats",
-			err,
+			Operation: "ReposGetCodeFrequencyStats",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24559,8 +24559,8 @@ func (s *Server) handleReposGetCollaboratorPermissionLevelRequest(args [3]string
 	params, err := decodeReposGetCollaboratorPermissionLevelParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetCollaboratorPermissionLevel",
-			err,
+			Operation: "ReposGetCollaboratorPermissionLevel",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24604,8 +24604,8 @@ func (s *Server) handleReposGetCombinedStatusForRefRequest(args [3]string, w htt
 	params, err := decodeReposGetCombinedStatusForRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetCombinedStatusForRef",
-			err,
+			Operation: "ReposGetCombinedStatusForRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24649,8 +24649,8 @@ func (s *Server) handleReposGetCommitRequest(args [3]string, w http.ResponseWrit
 	params, err := decodeReposGetCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetCommit",
-			err,
+			Operation: "ReposGetCommit",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24694,8 +24694,8 @@ func (s *Server) handleReposGetCommitActivityStatsRequest(args [2]string, w http
 	params, err := decodeReposGetCommitActivityStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetCommitActivityStats",
-			err,
+			Operation: "ReposGetCommitActivityStats",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24739,8 +24739,8 @@ func (s *Server) handleReposGetCommitCommentRequest(args [3]string, w http.Respo
 	params, err := decodeReposGetCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetCommitComment",
-			err,
+			Operation: "ReposGetCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24784,8 +24784,8 @@ func (s *Server) handleReposGetCommitSignatureProtectionRequest(args [3]string, 
 	params, err := decodeReposGetCommitSignatureProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetCommitSignatureProtection",
-			err,
+			Operation: "ReposGetCommitSignatureProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24829,8 +24829,8 @@ func (s *Server) handleReposGetCommunityProfileMetricsRequest(args [2]string, w 
 	params, err := decodeReposGetCommunityProfileMetricsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetCommunityProfileMetrics",
-			err,
+			Operation: "ReposGetCommunityProfileMetrics",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24874,8 +24874,8 @@ func (s *Server) handleReposGetContributorsStatsRequest(args [2]string, w http.R
 	params, err := decodeReposGetContributorsStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetContributorsStats",
-			err,
+			Operation: "ReposGetContributorsStats",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24919,8 +24919,8 @@ func (s *Server) handleReposGetDeployKeyRequest(args [3]string, w http.ResponseW
 	params, err := decodeReposGetDeployKeyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetDeployKey",
-			err,
+			Operation: "ReposGetDeployKey",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -24964,8 +24964,8 @@ func (s *Server) handleReposGetDeploymentRequest(args [3]string, w http.Response
 	params, err := decodeReposGetDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetDeployment",
-			err,
+			Operation: "ReposGetDeployment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25009,8 +25009,8 @@ func (s *Server) handleReposGetDeploymentStatusRequest(args [4]string, w http.Re
 	params, err := decodeReposGetDeploymentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetDeploymentStatus",
-			err,
+			Operation: "ReposGetDeploymentStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25054,8 +25054,8 @@ func (s *Server) handleReposGetLatestPagesBuildRequest(args [2]string, w http.Re
 	params, err := decodeReposGetLatestPagesBuildParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetLatestPagesBuild",
-			err,
+			Operation: "ReposGetLatestPagesBuild",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25099,8 +25099,8 @@ func (s *Server) handleReposGetLatestReleaseRequest(args [2]string, w http.Respo
 	params, err := decodeReposGetLatestReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetLatestRelease",
-			err,
+			Operation: "ReposGetLatestRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25144,8 +25144,8 @@ func (s *Server) handleReposGetPagesRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeReposGetPagesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetPages",
-			err,
+			Operation: "ReposGetPages",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25189,8 +25189,8 @@ func (s *Server) handleReposGetPagesBuildRequest(args [3]string, w http.Response
 	params, err := decodeReposGetPagesBuildParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetPagesBuild",
-			err,
+			Operation: "ReposGetPagesBuild",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25234,8 +25234,8 @@ func (s *Server) handleReposGetPagesHealthCheckRequest(args [2]string, w http.Re
 	params, err := decodeReposGetPagesHealthCheckParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetPagesHealthCheck",
-			err,
+			Operation: "ReposGetPagesHealthCheck",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25279,8 +25279,8 @@ func (s *Server) handleReposGetParticipationStatsRequest(args [2]string, w http.
 	params, err := decodeReposGetParticipationStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetParticipationStats",
-			err,
+			Operation: "ReposGetParticipationStats",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25324,8 +25324,8 @@ func (s *Server) handleReposGetPullRequestReviewProtectionRequest(args [3]string
 	params, err := decodeReposGetPullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetPullRequestReviewProtection",
-			err,
+			Operation: "ReposGetPullRequestReviewProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25369,8 +25369,8 @@ func (s *Server) handleReposGetPunchCardStatsRequest(args [2]string, w http.Resp
 	params, err := decodeReposGetPunchCardStatsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetPunchCardStats",
-			err,
+			Operation: "ReposGetPunchCardStats",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25414,8 +25414,8 @@ func (s *Server) handleReposGetReadmeRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeReposGetReadmeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetReadme",
-			err,
+			Operation: "ReposGetReadme",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25459,8 +25459,8 @@ func (s *Server) handleReposGetReadmeInDirectoryRequest(args [3]string, w http.R
 	params, err := decodeReposGetReadmeInDirectoryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetReadmeInDirectory",
-			err,
+			Operation: "ReposGetReadmeInDirectory",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25504,8 +25504,8 @@ func (s *Server) handleReposGetReleaseRequest(args [3]string, w http.ResponseWri
 	params, err := decodeReposGetReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetRelease",
-			err,
+			Operation: "ReposGetRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25549,8 +25549,8 @@ func (s *Server) handleReposGetReleaseAssetRequest(args [3]string, w http.Respon
 	params, err := decodeReposGetReleaseAssetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetReleaseAsset",
-			err,
+			Operation: "ReposGetReleaseAsset",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25594,8 +25594,8 @@ func (s *Server) handleReposGetReleaseByTagRequest(args [3]string, w http.Respon
 	params, err := decodeReposGetReleaseByTagParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetReleaseByTag",
-			err,
+			Operation: "ReposGetReleaseByTag",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25639,8 +25639,8 @@ func (s *Server) handleReposGetStatusChecksProtectionRequest(args [3]string, w h
 	params, err := decodeReposGetStatusChecksProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetStatusChecksProtection",
-			err,
+			Operation: "ReposGetStatusChecksProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25684,8 +25684,8 @@ func (s *Server) handleReposGetTeamsWithAccessToProtectedBranchRequest(args [3]s
 	params, err := decodeReposGetTeamsWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetTeamsWithAccessToProtectedBranch",
-			err,
+			Operation: "ReposGetTeamsWithAccessToProtectedBranch",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25729,8 +25729,8 @@ func (s *Server) handleReposGetTopPathsRequest(args [2]string, w http.ResponseWr
 	params, err := decodeReposGetTopPathsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetTopPaths",
-			err,
+			Operation: "ReposGetTopPaths",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25774,8 +25774,8 @@ func (s *Server) handleReposGetTopReferrersRequest(args [2]string, w http.Respon
 	params, err := decodeReposGetTopReferrersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetTopReferrers",
-			err,
+			Operation: "ReposGetTopReferrers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25819,8 +25819,8 @@ func (s *Server) handleReposGetUsersWithAccessToProtectedBranchRequest(args [3]s
 	params, err := decodeReposGetUsersWithAccessToProtectedBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetUsersWithAccessToProtectedBranch",
-			err,
+			Operation: "ReposGetUsersWithAccessToProtectedBranch",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25864,8 +25864,8 @@ func (s *Server) handleReposGetViewsRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeReposGetViewsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetViews",
-			err,
+			Operation: "ReposGetViews",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25909,8 +25909,8 @@ func (s *Server) handleReposGetWebhookRequest(args [3]string, w http.ResponseWri
 	params, err := decodeReposGetWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetWebhook",
-			err,
+			Operation: "ReposGetWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25954,8 +25954,8 @@ func (s *Server) handleReposGetWebhookConfigForRepoRequest(args [3]string, w htt
 	params, err := decodeReposGetWebhookConfigForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetWebhookConfigForRepo",
-			err,
+			Operation: "ReposGetWebhookConfigForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -25999,8 +25999,8 @@ func (s *Server) handleReposGetWebhookDeliveryRequest(args [4]string, w http.Res
 	params, err := decodeReposGetWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposGetWebhookDelivery",
-			err,
+			Operation: "ReposGetWebhookDelivery",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26044,8 +26044,8 @@ func (s *Server) handleReposListAutolinksRequest(args [2]string, w http.Response
 	params, err := decodeReposListAutolinksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListAutolinks",
-			err,
+			Operation: "ReposListAutolinks",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26089,8 +26089,8 @@ func (s *Server) handleReposListBranchesRequest(args [2]string, w http.ResponseW
 	params, err := decodeReposListBranchesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListBranches",
-			err,
+			Operation: "ReposListBranches",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26134,8 +26134,8 @@ func (s *Server) handleReposListBranchesForHeadCommitRequest(args [3]string, w h
 	params, err := decodeReposListBranchesForHeadCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListBranchesForHeadCommit",
-			err,
+			Operation: "ReposListBranchesForHeadCommit",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26179,8 +26179,8 @@ func (s *Server) handleReposListCollaboratorsRequest(args [2]string, w http.Resp
 	params, err := decodeReposListCollaboratorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListCollaborators",
-			err,
+			Operation: "ReposListCollaborators",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26224,8 +26224,8 @@ func (s *Server) handleReposListCommentsForCommitRequest(args [3]string, w http.
 	params, err := decodeReposListCommentsForCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListCommentsForCommit",
-			err,
+			Operation: "ReposListCommentsForCommit",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26269,8 +26269,8 @@ func (s *Server) handleReposListCommitCommentsForRepoRequest(args [2]string, w h
 	params, err := decodeReposListCommitCommentsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListCommitCommentsForRepo",
-			err,
+			Operation: "ReposListCommitCommentsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26314,8 +26314,8 @@ func (s *Server) handleReposListCommitStatusesForRefRequest(args [3]string, w ht
 	params, err := decodeReposListCommitStatusesForRefParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListCommitStatusesForRef",
-			err,
+			Operation: "ReposListCommitStatusesForRef",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26359,8 +26359,8 @@ func (s *Server) handleReposListCommitsRequest(args [2]string, w http.ResponseWr
 	params, err := decodeReposListCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListCommits",
-			err,
+			Operation: "ReposListCommits",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26404,8 +26404,8 @@ func (s *Server) handleReposListContributorsRequest(args [2]string, w http.Respo
 	params, err := decodeReposListContributorsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListContributors",
-			err,
+			Operation: "ReposListContributors",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26449,8 +26449,8 @@ func (s *Server) handleReposListDeployKeysRequest(args [2]string, w http.Respons
 	params, err := decodeReposListDeployKeysParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListDeployKeys",
-			err,
+			Operation: "ReposListDeployKeys",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26494,8 +26494,8 @@ func (s *Server) handleReposListDeploymentStatusesRequest(args [3]string, w http
 	params, err := decodeReposListDeploymentStatusesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListDeploymentStatuses",
-			err,
+			Operation: "ReposListDeploymentStatuses",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26539,8 +26539,8 @@ func (s *Server) handleReposListDeploymentsRequest(args [2]string, w http.Respon
 	params, err := decodeReposListDeploymentsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListDeployments",
-			err,
+			Operation: "ReposListDeployments",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26584,8 +26584,8 @@ func (s *Server) handleReposListForAuthenticatedUserRequest(args [0]string, w ht
 	params, err := decodeReposListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListForAuthenticatedUser",
-			err,
+			Operation: "ReposListForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26629,8 +26629,8 @@ func (s *Server) handleReposListForOrgRequest(args [1]string, w http.ResponseWri
 	params, err := decodeReposListForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListForOrg",
-			err,
+			Operation: "ReposListForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26674,8 +26674,8 @@ func (s *Server) handleReposListForUserRequest(args [1]string, w http.ResponseWr
 	params, err := decodeReposListForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListForUser",
-			err,
+			Operation: "ReposListForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26719,8 +26719,8 @@ func (s *Server) handleReposListForksRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeReposListForksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListForks",
-			err,
+			Operation: "ReposListForks",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26764,8 +26764,8 @@ func (s *Server) handleReposListInvitationsRequest(args [2]string, w http.Respon
 	params, err := decodeReposListInvitationsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListInvitations",
-			err,
+			Operation: "ReposListInvitations",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26809,8 +26809,8 @@ func (s *Server) handleReposListInvitationsForAuthenticatedUserRequest(args [0]s
 	params, err := decodeReposListInvitationsForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListInvitationsForAuthenticatedUser",
-			err,
+			Operation: "ReposListInvitationsForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26854,8 +26854,8 @@ func (s *Server) handleReposListLanguagesRequest(args [2]string, w http.Response
 	params, err := decodeReposListLanguagesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListLanguages",
-			err,
+			Operation: "ReposListLanguages",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26899,8 +26899,8 @@ func (s *Server) handleReposListPagesBuildsRequest(args [2]string, w http.Respon
 	params, err := decodeReposListPagesBuildsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListPagesBuilds",
-			err,
+			Operation: "ReposListPagesBuilds",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26944,8 +26944,8 @@ func (s *Server) handleReposListPublicRequest(args [0]string, w http.ResponseWri
 	params, err := decodeReposListPublicParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListPublic",
-			err,
+			Operation: "ReposListPublic",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -26989,8 +26989,8 @@ func (s *Server) handleReposListPullRequestsAssociatedWithCommitRequest(args [3]
 	params, err := decodeReposListPullRequestsAssociatedWithCommitParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListPullRequestsAssociatedWithCommit",
-			err,
+			Operation: "ReposListPullRequestsAssociatedWithCommit",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27034,8 +27034,8 @@ func (s *Server) handleReposListReleaseAssetsRequest(args [3]string, w http.Resp
 	params, err := decodeReposListReleaseAssetsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListReleaseAssets",
-			err,
+			Operation: "ReposListReleaseAssets",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27079,8 +27079,8 @@ func (s *Server) handleReposListReleasesRequest(args [2]string, w http.ResponseW
 	params, err := decodeReposListReleasesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListReleases",
-			err,
+			Operation: "ReposListReleases",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27124,8 +27124,8 @@ func (s *Server) handleReposListTagsRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeReposListTagsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListTags",
-			err,
+			Operation: "ReposListTags",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27169,8 +27169,8 @@ func (s *Server) handleReposListTeamsRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeReposListTeamsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListTeams",
-			err,
+			Operation: "ReposListTeams",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27214,8 +27214,8 @@ func (s *Server) handleReposListWebhookDeliveriesRequest(args [3]string, w http.
 	params, err := decodeReposListWebhookDeliveriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListWebhookDeliveries",
-			err,
+			Operation: "ReposListWebhookDeliveries",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27259,8 +27259,8 @@ func (s *Server) handleReposListWebhooksRequest(args [2]string, w http.ResponseW
 	params, err := decodeReposListWebhooksParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposListWebhooks",
-			err,
+			Operation: "ReposListWebhooks",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27304,8 +27304,8 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	params, err := decodeReposMergeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposMerge",
-			err,
+			Operation: "ReposMerge",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27313,8 +27313,8 @@ func (s *Server) handleReposMergeRequest(args [2]string, w http.ResponseWriter, 
 	request, err := decodeReposMergeRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposMerge",
-			err,
+			Operation: "ReposMerge",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27358,8 +27358,8 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	params, err := decodeReposMergeUpstreamParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposMergeUpstream",
-			err,
+			Operation: "ReposMergeUpstream",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27367,8 +27367,8 @@ func (s *Server) handleReposMergeUpstreamRequest(args [2]string, w http.Response
 	request, err := decodeReposMergeUpstreamRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposMergeUpstream",
-			err,
+			Operation: "ReposMergeUpstream",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27412,8 +27412,8 @@ func (s *Server) handleReposPingWebhookRequest(args [3]string, w http.ResponseWr
 	params, err := decodeReposPingWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposPingWebhook",
-			err,
+			Operation: "ReposPingWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27457,8 +27457,8 @@ func (s *Server) handleReposRedeliverWebhookDeliveryRequest(args [4]string, w ht
 	params, err := decodeReposRedeliverWebhookDeliveryParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRedeliverWebhookDelivery",
-			err,
+			Operation: "ReposRedeliverWebhookDelivery",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27502,8 +27502,8 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	params, err := decodeReposRemoveAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRemoveAppAccessRestrictions",
-			err,
+			Operation: "ReposRemoveAppAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27511,8 +27511,8 @@ func (s *Server) handleReposRemoveAppAccessRestrictionsRequest(args [3]string, w
 	request, err := decodeReposRemoveAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposRemoveAppAccessRestrictions",
-			err,
+			Operation: "ReposRemoveAppAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27556,8 +27556,8 @@ func (s *Server) handleReposRemoveCollaboratorRequest(args [3]string, w http.Res
 	params, err := decodeReposRemoveCollaboratorParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRemoveCollaborator",
-			err,
+			Operation: "ReposRemoveCollaborator",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27601,8 +27601,8 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	params, err := decodeReposRemoveStatusCheckContextsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRemoveStatusCheckContexts",
-			err,
+			Operation: "ReposRemoveStatusCheckContexts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27610,8 +27610,8 @@ func (s *Server) handleReposRemoveStatusCheckContextsRequest(args [3]string, w h
 	request, err := decodeReposRemoveStatusCheckContextsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposRemoveStatusCheckContexts",
-			err,
+			Operation: "ReposRemoveStatusCheckContexts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27655,8 +27655,8 @@ func (s *Server) handleReposRemoveStatusCheckProtectionRequest(args [3]string, w
 	params, err := decodeReposRemoveStatusCheckProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRemoveStatusCheckProtection",
-			err,
+			Operation: "ReposRemoveStatusCheckProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27700,8 +27700,8 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	params, err := decodeReposRemoveTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRemoveTeamAccessRestrictions",
-			err,
+			Operation: "ReposRemoveTeamAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27709,8 +27709,8 @@ func (s *Server) handleReposRemoveTeamAccessRestrictionsRequest(args [3]string, 
 	request, err := decodeReposRemoveTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposRemoveTeamAccessRestrictions",
-			err,
+			Operation: "ReposRemoveTeamAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27754,8 +27754,8 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	params, err := decodeReposRemoveUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRemoveUserAccessRestrictions",
-			err,
+			Operation: "ReposRemoveUserAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27763,8 +27763,8 @@ func (s *Server) handleReposRemoveUserAccessRestrictionsRequest(args [3]string, 
 	request, err := decodeReposRemoveUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposRemoveUserAccessRestrictions",
-			err,
+			Operation: "ReposRemoveUserAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27808,8 +27808,8 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	params, err := decodeReposRenameBranchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRenameBranch",
-			err,
+			Operation: "ReposRenameBranch",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27817,8 +27817,8 @@ func (s *Server) handleReposRenameBranchRequest(args [3]string, w http.ResponseW
 	request, err := decodeReposRenameBranchRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposRenameBranch",
-			err,
+			Operation: "ReposRenameBranch",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27862,8 +27862,8 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	params, err := decodeReposReplaceAllTopicsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposReplaceAllTopics",
-			err,
+			Operation: "ReposReplaceAllTopics",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27871,8 +27871,8 @@ func (s *Server) handleReposReplaceAllTopicsRequest(args [2]string, w http.Respo
 	request, err := decodeReposReplaceAllTopicsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposReplaceAllTopics",
-			err,
+			Operation: "ReposReplaceAllTopics",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27916,8 +27916,8 @@ func (s *Server) handleReposRequestPagesBuildRequest(args [2]string, w http.Resp
 	params, err := decodeReposRequestPagesBuildParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposRequestPagesBuild",
-			err,
+			Operation: "ReposRequestPagesBuild",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -27961,8 +27961,8 @@ func (s *Server) handleReposSetAdminBranchProtectionRequest(args [3]string, w ht
 	params, err := decodeReposSetAdminBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposSetAdminBranchProtection",
-			err,
+			Operation: "ReposSetAdminBranchProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28006,8 +28006,8 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	params, err := decodeReposSetAppAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposSetAppAccessRestrictions",
-			err,
+			Operation: "ReposSetAppAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28015,8 +28015,8 @@ func (s *Server) handleReposSetAppAccessRestrictionsRequest(args [3]string, w ht
 	request, err := decodeReposSetAppAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposSetAppAccessRestrictions",
-			err,
+			Operation: "ReposSetAppAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28060,8 +28060,8 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	params, err := decodeReposSetStatusCheckContextsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposSetStatusCheckContexts",
-			err,
+			Operation: "ReposSetStatusCheckContexts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28069,8 +28069,8 @@ func (s *Server) handleReposSetStatusCheckContextsRequest(args [3]string, w http
 	request, err := decodeReposSetStatusCheckContextsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposSetStatusCheckContexts",
-			err,
+			Operation: "ReposSetStatusCheckContexts",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28114,8 +28114,8 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	params, err := decodeReposSetTeamAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposSetTeamAccessRestrictions",
-			err,
+			Operation: "ReposSetTeamAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28123,8 +28123,8 @@ func (s *Server) handleReposSetTeamAccessRestrictionsRequest(args [3]string, w h
 	request, err := decodeReposSetTeamAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposSetTeamAccessRestrictions",
-			err,
+			Operation: "ReposSetTeamAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28168,8 +28168,8 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	params, err := decodeReposSetUserAccessRestrictionsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposSetUserAccessRestrictions",
-			err,
+			Operation: "ReposSetUserAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28177,8 +28177,8 @@ func (s *Server) handleReposSetUserAccessRestrictionsRequest(args [3]string, w h
 	request, err := decodeReposSetUserAccessRestrictionsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposSetUserAccessRestrictions",
-			err,
+			Operation: "ReposSetUserAccessRestrictions",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28222,8 +28222,8 @@ func (s *Server) handleReposTestPushWebhookRequest(args [3]string, w http.Respon
 	params, err := decodeReposTestPushWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposTestPushWebhook",
-			err,
+			Operation: "ReposTestPushWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28267,8 +28267,8 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	params, err := decodeReposTransferParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposTransfer",
-			err,
+			Operation: "ReposTransfer",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28276,8 +28276,8 @@ func (s *Server) handleReposTransferRequest(args [2]string, w http.ResponseWrite
 	request, err := decodeReposTransferRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposTransfer",
-			err,
+			Operation: "ReposTransfer",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28321,8 +28321,8 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	params, err := decodeReposUpdateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdate",
-			err,
+			Operation: "ReposUpdate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28330,8 +28330,8 @@ func (s *Server) handleReposUpdateRequest(args [2]string, w http.ResponseWriter,
 	request, err := decodeReposUpdateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdate",
-			err,
+			Operation: "ReposUpdate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28375,8 +28375,8 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	params, err := decodeReposUpdateBranchProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdateBranchProtection",
-			err,
+			Operation: "ReposUpdateBranchProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28384,8 +28384,8 @@ func (s *Server) handleReposUpdateBranchProtectionRequest(args [3]string, w http
 	request, err := decodeReposUpdateBranchProtectionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdateBranchProtection",
-			err,
+			Operation: "ReposUpdateBranchProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28429,8 +28429,8 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	params, err := decodeReposUpdateCommitCommentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdateCommitComment",
-			err,
+			Operation: "ReposUpdateCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28438,8 +28438,8 @@ func (s *Server) handleReposUpdateCommitCommentRequest(args [3]string, w http.Re
 	request, err := decodeReposUpdateCommitCommentRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdateCommitComment",
-			err,
+			Operation: "ReposUpdateCommitComment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28483,8 +28483,8 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	params, err := decodeReposUpdateInvitationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdateInvitation",
-			err,
+			Operation: "ReposUpdateInvitation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28492,8 +28492,8 @@ func (s *Server) handleReposUpdateInvitationRequest(args [3]string, w http.Respo
 	request, err := decodeReposUpdateInvitationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdateInvitation",
-			err,
+			Operation: "ReposUpdateInvitation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28537,8 +28537,8 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	params, err := decodeReposUpdatePullRequestReviewProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdatePullRequestReviewProtection",
-			err,
+			Operation: "ReposUpdatePullRequestReviewProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28546,8 +28546,8 @@ func (s *Server) handleReposUpdatePullRequestReviewProtectionRequest(args [3]str
 	request, err := decodeReposUpdatePullRequestReviewProtectionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdatePullRequestReviewProtection",
-			err,
+			Operation: "ReposUpdatePullRequestReviewProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28591,8 +28591,8 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	params, err := decodeReposUpdateReleaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdateRelease",
-			err,
+			Operation: "ReposUpdateRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28600,8 +28600,8 @@ func (s *Server) handleReposUpdateReleaseRequest(args [3]string, w http.Response
 	request, err := decodeReposUpdateReleaseRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdateRelease",
-			err,
+			Operation: "ReposUpdateRelease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28645,8 +28645,8 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	params, err := decodeReposUpdateReleaseAssetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdateReleaseAsset",
-			err,
+			Operation: "ReposUpdateReleaseAsset",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28654,8 +28654,8 @@ func (s *Server) handleReposUpdateReleaseAssetRequest(args [3]string, w http.Res
 	request, err := decodeReposUpdateReleaseAssetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdateReleaseAsset",
-			err,
+			Operation: "ReposUpdateReleaseAsset",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28699,8 +28699,8 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	params, err := decodeReposUpdateStatusCheckProtectionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdateStatusCheckProtection",
-			err,
+			Operation: "ReposUpdateStatusCheckProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28708,8 +28708,8 @@ func (s *Server) handleReposUpdateStatusCheckProtectionRequest(args [3]string, w
 	request, err := decodeReposUpdateStatusCheckProtectionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdateStatusCheckProtection",
-			err,
+			Operation: "ReposUpdateStatusCheckProtection",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28753,8 +28753,8 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	params, err := decodeReposUpdateWebhookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdateWebhook",
-			err,
+			Operation: "ReposUpdateWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28762,8 +28762,8 @@ func (s *Server) handleReposUpdateWebhookRequest(args [3]string, w http.Response
 	request, err := decodeReposUpdateWebhookRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdateWebhook",
-			err,
+			Operation: "ReposUpdateWebhook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28807,8 +28807,8 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	params, err := decodeReposUpdateWebhookConfigForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReposUpdateWebhookConfigForRepo",
-			err,
+			Operation: "ReposUpdateWebhookConfigForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28816,8 +28816,8 @@ func (s *Server) handleReposUpdateWebhookConfigForRepoRequest(args [3]string, w 
 	request, err := decodeReposUpdateWebhookConfigForRepoRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"ReposUpdateWebhookConfigForRepo",
-			err,
+			Operation: "ReposUpdateWebhookConfigForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28861,8 +28861,8 @@ func (s *Server) handleScimDeleteUserFromOrgRequest(args [2]string, w http.Respo
 	params, err := decodeScimDeleteUserFromOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ScimDeleteUserFromOrg",
-			err,
+			Operation: "ScimDeleteUserFromOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28906,8 +28906,8 @@ func (s *Server) handleSearchCodeRequest(args [0]string, w http.ResponseWriter, 
 	params, err := decodeSearchCodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SearchCode",
-			err,
+			Operation: "SearchCode",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28951,8 +28951,8 @@ func (s *Server) handleSearchCommitsRequest(args [0]string, w http.ResponseWrite
 	params, err := decodeSearchCommitsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SearchCommits",
-			err,
+			Operation: "SearchCommits",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -28996,8 +28996,8 @@ func (s *Server) handleSearchIssuesAndPullRequestsRequest(args [0]string, w http
 	params, err := decodeSearchIssuesAndPullRequestsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SearchIssuesAndPullRequests",
-			err,
+			Operation: "SearchIssuesAndPullRequests",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29041,8 +29041,8 @@ func (s *Server) handleSearchLabelsRequest(args [0]string, w http.ResponseWriter
 	params, err := decodeSearchLabelsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SearchLabels",
-			err,
+			Operation: "SearchLabels",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29086,8 +29086,8 @@ func (s *Server) handleSearchReposRequest(args [0]string, w http.ResponseWriter,
 	params, err := decodeSearchReposParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SearchRepos",
-			err,
+			Operation: "SearchRepos",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29131,8 +29131,8 @@ func (s *Server) handleSearchTopicsRequest(args [0]string, w http.ResponseWriter
 	params, err := decodeSearchTopicsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SearchTopics",
-			err,
+			Operation: "SearchTopics",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29176,8 +29176,8 @@ func (s *Server) handleSearchUsersRequest(args [0]string, w http.ResponseWriter,
 	params, err := decodeSearchUsersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SearchUsers",
-			err,
+			Operation: "SearchUsers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29221,8 +29221,8 @@ func (s *Server) handleSecretScanningGetAlertRequest(args [3]string, w http.Resp
 	params, err := decodeSecretScanningGetAlertParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SecretScanningGetAlert",
-			err,
+			Operation: "SecretScanningGetAlert",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29266,8 +29266,8 @@ func (s *Server) handleSecretScanningListAlertsForOrgRequest(args [1]string, w h
 	params, err := decodeSecretScanningListAlertsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SecretScanningListAlertsForOrg",
-			err,
+			Operation: "SecretScanningListAlertsForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29311,8 +29311,8 @@ func (s *Server) handleSecretScanningListAlertsForRepoRequest(args [2]string, w 
 	params, err := decodeSecretScanningListAlertsForRepoParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SecretScanningListAlertsForRepo",
-			err,
+			Operation: "SecretScanningListAlertsForRepo",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29356,8 +29356,8 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	params, err := decodeSecretScanningUpdateAlertParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SecretScanningUpdateAlert",
-			err,
+			Operation: "SecretScanningUpdateAlert",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29365,8 +29365,8 @@ func (s *Server) handleSecretScanningUpdateAlertRequest(args [3]string, w http.R
 	request, err := decodeSecretScanningUpdateAlertRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"SecretScanningUpdateAlert",
-			err,
+			Operation: "SecretScanningUpdateAlert",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29410,8 +29410,8 @@ func (s *Server) handleTeamsAddMemberLegacyRequest(args [2]string, w http.Respon
 	params, err := decodeTeamsAddMemberLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsAddMemberLegacy",
-			err,
+			Operation: "TeamsAddMemberLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29455,8 +29455,8 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	params, err := decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsAddOrUpdateMembershipForUserInOrg",
-			err,
+			Operation: "TeamsAddOrUpdateMembershipForUserInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29464,8 +29464,8 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserInOrgRequest(args [3]str
 	request, err := decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsAddOrUpdateMembershipForUserInOrg",
-			err,
+			Operation: "TeamsAddOrUpdateMembershipForUserInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29509,8 +29509,8 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	params, err := decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsAddOrUpdateMembershipForUserLegacy",
-			err,
+			Operation: "TeamsAddOrUpdateMembershipForUserLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29518,8 +29518,8 @@ func (s *Server) handleTeamsAddOrUpdateMembershipForUserLegacyRequest(args [2]st
 	request, err := decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsAddOrUpdateMembershipForUserLegacy",
-			err,
+			Operation: "TeamsAddOrUpdateMembershipForUserLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29563,8 +29563,8 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsAddOrUpdateProjectPermissionsInOrg",
-			err,
+			Operation: "TeamsAddOrUpdateProjectPermissionsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29572,8 +29572,8 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsInOrgRequest(args [3]st
 	request, err := decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsAddOrUpdateProjectPermissionsInOrg",
-			err,
+			Operation: "TeamsAddOrUpdateProjectPermissionsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29617,8 +29617,8 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	params, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsAddOrUpdateProjectPermissionsLegacy",
-			err,
+			Operation: "TeamsAddOrUpdateProjectPermissionsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29626,8 +29626,8 @@ func (s *Server) handleTeamsAddOrUpdateProjectPermissionsLegacyRequest(args [2]s
 	request, err := decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsAddOrUpdateProjectPermissionsLegacy",
-			err,
+			Operation: "TeamsAddOrUpdateProjectPermissionsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29671,8 +29671,8 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsAddOrUpdateRepoPermissionsInOrg",
-			err,
+			Operation: "TeamsAddOrUpdateRepoPermissionsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29680,8 +29680,8 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsInOrgRequest(args [4]strin
 	request, err := decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsAddOrUpdateRepoPermissionsInOrg",
-			err,
+			Operation: "TeamsAddOrUpdateRepoPermissionsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29725,8 +29725,8 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	params, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsAddOrUpdateRepoPermissionsLegacy",
-			err,
+			Operation: "TeamsAddOrUpdateRepoPermissionsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29734,8 +29734,8 @@ func (s *Server) handleTeamsAddOrUpdateRepoPermissionsLegacyRequest(args [3]stri
 	request, err := decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsAddOrUpdateRepoPermissionsLegacy",
-			err,
+			Operation: "TeamsAddOrUpdateRepoPermissionsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29779,8 +29779,8 @@ func (s *Server) handleTeamsCheckPermissionsForProjectInOrgRequest(args [3]strin
 	params, err := decodeTeamsCheckPermissionsForProjectInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCheckPermissionsForProjectInOrg",
-			err,
+			Operation: "TeamsCheckPermissionsForProjectInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29824,8 +29824,8 @@ func (s *Server) handleTeamsCheckPermissionsForProjectLegacyRequest(args [2]stri
 	params, err := decodeTeamsCheckPermissionsForProjectLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCheckPermissionsForProjectLegacy",
-			err,
+			Operation: "TeamsCheckPermissionsForProjectLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29869,8 +29869,8 @@ func (s *Server) handleTeamsCheckPermissionsForRepoInOrgRequest(args [4]string, 
 	params, err := decodeTeamsCheckPermissionsForRepoInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCheckPermissionsForRepoInOrg",
-			err,
+			Operation: "TeamsCheckPermissionsForRepoInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29914,8 +29914,8 @@ func (s *Server) handleTeamsCheckPermissionsForRepoLegacyRequest(args [3]string,
 	params, err := decodeTeamsCheckPermissionsForRepoLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCheckPermissionsForRepoLegacy",
-			err,
+			Operation: "TeamsCheckPermissionsForRepoLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29959,8 +29959,8 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeTeamsCreateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCreate",
-			err,
+			Operation: "TeamsCreate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -29968,8 +29968,8 @@ func (s *Server) handleTeamsCreateRequest(args [1]string, w http.ResponseWriter,
 	request, err := decodeTeamsCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsCreate",
-			err,
+			Operation: "TeamsCreate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30013,8 +30013,8 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	params, err := decodeTeamsCreateDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCreateDiscussionCommentInOrg",
-			err,
+			Operation: "TeamsCreateDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30022,8 +30022,8 @@ func (s *Server) handleTeamsCreateDiscussionCommentInOrgRequest(args [3]string, 
 	request, err := decodeTeamsCreateDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsCreateDiscussionCommentInOrg",
-			err,
+			Operation: "TeamsCreateDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30067,8 +30067,8 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	params, err := decodeTeamsCreateDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCreateDiscussionCommentLegacy",
-			err,
+			Operation: "TeamsCreateDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30076,8 +30076,8 @@ func (s *Server) handleTeamsCreateDiscussionCommentLegacyRequest(args [2]string,
 	request, err := decodeTeamsCreateDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsCreateDiscussionCommentLegacy",
-			err,
+			Operation: "TeamsCreateDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30121,8 +30121,8 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	params, err := decodeTeamsCreateDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCreateDiscussionInOrg",
-			err,
+			Operation: "TeamsCreateDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30130,8 +30130,8 @@ func (s *Server) handleTeamsCreateDiscussionInOrgRequest(args [2]string, w http.
 	request, err := decodeTeamsCreateDiscussionInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsCreateDiscussionInOrg",
-			err,
+			Operation: "TeamsCreateDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30175,8 +30175,8 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	params, err := decodeTeamsCreateDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCreateDiscussionLegacy",
-			err,
+			Operation: "TeamsCreateDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30184,8 +30184,8 @@ func (s *Server) handleTeamsCreateDiscussionLegacyRequest(args [1]string, w http
 	request, err := decodeTeamsCreateDiscussionLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsCreateDiscussionLegacy",
-			err,
+			Operation: "TeamsCreateDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30229,8 +30229,8 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
-			err,
+			Operation: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30238,8 +30238,8 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(args [
 	request, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
-			err,
+			Operation: "TeamsCreateOrUpdateIdpGroupConnectionsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30283,8 +30283,8 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	params, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
-			err,
+			Operation: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30292,8 +30292,8 @@ func (s *Server) handleTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(args 
 	request, err := decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
-			err,
+			Operation: "TeamsCreateOrUpdateIdpGroupConnectionsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30337,8 +30337,8 @@ func (s *Server) handleTeamsDeleteDiscussionCommentInOrgRequest(args [4]string, 
 	params, err := decodeTeamsDeleteDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsDeleteDiscussionCommentInOrg",
-			err,
+			Operation: "TeamsDeleteDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30382,8 +30382,8 @@ func (s *Server) handleTeamsDeleteDiscussionCommentLegacyRequest(args [3]string,
 	params, err := decodeTeamsDeleteDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsDeleteDiscussionCommentLegacy",
-			err,
+			Operation: "TeamsDeleteDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30427,8 +30427,8 @@ func (s *Server) handleTeamsDeleteDiscussionInOrgRequest(args [3]string, w http.
 	params, err := decodeTeamsDeleteDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsDeleteDiscussionInOrg",
-			err,
+			Operation: "TeamsDeleteDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30472,8 +30472,8 @@ func (s *Server) handleTeamsDeleteDiscussionLegacyRequest(args [2]string, w http
 	params, err := decodeTeamsDeleteDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsDeleteDiscussionLegacy",
-			err,
+			Operation: "TeamsDeleteDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30517,8 +30517,8 @@ func (s *Server) handleTeamsDeleteInOrgRequest(args [2]string, w http.ResponseWr
 	params, err := decodeTeamsDeleteInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsDeleteInOrg",
-			err,
+			Operation: "TeamsDeleteInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30562,8 +30562,8 @@ func (s *Server) handleTeamsDeleteLegacyRequest(args [1]string, w http.ResponseW
 	params, err := decodeTeamsDeleteLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsDeleteLegacy",
-			err,
+			Operation: "TeamsDeleteLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30607,8 +30607,8 @@ func (s *Server) handleTeamsGetByNameRequest(args [2]string, w http.ResponseWrit
 	params, err := decodeTeamsGetByNameParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetByName",
-			err,
+			Operation: "TeamsGetByName",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30652,8 +30652,8 @@ func (s *Server) handleTeamsGetDiscussionCommentInOrgRequest(args [4]string, w h
 	params, err := decodeTeamsGetDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetDiscussionCommentInOrg",
-			err,
+			Operation: "TeamsGetDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30697,8 +30697,8 @@ func (s *Server) handleTeamsGetDiscussionCommentLegacyRequest(args [3]string, w 
 	params, err := decodeTeamsGetDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetDiscussionCommentLegacy",
-			err,
+			Operation: "TeamsGetDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30742,8 +30742,8 @@ func (s *Server) handleTeamsGetDiscussionInOrgRequest(args [3]string, w http.Res
 	params, err := decodeTeamsGetDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetDiscussionInOrg",
-			err,
+			Operation: "TeamsGetDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30787,8 +30787,8 @@ func (s *Server) handleTeamsGetDiscussionLegacyRequest(args [2]string, w http.Re
 	params, err := decodeTeamsGetDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetDiscussionLegacy",
-			err,
+			Operation: "TeamsGetDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30832,8 +30832,8 @@ func (s *Server) handleTeamsGetLegacyRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeTeamsGetLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetLegacy",
-			err,
+			Operation: "TeamsGetLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30877,8 +30877,8 @@ func (s *Server) handleTeamsGetMemberLegacyRequest(args [2]string, w http.Respon
 	params, err := decodeTeamsGetMemberLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetMemberLegacy",
-			err,
+			Operation: "TeamsGetMemberLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30922,8 +30922,8 @@ func (s *Server) handleTeamsGetMembershipForUserInOrgRequest(args [3]string, w h
 	params, err := decodeTeamsGetMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetMembershipForUserInOrg",
-			err,
+			Operation: "TeamsGetMembershipForUserInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -30967,8 +30967,8 @@ func (s *Server) handleTeamsGetMembershipForUserLegacyRequest(args [2]string, w 
 	params, err := decodeTeamsGetMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsGetMembershipForUserLegacy",
-			err,
+			Operation: "TeamsGetMembershipForUserLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31012,8 +31012,8 @@ func (s *Server) handleTeamsListRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeTeamsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsList",
-			err,
+			Operation: "TeamsList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31057,8 +31057,8 @@ func (s *Server) handleTeamsListChildInOrgRequest(args [2]string, w http.Respons
 	params, err := decodeTeamsListChildInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListChildInOrg",
-			err,
+			Operation: "TeamsListChildInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31102,8 +31102,8 @@ func (s *Server) handleTeamsListChildLegacyRequest(args [1]string, w http.Respon
 	params, err := decodeTeamsListChildLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListChildLegacy",
-			err,
+			Operation: "TeamsListChildLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31147,8 +31147,8 @@ func (s *Server) handleTeamsListDiscussionCommentsInOrgRequest(args [3]string, w
 	params, err := decodeTeamsListDiscussionCommentsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListDiscussionCommentsInOrg",
-			err,
+			Operation: "TeamsListDiscussionCommentsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31192,8 +31192,8 @@ func (s *Server) handleTeamsListDiscussionCommentsLegacyRequest(args [2]string, 
 	params, err := decodeTeamsListDiscussionCommentsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListDiscussionCommentsLegacy",
-			err,
+			Operation: "TeamsListDiscussionCommentsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31237,8 +31237,8 @@ func (s *Server) handleTeamsListDiscussionsInOrgRequest(args [2]string, w http.R
 	params, err := decodeTeamsListDiscussionsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListDiscussionsInOrg",
-			err,
+			Operation: "TeamsListDiscussionsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31282,8 +31282,8 @@ func (s *Server) handleTeamsListDiscussionsLegacyRequest(args [1]string, w http.
 	params, err := decodeTeamsListDiscussionsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListDiscussionsLegacy",
-			err,
+			Operation: "TeamsListDiscussionsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31327,8 +31327,8 @@ func (s *Server) handleTeamsListForAuthenticatedUserRequest(args [0]string, w ht
 	params, err := decodeTeamsListForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListForAuthenticatedUser",
-			err,
+			Operation: "TeamsListForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31372,8 +31372,8 @@ func (s *Server) handleTeamsListIdpGroupsForLegacyRequest(args [1]string, w http
 	params, err := decodeTeamsListIdpGroupsForLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListIdpGroupsForLegacy",
-			err,
+			Operation: "TeamsListIdpGroupsForLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31417,8 +31417,8 @@ func (s *Server) handleTeamsListIdpGroupsForOrgRequest(args [1]string, w http.Re
 	params, err := decodeTeamsListIdpGroupsForOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListIdpGroupsForOrg",
-			err,
+			Operation: "TeamsListIdpGroupsForOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31462,8 +31462,8 @@ func (s *Server) handleTeamsListIdpGroupsInOrgRequest(args [2]string, w http.Res
 	params, err := decodeTeamsListIdpGroupsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListIdpGroupsInOrg",
-			err,
+			Operation: "TeamsListIdpGroupsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31507,8 +31507,8 @@ func (s *Server) handleTeamsListMembersInOrgRequest(args [2]string, w http.Respo
 	params, err := decodeTeamsListMembersInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListMembersInOrg",
-			err,
+			Operation: "TeamsListMembersInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31552,8 +31552,8 @@ func (s *Server) handleTeamsListMembersLegacyRequest(args [1]string, w http.Resp
 	params, err := decodeTeamsListMembersLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListMembersLegacy",
-			err,
+			Operation: "TeamsListMembersLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31597,8 +31597,8 @@ func (s *Server) handleTeamsListPendingInvitationsInOrgRequest(args [2]string, w
 	params, err := decodeTeamsListPendingInvitationsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListPendingInvitationsInOrg",
-			err,
+			Operation: "TeamsListPendingInvitationsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31642,8 +31642,8 @@ func (s *Server) handleTeamsListPendingInvitationsLegacyRequest(args [1]string, 
 	params, err := decodeTeamsListPendingInvitationsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListPendingInvitationsLegacy",
-			err,
+			Operation: "TeamsListPendingInvitationsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31687,8 +31687,8 @@ func (s *Server) handleTeamsListProjectsInOrgRequest(args [2]string, w http.Resp
 	params, err := decodeTeamsListProjectsInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListProjectsInOrg",
-			err,
+			Operation: "TeamsListProjectsInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31732,8 +31732,8 @@ func (s *Server) handleTeamsListProjectsLegacyRequest(args [1]string, w http.Res
 	params, err := decodeTeamsListProjectsLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListProjectsLegacy",
-			err,
+			Operation: "TeamsListProjectsLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31777,8 +31777,8 @@ func (s *Server) handleTeamsListReposInOrgRequest(args [2]string, w http.Respons
 	params, err := decodeTeamsListReposInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListReposInOrg",
-			err,
+			Operation: "TeamsListReposInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31822,8 +31822,8 @@ func (s *Server) handleTeamsListReposLegacyRequest(args [1]string, w http.Respon
 	params, err := decodeTeamsListReposLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsListReposLegacy",
-			err,
+			Operation: "TeamsListReposLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31867,8 +31867,8 @@ func (s *Server) handleTeamsRemoveMemberLegacyRequest(args [2]string, w http.Res
 	params, err := decodeTeamsRemoveMemberLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsRemoveMemberLegacy",
-			err,
+			Operation: "TeamsRemoveMemberLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31912,8 +31912,8 @@ func (s *Server) handleTeamsRemoveMembershipForUserInOrgRequest(args [3]string, 
 	params, err := decodeTeamsRemoveMembershipForUserInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsRemoveMembershipForUserInOrg",
-			err,
+			Operation: "TeamsRemoveMembershipForUserInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -31957,8 +31957,8 @@ func (s *Server) handleTeamsRemoveMembershipForUserLegacyRequest(args [2]string,
 	params, err := decodeTeamsRemoveMembershipForUserLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsRemoveMembershipForUserLegacy",
-			err,
+			Operation: "TeamsRemoveMembershipForUserLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32002,8 +32002,8 @@ func (s *Server) handleTeamsRemoveProjectInOrgRequest(args [3]string, w http.Res
 	params, err := decodeTeamsRemoveProjectInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsRemoveProjectInOrg",
-			err,
+			Operation: "TeamsRemoveProjectInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32047,8 +32047,8 @@ func (s *Server) handleTeamsRemoveProjectLegacyRequest(args [2]string, w http.Re
 	params, err := decodeTeamsRemoveProjectLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsRemoveProjectLegacy",
-			err,
+			Operation: "TeamsRemoveProjectLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32092,8 +32092,8 @@ func (s *Server) handleTeamsRemoveRepoInOrgRequest(args [4]string, w http.Respon
 	params, err := decodeTeamsRemoveRepoInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsRemoveRepoInOrg",
-			err,
+			Operation: "TeamsRemoveRepoInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32137,8 +32137,8 @@ func (s *Server) handleTeamsRemoveRepoLegacyRequest(args [3]string, w http.Respo
 	params, err := decodeTeamsRemoveRepoLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsRemoveRepoLegacy",
-			err,
+			Operation: "TeamsRemoveRepoLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32182,8 +32182,8 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	params, err := decodeTeamsUpdateDiscussionCommentInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsUpdateDiscussionCommentInOrg",
-			err,
+			Operation: "TeamsUpdateDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32191,8 +32191,8 @@ func (s *Server) handleTeamsUpdateDiscussionCommentInOrgRequest(args [4]string, 
 	request, err := decodeTeamsUpdateDiscussionCommentInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsUpdateDiscussionCommentInOrg",
-			err,
+			Operation: "TeamsUpdateDiscussionCommentInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32236,8 +32236,8 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	params, err := decodeTeamsUpdateDiscussionCommentLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsUpdateDiscussionCommentLegacy",
-			err,
+			Operation: "TeamsUpdateDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32245,8 +32245,8 @@ func (s *Server) handleTeamsUpdateDiscussionCommentLegacyRequest(args [3]string,
 	request, err := decodeTeamsUpdateDiscussionCommentLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsUpdateDiscussionCommentLegacy",
-			err,
+			Operation: "TeamsUpdateDiscussionCommentLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32290,8 +32290,8 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	params, err := decodeTeamsUpdateDiscussionInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsUpdateDiscussionInOrg",
-			err,
+			Operation: "TeamsUpdateDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32299,8 +32299,8 @@ func (s *Server) handleTeamsUpdateDiscussionInOrgRequest(args [3]string, w http.
 	request, err := decodeTeamsUpdateDiscussionInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsUpdateDiscussionInOrg",
-			err,
+			Operation: "TeamsUpdateDiscussionInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32344,8 +32344,8 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	params, err := decodeTeamsUpdateDiscussionLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsUpdateDiscussionLegacy",
-			err,
+			Operation: "TeamsUpdateDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32353,8 +32353,8 @@ func (s *Server) handleTeamsUpdateDiscussionLegacyRequest(args [2]string, w http
 	request, err := decodeTeamsUpdateDiscussionLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsUpdateDiscussionLegacy",
-			err,
+			Operation: "TeamsUpdateDiscussionLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32398,8 +32398,8 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	params, err := decodeTeamsUpdateInOrgParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsUpdateInOrg",
-			err,
+			Operation: "TeamsUpdateInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32407,8 +32407,8 @@ func (s *Server) handleTeamsUpdateInOrgRequest(args [2]string, w http.ResponseWr
 	request, err := decodeTeamsUpdateInOrgRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsUpdateInOrg",
-			err,
+			Operation: "TeamsUpdateInOrg",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32452,8 +32452,8 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	params, err := decodeTeamsUpdateLegacyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TeamsUpdateLegacy",
-			err,
+			Operation: "TeamsUpdateLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32461,8 +32461,8 @@ func (s *Server) handleTeamsUpdateLegacyRequest(args [1]string, w http.ResponseW
 	request, err := decodeTeamsUpdateLegacyRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TeamsUpdateLegacy",
-			err,
+			Operation: "TeamsUpdateLegacy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32506,8 +32506,8 @@ func (s *Server) handleUsersAddEmailForAuthenticatedRequest(args [0]string, w ht
 	request, err := decodeUsersAddEmailForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"UsersAddEmailForAuthenticated",
-			err,
+			Operation: "UsersAddEmailForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32551,8 +32551,8 @@ func (s *Server) handleUsersBlockRequest(args [1]string, w http.ResponseWriter, 
 	params, err := decodeUsersBlockParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersBlock",
-			err,
+			Operation: "UsersBlock",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32596,8 +32596,8 @@ func (s *Server) handleUsersCheckBlockedRequest(args [1]string, w http.ResponseW
 	params, err := decodeUsersCheckBlockedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersCheckBlocked",
-			err,
+			Operation: "UsersCheckBlocked",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32641,8 +32641,8 @@ func (s *Server) handleUsersCheckFollowingForUserRequest(args [2]string, w http.
 	params, err := decodeUsersCheckFollowingForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersCheckFollowingForUser",
-			err,
+			Operation: "UsersCheckFollowingForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32686,8 +32686,8 @@ func (s *Server) handleUsersCheckPersonIsFollowedByAuthenticatedRequest(args [1]
 	params, err := decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersCheckPersonIsFollowedByAuthenticated",
-			err,
+			Operation: "UsersCheckPersonIsFollowedByAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32731,8 +32731,8 @@ func (s *Server) handleUsersCreateGpgKeyForAuthenticatedRequest(args [0]string, 
 	request, err := decodeUsersCreateGpgKeyForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"UsersCreateGpgKeyForAuthenticated",
-			err,
+			Operation: "UsersCreateGpgKeyForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32776,8 +32776,8 @@ func (s *Server) handleUsersCreatePublicSSHKeyForAuthenticatedRequest(args [0]st
 	request, err := decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"UsersCreatePublicSSHKeyForAuthenticated",
-			err,
+			Operation: "UsersCreatePublicSSHKeyForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32821,8 +32821,8 @@ func (s *Server) handleUsersDeleteEmailForAuthenticatedRequest(args [0]string, w
 	request, err := decodeUsersDeleteEmailForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"UsersDeleteEmailForAuthenticated",
-			err,
+			Operation: "UsersDeleteEmailForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32866,8 +32866,8 @@ func (s *Server) handleUsersDeleteGpgKeyForAuthenticatedRequest(args [1]string, 
 	params, err := decodeUsersDeleteGpgKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersDeleteGpgKeyForAuthenticated",
-			err,
+			Operation: "UsersDeleteGpgKeyForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32911,8 +32911,8 @@ func (s *Server) handleUsersDeletePublicSSHKeyForAuthenticatedRequest(args [1]st
 	params, err := decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersDeletePublicSSHKeyForAuthenticated",
-			err,
+			Operation: "UsersDeletePublicSSHKeyForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -32956,8 +32956,8 @@ func (s *Server) handleUsersFollowRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeUsersFollowParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersFollow",
-			err,
+			Operation: "UsersFollow",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33037,8 +33037,8 @@ func (s *Server) handleUsersGetByUsernameRequest(args [1]string, w http.Response
 	params, err := decodeUsersGetByUsernameParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersGetByUsername",
-			err,
+			Operation: "UsersGetByUsername",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33082,8 +33082,8 @@ func (s *Server) handleUsersGetContextForUserRequest(args [1]string, w http.Resp
 	params, err := decodeUsersGetContextForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersGetContextForUser",
-			err,
+			Operation: "UsersGetContextForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33127,8 +33127,8 @@ func (s *Server) handleUsersGetGpgKeyForAuthenticatedRequest(args [1]string, w h
 	params, err := decodeUsersGetGpgKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersGetGpgKeyForAuthenticated",
-			err,
+			Operation: "UsersGetGpgKeyForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33172,8 +33172,8 @@ func (s *Server) handleUsersGetPublicSSHKeyForAuthenticatedRequest(args [1]strin
 	params, err := decodeUsersGetPublicSSHKeyForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersGetPublicSSHKeyForAuthenticated",
-			err,
+			Operation: "UsersGetPublicSSHKeyForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33217,8 +33217,8 @@ func (s *Server) handleUsersListRequest(args [0]string, w http.ResponseWriter, r
 	params, err := decodeUsersListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersList",
-			err,
+			Operation: "UsersList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33298,8 +33298,8 @@ func (s *Server) handleUsersListEmailsForAuthenticatedRequest(args [0]string, w 
 	params, err := decodeUsersListEmailsForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListEmailsForAuthenticated",
-			err,
+			Operation: "UsersListEmailsForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33343,8 +33343,8 @@ func (s *Server) handleUsersListFollowedByAuthenticatedRequest(args [0]string, w
 	params, err := decodeUsersListFollowedByAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListFollowedByAuthenticated",
-			err,
+			Operation: "UsersListFollowedByAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33388,8 +33388,8 @@ func (s *Server) handleUsersListFollowersForAuthenticatedUserRequest(args [0]str
 	params, err := decodeUsersListFollowersForAuthenticatedUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListFollowersForAuthenticatedUser",
-			err,
+			Operation: "UsersListFollowersForAuthenticatedUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33433,8 +33433,8 @@ func (s *Server) handleUsersListFollowersForUserRequest(args [1]string, w http.R
 	params, err := decodeUsersListFollowersForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListFollowersForUser",
-			err,
+			Operation: "UsersListFollowersForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33478,8 +33478,8 @@ func (s *Server) handleUsersListFollowingForUserRequest(args [1]string, w http.R
 	params, err := decodeUsersListFollowingForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListFollowingForUser",
-			err,
+			Operation: "UsersListFollowingForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33523,8 +33523,8 @@ func (s *Server) handleUsersListGpgKeysForAuthenticatedRequest(args [0]string, w
 	params, err := decodeUsersListGpgKeysForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListGpgKeysForAuthenticated",
-			err,
+			Operation: "UsersListGpgKeysForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33568,8 +33568,8 @@ func (s *Server) handleUsersListGpgKeysForUserRequest(args [1]string, w http.Res
 	params, err := decodeUsersListGpgKeysForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListGpgKeysForUser",
-			err,
+			Operation: "UsersListGpgKeysForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33613,8 +33613,8 @@ func (s *Server) handleUsersListPublicEmailsForAuthenticatedRequest(args [0]stri
 	params, err := decodeUsersListPublicEmailsForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListPublicEmailsForAuthenticated",
-			err,
+			Operation: "UsersListPublicEmailsForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33658,8 +33658,8 @@ func (s *Server) handleUsersListPublicKeysForUserRequest(args [1]string, w http.
 	params, err := decodeUsersListPublicKeysForUserParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListPublicKeysForUser",
-			err,
+			Operation: "UsersListPublicKeysForUser",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33703,8 +33703,8 @@ func (s *Server) handleUsersListPublicSSHKeysForAuthenticatedRequest(args [0]str
 	params, err := decodeUsersListPublicSSHKeysForAuthenticatedParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersListPublicSSHKeysForAuthenticated",
-			err,
+			Operation: "UsersListPublicSSHKeysForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33748,8 +33748,8 @@ func (s *Server) handleUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(arg
 	request, err := decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"UsersSetPrimaryEmailVisibilityForAuthenticated",
-			err,
+			Operation: "UsersSetPrimaryEmailVisibilityForAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33793,8 +33793,8 @@ func (s *Server) handleUsersUnblockRequest(args [1]string, w http.ResponseWriter
 	params, err := decodeUsersUnblockParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersUnblock",
-			err,
+			Operation: "UsersUnblock",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33838,8 +33838,8 @@ func (s *Server) handleUsersUnfollowRequest(args [1]string, w http.ResponseWrite
 	params, err := decodeUsersUnfollowParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UsersUnfollow",
-			err,
+			Operation: "UsersUnfollow",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -33883,8 +33883,8 @@ func (s *Server) handleUsersUpdateAuthenticatedRequest(args [0]string, w http.Re
 	request, err := decodeUsersUpdateAuthenticatedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"UsersUpdateAuthenticated",
-			err,
+			Operation: "UsersUpdateAuthenticated",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
