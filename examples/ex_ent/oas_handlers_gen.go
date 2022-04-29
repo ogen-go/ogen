@@ -34,8 +34,8 @@ func (s *Server) handleCreatePetRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodeCreatePetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"CreatePet",
-			err,
+			Operation: "CreatePet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -79,8 +79,8 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 	params, err := decodeCreatePetCategoriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CreatePetCategories",
-			err,
+			Operation: "CreatePetCategories",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -88,8 +88,8 @@ func (s *Server) handleCreatePetCategoriesRequest(args [1]string, w http.Respons
 	request, err := decodeCreatePetCategoriesRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"CreatePetCategories",
-			err,
+			Operation: "CreatePetCategories",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -133,8 +133,8 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 	params, err := decodeCreatePetFriendsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CreatePetFriends",
-			err,
+			Operation: "CreatePetFriends",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -142,8 +142,8 @@ func (s *Server) handleCreatePetFriendsRequest(args [1]string, w http.ResponseWr
 	request, err := decodeCreatePetFriendsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"CreatePetFriends",
-			err,
+			Operation: "CreatePetFriends",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -187,8 +187,8 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeCreatePetOwnerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"CreatePetOwner",
-			err,
+			Operation: "CreatePetOwner",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -196,8 +196,8 @@ func (s *Server) handleCreatePetOwnerRequest(args [1]string, w http.ResponseWrit
 	request, err := decodeCreatePetOwnerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"CreatePetOwner",
-			err,
+			Operation: "CreatePetOwner",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -241,8 +241,8 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeDeletePetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"DeletePet",
-			err,
+			Operation: "DeletePet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -286,8 +286,8 @@ func (s *Server) handleDeletePetOwnerRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeDeletePetOwnerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"DeletePetOwner",
-			err,
+			Operation: "DeletePetOwner",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -331,8 +331,8 @@ func (s *Server) handleListPetRequest(args [0]string, w http.ResponseWriter, r *
 	params, err := decodeListPetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPet",
-			err,
+			Operation: "ListPet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -376,8 +376,8 @@ func (s *Server) handleListPetCategoriesRequest(args [1]string, w http.ResponseW
 	params, err := decodeListPetCategoriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPetCategories",
-			err,
+			Operation: "ListPetCategories",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -421,8 +421,8 @@ func (s *Server) handleListPetFriendsRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeListPetFriendsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPetFriends",
-			err,
+			Operation: "ListPetFriends",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -466,8 +466,8 @@ func (s *Server) handleReadPetRequest(args [1]string, w http.ResponseWriter, r *
 	params, err := decodeReadPetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadPet",
-			err,
+			Operation: "ReadPet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -511,8 +511,8 @@ func (s *Server) handleReadPetOwnerRequest(args [1]string, w http.ResponseWriter
 	params, err := decodeReadPetOwnerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadPetOwner",
-			err,
+			Operation: "ReadPetOwner",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -556,8 +556,8 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeUpdatePetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"UpdatePet",
-			err,
+			Operation: "UpdatePet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -565,8 +565,8 @@ func (s *Server) handleUpdatePetRequest(args [1]string, w http.ResponseWriter, r
 	request, err := decodeUpdatePetRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"UpdatePet",
-			err,
+			Operation: "UpdatePet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

@@ -59,7 +59,7 @@ func (c *Client) AddStickerToSet(ctx context.Context, request AddStickerToSet) (
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -124,7 +124,7 @@ func (c *Client) AnswerCallbackQuery(ctx context.Context, request AnswerCallback
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -189,7 +189,7 @@ func (c *Client) AnswerInlineQuery(ctx context.Context, request AnswerInlineQuer
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -311,7 +311,7 @@ func (c *Client) AnswerShippingQuery(ctx context.Context, request AnswerShipping
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -376,7 +376,7 @@ func (c *Client) AnswerWebAppQuery(ctx context.Context, request AnswerWebAppQuer
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -655,7 +655,7 @@ func (c *Client) CopyMessage(ctx context.Context, request CopyMessage) (res Resu
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -720,7 +720,7 @@ func (c *Client) CreateChatInviteLink(ctx context.Context, request CreateChatInv
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -785,7 +785,7 @@ func (c *Client) CreateNewStickerSet(ctx context.Context, request CreateNewStick
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1249,7 +1249,7 @@ func (c *Client) EditChatInviteLink(ctx context.Context, request EditChatInviteL
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1314,7 +1314,7 @@ func (c *Client) EditMessageCaption(ctx context.Context, request EditMessageCapt
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1379,7 +1379,7 @@ func (c *Client) EditMessageLiveLocation(ctx context.Context, request EditMessag
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1444,7 +1444,7 @@ func (c *Client) EditMessageMedia(ctx context.Context, request EditMessageMedia)
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1509,7 +1509,7 @@ func (c *Client) EditMessageReplyMarkup(ctx context.Context, request EditMessage
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1574,7 +1574,7 @@ func (c *Client) EditMessageText(ctx context.Context, request EditMessageText) (
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2368,13 +2368,13 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res Res
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2439,7 +2439,7 @@ func (c *Client) GetUserProfilePhotos(ctx context.Context, request GetUserProfil
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2875,7 +2875,7 @@ func (c *Client) SendAnimation(ctx context.Context, request SendAnimation) (res 
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2940,7 +2940,7 @@ func (c *Client) SendAudio(ctx context.Context, request SendAudio) (res ResultMe
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3062,7 +3062,7 @@ func (c *Client) SendContact(ctx context.Context, request SendContact) (res Resu
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3127,7 +3127,7 @@ func (c *Client) SendDice(ctx context.Context, request SendDice) (res ResultMess
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3192,7 +3192,7 @@ func (c *Client) SendDocument(ctx context.Context, request SendDocument) (res Re
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3257,7 +3257,7 @@ func (c *Client) SendGame(ctx context.Context, request SendGame) (res ResultMess
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3322,7 +3322,7 @@ func (c *Client) SendInvoice(ctx context.Context, request SendInvoice) (res Resu
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3387,7 +3387,7 @@ func (c *Client) SendLocation(ctx context.Context, request SendLocation) (res Re
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3452,7 +3452,7 @@ func (c *Client) SendMediaGroup(ctx context.Context, request SendMediaGroup) (re
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3517,7 +3517,7 @@ func (c *Client) SendMessage(ctx context.Context, request SendMessage) (res Resu
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3582,7 +3582,7 @@ func (c *Client) SendPhoto(ctx context.Context, request SendPhoto) (res ResultMe
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3647,7 +3647,7 @@ func (c *Client) SendPoll(ctx context.Context, request SendPoll) (res ResultMess
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3712,7 +3712,7 @@ func (c *Client) SendSticker(ctx context.Context, request SendSticker) (res Resu
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3777,7 +3777,7 @@ func (c *Client) SendVenue(ctx context.Context, request SendVenue) (res ResultMe
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3842,7 +3842,7 @@ func (c *Client) SendVideo(ctx context.Context, request SendVideo) (res ResultMe
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3907,7 +3907,7 @@ func (c *Client) SendVideoNote(ctx context.Context, request SendVideoNote) (res 
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3972,7 +3972,7 @@ func (c *Client) SendVoice(ctx context.Context, request SendVoice) (res ResultMe
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4037,7 +4037,7 @@ func (c *Client) SetChatAdministratorCustomTitle(ctx context.Context, request Se
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4102,7 +4102,7 @@ func (c *Client) SetChatDescription(ctx context.Context, request SetChatDescript
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4395,7 +4395,7 @@ func (c *Client) SetChatTitle(ctx context.Context, request SetChatTitle) (res Re
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4517,7 +4517,7 @@ func (c *Client) SetMyCommands(ctx context.Context, request SetMyCommands) (res 
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4639,7 +4639,7 @@ func (c *Client) SetPassportDataErrors(ctx context.Context, request SetPassportD
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4875,7 +4875,7 @@ func (c *Client) StopMessageLiveLocation(ctx context.Context, request StopMessag
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4940,7 +4940,7 @@ func (c *Client) StopPoll(ctx context.Context, request StopPoll) (res ResultPoll
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}

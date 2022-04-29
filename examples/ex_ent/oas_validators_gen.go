@@ -10,17 +10,17 @@ func (s ListPetCategoriesOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
-	return nil
+	return nil // return 1
 }
 func (s ListPetFriendsOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
-	return nil
+	return nil // return 1
 }
 func (s ListPetOKApplicationJSON) Validate() error {
 	if s == nil {
 		return errors.New("nil is invalid value")
 	}
-	return nil
+	return nil // return 1
 }

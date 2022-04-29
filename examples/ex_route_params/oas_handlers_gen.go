@@ -34,8 +34,8 @@ func (s *Server) handleDataGetRequest(args [2]string, w http.ResponseWriter, r *
 	params, err := decodeDataGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"DataGet",
-			err,
+			Operation: "DataGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -115,8 +115,8 @@ func (s *Server) handleDataGetIDRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeDataGetIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"DataGetID",
-			err,
+			Operation: "DataGetID",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

@@ -18,13 +18,13 @@ func (s AddStickerToSet) Validate() error {
 				if err := s.MaskPosition.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mask_position",
@@ -51,7 +51,7 @@ func (s Animation) Validate() error {
 		}).Validate(int64(s.Width)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -71,7 +71,7 @@ func (s Animation) Validate() error {
 		}).Validate(int64(s.Height)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -91,7 +91,7 @@ func (s Animation) Validate() error {
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -104,13 +104,13 @@ func (s Animation) Validate() error {
 				if err := s.Thumb.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -138,13 +138,13 @@ func (s AnswerCallbackQuery) Validate() error {
 				}).Validate(string(s.Text.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text",
@@ -168,7 +168,7 @@ func (s AnswerInlineQuery) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -179,7 +179,7 @@ func (s AnswerInlineQuery) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "results",
@@ -200,13 +200,13 @@ func (s AnswerInlineQuery) Validate() error {
 				}).Validate(string(s.SwitchPmParameter.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "switch_pm_parameter",
@@ -227,7 +227,7 @@ func (s AnswerShippingQuery) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -238,7 +238,7 @@ func (s AnswerShippingQuery) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "shipping_options",
@@ -256,7 +256,7 @@ func (s AnswerWebAppQuery) Validate() error {
 		if err := s.Result.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -283,7 +283,7 @@ func (s Audio) Validate() error {
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -296,13 +296,13 @@ func (s Audio) Validate() error {
 				if err := s.Thumb.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -328,7 +328,7 @@ func (s BotCommand) Validate() error {
 		}).Validate(string(s.Command)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "command",
@@ -347,7 +347,7 @@ func (s BotCommand) Validate() error {
 		}).Validate(string(s.Description)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "description",
@@ -367,13 +367,13 @@ func (s CallbackQuery) Validate() error {
 				if err := s.Message.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "message",
@@ -391,7 +391,7 @@ func (s Chat) Validate() error {
 		if err := s.Type.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -406,11 +406,11 @@ func (s Chat) Validate() error {
 			if err := s.PinnedMessage.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "pinned_message",
@@ -423,13 +423,13 @@ func (s Chat) Validate() error {
 				if err := s.Location.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "location",
@@ -458,13 +458,13 @@ func (s ChatInviteLink) Validate() error {
 				}).Validate(int64(s.MemberLimit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "member_limit",
@@ -482,7 +482,7 @@ func (s ChatJoinRequest) Validate() error {
 		if err := s.Chat.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat",
@@ -495,13 +495,13 @@ func (s ChatJoinRequest) Validate() error {
 				if err := s.InviteLink.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "invite_link",
@@ -519,7 +519,7 @@ func (s ChatLocation) Validate() error {
 		if err := s.Location.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "location",
@@ -538,7 +538,7 @@ func (s ChatLocation) Validate() error {
 		}).Validate(string(s.Address)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "address",
@@ -556,7 +556,7 @@ func (s ChatMemberUpdated) Validate() error {
 		if err := s.Chat.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat",
@@ -569,13 +569,13 @@ func (s ChatMemberUpdated) Validate() error {
 				if err := s.InviteLink.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "invite_link",
@@ -609,13 +609,13 @@ func (s ChosenInlineResult) Validate() error {
 				if err := s.Location.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "location",
@@ -643,13 +643,13 @@ func (s CopyMessage) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -663,7 +663,7 @@ func (s CopyMessage) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -674,7 +674,7 @@ func (s CopyMessage) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -687,13 +687,13 @@ func (s CopyMessage) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -721,13 +721,13 @@ func (s CreateChatInviteLink) Validate() error {
 				}).Validate(string(s.Name.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "name",
@@ -749,13 +749,13 @@ func (s CreateChatInviteLink) Validate() error {
 				}).Validate(int64(s.MemberLimit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "member_limit",
@@ -781,7 +781,7 @@ func (s CreateNewStickerSet) Validate() error {
 		}).Validate(string(s.Name)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "name",
@@ -800,7 +800,7 @@ func (s CreateNewStickerSet) Validate() error {
 		}).Validate(string(s.Title)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "title",
@@ -813,13 +813,13 @@ func (s CreateNewStickerSet) Validate() error {
 				if err := s.MaskPosition.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mask_position",
@@ -839,13 +839,13 @@ func (s Document) Validate() error {
 				if err := s.Thumb.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -873,13 +873,13 @@ func (s EditChatInviteLink) Validate() error {
 				}).Validate(string(s.Name.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "name",
@@ -901,13 +901,13 @@ func (s EditChatInviteLink) Validate() error {
 				}).Validate(int64(s.MemberLimit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "member_limit",
@@ -935,13 +935,13 @@ func (s EditMessageCaption) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -955,7 +955,7 @@ func (s EditMessageCaption) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -966,7 +966,7 @@ func (s EditMessageCaption) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -979,13 +979,13 @@ func (s EditMessageCaption) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1003,7 +1003,7 @@ func (s EditMessageLiveLocation) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "latitude",
@@ -1014,7 +1014,7 @@ func (s EditMessageLiveLocation) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "longitude",
@@ -1027,13 +1027,13 @@ func (s EditMessageLiveLocation) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -1055,13 +1055,13 @@ func (s EditMessageLiveLocation) Validate() error {
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "heading",
@@ -1083,13 +1083,13 @@ func (s EditMessageLiveLocation) Validate() error {
 				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "proximity_alert_radius",
@@ -1102,13 +1102,13 @@ func (s EditMessageLiveLocation) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1126,7 +1126,7 @@ func (s EditMessageMedia) Validate() error {
 		if err := s.Media.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "media",
@@ -1139,13 +1139,13 @@ func (s EditMessageMedia) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1165,13 +1165,13 @@ func (s EditMessageReplyMarkup) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1197,7 +1197,7 @@ func (s EditMessageText) Validate() error {
 		}).Validate(string(s.Text)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text",
@@ -1211,7 +1211,7 @@ func (s EditMessageText) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1222,7 +1222,7 @@ func (s EditMessageText) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "entities",
@@ -1235,13 +1235,13 @@ func (s EditMessageText) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1259,7 +1259,7 @@ func (s EncryptedPassportElement) Validate() error {
 		if err := s.Type.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -1319,13 +1319,13 @@ func (s ForceReply) Validate() error {
 				}).Validate(string(s.InputFieldPlaceholder.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_field_placeholder",
@@ -1349,7 +1349,7 @@ func (s Game) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1360,7 +1360,7 @@ func (s Game) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo",
@@ -1381,13 +1381,13 @@ func (s Game) Validate() error {
 				}).Validate(string(s.Text.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text",
@@ -1401,7 +1401,7 @@ func (s Game) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1412,7 +1412,7 @@ func (s Game) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text_entities",
@@ -1425,13 +1425,13 @@ func (s Game) Validate() error {
 				if err := s.Animation.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "animation",
@@ -1460,13 +1460,13 @@ func (s GetUpdates) Validate() error {
 				}).Validate(int64(s.Limit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limit",
@@ -1495,13 +1495,13 @@ func (s GetUserProfilePhotos) Validate() error {
 				}).Validate(int64(s.Limit.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limit",
@@ -1529,13 +1529,13 @@ func (s InlineKeyboardButton) Validate() error {
 				}).Validate(string(s.CallbackData.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "callback_data",
@@ -1565,7 +1565,7 @@ func (s InlineKeyboardMarkup) Validate() error {
 						if err := elem.Validate(); err != nil {
 							return err
 						}
-						return nil
+						return nil // return 1
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -1576,7 +1576,7 @@ func (s InlineKeyboardMarkup) Validate() error {
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1587,7 +1587,7 @@ func (s InlineKeyboardMarkup) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "inline_keyboard",
@@ -1607,13 +1607,13 @@ func (s InlineQuery) Validate() error {
 				if err := s.ChatType.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat_type",
@@ -1626,13 +1626,13 @@ func (s InlineQuery) Validate() error {
 				if err := s.Location.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "location",
@@ -1666,102 +1666,102 @@ func (s InlineQueryResult) Validate() error {
 		if err := s.InlineQueryResultCachedAudio.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultCachedDocumentInlineQueryResult:
 		if err := s.InlineQueryResultCachedDocument.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultCachedGifInlineQueryResult:
 		if err := s.InlineQueryResultCachedGif.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultCachedMpeg4GifInlineQueryResult:
 		if err := s.InlineQueryResultCachedMpeg4Gif.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultCachedPhotoInlineQueryResult:
 		if err := s.InlineQueryResultCachedPhoto.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultCachedStickerInlineQueryResult:
 		if err := s.InlineQueryResultCachedSticker.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultCachedVideoInlineQueryResult:
 		if err := s.InlineQueryResultCachedVideo.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultCachedVoiceInlineQueryResult:
 		if err := s.InlineQueryResultCachedVoice.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultArticleInlineQueryResult:
 		if err := s.InlineQueryResultArticle.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultAudioInlineQueryResult:
 		if err := s.InlineQueryResultAudio.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultContactInlineQueryResult:
 		if err := s.InlineQueryResultContact.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultGameInlineQueryResult:
 		if err := s.InlineQueryResultGame.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultDocumentInlineQueryResult:
 		if err := s.InlineQueryResultDocument.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultGifInlineQueryResult:
 		if err := s.InlineQueryResultGif.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultLocationInlineQueryResult:
 		if err := s.InlineQueryResultLocation.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultMpeg4GifInlineQueryResult:
 		if err := s.InlineQueryResultMpeg4Gif.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultPhotoInlineQueryResult:
 		if err := s.InlineQueryResultPhoto.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultVenueInlineQueryResult:
 		if err := s.InlineQueryResultVenue.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultVideoInlineQueryResult:
 		if err := s.InlineQueryResultVideo.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InlineQueryResultVoiceInlineQueryResult:
 		if err := s.InlineQueryResultVoice.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
@@ -1773,7 +1773,7 @@ func (s InlineQueryResultArticle) Validate() error {
 		if err := s.InputMessageContent.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -1786,13 +1786,13 @@ func (s InlineQueryResultArticle) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1814,13 +1814,13 @@ func (s InlineQueryResultArticle) Validate() error {
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -1842,13 +1842,13 @@ func (s InlineQueryResultArticle) Validate() error {
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_height",
@@ -1874,7 +1874,7 @@ func (s InlineQueryResultAudio) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -1895,13 +1895,13 @@ func (s InlineQueryResultAudio) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -1915,7 +1915,7 @@ func (s InlineQueryResultAudio) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1926,7 +1926,7 @@ func (s InlineQueryResultAudio) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -1948,13 +1948,13 @@ func (s InlineQueryResultAudio) Validate() error {
 				}).Validate(int64(s.AudioDuration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "audio_duration",
@@ -1967,13 +1967,13 @@ func (s InlineQueryResultAudio) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1986,13 +1986,13 @@ func (s InlineQueryResultAudio) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2018,7 +2018,7 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -2039,13 +2039,13 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2059,7 +2059,7 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2070,7 +2070,7 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -2083,13 +2083,13 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2102,13 +2102,13 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2134,7 +2134,7 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -2155,13 +2155,13 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2175,7 +2175,7 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2186,7 +2186,7 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -2199,13 +2199,13 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2218,13 +2218,13 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2250,7 +2250,7 @@ func (s InlineQueryResultCachedGif) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -2271,13 +2271,13 @@ func (s InlineQueryResultCachedGif) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2291,7 +2291,7 @@ func (s InlineQueryResultCachedGif) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2302,7 +2302,7 @@ func (s InlineQueryResultCachedGif) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -2315,13 +2315,13 @@ func (s InlineQueryResultCachedGif) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2334,13 +2334,13 @@ func (s InlineQueryResultCachedGif) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2366,7 +2366,7 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -2387,13 +2387,13 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2407,7 +2407,7 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2418,7 +2418,7 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -2431,13 +2431,13 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2450,13 +2450,13 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2482,7 +2482,7 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -2503,13 +2503,13 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2523,7 +2523,7 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2534,7 +2534,7 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -2547,13 +2547,13 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2566,13 +2566,13 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2598,7 +2598,7 @@ func (s InlineQueryResultCachedSticker) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -2611,13 +2611,13 @@ func (s InlineQueryResultCachedSticker) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2630,13 +2630,13 @@ func (s InlineQueryResultCachedSticker) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2662,7 +2662,7 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -2683,13 +2683,13 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2703,7 +2703,7 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2714,7 +2714,7 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -2727,13 +2727,13 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2746,13 +2746,13 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2778,7 +2778,7 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -2799,13 +2799,13 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2819,7 +2819,7 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2830,7 +2830,7 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -2843,13 +2843,13 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2862,13 +2862,13 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2896,13 +2896,13 @@ func (s InlineQueryResultContact) Validate() error {
 				}).Validate(string(s.Vcard.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "vcard",
@@ -2915,13 +2915,13 @@ func (s InlineQueryResultContact) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2934,13 +2934,13 @@ func (s InlineQueryResultContact) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -2962,13 +2962,13 @@ func (s InlineQueryResultContact) Validate() error {
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -2990,13 +2990,13 @@ func (s InlineQueryResultContact) Validate() error {
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_height",
@@ -3022,7 +3022,7 @@ func (s InlineQueryResultDocument) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -3043,13 +3043,13 @@ func (s InlineQueryResultDocument) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -3063,7 +3063,7 @@ func (s InlineQueryResultDocument) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3074,7 +3074,7 @@ func (s InlineQueryResultDocument) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -3087,13 +3087,13 @@ func (s InlineQueryResultDocument) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3106,13 +3106,13 @@ func (s InlineQueryResultDocument) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -3134,13 +3134,13 @@ func (s InlineQueryResultDocument) Validate() error {
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -3162,13 +3162,13 @@ func (s InlineQueryResultDocument) Validate() error {
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_height",
@@ -3194,7 +3194,7 @@ func (s InlineQueryResultGame) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -3207,13 +3207,13 @@ func (s InlineQueryResultGame) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3239,7 +3239,7 @@ func (s InlineQueryResultGif) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -3261,13 +3261,13 @@ func (s InlineQueryResultGif) Validate() error {
 				}).Validate(int64(s.GIFWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "gif_width",
@@ -3289,13 +3289,13 @@ func (s InlineQueryResultGif) Validate() error {
 				}).Validate(int64(s.GIFHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "gif_height",
@@ -3317,13 +3317,13 @@ func (s InlineQueryResultGif) Validate() error {
 				}).Validate(int64(s.GIFDuration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "gif_duration",
@@ -3344,13 +3344,13 @@ func (s InlineQueryResultGif) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -3364,7 +3364,7 @@ func (s InlineQueryResultGif) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3375,7 +3375,7 @@ func (s InlineQueryResultGif) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -3388,13 +3388,13 @@ func (s InlineQueryResultGif) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3407,13 +3407,13 @@ func (s InlineQueryResultGif) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -3431,7 +3431,7 @@ func (s InlineQueryResultLocation) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "latitude",
@@ -3442,7 +3442,7 @@ func (s InlineQueryResultLocation) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "longitude",
@@ -3455,13 +3455,13 @@ func (s InlineQueryResultLocation) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -3483,13 +3483,13 @@ func (s InlineQueryResultLocation) Validate() error {
 				}).Validate(int64(s.LivePeriod.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "live_period",
@@ -3511,13 +3511,13 @@ func (s InlineQueryResultLocation) Validate() error {
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "heading",
@@ -3539,13 +3539,13 @@ func (s InlineQueryResultLocation) Validate() error {
 				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "proximity_alert_radius",
@@ -3558,13 +3558,13 @@ func (s InlineQueryResultLocation) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3577,13 +3577,13 @@ func (s InlineQueryResultLocation) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -3605,13 +3605,13 @@ func (s InlineQueryResultLocation) Validate() error {
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -3633,13 +3633,13 @@ func (s InlineQueryResultLocation) Validate() error {
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_height",
@@ -3665,7 +3665,7 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -3687,13 +3687,13 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				}).Validate(int64(s.Mpeg4Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mpeg4_width",
@@ -3715,13 +3715,13 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				}).Validate(int64(s.Mpeg4Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mpeg4_height",
@@ -3743,13 +3743,13 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				}).Validate(int64(s.Mpeg4Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mpeg4_duration",
@@ -3770,13 +3770,13 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -3790,7 +3790,7 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3801,7 +3801,7 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -3814,13 +3814,13 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3833,13 +3833,13 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -3865,7 +3865,7 @@ func (s InlineQueryResultPhoto) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -3887,13 +3887,13 @@ func (s InlineQueryResultPhoto) Validate() error {
 				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_width",
@@ -3915,13 +3915,13 @@ func (s InlineQueryResultPhoto) Validate() error {
 				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_height",
@@ -3942,13 +3942,13 @@ func (s InlineQueryResultPhoto) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -3962,7 +3962,7 @@ func (s InlineQueryResultPhoto) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3973,7 +3973,7 @@ func (s InlineQueryResultPhoto) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -3986,13 +3986,13 @@ func (s InlineQueryResultPhoto) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -4005,13 +4005,13 @@ func (s InlineQueryResultPhoto) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -4029,7 +4029,7 @@ func (s InlineQueryResultVenue) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "latitude",
@@ -4040,7 +4040,7 @@ func (s InlineQueryResultVenue) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "longitude",
@@ -4053,13 +4053,13 @@ func (s InlineQueryResultVenue) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -4072,13 +4072,13 @@ func (s InlineQueryResultVenue) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -4100,13 +4100,13 @@ func (s InlineQueryResultVenue) Validate() error {
 				}).Validate(int64(s.ThumbWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -4128,13 +4128,13 @@ func (s InlineQueryResultVenue) Validate() error {
 				}).Validate(int64(s.ThumbHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_height",
@@ -4160,7 +4160,7 @@ func (s InlineQueryResultVideo) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -4181,13 +4181,13 @@ func (s InlineQueryResultVideo) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -4201,7 +4201,7 @@ func (s InlineQueryResultVideo) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4212,7 +4212,7 @@ func (s InlineQueryResultVideo) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -4234,13 +4234,13 @@ func (s InlineQueryResultVideo) Validate() error {
 				}).Validate(int64(s.VideoWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_width",
@@ -4262,13 +4262,13 @@ func (s InlineQueryResultVideo) Validate() error {
 				}).Validate(int64(s.VideoHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_height",
@@ -4290,13 +4290,13 @@ func (s InlineQueryResultVideo) Validate() error {
 				}).Validate(int64(s.VideoDuration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_duration",
@@ -4309,13 +4309,13 @@ func (s InlineQueryResultVideo) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -4328,13 +4328,13 @@ func (s InlineQueryResultVideo) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -4360,7 +4360,7 @@ func (s InlineQueryResultVoice) Validate() error {
 		}).Validate(string(s.ID)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -4381,13 +4381,13 @@ func (s InlineQueryResultVoice) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -4401,7 +4401,7 @@ func (s InlineQueryResultVoice) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4412,7 +4412,7 @@ func (s InlineQueryResultVoice) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -4434,13 +4434,13 @@ func (s InlineQueryResultVoice) Validate() error {
 				}).Validate(int64(s.VoiceDuration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "voice_duration",
@@ -4453,13 +4453,13 @@ func (s InlineQueryResultVoice) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -4472,13 +4472,13 @@ func (s InlineQueryResultVoice) Validate() error {
 				if err := s.InputMessageContent.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_message_content",
@@ -4506,13 +4506,13 @@ func (s InputContactMessageContent) Validate() error {
 				}).Validate(string(s.Vcard.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "vcard",
@@ -4538,7 +4538,7 @@ func (s InputInvoiceMessageContent) Validate() error {
 		}).Validate(string(s.Title)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "title",
@@ -4557,7 +4557,7 @@ func (s InputInvoiceMessageContent) Validate() error {
 		}).Validate(string(s.Description)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "description",
@@ -4576,7 +4576,7 @@ func (s InputInvoiceMessageContent) Validate() error {
 		}).Validate(string(s.Payload)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -4587,7 +4587,7 @@ func (s InputInvoiceMessageContent) Validate() error {
 		if s.Prices == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "prices",
@@ -4609,13 +4609,13 @@ func (s InputInvoiceMessageContent) Validate() error {
 				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_width",
@@ -4637,13 +4637,13 @@ func (s InputInvoiceMessageContent) Validate() error {
 				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_height",
@@ -4661,7 +4661,7 @@ func (s InputLocationMessageContent) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "latitude",
@@ -4672,7 +4672,7 @@ func (s InputLocationMessageContent) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "longitude",
@@ -4685,13 +4685,13 @@ func (s InputLocationMessageContent) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -4713,13 +4713,13 @@ func (s InputLocationMessageContent) Validate() error {
 				}).Validate(int64(s.LivePeriod.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "live_period",
@@ -4741,13 +4741,13 @@ func (s InputLocationMessageContent) Validate() error {
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "heading",
@@ -4769,13 +4769,13 @@ func (s InputLocationMessageContent) Validate() error {
 				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "proximity_alert_radius",
@@ -4793,27 +4793,27 @@ func (s InputMedia) Validate() error {
 		if err := s.InputMediaAnimation.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputMediaDocumentInputMedia:
 		if err := s.InputMediaDocument.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputMediaAudioInputMedia:
 		if err := s.InputMediaAudio.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputMediaPhotoInputMedia:
 		if err := s.InputMediaPhoto.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputMediaVideoInputMedia:
 		if err := s.InputMediaVideo.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
@@ -4835,13 +4835,13 @@ func (s InputMediaAnimation) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -4855,7 +4855,7 @@ func (s InputMediaAnimation) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4866,7 +4866,7 @@ func (s InputMediaAnimation) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -4888,13 +4888,13 @@ func (s InputMediaAnimation) Validate() error {
 				}).Validate(int64(s.Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -4916,13 +4916,13 @@ func (s InputMediaAnimation) Validate() error {
 				}).Validate(int64(s.Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -4944,13 +4944,13 @@ func (s InputMediaAnimation) Validate() error {
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -4978,13 +4978,13 @@ func (s InputMediaAudio) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -4998,7 +4998,7 @@ func (s InputMediaAudio) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5009,7 +5009,7 @@ func (s InputMediaAudio) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -5031,13 +5031,13 @@ func (s InputMediaAudio) Validate() error {
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -5065,13 +5065,13 @@ func (s InputMediaDocument) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -5085,7 +5085,7 @@ func (s InputMediaDocument) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5096,7 +5096,7 @@ func (s InputMediaDocument) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -5124,13 +5124,13 @@ func (s InputMediaPhoto) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -5144,7 +5144,7 @@ func (s InputMediaPhoto) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5155,7 +5155,7 @@ func (s InputMediaPhoto) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -5183,13 +5183,13 @@ func (s InputMediaVideo) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -5203,7 +5203,7 @@ func (s InputMediaVideo) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5214,7 +5214,7 @@ func (s InputMediaVideo) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -5236,13 +5236,13 @@ func (s InputMediaVideo) Validate() error {
 				}).Validate(int64(s.Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -5264,13 +5264,13 @@ func (s InputMediaVideo) Validate() error {
 				}).Validate(int64(s.Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -5292,13 +5292,13 @@ func (s InputMediaVideo) Validate() error {
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -5316,27 +5316,27 @@ func (s InputMessageContent) Validate() error {
 		if err := s.InputTextMessageContent.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputLocationMessageContentInputMessageContent:
 		if err := s.InputLocationMessageContent.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputVenueMessageContentInputMessageContent:
 		if err := s.InputVenueMessageContent.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputContactMessageContentInputMessageContent:
 		if err := s.InputContactMessageContent.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputInvoiceMessageContentInputMessageContent:
 		if err := s.InputInvoiceMessageContent.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
@@ -5356,7 +5356,7 @@ func (s InputTextMessageContent) Validate() error {
 		}).Validate(string(s.MessageText)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "message_text",
@@ -5370,7 +5370,7 @@ func (s InputTextMessageContent) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5381,7 +5381,7 @@ func (s InputTextMessageContent) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "entities",
@@ -5399,7 +5399,7 @@ func (s InputVenueMessageContent) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "latitude",
@@ -5410,7 +5410,7 @@ func (s InputVenueMessageContent) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "longitude",
@@ -5428,7 +5428,7 @@ func (s Location) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "longitude",
@@ -5439,7 +5439,7 @@ func (s Location) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "latitude",
@@ -5452,13 +5452,13 @@ func (s Location) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -5480,13 +5480,13 @@ func (s Location) Validate() error {
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "heading",
@@ -5504,7 +5504,7 @@ func (s MaskPosition) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.XShift)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "x_shift",
@@ -5515,7 +5515,7 @@ func (s MaskPosition) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.YShift)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "y_shift",
@@ -5526,7 +5526,7 @@ func (s MaskPosition) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Scale)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "scale",
@@ -5546,13 +5546,13 @@ func (s Message) Validate() error {
 				if err := s.SenderChat.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "sender_chat",
@@ -5563,7 +5563,7 @@ func (s Message) Validate() error {
 		if err := s.Chat.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat",
@@ -5576,13 +5576,13 @@ func (s Message) Validate() error {
 				if err := s.ForwardFromChat.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "forward_from_chat",
@@ -5597,11 +5597,11 @@ func (s Message) Validate() error {
 			if err := s.ReplyToMessage.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_to_message",
@@ -5622,13 +5622,13 @@ func (s Message) Validate() error {
 				}).Validate(string(s.Text.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text",
@@ -5642,7 +5642,7 @@ func (s Message) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5653,7 +5653,7 @@ func (s Message) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "entities",
@@ -5666,13 +5666,13 @@ func (s Message) Validate() error {
 				if err := s.Animation.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "animation",
@@ -5685,13 +5685,13 @@ func (s Message) Validate() error {
 				if err := s.Audio.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "audio",
@@ -5704,13 +5704,13 @@ func (s Message) Validate() error {
 				if err := s.Document.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "document",
@@ -5724,7 +5724,7 @@ func (s Message) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5735,7 +5735,7 @@ func (s Message) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo",
@@ -5748,13 +5748,13 @@ func (s Message) Validate() error {
 				if err := s.Sticker.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "sticker",
@@ -5767,13 +5767,13 @@ func (s Message) Validate() error {
 				if err := s.Video.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video",
@@ -5786,13 +5786,13 @@ func (s Message) Validate() error {
 				if err := s.VideoNote.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_note",
@@ -5805,13 +5805,13 @@ func (s Message) Validate() error {
 				if err := s.Voice.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "voice",
@@ -5832,13 +5832,13 @@ func (s Message) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -5852,7 +5852,7 @@ func (s Message) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5863,7 +5863,7 @@ func (s Message) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -5876,13 +5876,13 @@ func (s Message) Validate() error {
 				if err := s.Game.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "game",
@@ -5895,13 +5895,13 @@ func (s Message) Validate() error {
 				if err := s.Poll.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "poll",
@@ -5914,13 +5914,13 @@ func (s Message) Validate() error {
 				if err := s.Venue.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "venue",
@@ -5933,13 +5933,13 @@ func (s Message) Validate() error {
 				if err := s.Location.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "location",
@@ -5953,7 +5953,7 @@ func (s Message) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5964,7 +5964,7 @@ func (s Message) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "new_chat_photo",
@@ -5979,11 +5979,11 @@ func (s Message) Validate() error {
 			if err := s.PinnedMessage.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "pinned_message",
@@ -5996,13 +5996,13 @@ func (s Message) Validate() error {
 				if err := s.PassportData.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "passport_data",
@@ -6015,13 +6015,13 @@ func (s Message) Validate() error {
 				if err := s.VideoChatEnded.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_chat_ended",
@@ -6034,13 +6034,13 @@ func (s Message) Validate() error {
 				if err := s.VideoChatParticipantsInvited.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_chat_participants_invited",
@@ -6053,13 +6053,13 @@ func (s Message) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -6077,7 +6077,7 @@ func (s MessageEntity) Validate() error {
 		if err := s.Type.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -6140,7 +6140,7 @@ func (s PassportData) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6151,7 +6151,7 @@ func (s PassportData) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "data",
@@ -6179,14 +6179,14 @@ func (s PassportElementError) Validate() error {
 		if err := s.PassportElementErrorFiles.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case PassportElementErrorTranslationFilePassportElementError:
 		return nil // no validation needed
 	case PassportElementErrorTranslationFilesPassportElementError:
 		if err := s.PassportElementErrorTranslationFiles.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case PassportElementErrorUnspecifiedPassportElementError:
 		return nil // no validation needed
 	default:
@@ -6234,7 +6234,7 @@ func (s PassportElementErrorFiles) Validate() error {
 		if s.FileHashes == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "file_hashes",
@@ -6330,7 +6330,7 @@ func (s PassportElementErrorTranslationFiles) Validate() error {
 		if s.FileHashes == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "file_hashes",
@@ -6381,7 +6381,7 @@ func (s PhotoSize) Validate() error {
 		}).Validate(int64(s.Width)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -6401,7 +6401,7 @@ func (s PhotoSize) Validate() error {
 		}).Validate(int64(s.Height)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -6427,7 +6427,7 @@ func (s Poll) Validate() error {
 		}).Validate(string(s.Question)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "question",
@@ -6444,7 +6444,7 @@ func (s Poll) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6455,7 +6455,7 @@ func (s Poll) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "options",
@@ -6466,7 +6466,7 @@ func (s Poll) Validate() error {
 		if err := s.Type.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -6487,13 +6487,13 @@ func (s Poll) Validate() error {
 				}).Validate(string(s.Explanation.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "explanation",
@@ -6507,7 +6507,7 @@ func (s Poll) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6518,7 +6518,7 @@ func (s Poll) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "explanation_entities",
@@ -6536,7 +6536,7 @@ func (s PollAnswer) Validate() error {
 		if s.OptionIds == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "option_ids",
@@ -6562,7 +6562,7 @@ func (s PollOption) Validate() error {
 		}).Validate(string(s.Text)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text",
@@ -6596,7 +6596,7 @@ func (s ReplyKeyboardMarkup) Validate() error {
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6607,7 +6607,7 @@ func (s ReplyKeyboardMarkup) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "keyboard",
@@ -6628,13 +6628,13 @@ func (s ReplyKeyboardMarkup) Validate() error {
 				}).Validate(string(s.InputFieldPlaceholder.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_field_placeholder",
@@ -6655,7 +6655,7 @@ func (s ResultArrayOfBotCommand) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6666,7 +6666,7 @@ func (s ResultArrayOfBotCommand) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6687,7 +6687,7 @@ func (s ResultArrayOfMessage) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6698,7 +6698,7 @@ func (s ResultArrayOfMessage) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6719,7 +6719,7 @@ func (s ResultArrayOfUpdate) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6730,7 +6730,7 @@ func (s ResultArrayOfUpdate) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6750,13 +6750,13 @@ func (s ResultChat) Validate() error {
 				if err := s.Result.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6776,13 +6776,13 @@ func (s ResultChatInviteLink) Validate() error {
 				if err := s.Result.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6802,13 +6802,13 @@ func (s ResultMessage) Validate() error {
 				if err := s.Result.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6828,13 +6828,13 @@ func (s ResultMessageOrBoolean) Validate() error {
 				if err := s.Result.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6852,7 +6852,7 @@ func (s ResultMessageOrBooleanResult) Validate() error {
 		if err := s.Message.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case BoolResultMessageOrBooleanResult:
 		return nil // no validation needed
 	default:
@@ -6868,13 +6868,13 @@ func (s ResultPoll) Validate() error {
 				if err := s.Result.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6894,13 +6894,13 @@ func (s ResultStickerSet) Validate() error {
 				if err := s.Result.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6920,13 +6920,13 @@ func (s ResultUserProfilePhotos) Validate() error {
 				if err := s.Result.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6955,13 +6955,13 @@ func (s SendAnimation) Validate() error {
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -6983,13 +6983,13 @@ func (s SendAnimation) Validate() error {
 				}).Validate(int64(s.Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -7011,13 +7011,13 @@ func (s SendAnimation) Validate() error {
 				}).Validate(int64(s.Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -7038,13 +7038,13 @@ func (s SendAnimation) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -7058,7 +7058,7 @@ func (s SendAnimation) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7069,7 +7069,7 @@ func (s SendAnimation) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -7082,13 +7082,13 @@ func (s SendAnimation) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7116,13 +7116,13 @@ func (s SendAudio) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -7136,7 +7136,7 @@ func (s SendAudio) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7147,7 +7147,7 @@ func (s SendAudio) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -7169,13 +7169,13 @@ func (s SendAudio) Validate() error {
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -7188,13 +7188,13 @@ func (s SendAudio) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7222,13 +7222,13 @@ func (s SendContact) Validate() error {
 				}).Validate(string(s.Vcard.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "vcard",
@@ -7241,13 +7241,13 @@ func (s SendContact) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7267,13 +7267,13 @@ func (s SendDice) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7301,13 +7301,13 @@ func (s SendDocument) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -7321,7 +7321,7 @@ func (s SendDocument) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7332,7 +7332,7 @@ func (s SendDocument) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -7345,13 +7345,13 @@ func (s SendDocument) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7371,13 +7371,13 @@ func (s SendGame) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7403,7 +7403,7 @@ func (s SendInvoice) Validate() error {
 		}).Validate(string(s.Title)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "title",
@@ -7422,7 +7422,7 @@ func (s SendInvoice) Validate() error {
 		}).Validate(string(s.Description)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "description",
@@ -7441,7 +7441,7 @@ func (s SendInvoice) Validate() error {
 		}).Validate(string(s.Payload)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -7452,7 +7452,7 @@ func (s SendInvoice) Validate() error {
 		if s.Prices == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "prices",
@@ -7474,13 +7474,13 @@ func (s SendInvoice) Validate() error {
 				}).Validate(int64(s.PhotoWidth.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_width",
@@ -7502,13 +7502,13 @@ func (s SendInvoice) Validate() error {
 				}).Validate(int64(s.PhotoHeight.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_height",
@@ -7521,13 +7521,13 @@ func (s SendInvoice) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7545,7 +7545,7 @@ func (s SendLocation) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "latitude",
@@ -7556,7 +7556,7 @@ func (s SendLocation) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "longitude",
@@ -7569,13 +7569,13 @@ func (s SendLocation) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.HorizontalAccuracy.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -7597,13 +7597,13 @@ func (s SendLocation) Validate() error {
 				}).Validate(int64(s.LivePeriod.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "live_period",
@@ -7625,13 +7625,13 @@ func (s SendLocation) Validate() error {
 				}).Validate(int64(s.Heading.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "heading",
@@ -7653,13 +7653,13 @@ func (s SendLocation) Validate() error {
 				}).Validate(int64(s.ProximityAlertRadius.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "proximity_alert_radius",
@@ -7672,13 +7672,13 @@ func (s SendLocation) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7702,7 +7702,7 @@ func (s SendMediaGroup) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7713,7 +7713,7 @@ func (s SendMediaGroup) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "media",
@@ -7731,22 +7731,22 @@ func (s SendMediaGroupMediaItem) Validate() error {
 		if err := s.InputMediaAudio.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputMediaDocumentSendMediaGroupMediaItem:
 		if err := s.InputMediaDocument.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputMediaPhotoSendMediaGroupMediaItem:
 		if err := s.InputMediaPhoto.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case InputMediaVideoSendMediaGroupMediaItem:
 		if err := s.InputMediaVideo.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
@@ -7766,7 +7766,7 @@ func (s SendMessage) Validate() error {
 		}).Validate(string(s.Text)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text",
@@ -7780,7 +7780,7 @@ func (s SendMessage) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7791,7 +7791,7 @@ func (s SendMessage) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "entities",
@@ -7804,13 +7804,13 @@ func (s SendMessage) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7838,13 +7838,13 @@ func (s SendPhoto) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -7858,7 +7858,7 @@ func (s SendPhoto) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7869,7 +7869,7 @@ func (s SendPhoto) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -7882,13 +7882,13 @@ func (s SendPhoto) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7914,7 +7914,7 @@ func (s SendPoll) Validate() error {
 		}).Validate(string(s.Question)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "question",
@@ -7925,7 +7925,7 @@ func (s SendPoll) Validate() error {
 		if s.Options == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "options",
@@ -7946,13 +7946,13 @@ func (s SendPoll) Validate() error {
 				}).Validate(string(s.Explanation.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "explanation",
@@ -7966,7 +7966,7 @@ func (s SendPoll) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7977,7 +7977,7 @@ func (s SendPoll) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "explanation_entities",
@@ -7990,13 +7990,13 @@ func (s SendPoll) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8014,19 +8014,19 @@ func (s SendReplyMarkup) Validate() error {
 		if err := s.InlineKeyboardMarkup.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case ReplyKeyboardMarkupSendReplyMarkup:
 		if err := s.ReplyKeyboardMarkup.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case ReplyKeyboardRemoveSendReplyMarkup:
 		return nil // no validation needed
 	case ForceReplySendReplyMarkup:
 		if err := s.ForceReply.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	default:
 		return errors.Errorf("invalid type %q", s.Type)
 	}
@@ -8040,13 +8040,13 @@ func (s SendSticker) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8064,7 +8064,7 @@ func (s SendVenue) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Latitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "latitude",
@@ -8075,7 +8075,7 @@ func (s SendVenue) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Longitude)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "longitude",
@@ -8088,13 +8088,13 @@ func (s SendVenue) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8123,13 +8123,13 @@ func (s SendVideo) Validate() error {
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -8151,13 +8151,13 @@ func (s SendVideo) Validate() error {
 				}).Validate(int64(s.Width.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -8179,13 +8179,13 @@ func (s SendVideo) Validate() error {
 				}).Validate(int64(s.Height.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -8206,13 +8206,13 @@ func (s SendVideo) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -8226,7 +8226,7 @@ func (s SendVideo) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8237,7 +8237,7 @@ func (s SendVideo) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -8250,13 +8250,13 @@ func (s SendVideo) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8285,13 +8285,13 @@ func (s SendVideoNote) Validate() error {
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -8304,13 +8304,13 @@ func (s SendVideoNote) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8338,13 +8338,13 @@ func (s SendVoice) Validate() error {
 				}).Validate(string(s.Caption.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -8358,7 +8358,7 @@ func (s SendVoice) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8369,7 +8369,7 @@ func (s SendVoice) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption_entities",
@@ -8391,13 +8391,13 @@ func (s SendVoice) Validate() error {
 				}).Validate(int64(s.Duration.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -8410,13 +8410,13 @@ func (s SendVoice) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8442,7 +8442,7 @@ func (s SetChatAdministratorCustomTitle) Validate() error {
 		}).Validate(string(s.CustomTitle)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "custom_title",
@@ -8470,13 +8470,13 @@ func (s SetChatDescription) Validate() error {
 				}).Validate(string(s.Description.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "description",
@@ -8502,7 +8502,7 @@ func (s SetChatTitle) Validate() error {
 		}).Validate(string(s.Title)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "title",
@@ -8526,7 +8526,7 @@ func (s SetMyCommands) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8537,7 +8537,7 @@ func (s SetMyCommands) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "commands",
@@ -8561,7 +8561,7 @@ func (s SetPassportDataErrors) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8572,7 +8572,7 @@ func (s SetPassportDataErrors) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "errors",
@@ -8590,7 +8590,7 @@ func (s ShippingOption) Validate() error {
 		if s.Prices == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "prices",
@@ -8617,7 +8617,7 @@ func (s Sticker) Validate() error {
 		}).Validate(int64(s.Width)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -8637,7 +8637,7 @@ func (s Sticker) Validate() error {
 		}).Validate(int64(s.Height)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -8650,13 +8650,13 @@ func (s Sticker) Validate() error {
 				if err := s.Thumb.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -8669,13 +8669,13 @@ func (s Sticker) Validate() error {
 				if err := s.MaskPosition.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mask_position",
@@ -8699,7 +8699,7 @@ func (s StickerSet) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8710,7 +8710,7 @@ func (s StickerSet) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "stickers",
@@ -8723,13 +8723,13 @@ func (s StickerSet) Validate() error {
 				if err := s.Thumb.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -8749,13 +8749,13 @@ func (s StopMessageLiveLocation) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8775,13 +8775,13 @@ func (s StopPoll) Validate() error {
 				if err := s.ReplyMarkup.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8801,13 +8801,13 @@ func (s Update) Validate() error {
 				if err := s.Message.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "message",
@@ -8820,13 +8820,13 @@ func (s Update) Validate() error {
 				if err := s.EditedMessage.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "edited_message",
@@ -8839,13 +8839,13 @@ func (s Update) Validate() error {
 				if err := s.ChannelPost.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "channel_post",
@@ -8858,13 +8858,13 @@ func (s Update) Validate() error {
 				if err := s.EditedChannelPost.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "edited_channel_post",
@@ -8877,13 +8877,13 @@ func (s Update) Validate() error {
 				if err := s.InlineQuery.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "inline_query",
@@ -8896,13 +8896,13 @@ func (s Update) Validate() error {
 				if err := s.ChosenInlineResult.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chosen_inline_result",
@@ -8915,13 +8915,13 @@ func (s Update) Validate() error {
 				if err := s.CallbackQuery.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "callback_query",
@@ -8934,13 +8934,13 @@ func (s Update) Validate() error {
 				if err := s.Poll.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "poll",
@@ -8953,13 +8953,13 @@ func (s Update) Validate() error {
 				if err := s.PollAnswer.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "poll_answer",
@@ -8972,13 +8972,13 @@ func (s Update) Validate() error {
 				if err := s.MyChatMember.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "my_chat_member",
@@ -8991,13 +8991,13 @@ func (s Update) Validate() error {
 				if err := s.ChatMember.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat_member",
@@ -9010,13 +9010,13 @@ func (s Update) Validate() error {
 				if err := s.ChatJoinRequest.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat_join_request",
@@ -9046,7 +9046,7 @@ func (s UserProfilePhotos) Validate() error {
 						if err := elem.Validate(); err != nil {
 							return err
 						}
-						return nil
+						return nil // return 1
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -9057,7 +9057,7 @@ func (s UserProfilePhotos) Validate() error {
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -9068,7 +9068,7 @@ func (s UserProfilePhotos) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photos",
@@ -9086,7 +9086,7 @@ func (s Venue) Validate() error {
 		if err := s.Location.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "location",
@@ -9113,7 +9113,7 @@ func (s Video) Validate() error {
 		}).Validate(int64(s.Width)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -9133,7 +9133,7 @@ func (s Video) Validate() error {
 		}).Validate(int64(s.Height)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -9153,7 +9153,7 @@ func (s Video) Validate() error {
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -9166,13 +9166,13 @@ func (s Video) Validate() error {
 				if err := s.Thumb.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -9199,7 +9199,7 @@ func (s VideoChatEnded) Validate() error {
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -9217,7 +9217,7 @@ func (s VideoChatParticipantsInvited) Validate() error {
 		if s.Users == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "users",
@@ -9244,7 +9244,7 @@ func (s VideoNote) Validate() error {
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -9257,13 +9257,13 @@ func (s VideoNote) Validate() error {
 				if err := s.Thumb.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -9290,7 +9290,7 @@ func (s Voice) Validate() error {
 		}).Validate(int64(s.Duration)); err != nil {
 			return errors.Wrap(err, "int")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",

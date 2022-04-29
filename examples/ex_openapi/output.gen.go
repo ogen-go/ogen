@@ -14924,7 +14924,7 @@ func (s Callback) Validate() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "Pattern0Props",
@@ -14942,7 +14942,7 @@ func (s CallbackOrReference) Validate() error {
 		if err := s.Callback.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case ReferenceCallbackOrReference:
 		return nil // no validation needed
 	default:
@@ -14957,7 +14957,7 @@ func (s CallbackPattern0) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -14978,7 +14978,7 @@ func (s CallbacksOrReferences) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -15000,13 +15000,13 @@ func (s Components) Validate() error {
 				if err := s.Schemas.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schemas",
@@ -15019,13 +15019,13 @@ func (s Components) Validate() error {
 				if err := s.Responses.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "responses",
@@ -15038,13 +15038,13 @@ func (s Components) Validate() error {
 				if err := s.Parameters.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "parameters",
@@ -15057,13 +15057,13 @@ func (s Components) Validate() error {
 				if err := s.RequestBodies.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "requestBodies",
@@ -15076,13 +15076,13 @@ func (s Components) Validate() error {
 				if err := s.Headers.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "headers",
@@ -15095,13 +15095,13 @@ func (s Components) Validate() error {
 				if err := s.Callbacks.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "callbacks",
@@ -15121,13 +15121,13 @@ func (s Encoding) Validate() error {
 				if err := s.Headers.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "headers",
@@ -15146,7 +15146,7 @@ func (s Encodings) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -15168,13 +15168,13 @@ func (s Header) Validate() error {
 				if err := s.Schema.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schema",
@@ -15187,13 +15187,13 @@ func (s Header) Validate() error {
 				if err := s.Content.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "content",
@@ -15211,7 +15211,7 @@ func (s HeaderOrReference) Validate() error {
 		if err := s.Header.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case ReferenceHeaderOrReference:
 		return nil // no validation needed
 	default:
@@ -15226,7 +15226,7 @@ func (s HeadersOrReferences) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -15252,19 +15252,19 @@ func (s JsonschemaDraft4PropertiesEnum) Validate() error {
 	}).ValidateLength(len(s)); err != nil {
 		return errors.Wrap(err, "array")
 	}
-	return nil
+	return nil // return 1
 }
 func (s JsonschemaDraft4PropertiesMaximum) Validate() error {
 	if err := (validate.Float{}).Validate(float64(s)); err != nil {
 		return errors.Wrap(err, "float")
 	}
-	return nil
+	return nil // return 1
 }
 func (s JsonschemaDraft4PropertiesMinimum) Validate() error {
 	if err := (validate.Float{}).Validate(float64(s)); err != nil {
 		return errors.Wrap(err, "float")
 	}
-	return nil
+	return nil // return 1
 }
 func (s JsonschemaDraft4PropertiesMultipleOf) Validate() error {
 	if err := (validate.Float{
@@ -15279,7 +15279,7 @@ func (s JsonschemaDraft4PropertiesMultipleOf) Validate() error {
 	}).Validate(float64(s)); err != nil {
 		return errors.Wrap(err, "float")
 	}
-	return nil
+	return nil // return 1
 }
 func (s MediaType) Validate() error {
 	var failures []validate.FieldError
@@ -15289,13 +15289,13 @@ func (s MediaType) Validate() error {
 				if err := s.Schema.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schema",
@@ -15308,13 +15308,13 @@ func (s MediaType) Validate() error {
 				if err := s.Encoding.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "encoding",
@@ -15333,7 +15333,7 @@ func (s MediaTypes) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -15356,7 +15356,7 @@ func (s Operation) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -15367,7 +15367,7 @@ func (s Operation) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "parameters",
@@ -15380,13 +15380,13 @@ func (s Operation) Validate() error {
 				if err := s.RequestBody.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "requestBody",
@@ -15397,7 +15397,7 @@ func (s Operation) Validate() error {
 		if err := s.Responses.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "responses",
@@ -15410,13 +15410,13 @@ func (s Operation) Validate() error {
 				if err := s.Callbacks.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "callbacks",
@@ -15430,7 +15430,7 @@ func (s Operation) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -15441,7 +15441,7 @@ func (s Operation) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "security",
@@ -15460,7 +15460,7 @@ func (s Parameter) Validate() error {
 		if err := s.In.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "in",
@@ -15473,13 +15473,13 @@ func (s Parameter) Validate() error {
 				if err := s.Style.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "style",
@@ -15492,13 +15492,13 @@ func (s Parameter) Validate() error {
 				if err := s.Schema.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schema",
@@ -15511,13 +15511,13 @@ func (s Parameter) Validate() error {
 				if err := s.Content.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "content",
@@ -15549,7 +15549,7 @@ func (s ParameterOrReference) Validate() error {
 		if err := s.Parameter.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case ReferenceParameterOrReference:
 		return nil // no validation needed
 	default:
@@ -15584,7 +15584,7 @@ func (s ParametersOrReferences) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -15606,13 +15606,13 @@ func (s PathItem) Validate() error {
 				if err := s.Get.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "get",
@@ -15625,13 +15625,13 @@ func (s PathItem) Validate() error {
 				if err := s.Put.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "put",
@@ -15644,13 +15644,13 @@ func (s PathItem) Validate() error {
 				if err := s.Post.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "post",
@@ -15663,13 +15663,13 @@ func (s PathItem) Validate() error {
 				if err := s.Delete.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "delete",
@@ -15682,13 +15682,13 @@ func (s PathItem) Validate() error {
 				if err := s.Options.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "options",
@@ -15701,13 +15701,13 @@ func (s PathItem) Validate() error {
 				if err := s.Head.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "head",
@@ -15720,13 +15720,13 @@ func (s PathItem) Validate() error {
 				if err := s.Patch.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "patch",
@@ -15739,13 +15739,13 @@ func (s PathItem) Validate() error {
 				if err := s.Trace.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "trace",
@@ -15759,7 +15759,7 @@ func (s PathItem) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -15770,7 +15770,7 @@ func (s PathItem) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "parameters",
@@ -15788,7 +15788,7 @@ func (s Paths) Validate() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "Pattern0Props",
@@ -15807,7 +15807,7 @@ func (s PathsPattern0) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -15834,7 +15834,7 @@ func (s PositiveInteger) Validate() error {
 	}).Validate(int64(s)); err != nil {
 		return errors.Wrap(err, "int")
 	}
-	return nil
+	return nil // return 1
 }
 func (s RequestBodiesOrReferences) Validate() error {
 	var failures []validate.FieldError
@@ -15843,7 +15843,7 @@ func (s RequestBodiesOrReferences) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -15863,7 +15863,7 @@ func (s RequestBody) Validate() error {
 		if err := s.Content.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "content",
@@ -15881,7 +15881,7 @@ func (s RequestBodyOrReference) Validate() error {
 		if err := s.RequestBody.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case ReferenceRequestBodyOrReference:
 		return nil // no validation needed
 	default:
@@ -15897,13 +15897,13 @@ func (s Response) Validate() error {
 				if err := s.Headers.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "headers",
@@ -15916,13 +15916,13 @@ func (s Response) Validate() error {
 				if err := s.Content.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "content",
@@ -15940,7 +15940,7 @@ func (s ResponseOrReference) Validate() error {
 		if err := s.Response.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case ReferenceResponseOrReference:
 		return nil // no validation needed
 	default:
@@ -15956,13 +15956,13 @@ func (s Responses) Validate() error {
 				if err := s.Default.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "default",
@@ -15973,7 +15973,7 @@ func (s Responses) Validate() error {
 		if err := s.Pattern0Props.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "Pattern0Props",
@@ -15992,7 +15992,7 @@ func (s ResponsesOrReferences) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -16013,7 +16013,7 @@ func (s ResponsesPattern0) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -16035,13 +16035,13 @@ func (s Schema) Validate() error {
 				if err := s.MultipleOf.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "multipleOf",
@@ -16054,13 +16054,13 @@ func (s Schema) Validate() error {
 				if err := s.Maximum.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "maximum",
@@ -16073,13 +16073,13 @@ func (s Schema) Validate() error {
 				if err := s.Minimum.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minimum",
@@ -16092,13 +16092,13 @@ func (s Schema) Validate() error {
 				if err := s.MaxLength.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "maxLength",
@@ -16111,13 +16111,13 @@ func (s Schema) Validate() error {
 				if err := s.MinLength.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minLength",
@@ -16130,13 +16130,13 @@ func (s Schema) Validate() error {
 				if err := s.MaxItems.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "maxItems",
@@ -16149,13 +16149,13 @@ func (s Schema) Validate() error {
 				if err := s.MinItems.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minItems",
@@ -16168,13 +16168,13 @@ func (s Schema) Validate() error {
 				if err := s.MaxProperties.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "maxProperties",
@@ -16187,13 +16187,13 @@ func (s Schema) Validate() error {
 				if err := s.MinProperties.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minProperties",
@@ -16208,11 +16208,11 @@ func (s Schema) Validate() error {
 			if err := s.Required.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required",
@@ -16227,11 +16227,11 @@ func (s Schema) Validate() error {
 			if err := s.Enum.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "enum",
@@ -16244,13 +16244,13 @@ func (s Schema) Validate() error {
 				if err := s.Type.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -16272,7 +16272,7 @@ func (s Schema) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16283,7 +16283,7 @@ func (s Schema) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "allOf",
@@ -16305,7 +16305,7 @@ func (s Schema) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16316,7 +16316,7 @@ func (s Schema) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "oneOf",
@@ -16338,7 +16338,7 @@ func (s Schema) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16349,7 +16349,7 @@ func (s Schema) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "anyOf",
@@ -16364,11 +16364,11 @@ func (s Schema) Validate() error {
 			if err := s.Not.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "not",
@@ -16383,11 +16383,11 @@ func (s Schema) Validate() error {
 			if err := s.Items.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -16400,13 +16400,13 @@ func (s Schema) Validate() error {
 				if err := s.Properties.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "properties",
@@ -16421,11 +16421,11 @@ func (s Schema) Validate() error {
 			if err := s.AdditionalProperties.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "additionalProperties",
@@ -16443,7 +16443,7 @@ func (s SchemaAdditionalProperties) Validate() error {
 		if err := s.SchemaOrReference.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case BoolSchemaAdditionalProperties:
 		return nil // no validation needed
 	default:
@@ -16457,7 +16457,7 @@ func (s SchemaOrReference) Validate() error {
 		if err := s.Schema.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	case ReferenceSchemaOrReference:
 		return nil // no validation needed
 	default:
@@ -16472,7 +16472,7 @@ func (s SchemaProperties) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -16513,7 +16513,7 @@ func (s SchemasOrReferences) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -16534,7 +16534,7 @@ func (s SecurityRequirement) Validate() error {
 			if elem == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil
+			return nil // return 1
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -16554,7 +16554,7 @@ func (s Spec) Validate() error {
 		if err := s.Paths.Validate(); err != nil {
 			return err
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "paths",
@@ -16567,13 +16567,13 @@ func (s Spec) Validate() error {
 				if err := s.Components.Value.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil
-		return nil
+		return nil // return 2
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "components",
@@ -16587,7 +16587,7 @@ func (s Spec) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil
+				return nil // return 1
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16598,7 +16598,7 @@ func (s Spec) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil
+		return nil // return 1
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "security",
@@ -16622,5 +16622,5 @@ func (s StringArray) Validate() error {
 	}).ValidateLength(len(s)); err != nil {
 		return errors.Wrap(err, "array")
 	}
-	return nil
+	return nil // return 1
 }

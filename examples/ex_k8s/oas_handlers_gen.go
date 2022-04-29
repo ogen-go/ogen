@@ -2620,8 +2620,8 @@ func (s *Server) handleListAdmissionregistrationV1MutatingWebhookConfigurationRe
 	params, err := decodeListAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAdmissionregistrationV1MutatingWebhookConfiguration",
-			err,
+			Operation: "ListAdmissionregistrationV1MutatingWebhookConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2675,8 +2675,8 @@ func (s *Server) handleListAdmissionregistrationV1ValidatingWebhookConfiguration
 	params, err := decodeListAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAdmissionregistrationV1ValidatingWebhookConfiguration",
-			err,
+			Operation: "ListAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2730,8 +2730,8 @@ func (s *Server) handleListApiextensionsV1CustomResourceDefinitionRequest(args [
 	params, err := decodeListApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListApiextensionsV1CustomResourceDefinition",
-			err,
+			Operation: "ListApiextensionsV1CustomResourceDefinition",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2785,8 +2785,8 @@ func (s *Server) handleListApiregistrationV1APIServiceRequest(args [0]string, w 
 	params, err := decodeListApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListApiregistrationV1APIService",
-			err,
+			Operation: "ListApiregistrationV1APIService",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2840,8 +2840,8 @@ func (s *Server) handleListAppsV1ControllerRevisionForAllNamespacesRequest(args 
 	params, err := decodeListAppsV1ControllerRevisionForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1ControllerRevisionForAllNamespaces",
-			err,
+			Operation: "ListAppsV1ControllerRevisionForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2895,8 +2895,8 @@ func (s *Server) handleListAppsV1DaemonSetForAllNamespacesRequest(args [0]string
 	params, err := decodeListAppsV1DaemonSetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1DaemonSetForAllNamespaces",
-			err,
+			Operation: "ListAppsV1DaemonSetForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -2950,8 +2950,8 @@ func (s *Server) handleListAppsV1DeploymentForAllNamespacesRequest(args [0]strin
 	params, err := decodeListAppsV1DeploymentForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1DeploymentForAllNamespaces",
-			err,
+			Operation: "ListAppsV1DeploymentForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3005,8 +3005,8 @@ func (s *Server) handleListAppsV1NamespacedControllerRevisionRequest(args [1]str
 	params, err := decodeListAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1NamespacedControllerRevision",
-			err,
+			Operation: "ListAppsV1NamespacedControllerRevision",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3060,8 +3060,8 @@ func (s *Server) handleListAppsV1NamespacedDaemonSetRequest(args [1]string, w ht
 	params, err := decodeListAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1NamespacedDaemonSet",
-			err,
+			Operation: "ListAppsV1NamespacedDaemonSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3115,8 +3115,8 @@ func (s *Server) handleListAppsV1NamespacedDeploymentRequest(args [1]string, w h
 	params, err := decodeListAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1NamespacedDeployment",
-			err,
+			Operation: "ListAppsV1NamespacedDeployment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3170,8 +3170,8 @@ func (s *Server) handleListAppsV1NamespacedReplicaSetRequest(args [1]string, w h
 	params, err := decodeListAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1NamespacedReplicaSet",
-			err,
+			Operation: "ListAppsV1NamespacedReplicaSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3225,8 +3225,8 @@ func (s *Server) handleListAppsV1NamespacedStatefulSetRequest(args [1]string, w 
 	params, err := decodeListAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1NamespacedStatefulSet",
-			err,
+			Operation: "ListAppsV1NamespacedStatefulSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3280,8 +3280,8 @@ func (s *Server) handleListAppsV1ReplicaSetForAllNamespacesRequest(args [0]strin
 	params, err := decodeListAppsV1ReplicaSetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1ReplicaSetForAllNamespaces",
-			err,
+			Operation: "ListAppsV1ReplicaSetForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3335,8 +3335,8 @@ func (s *Server) handleListAppsV1StatefulSetForAllNamespacesRequest(args [0]stri
 	params, err := decodeListAppsV1StatefulSetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAppsV1StatefulSetForAllNamespaces",
-			err,
+			Operation: "ListAppsV1StatefulSetForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3390,8 +3390,8 @@ func (s *Server) handleListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesR
 	params, err := decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
-			err,
+			Operation: "ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3445,8 +3445,8 @@ func (s *Server) handleListAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	params, err := decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "ListAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3500,8 +3500,8 @@ func (s *Server) handleListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamesp
 	params, err := decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
-			err,
+			Operation: "ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3555,8 +3555,8 @@ func (s *Server) handleListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	params, err := decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3610,8 +3610,8 @@ func (s *Server) handleListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamesp
 	params, err := decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
-			err,
+			Operation: "ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3665,8 +3665,8 @@ func (s *Server) handleListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	params, err := decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3720,8 +3720,8 @@ func (s *Server) handleListBatchV1CronJobForAllNamespacesRequest(args [0]string,
 	params, err := decodeListBatchV1CronJobForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListBatchV1CronJobForAllNamespaces",
-			err,
+			Operation: "ListBatchV1CronJobForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3775,8 +3775,8 @@ func (s *Server) handleListBatchV1JobForAllNamespacesRequest(args [0]string, w h
 	params, err := decodeListBatchV1JobForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListBatchV1JobForAllNamespaces",
-			err,
+			Operation: "ListBatchV1JobForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3830,8 +3830,8 @@ func (s *Server) handleListBatchV1NamespacedCronJobRequest(args [1]string, w htt
 	params, err := decodeListBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListBatchV1NamespacedCronJob",
-			err,
+			Operation: "ListBatchV1NamespacedCronJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3885,8 +3885,8 @@ func (s *Server) handleListBatchV1NamespacedJobRequest(args [1]string, w http.Re
 	params, err := decodeListBatchV1NamespacedJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListBatchV1NamespacedJob",
-			err,
+			Operation: "ListBatchV1NamespacedJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3940,8 +3940,8 @@ func (s *Server) handleListBatchV1beta1CronJobForAllNamespacesRequest(args [0]st
 	params, err := decodeListBatchV1beta1CronJobForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListBatchV1beta1CronJobForAllNamespaces",
-			err,
+			Operation: "ListBatchV1beta1CronJobForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -3995,8 +3995,8 @@ func (s *Server) handleListBatchV1beta1NamespacedCronJobRequest(args [1]string, 
 	params, err := decodeListBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListBatchV1beta1NamespacedCronJob",
-			err,
+			Operation: "ListBatchV1beta1NamespacedCronJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4050,8 +4050,8 @@ func (s *Server) handleListCertificatesV1CertificateSigningRequestRequest(args [
 	params, err := decodeListCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCertificatesV1CertificateSigningRequest",
-			err,
+			Operation: "ListCertificatesV1CertificateSigningRequest",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4105,8 +4105,8 @@ func (s *Server) handleListCoordinationV1LeaseForAllNamespacesRequest(args [0]st
 	params, err := decodeListCoordinationV1LeaseForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoordinationV1LeaseForAllNamespaces",
-			err,
+			Operation: "ListCoordinationV1LeaseForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4160,8 +4160,8 @@ func (s *Server) handleListCoordinationV1NamespacedLeaseRequest(args [1]string, 
 	params, err := decodeListCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoordinationV1NamespacedLease",
-			err,
+			Operation: "ListCoordinationV1NamespacedLease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4215,8 +4215,8 @@ func (s *Server) handleListCoreV1ComponentStatusRequest(args [0]string, w http.R
 	params, err := decodeListCoreV1ComponentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1ComponentStatus",
-			err,
+			Operation: "ListCoreV1ComponentStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4270,8 +4270,8 @@ func (s *Server) handleListCoreV1ConfigMapForAllNamespacesRequest(args [0]string
 	params, err := decodeListCoreV1ConfigMapForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1ConfigMapForAllNamespaces",
-			err,
+			Operation: "ListCoreV1ConfigMapForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4325,8 +4325,8 @@ func (s *Server) handleListCoreV1EndpointsForAllNamespacesRequest(args [0]string
 	params, err := decodeListCoreV1EndpointsForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1EndpointsForAllNamespaces",
-			err,
+			Operation: "ListCoreV1EndpointsForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4380,8 +4380,8 @@ func (s *Server) handleListCoreV1EventForAllNamespacesRequest(args [0]string, w 
 	params, err := decodeListCoreV1EventForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1EventForAllNamespaces",
-			err,
+			Operation: "ListCoreV1EventForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4435,8 +4435,8 @@ func (s *Server) handleListCoreV1LimitRangeForAllNamespacesRequest(args [0]strin
 	params, err := decodeListCoreV1LimitRangeForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1LimitRangeForAllNamespaces",
-			err,
+			Operation: "ListCoreV1LimitRangeForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4490,8 +4490,8 @@ func (s *Server) handleListCoreV1NamespaceRequest(args [0]string, w http.Respons
 	params, err := decodeListCoreV1NamespaceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1Namespace",
-			err,
+			Operation: "ListCoreV1Namespace",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4545,8 +4545,8 @@ func (s *Server) handleListCoreV1NamespacedConfigMapRequest(args [1]string, w ht
 	params, err := decodeListCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedConfigMap",
-			err,
+			Operation: "ListCoreV1NamespacedConfigMap",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4600,8 +4600,8 @@ func (s *Server) handleListCoreV1NamespacedEndpointsRequest(args [1]string, w ht
 	params, err := decodeListCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedEndpoints",
-			err,
+			Operation: "ListCoreV1NamespacedEndpoints",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4655,8 +4655,8 @@ func (s *Server) handleListCoreV1NamespacedEventRequest(args [1]string, w http.R
 	params, err := decodeListCoreV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedEvent",
-			err,
+			Operation: "ListCoreV1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4710,8 +4710,8 @@ func (s *Server) handleListCoreV1NamespacedLimitRangeRequest(args [1]string, w h
 	params, err := decodeListCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedLimitRange",
-			err,
+			Operation: "ListCoreV1NamespacedLimitRange",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4765,8 +4765,8 @@ func (s *Server) handleListCoreV1NamespacedPersistentVolumeClaimRequest(args [1]
 	params, err := decodeListCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedPersistentVolumeClaim",
-			err,
+			Operation: "ListCoreV1NamespacedPersistentVolumeClaim",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4820,8 +4820,8 @@ func (s *Server) handleListCoreV1NamespacedPodRequest(args [1]string, w http.Res
 	params, err := decodeListCoreV1NamespacedPodParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedPod",
-			err,
+			Operation: "ListCoreV1NamespacedPod",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4875,8 +4875,8 @@ func (s *Server) handleListCoreV1NamespacedPodTemplateRequest(args [1]string, w 
 	params, err := decodeListCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedPodTemplate",
-			err,
+			Operation: "ListCoreV1NamespacedPodTemplate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4930,8 +4930,8 @@ func (s *Server) handleListCoreV1NamespacedReplicationControllerRequest(args [1]
 	params, err := decodeListCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedReplicationController",
-			err,
+			Operation: "ListCoreV1NamespacedReplicationController",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -4985,8 +4985,8 @@ func (s *Server) handleListCoreV1NamespacedResourceQuotaRequest(args [1]string, 
 	params, err := decodeListCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedResourceQuota",
-			err,
+			Operation: "ListCoreV1NamespacedResourceQuota",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5040,8 +5040,8 @@ func (s *Server) handleListCoreV1NamespacedSecretRequest(args [1]string, w http.
 	params, err := decodeListCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedSecret",
-			err,
+			Operation: "ListCoreV1NamespacedSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5095,8 +5095,8 @@ func (s *Server) handleListCoreV1NamespacedServiceRequest(args [1]string, w http
 	params, err := decodeListCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedService",
-			err,
+			Operation: "ListCoreV1NamespacedService",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5150,8 +5150,8 @@ func (s *Server) handleListCoreV1NamespacedServiceAccountRequest(args [1]string,
 	params, err := decodeListCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1NamespacedServiceAccount",
-			err,
+			Operation: "ListCoreV1NamespacedServiceAccount",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5205,8 +5205,8 @@ func (s *Server) handleListCoreV1NodeRequest(args [0]string, w http.ResponseWrit
 	params, err := decodeListCoreV1NodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1Node",
-			err,
+			Operation: "ListCoreV1Node",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5260,8 +5260,8 @@ func (s *Server) handleListCoreV1PersistentVolumeRequest(args [0]string, w http.
 	params, err := decodeListCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1PersistentVolume",
-			err,
+			Operation: "ListCoreV1PersistentVolume",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5315,8 +5315,8 @@ func (s *Server) handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest(ar
 	params, err := decodeListCoreV1PersistentVolumeClaimForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1PersistentVolumeClaimForAllNamespaces",
-			err,
+			Operation: "ListCoreV1PersistentVolumeClaimForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5370,8 +5370,8 @@ func (s *Server) handleListCoreV1PodForAllNamespacesRequest(args [0]string, w ht
 	params, err := decodeListCoreV1PodForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1PodForAllNamespaces",
-			err,
+			Operation: "ListCoreV1PodForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5425,8 +5425,8 @@ func (s *Server) handleListCoreV1PodTemplateForAllNamespacesRequest(args [0]stri
 	params, err := decodeListCoreV1PodTemplateForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1PodTemplateForAllNamespaces",
-			err,
+			Operation: "ListCoreV1PodTemplateForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5480,8 +5480,8 @@ func (s *Server) handleListCoreV1ReplicationControllerForAllNamespacesRequest(ar
 	params, err := decodeListCoreV1ReplicationControllerForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1ReplicationControllerForAllNamespaces",
-			err,
+			Operation: "ListCoreV1ReplicationControllerForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5535,8 +5535,8 @@ func (s *Server) handleListCoreV1ResourceQuotaForAllNamespacesRequest(args [0]st
 	params, err := decodeListCoreV1ResourceQuotaForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1ResourceQuotaForAllNamespaces",
-			err,
+			Operation: "ListCoreV1ResourceQuotaForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5590,8 +5590,8 @@ func (s *Server) handleListCoreV1SecretForAllNamespacesRequest(args [0]string, w
 	params, err := decodeListCoreV1SecretForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1SecretForAllNamespaces",
-			err,
+			Operation: "ListCoreV1SecretForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5645,8 +5645,8 @@ func (s *Server) handleListCoreV1ServiceAccountForAllNamespacesRequest(args [0]s
 	params, err := decodeListCoreV1ServiceAccountForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1ServiceAccountForAllNamespaces",
-			err,
+			Operation: "ListCoreV1ServiceAccountForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5700,8 +5700,8 @@ func (s *Server) handleListCoreV1ServiceForAllNamespacesRequest(args [0]string, 
 	params, err := decodeListCoreV1ServiceForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListCoreV1ServiceForAllNamespaces",
-			err,
+			Operation: "ListCoreV1ServiceForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5755,8 +5755,8 @@ func (s *Server) handleListDiscoveryV1EndpointSliceForAllNamespacesRequest(args 
 	params, err := decodeListDiscoveryV1EndpointSliceForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListDiscoveryV1EndpointSliceForAllNamespaces",
-			err,
+			Operation: "ListDiscoveryV1EndpointSliceForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5810,8 +5810,8 @@ func (s *Server) handleListDiscoveryV1NamespacedEndpointSliceRequest(args [1]str
 	params, err := decodeListDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListDiscoveryV1NamespacedEndpointSlice",
-			err,
+			Operation: "ListDiscoveryV1NamespacedEndpointSlice",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5865,8 +5865,8 @@ func (s *Server) handleListDiscoveryV1beta1EndpointSliceForAllNamespacesRequest(
 	params, err := decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
-			err,
+			Operation: "ListDiscoveryV1beta1EndpointSliceForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5920,8 +5920,8 @@ func (s *Server) handleListDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	params, err := decodeListDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListDiscoveryV1beta1NamespacedEndpointSlice",
-			err,
+			Operation: "ListDiscoveryV1beta1NamespacedEndpointSlice",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -5975,8 +5975,8 @@ func (s *Server) handleListEventsV1EventForAllNamespacesRequest(args [0]string, 
 	params, err := decodeListEventsV1EventForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListEventsV1EventForAllNamespaces",
-			err,
+			Operation: "ListEventsV1EventForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6030,8 +6030,8 @@ func (s *Server) handleListEventsV1NamespacedEventRequest(args [1]string, w http
 	params, err := decodeListEventsV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListEventsV1NamespacedEvent",
-			err,
+			Operation: "ListEventsV1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6085,8 +6085,8 @@ func (s *Server) handleListEventsV1beta1EventForAllNamespacesRequest(args [0]str
 	params, err := decodeListEventsV1beta1EventForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListEventsV1beta1EventForAllNamespaces",
-			err,
+			Operation: "ListEventsV1beta1EventForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6140,8 +6140,8 @@ func (s *Server) handleListEventsV1beta1NamespacedEventRequest(args [1]string, w
 	params, err := decodeListEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListEventsV1beta1NamespacedEvent",
-			err,
+			Operation: "ListEventsV1beta1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6195,8 +6195,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1FlowSchemaRequest(args [0]
 	params, err := decodeListFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListFlowcontrolApiserverV1beta1FlowSchema",
-			err,
+			Operation: "ListFlowcontrolApiserverV1beta1FlowSchema",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6250,8 +6250,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	params, err := decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			err,
+			Operation: "ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6305,8 +6305,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2FlowSchemaRequest(args [0]
 	params, err := decodeListFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListFlowcontrolApiserverV1beta2FlowSchema",
-			err,
+			Operation: "ListFlowcontrolApiserverV1beta2FlowSchema",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6360,8 +6360,8 @@ func (s *Server) handleListFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	params, err := decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			err,
+			Operation: "ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6415,8 +6415,8 @@ func (s *Server) handleListInternalApiserverV1alpha1StorageVersionRequest(args [
 	params, err := decodeListInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListInternalApiserverV1alpha1StorageVersion",
-			err,
+			Operation: "ListInternalApiserverV1alpha1StorageVersion",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6470,8 +6470,8 @@ func (s *Server) handleListNetworkingV1IngressClassRequest(args [0]string, w htt
 	params, err := decodeListNetworkingV1IngressClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListNetworkingV1IngressClass",
-			err,
+			Operation: "ListNetworkingV1IngressClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6525,8 +6525,8 @@ func (s *Server) handleListNetworkingV1IngressForAllNamespacesRequest(args [0]st
 	params, err := decodeListNetworkingV1IngressForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListNetworkingV1IngressForAllNamespaces",
-			err,
+			Operation: "ListNetworkingV1IngressForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6580,8 +6580,8 @@ func (s *Server) handleListNetworkingV1NamespacedIngressRequest(args [1]string, 
 	params, err := decodeListNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListNetworkingV1NamespacedIngress",
-			err,
+			Operation: "ListNetworkingV1NamespacedIngress",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6635,8 +6635,8 @@ func (s *Server) handleListNetworkingV1NamespacedNetworkPolicyRequest(args [1]st
 	params, err := decodeListNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListNetworkingV1NamespacedNetworkPolicy",
-			err,
+			Operation: "ListNetworkingV1NamespacedNetworkPolicy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6690,8 +6690,8 @@ func (s *Server) handleListNetworkingV1NetworkPolicyForAllNamespacesRequest(args
 	params, err := decodeListNetworkingV1NetworkPolicyForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListNetworkingV1NetworkPolicyForAllNamespaces",
-			err,
+			Operation: "ListNetworkingV1NetworkPolicyForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6745,8 +6745,8 @@ func (s *Server) handleListNodeV1RuntimeClassRequest(args [0]string, w http.Resp
 	params, err := decodeListNodeV1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListNodeV1RuntimeClass",
-			err,
+			Operation: "ListNodeV1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6800,8 +6800,8 @@ func (s *Server) handleListNodeV1alpha1RuntimeClassRequest(args [0]string, w htt
 	params, err := decodeListNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListNodeV1alpha1RuntimeClass",
-			err,
+			Operation: "ListNodeV1alpha1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6855,8 +6855,8 @@ func (s *Server) handleListNodeV1beta1RuntimeClassRequest(args [0]string, w http
 	params, err := decodeListNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListNodeV1beta1RuntimeClass",
-			err,
+			Operation: "ListNodeV1beta1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6910,8 +6910,8 @@ func (s *Server) handleListPolicyV1NamespacedPodDisruptionBudgetRequest(args [1]
 	params, err := decodeListPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPolicyV1NamespacedPodDisruptionBudget",
-			err,
+			Operation: "ListPolicyV1NamespacedPodDisruptionBudget",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -6965,8 +6965,8 @@ func (s *Server) handleListPolicyV1PodDisruptionBudgetForAllNamespacesRequest(ar
 	params, err := decodeListPolicyV1PodDisruptionBudgetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPolicyV1PodDisruptionBudgetForAllNamespaces",
-			err,
+			Operation: "ListPolicyV1PodDisruptionBudgetForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7020,8 +7020,8 @@ func (s *Server) handleListPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	params, err := decodeListPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPolicyV1beta1NamespacedPodDisruptionBudget",
-			err,
+			Operation: "ListPolicyV1beta1NamespacedPodDisruptionBudget",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7075,8 +7075,8 @@ func (s *Server) handleListPolicyV1beta1PodDisruptionBudgetForAllNamespacesReque
 	params, err := decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
-			err,
+			Operation: "ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7130,8 +7130,8 @@ func (s *Server) handleListPolicyV1beta1PodSecurityPolicyRequest(args [0]string,
 	params, err := decodeListPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPolicyV1beta1PodSecurityPolicy",
-			err,
+			Operation: "ListPolicyV1beta1PodSecurityPolicy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7185,8 +7185,8 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleRequest(args [0]string,
 	params, err := decodeListRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListRbacAuthorizationV1ClusterRole",
-			err,
+			Operation: "ListRbacAuthorizationV1ClusterRole",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7240,8 +7240,8 @@ func (s *Server) handleListRbacAuthorizationV1ClusterRoleBindingRequest(args [0]
 	params, err := decodeListRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListRbacAuthorizationV1ClusterRoleBinding",
-			err,
+			Operation: "ListRbacAuthorizationV1ClusterRoleBinding",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7295,8 +7295,8 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleRequest(args [1]stri
 	params, err := decodeListRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListRbacAuthorizationV1NamespacedRole",
-			err,
+			Operation: "ListRbacAuthorizationV1NamespacedRole",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7350,8 +7350,8 @@ func (s *Server) handleListRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	params, err := decodeListRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListRbacAuthorizationV1NamespacedRoleBinding",
-			err,
+			Operation: "ListRbacAuthorizationV1NamespacedRoleBinding",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7405,8 +7405,8 @@ func (s *Server) handleListRbacAuthorizationV1RoleBindingForAllNamespacesRequest
 	params, err := decodeListRbacAuthorizationV1RoleBindingForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListRbacAuthorizationV1RoleBindingForAllNamespaces",
-			err,
+			Operation: "ListRbacAuthorizationV1RoleBindingForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7460,8 +7460,8 @@ func (s *Server) handleListRbacAuthorizationV1RoleForAllNamespacesRequest(args [
 	params, err := decodeListRbacAuthorizationV1RoleForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListRbacAuthorizationV1RoleForAllNamespaces",
-			err,
+			Operation: "ListRbacAuthorizationV1RoleForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7515,8 +7515,8 @@ func (s *Server) handleListSchedulingV1PriorityClassRequest(args [0]string, w ht
 	params, err := decodeListSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListSchedulingV1PriorityClass",
-			err,
+			Operation: "ListSchedulingV1PriorityClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7570,8 +7570,8 @@ func (s *Server) handleListStorageV1CSIDriverRequest(args [0]string, w http.Resp
 	params, err := decodeListStorageV1CSIDriverParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListStorageV1CSIDriver",
-			err,
+			Operation: "ListStorageV1CSIDriver",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7625,8 +7625,8 @@ func (s *Server) handleListStorageV1CSINodeRequest(args [0]string, w http.Respon
 	params, err := decodeListStorageV1CSINodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListStorageV1CSINode",
-			err,
+			Operation: "ListStorageV1CSINode",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7680,8 +7680,8 @@ func (s *Server) handleListStorageV1StorageClassRequest(args [0]string, w http.R
 	params, err := decodeListStorageV1StorageClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListStorageV1StorageClass",
-			err,
+			Operation: "ListStorageV1StorageClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7735,8 +7735,8 @@ func (s *Server) handleListStorageV1VolumeAttachmentRequest(args [0]string, w ht
 	params, err := decodeListStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListStorageV1VolumeAttachment",
-			err,
+			Operation: "ListStorageV1VolumeAttachment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7790,8 +7790,8 @@ func (s *Server) handleListStorageV1alpha1CSIStorageCapacityForAllNamespacesRequ
 	params, err := decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
-			err,
+			Operation: "ListStorageV1alpha1CSIStorageCapacityForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7845,8 +7845,8 @@ func (s *Server) handleListStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	params, err := decodeListStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListStorageV1alpha1NamespacedCSIStorageCapacity",
-			err,
+			Operation: "ListStorageV1alpha1NamespacedCSIStorageCapacity",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7900,8 +7900,8 @@ func (s *Server) handleListStorageV1beta1CSIStorageCapacityForAllNamespacesReque
 	params, err := decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
-			err,
+			Operation: "ListStorageV1beta1CSIStorageCapacityForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -7955,8 +7955,8 @@ func (s *Server) handleListStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	params, err := decodeListStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListStorageV1beta1NamespacedCSIStorageCapacity",
-			err,
+			Operation: "ListStorageV1beta1NamespacedCSIStorageCapacity",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8010,8 +8010,8 @@ func (s *Server) handleLogFileHandlerRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeLogFileHandlerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"LogFileHandler",
-			err,
+			Operation: "LogFileHandler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8111,8 +8111,8 @@ func (s *Server) handleReadAdmissionregistrationV1MutatingWebhookConfigurationRe
 	params, err := decodeReadAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAdmissionregistrationV1MutatingWebhookConfiguration",
-			err,
+			Operation: "ReadAdmissionregistrationV1MutatingWebhookConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8166,8 +8166,8 @@ func (s *Server) handleReadAdmissionregistrationV1ValidatingWebhookConfiguration
 	params, err := decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
-			err,
+			Operation: "ReadAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8221,8 +8221,8 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionRequest(args [
 	params, err := decodeReadApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadApiextensionsV1CustomResourceDefinition",
-			err,
+			Operation: "ReadApiextensionsV1CustomResourceDefinition",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8276,8 +8276,8 @@ func (s *Server) handleReadApiextensionsV1CustomResourceDefinitionStatusRequest(
 	params, err := decodeReadApiextensionsV1CustomResourceDefinitionStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadApiextensionsV1CustomResourceDefinitionStatus",
-			err,
+			Operation: "ReadApiextensionsV1CustomResourceDefinitionStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8331,8 +8331,8 @@ func (s *Server) handleReadApiregistrationV1APIServiceRequest(args [1]string, w 
 	params, err := decodeReadApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadApiregistrationV1APIService",
-			err,
+			Operation: "ReadApiregistrationV1APIService",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8386,8 +8386,8 @@ func (s *Server) handleReadApiregistrationV1APIServiceStatusRequest(args [1]stri
 	params, err := decodeReadApiregistrationV1APIServiceStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadApiregistrationV1APIServiceStatus",
-			err,
+			Operation: "ReadApiregistrationV1APIServiceStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8441,8 +8441,8 @@ func (s *Server) handleReadAppsV1NamespacedControllerRevisionRequest(args [2]str
 	params, err := decodeReadAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedControllerRevision",
-			err,
+			Operation: "ReadAppsV1NamespacedControllerRevision",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8496,8 +8496,8 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetRequest(args [2]string, w ht
 	params, err := decodeReadAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedDaemonSet",
-			err,
+			Operation: "ReadAppsV1NamespacedDaemonSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8551,8 +8551,8 @@ func (s *Server) handleReadAppsV1NamespacedDaemonSetStatusRequest(args [2]string
 	params, err := decodeReadAppsV1NamespacedDaemonSetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedDaemonSetStatus",
-			err,
+			Operation: "ReadAppsV1NamespacedDaemonSetStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8606,8 +8606,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentRequest(args [2]string, w h
 	params, err := decodeReadAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedDeployment",
-			err,
+			Operation: "ReadAppsV1NamespacedDeployment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8661,8 +8661,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentScaleRequest(args [2]string
 	params, err := decodeReadAppsV1NamespacedDeploymentScaleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedDeploymentScale",
-			err,
+			Operation: "ReadAppsV1NamespacedDeploymentScale",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8716,8 +8716,8 @@ func (s *Server) handleReadAppsV1NamespacedDeploymentStatusRequest(args [2]strin
 	params, err := decodeReadAppsV1NamespacedDeploymentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedDeploymentStatus",
-			err,
+			Operation: "ReadAppsV1NamespacedDeploymentStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8771,8 +8771,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetRequest(args [2]string, w h
 	params, err := decodeReadAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedReplicaSet",
-			err,
+			Operation: "ReadAppsV1NamespacedReplicaSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8826,8 +8826,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetScaleRequest(args [2]string
 	params, err := decodeReadAppsV1NamespacedReplicaSetScaleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedReplicaSetScale",
-			err,
+			Operation: "ReadAppsV1NamespacedReplicaSetScale",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8881,8 +8881,8 @@ func (s *Server) handleReadAppsV1NamespacedReplicaSetStatusRequest(args [2]strin
 	params, err := decodeReadAppsV1NamespacedReplicaSetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedReplicaSetStatus",
-			err,
+			Operation: "ReadAppsV1NamespacedReplicaSetStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8936,8 +8936,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetRequest(args [2]string, w 
 	params, err := decodeReadAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedStatefulSet",
-			err,
+			Operation: "ReadAppsV1NamespacedStatefulSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -8991,8 +8991,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetScaleRequest(args [2]strin
 	params, err := decodeReadAppsV1NamespacedStatefulSetScaleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedStatefulSetScale",
-			err,
+			Operation: "ReadAppsV1NamespacedStatefulSetScale",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9046,8 +9046,8 @@ func (s *Server) handleReadAppsV1NamespacedStatefulSetStatusRequest(args [2]stri
 	params, err := decodeReadAppsV1NamespacedStatefulSetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAppsV1NamespacedStatefulSetStatus",
-			err,
+			Operation: "ReadAppsV1NamespacedStatefulSetStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9101,8 +9101,8 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerRequest
 	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "ReadAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9156,8 +9156,8 @@ func (s *Server) handleReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusR
 	params, err := decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
-			err,
+			Operation: "ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9211,8 +9211,8 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRe
 	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9266,8 +9266,8 @@ func (s *Server) handleReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerSt
 	params, err := decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
-			err,
+			Operation: "ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9321,8 +9321,8 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRe
 	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9376,8 +9376,8 @@ func (s *Server) handleReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerSt
 	params, err := decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
-			err,
+			Operation: "ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9431,8 +9431,8 @@ func (s *Server) handleReadBatchV1NamespacedCronJobRequest(args [2]string, w htt
 	params, err := decodeReadBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadBatchV1NamespacedCronJob",
-			err,
+			Operation: "ReadBatchV1NamespacedCronJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9486,8 +9486,8 @@ func (s *Server) handleReadBatchV1NamespacedCronJobStatusRequest(args [2]string,
 	params, err := decodeReadBatchV1NamespacedCronJobStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadBatchV1NamespacedCronJobStatus",
-			err,
+			Operation: "ReadBatchV1NamespacedCronJobStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9541,8 +9541,8 @@ func (s *Server) handleReadBatchV1NamespacedJobRequest(args [2]string, w http.Re
 	params, err := decodeReadBatchV1NamespacedJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadBatchV1NamespacedJob",
-			err,
+			Operation: "ReadBatchV1NamespacedJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9596,8 +9596,8 @@ func (s *Server) handleReadBatchV1NamespacedJobStatusRequest(args [2]string, w h
 	params, err := decodeReadBatchV1NamespacedJobStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadBatchV1NamespacedJobStatus",
-			err,
+			Operation: "ReadBatchV1NamespacedJobStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9651,8 +9651,8 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobRequest(args [2]string, 
 	params, err := decodeReadBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadBatchV1beta1NamespacedCronJob",
-			err,
+			Operation: "ReadBatchV1beta1NamespacedCronJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9706,8 +9706,8 @@ func (s *Server) handleReadBatchV1beta1NamespacedCronJobStatusRequest(args [2]st
 	params, err := decodeReadBatchV1beta1NamespacedCronJobStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadBatchV1beta1NamespacedCronJobStatus",
-			err,
+			Operation: "ReadBatchV1beta1NamespacedCronJobStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9761,8 +9761,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestRequest(args [
 	params, err := decodeReadCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCertificatesV1CertificateSigningRequest",
-			err,
+			Operation: "ReadCertificatesV1CertificateSigningRequest",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9816,8 +9816,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestApprovalReques
 	params, err := decodeReadCertificatesV1CertificateSigningRequestApprovalParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCertificatesV1CertificateSigningRequestApproval",
-			err,
+			Operation: "ReadCertificatesV1CertificateSigningRequestApproval",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9871,8 +9871,8 @@ func (s *Server) handleReadCertificatesV1CertificateSigningRequestStatusRequest(
 	params, err := decodeReadCertificatesV1CertificateSigningRequestStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCertificatesV1CertificateSigningRequestStatus",
-			err,
+			Operation: "ReadCertificatesV1CertificateSigningRequestStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9926,8 +9926,8 @@ func (s *Server) handleReadCoordinationV1NamespacedLeaseRequest(args [2]string, 
 	params, err := decodeReadCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoordinationV1NamespacedLease",
-			err,
+			Operation: "ReadCoordinationV1NamespacedLease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -9981,8 +9981,8 @@ func (s *Server) handleReadCoreV1ComponentStatusRequest(args [1]string, w http.R
 	params, err := decodeReadCoreV1ComponentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1ComponentStatus",
-			err,
+			Operation: "ReadCoreV1ComponentStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10036,8 +10036,8 @@ func (s *Server) handleReadCoreV1NamespaceRequest(args [1]string, w http.Respons
 	params, err := decodeReadCoreV1NamespaceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1Namespace",
-			err,
+			Operation: "ReadCoreV1Namespace",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10091,8 +10091,8 @@ func (s *Server) handleReadCoreV1NamespaceStatusRequest(args [1]string, w http.R
 	params, err := decodeReadCoreV1NamespaceStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespaceStatus",
-			err,
+			Operation: "ReadCoreV1NamespaceStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10146,8 +10146,8 @@ func (s *Server) handleReadCoreV1NamespacedConfigMapRequest(args [2]string, w ht
 	params, err := decodeReadCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedConfigMap",
-			err,
+			Operation: "ReadCoreV1NamespacedConfigMap",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10201,8 +10201,8 @@ func (s *Server) handleReadCoreV1NamespacedEndpointsRequest(args [2]string, w ht
 	params, err := decodeReadCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedEndpoints",
-			err,
+			Operation: "ReadCoreV1NamespacedEndpoints",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10256,8 +10256,8 @@ func (s *Server) handleReadCoreV1NamespacedEventRequest(args [2]string, w http.R
 	params, err := decodeReadCoreV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedEvent",
-			err,
+			Operation: "ReadCoreV1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10311,8 +10311,8 @@ func (s *Server) handleReadCoreV1NamespacedLimitRangeRequest(args [2]string, w h
 	params, err := decodeReadCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedLimitRange",
-			err,
+			Operation: "ReadCoreV1NamespacedLimitRange",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10366,8 +10366,8 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimRequest(args [2]
 	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedPersistentVolumeClaim",
-			err,
+			Operation: "ReadCoreV1NamespacedPersistentVolumeClaim",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10421,8 +10421,8 @@ func (s *Server) handleReadCoreV1NamespacedPersistentVolumeClaimStatusRequest(ar
 	params, err := decodeReadCoreV1NamespacedPersistentVolumeClaimStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedPersistentVolumeClaimStatus",
-			err,
+			Operation: "ReadCoreV1NamespacedPersistentVolumeClaimStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10476,8 +10476,8 @@ func (s *Server) handleReadCoreV1NamespacedPodRequest(args [2]string, w http.Res
 	params, err := decodeReadCoreV1NamespacedPodParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedPod",
-			err,
+			Operation: "ReadCoreV1NamespacedPod",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10531,8 +10531,8 @@ func (s *Server) handleReadCoreV1NamespacedPodEphemeralcontainersRequest(args [2
 	params, err := decodeReadCoreV1NamespacedPodEphemeralcontainersParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedPodEphemeralcontainers",
-			err,
+			Operation: "ReadCoreV1NamespacedPodEphemeralcontainers",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10586,8 +10586,8 @@ func (s *Server) handleReadCoreV1NamespacedPodLogRequest(args [2]string, w http.
 	params, err := decodeReadCoreV1NamespacedPodLogParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedPodLog",
-			err,
+			Operation: "ReadCoreV1NamespacedPodLog",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10641,8 +10641,8 @@ func (s *Server) handleReadCoreV1NamespacedPodStatusRequest(args [2]string, w ht
 	params, err := decodeReadCoreV1NamespacedPodStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedPodStatus",
-			err,
+			Operation: "ReadCoreV1NamespacedPodStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10696,8 +10696,8 @@ func (s *Server) handleReadCoreV1NamespacedPodTemplateRequest(args [2]string, w 
 	params, err := decodeReadCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedPodTemplate",
-			err,
+			Operation: "ReadCoreV1NamespacedPodTemplate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10751,8 +10751,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerRequest(args [2]
 	params, err := decodeReadCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedReplicationController",
-			err,
+			Operation: "ReadCoreV1NamespacedReplicationController",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10806,8 +10806,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerScaleRequest(arg
 	params, err := decodeReadCoreV1NamespacedReplicationControllerScaleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedReplicationControllerScale",
-			err,
+			Operation: "ReadCoreV1NamespacedReplicationControllerScale",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10861,8 +10861,8 @@ func (s *Server) handleReadCoreV1NamespacedReplicationControllerStatusRequest(ar
 	params, err := decodeReadCoreV1NamespacedReplicationControllerStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedReplicationControllerStatus",
-			err,
+			Operation: "ReadCoreV1NamespacedReplicationControllerStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10916,8 +10916,8 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaRequest(args [2]string, 
 	params, err := decodeReadCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedResourceQuota",
-			err,
+			Operation: "ReadCoreV1NamespacedResourceQuota",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -10971,8 +10971,8 @@ func (s *Server) handleReadCoreV1NamespacedResourceQuotaStatusRequest(args [2]st
 	params, err := decodeReadCoreV1NamespacedResourceQuotaStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedResourceQuotaStatus",
-			err,
+			Operation: "ReadCoreV1NamespacedResourceQuotaStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11026,8 +11026,8 @@ func (s *Server) handleReadCoreV1NamespacedSecretRequest(args [2]string, w http.
 	params, err := decodeReadCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedSecret",
-			err,
+			Operation: "ReadCoreV1NamespacedSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11081,8 +11081,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceRequest(args [2]string, w http
 	params, err := decodeReadCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedService",
-			err,
+			Operation: "ReadCoreV1NamespacedService",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11136,8 +11136,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceAccountRequest(args [2]string,
 	params, err := decodeReadCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedServiceAccount",
-			err,
+			Operation: "ReadCoreV1NamespacedServiceAccount",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11191,8 +11191,8 @@ func (s *Server) handleReadCoreV1NamespacedServiceStatusRequest(args [2]string, 
 	params, err := decodeReadCoreV1NamespacedServiceStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NamespacedServiceStatus",
-			err,
+			Operation: "ReadCoreV1NamespacedServiceStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11246,8 +11246,8 @@ func (s *Server) handleReadCoreV1NodeRequest(args [1]string, w http.ResponseWrit
 	params, err := decodeReadCoreV1NodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1Node",
-			err,
+			Operation: "ReadCoreV1Node",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11301,8 +11301,8 @@ func (s *Server) handleReadCoreV1NodeStatusRequest(args [1]string, w http.Respon
 	params, err := decodeReadCoreV1NodeStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1NodeStatus",
-			err,
+			Operation: "ReadCoreV1NodeStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11356,8 +11356,8 @@ func (s *Server) handleReadCoreV1PersistentVolumeRequest(args [1]string, w http.
 	params, err := decodeReadCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1PersistentVolume",
-			err,
+			Operation: "ReadCoreV1PersistentVolume",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11411,8 +11411,8 @@ func (s *Server) handleReadCoreV1PersistentVolumeStatusRequest(args [1]string, w
 	params, err := decodeReadCoreV1PersistentVolumeStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadCoreV1PersistentVolumeStatus",
-			err,
+			Operation: "ReadCoreV1PersistentVolumeStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11466,8 +11466,8 @@ func (s *Server) handleReadDiscoveryV1NamespacedEndpointSliceRequest(args [2]str
 	params, err := decodeReadDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadDiscoveryV1NamespacedEndpointSlice",
-			err,
+			Operation: "ReadDiscoveryV1NamespacedEndpointSlice",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11521,8 +11521,8 @@ func (s *Server) handleReadDiscoveryV1beta1NamespacedEndpointSliceRequest(args [
 	params, err := decodeReadDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadDiscoveryV1beta1NamespacedEndpointSlice",
-			err,
+			Operation: "ReadDiscoveryV1beta1NamespacedEndpointSlice",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11576,8 +11576,8 @@ func (s *Server) handleReadEventsV1NamespacedEventRequest(args [2]string, w http
 	params, err := decodeReadEventsV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadEventsV1NamespacedEvent",
-			err,
+			Operation: "ReadEventsV1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11631,8 +11631,8 @@ func (s *Server) handleReadEventsV1beta1NamespacedEventRequest(args [2]string, w
 	params, err := decodeReadEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadEventsV1beta1NamespacedEvent",
-			err,
+			Operation: "ReadEventsV1beta1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11686,8 +11686,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1]
 	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadFlowcontrolApiserverV1beta1FlowSchema",
-			err,
+			Operation: "ReadFlowcontrolApiserverV1beta1FlowSchema",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11741,8 +11741,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1FlowSchemaStatusRequest(ar
 	params, err := decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
-			err,
+			Operation: "ReadFlowcontrolApiserverV1beta1FlowSchemaStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11796,8 +11796,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			err,
+			Operation: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11851,8 +11851,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration
 	params, err := decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
-			err,
+			Operation: "ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11906,8 +11906,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1]
 	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadFlowcontrolApiserverV1beta2FlowSchema",
-			err,
+			Operation: "ReadFlowcontrolApiserverV1beta2FlowSchema",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -11961,8 +11961,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2FlowSchemaStatusRequest(ar
 	params, err := decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
-			err,
+			Operation: "ReadFlowcontrolApiserverV1beta2FlowSchemaStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12016,8 +12016,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			err,
+			Operation: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12071,8 +12071,8 @@ func (s *Server) handleReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration
 	params, err := decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
-			err,
+			Operation: "ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12126,8 +12126,8 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionRequest(args [
 	params, err := decodeReadInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadInternalApiserverV1alpha1StorageVersion",
-			err,
+			Operation: "ReadInternalApiserverV1alpha1StorageVersion",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12181,8 +12181,8 @@ func (s *Server) handleReadInternalApiserverV1alpha1StorageVersionStatusRequest(
 	params, err := decodeReadInternalApiserverV1alpha1StorageVersionStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadInternalApiserverV1alpha1StorageVersionStatus",
-			err,
+			Operation: "ReadInternalApiserverV1alpha1StorageVersionStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12236,8 +12236,8 @@ func (s *Server) handleReadNetworkingV1IngressClassRequest(args [1]string, w htt
 	params, err := decodeReadNetworkingV1IngressClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadNetworkingV1IngressClass",
-			err,
+			Operation: "ReadNetworkingV1IngressClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12291,8 +12291,8 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressRequest(args [2]string, 
 	params, err := decodeReadNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadNetworkingV1NamespacedIngress",
-			err,
+			Operation: "ReadNetworkingV1NamespacedIngress",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12346,8 +12346,8 @@ func (s *Server) handleReadNetworkingV1NamespacedIngressStatusRequest(args [2]st
 	params, err := decodeReadNetworkingV1NamespacedIngressStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadNetworkingV1NamespacedIngressStatus",
-			err,
+			Operation: "ReadNetworkingV1NamespacedIngressStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12401,8 +12401,8 @@ func (s *Server) handleReadNetworkingV1NamespacedNetworkPolicyRequest(args [2]st
 	params, err := decodeReadNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadNetworkingV1NamespacedNetworkPolicy",
-			err,
+			Operation: "ReadNetworkingV1NamespacedNetworkPolicy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12456,8 +12456,8 @@ func (s *Server) handleReadNodeV1RuntimeClassRequest(args [1]string, w http.Resp
 	params, err := decodeReadNodeV1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadNodeV1RuntimeClass",
-			err,
+			Operation: "ReadNodeV1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12511,8 +12511,8 @@ func (s *Server) handleReadNodeV1alpha1RuntimeClassRequest(args [1]string, w htt
 	params, err := decodeReadNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadNodeV1alpha1RuntimeClass",
-			err,
+			Operation: "ReadNodeV1alpha1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12566,8 +12566,8 @@ func (s *Server) handleReadNodeV1beta1RuntimeClassRequest(args [1]string, w http
 	params, err := decodeReadNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadNodeV1beta1RuntimeClass",
-			err,
+			Operation: "ReadNodeV1beta1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12621,8 +12621,8 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetRequest(args [2]
 	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadPolicyV1NamespacedPodDisruptionBudget",
-			err,
+			Operation: "ReadPolicyV1NamespacedPodDisruptionBudget",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12676,8 +12676,8 @@ func (s *Server) handleReadPolicyV1NamespacedPodDisruptionBudgetStatusRequest(ar
 	params, err := decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
-			err,
+			Operation: "ReadPolicyV1NamespacedPodDisruptionBudgetStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12731,8 +12731,8 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetRequest(arg
 	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadPolicyV1beta1NamespacedPodDisruptionBudget",
-			err,
+			Operation: "ReadPolicyV1beta1NamespacedPodDisruptionBudget",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12786,8 +12786,8 @@ func (s *Server) handleReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusReque
 	params, err := decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
-			err,
+			Operation: "ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12841,8 +12841,8 @@ func (s *Server) handleReadPolicyV1beta1PodSecurityPolicyRequest(args [1]string,
 	params, err := decodeReadPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadPolicyV1beta1PodSecurityPolicy",
-			err,
+			Operation: "ReadPolicyV1beta1PodSecurityPolicy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12896,8 +12896,8 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleRequest(args [1]string,
 	params, err := decodeReadRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadRbacAuthorizationV1ClusterRole",
-			err,
+			Operation: "ReadRbacAuthorizationV1ClusterRole",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -12951,8 +12951,8 @@ func (s *Server) handleReadRbacAuthorizationV1ClusterRoleBindingRequest(args [1]
 	params, err := decodeReadRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadRbacAuthorizationV1ClusterRoleBinding",
-			err,
+			Operation: "ReadRbacAuthorizationV1ClusterRoleBinding",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13006,8 +13006,8 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleRequest(args [2]stri
 	params, err := decodeReadRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadRbacAuthorizationV1NamespacedRole",
-			err,
+			Operation: "ReadRbacAuthorizationV1NamespacedRole",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13061,8 +13061,8 @@ func (s *Server) handleReadRbacAuthorizationV1NamespacedRoleBindingRequest(args 
 	params, err := decodeReadRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadRbacAuthorizationV1NamespacedRoleBinding",
-			err,
+			Operation: "ReadRbacAuthorizationV1NamespacedRoleBinding",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13116,8 +13116,8 @@ func (s *Server) handleReadSchedulingV1PriorityClassRequest(args [1]string, w ht
 	params, err := decodeReadSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadSchedulingV1PriorityClass",
-			err,
+			Operation: "ReadSchedulingV1PriorityClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13171,8 +13171,8 @@ func (s *Server) handleReadStorageV1CSIDriverRequest(args [1]string, w http.Resp
 	params, err := decodeReadStorageV1CSIDriverParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadStorageV1CSIDriver",
-			err,
+			Operation: "ReadStorageV1CSIDriver",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13226,8 +13226,8 @@ func (s *Server) handleReadStorageV1CSINodeRequest(args [1]string, w http.Respon
 	params, err := decodeReadStorageV1CSINodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadStorageV1CSINode",
-			err,
+			Operation: "ReadStorageV1CSINode",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13281,8 +13281,8 @@ func (s *Server) handleReadStorageV1StorageClassRequest(args [1]string, w http.R
 	params, err := decodeReadStorageV1StorageClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadStorageV1StorageClass",
-			err,
+			Operation: "ReadStorageV1StorageClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13336,8 +13336,8 @@ func (s *Server) handleReadStorageV1VolumeAttachmentRequest(args [1]string, w ht
 	params, err := decodeReadStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadStorageV1VolumeAttachment",
-			err,
+			Operation: "ReadStorageV1VolumeAttachment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13391,8 +13391,8 @@ func (s *Server) handleReadStorageV1VolumeAttachmentStatusRequest(args [1]string
 	params, err := decodeReadStorageV1VolumeAttachmentStatusParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadStorageV1VolumeAttachmentStatus",
-			err,
+			Operation: "ReadStorageV1VolumeAttachmentStatus",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13446,8 +13446,8 @@ func (s *Server) handleReadStorageV1alpha1NamespacedCSIStorageCapacityRequest(ar
 	params, err := decodeReadStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadStorageV1alpha1NamespacedCSIStorageCapacity",
-			err,
+			Operation: "ReadStorageV1alpha1NamespacedCSIStorageCapacity",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13501,8 +13501,8 @@ func (s *Server) handleReadStorageV1beta1NamespacedCSIStorageCapacityRequest(arg
 	params, err := decodeReadStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ReadStorageV1beta1NamespacedCSIStorageCapacity",
-			err,
+			Operation: "ReadStorageV1beta1NamespacedCSIStorageCapacity",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13556,8 +13556,8 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationR
 	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAdmissionregistrationV1MutatingWebhookConfiguration",
-			err,
+			Operation: "WatchAdmissionregistrationV1MutatingWebhookConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13611,8 +13611,8 @@ func (s *Server) handleWatchAdmissionregistrationV1MutatingWebhookConfigurationL
 	params, err := decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
-			err,
+			Operation: "WatchAdmissionregistrationV1MutatingWebhookConfigurationList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13666,8 +13666,8 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
-			err,
+			Operation: "WatchAdmissionregistrationV1ValidatingWebhookConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13721,8 +13721,8 @@ func (s *Server) handleWatchAdmissionregistrationV1ValidatingWebhookConfiguratio
 	params, err := decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
-			err,
+			Operation: "WatchAdmissionregistrationV1ValidatingWebhookConfigurationList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13776,8 +13776,8 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionRequest(args 
 	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchApiextensionsV1CustomResourceDefinition",
-			err,
+			Operation: "WatchApiextensionsV1CustomResourceDefinition",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13831,8 +13831,8 @@ func (s *Server) handleWatchApiextensionsV1CustomResourceDefinitionListRequest(a
 	params, err := decodeWatchApiextensionsV1CustomResourceDefinitionListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchApiextensionsV1CustomResourceDefinitionList",
-			err,
+			Operation: "WatchApiextensionsV1CustomResourceDefinitionList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13886,8 +13886,8 @@ func (s *Server) handleWatchApiregistrationV1APIServiceRequest(args [1]string, w
 	params, err := decodeWatchApiregistrationV1APIServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchApiregistrationV1APIService",
-			err,
+			Operation: "WatchApiregistrationV1APIService",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13941,8 +13941,8 @@ func (s *Server) handleWatchApiregistrationV1APIServiceListRequest(args [0]strin
 	params, err := decodeWatchApiregistrationV1APIServiceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchApiregistrationV1APIServiceList",
-			err,
+			Operation: "WatchApiregistrationV1APIServiceList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -13996,8 +13996,8 @@ func (s *Server) handleWatchAppsV1ControllerRevisionListForAllNamespacesRequest(
 	params, err := decodeWatchAppsV1ControllerRevisionListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1ControllerRevisionListForAllNamespaces",
-			err,
+			Operation: "WatchAppsV1ControllerRevisionListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14051,8 +14051,8 @@ func (s *Server) handleWatchAppsV1DaemonSetListForAllNamespacesRequest(args [0]s
 	params, err := decodeWatchAppsV1DaemonSetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1DaemonSetListForAllNamespaces",
-			err,
+			Operation: "WatchAppsV1DaemonSetListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14106,8 +14106,8 @@ func (s *Server) handleWatchAppsV1DeploymentListForAllNamespacesRequest(args [0]
 	params, err := decodeWatchAppsV1DeploymentListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1DeploymentListForAllNamespaces",
-			err,
+			Operation: "WatchAppsV1DeploymentListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14161,8 +14161,8 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionRequest(args [2]st
 	params, err := decodeWatchAppsV1NamespacedControllerRevisionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedControllerRevision",
-			err,
+			Operation: "WatchAppsV1NamespacedControllerRevision",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14216,8 +14216,8 @@ func (s *Server) handleWatchAppsV1NamespacedControllerRevisionListRequest(args [
 	params, err := decodeWatchAppsV1NamespacedControllerRevisionListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedControllerRevisionList",
-			err,
+			Operation: "WatchAppsV1NamespacedControllerRevisionList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14271,8 +14271,8 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetRequest(args [2]string, w h
 	params, err := decodeWatchAppsV1NamespacedDaemonSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedDaemonSet",
-			err,
+			Operation: "WatchAppsV1NamespacedDaemonSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14326,8 +14326,8 @@ func (s *Server) handleWatchAppsV1NamespacedDaemonSetListRequest(args [1]string,
 	params, err := decodeWatchAppsV1NamespacedDaemonSetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedDaemonSetList",
-			err,
+			Operation: "WatchAppsV1NamespacedDaemonSetList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14381,8 +14381,8 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentRequest(args [2]string, w 
 	params, err := decodeWatchAppsV1NamespacedDeploymentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedDeployment",
-			err,
+			Operation: "WatchAppsV1NamespacedDeployment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14436,8 +14436,8 @@ func (s *Server) handleWatchAppsV1NamespacedDeploymentListRequest(args [1]string
 	params, err := decodeWatchAppsV1NamespacedDeploymentListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedDeploymentList",
-			err,
+			Operation: "WatchAppsV1NamespacedDeploymentList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14491,8 +14491,8 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetRequest(args [2]string, w 
 	params, err := decodeWatchAppsV1NamespacedReplicaSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedReplicaSet",
-			err,
+			Operation: "WatchAppsV1NamespacedReplicaSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14546,8 +14546,8 @@ func (s *Server) handleWatchAppsV1NamespacedReplicaSetListRequest(args [1]string
 	params, err := decodeWatchAppsV1NamespacedReplicaSetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedReplicaSetList",
-			err,
+			Operation: "WatchAppsV1NamespacedReplicaSetList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14601,8 +14601,8 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetRequest(args [2]string, w
 	params, err := decodeWatchAppsV1NamespacedStatefulSetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedStatefulSet",
-			err,
+			Operation: "WatchAppsV1NamespacedStatefulSet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14656,8 +14656,8 @@ func (s *Server) handleWatchAppsV1NamespacedStatefulSetListRequest(args [1]strin
 	params, err := decodeWatchAppsV1NamespacedStatefulSetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1NamespacedStatefulSetList",
-			err,
+			Operation: "WatchAppsV1NamespacedStatefulSetList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14711,8 +14711,8 @@ func (s *Server) handleWatchAppsV1ReplicaSetListForAllNamespacesRequest(args [0]
 	params, err := decodeWatchAppsV1ReplicaSetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1ReplicaSetListForAllNamespaces",
-			err,
+			Operation: "WatchAppsV1ReplicaSetListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14766,8 +14766,8 @@ func (s *Server) handleWatchAppsV1StatefulSetListForAllNamespacesRequest(args [0
 	params, err := decodeWatchAppsV1StatefulSetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAppsV1StatefulSetListForAllNamespaces",
-			err,
+			Operation: "WatchAppsV1StatefulSetListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14821,8 +14821,8 @@ func (s *Server) handleWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamesp
 	params, err := decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
-			err,
+			Operation: "WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14876,8 +14876,8 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerReques
 	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14931,8 +14931,8 @@ func (s *Server) handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListRe
 	params, err := decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
-			err,
+			Operation: "WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -14986,8 +14986,8 @@ func (s *Server) handleWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllN
 	params, err := decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
-			err,
+			Operation: "WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15041,8 +15041,8 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerR
 	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15096,8 +15096,8 @@ func (s *Server) handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerL
 	params, err := decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
-			err,
+			Operation: "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15151,8 +15151,8 @@ func (s *Server) handleWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllN
 	params, err := decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
-			err,
+			Operation: "WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15206,8 +15206,8 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerR
 	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
-			err,
+			Operation: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15261,8 +15261,8 @@ func (s *Server) handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerL
 	params, err := decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
-			err,
+			Operation: "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15316,8 +15316,8 @@ func (s *Server) handleWatchBatchV1CronJobListForAllNamespacesRequest(args [0]st
 	params, err := decodeWatchBatchV1CronJobListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1CronJobListForAllNamespaces",
-			err,
+			Operation: "WatchBatchV1CronJobListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15371,8 +15371,8 @@ func (s *Server) handleWatchBatchV1JobListForAllNamespacesRequest(args [0]string
 	params, err := decodeWatchBatchV1JobListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1JobListForAllNamespaces",
-			err,
+			Operation: "WatchBatchV1JobListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15426,8 +15426,8 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobRequest(args [2]string, w ht
 	params, err := decodeWatchBatchV1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1NamespacedCronJob",
-			err,
+			Operation: "WatchBatchV1NamespacedCronJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15481,8 +15481,8 @@ func (s *Server) handleWatchBatchV1NamespacedCronJobListRequest(args [1]string, 
 	params, err := decodeWatchBatchV1NamespacedCronJobListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1NamespacedCronJobList",
-			err,
+			Operation: "WatchBatchV1NamespacedCronJobList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15536,8 +15536,8 @@ func (s *Server) handleWatchBatchV1NamespacedJobRequest(args [2]string, w http.R
 	params, err := decodeWatchBatchV1NamespacedJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1NamespacedJob",
-			err,
+			Operation: "WatchBatchV1NamespacedJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15591,8 +15591,8 @@ func (s *Server) handleWatchBatchV1NamespacedJobListRequest(args [1]string, w ht
 	params, err := decodeWatchBatchV1NamespacedJobListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1NamespacedJobList",
-			err,
+			Operation: "WatchBatchV1NamespacedJobList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15646,8 +15646,8 @@ func (s *Server) handleWatchBatchV1beta1CronJobListForAllNamespacesRequest(args 
 	params, err := decodeWatchBatchV1beta1CronJobListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1beta1CronJobListForAllNamespaces",
-			err,
+			Operation: "WatchBatchV1beta1CronJobListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15701,8 +15701,8 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobRequest(args [2]string,
 	params, err := decodeWatchBatchV1beta1NamespacedCronJobParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1beta1NamespacedCronJob",
-			err,
+			Operation: "WatchBatchV1beta1NamespacedCronJob",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15756,8 +15756,8 @@ func (s *Server) handleWatchBatchV1beta1NamespacedCronJobListRequest(args [1]str
 	params, err := decodeWatchBatchV1beta1NamespacedCronJobListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchBatchV1beta1NamespacedCronJobList",
-			err,
+			Operation: "WatchBatchV1beta1NamespacedCronJobList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15811,8 +15811,8 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestRequest(args 
 	params, err := decodeWatchCertificatesV1CertificateSigningRequestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCertificatesV1CertificateSigningRequest",
-			err,
+			Operation: "WatchCertificatesV1CertificateSigningRequest",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15866,8 +15866,8 @@ func (s *Server) handleWatchCertificatesV1CertificateSigningRequestListRequest(a
 	params, err := decodeWatchCertificatesV1CertificateSigningRequestListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCertificatesV1CertificateSigningRequestList",
-			err,
+			Operation: "WatchCertificatesV1CertificateSigningRequestList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15921,8 +15921,8 @@ func (s *Server) handleWatchCoordinationV1LeaseListForAllNamespacesRequest(args 
 	params, err := decodeWatchCoordinationV1LeaseListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoordinationV1LeaseListForAllNamespaces",
-			err,
+			Operation: "WatchCoordinationV1LeaseListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -15976,8 +15976,8 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseRequest(args [2]string,
 	params, err := decodeWatchCoordinationV1NamespacedLeaseParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoordinationV1NamespacedLease",
-			err,
+			Operation: "WatchCoordinationV1NamespacedLease",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16031,8 +16031,8 @@ func (s *Server) handleWatchCoordinationV1NamespacedLeaseListRequest(args [1]str
 	params, err := decodeWatchCoordinationV1NamespacedLeaseListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoordinationV1NamespacedLeaseList",
-			err,
+			Operation: "WatchCoordinationV1NamespacedLeaseList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16086,8 +16086,8 @@ func (s *Server) handleWatchCoreV1ConfigMapListForAllNamespacesRequest(args [0]s
 	params, err := decodeWatchCoreV1ConfigMapListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1ConfigMapListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1ConfigMapListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16141,8 +16141,8 @@ func (s *Server) handleWatchCoreV1EndpointsListForAllNamespacesRequest(args [0]s
 	params, err := decodeWatchCoreV1EndpointsListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1EndpointsListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1EndpointsListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16196,8 +16196,8 @@ func (s *Server) handleWatchCoreV1EventListForAllNamespacesRequest(args [0]strin
 	params, err := decodeWatchCoreV1EventListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1EventListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1EventListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16251,8 +16251,8 @@ func (s *Server) handleWatchCoreV1LimitRangeListForAllNamespacesRequest(args [0]
 	params, err := decodeWatchCoreV1LimitRangeListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1LimitRangeListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1LimitRangeListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16306,8 +16306,8 @@ func (s *Server) handleWatchCoreV1NamespaceRequest(args [1]string, w http.Respon
 	params, err := decodeWatchCoreV1NamespaceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1Namespace",
-			err,
+			Operation: "WatchCoreV1Namespace",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16361,8 +16361,8 @@ func (s *Server) handleWatchCoreV1NamespaceListRequest(args [0]string, w http.Re
 	params, err := decodeWatchCoreV1NamespaceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespaceList",
-			err,
+			Operation: "WatchCoreV1NamespaceList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16416,8 +16416,8 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapRequest(args [2]string, w h
 	params, err := decodeWatchCoreV1NamespacedConfigMapParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedConfigMap",
-			err,
+			Operation: "WatchCoreV1NamespacedConfigMap",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16471,8 +16471,8 @@ func (s *Server) handleWatchCoreV1NamespacedConfigMapListRequest(args [1]string,
 	params, err := decodeWatchCoreV1NamespacedConfigMapListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedConfigMapList",
-			err,
+			Operation: "WatchCoreV1NamespacedConfigMapList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16526,8 +16526,8 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsRequest(args [2]string, w h
 	params, err := decodeWatchCoreV1NamespacedEndpointsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedEndpoints",
-			err,
+			Operation: "WatchCoreV1NamespacedEndpoints",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16581,8 +16581,8 @@ func (s *Server) handleWatchCoreV1NamespacedEndpointsListRequest(args [1]string,
 	params, err := decodeWatchCoreV1NamespacedEndpointsListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedEndpointsList",
-			err,
+			Operation: "WatchCoreV1NamespacedEndpointsList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16636,8 +16636,8 @@ func (s *Server) handleWatchCoreV1NamespacedEventRequest(args [2]string, w http.
 	params, err := decodeWatchCoreV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedEvent",
-			err,
+			Operation: "WatchCoreV1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16691,8 +16691,8 @@ func (s *Server) handleWatchCoreV1NamespacedEventListRequest(args [1]string, w h
 	params, err := decodeWatchCoreV1NamespacedEventListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedEventList",
-			err,
+			Operation: "WatchCoreV1NamespacedEventList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16746,8 +16746,8 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeRequest(args [2]string, w 
 	params, err := decodeWatchCoreV1NamespacedLimitRangeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedLimitRange",
-			err,
+			Operation: "WatchCoreV1NamespacedLimitRange",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16801,8 +16801,8 @@ func (s *Server) handleWatchCoreV1NamespacedLimitRangeListRequest(args [1]string
 	params, err := decodeWatchCoreV1NamespacedLimitRangeListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedLimitRangeList",
-			err,
+			Operation: "WatchCoreV1NamespacedLimitRangeList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16856,8 +16856,8 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimRequest(args [2
 	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedPersistentVolumeClaim",
-			err,
+			Operation: "WatchCoreV1NamespacedPersistentVolumeClaim",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16911,8 +16911,8 @@ func (s *Server) handleWatchCoreV1NamespacedPersistentVolumeClaimListRequest(arg
 	params, err := decodeWatchCoreV1NamespacedPersistentVolumeClaimListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedPersistentVolumeClaimList",
-			err,
+			Operation: "WatchCoreV1NamespacedPersistentVolumeClaimList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -16966,8 +16966,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodRequest(args [2]string, w http.Re
 	params, err := decodeWatchCoreV1NamespacedPodParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedPod",
-			err,
+			Operation: "WatchCoreV1NamespacedPod",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17021,8 +17021,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodListRequest(args [1]string, w htt
 	params, err := decodeWatchCoreV1NamespacedPodListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedPodList",
-			err,
+			Operation: "WatchCoreV1NamespacedPodList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17076,8 +17076,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateRequest(args [2]string, w
 	params, err := decodeWatchCoreV1NamespacedPodTemplateParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedPodTemplate",
-			err,
+			Operation: "WatchCoreV1NamespacedPodTemplate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17131,8 +17131,8 @@ func (s *Server) handleWatchCoreV1NamespacedPodTemplateListRequest(args [1]strin
 	params, err := decodeWatchCoreV1NamespacedPodTemplateListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedPodTemplateList",
-			err,
+			Operation: "WatchCoreV1NamespacedPodTemplateList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17186,8 +17186,8 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerRequest(args [2
 	params, err := decodeWatchCoreV1NamespacedReplicationControllerParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedReplicationController",
-			err,
+			Operation: "WatchCoreV1NamespacedReplicationController",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17241,8 +17241,8 @@ func (s *Server) handleWatchCoreV1NamespacedReplicationControllerListRequest(arg
 	params, err := decodeWatchCoreV1NamespacedReplicationControllerListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedReplicationControllerList",
-			err,
+			Operation: "WatchCoreV1NamespacedReplicationControllerList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17296,8 +17296,8 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaRequest(args [2]string,
 	params, err := decodeWatchCoreV1NamespacedResourceQuotaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedResourceQuota",
-			err,
+			Operation: "WatchCoreV1NamespacedResourceQuota",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17351,8 +17351,8 @@ func (s *Server) handleWatchCoreV1NamespacedResourceQuotaListRequest(args [1]str
 	params, err := decodeWatchCoreV1NamespacedResourceQuotaListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedResourceQuotaList",
-			err,
+			Operation: "WatchCoreV1NamespacedResourceQuotaList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17406,8 +17406,8 @@ func (s *Server) handleWatchCoreV1NamespacedSecretRequest(args [2]string, w http
 	params, err := decodeWatchCoreV1NamespacedSecretParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedSecret",
-			err,
+			Operation: "WatchCoreV1NamespacedSecret",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17461,8 +17461,8 @@ func (s *Server) handleWatchCoreV1NamespacedSecretListRequest(args [1]string, w 
 	params, err := decodeWatchCoreV1NamespacedSecretListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedSecretList",
-			err,
+			Operation: "WatchCoreV1NamespacedSecretList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17516,8 +17516,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceRequest(args [2]string, w htt
 	params, err := decodeWatchCoreV1NamespacedServiceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedService",
-			err,
+			Operation: "WatchCoreV1NamespacedService",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17571,8 +17571,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountRequest(args [2]string
 	params, err := decodeWatchCoreV1NamespacedServiceAccountParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedServiceAccount",
-			err,
+			Operation: "WatchCoreV1NamespacedServiceAccount",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17626,8 +17626,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceAccountListRequest(args [1]st
 	params, err := decodeWatchCoreV1NamespacedServiceAccountListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedServiceAccountList",
-			err,
+			Operation: "WatchCoreV1NamespacedServiceAccountList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17681,8 +17681,8 @@ func (s *Server) handleWatchCoreV1NamespacedServiceListRequest(args [1]string, w
 	params, err := decodeWatchCoreV1NamespacedServiceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NamespacedServiceList",
-			err,
+			Operation: "WatchCoreV1NamespacedServiceList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17736,8 +17736,8 @@ func (s *Server) handleWatchCoreV1NodeRequest(args [1]string, w http.ResponseWri
 	params, err := decodeWatchCoreV1NodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1Node",
-			err,
+			Operation: "WatchCoreV1Node",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17791,8 +17791,8 @@ func (s *Server) handleWatchCoreV1NodeListRequest(args [0]string, w http.Respons
 	params, err := decodeWatchCoreV1NodeListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1NodeList",
-			err,
+			Operation: "WatchCoreV1NodeList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17846,8 +17846,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeRequest(args [1]string, w http
 	params, err := decodeWatchCoreV1PersistentVolumeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1PersistentVolume",
-			err,
+			Operation: "WatchCoreV1PersistentVolume",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17901,8 +17901,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesReque
 	params, err := decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1PersistentVolumeClaimListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -17956,8 +17956,8 @@ func (s *Server) handleWatchCoreV1PersistentVolumeListRequest(args [0]string, w 
 	params, err := decodeWatchCoreV1PersistentVolumeListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1PersistentVolumeList",
-			err,
+			Operation: "WatchCoreV1PersistentVolumeList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18011,8 +18011,8 @@ func (s *Server) handleWatchCoreV1PodListForAllNamespacesRequest(args [0]string,
 	params, err := decodeWatchCoreV1PodListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1PodListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1PodListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18066,8 +18066,8 @@ func (s *Server) handleWatchCoreV1PodTemplateListForAllNamespacesRequest(args [0
 	params, err := decodeWatchCoreV1PodTemplateListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1PodTemplateListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1PodTemplateListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18121,8 +18121,8 @@ func (s *Server) handleWatchCoreV1ReplicationControllerListForAllNamespacesReque
 	params, err := decodeWatchCoreV1ReplicationControllerListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1ReplicationControllerListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1ReplicationControllerListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18176,8 +18176,8 @@ func (s *Server) handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest(args 
 	params, err := decodeWatchCoreV1ResourceQuotaListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1ResourceQuotaListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1ResourceQuotaListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18231,8 +18231,8 @@ func (s *Server) handleWatchCoreV1SecretListForAllNamespacesRequest(args [0]stri
 	params, err := decodeWatchCoreV1SecretListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1SecretListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1SecretListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18286,8 +18286,8 @@ func (s *Server) handleWatchCoreV1ServiceAccountListForAllNamespacesRequest(args
 	params, err := decodeWatchCoreV1ServiceAccountListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1ServiceAccountListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1ServiceAccountListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18341,8 +18341,8 @@ func (s *Server) handleWatchCoreV1ServiceListForAllNamespacesRequest(args [0]str
 	params, err := decodeWatchCoreV1ServiceListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchCoreV1ServiceListForAllNamespaces",
-			err,
+			Operation: "WatchCoreV1ServiceListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18396,8 +18396,8 @@ func (s *Server) handleWatchDiscoveryV1EndpointSliceListForAllNamespacesRequest(
 	params, err := decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchDiscoveryV1EndpointSliceListForAllNamespaces",
-			err,
+			Operation: "WatchDiscoveryV1EndpointSliceListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18451,8 +18451,8 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceRequest(args [2]st
 	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchDiscoveryV1NamespacedEndpointSlice",
-			err,
+			Operation: "WatchDiscoveryV1NamespacedEndpointSlice",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18506,8 +18506,8 @@ func (s *Server) handleWatchDiscoveryV1NamespacedEndpointSliceListRequest(args [
 	params, err := decodeWatchDiscoveryV1NamespacedEndpointSliceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchDiscoveryV1NamespacedEndpointSliceList",
-			err,
+			Operation: "WatchDiscoveryV1NamespacedEndpointSliceList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18561,8 +18561,8 @@ func (s *Server) handleWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesReq
 	params, err := decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
-			err,
+			Operation: "WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18616,8 +18616,8 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest(args 
 	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchDiscoveryV1beta1NamespacedEndpointSlice",
-			err,
+			Operation: "WatchDiscoveryV1beta1NamespacedEndpointSlice",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18671,8 +18671,8 @@ func (s *Server) handleWatchDiscoveryV1beta1NamespacedEndpointSliceListRequest(a
 	params, err := decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchDiscoveryV1beta1NamespacedEndpointSliceList",
-			err,
+			Operation: "WatchDiscoveryV1beta1NamespacedEndpointSliceList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18726,8 +18726,8 @@ func (s *Server) handleWatchEventsV1EventListForAllNamespacesRequest(args [0]str
 	params, err := decodeWatchEventsV1EventListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchEventsV1EventListForAllNamespaces",
-			err,
+			Operation: "WatchEventsV1EventListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18781,8 +18781,8 @@ func (s *Server) handleWatchEventsV1NamespacedEventRequest(args [2]string, w htt
 	params, err := decodeWatchEventsV1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchEventsV1NamespacedEvent",
-			err,
+			Operation: "WatchEventsV1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18836,8 +18836,8 @@ func (s *Server) handleWatchEventsV1NamespacedEventListRequest(args [1]string, w
 	params, err := decodeWatchEventsV1NamespacedEventListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchEventsV1NamespacedEventList",
-			err,
+			Operation: "WatchEventsV1NamespacedEventList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18891,8 +18891,8 @@ func (s *Server) handleWatchEventsV1beta1EventListForAllNamespacesRequest(args [
 	params, err := decodeWatchEventsV1beta1EventListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchEventsV1beta1EventListForAllNamespaces",
-			err,
+			Operation: "WatchEventsV1beta1EventListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -18946,8 +18946,8 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventRequest(args [2]string, 
 	params, err := decodeWatchEventsV1beta1NamespacedEventParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchEventsV1beta1NamespacedEvent",
-			err,
+			Operation: "WatchEventsV1beta1NamespacedEvent",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19001,8 +19001,8 @@ func (s *Server) handleWatchEventsV1beta1NamespacedEventListRequest(args [1]stri
 	params, err := decodeWatchEventsV1beta1NamespacedEventListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchEventsV1beta1NamespacedEventList",
-			err,
+			Operation: "WatchEventsV1beta1NamespacedEventList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19056,8 +19056,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaRequest(args [1
 	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchFlowcontrolApiserverV1beta1FlowSchema",
-			err,
+			Operation: "WatchFlowcontrolApiserverV1beta1FlowSchema",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19111,8 +19111,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1FlowSchemaListRequest(arg
 	params, err := decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchFlowcontrolApiserverV1beta1FlowSchemaList",
-			err,
+			Operation: "WatchFlowcontrolApiserverV1beta1FlowSchemaList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19166,8 +19166,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
-			err,
+			Operation: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19221,8 +19221,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfiguratio
 	params, err := decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
-			err,
+			Operation: "WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19276,8 +19276,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaRequest(args [1
 	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchFlowcontrolApiserverV1beta2FlowSchema",
-			err,
+			Operation: "WatchFlowcontrolApiserverV1beta2FlowSchema",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19331,8 +19331,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2FlowSchemaListRequest(arg
 	params, err := decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchFlowcontrolApiserverV1beta2FlowSchemaList",
-			err,
+			Operation: "WatchFlowcontrolApiserverV1beta2FlowSchemaList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19386,8 +19386,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
-			err,
+			Operation: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19441,8 +19441,8 @@ func (s *Server) handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfiguratio
 	params, err := decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
-			err,
+			Operation: "WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19496,8 +19496,8 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionRequest(args 
 	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchInternalApiserverV1alpha1StorageVersion",
-			err,
+			Operation: "WatchInternalApiserverV1alpha1StorageVersion",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19551,8 +19551,8 @@ func (s *Server) handleWatchInternalApiserverV1alpha1StorageVersionListRequest(a
 	params, err := decodeWatchInternalApiserverV1alpha1StorageVersionListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchInternalApiserverV1alpha1StorageVersionList",
-			err,
+			Operation: "WatchInternalApiserverV1alpha1StorageVersionList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19606,8 +19606,8 @@ func (s *Server) handleWatchNetworkingV1IngressClassRequest(args [1]string, w ht
 	params, err := decodeWatchNetworkingV1IngressClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNetworkingV1IngressClass",
-			err,
+			Operation: "WatchNetworkingV1IngressClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19661,8 +19661,8 @@ func (s *Server) handleWatchNetworkingV1IngressClassListRequest(args [0]string, 
 	params, err := decodeWatchNetworkingV1IngressClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNetworkingV1IngressClassList",
-			err,
+			Operation: "WatchNetworkingV1IngressClassList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19716,8 +19716,8 @@ func (s *Server) handleWatchNetworkingV1IngressListForAllNamespacesRequest(args 
 	params, err := decodeWatchNetworkingV1IngressListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNetworkingV1IngressListForAllNamespaces",
-			err,
+			Operation: "WatchNetworkingV1IngressListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19771,8 +19771,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressRequest(args [2]string,
 	params, err := decodeWatchNetworkingV1NamespacedIngressParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNetworkingV1NamespacedIngress",
-			err,
+			Operation: "WatchNetworkingV1NamespacedIngress",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19826,8 +19826,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedIngressListRequest(args [1]str
 	params, err := decodeWatchNetworkingV1NamespacedIngressListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNetworkingV1NamespacedIngressList",
-			err,
+			Operation: "WatchNetworkingV1NamespacedIngressList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19881,8 +19881,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyRequest(args [2]s
 	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNetworkingV1NamespacedNetworkPolicy",
-			err,
+			Operation: "WatchNetworkingV1NamespacedNetworkPolicy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19936,8 +19936,8 @@ func (s *Server) handleWatchNetworkingV1NamespacedNetworkPolicyListRequest(args 
 	params, err := decodeWatchNetworkingV1NamespacedNetworkPolicyListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNetworkingV1NamespacedNetworkPolicyList",
-			err,
+			Operation: "WatchNetworkingV1NamespacedNetworkPolicyList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -19991,8 +19991,8 @@ func (s *Server) handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest
 	params, err := decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNetworkingV1NetworkPolicyListForAllNamespaces",
-			err,
+			Operation: "WatchNetworkingV1NetworkPolicyListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20046,8 +20046,8 @@ func (s *Server) handleWatchNodeV1RuntimeClassRequest(args [1]string, w http.Res
 	params, err := decodeWatchNodeV1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNodeV1RuntimeClass",
-			err,
+			Operation: "WatchNodeV1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20101,8 +20101,8 @@ func (s *Server) handleWatchNodeV1RuntimeClassListRequest(args [0]string, w http
 	params, err := decodeWatchNodeV1RuntimeClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNodeV1RuntimeClassList",
-			err,
+			Operation: "WatchNodeV1RuntimeClassList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20156,8 +20156,8 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassRequest(args [1]string, w ht
 	params, err := decodeWatchNodeV1alpha1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNodeV1alpha1RuntimeClass",
-			err,
+			Operation: "WatchNodeV1alpha1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20211,8 +20211,8 @@ func (s *Server) handleWatchNodeV1alpha1RuntimeClassListRequest(args [0]string, 
 	params, err := decodeWatchNodeV1alpha1RuntimeClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNodeV1alpha1RuntimeClassList",
-			err,
+			Operation: "WatchNodeV1alpha1RuntimeClassList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20266,8 +20266,8 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassRequest(args [1]string, w htt
 	params, err := decodeWatchNodeV1beta1RuntimeClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNodeV1beta1RuntimeClass",
-			err,
+			Operation: "WatchNodeV1beta1RuntimeClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20321,8 +20321,8 @@ func (s *Server) handleWatchNodeV1beta1RuntimeClassListRequest(args [0]string, w
 	params, err := decodeWatchNodeV1beta1RuntimeClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchNodeV1beta1RuntimeClassList",
-			err,
+			Operation: "WatchNodeV1beta1RuntimeClassList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20376,8 +20376,8 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetRequest(args [2
 	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchPolicyV1NamespacedPodDisruptionBudget",
-			err,
+			Operation: "WatchPolicyV1NamespacedPodDisruptionBudget",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20431,8 +20431,8 @@ func (s *Server) handleWatchPolicyV1NamespacedPodDisruptionBudgetListRequest(arg
 	params, err := decodeWatchPolicyV1NamespacedPodDisruptionBudgetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchPolicyV1NamespacedPodDisruptionBudgetList",
-			err,
+			Operation: "WatchPolicyV1NamespacedPodDisruptionBudgetList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20486,8 +20486,8 @@ func (s *Server) handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesReque
 	params, err := decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
-			err,
+			Operation: "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20541,8 +20541,8 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetRequest(ar
 	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchPolicyV1beta1NamespacedPodDisruptionBudget",
-			err,
+			Operation: "WatchPolicyV1beta1NamespacedPodDisruptionBudget",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20596,8 +20596,8 @@ func (s *Server) handleWatchPolicyV1beta1NamespacedPodDisruptionBudgetListReques
 	params, err := decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
-			err,
+			Operation: "WatchPolicyV1beta1NamespacedPodDisruptionBudgetList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20651,8 +20651,8 @@ func (s *Server) handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces
 	params, err := decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
-			err,
+			Operation: "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20706,8 +20706,8 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyRequest(args [1]string
 	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchPolicyV1beta1PodSecurityPolicy",
-			err,
+			Operation: "WatchPolicyV1beta1PodSecurityPolicy",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20761,8 +20761,8 @@ func (s *Server) handleWatchPolicyV1beta1PodSecurityPolicyListRequest(args [0]st
 	params, err := decodeWatchPolicyV1beta1PodSecurityPolicyListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchPolicyV1beta1PodSecurityPolicyList",
-			err,
+			Operation: "WatchPolicyV1beta1PodSecurityPolicyList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20816,8 +20816,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleRequest(args [1]string
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1ClusterRole",
-			err,
+			Operation: "WatchRbacAuthorizationV1ClusterRole",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20871,8 +20871,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingRequest(args [1
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1ClusterRoleBinding",
-			err,
+			Operation: "WatchRbacAuthorizationV1ClusterRoleBinding",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20926,8 +20926,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleBindingListRequest(arg
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleBindingListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1ClusterRoleBindingList",
-			err,
+			Operation: "WatchRbacAuthorizationV1ClusterRoleBindingList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -20981,8 +20981,8 @@ func (s *Server) handleWatchRbacAuthorizationV1ClusterRoleListRequest(args [0]st
 	params, err := decodeWatchRbacAuthorizationV1ClusterRoleListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1ClusterRoleList",
-			err,
+			Operation: "WatchRbacAuthorizationV1ClusterRoleList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21036,8 +21036,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleRequest(args [2]str
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1NamespacedRole",
-			err,
+			Operation: "WatchRbacAuthorizationV1NamespacedRole",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21091,8 +21091,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest(args
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1NamespacedRoleBinding",
-			err,
+			Operation: "WatchRbacAuthorizationV1NamespacedRoleBinding",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21146,8 +21146,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleBindingListRequest(
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleBindingListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1NamespacedRoleBindingList",
-			err,
+			Operation: "WatchRbacAuthorizationV1NamespacedRoleBindingList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21201,8 +21201,8 @@ func (s *Server) handleWatchRbacAuthorizationV1NamespacedRoleListRequest(args [1
 	params, err := decodeWatchRbacAuthorizationV1NamespacedRoleListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1NamespacedRoleList",
-			err,
+			Operation: "WatchRbacAuthorizationV1NamespacedRoleList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21256,8 +21256,8 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleBindingListForAllNamespacesRe
 	params, err := decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
-			err,
+			Operation: "WatchRbacAuthorizationV1RoleBindingListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21311,8 +21311,8 @@ func (s *Server) handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest(a
 	params, err := decodeWatchRbacAuthorizationV1RoleListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchRbacAuthorizationV1RoleListForAllNamespaces",
-			err,
+			Operation: "WatchRbacAuthorizationV1RoleListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21366,8 +21366,8 @@ func (s *Server) handleWatchSchedulingV1PriorityClassRequest(args [1]string, w h
 	params, err := decodeWatchSchedulingV1PriorityClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchSchedulingV1PriorityClass",
-			err,
+			Operation: "WatchSchedulingV1PriorityClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21421,8 +21421,8 @@ func (s *Server) handleWatchSchedulingV1PriorityClassListRequest(args [0]string,
 	params, err := decodeWatchSchedulingV1PriorityClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchSchedulingV1PriorityClassList",
-			err,
+			Operation: "WatchSchedulingV1PriorityClassList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21476,8 +21476,8 @@ func (s *Server) handleWatchStorageV1CSIDriverRequest(args [1]string, w http.Res
 	params, err := decodeWatchStorageV1CSIDriverParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1CSIDriver",
-			err,
+			Operation: "WatchStorageV1CSIDriver",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21531,8 +21531,8 @@ func (s *Server) handleWatchStorageV1CSIDriverListRequest(args [0]string, w http
 	params, err := decodeWatchStorageV1CSIDriverListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1CSIDriverList",
-			err,
+			Operation: "WatchStorageV1CSIDriverList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21586,8 +21586,8 @@ func (s *Server) handleWatchStorageV1CSINodeRequest(args [1]string, w http.Respo
 	params, err := decodeWatchStorageV1CSINodeParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1CSINode",
-			err,
+			Operation: "WatchStorageV1CSINode",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21641,8 +21641,8 @@ func (s *Server) handleWatchStorageV1CSINodeListRequest(args [0]string, w http.R
 	params, err := decodeWatchStorageV1CSINodeListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1CSINodeList",
-			err,
+			Operation: "WatchStorageV1CSINodeList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21696,8 +21696,8 @@ func (s *Server) handleWatchStorageV1StorageClassRequest(args [1]string, w http.
 	params, err := decodeWatchStorageV1StorageClassParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1StorageClass",
-			err,
+			Operation: "WatchStorageV1StorageClass",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21751,8 +21751,8 @@ func (s *Server) handleWatchStorageV1StorageClassListRequest(args [0]string, w h
 	params, err := decodeWatchStorageV1StorageClassListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1StorageClassList",
-			err,
+			Operation: "WatchStorageV1StorageClassList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21806,8 +21806,8 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentRequest(args [1]string, w h
 	params, err := decodeWatchStorageV1VolumeAttachmentParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1VolumeAttachment",
-			err,
+			Operation: "WatchStorageV1VolumeAttachment",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21861,8 +21861,8 @@ func (s *Server) handleWatchStorageV1VolumeAttachmentListRequest(args [0]string,
 	params, err := decodeWatchStorageV1VolumeAttachmentListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1VolumeAttachmentList",
-			err,
+			Operation: "WatchStorageV1VolumeAttachmentList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21916,8 +21916,8 @@ func (s *Server) handleWatchStorageV1alpha1CSIStorageCapacityListForAllNamespace
 	params, err := decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
-			err,
+			Operation: "WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -21971,8 +21971,8 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest(a
 	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1alpha1NamespacedCSIStorageCapacity",
-			err,
+			Operation: "WatchStorageV1alpha1NamespacedCSIStorageCapacity",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22026,8 +22026,8 @@ func (s *Server) handleWatchStorageV1alpha1NamespacedCSIStorageCapacityListReque
 	params, err := decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
-			err,
+			Operation: "WatchStorageV1alpha1NamespacedCSIStorageCapacityList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22081,8 +22081,8 @@ func (s *Server) handleWatchStorageV1beta1CSIStorageCapacityListForAllNamespaces
 	params, err := decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
-			err,
+			Operation: "WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22136,8 +22136,8 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest(ar
 	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1beta1NamespacedCSIStorageCapacity",
-			err,
+			Operation: "WatchStorageV1beta1NamespacedCSIStorageCapacity",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -22191,8 +22191,8 @@ func (s *Server) handleWatchStorageV1beta1NamespacedCSIStorageCapacityListReques
 	params, err := decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"WatchStorageV1beta1NamespacedCSIStorageCapacityList",
-			err,
+			Operation: "WatchStorageV1beta1NamespacedCSIStorageCapacityList",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
