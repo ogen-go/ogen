@@ -40,7 +40,9 @@ func (s *AnysOrExpressions) init() AnysOrExpressions {
 // evaluated at runtime, that identifies a URL to use for the callback operation.
 // Ref: #/definitions/callback
 type Callback struct {
+	// Pattern: "^".
 	Pattern0Props CallbackPattern0
+	// Pattern: "^x-".
 	Pattern1Props CallbackPattern1
 }
 
@@ -157,7 +159,8 @@ type Components struct {
 	SecuritySchemes OptSecuritySchemesOrReferences "json:\"securitySchemes\""
 	Links           OptLinksOrReferences           "json:\"links\""
 	Callbacks       OptCallbacksOrReferences       "json:\"callbacks\""
-	Pattern0Props   ComponentsPattern0
+	// Pattern: "^x-".
+	Pattern0Props ComponentsPattern0
 }
 
 type ComponentsPattern0 map[string]jx.Raw
@@ -174,9 +177,10 @@ func (s *ComponentsPattern0) init() ComponentsPattern0 {
 // Contact information for the exposed API.
 // Ref: #/definitions/contact
 type Contact struct {
-	Name          OptString "json:\"name\""
-	URL           OptString "json:\"url\""
-	Email         OptString "json:\"email\""
+	Name  OptString "json:\"name\""
+	URL   OptString "json:\"url\""
+	Email OptString "json:\"email\""
+	// Pattern: "^x-".
 	Pattern0Props ContactPattern0
 }
 
@@ -210,6 +214,7 @@ type Encoding struct {
 	Style         OptString              "json:\"style\""
 	Explode       OptBool                "json:\"explode\""
 	AllowReserved OptBool                "json:\"allowReserved\""
+	// Pattern: "^x-".
 	Pattern0Props EncodingPattern0
 }
 
@@ -242,6 +247,7 @@ type Example struct {
 	Description   OptString "json:\"description\""
 	Value         jx.Raw    "json:\"value\""
 	ExternalValue OptString "json:\"externalValue\""
+	// Pattern: "^x-".
 	Pattern0Props ExamplePattern0
 }
 
@@ -336,8 +342,9 @@ func (s *ExamplesOrReferences) init() ExamplesOrReferences {
 // Allows referencing an external resource for extended documentation.
 // Ref: #/definitions/externalDocs
 type ExternalDocs struct {
-	Description   OptString "json:\"description\""
-	URL           string    "json:\"url\""
+	Description OptString "json:\"description\""
+	URL         string    "json:\"url\""
+	// Pattern: "^x-".
 	Pattern0Props ExternalDocsPattern0
 }
 
@@ -369,7 +376,8 @@ type Header struct {
 	Example         jx.Raw                  "json:\"example\""
 	Examples        OptExamplesOrReferences "json:\"examples\""
 	Content         OptMediaTypes           "json:\"content\""
-	Pattern0Props   HeaderPattern0
+	// Pattern: "^x-".
+	Pattern0Props HeaderPattern0
 }
 
 // Ref: #/definitions/headerOrReference
@@ -470,7 +478,8 @@ type Info struct {
 	Contact        OptContact "json:\"contact\""
 	License        OptLicense "json:\"license\""
 	Version        string     "json:\"version\""
-	Pattern0Props  InfoPattern0
+	// Pattern: "^x-".
+	Pattern0Props InfoPattern0
 }
 
 type InfoPattern0 map[string]jx.Raw
@@ -505,8 +514,9 @@ type JsonschemaDraft4PropertiesUniqueItems bool
 // License information for the exposed API.
 // Ref: #/definitions/license
 type License struct {
-	Name          string    "json:\"name\""
-	URL           OptString "json:\"url\""
+	Name string    "json:\"name\""
+	URL  OptString "json:\"url\""
+	// Pattern: "^x-".
 	Pattern0Props LicensePattern0
 }
 
@@ -530,12 +540,13 @@ func (s *LicensePattern0) init() LicensePattern0 {
 // as parameters while invoking the linked operation.
 // Ref: #/definitions/link
 type Link struct {
-	OperationRef  OptString            "json:\"operationRef\""
-	OperationId   OptString            "json:\"operationId\""
-	Parameters    OptAnysOrExpressions "json:\"parameters\""
-	RequestBody   jx.Raw               "json:\"requestBody\""
-	Description   OptString            "json:\"description\""
-	Server        OptServer            "json:\"server\""
+	OperationRef OptString            "json:\"operationRef\""
+	OperationId  OptString            "json:\"operationId\""
+	Parameters   OptAnysOrExpressions "json:\"parameters\""
+	RequestBody  jx.Raw               "json:\"requestBody\""
+	Description  OptString            "json:\"description\""
+	Server       OptServer            "json:\"server\""
+	// Pattern: "^x-".
 	Pattern0Props LinkPattern0
 }
 
@@ -630,10 +641,11 @@ func (s *LinksOrReferences) init() LinksOrReferences {
 // Each Media Type Object provides schema and examples for the media type identified by its key.
 // Ref: #/definitions/mediaType
 type MediaType struct {
-	Schema        OptSchemaOrReference    "json:\"schema\""
-	Example       jx.Raw                  "json:\"example\""
-	Examples      OptExamplesOrReferences "json:\"examples\""
-	Encoding      OptEncodings            "json:\"encoding\""
+	Schema   OptSchemaOrReference    "json:\"schema\""
+	Example  jx.Raw                  "json:\"example\""
+	Examples OptExamplesOrReferences "json:\"examples\""
+	Encoding OptEncodings            "json:\"encoding\""
+	// Pattern: "^x-".
 	Pattern0Props MediaTypePattern0
 }
 
@@ -667,7 +679,8 @@ type OauthFlow struct {
 	TokenUrl         OptString  "json:\"tokenUrl\""
 	RefreshUrl       OptString  "json:\"refreshUrl\""
 	Scopes           OptStrings "json:\"scopes\""
-	Pattern0Props    OauthFlowPattern0
+	// Pattern: "^x-".
+	Pattern0Props OauthFlowPattern0
 }
 
 type OauthFlowPattern0 map[string]jx.Raw
@@ -688,7 +701,8 @@ type OauthFlows struct {
 	Password          OptOauthFlow "json:\"password\""
 	ClientCredentials OptOauthFlow "json:\"clientCredentials\""
 	AuthorizationCode OptOauthFlow "json:\"authorizationCode\""
-	Pattern0Props     OauthFlowsPattern0
+	// Pattern: "^x-".
+	Pattern0Props OauthFlowsPattern0
 }
 
 type OauthFlowsPattern0 map[string]jx.Raw
@@ -705,18 +719,19 @@ func (s *OauthFlowsPattern0) init() OauthFlowsPattern0 {
 // Describes a single API operation on a path.
 // Ref: #/definitions/operation
 type Operation struct {
-	Tags          []string                  "json:\"tags\""
-	Summary       OptString                 "json:\"summary\""
-	Description   OptString                 "json:\"description\""
-	ExternalDocs  OptExternalDocs           "json:\"externalDocs\""
-	OperationId   OptString                 "json:\"operationId\""
-	Parameters    []ParameterOrReference    "json:\"parameters\""
-	RequestBody   OptRequestBodyOrReference "json:\"requestBody\""
-	Responses     Responses                 "json:\"responses\""
-	Callbacks     OptCallbacksOrReferences  "json:\"callbacks\""
-	Deprecated    OptBool                   "json:\"deprecated\""
-	Security      []SecurityRequirement     "json:\"security\""
-	Servers       []Server                  "json:\"servers\""
+	Tags         []string                  "json:\"tags\""
+	Summary      OptString                 "json:\"summary\""
+	Description  OptString                 "json:\"description\""
+	ExternalDocs OptExternalDocs           "json:\"externalDocs\""
+	OperationId  OptString                 "json:\"operationId\""
+	Parameters   []ParameterOrReference    "json:\"parameters\""
+	RequestBody  OptRequestBodyOrReference "json:\"requestBody\""
+	Responses    Responses                 "json:\"responses\""
+	Callbacks    OptCallbacksOrReferences  "json:\"callbacks\""
+	Deprecated   OptBool                   "json:\"deprecated\""
+	Security     []SecurityRequirement     "json:\"security\""
+	Servers      []Server                  "json:\"servers\""
+	// Pattern: "^x-".
 	Pattern0Props OperationPattern0
 }
 
@@ -2634,7 +2649,8 @@ type Parameter struct {
 	Example         jx.Raw                  "json:\"example\""
 	Examples        OptExamplesOrReferences "json:\"examples\""
 	Content         OptMediaTypes           "json:\"content\""
-	Pattern0Props   ParameterPattern0
+	// Pattern: "^x-".
+	Pattern0Props ParameterPattern0
 }
 
 type ParameterIn string
@@ -2751,19 +2767,20 @@ func (s *ParametersOrReferences) init() ParametersOrReferences {
 // which operations and parameters are available.
 // Ref: #/definitions/pathItem
 type PathItem struct {
-	Ref           OptString              "json:\"$ref\""
-	Summary       OptString              "json:\"summary\""
-	Description   OptString              "json:\"description\""
-	Get           OptOperation           "json:\"get\""
-	Put           OptOperation           "json:\"put\""
-	Post          OptOperation           "json:\"post\""
-	Delete        OptOperation           "json:\"delete\""
-	Options       OptOperation           "json:\"options\""
-	Head          OptOperation           "json:\"head\""
-	Patch         OptOperation           "json:\"patch\""
-	Trace         OptOperation           "json:\"trace\""
-	Servers       []Server               "json:\"servers\""
-	Parameters    []ParameterOrReference "json:\"parameters\""
+	Ref         OptString              "json:\"$ref\""
+	Summary     OptString              "json:\"summary\""
+	Description OptString              "json:\"description\""
+	Get         OptOperation           "json:\"get\""
+	Put         OptOperation           "json:\"put\""
+	Post        OptOperation           "json:\"post\""
+	Delete      OptOperation           "json:\"delete\""
+	Options     OptOperation           "json:\"options\""
+	Head        OptOperation           "json:\"head\""
+	Patch       OptOperation           "json:\"patch\""
+	Trace       OptOperation           "json:\"trace\""
+	Servers     []Server               "json:\"servers\""
+	Parameters  []ParameterOrReference "json:\"parameters\""
+	// Pattern: "^x-".
 	Pattern0Props PathItemPattern0
 }
 
@@ -2783,7 +2800,9 @@ func (s *PathItemPattern0) init() PathItemPattern0 {
 // to ACL constraints.
 // Ref: #/definitions/paths
 type Paths struct {
+	// Pattern: "^/".
 	Pattern0Props PathsPattern0
+	// Pattern: "^x-".
 	Pattern1Props PathsPattern1
 }
 
@@ -2835,9 +2854,10 @@ func (s *RequestBodiesOrReferences) init() RequestBodiesOrReferences {
 // Describes a single request body.
 // Ref: #/definitions/requestBody
 type RequestBody struct {
-	Description   OptString  "json:\"description\""
-	Content       MediaTypes "json:\"content\""
-	Required      OptBool    "json:\"required\""
+	Description OptString  "json:\"description\""
+	Content     MediaTypes "json:\"content\""
+	Required    OptBool    "json:\"required\""
+	// Pattern: "^x-".
 	Pattern0Props RequestBodyPattern0
 }
 
@@ -2923,10 +2943,11 @@ func (s *RequestBodyPattern0) init() RequestBodyPattern0 {
 // operations based on the response.
 // Ref: #/definitions/response
 type Response struct {
-	Description   string                 "json:\"description\""
-	Headers       OptHeadersOrReferences "json:\"headers\""
-	Content       OptMediaTypes          "json:\"content\""
-	Links         OptLinksOrReferences   "json:\"links\""
+	Description string                 "json:\"description\""
+	Headers     OptHeadersOrReferences "json:\"headers\""
+	Content     OptMediaTypes          "json:\"content\""
+	Links       OptLinksOrReferences   "json:\"links\""
+	// Pattern: "^x-".
 	Pattern0Props ResponsePattern0
 }
 
@@ -3015,8 +3036,10 @@ func (s *ResponsePattern0) init() ResponsePattern0 {
 // for a successful operation call.
 // Ref: #/definitions/responses
 type Responses struct {
-	Default       OptResponseOrReference "json:\"default\""
+	Default OptResponseOrReference "json:\"default\""
+	// Pattern: "^([0-9X]{3})$".
 	Pattern0Props ResponsesPattern0
+	// Pattern: "^x-".
 	Pattern1Props ResponsesPattern1
 }
 
@@ -3096,7 +3119,8 @@ type Schema struct {
 	Default              jx.Raw                                        "json:\"default\""
 	Description          OptString                                     "json:\"description\""
 	Format               OptString                                     "json:\"format\""
-	Pattern0Props        SchemaPattern0
+	// Pattern: "^x-".
+	Pattern0Props SchemaPattern0
 }
 
 // SchemaAdditionalProperties represents sum type.
@@ -3309,7 +3333,8 @@ type SecurityScheme struct {
 	BearerFormat     OptString     "json:\"bearerFormat\""
 	Flows            OptOauthFlows "json:\"flows\""
 	OpenIdConnectUrl OptString     "json:\"openIdConnectUrl\""
-	Pattern0Props    SecuritySchemePattern0
+	// Pattern: "^x-".
+	Pattern0Props SecuritySchemePattern0
 }
 
 // Ref: #/definitions/securitySchemeOrReference
@@ -3407,9 +3432,10 @@ func (s *SecuritySchemesOrReferences) init() SecuritySchemesOrReferences {
 // An object representing a Server.
 // Ref: #/definitions/server
 type Server struct {
-	URL           string             "json:\"url\""
-	Description   OptString          "json:\"description\""
-	Variables     OptServerVariables "json:\"variables\""
+	URL         string             "json:\"url\""
+	Description OptString          "json:\"description\""
+	Variables   OptServerVariables "json:\"variables\""
+	// Pattern: "^x-".
 	Pattern0Props ServerPattern0
 }
 
@@ -3427,9 +3453,10 @@ func (s *ServerPattern0) init() ServerPattern0 {
 // An object representing a Server Variable for server URL template substitution.
 // Ref: #/definitions/serverVariable
 type ServerVariable struct {
-	Enum          []string  "json:\"enum\""
-	Default       string    "json:\"default\""
-	Description   OptString "json:\"description\""
+	Enum        []string  "json:\"enum\""
+	Default     string    "json:\"default\""
+	Description OptString "json:\"description\""
+	// Pattern: "^x-".
 	Pattern0Props ServerVariablePattern0
 }
 
@@ -3458,14 +3485,15 @@ func (s *ServerVariables) init() ServerVariables {
 
 // This is the root document object of the OpenAPI document.
 type Spec struct {
-	Openapi       string                "json:\"openapi\""
-	Info          Info                  "json:\"info\""
-	Servers       []Server              "json:\"servers\""
-	Paths         Paths                 "json:\"paths\""
-	Components    OptComponents         "json:\"components\""
-	Security      []SecurityRequirement "json:\"security\""
-	Tags          []Tag                 "json:\"tags\""
-	ExternalDocs  OptExternalDocs       "json:\"externalDocs\""
+	Openapi      string                "json:\"openapi\""
+	Info         Info                  "json:\"info\""
+	Servers      []Server              "json:\"servers\""
+	Paths        Paths                 "json:\"paths\""
+	Components   OptComponents         "json:\"components\""
+	Security     []SecurityRequirement "json:\"security\""
+	Tags         []Tag                 "json:\"tags\""
+	ExternalDocs OptExternalDocs       "json:\"externalDocs\""
+	// Pattern: "^x-".
 	Pattern0Props SpecPattern0
 }
 
@@ -3498,9 +3526,10 @@ func (s *Strings) init() Strings {
 // Tag Object per tag defined in the Operation Object instances.
 // Ref: #/definitions/tag
 type Tag struct {
-	Name          string          "json:\"name\""
-	Description   OptString       "json:\"description\""
-	ExternalDocs  OptExternalDocs "json:\"externalDocs\""
+	Name         string          "json:\"name\""
+	Description  OptString       "json:\"description\""
+	ExternalDocs OptExternalDocs "json:\"externalDocs\""
+	// Pattern: "^x-".
 	Pattern0Props TagPattern0
 }
 
@@ -3520,11 +3549,12 @@ func (s *TagPattern0) init() TagPattern0 {
 // used to add that information. See examples for expected behavior.
 // Ref: #/definitions/xml
 type XML struct {
-	Name          OptString "json:\"name\""
-	Namespace     OptString "json:\"namespace\""
-	Prefix        OptString "json:\"prefix\""
-	Attribute     OptBool   "json:\"attribute\""
-	Wrapped       OptBool   "json:\"wrapped\""
+	Name      OptString "json:\"name\""
+	Namespace OptString "json:\"namespace\""
+	Prefix    OptString "json:\"prefix\""
+	Attribute OptBool   "json:\"attribute\""
+	Wrapped   OptBool   "json:\"wrapped\""
+	// Pattern: "^x-".
 	Pattern0Props XMLPattern0
 }
 

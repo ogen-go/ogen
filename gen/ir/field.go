@@ -1,6 +1,7 @@
 package ir
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/ogen-go/ogen/jsonschema"
@@ -68,6 +69,9 @@ func (f Field) Default() Default {
 // GoDoc returns field godoc.
 func (f Field) GoDoc() []string {
 	if f.Spec == nil {
+		if f.Inline == InlinePattern {
+			return []string{fmt.Sprintf("Pattern: %q.", f.Type.MapPattern)}
+		}
 		return nil
 	}
 	return prettyDoc(f.Spec.Description)
