@@ -195,7 +195,7 @@ func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span)
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -206,7 +206,7 @@ func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span)
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestBooleanArrayArray request")
 		}
@@ -354,7 +354,7 @@ func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span tra
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -365,7 +365,7 @@ func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span tra
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestBooleanNullableArrayArray request")
 		}
@@ -451,13 +451,12 @@ func decodeTestRequestFormatTestRequest(r *http.Request, span trace.Span) (req O
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestFormatTest request")
 		}
@@ -605,7 +604,7 @@ func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span)
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -616,7 +615,7 @@ func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span)
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerArrayArray request")
 		}
@@ -764,7 +763,7 @@ func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -775,7 +774,7 @@ func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerInt32ArrayArray request")
 		}
@@ -923,7 +922,7 @@ func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, spa
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -934,7 +933,7 @@ func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerInt32NullableArrayArray request")
 		}
@@ -1082,7 +1081,7 @@ func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -1093,7 +1092,7 @@ func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerInt64ArrayArray request")
 		}
@@ -1241,7 +1240,7 @@ func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, spa
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -1252,7 +1251,7 @@ func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerInt64NullableArrayArray request")
 		}
@@ -1400,7 +1399,7 @@ func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span tra
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -1411,7 +1410,7 @@ func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span tra
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestIntegerNullableArrayArray request")
 		}
@@ -1555,7 +1554,7 @@ func decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (r
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -1566,7 +1565,7 @@ func decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (r
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNullArrayArray request")
 		}
@@ -1710,7 +1709,7 @@ func decodeTestRequestNullNullableArrayArrayRequest(r *http.Request, span trace.
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -1721,7 +1720,7 @@ func decodeTestRequestNullNullableArrayArrayRequest(r *http.Request, span trace.
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNullNullableArrayArray request")
 		}
@@ -1768,13 +1767,12 @@ func decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFl
 					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumber request")
 		}
@@ -1831,7 +1829,7 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -1842,7 +1840,7 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberArray request")
 		}
@@ -1913,7 +1911,7 @@ func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) 
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -1924,7 +1922,7 @@ func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) 
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -1935,7 +1933,7 @@ func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberArrayArray request")
 		}
@@ -1982,13 +1980,12 @@ func decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req
 					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDouble request")
 		}
@@ -2045,7 +2042,7 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2056,7 +2053,7 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDoubleArray request")
 		}
@@ -2127,7 +2124,7 @@ func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -2138,7 +2135,7 @@ func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2149,7 +2146,7 @@ func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDoubleArrayArray request")
 		}
@@ -2196,13 +2193,12 @@ func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Sp
 					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullable request")
 		}
@@ -2259,7 +2255,7 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2270,7 +2266,7 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullableArray request")
 		}
@@ -2341,7 +2337,7 @@ func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, spa
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -2352,7 +2348,7 @@ func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, spa
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2363,7 +2359,7 @@ func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullableArrayArray request")
 		}
@@ -2410,13 +2406,12 @@ func decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req 
 					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloat request")
 		}
@@ -2473,7 +2468,7 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2484,7 +2479,7 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloatArray request")
 		}
@@ -2555,7 +2550,7 @@ func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.S
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -2566,7 +2561,7 @@ func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.S
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2577,7 +2572,7 @@ func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.S
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloatArrayArray request")
 		}
@@ -2624,13 +2619,12 @@ func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Spa
 					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullable request")
 		}
@@ -2687,7 +2681,7 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2698,7 +2692,7 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullableArray request")
 		}
@@ -2769,7 +2763,7 @@ func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -2780,7 +2774,7 @@ func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2791,7 +2785,7 @@ func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullableArrayArray request")
 		}
@@ -2939,7 +2933,7 @@ func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.S
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -2950,7 +2944,7 @@ func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.S
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberInt32ArrayArray request")
 		}
@@ -3098,7 +3092,7 @@ func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -3109,7 +3103,7 @@ func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberInt32NullableArrayArray request")
 		}
@@ -3257,7 +3251,7 @@ func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.S
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -3268,7 +3262,7 @@ func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.S
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberInt64ArrayArray request")
 		}
@@ -3416,7 +3410,7 @@ func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -3427,7 +3421,7 @@ func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberInt64NullableArrayArray request")
 		}
@@ -3474,13 +3468,12 @@ func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (r
 					if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberNullable request")
 		}
@@ -3537,7 +3530,7 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -3548,7 +3541,7 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberNullableArray request")
 		}
@@ -3619,7 +3612,7 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -3630,7 +3623,7 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -3641,7 +3634,7 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberNullableArrayArray request")
 		}
@@ -3771,7 +3764,7 @@ func decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, span trace.Sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanArray request")
 		}
@@ -3839,7 +3832,7 @@ func decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span tra
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -3850,7 +3843,7 @@ func decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span tra
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanArrayArray request")
 		}
@@ -3940,7 +3933,7 @@ func decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span 
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanNullableArray request")
 		}
@@ -4008,7 +4001,7 @@ func decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -4019,7 +4012,7 @@ func decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanNullableArrayArray request")
 		}
@@ -4099,7 +4092,7 @@ func decodeTestRequestRequiredFormatTestRequest(r *http.Request, span trace.Span
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredFormatTest request")
 		}
@@ -4191,7 +4184,7 @@ func decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, span trace.Sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerArray request")
 		}
@@ -4259,7 +4252,7 @@ func decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span tra
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -4270,7 +4263,7 @@ func decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span tra
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerArrayArray request")
 		}
@@ -4362,7 +4355,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request, span tra
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32Array request")
 		}
@@ -4430,7 +4423,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, spa
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -4441,7 +4434,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32ArrayArray request")
 		}
@@ -4531,7 +4524,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, 
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32NullableArray request")
 		}
@@ -4599,7 +4592,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Requ
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -4610,7 +4603,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Requ
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32NullableArrayArray request")
 		}
@@ -4702,7 +4695,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request, span tra
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64Array request")
 		}
@@ -4770,7 +4763,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, spa
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -4781,7 +4774,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64ArrayArray request")
 		}
@@ -4871,7 +4864,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, 
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64NullableArray request")
 		}
@@ -4939,7 +4932,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Requ
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -4950,7 +4943,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Requ
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64NullableArrayArray request")
 		}
@@ -5040,7 +5033,7 @@ func decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span 
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerNullableArray request")
 		}
@@ -5108,7 +5101,7 @@ func decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -5119,7 +5112,7 @@ func decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerNullableArrayArray request")
 		}
@@ -5207,7 +5200,7 @@ func decodeTestRequestRequiredNullArrayRequest(r *http.Request, span trace.Span)
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNullArray request")
 		}
@@ -5273,7 +5266,7 @@ func decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request, span trace.
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -5284,7 +5277,7 @@ func decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request, span trace.
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNullArrayArray request")
 		}
@@ -5372,7 +5365,7 @@ func decodeTestRequestRequiredNullNullableArrayRequest(r *http.Request, span tra
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNullNullableArray request")
 		}
@@ -5438,7 +5431,7 @@ func decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request, spa
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -5449,7 +5442,7 @@ func decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNullNullableArrayArray request")
 		}
@@ -5495,7 +5488,7 @@ func decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (r
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
 				return errors.Wrap(err, "float")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumber request")
 		}
@@ -5555,7 +5548,7 @@ func decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Spa
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -5566,7 +5559,7 @@ func decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberArray request")
 		}
@@ -5640,7 +5633,7 @@ func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trac
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -5651,7 +5644,7 @@ func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trac
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -5662,7 +5655,7 @@ func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberArrayArray request")
 		}
@@ -5708,7 +5701,7 @@ func decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Sp
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
 				return errors.Wrap(err, "float")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDouble request")
 		}
@@ -5768,7 +5761,7 @@ func decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span tra
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -5779,7 +5772,7 @@ func decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span tra
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleArray request")
 		}
@@ -5853,7 +5846,7 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, spa
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -5864,7 +5857,7 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, spa
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -5875,7 +5868,7 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleArrayArray request")
 		}
@@ -5919,8 +5912,7 @@ func decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span 
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 				return errors.Wrap(err, "float")
 			}
-			return nil // return 1
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullable request")
 		}
@@ -5980,7 +5972,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, 
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -5991,7 +5983,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullableArray request")
 		}
@@ -6065,7 +6057,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Requ
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -6076,7 +6068,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Requ
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -6087,7 +6079,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Requ
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullableArrayArray request")
 		}
@@ -6133,7 +6125,7 @@ func decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Spa
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
 				return errors.Wrap(err, "float")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloat request")
 		}
@@ -6193,7 +6185,7 @@ func decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trac
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -6204,7 +6196,7 @@ func decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatArray request")
 		}
@@ -6278,7 +6270,7 @@ func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -6289,7 +6281,7 @@ func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -6300,7 +6292,7 @@ func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatArrayArray request")
 		}
@@ -6344,8 +6336,7 @@ func decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span t
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 				return errors.Wrap(err, "float")
 			}
-			return nil // return 1
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullable request")
 		}
@@ -6405,7 +6396,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, s
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -6416,7 +6407,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullableArray request")
 		}
@@ -6490,7 +6481,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Reque
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -6501,7 +6492,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Reque
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -6512,7 +6503,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Reque
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullableArrayArray request")
 		}
@@ -6604,7 +6595,7 @@ func decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request, span trac
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32Array request")
 		}
@@ -6672,7 +6663,7 @@ func decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -6683,7 +6674,7 @@ func decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32ArrayArray request")
 		}
@@ -6773,7 +6764,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, s
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32NullableArray request")
 		}
@@ -6841,7 +6832,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Reque
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -6852,7 +6843,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Reque
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32NullableArrayArray request")
 		}
@@ -6944,7 +6935,7 @@ func decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request, span trac
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64Array request")
 		}
@@ -7012,7 +7003,7 @@ func decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -7023,7 +7014,7 @@ func decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64ArrayArray request")
 		}
@@ -7113,7 +7104,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, s
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64NullableArray request")
 		}
@@ -7181,7 +7172,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Reque
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -7192,7 +7183,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Reque
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64NullableArrayArray request")
 		}
@@ -7236,8 +7227,7 @@ func decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 				return errors.Wrap(err, "float")
 			}
-			return nil // return 1
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullable request")
 		}
@@ -7297,7 +7287,7 @@ func decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span t
 					if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 						return errors.Wrap(err, "float")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -7308,7 +7298,7 @@ func decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span t
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullableArray request")
 		}
@@ -7382,7 +7372,7 @@ func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, s
 							if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 								return errors.Wrap(err, "float")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -7393,7 +7383,7 @@ func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, s
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -7404,7 +7394,7 @@ func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullableArrayArray request")
 		}
@@ -7496,7 +7486,7 @@ func decodeTestRequestRequiredStringArrayRequest(r *http.Request, span trace.Spa
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringArray request")
 		}
@@ -7564,7 +7554,7 @@ func decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trac
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -7575,7 +7565,7 @@ func decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringArrayArray request")
 		}
@@ -7667,7 +7657,7 @@ func decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request, span tra
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryArray request")
 		}
@@ -7735,7 +7725,7 @@ func decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, spa
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -7746,7 +7736,7 @@ func decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryArrayArray request")
 		}
@@ -7836,7 +7826,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, 
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryNullableArray request")
 		}
@@ -7904,7 +7894,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Requ
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -7915,7 +7905,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Requ
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryNullableArrayArray request")
 		}
@@ -8007,7 +7997,7 @@ func decodeTestRequestRequiredStringByteArrayRequest(r *http.Request, span trace
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteArray request")
 		}
@@ -8075,7 +8065,7 @@ func decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -8086,7 +8076,7 @@ func decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteArrayArray request")
 		}
@@ -8178,7 +8168,7 @@ func decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request, sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteNullableArray request")
 		}
@@ -8246,7 +8236,7 @@ func decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Reques
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -8257,7 +8247,7 @@ func decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Reques
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteNullableArrayArray request")
 		}
@@ -8349,7 +8339,7 @@ func decodeTestRequestRequiredStringDateArrayRequest(r *http.Request, span trace
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateArray request")
 		}
@@ -8417,7 +8407,7 @@ func decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -8428,7 +8418,7 @@ func decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateArrayArray request")
 		}
@@ -8518,7 +8508,7 @@ func decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateNullableArray request")
 		}
@@ -8586,7 +8576,7 @@ func decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Reques
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -8597,7 +8587,7 @@ func decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Reques
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateNullableArrayArray request")
 		}
@@ -8689,7 +8679,7 @@ func decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request, span t
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeArray request")
 		}
@@ -8757,7 +8747,7 @@ func decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -8768,7 +8758,7 @@ func decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeArrayArray request")
 		}
@@ -8858,7 +8848,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeNullableArray request")
 		}
@@ -8926,7 +8916,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Re
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -8937,7 +8927,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Re
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeNullableArrayArray request")
 		}
@@ -9029,7 +9019,7 @@ func decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request, span t
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationArray request")
 		}
@@ -9097,7 +9087,7 @@ func decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -9108,7 +9098,7 @@ func decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationArrayArray request")
 		}
@@ -9198,7 +9188,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationNullableArray request")
 		}
@@ -9266,7 +9256,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Re
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -9277,7 +9267,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Re
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationNullableArrayArray request")
 		}
@@ -9331,7 +9321,7 @@ func decodeTestRequestRequiredStringEmailRequest(r *http.Request, span trace.Spa
 			}).Validate(string(request)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmail request")
 		}
@@ -9399,7 +9389,7 @@ func decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trac
 					}).Validate(string(elem)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -9410,7 +9400,7 @@ func decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailArray request")
 		}
@@ -9492,7 +9482,7 @@ func decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span
 							}).Validate(string(elem)); err != nil {
 								return errors.Wrap(err, "string")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -9503,7 +9493,7 @@ func decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -9514,7 +9504,7 @@ func decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailArrayArray request")
 		}
@@ -9566,8 +9556,7 @@ func decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span t
 			}).Validate(string(request.Value)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil // return 1
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullable request")
 		}
@@ -9635,7 +9624,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, s
 					}).Validate(string(elem)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -9646,7 +9635,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullableArray request")
 		}
@@ -9728,7 +9717,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Reque
 							}).Validate(string(elem)); err != nil {
 								return errors.Wrap(err, "string")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -9739,7 +9728,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Reque
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -9750,7 +9739,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Reque
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullableArrayArray request")
 		}
@@ -9804,7 +9793,7 @@ func decodeTestRequestRequiredStringHostnameRequest(r *http.Request, span trace.
 			}).Validate(string(request)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostname request")
 		}
@@ -9872,7 +9861,7 @@ func decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span t
 					}).Validate(string(elem)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -9883,7 +9872,7 @@ func decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span t
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameArray request")
 		}
@@ -9965,7 +9954,7 @@ func decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, s
 							}).Validate(string(elem)); err != nil {
 								return errors.Wrap(err, "string")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -9976,7 +9965,7 @@ func decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, s
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -9987,7 +9976,7 @@ func decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameArrayArray request")
 		}
@@ -10039,8 +10028,7 @@ func decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, spa
 			}).Validate(string(request.Value)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil // return 1
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullable request")
 		}
@@ -10108,7 +10096,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request
 					}).Validate(string(elem)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -10119,7 +10107,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullableArray request")
 		}
@@ -10201,7 +10189,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Re
 							}).Validate(string(elem)); err != nil {
 								return errors.Wrap(err, "string")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -10212,7 +10200,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Re
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -10223,7 +10211,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Re
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullableArrayArray request")
 		}
@@ -10315,7 +10303,7 @@ func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.S
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPArray request")
 		}
@@ -10383,7 +10371,7 @@ func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span tr
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -10394,7 +10382,7 @@ func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span tr
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPArrayArray request")
 		}
@@ -10484,7 +10472,7 @@ func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPNullableArray request")
 		}
@@ -10552,7 +10540,7 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request,
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -10563,7 +10551,7 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request,
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPNullableArrayArray request")
 		}
@@ -10655,7 +10643,7 @@ func decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Request, span trac
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt32Array request")
 		}
@@ -10723,7 +10711,7 @@ func decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request, span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -10734,7 +10722,7 @@ func decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt32ArrayArray request")
 		}
@@ -10824,7 +10812,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request, s
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt32NullableArray request")
 		}
@@ -10892,7 +10880,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Reque
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -10903,7 +10891,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Reque
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt32NullableArrayArray request")
 		}
@@ -10995,7 +10983,7 @@ func decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Request, span trac
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt64Array request")
 		}
@@ -11063,7 +11051,7 @@ func decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request, span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -11074,7 +11062,7 @@ func decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt64ArrayArray request")
 		}
@@ -11164,7 +11152,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request, s
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt64NullableArray request")
 		}
@@ -11232,7 +11220,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Reque
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -11243,7 +11231,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Reque
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt64NullableArrayArray request")
 		}
@@ -11335,7 +11323,7 @@ func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4Array request")
 		}
@@ -11403,7 +11391,7 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -11414,7 +11402,7 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4ArrayArray request")
 		}
@@ -11504,7 +11492,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4NullableArray request")
 		}
@@ -11572,7 +11560,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Reques
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -11583,7 +11571,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Reques
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4NullableArrayArray request")
 		}
@@ -11675,7 +11663,7 @@ func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6Array request")
 		}
@@ -11743,7 +11731,7 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -11754,7 +11742,7 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6ArrayArray request")
 		}
@@ -11844,7 +11832,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6NullableArray request")
 		}
@@ -11912,7 +11900,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Reques
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -11923,7 +11911,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Reques
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6NullableArrayArray request")
 		}
@@ -12013,7 +12001,7 @@ func decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span t
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringNullableArray request")
 		}
@@ -12081,7 +12069,7 @@ func decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -12092,7 +12080,7 @@ func decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringNullableArrayArray request")
 		}
@@ -12184,7 +12172,7 @@ func decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request, span t
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordArray request")
 		}
@@ -12252,7 +12240,7 @@ func decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -12263,7 +12251,7 @@ func decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordArrayArray request")
 		}
@@ -12353,7 +12341,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordNullableArray request")
 		}
@@ -12421,7 +12409,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Re
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -12432,7 +12420,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Re
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordNullableArrayArray request")
 		}
@@ -12524,7 +12512,7 @@ func decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request, span trace
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeArray request")
 		}
@@ -12592,7 +12580,7 @@ func decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -12603,7 +12591,7 @@ func decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeArrayArray request")
 		}
@@ -12693,7 +12681,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeNullableArray request")
 		}
@@ -12761,7 +12749,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Reques
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -12772,7 +12760,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Reques
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeNullableArrayArray request")
 		}
@@ -12864,7 +12852,7 @@ func decodeTestRequestRequiredStringURIArrayRequest(r *http.Request, span trace.
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringURIArray request")
 		}
@@ -12932,7 +12920,7 @@ func decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span t
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -12943,7 +12931,7 @@ func decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span t
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringURIArrayArray request")
 		}
@@ -13033,7 +13021,7 @@ func decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, spa
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringURINullableArray request")
 		}
@@ -13101,7 +13089,7 @@ func decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -13112,7 +13100,7 @@ func decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringURINullableArrayArray request")
 		}
@@ -13204,7 +13192,7 @@ func decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request, span trace
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDArray request")
 		}
@@ -13272,7 +13260,7 @@ func decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -13283,7 +13271,7 @@ func decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDArrayArray request")
 		}
@@ -13373,7 +13361,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDNullableArray request")
 		}
@@ -13441,7 +13429,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Reques
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -13452,7 +13440,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Reques
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDNullableArrayArray request")
 		}
@@ -13544,7 +13532,7 @@ func decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request, span trace
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixArray request")
 		}
@@ -13612,7 +13600,7 @@ func decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -13623,7 +13611,7 @@ func decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixArrayArray request")
 		}
@@ -13715,7 +13703,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Request, span 
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMicroArray request")
 		}
@@ -13783,7 +13771,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request, 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -13794,7 +13782,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request, 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMicroArrayArray request")
 		}
@@ -13884,7 +13872,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Reques
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMicroNullableArray request")
 		}
@@ -13952,7 +13940,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.R
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -13963,7 +13951,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.R
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMicroNullableArrayArray request")
 		}
@@ -14055,7 +14043,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Request, span 
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMilliArray request")
 		}
@@ -14123,7 +14111,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request, 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -14134,7 +14122,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request, 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMilliArrayArray request")
 		}
@@ -14224,7 +14212,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Reques
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMilliNullableArray request")
 		}
@@ -14292,7 +14280,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.R
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -14303,7 +14291,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.R
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMilliNullableArrayArray request")
 		}
@@ -14395,7 +14383,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Request, span t
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNanoArray request")
 		}
@@ -14463,7 +14451,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -14474,7 +14462,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNanoArrayArray request")
 		}
@@ -14564,7 +14552,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNanoNullableArray request")
 		}
@@ -14632,7 +14620,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Re
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -14643,7 +14631,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Re
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNanoNullableArrayArray request")
 		}
@@ -14733,7 +14721,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, sp
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNullableArray request")
 		}
@@ -14801,7 +14789,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Reques
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -14812,7 +14800,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Reques
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNullableArrayArray request")
 		}
@@ -14904,7 +14892,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.Request, spa
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixSecondsArray request")
 		}
@@ -14972,7 +14960,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -14983,7 +14971,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixSecondsArrayArray request")
 		}
@@ -15073,7 +15061,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Requ
 			if request == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixSecondsNullableArray request")
 		}
@@ -15141,7 +15129,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -15152,7 +15140,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixSecondsNullableArrayArray request")
 		}
@@ -15300,7 +15288,7 @@ func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -15311,7 +15299,7 @@ func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringArrayArray request")
 		}
@@ -15459,7 +15447,7 @@ func decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -15470,7 +15458,7 @@ func decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringBinaryArrayArray request")
 		}
@@ -15618,7 +15606,7 @@ func decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, spa
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -15629,7 +15617,7 @@ func decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringBinaryNullableArrayArray request")
 		}
@@ -15778,7 +15766,7 @@ func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Sp
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -15789,7 +15777,7 @@ func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Sp
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringByteArrayArray request")
 		}
@@ -15937,7 +15925,7 @@ func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -15948,7 +15936,7 @@ func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringByteNullableArrayArray request")
 		}
@@ -16096,7 +16084,7 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -16107,7 +16095,7 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDateArrayArray request")
 		}
@@ -16255,7 +16243,7 @@ func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -16266,7 +16254,7 @@ func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDateNullableArrayArray request")
 		}
@@ -16414,7 +16402,7 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -16425,7 +16413,7 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDateTimeArrayArray request")
 		}
@@ -16573,7 +16561,7 @@ func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -16584,7 +16572,7 @@ func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDateTimeNullableArrayArray request")
 		}
@@ -16732,7 +16720,7 @@ func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trac
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -16743,7 +16731,7 @@ func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDurationArrayArray request")
 		}
@@ -16891,7 +16879,7 @@ func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -16902,7 +16890,7 @@ func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringDurationNullableArrayArray request")
 		}
@@ -16957,13 +16945,12 @@ func decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (req 
 					}).Validate(string(request.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringEmail request")
 		}
@@ -17028,7 +17015,7 @@ func decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) 
 					}).Validate(string(elem)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -17039,7 +17026,7 @@ func decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringEmailArray request")
 		}
@@ -17118,7 +17105,7 @@ func decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.S
 							}).Validate(string(elem)); err != nil {
 								return errors.Wrap(err, "string")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -17129,7 +17116,7 @@ func decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.S
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -17140,7 +17127,7 @@ func decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.S
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringEmailArrayArray request")
 		}
@@ -17195,13 +17182,12 @@ func decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Spa
 					}).Validate(string(request.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringEmailNullable request")
 		}
@@ -17266,7 +17252,7 @@ func decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trac
 					}).Validate(string(elem)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -17277,7 +17263,7 @@ func decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringEmailNullableArray request")
 		}
@@ -17356,7 +17342,7 @@ func decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span
 							}).Validate(string(elem)); err != nil {
 								return errors.Wrap(err, "string")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -17367,7 +17353,7 @@ func decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -17378,7 +17364,7 @@ func decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringEmailNullableArrayArray request")
 		}
@@ -17433,13 +17419,12 @@ func decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (r
 					}).Validate(string(request.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringHostname request")
 		}
@@ -17504,7 +17489,7 @@ func decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Spa
 					}).Validate(string(elem)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -17515,7 +17500,7 @@ func decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringHostnameArray request")
 		}
@@ -17594,7 +17579,7 @@ func decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trac
 							}).Validate(string(elem)); err != nil {
 								return errors.Wrap(err, "string")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -17605,7 +17590,7 @@ func decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trac
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -17616,7 +17601,7 @@ func decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringHostnameArrayArray request")
 		}
@@ -17671,13 +17656,12 @@ func decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.
 					}).Validate(string(request.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullable request")
 		}
@@ -17742,7 +17726,7 @@ func decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span t
 					}).Validate(string(elem)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -17753,7 +17737,7 @@ func decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span t
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullableArray request")
 		}
@@ -17832,7 +17816,7 @@ func decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, s
 							}).Validate(string(elem)); err != nil {
 								return errors.Wrap(err, "string")
 							}
-							return nil // return 1
+							return nil
 						}(); err != nil {
 							failures = append(failures, validate.FieldError{
 								Name:  fmt.Sprintf("[%d]", i),
@@ -17843,7 +17827,7 @@ func decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, s
 					if len(failures) > 0 {
 						return &validate.Error{Fields: failures}
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -17854,7 +17838,7 @@ func decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullableArrayArray request")
 		}
@@ -18002,7 +17986,7 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -18013,7 +17997,7 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIPArrayArray request")
 		}
@@ -18161,7 +18145,7 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -18172,7 +18156,7 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIPNullableArrayArray request")
 		}
@@ -18320,7 +18304,7 @@ func decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, span trace.S
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -18331,7 +18315,7 @@ func decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, span trace.S
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringInt32ArrayArray request")
 		}
@@ -18479,7 +18463,7 @@ func decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -18490,7 +18474,7 @@ func decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringInt32NullableArrayArray request")
 		}
@@ -18638,7 +18622,7 @@ func decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, span trace.S
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -18649,7 +18633,7 @@ func decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, span trace.S
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringInt64ArrayArray request")
 		}
@@ -18797,7 +18781,7 @@ func decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -18808,7 +18792,7 @@ func decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringInt64NullableArrayArray request")
 		}
@@ -18956,7 +18940,7 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -18967,7 +18951,7 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIpv4ArrayArray request")
 		}
@@ -19115,7 +19099,7 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -19126,7 +19110,7 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIpv4NullableArrayArray request")
 		}
@@ -19274,7 +19258,7 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -19285,7 +19269,7 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIpv6ArrayArray request")
 		}
@@ -19433,7 +19417,7 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -19444,7 +19428,7 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringIpv6NullableArrayArray request")
 		}
@@ -19592,7 +19576,7 @@ func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trac
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -19603,7 +19587,7 @@ func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringNullableArrayArray request")
 		}
@@ -19751,7 +19735,7 @@ func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trac
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -19762,7 +19746,7 @@ func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringPasswordArrayArray request")
 		}
@@ -19910,7 +19894,7 @@ func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -19921,7 +19905,7 @@ func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringPasswordNullableArrayArray request")
 		}
@@ -20069,7 +20053,7 @@ func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Sp
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -20080,7 +20064,7 @@ func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Sp
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringTimeArrayArray request")
 		}
@@ -20228,7 +20212,7 @@ func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -20239,7 +20223,7 @@ func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringTimeNullableArrayArray request")
 		}
@@ -20387,7 +20371,7 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -20398,7 +20382,7 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringURIArrayArray request")
 		}
@@ -20546,7 +20530,7 @@ func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span t
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -20557,7 +20541,7 @@ func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span t
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringURINullableArrayArray request")
 		}
@@ -20705,7 +20689,7 @@ func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Sp
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -20716,7 +20700,7 @@ func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Sp
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUUIDArrayArray request")
 		}
@@ -20864,7 +20848,7 @@ func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -20875,7 +20859,7 @@ func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUUIDNullableArrayArray request")
 		}
@@ -21023,7 +21007,7 @@ func decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, span trace.Sp
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -21034,7 +21018,7 @@ func decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, span trace.Sp
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixArrayArray request")
 		}
@@ -21182,7 +21166,7 @@ func decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request, span tra
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -21193,7 +21177,7 @@ func decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request, span tra
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixMicroArrayArray request")
 		}
@@ -21341,7 +21325,7 @@ func decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -21352,7 +21336,7 @@ func decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixMicroNullableArrayArray request")
 		}
@@ -21500,7 +21484,7 @@ func decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request, span tra
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -21511,7 +21495,7 @@ func decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request, span tra
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixMilliArrayArray request")
 		}
@@ -21659,7 +21643,7 @@ func decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -21670,7 +21654,7 @@ func decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixMilliNullableArrayArray request")
 		}
@@ -21818,7 +21802,7 @@ func decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request, span trac
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -21829,7 +21813,7 @@ func decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request, span trac
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixNanoArrayArray request")
 		}
@@ -21977,7 +21961,7 @@ func decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, s
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -21988,7 +21972,7 @@ func decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, s
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixNanoNullableArrayArray request")
 		}
@@ -22136,7 +22120,7 @@ func decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span 
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -22147,7 +22131,7 @@ func decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span 
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixNullableArrayArray request")
 		}
@@ -22295,7 +22279,7 @@ func decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request, span t
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -22306,7 +22290,7 @@ func decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request, span t
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixSecondsArrayArray request")
 		}
@@ -22454,7 +22438,7 @@ func decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request
 					if elem == nil {
 						return errors.New("nil is invalid value")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					failures = append(failures, validate.FieldError{
 						Name:  fmt.Sprintf("[%d]", i),
@@ -22465,7 +22449,7 @@ func decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request
 			if len(failures) > 0 {
 				return &validate.Error{Fields: failures}
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringUnixSecondsNullableArrayArray request")
 		}

@@ -182,7 +182,7 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -389,13 +389,12 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -646,7 +645,7 @@ func (c *Client) OneofBug(ctx context.Context, request OneOfBugs) (res OneofBugO
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -756,13 +755,12 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1246,13 +1244,12 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1325,13 +1322,12 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 				}).Validate(string(request.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1638,7 +1634,7 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}

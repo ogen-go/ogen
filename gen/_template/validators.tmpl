@@ -11,15 +11,15 @@
 	{{- end }}
 	{{- if and ($t.IsGeneric) ($t.GenericOf.NeedValidation) }}
         {{- $validated = true }}
-        {{- if $t.GenericVariant.Optional }}
-			if {{ $.Var }}.Set {
-				if err := func() error {
+        {{- if $t.GenericVariant.Optional }}	
+      if {{ $.Var }}.Set {			
+        if err := func() error {
             		{{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
 				}(); err != nil {
 					return err
 				}
 			}      
-			return nil // return 2
+			return nil
         {{- else }}
             {{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
         {{- end }}
@@ -130,7 +130,9 @@
 	{{- if not $validated }}
 	{{ errorf "validation expected %s" $t }}
 	{{- end }}
-	return nil // return 1
+  {{- if not (and ($t.IsGeneric) ($t.GenericOf.NeedValidation)) }}
+	return nil
+  {{- end }}
 {{- end }}
 
 {{ define "validators/body" }}

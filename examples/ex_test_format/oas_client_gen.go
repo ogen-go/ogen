@@ -237,7 +237,7 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -248,7 +248,7 @@ func (c *Client) TestRequestBooleanArrayArray(ctx context.Context, request [][]b
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -430,7 +430,7 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -441,7 +441,7 @@ func (c *Client) TestRequestBooleanNullableArrayArray(ctx context.Context, reque
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -565,13 +565,12 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -753,7 +752,7 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -764,7 +763,7 @@ func (c *Client) TestRequestIntegerArrayArray(ctx context.Context, request [][]i
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -946,7 +945,7 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -957,7 +956,7 @@ func (c *Client) TestRequestIntegerInt32ArrayArray(ctx context.Context, request 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1139,7 +1138,7 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1150,7 +1149,7 @@ func (c *Client) TestRequestIntegerInt32NullableArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1332,7 +1331,7 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1343,7 +1342,7 @@ func (c *Client) TestRequestIntegerInt64ArrayArray(ctx context.Context, request 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1525,7 +1524,7 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1536,7 +1535,7 @@ func (c *Client) TestRequestIntegerInt64NullableArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1718,7 +1717,7 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1729,7 +1728,7 @@ func (c *Client) TestRequestIntegerNullableArrayArray(ctx context.Context, reque
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1911,7 +1910,7 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1922,7 +1921,7 @@ func (c *Client) TestRequestNullArrayArray(ctx context.Context, request [][]stru
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2104,7 +2103,7 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2115,7 +2114,7 @@ func (c *Client) TestRequestNullNullableArrayArray(ctx context.Context, request 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2182,13 +2181,12 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2256,7 +2254,7 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2267,7 +2265,7 @@ func (c *Client) TestRequestNumberArray(ctx context.Context, request []float64) 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2341,7 +2339,7 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -2352,7 +2350,7 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2363,7 +2361,7 @@ func (c *Client) TestRequestNumberArrayArray(ctx context.Context, request [][]fl
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2430,13 +2428,12 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2504,7 +2501,7 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2515,7 +2512,7 @@ func (c *Client) TestRequestNumberDoubleArray(ctx context.Context, request []flo
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2589,7 +2586,7 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -2600,7 +2597,7 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2611,7 +2608,7 @@ func (c *Client) TestRequestNumberDoubleArrayArray(ctx context.Context, request 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2678,13 +2675,12 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2752,7 +2748,7 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2763,7 +2759,7 @@ func (c *Client) TestRequestNumberDoubleNullableArray(ctx context.Context, reque
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2837,7 +2833,7 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -2848,7 +2844,7 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2859,7 +2855,7 @@ func (c *Client) TestRequestNumberDoubleNullableArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2926,13 +2922,12 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3000,7 +2995,7 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3011,7 +3006,7 @@ func (c *Client) TestRequestNumberFloatArray(ctx context.Context, request []floa
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3085,7 +3080,7 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -3096,7 +3091,7 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3107,7 +3102,7 @@ func (c *Client) TestRequestNumberFloatArrayArray(ctx context.Context, request [
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3174,13 +3169,12 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3248,7 +3242,7 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3259,7 +3253,7 @@ func (c *Client) TestRequestNumberFloatNullableArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3333,7 +3327,7 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -3344,7 +3338,7 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3355,7 +3349,7 @@ func (c *Client) TestRequestNumberFloatNullableArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3537,7 +3531,7 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3548,7 +3542,7 @@ func (c *Client) TestRequestNumberInt32ArrayArray(ctx context.Context, request [
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3730,7 +3724,7 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3741,7 +3735,7 @@ func (c *Client) TestRequestNumberInt32NullableArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3923,7 +3917,7 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3934,7 +3928,7 @@ func (c *Client) TestRequestNumberInt64ArrayArray(ctx context.Context, request [
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4116,7 +4110,7 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4127,7 +4121,7 @@ func (c *Client) TestRequestNumberInt64NullableArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4194,13 +4188,12 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 				if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4268,7 +4261,7 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []f
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4279,7 +4272,7 @@ func (c *Client) TestRequestNumberNullableArray(ctx context.Context, request []f
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4353,7 +4346,7 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -4364,7 +4357,7 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4375,7 +4368,7 @@ func (c *Client) TestRequestNumberNullableArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4554,7 +4547,7 @@ func (c *Client) TestRequestRequiredBooleanArray(ctx context.Context, request []
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4625,7 +4618,7 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4636,7 +4629,7 @@ func (c *Client) TestRequestRequiredBooleanArrayArray(ctx context.Context, reque
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4758,7 +4751,7 @@ func (c *Client) TestRequestRequiredBooleanNullableArray(ctx context.Context, re
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4829,7 +4822,7 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4840,7 +4833,7 @@ func (c *Client) TestRequestRequiredBooleanNullableArrayArray(ctx context.Contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -4962,7 +4955,7 @@ func (c *Client) TestRequestRequiredFormatTest(ctx context.Context, request Test
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5084,7 +5077,7 @@ func (c *Client) TestRequestRequiredIntegerArray(ctx context.Context, request []
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5155,7 +5148,7 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5166,7 +5159,7 @@ func (c *Client) TestRequestRequiredIntegerArrayArray(ctx context.Context, reque
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5288,7 +5281,7 @@ func (c *Client) TestRequestRequiredIntegerInt32Array(ctx context.Context, reque
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5359,7 +5352,7 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5370,7 +5363,7 @@ func (c *Client) TestRequestRequiredIntegerInt32ArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5492,7 +5485,7 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArray(ctx context.Contex
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5563,7 +5556,7 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5574,7 +5567,7 @@ func (c *Client) TestRequestRequiredIntegerInt32NullableArrayArray(ctx context.C
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5696,7 +5689,7 @@ func (c *Client) TestRequestRequiredIntegerInt64Array(ctx context.Context, reque
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5767,7 +5760,7 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5778,7 +5771,7 @@ func (c *Client) TestRequestRequiredIntegerInt64ArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5900,7 +5893,7 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArray(ctx context.Contex
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -5971,7 +5964,7 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -5982,7 +5975,7 @@ func (c *Client) TestRequestRequiredIntegerInt64NullableArrayArray(ctx context.C
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6104,7 +6097,7 @@ func (c *Client) TestRequestRequiredIntegerNullableArray(ctx context.Context, re
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6175,7 +6168,7 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6186,7 +6179,7 @@ func (c *Client) TestRequestRequiredIntegerNullableArrayArray(ctx context.Contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6308,7 +6301,7 @@ func (c *Client) TestRequestRequiredNullArray(ctx context.Context, request []str
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6379,7 +6372,7 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6390,7 +6383,7 @@ func (c *Client) TestRequestRequiredNullArrayArray(ctx context.Context, request 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6512,7 +6505,7 @@ func (c *Client) TestRequestRequiredNullNullableArray(ctx context.Context, reque
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6583,7 +6576,7 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6594,7 +6587,7 @@ func (c *Client) TestRequestRequiredNullNullableArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6659,7 +6652,7 @@ func (c *Client) TestRequestRequiredNumber(ctx context.Context, request float64)
 		if err := (validate.Float{}).Validate(float64(request)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6730,7 +6723,7 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6741,7 +6734,7 @@ func (c *Client) TestRequestRequiredNumberArray(ctx context.Context, request []f
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6818,7 +6811,7 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -6829,7 +6822,7 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6840,7 +6833,7 @@ func (c *Client) TestRequestRequiredNumberArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6905,7 +6898,7 @@ func (c *Client) TestRequestRequiredNumberDouble(ctx context.Context, request fl
 		if err := (validate.Float{}).Validate(float64(request)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -6976,7 +6969,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -6987,7 +6980,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArray(ctx context.Context, reque
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7064,7 +7057,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -7075,7 +7068,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7086,7 +7079,7 @@ func (c *Client) TestRequestRequiredNumberDoubleArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7151,8 +7144,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7223,7 +7215,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7234,7 +7226,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArray(ctx context.Contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7311,7 +7303,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -7322,7 +7314,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7333,7 +7325,7 @@ func (c *Client) TestRequestRequiredNumberDoubleNullableArrayArray(ctx context.C
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7398,7 +7390,7 @@ func (c *Client) TestRequestRequiredNumberFloat(ctx context.Context, request flo
 		if err := (validate.Float{}).Validate(float64(request)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7469,7 +7461,7 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7480,7 +7472,7 @@ func (c *Client) TestRequestRequiredNumberFloatArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7557,7 +7549,7 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -7568,7 +7560,7 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7579,7 +7571,7 @@ func (c *Client) TestRequestRequiredNumberFloatArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7644,8 +7636,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7716,7 +7707,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7727,7 +7718,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7804,7 +7795,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -7815,7 +7806,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -7826,7 +7817,7 @@ func (c *Client) TestRequestRequiredNumberFloatNullableArrayArray(ctx context.Co
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7948,7 +7939,7 @@ func (c *Client) TestRequestRequiredNumberInt32Array(ctx context.Context, reques
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8019,7 +8010,7 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8030,7 +8021,7 @@ func (c *Client) TestRequestRequiredNumberInt32ArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8152,7 +8143,7 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArray(ctx context.Context
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8223,7 +8214,7 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8234,7 +8225,7 @@ func (c *Client) TestRequestRequiredNumberInt32NullableArrayArray(ctx context.Co
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8356,7 +8347,7 @@ func (c *Client) TestRequestRequiredNumberInt64Array(ctx context.Context, reques
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8427,7 +8418,7 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8438,7 +8429,7 @@ func (c *Client) TestRequestRequiredNumberInt64ArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8560,7 +8551,7 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArray(ctx context.Context
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8631,7 +8622,7 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8642,7 +8633,7 @@ func (c *Client) TestRequestRequiredNumberInt64NullableArrayArray(ctx context.Co
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8707,8 +8698,7 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8779,7 +8769,7 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 				if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8790,7 +8780,7 @@ func (c *Client) TestRequestRequiredNumberNullableArray(ctx context.Context, req
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -8867,7 +8857,7 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 						if err := (validate.Float{}).Validate(float64(elem)); err != nil {
 							return errors.Wrap(err, "float")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -8878,7 +8868,7 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -8889,7 +8879,7 @@ func (c *Client) TestRequestRequiredNumberNullableArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9011,7 +9001,7 @@ func (c *Client) TestRequestRequiredStringArray(ctx context.Context, request []s
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9082,7 +9072,7 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -9093,7 +9083,7 @@ func (c *Client) TestRequestRequiredStringArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9215,7 +9205,7 @@ func (c *Client) TestRequestRequiredStringBinaryArray(ctx context.Context, reque
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9286,7 +9276,7 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -9297,7 +9287,7 @@ func (c *Client) TestRequestRequiredStringBinaryArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9419,7 +9409,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArray(ctx context.Contex
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9490,7 +9480,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -9501,7 +9491,7 @@ func (c *Client) TestRequestRequiredStringBinaryNullableArrayArray(ctx context.C
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9623,7 +9613,7 @@ func (c *Client) TestRequestRequiredStringByteArray(ctx context.Context, request
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9694,7 +9684,7 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -9705,7 +9695,7 @@ func (c *Client) TestRequestRequiredStringByteArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9827,7 +9817,7 @@ func (c *Client) TestRequestRequiredStringByteNullableArray(ctx context.Context,
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -9898,7 +9888,7 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -9909,7 +9899,7 @@ func (c *Client) TestRequestRequiredStringByteNullableArrayArray(ctx context.Con
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10031,7 +10021,7 @@ func (c *Client) TestRequestRequiredStringDateArray(ctx context.Context, request
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10102,7 +10092,7 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -10113,7 +10103,7 @@ func (c *Client) TestRequestRequiredStringDateArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10235,7 +10225,7 @@ func (c *Client) TestRequestRequiredStringDateNullableArray(ctx context.Context,
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10306,7 +10296,7 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -10317,7 +10307,7 @@ func (c *Client) TestRequestRequiredStringDateNullableArrayArray(ctx context.Con
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10439,7 +10429,7 @@ func (c *Client) TestRequestRequiredStringDateTimeArray(ctx context.Context, req
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10510,7 +10500,7 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -10521,7 +10511,7 @@ func (c *Client) TestRequestRequiredStringDateTimeArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10643,7 +10633,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArray(ctx context.Cont
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10714,7 +10704,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -10725,7 +10715,7 @@ func (c *Client) TestRequestRequiredStringDateTimeNullableArrayArray(ctx context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10847,7 +10837,7 @@ func (c *Client) TestRequestRequiredStringDurationArray(ctx context.Context, req
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -10918,7 +10908,7 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -10929,7 +10919,7 @@ func (c *Client) TestRequestRequiredStringDurationArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11051,7 +11041,7 @@ func (c *Client) TestRequestRequiredStringDurationNullableArray(ctx context.Cont
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11122,7 +11112,7 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -11133,7 +11123,7 @@ func (c *Client) TestRequestRequiredStringDurationNullableArrayArray(ctx context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11206,7 +11196,7 @@ func (c *Client) TestRequestRequiredStringEmail(ctx context.Context, request str
 		}).Validate(string(request)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11285,7 +11275,7 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 				}).Validate(string(elem)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -11296,7 +11286,7 @@ func (c *Client) TestRequestRequiredStringEmailArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11381,7 +11371,7 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -11392,7 +11382,7 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -11403,7 +11393,7 @@ func (c *Client) TestRequestRequiredStringEmailArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11476,8 +11466,7 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 		}).Validate(string(request.Value)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11556,7 +11545,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 				}).Validate(string(elem)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -11567,7 +11556,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11652,7 +11641,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -11663,7 +11652,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -11674,7 +11663,7 @@ func (c *Client) TestRequestRequiredStringEmailNullableArrayArray(ctx context.Co
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11747,7 +11736,7 @@ func (c *Client) TestRequestRequiredStringHostname(ctx context.Context, request 
 		}).Validate(string(request)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11826,7 +11815,7 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 				}).Validate(string(elem)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -11837,7 +11826,7 @@ func (c *Client) TestRequestRequiredStringHostnameArray(ctx context.Context, req
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -11922,7 +11911,7 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -11933,7 +11922,7 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -11944,7 +11933,7 @@ func (c *Client) TestRequestRequiredStringHostnameArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12017,8 +12006,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 		}).Validate(string(request.Value)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12097,7 +12085,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 				}).Validate(string(elem)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -12108,7 +12096,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArray(ctx context.Cont
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12193,7 +12181,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -12204,7 +12192,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -12215,7 +12203,7 @@ func (c *Client) TestRequestRequiredStringHostnameNullableArrayArray(ctx context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12337,7 +12325,7 @@ func (c *Client) TestRequestRequiredStringIPArray(ctx context.Context, request [
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12408,7 +12396,7 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -12419,7 +12407,7 @@ func (c *Client) TestRequestRequiredStringIPArrayArray(ctx context.Context, requ
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12541,7 +12529,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArray(ctx context.Context, r
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12612,7 +12600,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -12623,7 +12611,7 @@ func (c *Client) TestRequestRequiredStringIPNullableArrayArray(ctx context.Conte
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12745,7 +12733,7 @@ func (c *Client) TestRequestRequiredStringInt32Array(ctx context.Context, reques
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12816,7 +12804,7 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -12827,7 +12815,7 @@ func (c *Client) TestRequestRequiredStringInt32ArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12949,7 +12937,7 @@ func (c *Client) TestRequestRequiredStringInt32NullableArray(ctx context.Context
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13020,7 +13008,7 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -13031,7 +13019,7 @@ func (c *Client) TestRequestRequiredStringInt32NullableArrayArray(ctx context.Co
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13153,7 +13141,7 @@ func (c *Client) TestRequestRequiredStringInt64Array(ctx context.Context, reques
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13224,7 +13212,7 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -13235,7 +13223,7 @@ func (c *Client) TestRequestRequiredStringInt64ArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13357,7 +13345,7 @@ func (c *Client) TestRequestRequiredStringInt64NullableArray(ctx context.Context
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13428,7 +13416,7 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -13439,7 +13427,7 @@ func (c *Client) TestRequestRequiredStringInt64NullableArrayArray(ctx context.Co
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13561,7 +13549,7 @@ func (c *Client) TestRequestRequiredStringIpv4Array(ctx context.Context, request
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13632,7 +13620,7 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -13643,7 +13631,7 @@ func (c *Client) TestRequestRequiredStringIpv4ArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13765,7 +13753,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArray(ctx context.Context,
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13836,7 +13824,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -13847,7 +13835,7 @@ func (c *Client) TestRequestRequiredStringIpv4NullableArrayArray(ctx context.Con
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -13969,7 +13957,7 @@ func (c *Client) TestRequestRequiredStringIpv6Array(ctx context.Context, request
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14040,7 +14028,7 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -14051,7 +14039,7 @@ func (c *Client) TestRequestRequiredStringIpv6ArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14173,7 +14161,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArray(ctx context.Context,
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14244,7 +14232,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -14255,7 +14243,7 @@ func (c *Client) TestRequestRequiredStringIpv6NullableArrayArray(ctx context.Con
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14377,7 +14365,7 @@ func (c *Client) TestRequestRequiredStringNullableArray(ctx context.Context, req
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14448,7 +14436,7 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -14459,7 +14447,7 @@ func (c *Client) TestRequestRequiredStringNullableArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14581,7 +14569,7 @@ func (c *Client) TestRequestRequiredStringPasswordArray(ctx context.Context, req
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14652,7 +14640,7 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -14663,7 +14651,7 @@ func (c *Client) TestRequestRequiredStringPasswordArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14785,7 +14773,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArray(ctx context.Cont
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14856,7 +14844,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -14867,7 +14855,7 @@ func (c *Client) TestRequestRequiredStringPasswordNullableArrayArray(ctx context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -14989,7 +14977,7 @@ func (c *Client) TestRequestRequiredStringTimeArray(ctx context.Context, request
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15060,7 +15048,7 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -15071,7 +15059,7 @@ func (c *Client) TestRequestRequiredStringTimeArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15193,7 +15181,7 @@ func (c *Client) TestRequestRequiredStringTimeNullableArray(ctx context.Context,
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15264,7 +15252,7 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -15275,7 +15263,7 @@ func (c *Client) TestRequestRequiredStringTimeNullableArrayArray(ctx context.Con
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15397,7 +15385,7 @@ func (c *Client) TestRequestRequiredStringURIArray(ctx context.Context, request 
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15468,7 +15456,7 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -15479,7 +15467,7 @@ func (c *Client) TestRequestRequiredStringURIArrayArray(ctx context.Context, req
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15601,7 +15589,7 @@ func (c *Client) TestRequestRequiredStringURINullableArray(ctx context.Context, 
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15672,7 +15660,7 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -15683,7 +15671,7 @@ func (c *Client) TestRequestRequiredStringURINullableArrayArray(ctx context.Cont
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15805,7 +15793,7 @@ func (c *Client) TestRequestRequiredStringUUIDArray(ctx context.Context, request
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -15876,7 +15864,7 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -15887,7 +15875,7 @@ func (c *Client) TestRequestRequiredStringUUIDArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16009,7 +15997,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArray(ctx context.Context,
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16080,7 +16068,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16091,7 +16079,7 @@ func (c *Client) TestRequestRequiredStringUUIDNullableArrayArray(ctx context.Con
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16213,7 +16201,7 @@ func (c *Client) TestRequestRequiredStringUnixArray(ctx context.Context, request
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16284,7 +16272,7 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16295,7 +16283,7 @@ func (c *Client) TestRequestRequiredStringUnixArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16417,7 +16405,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroArray(ctx context.Context, re
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16488,7 +16476,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16499,7 +16487,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroArrayArray(ctx context.Contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16621,7 +16609,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArray(ctx context.Con
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16692,7 +16680,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16703,7 +16691,7 @@ func (c *Client) TestRequestRequiredStringUnixMicroNullableArrayArray(ctx contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16825,7 +16813,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliArray(ctx context.Context, re
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -16896,7 +16884,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -16907,7 +16895,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliArrayArray(ctx context.Contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17029,7 +17017,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArray(ctx context.Con
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17100,7 +17088,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -17111,7 +17099,7 @@ func (c *Client) TestRequestRequiredStringUnixMilliNullableArrayArray(ctx contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17233,7 +17221,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoArray(ctx context.Context, req
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17304,7 +17292,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -17315,7 +17303,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17437,7 +17425,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArray(ctx context.Cont
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17508,7 +17496,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -17519,7 +17507,7 @@ func (c *Client) TestRequestRequiredStringUnixNanoNullableArrayArray(ctx context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17641,7 +17629,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArray(ctx context.Context,
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17712,7 +17700,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -17723,7 +17711,7 @@ func (c *Client) TestRequestRequiredStringUnixNullableArrayArray(ctx context.Con
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17845,7 +17833,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArray(ctx context.Context, 
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -17916,7 +17904,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -17927,7 +17915,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsArrayArray(ctx context.Cont
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18049,7 +18037,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArray(ctx context.C
 		if request == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18120,7 +18108,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -18131,7 +18119,7 @@ func (c *Client) TestRequestRequiredStringUnixSecondsNullableArrayArray(ctx cont
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18313,7 +18301,7 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -18324,7 +18312,7 @@ func (c *Client) TestRequestStringArrayArray(ctx context.Context, request [][]st
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18506,7 +18494,7 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -18517,7 +18505,7 @@ func (c *Client) TestRequestStringBinaryArrayArray(ctx context.Context, request 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18699,7 +18687,7 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -18710,7 +18698,7 @@ func (c *Client) TestRequestStringBinaryNullableArrayArray(ctx context.Context, 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -18892,7 +18880,7 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -18903,7 +18891,7 @@ func (c *Client) TestRequestStringByteArrayArray(ctx context.Context, request []
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19085,7 +19073,7 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -19096,7 +19084,7 @@ func (c *Client) TestRequestStringByteNullableArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19278,7 +19266,7 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -19289,7 +19277,7 @@ func (c *Client) TestRequestStringDateArrayArray(ctx context.Context, request []
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19471,7 +19459,7 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -19482,7 +19470,7 @@ func (c *Client) TestRequestStringDateNullableArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19664,7 +19652,7 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -19675,7 +19663,7 @@ func (c *Client) TestRequestStringDateTimeArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -19857,7 +19845,7 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -19868,7 +19856,7 @@ func (c *Client) TestRequestStringDateTimeNullableArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20050,7 +20038,7 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -20061,7 +20049,7 @@ func (c *Client) TestRequestStringDurationArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20243,7 +20231,7 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -20254,7 +20242,7 @@ func (c *Client) TestRequestStringDurationNullableArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20329,13 +20317,12 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 				}).Validate(string(request.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20411,7 +20398,7 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 				}).Validate(string(elem)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -20422,7 +20409,7 @@ func (c *Client) TestRequestStringEmailArray(ctx context.Context, request []stri
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20504,7 +20491,7 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -20515,7 +20502,7 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -20526,7 +20513,7 @@ func (c *Client) TestRequestStringEmailArrayArray(ctx context.Context, request [
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20601,13 +20588,12 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 				}).Validate(string(request.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20683,7 +20669,7 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 				}).Validate(string(elem)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -20694,7 +20680,7 @@ func (c *Client) TestRequestStringEmailNullableArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20776,7 +20762,7 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -20787,7 +20773,7 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -20798,7 +20784,7 @@ func (c *Client) TestRequestStringEmailNullableArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20873,13 +20859,12 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 				}).Validate(string(request.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20955,7 +20940,7 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 				}).Validate(string(elem)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -20966,7 +20951,7 @@ func (c *Client) TestRequestStringHostnameArray(ctx context.Context, request []s
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21048,7 +21033,7 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -21059,7 +21044,7 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -21070,7 +21055,7 @@ func (c *Client) TestRequestStringHostnameArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21145,13 +21130,12 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 				}).Validate(string(request.Value)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21227,7 +21211,7 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 				}).Validate(string(elem)); err != nil {
 					return errors.Wrap(err, "string")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -21238,7 +21222,7 @@ func (c *Client) TestRequestStringHostnameNullableArray(ctx context.Context, req
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21320,7 +21304,7 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 						}).Validate(string(elem)); err != nil {
 							return errors.Wrap(err, "string")
 						}
-						return nil // return 1
+						return nil
 					}(); err != nil {
 						failures = append(failures, validate.FieldError{
 							Name:  fmt.Sprintf("[%d]", i),
@@ -21331,7 +21315,7 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 				if len(failures) > 0 {
 					return &validate.Error{Fields: failures}
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -21342,7 +21326,7 @@ func (c *Client) TestRequestStringHostnameNullableArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21524,7 +21508,7 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -21535,7 +21519,7 @@ func (c *Client) TestRequestStringIPArrayArray(ctx context.Context, request [][]
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21717,7 +21701,7 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -21728,7 +21712,7 @@ func (c *Client) TestRequestStringIPNullableArrayArray(ctx context.Context, requ
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21910,7 +21894,7 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -21921,7 +21905,7 @@ func (c *Client) TestRequestStringInt32ArrayArray(ctx context.Context, request [
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -22103,7 +22087,7 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -22114,7 +22098,7 @@ func (c *Client) TestRequestStringInt32NullableArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -22296,7 +22280,7 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -22307,7 +22291,7 @@ func (c *Client) TestRequestStringInt64ArrayArray(ctx context.Context, request [
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -22489,7 +22473,7 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -22500,7 +22484,7 @@ func (c *Client) TestRequestStringInt64NullableArrayArray(ctx context.Context, r
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -22682,7 +22666,7 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -22693,7 +22677,7 @@ func (c *Client) TestRequestStringIpv4ArrayArray(ctx context.Context, request []
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -22875,7 +22859,7 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -22886,7 +22870,7 @@ func (c *Client) TestRequestStringIpv4NullableArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -23068,7 +23052,7 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -23079,7 +23063,7 @@ func (c *Client) TestRequestStringIpv6ArrayArray(ctx context.Context, request []
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -23261,7 +23245,7 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -23272,7 +23256,7 @@ func (c *Client) TestRequestStringIpv6NullableArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -23454,7 +23438,7 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -23465,7 +23449,7 @@ func (c *Client) TestRequestStringNullableArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -23647,7 +23631,7 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -23658,7 +23642,7 @@ func (c *Client) TestRequestStringPasswordArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -23840,7 +23824,7 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -23851,7 +23835,7 @@ func (c *Client) TestRequestStringPasswordNullableArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -24033,7 +24017,7 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -24044,7 +24028,7 @@ func (c *Client) TestRequestStringTimeArrayArray(ctx context.Context, request []
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -24226,7 +24210,7 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -24237,7 +24221,7 @@ func (c *Client) TestRequestStringTimeNullableArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -24419,7 +24403,7 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -24430,7 +24414,7 @@ func (c *Client) TestRequestStringURIArrayArray(ctx context.Context, request [][
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -24612,7 +24596,7 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -24623,7 +24607,7 @@ func (c *Client) TestRequestStringURINullableArrayArray(ctx context.Context, req
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -24805,7 +24789,7 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -24816,7 +24800,7 @@ func (c *Client) TestRequestStringUUIDArrayArray(ctx context.Context, request []
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -24998,7 +24982,7 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -25009,7 +24993,7 @@ func (c *Client) TestRequestStringUUIDNullableArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -25191,7 +25175,7 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -25202,7 +25186,7 @@ func (c *Client) TestRequestStringUnixArrayArray(ctx context.Context, request []
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -25384,7 +25368,7 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -25395,7 +25379,7 @@ func (c *Client) TestRequestStringUnixMicroArrayArray(ctx context.Context, reque
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -25577,7 +25561,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -25588,7 +25572,7 @@ func (c *Client) TestRequestStringUnixMicroNullableArrayArray(ctx context.Contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -25770,7 +25754,7 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -25781,7 +25765,7 @@ func (c *Client) TestRequestStringUnixMilliArrayArray(ctx context.Context, reque
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -25963,7 +25947,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -25974,7 +25958,7 @@ func (c *Client) TestRequestStringUnixMilliNullableArrayArray(ctx context.Contex
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26156,7 +26140,7 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -26167,7 +26151,7 @@ func (c *Client) TestRequestStringUnixNanoArrayArray(ctx context.Context, reques
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26349,7 +26333,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -26360,7 +26344,7 @@ func (c *Client) TestRequestStringUnixNanoNullableArrayArray(ctx context.Context
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26542,7 +26526,7 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -26553,7 +26537,7 @@ func (c *Client) TestRequestStringUnixNullableArrayArray(ctx context.Context, re
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26735,7 +26719,7 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -26746,7 +26730,7 @@ func (c *Client) TestRequestStringUnixSecondsArrayArray(ctx context.Context, req
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26928,7 +26912,7 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 				if elem == nil {
 					return errors.New("nil is invalid value")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -26939,7 +26923,7 @@ func (c *Client) TestRequestStringUnixSecondsNullableArrayArray(ctx context.Cont
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}

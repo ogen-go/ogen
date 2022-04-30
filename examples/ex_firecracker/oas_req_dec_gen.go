@@ -47,7 +47,7 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate CreateSnapshot request")
 		}
@@ -91,7 +91,7 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate CreateSyncAction request")
 		}
@@ -357,7 +357,7 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PatchGuestDriveByID request")
 		}
@@ -401,7 +401,7 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PatchGuestNetworkInterfaceByID request")
 		}
@@ -448,13 +448,12 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PatchMachineConfiguration request")
 		}
@@ -498,7 +497,7 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PatchVm request")
 		}
@@ -614,7 +613,7 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PutGuestDriveByID request")
 		}
@@ -658,7 +657,7 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PutGuestNetworkInterfaceByID request")
 		}
@@ -702,7 +701,7 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PutGuestVsock request")
 		}
@@ -746,7 +745,7 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PutLogger request")
 		}
@@ -793,13 +792,12 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PutMachineConfiguration request")
 		}

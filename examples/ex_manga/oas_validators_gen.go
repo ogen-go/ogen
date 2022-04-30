@@ -27,13 +27,12 @@ func (s Book) Validate() error {
 				}).Validate(int64(s.ID.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -55,13 +54,12 @@ func (s Book) Validate() error {
 				}).Validate(int64(s.MediaID.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "media_id",
@@ -74,13 +72,12 @@ func (s Book) Validate() error {
 				if err := s.Images.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "images",
@@ -94,7 +91,7 @@ func (s Book) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -105,7 +102,7 @@ func (s Book) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "tags",
@@ -127,13 +124,12 @@ func (s Book) Validate() error {
 				}).Validate(int64(s.NumPages.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "num_pages",
@@ -155,13 +151,12 @@ func (s Book) Validate() error {
 				}).Validate(int64(s.NumFavorites.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "num_favorites",
@@ -190,13 +185,12 @@ func (s Image) Validate() error {
 				}).Validate(int64(s.W.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "w",
@@ -218,13 +212,12 @@ func (s Image) Validate() error {
 				}).Validate(int64(s.H.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "h",
@@ -245,7 +238,7 @@ func (s Images) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -256,7 +249,7 @@ func (s Images) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "pages",
@@ -269,13 +262,12 @@ func (s Images) Validate() error {
 				if err := s.Cover.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "cover",
@@ -288,13 +280,12 @@ func (s Images) Validate() error {
 				if err := s.Thumbnail.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumbnail",
@@ -317,7 +308,7 @@ func (s SearchByTagIDOKApplicationJSON) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  fmt.Sprintf("[%d]", i),
@@ -328,7 +319,7 @@ func (s SearchByTagIDOKApplicationJSON) Validate() error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
-	return nil // return 1
+	return nil
 }
 func (s SearchOKApplicationJSON) Validate() error {
 	if s == nil {
@@ -340,7 +331,7 @@ func (s SearchOKApplicationJSON) Validate() error {
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  fmt.Sprintf("[%d]", i),
@@ -351,7 +342,7 @@ func (s SearchOKApplicationJSON) Validate() error {
 	if len(failures) > 0 {
 		return &validate.Error{Fields: failures}
 	}
-	return nil // return 1
+	return nil
 }
 func (s SearchResponse) Validate() error {
 	var failures []validate.FieldError
@@ -362,7 +353,7 @@ func (s SearchResponse) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -373,7 +364,7 @@ func (s SearchResponse) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -402,13 +393,12 @@ func (s Tag) Validate() error {
 				}).Validate(int64(s.ID.Value)); err != nil {
 					return errors.Wrap(err, "int")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -421,13 +411,12 @@ func (s Tag) Validate() error {
 				if err := s.Type.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",

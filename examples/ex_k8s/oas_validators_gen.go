@@ -16,7 +16,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 		if s.AdmissionReviewVersions == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "admissionReviewVersions",
@@ -27,7 +27,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhook) Validate() error {
 		if err := s.ClientConfig.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "clientConfig",
@@ -48,7 +48,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Validate() 
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -59,7 +59,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfiguration) Validate() 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "webhooks",
@@ -83,7 +83,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Validat
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -94,7 +94,7 @@ func (s IoK8sAPIAdmissionregistrationV1MutatingWebhookConfigurationList) Validat
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -112,7 +112,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 		if s.AdmissionReviewVersions == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "admissionReviewVersions",
@@ -123,7 +123,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhook) Validate() error {
 		if err := s.ClientConfig.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "clientConfig",
@@ -144,7 +144,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Validate(
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -155,7 +155,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfiguration) Validate(
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "webhooks",
@@ -179,7 +179,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Valid
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -190,7 +190,7 @@ func (s IoK8sAPIAdmissionregistrationV1ValidatingWebhookConfigurationList) Valid
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -216,7 +216,7 @@ func (s IoK8sAPIAdmissionregistrationV1WebhookClientConfig) Validate() error {
 		}).Validate(string(s.CaBundle)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caBundle",
@@ -234,7 +234,7 @@ func (s IoK8sAPIApiserverinternalV1alpha1StorageVersionList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -252,7 +252,7 @@ func (s IoK8sAPIAppsV1ControllerRevisionList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -272,13 +272,12 @@ func (s IoK8sAPIAppsV1DaemonSet) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -302,7 +301,7 @@ func (s IoK8sAPIAppsV1DaemonSetList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -313,7 +312,7 @@ func (s IoK8sAPIAppsV1DaemonSetList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -331,7 +330,7 @@ func (s IoK8sAPIAppsV1DaemonSetSpec) Validate() error {
 		if err := s.Template.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -351,13 +350,12 @@ func (s IoK8sAPIAppsV1Deployment) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -381,7 +379,7 @@ func (s IoK8sAPIAppsV1DeploymentList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -392,7 +390,7 @@ func (s IoK8sAPIAppsV1DeploymentList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -410,7 +408,7 @@ func (s IoK8sAPIAppsV1DeploymentSpec) Validate() error {
 		if err := s.Template.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -430,13 +428,12 @@ func (s IoK8sAPIAppsV1ReplicaSet) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -460,7 +457,7 @@ func (s IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -471,7 +468,7 @@ func (s IoK8sAPIAppsV1ReplicaSetList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -491,13 +488,12 @@ func (s IoK8sAPIAppsV1ReplicaSetSpec) Validate() error {
 				if err := s.Template.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -517,13 +513,12 @@ func (s IoK8sAPIAppsV1StatefulSet) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -547,7 +542,7 @@ func (s IoK8sAPIAppsV1StatefulSetList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -558,7 +553,7 @@ func (s IoK8sAPIAppsV1StatefulSetList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -576,7 +571,7 @@ func (s IoK8sAPIAppsV1StatefulSetSpec) Validate() error {
 		if err := s.Template.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -594,7 +589,7 @@ func (s IoK8sAPIAutoscalingV1HorizontalPodAutoscalerList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -614,13 +609,12 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Validate() error {
 				if err := s.Status.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
@@ -644,7 +638,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error 
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -655,7 +649,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerList) Validate() error 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -673,7 +667,7 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscalerStatus) Validate() erro
 		if s.Conditions == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "conditions",
@@ -693,13 +687,12 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Validate() error {
 				if err := s.Status.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
@@ -723,7 +716,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error 
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -734,7 +727,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerList) Validate() error 
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -752,7 +745,7 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscalerStatus) Validate() erro
 		if s.Conditions == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "conditions",
@@ -772,13 +765,12 @@ func (s IoK8sAPIBatchV1CronJob) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -802,7 +794,7 @@ func (s IoK8sAPIBatchV1CronJobList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -813,7 +805,7 @@ func (s IoK8sAPIBatchV1CronJobList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -831,7 +823,7 @@ func (s IoK8sAPIBatchV1CronJobSpec) Validate() error {
 		if err := s.JobTemplate.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "jobTemplate",
@@ -851,13 +843,12 @@ func (s IoK8sAPIBatchV1Job) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -881,7 +872,7 @@ func (s IoK8sAPIBatchV1JobList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -892,7 +883,7 @@ func (s IoK8sAPIBatchV1JobList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -910,7 +901,7 @@ func (s IoK8sAPIBatchV1JobSpec) Validate() error {
 		if err := s.Template.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -930,13 +921,12 @@ func (s IoK8sAPIBatchV1JobTemplateSpec) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -956,13 +946,12 @@ func (s IoK8sAPIBatchV1beta1CronJob) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -986,7 +975,7 @@ func (s IoK8sAPIBatchV1beta1CronJobList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -997,7 +986,7 @@ func (s IoK8sAPIBatchV1beta1CronJobList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1015,7 +1004,7 @@ func (s IoK8sAPIBatchV1beta1CronJobSpec) Validate() error {
 		if err := s.JobTemplate.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "jobTemplate",
@@ -1035,13 +1024,12 @@ func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -1059,7 +1047,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequest) Validate() error {
 		if err := s.Spec.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -1072,13 +1060,12 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequest) Validate() error {
 				if err := s.Status.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
@@ -1102,7 +1089,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1113,7 +1100,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1133,13 +1120,12 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 				if err := s.Extra.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "extra",
@@ -1158,7 +1144,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 		}).Validate(string(s.Request)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "request",
@@ -1177,7 +1163,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpecExtra) Validate() err
 			if elem == nil {
 				return errors.New("nil is invalid value")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -1205,7 +1191,7 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestStatus) Validate() error 
 		}).Validate(string(s.Certificate)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "certificate",
@@ -1223,7 +1209,7 @@ func (s IoK8sAPICoordinationV1LeaseList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1243,13 +1229,12 @@ func (s IoK8sAPICoreV1Affinity) Validate() error {
 				if err := s.NodeAffinity.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nodeAffinity",
@@ -1267,7 +1252,7 @@ func (s IoK8sAPICoreV1CephFSPersistentVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "monitors",
@@ -1285,7 +1270,7 @@ func (s IoK8sAPICoreV1CephFSVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "monitors",
@@ -1303,7 +1288,7 @@ func (s IoK8sAPICoreV1ComponentStatusList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1323,13 +1308,12 @@ func (s IoK8sAPICoreV1ConfigMap) Validate() error {
 				if err := s.BinaryData.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "binaryData",
@@ -1356,7 +1340,7 @@ func (s IoK8sAPICoreV1ConfigMapBinaryData) Validate() error {
 			}).Validate(string(elem)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -1382,7 +1366,7 @@ func (s IoK8sAPICoreV1ConfigMapList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1393,7 +1377,7 @@ func (s IoK8sAPICoreV1ConfigMapList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1411,7 +1395,7 @@ func (s IoK8sAPICoreV1EndpointsList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1429,7 +1413,7 @@ func (s IoK8sAPICoreV1EventList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1449,13 +1433,12 @@ func (s IoK8sAPICoreV1LimitRange) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -1479,7 +1462,7 @@ func (s IoK8sAPICoreV1LimitRangeList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1490,7 +1473,7 @@ func (s IoK8sAPICoreV1LimitRangeList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1508,7 +1491,7 @@ func (s IoK8sAPICoreV1LimitRangeSpec) Validate() error {
 		if s.Limits == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limits",
@@ -1526,7 +1509,7 @@ func (s IoK8sAPICoreV1NamespaceList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1546,13 +1529,12 @@ func (s IoK8sAPICoreV1NodeAffinity) Validate() error {
 				if err := s.RequiredDuringSchedulingIgnoredDuringExecution.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "requiredDuringSchedulingIgnoredDuringExecution",
@@ -1570,7 +1552,7 @@ func (s IoK8sAPICoreV1NodeList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1588,7 +1570,7 @@ func (s IoK8sAPICoreV1NodeSelector) Validate() error {
 		if s.NodeSelectorTerms == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nodeSelectorTerms",
@@ -1608,13 +1590,12 @@ func (s IoK8sAPICoreV1PersistentVolume) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -1632,7 +1613,7 @@ func (s IoK8sAPICoreV1PersistentVolumeClaimList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1656,7 +1637,7 @@ func (s IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1667,7 +1648,7 @@ func (s IoK8sAPICoreV1PersistentVolumeList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1687,13 +1668,12 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 				if err := s.Cephfs.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "cephfs",
@@ -1706,13 +1686,12 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 				if err := s.NodeAffinity.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nodeAffinity",
@@ -1725,13 +1704,12 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 				if err := s.Rbd.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rbd",
@@ -1751,13 +1729,12 @@ func (s IoK8sAPICoreV1Pod) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -1781,7 +1758,7 @@ func (s IoK8sAPICoreV1PodList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1792,7 +1769,7 @@ func (s IoK8sAPICoreV1PodList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1812,13 +1789,12 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 				if err := s.Affinity.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "affinity",
@@ -1829,7 +1805,7 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 		if s.Containers == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "containers",
@@ -1843,7 +1819,7 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1854,7 +1830,7 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "volumes",
@@ -1874,13 +1850,12 @@ func (s IoK8sAPICoreV1PodTemplate) Validate() error {
 				if err := s.Template.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -1904,7 +1879,7 @@ func (s IoK8sAPICoreV1PodTemplateList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1915,7 +1890,7 @@ func (s IoK8sAPICoreV1PodTemplateList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -1935,13 +1910,12 @@ func (s IoK8sAPICoreV1PodTemplateSpec) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -1959,7 +1933,7 @@ func (s IoK8sAPICoreV1RBDPersistentVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "monitors",
@@ -1977,7 +1951,7 @@ func (s IoK8sAPICoreV1RBDVolumeSource) Validate() error {
 		if s.Monitors == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "monitors",
@@ -1997,13 +1971,12 @@ func (s IoK8sAPICoreV1ReplicationController) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -2027,7 +2000,7 @@ func (s IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2038,7 +2011,7 @@ func (s IoK8sAPICoreV1ReplicationControllerList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2058,13 +2031,12 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) Validate() error {
 				if err := s.Template.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -2082,7 +2054,7 @@ func (s IoK8sAPICoreV1ResourceQuotaList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2102,13 +2074,12 @@ func (s IoK8sAPICoreV1Secret) Validate() error {
 				if err := s.Data.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "data",
@@ -2135,7 +2106,7 @@ func (s IoK8sAPICoreV1SecretData) Validate() error {
 			}).Validate(string(elem)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -2161,7 +2132,7 @@ func (s IoK8sAPICoreV1SecretList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2172,7 +2143,7 @@ func (s IoK8sAPICoreV1SecretList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2190,7 +2161,7 @@ func (s IoK8sAPICoreV1ServiceAccountList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2208,7 +2179,7 @@ func (s IoK8sAPICoreV1ServiceList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2226,7 +2197,7 @@ func (s IoK8sAPICoreV1TopologySelectorLabelRequirement) Validate() error {
 		if s.Values == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "values",
@@ -2247,7 +2218,7 @@ func (s IoK8sAPICoreV1TopologySelectorTerm) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2258,7 +2229,7 @@ func (s IoK8sAPICoreV1TopologySelectorTerm) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "matchLabelExpressions",
@@ -2278,13 +2249,12 @@ func (s IoK8sAPICoreV1Volume) Validate() error {
 				if err := s.Cephfs.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "cephfs",
@@ -2297,13 +2267,12 @@ func (s IoK8sAPICoreV1Volume) Validate() error {
 				if err := s.Rbd.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rbd",
@@ -2323,13 +2292,12 @@ func (s IoK8sAPICoreV1VolumeNodeAffinity) Validate() error {
 				if err := s.Required.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "required",
@@ -2347,7 +2315,7 @@ func (s IoK8sAPIDiscoveryV1Endpoint) Validate() error {
 		if s.Addresses == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "addresses",
@@ -2371,7 +2339,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2382,7 +2350,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSlice) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "endpoints",
@@ -2406,7 +2374,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2417,7 +2385,7 @@ func (s IoK8sAPIDiscoveryV1EndpointSliceList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2435,7 +2403,7 @@ func (s IoK8sAPIDiscoveryV1beta1Endpoint) Validate() error {
 		if s.Addresses == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "addresses",
@@ -2459,7 +2427,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2470,7 +2438,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSlice) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "endpoints",
@@ -2494,7 +2462,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2505,7 +2473,7 @@ func (s IoK8sAPIDiscoveryV1beta1EndpointSliceList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2523,7 +2491,7 @@ func (s IoK8sAPIEventsV1EventList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2541,7 +2509,7 @@ func (s IoK8sAPIEventsV1beta1EventList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2561,13 +2529,12 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -2591,7 +2558,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2602,7 +2569,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2623,7 +2590,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2634,7 +2601,7 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchemaSpec) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rules",
@@ -2652,7 +2619,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		if s.NonResourceURLs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nonResourceURLs",
@@ -2663,7 +2630,7 @@ func (s IoK8sAPIFlowcontrolV1beta1NonResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "verbs",
@@ -2684,7 +2651,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2695,7 +2662,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nonResourceRules",
@@ -2709,7 +2676,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2720,7 +2687,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "resourceRules",
@@ -2731,7 +2698,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PolicyRulesWithSubjects) Validate() error {
 		if s.Subjects == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "subjects",
@@ -2749,7 +2716,7 @@ func (s IoK8sAPIFlowcontrolV1beta1PriorityLevelConfigurationList) Validate() err
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2767,7 +2734,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.ApiGroups == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "apiGroups",
@@ -2778,7 +2745,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.Resources == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "resources",
@@ -2789,7 +2756,7 @@ func (s IoK8sAPIFlowcontrolV1beta1ResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "verbs",
@@ -2809,13 +2776,12 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -2839,7 +2805,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2850,7 +2816,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -2871,7 +2837,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2882,7 +2848,7 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchemaSpec) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rules",
@@ -2900,7 +2866,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		if s.NonResourceURLs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nonResourceURLs",
@@ -2911,7 +2877,7 @@ func (s IoK8sAPIFlowcontrolV1beta2NonResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "verbs",
@@ -2932,7 +2898,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2943,7 +2909,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nonResourceRules",
@@ -2957,7 +2923,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -2968,7 +2934,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "resourceRules",
@@ -2979,7 +2945,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PolicyRulesWithSubjects) Validate() error {
 		if s.Subjects == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "subjects",
@@ -2997,7 +2963,7 @@ func (s IoK8sAPIFlowcontrolV1beta2PriorityLevelConfigurationList) Validate() err
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3015,7 +2981,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.ApiGroups == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "apiGroups",
@@ -3026,7 +2992,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.Resources == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "resources",
@@ -3037,7 +3003,7 @@ func (s IoK8sAPIFlowcontrolV1beta2ResourcePolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "verbs",
@@ -3055,7 +3021,7 @@ func (s IoK8sAPINetworkingV1HTTPIngressRuleValue) Validate() error {
 		if s.Paths == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "paths",
@@ -3075,13 +3041,12 @@ func (s IoK8sAPINetworkingV1Ingress) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -3099,7 +3064,7 @@ func (s IoK8sAPINetworkingV1IngressClassList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3123,7 +3088,7 @@ func (s IoK8sAPINetworkingV1IngressList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3134,7 +3099,7 @@ func (s IoK8sAPINetworkingV1IngressList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3154,13 +3119,12 @@ func (s IoK8sAPINetworkingV1IngressRule) Validate() error {
 				if err := s.HTTP.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "http",
@@ -3181,7 +3145,7 @@ func (s IoK8sAPINetworkingV1IngressSpec) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3192,7 +3156,7 @@ func (s IoK8sAPINetworkingV1IngressSpec) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rules",
@@ -3210,7 +3174,7 @@ func (s IoK8sAPINetworkingV1NetworkPolicyList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3228,7 +3192,7 @@ func (s IoK8sAPINodeV1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3246,7 +3210,7 @@ func (s IoK8sAPINodeV1alpha1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3264,7 +3228,7 @@ func (s IoK8sAPINodeV1beta1RuntimeClassList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3282,7 +3246,7 @@ func (s IoK8sAPIPolicyV1PodDisruptionBudgetList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3300,7 +3264,7 @@ func (s IoK8sAPIPolicyV1beta1PodDisruptionBudgetList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3320,13 +3284,12 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Validate() error {
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -3350,7 +3313,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3361,7 +3324,7 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicyList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3381,13 +3344,12 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Validate() error {
 				if err := s.RuntimeClass.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "runtimeClass",
@@ -3405,7 +3367,7 @@ func (s IoK8sAPIPolicyV1beta1RuntimeClassStrategyOptions) Validate() error {
 		if s.AllowedRuntimeClassNames == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "allowedRuntimeClassNames",
@@ -3426,7 +3388,7 @@ func (s IoK8sAPIRbacV1ClusterRole) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3437,7 +3399,7 @@ func (s IoK8sAPIRbacV1ClusterRole) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rules",
@@ -3455,7 +3417,7 @@ func (s IoK8sAPIRbacV1ClusterRoleBindingList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3479,7 +3441,7 @@ func (s IoK8sAPIRbacV1ClusterRoleList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3490,7 +3452,7 @@ func (s IoK8sAPIRbacV1ClusterRoleList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3508,7 +3470,7 @@ func (s IoK8sAPIRbacV1PolicyRule) Validate() error {
 		if s.Verbs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "verbs",
@@ -3529,7 +3491,7 @@ func (s IoK8sAPIRbacV1Role) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3540,7 +3502,7 @@ func (s IoK8sAPIRbacV1Role) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "rules",
@@ -3558,7 +3520,7 @@ func (s IoK8sAPIRbacV1RoleBindingList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3582,7 +3544,7 @@ func (s IoK8sAPIRbacV1RoleList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3593,7 +3555,7 @@ func (s IoK8sAPIRbacV1RoleList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3611,7 +3573,7 @@ func (s IoK8sAPISchedulingV1PriorityClassList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3629,7 +3591,7 @@ func (s IoK8sAPIStorageV1CSIDriverList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3647,7 +3609,7 @@ func (s IoK8sAPIStorageV1CSINode) Validate() error {
 		if err := s.Spec.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -3671,7 +3633,7 @@ func (s IoK8sAPIStorageV1CSINodeList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3682,7 +3644,7 @@ func (s IoK8sAPIStorageV1CSINodeList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3700,7 +3662,7 @@ func (s IoK8sAPIStorageV1CSINodeSpec) Validate() error {
 		if s.Drivers == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "drivers",
@@ -3721,7 +3683,7 @@ func (s IoK8sAPIStorageV1StorageClass) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3732,7 +3694,7 @@ func (s IoK8sAPIStorageV1StorageClass) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "allowedTopologies",
@@ -3756,7 +3718,7 @@ func (s IoK8sAPIStorageV1StorageClassList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3767,7 +3729,7 @@ func (s IoK8sAPIStorageV1StorageClassList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3785,7 +3747,7 @@ func (s IoK8sAPIStorageV1VolumeAttachment) Validate() error {
 		if err := s.Spec.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -3809,7 +3771,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3820,7 +3782,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3840,13 +3802,12 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSource) Validate() error {
 				if err := s.InlineVolumeSpec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "inlineVolumeSpec",
@@ -3864,7 +3825,7 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSpec) Validate() error {
 		if err := s.Source.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "source",
@@ -3882,7 +3843,7 @@ func (s IoK8sAPIStorageV1alpha1CSIStorageCapacityList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3900,7 +3861,7 @@ func (s IoK8sAPIStorageV1beta1CSIStorageCapacityList) Validate() error {
 		if s.Items == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3920,13 +3881,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversio
 				if err := s.Webhook.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "webhook",
@@ -3944,7 +3904,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		if err := s.Spec.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -3968,7 +3928,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -3979,7 +3939,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -3999,13 +3959,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 				if err := s.Conversion.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "conversion",
@@ -4022,7 +3981,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4033,7 +3992,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "versions",
@@ -4053,13 +4012,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 				if err := s.Schema.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schema",
@@ -4079,13 +4037,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidatio
 				if err := s.OpenAPIV3Schema.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "openAPIV3Schema",
@@ -4106,7 +4063,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4117,7 +4074,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "allOf",
@@ -4131,7 +4088,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4142,7 +4099,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "anyOf",
@@ -4155,13 +4112,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := s.Definitions.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "definitions",
@@ -4174,13 +4130,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := (validate.Float{}).Validate(float64(s.Maximum.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "maximum",
@@ -4193,13 +4148,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := (validate.Float{}).Validate(float64(s.Minimum.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minimum",
@@ -4212,13 +4166,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := (validate.Float{}).Validate(float64(s.MultipleOf.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "multipleOf",
@@ -4233,11 +4186,11 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 			if err := s.Not.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return errors.Wrap(err, "pointer")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "not",
@@ -4251,7 +4204,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4262,7 +4215,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "oneOf",
@@ -4275,13 +4228,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := s.PatternProperties.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "patternProperties",
@@ -4294,13 +4246,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				if err := s.Properties.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "properties",
@@ -4319,7 +4270,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsDefiniti
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -4340,7 +4291,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsPatternP
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -4361,7 +4312,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaPropsProperti
 			if err := elem.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			failures = append(failures, validate.FieldError{
 				Name:  key,
@@ -4389,7 +4340,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookClientConfig) Va
 		}).Validate(string(s.CaBundle)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caBundle",
@@ -4409,13 +4360,12 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Vali
 				if err := s.ClientConfig.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "clientConfig",
@@ -4426,7 +4376,7 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Vali
 		if s.ConversionReviewVersions == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "conversionReviewVersions",
@@ -4444,7 +4394,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroup) Validate() error {
 		if s.Versions == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "versions",
@@ -4468,7 +4418,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4479,7 +4429,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIGroupList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "groups",
@@ -4497,7 +4447,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResource) Validate() error {
 		if s.Verbs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "verbs",
@@ -4521,7 +4471,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4532,7 +4482,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIResourceList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "resources",
@@ -4550,7 +4500,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		if s.ServerAddressByClientCIDRs == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "serverAddressByClientCIDRs",
@@ -4561,7 +4511,7 @@ func (s IoK8sApimachineryPkgApisMetaV1APIVersions) Validate() error {
 		if s.Versions == nil {
 			return errors.New("nil is invalid value")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "versions",
@@ -4581,13 +4531,12 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Validate() error 
 				if err := s.Spec.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -4611,7 +4560,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() er
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -4622,7 +4571,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceList) Validate() er
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "items",
@@ -4648,7 +4597,7 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIServiceSpec) Validate() er
 		}).Validate(string(s.CaBundle)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caBundle",

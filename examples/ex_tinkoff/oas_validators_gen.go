@@ -26,7 +26,7 @@ func (s Candle) Validate() error {
 		if err := s.Interval.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "interval",
@@ -37,7 +37,7 @@ func (s Candle) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.O)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "o",
@@ -48,7 +48,7 @@ func (s Candle) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.C)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "c",
@@ -59,7 +59,7 @@ func (s Candle) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.H)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "h",
@@ -70,7 +70,7 @@ func (s Candle) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.L)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "l",
@@ -116,7 +116,7 @@ func (s Candles) Validate() error {
 		if err := s.Interval.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "interval",
@@ -133,7 +133,7 @@ func (s Candles) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -144,7 +144,7 @@ func (s Candles) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "candles",
@@ -162,7 +162,7 @@ func (s CandlesResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -186,7 +186,7 @@ func (s Currencies) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -197,7 +197,7 @@ func (s Currencies) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "currencies",
@@ -239,7 +239,7 @@ func (s CurrencyPosition) Validate() error {
 		if err := s.Currency.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "currency",
@@ -250,7 +250,7 @@ func (s CurrencyPosition) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "balance",
@@ -263,13 +263,12 @@ func (s CurrencyPosition) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.Blocked.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "blocked",
@@ -301,7 +300,7 @@ func (s LimitOrderRequest) Validate() error {
 		if err := s.Operation.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "operation",
@@ -312,7 +311,7 @@ func (s LimitOrderRequest) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "price",
@@ -330,7 +329,7 @@ func (s LimitOrderResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -350,13 +349,12 @@ func (s MarketInstrument) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.MinPriceIncrement.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minPriceIncrement",
@@ -369,13 +367,12 @@ func (s MarketInstrument) Validate() error {
 				if err := s.Currency.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "currency",
@@ -386,7 +383,7 @@ func (s MarketInstrument) Validate() error {
 		if err := s.Type.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -410,7 +407,7 @@ func (s MarketInstrumentList) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -421,7 +418,7 @@ func (s MarketInstrumentList) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "instruments",
@@ -439,7 +436,7 @@ func (s MarketInstrumentListResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -457,7 +454,7 @@ func (s MarketOrderRequest) Validate() error {
 		if err := s.Operation.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "operation",
@@ -475,7 +472,7 @@ func (s MarketOrderResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -493,7 +490,7 @@ func (s MoneyAmount) Validate() error {
 		if err := s.Currency.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "currency",
@@ -504,7 +501,7 @@ func (s MoneyAmount) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Value)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "value",
@@ -522,7 +519,7 @@ func (s Operation) Validate() error {
 		if err := s.Status.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
@@ -536,7 +533,7 @@ func (s Operation) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -547,7 +544,7 @@ func (s Operation) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "trades",
@@ -560,13 +557,12 @@ func (s Operation) Validate() error {
 				if err := s.Commission.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "commission",
@@ -577,7 +573,7 @@ func (s Operation) Validate() error {
 		if err := s.Currency.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "currency",
@@ -588,7 +584,7 @@ func (s Operation) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Payment)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payment",
@@ -601,13 +597,12 @@ func (s Operation) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.Price.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "price",
@@ -620,13 +615,12 @@ func (s Operation) Validate() error {
 				if err := s.InstrumentType.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "instrumentType",
@@ -639,13 +633,12 @@ func (s Operation) Validate() error {
 				if err := s.OperationType.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "operationType",
@@ -675,7 +668,7 @@ func (s OperationTrade) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "price",
@@ -757,7 +750,7 @@ func (s Operations) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -768,7 +761,7 @@ func (s Operations) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "operations",
@@ -786,7 +779,7 @@ func (s OperationsResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -805,7 +798,7 @@ func (s Order) Validate() error {
 		if err := s.Operation.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "operation",
@@ -816,7 +809,7 @@ func (s Order) Validate() error {
 		if err := s.Status.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
@@ -827,7 +820,7 @@ func (s Order) Validate() error {
 		if err := s.Type.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -838,7 +831,7 @@ func (s Order) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "price",
@@ -856,7 +849,7 @@ func (s OrderResponse) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Price)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "price",
@@ -914,7 +907,7 @@ func (s Orderbook) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -925,7 +918,7 @@ func (s Orderbook) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "bids",
@@ -942,7 +935,7 @@ func (s Orderbook) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -953,7 +946,7 @@ func (s Orderbook) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "asks",
@@ -964,7 +957,7 @@ func (s Orderbook) Validate() error {
 		if err := s.TradeStatus.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "tradeStatus",
@@ -975,7 +968,7 @@ func (s Orderbook) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.MinPriceIncrement)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minPriceIncrement",
@@ -988,13 +981,12 @@ func (s Orderbook) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.FaceValue.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "faceValue",
@@ -1007,13 +999,12 @@ func (s Orderbook) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.LastPrice.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "lastPrice",
@@ -1026,13 +1017,12 @@ func (s Orderbook) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.ClosePrice.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "closePrice",
@@ -1045,13 +1035,12 @@ func (s Orderbook) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.LimitUp.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limitUp",
@@ -1064,13 +1053,12 @@ func (s Orderbook) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.LimitDown.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limitDown",
@@ -1088,7 +1076,7 @@ func (s OrderbookResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -1112,7 +1100,7 @@ func (s OrdersResponse) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1123,7 +1111,7 @@ func (s OrdersResponse) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -1141,7 +1129,7 @@ func (s PlacedLimitOrder) Validate() error {
 		if err := s.Operation.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "operation",
@@ -1152,7 +1140,7 @@ func (s PlacedLimitOrder) Validate() error {
 		if err := s.Status.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
@@ -1165,13 +1153,12 @@ func (s PlacedLimitOrder) Validate() error {
 				if err := s.Commission.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "commission",
@@ -1189,7 +1176,7 @@ func (s PlacedMarketOrder) Validate() error {
 		if err := s.Operation.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "operation",
@@ -1200,7 +1187,7 @@ func (s PlacedMarketOrder) Validate() error {
 		if err := s.Status.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
@@ -1213,13 +1200,12 @@ func (s PlacedMarketOrder) Validate() error {
 				if err := s.Commission.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "commission",
@@ -1243,7 +1229,7 @@ func (s Portfolio) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1254,7 +1240,7 @@ func (s Portfolio) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "positions",
@@ -1272,7 +1258,7 @@ func (s PortfolioCurrenciesResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -1290,7 +1276,7 @@ func (s PortfolioPosition) Validate() error {
 		if err := s.InstrumentType.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "instrumentType",
@@ -1301,7 +1287,7 @@ func (s PortfolioPosition) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "balance",
@@ -1314,13 +1300,12 @@ func (s PortfolioPosition) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.Blocked.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "blocked",
@@ -1333,13 +1318,12 @@ func (s PortfolioPosition) Validate() error {
 				if err := s.ExpectedYield.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "expectedYield",
@@ -1352,13 +1336,12 @@ func (s PortfolioPosition) Validate() error {
 				if err := s.AveragePositionPrice.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "averagePositionPrice",
@@ -1371,13 +1354,12 @@ func (s PortfolioPosition) Validate() error {
 				if err := s.AveragePositionPriceNoNkd.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "averagePositionPriceNoNkd",
@@ -1395,7 +1377,7 @@ func (s PortfolioResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -1413,7 +1395,7 @@ func (s SandboxAccount) Validate() error {
 		if err := s.BrokerAccountType.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "brokerAccountType",
@@ -1457,13 +1439,12 @@ func (s SandboxRegisterRequest) Validate() error {
 				if err := s.BrokerAccountType.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "brokerAccountType",
@@ -1481,7 +1462,7 @@ func (s SandboxRegisterResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -1499,7 +1480,7 @@ func (s SandboxSetCurrencyBalanceRequest) Validate() error {
 		if err := s.Currency.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "currency",
@@ -1510,7 +1491,7 @@ func (s SandboxSetCurrencyBalanceRequest) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "balance",
@@ -1528,7 +1509,7 @@ func (s SandboxSetPositionBalanceRequest) Validate() error {
 		if err := (validate.Float{}).Validate(float64(s.Balance)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "balance",
@@ -1548,13 +1529,12 @@ func (s SearchMarketInstrument) Validate() error {
 				if err := (validate.Float{}).Validate(float64(s.MinPriceIncrement.Value)); err != nil {
 					return errors.Wrap(err, "float")
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minPriceIncrement",
@@ -1567,13 +1547,12 @@ func (s SearchMarketInstrument) Validate() error {
 				if err := s.Currency.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "currency",
@@ -1584,7 +1563,7 @@ func (s SearchMarketInstrument) Validate() error {
 		if err := s.Type.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -1602,7 +1581,7 @@ func (s SearchMarketInstrumentResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",
@@ -1630,7 +1609,7 @@ func (s UserAccount) Validate() error {
 		if err := s.BrokerAccountType.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "brokerAccountType",
@@ -1654,7 +1633,7 @@ func (s UserAccounts) Validate() error {
 				if err := elem.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				failures = append(failures, validate.FieldError{
 					Name:  fmt.Sprintf("[%d]", i),
@@ -1665,7 +1644,7 @@ func (s UserAccounts) Validate() error {
 		if len(failures) > 0 {
 			return &validate.Error{Fields: failures}
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "accounts",
@@ -1683,7 +1662,7 @@ func (s UserAccountsResponse) Validate() error {
 		if err := s.Payload.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "payload",

@@ -62,7 +62,7 @@ func (c *Client) CreateSnapshot(ctx context.Context, request SnapshotCreateParam
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -127,7 +127,7 @@ func (c *Client) CreateSyncAction(ctx context.Context, request InstanceActionInf
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -804,7 +804,7 @@ func (c *Client) PatchGuestDriveByID(ctx context.Context, request PartialDrive, 
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -885,7 +885,7 @@ func (c *Client) PatchGuestNetworkInterfaceByID(ctx context.Context, request Par
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -969,13 +969,12 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1042,7 +1041,7 @@ func (c *Client) PatchVm(ctx context.Context, request VM) (res PatchVmRes, err e
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1230,7 +1229,7 @@ func (c *Client) PutGuestDriveByID(ctx context.Context, request Drive, params Pu
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1311,7 +1310,7 @@ func (c *Client) PutGuestNetworkInterfaceByID(ctx context.Context, request Netwo
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1393,7 +1392,7 @@ func (c *Client) PutGuestVsock(ctx context.Context, request Vsock) (res PutGuest
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1458,7 +1457,7 @@ func (c *Client) PutLogger(ctx context.Context, request Logger) (res PutLoggerRe
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1530,13 +1529,12 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}

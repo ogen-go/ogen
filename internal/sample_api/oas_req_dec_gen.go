@@ -47,7 +47,7 @@ func decodeDefaultTestRequest(r *http.Request, span trace.Span) (req DefaultTest
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate DefaultTest request")
 		}
@@ -94,13 +94,12 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate FoobarPost request")
 		}
@@ -144,7 +143,7 @@ func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OneofBug request")
 		}
@@ -191,13 +190,12 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err e
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PetCreate request")
 		}
@@ -244,13 +242,12 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 					if err := request.Value.Validate(); err != nil {
 						return err
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PetUpdateNameAliasPost request")
 		}
@@ -305,13 +302,12 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 					}).Validate(string(request.Value)); err != nil {
 						return errors.Wrap(err, "string")
 					}
-					return nil // return 1
+					return nil
 				}(); err != nil {
 					return err
 				}
 			}
-			return nil // return 2
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PetUpdateNamePost request")
 		}
@@ -364,7 +360,7 @@ func decodeTestFloatValidationRequest(r *http.Request, span trace.Span) (req Tes
 			if err := request.Validate(); err != nil {
 				return err
 			}
-			return nil // return 1
+			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestFloatValidation request")
 		}

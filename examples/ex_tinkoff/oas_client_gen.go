@@ -785,7 +785,7 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -884,7 +884,7 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1177,7 +1177,7 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1263,7 +1263,7 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 		if err := request.Validate(); err != nil {
 			return err
 		}
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1353,13 +1353,12 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 				if err := request.Value.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return err
 			}
 		}
-		return nil // return 2
-		return nil // return 1
+		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}

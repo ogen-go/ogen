@@ -136,7 +136,7 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 				if err := params.Interval.Validate(); err != nil {
 					return err
 				}
-				return nil // return 1
+				return nil
 			}(); err != nil {
 				return params, errors.Wrap(err, "query: interval: invalid")
 			}
