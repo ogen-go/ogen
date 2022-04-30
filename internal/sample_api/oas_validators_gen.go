@@ -75,7 +75,6 @@ func (s ArrayTest) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nullable_optional",
@@ -158,7 +157,6 @@ func (s Data) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nullable_enum",
@@ -183,7 +181,6 @@ func (s DefaultTest) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -211,7 +208,6 @@ func (s DefaultTest) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "email",
@@ -238,7 +234,6 @@ func (s DefaultTest) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "hostname",
@@ -264,7 +259,6 @@ func (s DefaultTest) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -327,7 +321,6 @@ func (s MapWithProperties) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "sub_map",
@@ -345,7 +338,6 @@ func (s MapWithProperties) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -366,7 +358,6 @@ func (s NullableEnums) Validate() error {
 			return err
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "only_nullable",
@@ -378,7 +369,6 @@ func (s NullableEnums) Validate() error {
 			return err
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "only_null_value",
@@ -389,7 +379,6 @@ func (s NullableEnums) Validate() error {
 		if err := s.Both.Value.Validate(); err != nil {
 			return err
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -445,7 +434,6 @@ func (s OneOfBugs) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -555,7 +543,6 @@ func (s Pet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "type",
@@ -618,7 +605,6 @@ func (s Pet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "next",
@@ -646,7 +632,6 @@ func (s Pet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testInteger1",
@@ -673,7 +658,6 @@ func (s Pet) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -751,7 +735,6 @@ func (s Pet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testArray2",
@@ -769,7 +752,6 @@ func (s Pet) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -789,7 +771,6 @@ func (s Pet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "testMapWithProps",
@@ -807,7 +788,6 @@ func (s Pet) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

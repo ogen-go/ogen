@@ -100,7 +100,6 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate FoobarPost request")
 		}
@@ -197,7 +196,6 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err e
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PetCreate request")
 		}
@@ -249,7 +247,6 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PetUpdateNameAliasPost request")
@@ -310,7 +307,6 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PetUpdateNamePost request")

@@ -571,7 +571,6 @@ func (c *Client) TestRequestFormatTest(ctx context.Context, request OptTestReque
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2188,7 +2187,6 @@ func (c *Client) TestRequestNumber(ctx context.Context, request OptFloat64) (res
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2435,7 +2433,6 @@ func (c *Client) TestRequestNumberDouble(ctx context.Context, request OptFloat64
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -2684,7 +2681,6 @@ func (c *Client) TestRequestNumberDoubleNullable(ctx context.Context, request Op
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -2932,7 +2928,6 @@ func (c *Client) TestRequestNumberFloat(ctx context.Context, request OptFloat32)
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -3179,7 +3174,6 @@ func (c *Client) TestRequestNumberFloatNullable(ctx context.Context, request Opt
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -4199,7 +4193,6 @@ func (c *Client) TestRequestNumberNullable(ctx context.Context, request OptNilFl
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -7152,7 +7145,6 @@ func (c *Client) TestRequestRequiredNumberDoubleNullable(ctx context.Context, re
 			return errors.Wrap(err, "float")
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -7644,7 +7636,6 @@ func (c *Client) TestRequestRequiredNumberFloatNullable(ctx context.Context, req
 		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -8707,7 +8698,6 @@ func (c *Client) TestRequestRequiredNumberNullable(ctx context.Context, request 
 		if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 			return errors.Wrap(err, "float")
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -11477,7 +11467,6 @@ func (c *Client) TestRequestRequiredStringEmailNullable(ctx context.Context, req
 			return errors.Wrap(err, "string")
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12017,7 +12006,6 @@ func (c *Client) TestRequestRequiredStringHostnameNullable(ctx context.Context, 
 		}).Validate(string(request.Value)); err != nil {
 			return errors.Wrap(err, "string")
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -20335,7 +20323,6 @@ func (c *Client) TestRequestStringEmail(ctx context.Context, request OptString) 
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -20606,7 +20593,6 @@ func (c *Client) TestRequestStringEmailNullable(ctx context.Context, request Opt
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -20879,7 +20865,6 @@ func (c *Client) TestRequestStringHostname(ctx context.Context, request OptStrin
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -21150,7 +21135,6 @@ func (c *Client) TestRequestStringHostnameNullable(ctx context.Context, request 
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")

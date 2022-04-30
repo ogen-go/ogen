@@ -34,8 +34,8 @@ func (s *Server) handleDeletePetRequest(args [1]string, w http.ResponseWriter, r
 	params, err := decodeDeletePetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"DeletePet",
-			err,
+			Operation: "DeletePet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

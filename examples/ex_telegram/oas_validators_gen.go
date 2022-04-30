@@ -24,7 +24,6 @@ func (s AddStickerToSet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mask_position",
@@ -110,7 +109,6 @@ func (s Animation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -143,7 +141,6 @@ func (s AnswerCallbackQuery) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -205,7 +202,6 @@ func (s AnswerInlineQuery) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -284,7 +280,6 @@ func (s Audio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -355,7 +350,6 @@ func (s CallbackQuery) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "message",
@@ -411,7 +405,6 @@ func (s Chat) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "location",
@@ -445,7 +438,6 @@ func (s ChatInviteLink) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -482,7 +474,6 @@ func (s ChatJoinRequest) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -557,7 +548,6 @@ func (s ChatMemberUpdated) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "invite_link",
@@ -597,7 +587,6 @@ func (s ChosenInlineResult) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "location",
@@ -630,7 +619,6 @@ func (s CopyMessage) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -674,7 +662,6 @@ func (s CopyMessage) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -733,7 +720,6 @@ func (s CreateChatInviteLink) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "name",
@@ -760,7 +746,6 @@ func (s CreateChatInviteLink) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -825,7 +810,6 @@ func (s CreateNewStickerSet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mask_position",
@@ -850,7 +834,6 @@ func (s Document) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -885,7 +868,6 @@ func (s EditChatInviteLink) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "name",
@@ -912,7 +894,6 @@ func (s EditChatInviteLink) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -946,7 +927,6 @@ func (s EditMessageCaption) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -990,7 +970,6 @@ func (s EditMessageCaption) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1039,7 +1018,6 @@ func (s EditMessageLiveLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -1066,7 +1044,6 @@ func (s EditMessageLiveLocation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1095,7 +1072,6 @@ func (s EditMessageLiveLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "proximity_alert_radius",
@@ -1113,7 +1089,6 @@ func (s EditMessageLiveLocation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1151,7 +1126,6 @@ func (s EditMessageMedia) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1176,7 +1150,6 @@ func (s EditMessageReplyMarkup) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1246,7 +1219,6 @@ func (s EditMessageText) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1331,7 +1303,6 @@ func (s ForceReply) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_field_placeholder",
@@ -1393,7 +1364,6 @@ func (s Game) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text",
@@ -1437,7 +1407,6 @@ func (s Game) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "animation",
@@ -1471,7 +1440,6 @@ func (s GetUpdates) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1507,7 +1475,6 @@ func (s GetUserProfilePhotos) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limit",
@@ -1540,7 +1507,6 @@ func (s InlineKeyboardButton) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1619,7 +1585,6 @@ func (s InlineQuery) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat_type",
@@ -1637,7 +1602,6 @@ func (s InlineQuery) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1798,7 +1762,6 @@ func (s InlineQueryResultArticle) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1826,7 +1789,6 @@ func (s InlineQueryResultArticle) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -1853,7 +1815,6 @@ func (s InlineQueryResultArticle) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1907,7 +1868,6 @@ func (s InlineQueryResultAudio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -1960,7 +1920,6 @@ func (s InlineQueryResultAudio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "audio_duration",
@@ -1979,7 +1938,6 @@ func (s InlineQueryResultAudio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -1997,7 +1955,6 @@ func (s InlineQueryResultAudio) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2051,7 +2008,6 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2095,7 +2051,6 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2113,7 +2068,6 @@ func (s InlineQueryResultCachedAudio) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2167,7 +2121,6 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2211,7 +2164,6 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2229,7 +2181,6 @@ func (s InlineQueryResultCachedDocument) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2283,7 +2234,6 @@ func (s InlineQueryResultCachedGif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2327,7 +2277,6 @@ func (s InlineQueryResultCachedGif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2345,7 +2294,6 @@ func (s InlineQueryResultCachedGif) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2399,7 +2347,6 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2443,7 +2390,6 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2461,7 +2407,6 @@ func (s InlineQueryResultCachedMpeg4Gif) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2515,7 +2460,6 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2559,7 +2503,6 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2577,7 +2520,6 @@ func (s InlineQueryResultCachedPhoto) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2623,7 +2565,6 @@ func (s InlineQueryResultCachedSticker) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2641,7 +2582,6 @@ func (s InlineQueryResultCachedSticker) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2695,7 +2635,6 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2739,7 +2678,6 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2757,7 +2695,6 @@ func (s InlineQueryResultCachedVideo) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2811,7 +2748,6 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -2855,7 +2791,6 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2873,7 +2808,6 @@ func (s InlineQueryResultCachedVoice) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2908,7 +2842,6 @@ func (s InlineQueryResultContact) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "vcard",
@@ -2927,7 +2860,6 @@ func (s InlineQueryResultContact) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -2945,7 +2877,6 @@ func (s InlineQueryResultContact) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2974,7 +2905,6 @@ func (s InlineQueryResultContact) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -3001,7 +2931,6 @@ func (s InlineQueryResultContact) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3055,7 +2984,6 @@ func (s InlineQueryResultDocument) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -3099,7 +3027,6 @@ func (s InlineQueryResultDocument) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3117,7 +3044,6 @@ func (s InlineQueryResultDocument) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3146,7 +3072,6 @@ func (s InlineQueryResultDocument) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -3173,7 +3098,6 @@ func (s InlineQueryResultDocument) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3218,7 +3142,6 @@ func (s InlineQueryResultGame) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3273,7 +3196,6 @@ func (s InlineQueryResultGif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "gif_width",
@@ -3300,7 +3222,6 @@ func (s InlineQueryResultGif) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3329,7 +3250,6 @@ func (s InlineQueryResultGif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "gif_duration",
@@ -3355,7 +3275,6 @@ func (s InlineQueryResultGif) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3400,7 +3319,6 @@ func (s InlineQueryResultGif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3418,7 +3336,6 @@ func (s InlineQueryResultGif) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3467,7 +3384,6 @@ func (s InlineQueryResultLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -3494,7 +3410,6 @@ func (s InlineQueryResultLocation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3523,7 +3438,6 @@ func (s InlineQueryResultLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "heading",
@@ -3551,7 +3465,6 @@ func (s InlineQueryResultLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "proximity_alert_radius",
@@ -3570,7 +3483,6 @@ func (s InlineQueryResultLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3588,7 +3500,6 @@ func (s InlineQueryResultLocation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3617,7 +3528,6 @@ func (s InlineQueryResultLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -3644,7 +3554,6 @@ func (s InlineQueryResultLocation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3699,7 +3608,6 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mpeg4_width",
@@ -3726,7 +3634,6 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3755,7 +3662,6 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "mpeg4_duration",
@@ -3781,7 +3687,6 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3826,7 +3731,6 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -3844,7 +3748,6 @@ func (s InlineQueryResultMpeg4Gif) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3899,7 +3802,6 @@ func (s InlineQueryResultPhoto) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_width",
@@ -3927,7 +3829,6 @@ func (s InlineQueryResultPhoto) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_height",
@@ -3953,7 +3854,6 @@ func (s InlineQueryResultPhoto) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3998,7 +3898,6 @@ func (s InlineQueryResultPhoto) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -4016,7 +3915,6 @@ func (s InlineQueryResultPhoto) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4065,7 +3963,6 @@ func (s InlineQueryResultVenue) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -4083,7 +3980,6 @@ func (s InlineQueryResultVenue) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4112,7 +4008,6 @@ func (s InlineQueryResultVenue) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb_width",
@@ -4139,7 +4034,6 @@ func (s InlineQueryResultVenue) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4193,7 +4087,6 @@ func (s InlineQueryResultVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -4246,7 +4139,6 @@ func (s InlineQueryResultVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_width",
@@ -4273,7 +4165,6 @@ func (s InlineQueryResultVideo) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4302,7 +4193,6 @@ func (s InlineQueryResultVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_duration",
@@ -4321,7 +4211,6 @@ func (s InlineQueryResultVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -4339,7 +4228,6 @@ func (s InlineQueryResultVideo) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4393,7 +4281,6 @@ func (s InlineQueryResultVoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -4446,7 +4333,6 @@ func (s InlineQueryResultVoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "voice_duration",
@@ -4465,7 +4351,6 @@ func (s InlineQueryResultVoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -4483,7 +4368,6 @@ func (s InlineQueryResultVoice) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4517,7 +4401,6 @@ func (s InputContactMessageContent) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4621,7 +4504,6 @@ func (s InputInvoiceMessageContent) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_width",
@@ -4648,7 +4530,6 @@ func (s InputInvoiceMessageContent) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4697,7 +4578,6 @@ func (s InputLocationMessageContent) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -4724,7 +4604,6 @@ func (s InputLocationMessageContent) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4753,7 +4632,6 @@ func (s InputLocationMessageContent) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "heading",
@@ -4780,7 +4658,6 @@ func (s InputLocationMessageContent) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4847,7 +4724,6 @@ func (s InputMediaAnimation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -4900,7 +4776,6 @@ func (s InputMediaAnimation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -4928,7 +4803,6 @@ func (s InputMediaAnimation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -4955,7 +4829,6 @@ func (s InputMediaAnimation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4989,7 +4862,6 @@ func (s InputMediaAudio) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5043,7 +4915,6 @@ func (s InputMediaAudio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -5076,7 +4947,6 @@ func (s InputMediaDocument) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5136,7 +5006,6 @@ func (s InputMediaPhoto) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -5195,7 +5064,6 @@ func (s InputMediaVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -5248,7 +5116,6 @@ func (s InputMediaVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "width",
@@ -5276,7 +5143,6 @@ func (s InputMediaVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -5303,7 +5169,6 @@ func (s InputMediaVideo) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5464,7 +5329,6 @@ func (s Location) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -5491,7 +5355,6 @@ func (s Location) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5558,7 +5421,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "sender_chat",
@@ -5587,7 +5449,6 @@ func (s Message) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5634,7 +5495,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "text",
@@ -5678,7 +5538,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "animation",
@@ -5697,7 +5556,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "audio",
@@ -5715,7 +5573,6 @@ func (s Message) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5760,7 +5617,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "sticker",
@@ -5778,7 +5634,6 @@ func (s Message) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5798,7 +5653,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "video_note",
@@ -5816,7 +5670,6 @@ func (s Message) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5843,7 +5696,6 @@ func (s Message) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5888,7 +5740,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "game",
@@ -5906,7 +5757,6 @@ func (s Message) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5926,7 +5776,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "venue",
@@ -5944,7 +5793,6 @@ func (s Message) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -6008,7 +5856,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "passport_data",
@@ -6027,7 +5874,6 @@ func (s Message) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "voice_chat_ended",
@@ -6045,7 +5891,6 @@ func (s Message) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -6478,7 +6323,6 @@ func (s Poll) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "explanation",
@@ -6619,7 +6463,6 @@ func (s ReplyKeyboardMarkup) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "input_field_placeholder",
@@ -6741,7 +6584,6 @@ func (s ResultChat) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6766,7 +6608,6 @@ func (s ResultChatInviteLink) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -6793,7 +6634,6 @@ func (s ResultMessage) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6819,7 +6659,6 @@ func (s ResultPoll) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "result",
@@ -6844,7 +6683,6 @@ func (s ResultUserProfilePhotos) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -6880,7 +6718,6 @@ func (s SendAnimation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -6907,7 +6744,6 @@ func (s SendAnimation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -6936,7 +6772,6 @@ func (s SendAnimation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -6962,7 +6797,6 @@ func (s SendAnimation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7006,7 +6840,6 @@ func (s SendAnimation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7065,7 +6898,6 @@ func (s SendAudio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -7118,7 +6950,6 @@ func (s SendAudio) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -7136,7 +6967,6 @@ func (s SendAudio) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7195,7 +7025,6 @@ func (s SendContact) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "vcard",
@@ -7213,7 +7042,6 @@ func (s SendContact) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7263,7 +7091,6 @@ func (s SendDice) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7322,7 +7149,6 @@ func (s SendDocument) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -7365,7 +7191,6 @@ func (s SendDocument) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7415,7 +7240,6 @@ func (s SendGame) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7519,7 +7343,6 @@ func (s SendInvoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_width",
@@ -7547,7 +7370,6 @@ func (s SendInvoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "photo_height",
@@ -7565,7 +7387,6 @@ func (s SendInvoice) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7614,7 +7435,6 @@ func (s SendLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "horizontal_accuracy",
@@ -7641,7 +7461,6 @@ func (s SendLocation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7670,7 +7489,6 @@ func (s SendLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "heading",
@@ -7698,7 +7516,6 @@ func (s SendLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "proximity_alert_radius",
@@ -7716,7 +7533,6 @@ func (s SendLocation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -7873,7 +7689,6 @@ func (s SendMessage) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -7931,7 +7746,6 @@ func (s SendPhoto) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -7974,7 +7788,6 @@ func (s SendPhoto) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8063,7 +7876,6 @@ func (s SendPoll) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "explanation",
@@ -8106,7 +7918,6 @@ func (s SendPoll) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8156,7 +7967,6 @@ func (s SendSticker) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8229,7 +8039,6 @@ func (s SendVenue) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8288,7 +8097,6 @@ func (s SendVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -8315,7 +8123,6 @@ func (s SendVideo) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8344,7 +8151,6 @@ func (s SendVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "height",
@@ -8370,7 +8176,6 @@ func (s SendVideo) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8415,7 +8220,6 @@ func (s SendVideo) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8450,7 +8254,6 @@ func (s SendVideoNote) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -8468,7 +8271,6 @@ func (s SendVideoNote) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8551,7 +8353,6 @@ func (s SendVoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "caption",
@@ -8604,7 +8405,6 @@ func (s SendVoice) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "duration",
@@ -8622,7 +8422,6 @@ func (s SendVoice) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8706,7 +8505,6 @@ func (s SetChatDescription) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8887,7 +8685,6 @@ func (s Sticker) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -8905,7 +8702,6 @@ func (s Sticker) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8932,7 +8728,6 @@ func (s StopMessageLiveLocation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "reply_markup",
@@ -8957,7 +8752,6 @@ func (s StopPoll) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8984,7 +8778,6 @@ func (s Update) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "message",
@@ -9002,7 +8795,6 @@ func (s Update) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -9022,7 +8814,6 @@ func (s Update) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "channel_post",
@@ -9040,7 +8831,6 @@ func (s Update) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -9060,7 +8850,6 @@ func (s Update) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "inline_query",
@@ -9078,7 +8867,6 @@ func (s Update) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -9098,7 +8886,6 @@ func (s Update) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "callback_query",
@@ -9116,7 +8903,6 @@ func (s Update) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -9136,7 +8922,6 @@ func (s Update) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "poll_answer",
@@ -9154,7 +8939,6 @@ func (s Update) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -9174,7 +8958,6 @@ func (s Update) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "chat_member",
@@ -9192,7 +8975,6 @@ func (s Update) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -9349,7 +9131,6 @@ func (s Video) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "thumb",
@@ -9394,7 +9175,6 @@ func (s VideoNote) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

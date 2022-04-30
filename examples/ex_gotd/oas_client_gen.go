@@ -2374,7 +2374,6 @@ func (c *Client) GetUpdates(ctx context.Context, request OptGetUpdates) (res Res
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}

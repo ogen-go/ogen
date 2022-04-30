@@ -457,7 +457,6 @@ func decodeTestRequestFormatTestRequest(r *http.Request, span trace.Span) (req O
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestFormatTest request")
 		}
@@ -1774,7 +1773,6 @@ func decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFl
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumber request")
 		}
@@ -1987,7 +1985,6 @@ func decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDouble request")
@@ -2202,7 +2199,6 @@ func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Sp
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullable request")
 		}
@@ -2416,7 +2412,6 @@ func decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req 
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloat request")
 		}
@@ -2629,7 +2624,6 @@ func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Spa
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullable request")
@@ -3479,7 +3473,6 @@ func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (r
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestNumberNullable request")
@@ -5920,7 +5913,6 @@ func decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span 
 				return errors.Wrap(err, "float")
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullable request")
 		}
@@ -6344,7 +6336,6 @@ func decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span t
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 				return errors.Wrap(err, "float")
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullable request")
@@ -7236,7 +7227,6 @@ func decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
 				return errors.Wrap(err, "float")
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullable request")
@@ -9567,7 +9557,6 @@ func decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span t
 				return errors.Wrap(err, "string")
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullable request")
 		}
@@ -10039,7 +10028,6 @@ func decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, spa
 			}).Validate(string(request.Value)); err != nil {
 				return errors.Wrap(err, "string")
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullable request")
@@ -16963,7 +16951,6 @@ func decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (req 
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringEmail request")
 		}
@@ -17200,7 +17187,6 @@ func decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Spa
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringEmailNullable request")
@@ -17439,7 +17425,6 @@ func decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (r
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringHostname request")
 		}
@@ -17676,7 +17661,6 @@ func decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullable request")

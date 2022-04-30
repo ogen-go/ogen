@@ -454,7 +454,6 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PatchMachineConfiguration request")
 		}
@@ -798,7 +797,6 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PutMachineConfiguration request")

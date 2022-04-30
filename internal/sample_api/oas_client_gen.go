@@ -395,7 +395,6 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -761,7 +760,6 @@ func (c *Client) PetCreate(ctx context.Context, request OptPet) (res Pet, err er
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -1252,7 +1250,6 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1330,7 +1327,6 @@ func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res 
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")

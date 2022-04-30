@@ -34,8 +34,8 @@ func (s *Server) handleGetBookRequest(args [1]string, w http.ResponseWriter, r *
 	params, err := decodeGetBookParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GetBook",
-			err,
+			Operation: "GetBook",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -79,8 +79,8 @@ func (s *Server) handleSearchRequest(args [0]string, w http.ResponseWriter, r *h
 	params, err := decodeSearchParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"Search",
-			err,
+			Operation: "Search",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -124,8 +124,8 @@ func (s *Server) handleSearchByTagIDRequest(args [0]string, w http.ResponseWrite
 	params, err := decodeSearchByTagIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SearchByTagID",
-			err,
+			Operation: "SearchByTagID",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

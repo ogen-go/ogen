@@ -34,8 +34,8 @@ func (s *Server) handleCachingRequest(args [0]string, w http.ResponseWriter, r *
 	params, err := decodeCachingParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"Caching",
-			err,
+			Operation: "Caching",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -151,8 +151,8 @@ func (s *Server) handleQueriesRequest(args [0]string, w http.ResponseWriter, r *
 	params, err := decodeQueriesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"Queries",
-			err,
+			Operation: "Queries",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -196,8 +196,8 @@ func (s *Server) handleUpdatesRequest(args [0]string, w http.ResponseWriter, r *
 	params, err := decodeUpdatesParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"Updates",
-			err,
+			Operation: "Updates",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

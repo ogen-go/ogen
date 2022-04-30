@@ -975,7 +975,6 @@ func (c *Client) PatchMachineConfiguration(ctx context.Context, request OptMachi
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -1535,7 +1534,6 @@ func (c *Client) PutMachineConfiguration(ctx context.Context, request OptMachine
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")

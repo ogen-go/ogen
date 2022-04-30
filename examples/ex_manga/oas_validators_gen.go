@@ -33,7 +33,6 @@ func (s Book) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -61,7 +60,6 @@ func (s Book) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "media_id",
@@ -79,7 +77,6 @@ func (s Book) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -133,7 +130,6 @@ func (s Book) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "num_pages",
@@ -160,7 +156,6 @@ func (s Book) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -196,7 +191,6 @@ func (s Image) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "w",
@@ -223,7 +217,6 @@ func (s Image) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -275,7 +268,6 @@ func (s Images) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "cover",
@@ -293,7 +285,6 @@ func (s Images) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -408,7 +399,6 @@ func (s Tag) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "id",
@@ -426,7 +416,6 @@ func (s Tag) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

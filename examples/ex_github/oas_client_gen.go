@@ -10343,7 +10343,6 @@ func (c *Client) AppsCreateInstallationAccessToken(ctx context.Context, request 
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -12382,7 +12381,6 @@ func (c *Client) AppsUpdateWebhookConfigForApp(ctx context.Context, request OptA
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -19111,7 +19109,6 @@ func (c *Client) EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise(ctx con
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -25885,7 +25882,6 @@ func (c *Client) IssuesLock(ctx context.Context, request OptNilIssuesLockReq, pa
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26392,7 +26388,6 @@ func (c *Client) IssuesUpdate(ctx context.Context, request OptIssuesUpdateReq, p
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -26710,7 +26705,6 @@ func (c *Client) IssuesUpdateMilestone(ctx context.Context, request OptIssuesUpd
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -29163,7 +29157,6 @@ func (c *Client) OAuthAuthorizationsCreateAuthorization(ctx context.Context, req
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -29955,7 +29948,6 @@ func (c *Client) OAuthAuthorizationsUpdateAuthorization(ctx context.Context, req
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -30496,7 +30488,6 @@ func (c *Client) OrgsCreateInvitation(ctx context.Context, request OptOrgsCreate
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -33254,7 +33245,6 @@ func (c *Client) OrgsSetMembershipForUser(ctx context.Context, request OptOrgsSe
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -33591,7 +33581,6 @@ func (c *Client) OrgsUpdateWebhook(ctx context.Context, request OptOrgsUpdateWeb
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -33698,7 +33687,6 @@ func (c *Client) OrgsUpdateWebhookConfigForOrg(ctx context.Context, request OptO
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -36258,7 +36246,6 @@ func (c *Client) ProjectsAddCollaborator(ctx context.Context, request OptNilProj
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -37987,7 +37974,6 @@ func (c *Client) ProjectsUpdate(ctx context.Context, request OptProjectsUpdateRe
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -38555,7 +38541,6 @@ func (c *Client) PullsCreateReview(ctx context.Context, request OptPullsCreateRe
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -40605,7 +40590,6 @@ func (c *Client) PullsMerge(ctx context.Context, request OptNilPullsMergeReq, pa
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -40966,7 +40950,6 @@ func (c *Client) PullsUpdate(ctx context.Context, request OptPullsUpdateReq, par
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -44444,7 +44427,6 @@ func (c *Client) ReposAddAppAccessRestrictions(ctx context.Context, request OptR
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -44583,7 +44565,6 @@ func (c *Client) ReposAddCollaborator(ctx context.Context, request OptReposAddCo
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -44705,7 +44686,6 @@ func (c *Client) ReposAddStatusCheckContexts(ctx context.Context, request OptRep
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -44838,7 +44818,6 @@ func (c *Client) ReposAddTeamAccessRestrictions(ctx context.Context, request Opt
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -44968,7 +44947,6 @@ func (c *Client) ReposAddUserAccessRestrictions(ctx context.Context, request Opt
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -46645,7 +46623,6 @@ func (c *Client) ReposCreatePagesSite(ctx context.Context, request NilReposCreat
 			return err
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -46947,7 +46924,6 @@ func (c *Client) ReposCreateWebhook(ctx context.Context, request OptNilReposCrea
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -57162,7 +57138,6 @@ func (c *Client) ReposRemoveAppAccessRestrictions(ctx context.Context, request O
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -57372,7 +57347,6 @@ func (c *Client) ReposRemoveStatusCheckContexts(ctx context.Context, request Opt
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -57599,7 +57573,6 @@ func (c *Client) ReposRemoveTeamAccessRestrictions(ctx context.Context, request 
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -57729,7 +57702,6 @@ func (c *Client) ReposRemoveUserAccessRestrictions(ctx context.Context, request 
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -58251,7 +58223,6 @@ func (c *Client) ReposSetAppAccessRestrictions(ctx context.Context, request OptR
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -58374,7 +58345,6 @@ func (c *Client) ReposSetStatusCheckContexts(ctx context.Context, request OptRep
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -58508,7 +58478,6 @@ func (c *Client) ReposSetTeamAccessRestrictions(ctx context.Context, request Opt
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -58639,7 +58608,6 @@ func (c *Client) ReposSetUserAccessRestrictions(ctx context.Context, request Opt
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -58946,7 +58914,6 @@ func (c *Client) ReposUpdate(ctx context.Context, request OptReposUpdateReq, par
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -59268,7 +59235,6 @@ func (c *Client) ReposUpdateInvitation(ctx context.Context, request OptReposUpda
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -59818,7 +59784,6 @@ func (c *Client) ReposUpdateWebhook(ctx context.Context, request OptReposUpdateW
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -59940,7 +59905,6 @@ func (c *Client) ReposUpdateWebhookConfigForRepo(ctx context.Context, request Op
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -61688,7 +61652,6 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserInOrg(ctx context.Context, req
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -61831,7 +61794,6 @@ func (c *Client) TeamsAddOrUpdateMembershipForUserLegacy(ctx context.Context, re
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -61938,7 +61900,6 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsInOrg(ctx context.Context, re
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -62064,7 +62025,6 @@ func (c *Client) TeamsAddOrUpdateProjectPermissionsLegacy(ctx context.Context, r
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -62178,7 +62138,6 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsInOrg(ctx context.Context, reque
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -62323,7 +62282,6 @@ func (c *Client) TeamsAddOrUpdateRepoPermissionsLegacy(ctx context.Context, requ
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -67905,7 +67863,6 @@ func (c *Client) TeamsUpdateInOrg(ctx context.Context, request OptTeamsUpdateInO
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}
@@ -68093,7 +68050,6 @@ func (c *Client) UsersAddEmailForAuthenticated(ctx context.Context, request OptU
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
@@ -68541,7 +68497,6 @@ func (c *Client) UsersDeleteEmailForAuthenticated(ctx context.Context, request O
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")

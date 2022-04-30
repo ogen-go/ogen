@@ -70,8 +70,8 @@ func (s *Server) handleListPetsRequest(args [0]string, w http.ResponseWriter, r 
 	params, err := decodeListPetsParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ListPets",
-			err,
+			Operation: "ListPets",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -115,8 +115,8 @@ func (s *Server) handleShowPetByIdRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodeShowPetByIdParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"ShowPetById",
-			err,
+			Operation: "ShowPetById",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

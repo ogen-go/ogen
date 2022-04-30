@@ -15006,7 +15006,6 @@ func (s Components) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schemas",
@@ -15024,7 +15023,6 @@ func (s Components) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15044,7 +15042,6 @@ func (s Components) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "parameters",
@@ -15062,7 +15059,6 @@ func (s Components) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15082,7 +15078,6 @@ func (s Components) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "headers",
@@ -15100,7 +15095,6 @@ func (s Components) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15126,7 +15120,6 @@ func (s Encoding) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15174,7 +15167,6 @@ func (s Header) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schema",
@@ -15192,7 +15184,6 @@ func (s Header) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15295,7 +15286,6 @@ func (s MediaType) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schema",
@@ -15313,7 +15303,6 @@ func (s MediaType) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15386,7 +15375,6 @@ func (s Operation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "requestBody",
@@ -15415,7 +15403,6 @@ func (s Operation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15479,7 +15466,6 @@ func (s Parameter) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "style",
@@ -15498,7 +15484,6 @@ func (s Parameter) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schema",
@@ -15516,7 +15501,6 @@ func (s Parameter) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15612,7 +15596,6 @@ func (s PathItem) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "get",
@@ -15630,7 +15613,6 @@ func (s PathItem) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15650,7 +15632,6 @@ func (s PathItem) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "post",
@@ -15668,7 +15649,6 @@ func (s PathItem) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15688,7 +15668,6 @@ func (s PathItem) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "options",
@@ -15706,7 +15685,6 @@ func (s PathItem) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15726,7 +15704,6 @@ func (s PathItem) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "patch",
@@ -15744,7 +15721,6 @@ func (s PathItem) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15903,7 +15879,6 @@ func (s Response) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "headers",
@@ -15921,7 +15896,6 @@ func (s Response) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -15961,7 +15935,6 @@ func (s Responses) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -16041,7 +16014,6 @@ func (s Schema) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "multipleOf",
@@ -16059,7 +16031,6 @@ func (s Schema) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -16079,7 +16050,6 @@ func (s Schema) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minimum",
@@ -16097,7 +16067,6 @@ func (s Schema) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -16117,7 +16086,6 @@ func (s Schema) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minLength",
@@ -16135,7 +16103,6 @@ func (s Schema) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -16155,7 +16122,6 @@ func (s Schema) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minItems",
@@ -16174,7 +16140,6 @@ func (s Schema) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "maxProperties",
@@ -16192,7 +16157,6 @@ func (s Schema) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -16249,7 +16213,6 @@ func (s Schema) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -16405,7 +16368,6 @@ func (s Schema) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -16572,7 +16534,6 @@ func (s Spec) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

@@ -232,7 +232,6 @@ func decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req Opt
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate SandboxRegisterPost request")
 		}

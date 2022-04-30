@@ -886,7 +886,6 @@ func decodeAppsCreateInstallationAccessTokenRequest(r *http.Request, span trace.
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate AppsCreateInstallationAccessToken request")
 		}
@@ -1090,7 +1089,6 @@ func decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate AppsUpdateWebhookConfigForApp request")
@@ -1823,7 +1821,6 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise request")
@@ -2562,7 +2559,6 @@ func decodeIssuesLockRequest(r *http.Request, span trace.Span) (req OptNilIssues
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate IssuesLock request")
 		}
@@ -2651,7 +2647,6 @@ func decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (req OptIssuesU
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate IssuesUpdate request")
@@ -2777,7 +2772,6 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req O
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate IssuesUpdateMilestone request")
@@ -3081,7 +3075,6 @@ func decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Request, span t
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OAuthAuthorizationsCreateAuthorization request")
 		}
@@ -3222,7 +3215,6 @@ func decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Request, span t
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OAuthAuthorizationsUpdateAuthorization request")
 		}
@@ -3274,7 +3266,6 @@ func decodeOrgsCreateInvitationRequest(r *http.Request, span trace.Span) (req Op
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsCreateInvitation request")
@@ -3372,7 +3363,6 @@ func decodeOrgsSetMembershipForUserRequest(r *http.Request, span trace.Span) (re
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsSetMembershipForUser request")
 		}
@@ -3469,7 +3459,6 @@ func decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptOr
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsUpdateWebhook request")
 		}
@@ -3522,7 +3511,6 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate OrgsUpdateWebhookConfigForOrg request")
 		}
@@ -3574,7 +3562,6 @@ func decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (req
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ProjectsAddCollaborator request")
@@ -3860,7 +3847,6 @@ func decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (req OptProje
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ProjectsUpdate request")
 		}
@@ -4058,7 +4044,6 @@ func decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (req OptPu
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsCreateReview request")
 		}
@@ -4190,7 +4175,6 @@ func decodePullsMergeRequest(r *http.Request, span trace.Span) (req OptNilPullsM
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsMerge request")
@@ -4331,7 +4315,6 @@ func decodePullsUpdateRequest(r *http.Request, span trace.Span) (req OptPullsUpd
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate PullsUpdate request")
@@ -4890,7 +4873,6 @@ func decodeReposAddAppAccessRestrictionsRequest(r *http.Request, span trace.Span
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddAppAccessRestrictions request")
 		}
@@ -4942,7 +4924,6 @@ func decodeReposAddCollaboratorRequest(r *http.Request, span trace.Span) (req Op
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddCollaborator request")
@@ -4996,7 +4977,6 @@ func decodeReposAddStatusCheckContextsRequest(r *http.Request, span trace.Span) 
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddStatusCheckContexts request")
 		}
@@ -5049,7 +5029,6 @@ func decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, span trace.Spa
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddTeamAccessRestrictions request")
 		}
@@ -5101,7 +5080,6 @@ func decodeReposAddUserAccessRestrictionsRequest(r *http.Request, span trace.Spa
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposAddUserAccessRestrictions request")
@@ -5576,7 +5554,6 @@ func decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (req Ni
 				return err
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreatePagesSite request")
 		}
@@ -5700,7 +5677,6 @@ func decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptN
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposCreateWebhook request")
@@ -5862,7 +5838,6 @@ func decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, span trace.S
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposRemoveAppAccessRestrictions request")
 		}
@@ -5914,7 +5889,6 @@ func decodeReposRemoveStatusCheckContextsRequest(r *http.Request, span trace.Spa
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposRemoveStatusCheckContexts request")
@@ -5968,7 +5942,6 @@ func decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request, span trace.
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposRemoveTeamAccessRestrictions request")
 		}
@@ -6020,7 +5993,6 @@ func decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request, span trace.
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposRemoveUserAccessRestrictions request")
@@ -6155,7 +6127,6 @@ func decodeReposSetAppAccessRestrictionsRequest(r *http.Request, span trace.Span
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposSetAppAccessRestrictions request")
 		}
@@ -6207,7 +6178,6 @@ func decodeReposSetStatusCheckContextsRequest(r *http.Request, span trace.Span) 
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposSetStatusCheckContexts request")
@@ -6261,7 +6231,6 @@ func decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, span trace.Spa
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposSetTeamAccessRestrictions request")
 		}
@@ -6313,7 +6282,6 @@ func decodeReposSetUserAccessRestrictionsRequest(r *http.Request, span trace.Spa
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposSetUserAccessRestrictions request")
@@ -6402,7 +6370,6 @@ func decodeReposUpdateRequest(r *http.Request, span trace.Span) (req OptReposUpd
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdate request")
@@ -6535,7 +6502,6 @@ func decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (req O
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdateInvitation request")
@@ -6737,7 +6703,6 @@ func decodeReposUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptR
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdateWebhook request")
 		}
@@ -6789,7 +6754,6 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate ReposUpdateWebhookConfigForRepo request")
@@ -6887,7 +6851,6 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span t
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateMembershipForUserInOrg request")
 		}
@@ -6939,7 +6902,6 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span 
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateMembershipForUserLegacy request")
@@ -6993,7 +6955,6 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span 
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateProjectPermissionsInOrg request")
 		}
@@ -7045,7 +7006,6 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.Request, span
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateProjectPermissionsLegacy request")
@@ -7099,7 +7059,6 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span tra
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateRepoPermissionsInOrg request")
 		}
@@ -7151,7 +7110,6 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Request, span tr
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsAddOrUpdateRepoPermissionsLegacy request")
@@ -7619,7 +7577,6 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (req OptTea
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate TeamsUpdateInOrg request")
 		}
@@ -7715,7 +7672,6 @@ func decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, span trace.Span
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate UsersAddEmailForAuthenticated request")
@@ -7848,7 +7804,6 @@ func decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, span trace.S
 					return err
 				}
 			}
-			return nil
 			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate UsersDeleteEmailForAuthenticated request")

@@ -2651,7 +2651,6 @@ func (s TestRequestFormatTestReq) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_number",
@@ -2670,7 +2669,6 @@ func (s TestRequestFormatTestReq) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_number_double",
@@ -2688,7 +2686,6 @@ func (s TestRequestFormatTestReq) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2716,7 +2713,6 @@ func (s TestRequestFormatTestReq) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_string_email",
@@ -2742,7 +2738,6 @@ func (s TestRequestFormatTestReq) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5396,7 +5391,6 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_number",
@@ -5415,7 +5409,6 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_number_double",
@@ -5433,7 +5426,6 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -5461,7 +5453,6 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_string_email",
@@ -5487,7 +5478,6 @@ func (s TestRequestRequiredFormatTestReq) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8141,7 +8131,6 @@ func (s TestResponseFormatTestOK) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_number",
@@ -8160,7 +8149,6 @@ func (s TestResponseFormatTestOK) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_number_double",
@@ -8178,7 +8166,6 @@ func (s TestResponseFormatTestOK) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -8206,7 +8193,6 @@ func (s TestResponseFormatTestOK) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "optional_string_email",
@@ -8232,7 +8218,6 @@ func (s TestResponseFormatTestOK) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

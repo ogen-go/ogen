@@ -85,8 +85,8 @@ func (s *Server) handleMarketCandlesGetRequest(args [0]string, w http.ResponseWr
 	params, err := decodeMarketCandlesGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MarketCandlesGet",
-			err,
+			Operation: "MarketCandlesGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -226,8 +226,8 @@ func (s *Server) handleMarketOrderbookGetRequest(args [0]string, w http.Response
 	params, err := decodeMarketOrderbookGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MarketOrderbookGet",
-			err,
+			Operation: "MarketOrderbookGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -279,8 +279,8 @@ func (s *Server) handleMarketSearchByFigiGetRequest(args [0]string, w http.Respo
 	params, err := decodeMarketSearchByFigiGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MarketSearchByFigiGet",
-			err,
+			Operation: "MarketSearchByFigiGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -332,8 +332,8 @@ func (s *Server) handleMarketSearchByTickerGetRequest(args [0]string, w http.Res
 	params, err := decodeMarketSearchByTickerGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"MarketSearchByTickerGet",
-			err,
+			Operation: "MarketSearchByTickerGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -429,8 +429,8 @@ func (s *Server) handleOperationsGetRequest(args [0]string, w http.ResponseWrite
 	params, err := decodeOperationsGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OperationsGet",
-			err,
+			Operation: "OperationsGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -482,8 +482,8 @@ func (s *Server) handleOrdersCancelPostRequest(args [0]string, w http.ResponseWr
 	params, err := decodeOrdersCancelPostParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrdersCancelPost",
-			err,
+			Operation: "OrdersCancelPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -535,8 +535,8 @@ func (s *Server) handleOrdersGetRequest(args [0]string, w http.ResponseWriter, r
 	params, err := decodeOrdersGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrdersGet",
-			err,
+			Operation: "OrdersGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -588,8 +588,8 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 	params, err := decodeOrdersLimitOrderPostParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrdersLimitOrderPost",
-			err,
+			Operation: "OrdersLimitOrderPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -597,8 +597,8 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 	request, err := decodeOrdersLimitOrderPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OrdersLimitOrderPost",
-			err,
+			Operation: "OrdersLimitOrderPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -650,8 +650,8 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 	params, err := decodeOrdersMarketOrderPostParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"OrdersMarketOrderPost",
-			err,
+			Operation: "OrdersMarketOrderPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -659,8 +659,8 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 	request, err := decodeOrdersMarketOrderPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OrdersMarketOrderPost",
-			err,
+			Operation: "OrdersMarketOrderPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -712,8 +712,8 @@ func (s *Server) handlePortfolioCurrenciesGetRequest(args [0]string, w http.Resp
 	params, err := decodePortfolioCurrenciesGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PortfolioCurrenciesGet",
-			err,
+			Operation: "PortfolioCurrenciesGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -765,8 +765,8 @@ func (s *Server) handlePortfolioGetRequest(args [0]string, w http.ResponseWriter
 	params, err := decodePortfolioGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PortfolioGet",
-			err,
+			Operation: "PortfolioGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -818,8 +818,8 @@ func (s *Server) handleSandboxClearPostRequest(args [0]string, w http.ResponseWr
 	params, err := decodeSandboxClearPostParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SandboxClearPost",
-			err,
+			Operation: "SandboxClearPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -871,8 +871,8 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 	params, err := decodeSandboxCurrenciesBalancePostParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SandboxCurrenciesBalancePost",
-			err,
+			Operation: "SandboxCurrenciesBalancePost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -880,8 +880,8 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 	request, err := decodeSandboxCurrenciesBalancePostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"SandboxCurrenciesBalancePost",
-			err,
+			Operation: "SandboxCurrenciesBalancePost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -933,8 +933,8 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 	params, err := decodeSandboxPositionsBalancePostParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SandboxPositionsBalancePost",
-			err,
+			Operation: "SandboxPositionsBalancePost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -942,8 +942,8 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 	request, err := decodeSandboxPositionsBalancePostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"SandboxPositionsBalancePost",
-			err,
+			Operation: "SandboxPositionsBalancePost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -995,8 +995,8 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 	request, err := decodeSandboxRegisterPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"SandboxRegisterPost",
-			err,
+			Operation: "SandboxRegisterPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1048,8 +1048,8 @@ func (s *Server) handleSandboxRemovePostRequest(args [0]string, w http.ResponseW
 	params, err := decodeSandboxRemovePostParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"SandboxRemovePost",
-			err,
+			Operation: "SandboxRemovePost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

@@ -278,7 +278,6 @@ func (s IoK8sAPIAppsV1DaemonSet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -356,7 +355,6 @@ func (s IoK8sAPIAppsV1Deployment) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -436,7 +434,6 @@ func (s IoK8sAPIAppsV1ReplicaSet) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -497,7 +494,6 @@ func (s IoK8sAPIAppsV1ReplicaSetSpec) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -522,7 +518,6 @@ func (s IoK8sAPIAppsV1StatefulSet) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -620,7 +615,6 @@ func (s IoK8sAPIAutoscalingV2beta1HorizontalPodAutoscaler) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "status",
@@ -698,7 +692,6 @@ func (s IoK8sAPIAutoscalingV2beta2HorizontalPodAutoscaler) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -778,7 +771,6 @@ func (s IoK8sAPIBatchV1CronJob) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -856,7 +848,6 @@ func (s IoK8sAPIBatchV1Job) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -936,7 +927,6 @@ func (s IoK8sAPIBatchV1JobTemplateSpec) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -961,7 +951,6 @@ func (s IoK8sAPIBatchV1beta1CronJob) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1041,7 +1030,6 @@ func (s IoK8sAPIBatchV1beta1JobTemplateSpec) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -1077,7 +1065,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequest) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1138,7 +1125,6 @@ func (s IoK8sAPICertificatesV1CertificateSigningRequestSpec) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1249,7 +1235,6 @@ func (s IoK8sAPICoreV1Affinity) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nodeAffinity",
@@ -1328,7 +1313,6 @@ func (s IoK8sAPICoreV1ConfigMap) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1455,7 +1439,6 @@ func (s IoK8sAPICoreV1LimitRange) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -1552,7 +1535,6 @@ func (s IoK8sAPICoreV1NodeAffinity) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "requiredDuringSchedulingIgnoredDuringExecution",
@@ -1613,7 +1595,6 @@ func (s IoK8sAPICoreV1PersistentVolume) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1693,7 +1674,6 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "cephfs",
@@ -1712,7 +1692,6 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "nodeAffinity",
@@ -1730,7 +1709,6 @@ func (s IoK8sAPICoreV1PersistentVolumeSpec) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1756,7 +1734,6 @@ func (s IoK8sAPICoreV1Pod) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1817,7 +1794,6 @@ func (s IoK8sAPICoreV1PodSpec) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1880,7 +1856,6 @@ func (s IoK8sAPICoreV1PodTemplate) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -1940,7 +1915,6 @@ func (s IoK8sAPICoreV1PodTemplateSpec) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2003,7 +1977,6 @@ func (s IoK8sAPICoreV1ReplicationController) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -2064,7 +2037,6 @@ func (s IoK8sAPICoreV1ReplicationControllerSpec) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "template",
@@ -2107,7 +2079,6 @@ func (s IoK8sAPICoreV1Secret) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2284,7 +2255,6 @@ func (s IoK8sAPICoreV1Volume) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "cephfs",
@@ -2302,7 +2272,6 @@ func (s IoK8sAPICoreV1Volume) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2328,7 +2297,6 @@ func (s IoK8sAPICoreV1VolumeNodeAffinity) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2566,7 +2534,6 @@ func (s IoK8sAPIFlowcontrolV1beta1FlowSchema) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -2814,7 +2781,6 @@ func (s IoK8sAPIFlowcontrolV1beta2FlowSchema) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3081,7 +3047,6 @@ func (s IoK8sAPINetworkingV1Ingress) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -3159,7 +3124,6 @@ func (s IoK8sAPINetworkingV1IngressRule) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3326,7 +3290,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicy) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "spec",
@@ -3386,7 +3349,6 @@ func (s IoK8sAPIPolicyV1beta1PodSecurityPolicySpec) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -3846,7 +3808,6 @@ func (s IoK8sAPIStorageV1VolumeAttachmentSource) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "inlineVolumeSpec",
@@ -3926,7 +3887,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceConversio
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "webhook",
@@ -4005,7 +3965,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "conversion",
@@ -4059,7 +4018,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceDefinitio
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "schema",
@@ -4084,7 +4042,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1CustomResourceValidatio
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4161,7 +4118,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "definitions",
@@ -4179,7 +4135,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4199,7 +4154,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minimum",
@@ -4217,7 +4171,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4281,7 +4234,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "patternProperties",
@@ -4299,7 +4251,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1JSONSchemaProps) Valida
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4414,7 +4365,6 @@ func (s IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Vali
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -4586,7 +4536,6 @@ func (s IoK8sKubeAggregatorPkgApisApiregistrationV1APIService) Validate() error 
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{

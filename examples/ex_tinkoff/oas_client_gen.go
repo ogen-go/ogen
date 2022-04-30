@@ -1359,7 +1359,6 @@ func (c *Client) SandboxRegisterPost(ctx context.Context, request OptSandboxRegi
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		return res, errors.Wrap(err, "validate")
 	}

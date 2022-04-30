@@ -1387,7 +1387,6 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req OptGetUpdate
 				}
 			}
 			return nil
-			return nil
 		}(); err != nil {
 			return req, errors.Wrap(err, "validate GetUpdates request")
 		}

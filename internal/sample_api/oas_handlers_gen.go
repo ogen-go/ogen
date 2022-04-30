@@ -34,8 +34,8 @@ func (s *Server) handleDataGetFormatRequest(args [5]string, w http.ResponseWrite
 	params, err := decodeDataGetFormatParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"DataGetFormat",
-			err,
+			Operation: "DataGetFormat",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -79,8 +79,8 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	params, err := decodeDefaultTestParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"DefaultTest",
-			err,
+			Operation: "DefaultTest",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -88,8 +88,8 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 	request, err := decodeDefaultTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"DefaultTest",
-			err,
+			Operation: "DefaultTest",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -169,8 +169,8 @@ func (s *Server) handleFoobarGetRequest(args [0]string, w http.ResponseWriter, r
 	params, err := decodeFoobarGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"FoobarGet",
-			err,
+			Operation: "FoobarGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -214,8 +214,8 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	request, err := decodeFoobarPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"FoobarPost",
-			err,
+			Operation: "FoobarPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -293,8 +293,8 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	params, err := decodeGetHeaderParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"GetHeader",
-			err,
+			Operation: "GetHeader",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -410,8 +410,8 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	request, err := decodeOneofBugRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"OneofBug",
-			err,
+			Operation: "OneofBug",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -489,8 +489,8 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	request, err := decodePetCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PetCreate",
-			err,
+			Operation: "PetCreate",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -534,8 +534,8 @@ func (s *Server) handlePetFriendsNamesByIDRequest(args [1]string, w http.Respons
 	params, err := decodePetFriendsNamesByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PetFriendsNamesByID",
-			err,
+			Operation: "PetFriendsNamesByID",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -579,8 +579,8 @@ func (s *Server) handlePetGetRequest(args [0]string, w http.ResponseWriter, r *h
 	params, err := decodePetGetParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PetGet",
-			err,
+			Operation: "PetGet",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -624,8 +624,8 @@ func (s *Server) handlePetGetAvatarByIDRequest(args [0]string, w http.ResponseWr
 	params, err := decodePetGetAvatarByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PetGetAvatarByID",
-			err,
+			Operation: "PetGetAvatarByID",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -669,8 +669,8 @@ func (s *Server) handlePetGetAvatarByNameRequest(args [1]string, w http.Response
 	params, err := decodePetGetAvatarByNameParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PetGetAvatarByName",
-			err,
+			Operation: "PetGetAvatarByName",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -714,8 +714,8 @@ func (s *Server) handlePetGetByNameRequest(args [1]string, w http.ResponseWriter
 	params, err := decodePetGetByNameParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PetGetByName",
-			err,
+			Operation: "PetGetByName",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -759,8 +759,8 @@ func (s *Server) handlePetNameByIDRequest(args [1]string, w http.ResponseWriter,
 	params, err := decodePetNameByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PetNameByID",
-			err,
+			Operation: "PetNameByID",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -802,8 +802,8 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	request, err := decodePetUpdateNameAliasPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PetUpdateNameAliasPost",
-			err,
+			Operation: "PetUpdateNameAliasPost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -845,8 +845,8 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 	request, err := decodePetUpdateNamePostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PetUpdateNamePost",
-			err,
+			Operation: "PetUpdateNamePost",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -890,8 +890,8 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	params, err := decodePetUploadAvatarByIDParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"PetUploadAvatarByID",
-			err,
+			Operation: "PetUploadAvatarByID",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -899,8 +899,8 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 	request, err := decodePetUploadAvatarByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"PetUploadAvatarByID",
-			err,
+			Operation: "PetUploadAvatarByID",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1092,8 +1092,8 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	request, err := decodeTestFloatValidationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
-			"TestFloatValidation",
-			err,
+			Operation: "TestFloatValidation",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
@@ -1137,8 +1137,8 @@ func (s *Server) handleTestObjectQueryParameterRequest(args [0]string, w http.Re
 	params, err := decodeTestObjectQueryParameterParams(args, r)
 	if err != nil {
 		err = &ogenerrors.DecodeParamsError{
-			"TestObjectQueryParameter",
-			err,
+			Operation: "TestObjectQueryParameter",
+			Err:       err,
 		}
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return

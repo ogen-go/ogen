@@ -269,7 +269,6 @@ func (s CurrencyPosition) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "blocked",
@@ -356,7 +355,6 @@ func (s MarketInstrument) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minPriceIncrement",
@@ -374,7 +372,6 @@ func (s MarketInstrument) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -566,7 +563,6 @@ func (s Operation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "commission",
@@ -607,7 +603,6 @@ func (s Operation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "price",
@@ -626,7 +621,6 @@ func (s Operation) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "instrumentType",
@@ -644,7 +638,6 @@ func (s Operation) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -994,7 +987,6 @@ func (s Orderbook) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "faceValue",
@@ -1012,7 +1004,6 @@ func (s Orderbook) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1032,7 +1023,6 @@ func (s Orderbook) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "closePrice",
@@ -1051,7 +1041,6 @@ func (s Orderbook) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "limitUp",
@@ -1069,7 +1058,6 @@ func (s Orderbook) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1171,7 +1159,6 @@ func (s PlacedLimitOrder) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "commission",
@@ -1218,7 +1205,6 @@ func (s PlacedMarketOrder) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1320,7 +1306,6 @@ func (s PortfolioPosition) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "blocked",
@@ -1338,7 +1323,6 @@ func (s PortfolioPosition) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1358,7 +1342,6 @@ func (s PortfolioPosition) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "averagePositionPrice",
@@ -1376,7 +1359,6 @@ func (s PortfolioPosition) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1462,7 +1444,6 @@ func (s SandboxRegisterRequest) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
@@ -1554,7 +1535,6 @@ func (s SearchMarketInstrument) Validate() error {
 			}
 		}
 		return nil
-		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
 			Name:  "minPriceIncrement",
@@ -1572,7 +1552,6 @@ func (s SearchMarketInstrument) Validate() error {
 				return err
 			}
 		}
-		return nil
 		return nil
 	}(); err != nil {
 		failures = append(failures, validate.FieldError{
