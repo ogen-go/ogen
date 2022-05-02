@@ -319,15 +319,15 @@ func (s *Server) handleGetHeaderRequest(args [0]string, w http.ResponseWriter, r
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
-// HandleNoAdditionalProperiesTestRequest handles noAdditionalProperiesTest operation.
+// HandleNoAdditionalPropertiesTestRequest handles noAdditionalPropertiesTest operation.
 //
-// GET /noAdditionalProperiesTest
-func (s *Server) handleNoAdditionalProperiesTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+// GET /noAdditionalPropertiesTest
+func (s *Server) handleNoAdditionalPropertiesTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("noAdditionalProperiesTest"),
+		otelogen.OperationID("noAdditionalPropertiesTest"),
 	}
-	ctx, span := s.cfg.Tracer.Start(r.Context(), "NoAdditionalProperiesTest",
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "NoAdditionalPropertiesTest",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindServer),
 	)
@@ -336,7 +336,7 @@ func (s *Server) handleNoAdditionalProperiesTestRequest(args [0]string, w http.R
 
 	var err error
 
-	response, err := s.h.NoAdditionalProperiesTest(ctx)
+	response, err := s.h.NoAdditionalPropertiesTest(ctx)
 	if err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Internal")
@@ -345,7 +345,7 @@ func (s *Server) handleNoAdditionalProperiesTestRequest(args [0]string, w http.R
 		return
 	}
 
-	if err := encodeNoAdditionalProperiesTestResponse(response, w, span); err != nil {
+	if err := encodeNoAdditionalPropertiesTestResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

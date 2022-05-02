@@ -24,6 +24,9 @@ func (g *schemaGen) enum(name string, t *ir.Type, schema *jsonschema.Schema) (*i
 	if !t.Is(ir.KindPrimitive) {
 		return nil, errors.Errorf("unsupported enum type: %q", schema.Type)
 	}
+	if f := schema.Format; f != "" && !t.IsNumeric() {
+		return nil, errors.Wrapf(&ErrNotImplemented{"enum format"}, "format %q", f)
+	}
 
 	type namingStrategy int
 	const (

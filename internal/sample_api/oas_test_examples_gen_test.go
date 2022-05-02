@@ -293,8 +293,8 @@ func TestMaxPropertiesTest_EncodeDecode(t *testing.T) {
 	var typ2 MaxPropertiesTest
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestNoAdditionalProperiesTest_EncodeDecode(t *testing.T) {
-	var typ NoAdditionalProperiesTest
+func TestNoAdditionalPropertiesTest_EncodeDecode(t *testing.T) {
+	var typ NoAdditionalPropertiesTest
 	typ.SetFake()
 
 	e := jx.Encoder{}
@@ -302,7 +302,7 @@ func TestNoAdditionalProperiesTest_EncodeDecode(t *testing.T) {
 	data := e.Bytes()
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
-	var typ2 NoAdditionalProperiesTest
+	var typ2 NoAdditionalPropertiesTest
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestNullValue_EncodeDecode(t *testing.T) {

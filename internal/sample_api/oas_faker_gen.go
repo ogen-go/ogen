@@ -499,7 +499,7 @@ func (s *NilString) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *NoAdditionalProperiesTest) SetFake() {
+func (s *NoAdditionalPropertiesTest) SetFake() {
 	{
 		{ // Keep pointer nil to prevent infinite recursion.
 			s.Empty = nil

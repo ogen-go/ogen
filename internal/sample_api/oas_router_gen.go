@@ -74,7 +74,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleNoAdditionalProperiesTestRequest([0]string{}, w, r)
+					s.handleNoAdditionalPropertiesTestRequest([0]string{}, w, r)
 
 					return
 				}
@@ -187,16 +187,16 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 						}
 					}
-				case 'o': // Prefix: "oAdditionalProperiesTest"
-					if l := len("oAdditionalProperiesTest"); len(elem) >= l && elem[0:l] == "oAdditionalProperiesTest" {
+				case 'o': // Prefix: "oAdditionalPropertiesTest"
+					if l := len("oAdditionalPropertiesTest"); len(elem) >= l && elem[0:l] == "oAdditionalPropertiesTest" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf: NoAdditionalProperiesTest
-						s.handleNoAdditionalProperiesTestRequest([0]string{}, w, r)
+						// Leaf: NoAdditionalPropertiesTest
+						s.handleNoAdditionalPropertiesTestRequest([0]string{}, w, r)
 
 						return
 					}
@@ -727,7 +727,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "NoAdditionalProperiesTest"
+					r.name = "NoAdditionalPropertiesTest"
 					r.args = args
 					r.count = 0
 					return r, true
@@ -836,16 +836,16 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 						}
 					}
-				case 'o': // Prefix: "oAdditionalProperiesTest"
-					if l := len("oAdditionalProperiesTest"); len(elem) >= l && elem[0:l] == "oAdditionalProperiesTest" {
+				case 'o': // Prefix: "oAdditionalPropertiesTest"
+					if l := len("oAdditionalPropertiesTest"); len(elem) >= l && elem[0:l] == "oAdditionalPropertiesTest" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf: NoAdditionalProperiesTest
-						r.name = "NoAdditionalProperiesTest"
+						// Leaf: NoAdditionalPropertiesTest
+						r.name = "NoAdditionalPropertiesTest"
 						r.args = args
 						r.count = 0
 						return r, true

@@ -154,7 +154,7 @@ func encodeGetHeaderResponse(response Hash, w http.ResponseWriter, span trace.Sp
 	return nil
 }
 
-func encodeNoAdditionalProperiesTestResponse(response NoAdditionalProperiesTest, w http.ResponseWriter, span trace.Span) error {
+func encodeNoAdditionalPropertiesTestResponse(response NoAdditionalPropertiesTest, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))

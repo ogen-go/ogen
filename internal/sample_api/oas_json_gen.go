@@ -3014,14 +3014,14 @@ func (s *NilString) UnmarshalJSON(data []byte) error {
 }
 
 // Encode implements json.Marshaler.
-func (s NoAdditionalProperiesTest) Encode(e *jx.Encoder) {
+func (s NoAdditionalPropertiesTest) Encode(e *jx.Encoder) {
 	e.ObjStart()
 	s.encodeFields(e)
 	e.ObjEnd()
 }
 
 // encodeFields encodes fields.
-func (s NoAdditionalProperiesTest) encodeFields(e *jx.Encoder) {
+func (s NoAdditionalPropertiesTest) encodeFields(e *jx.Encoder) {
 	{
 		if s.Empty != nil {
 			e.FieldStart("empty")
@@ -3042,16 +3042,16 @@ func (s NoAdditionalProperiesTest) encodeFields(e *jx.Encoder) {
 	}
 }
 
-var jsonFieldsNameOfNoAdditionalProperiesTest = [3]string{
+var jsonFieldsNameOfNoAdditionalPropertiesTest = [3]string{
 	0: "empty",
 	1: "oneProperty",
 	2: "onlyPatterned",
 }
 
-// Decode decodes NoAdditionalProperiesTest from json.
-func (s *NoAdditionalProperiesTest) Decode(d *jx.Decoder) error {
+// Decode decodes NoAdditionalPropertiesTest from json.
+func (s *NoAdditionalPropertiesTest) Decode(d *jx.Decoder) error {
 	if s == nil {
-		return errors.New("invalid: unable to decode NoAdditionalProperiesTest to nil")
+		return errors.New("invalid: unable to decode NoAdditionalPropertiesTest to nil")
 	}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
@@ -3093,21 +3093,21 @@ func (s *NoAdditionalProperiesTest) Decode(d *jx.Decoder) error {
 		}
 		return nil
 	}); err != nil {
-		return errors.Wrap(err, "decode NoAdditionalProperiesTest")
+		return errors.Wrap(err, "decode NoAdditionalPropertiesTest")
 	}
 
 	return nil
 }
 
 // MarshalJSON implements stdjson.Marshaler.
-func (s NoAdditionalProperiesTest) MarshalJSON() ([]byte, error) {
+func (s NoAdditionalPropertiesTest) MarshalJSON() ([]byte, error) {
 	e := jx.Encoder{}
 	s.Encode(&e)
 	return e.Bytes(), nil
 }
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
-func (s *NoAdditionalProperiesTest) UnmarshalJSON(data []byte) error {
+func (s *NoAdditionalPropertiesTest) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }

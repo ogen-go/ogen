@@ -263,7 +263,7 @@ func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, er
 	}
 }
 
-func decodeNoAdditionalProperiesTestResponse(resp *http.Response, span trace.Span) (res NoAdditionalProperiesTest, err error) {
+func decodeNoAdditionalPropertiesTestResponse(resp *http.Response, span trace.Span) (res NoAdditionalPropertiesTest, err error) {
 	switch resp.StatusCode {
 	case 200:
 		switch ct := resp.Header.Get("Content-Type"); ct {
@@ -278,7 +278,7 @@ func decodeNoAdditionalProperiesTestResponse(resp *http.Response, span trace.Spa
 			defer jx.PutDecoder(d)
 			d.ResetBytes(buf.Bytes())
 
-			var response NoAdditionalProperiesTest
+			var response NoAdditionalPropertiesTest
 			if err := func() error {
 				if err := response.Decode(d); err != nil {
 					return err

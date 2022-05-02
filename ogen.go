@@ -1,7 +1,7 @@
 // Package ogen implements OpenAPI v3 code generation.
 package ogen
 
-//go:generate go run ./cmd/ogen --schema _testdata/positive/sample.json --target internal/sample_api --infer-types --clean --generate-tests
+//go:generate go run ./cmd/ogen --schema _testdata/positive/sample.json --target internal/sample_api --infer-types --clean --generate-tests --debug.noerr "enum format"
 //go:generate go run ./cmd/ogen --schema _testdata/positive/test_single_endpoint.json --target internal/test_single_endpoint  --clean --generate-tests
 //go:generate go run ./cmd/ogen --schema _testdata/positive/test_http_responses.json --target internal/test_http_responses  --clean --generate-tests
 

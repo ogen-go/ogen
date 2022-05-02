@@ -50,10 +50,10 @@ type Handler interface {
 	//
 	// GET /test/header
 	GetHeader(ctx context.Context, params GetHeaderParams) (Hash, error)
-	// NoAdditionalProperiesTest implements noAdditionalProperiesTest operation.
+	// NoAdditionalPropertiesTest implements noAdditionalPropertiesTest operation.
 	//
-	// GET /noAdditionalProperiesTest
-	NoAdditionalProperiesTest(ctx context.Context) (NoAdditionalProperiesTest, error)
+	// GET /noAdditionalPropertiesTest
+	NoAdditionalPropertiesTest(ctx context.Context) (NoAdditionalPropertiesTest, error)
 	// NullableDefaultResponse implements nullableDefaultResponse operation.
 	//
 	// GET /nullableDefaultResponse
