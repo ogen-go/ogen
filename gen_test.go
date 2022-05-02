@@ -58,7 +58,9 @@ func TestGenerate(t *testing.T) {
 			"allOf",
 		},
 		"firecracker.json": {},
-		"sample.json":      {},
+		"sample.json": {
+			"enum format",
+		},
 		"manga.json": {
 			"unsupported content types",
 		},

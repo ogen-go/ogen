@@ -703,16 +703,32 @@
         }
       }
     },
-    "/noAdditionalProperiesTest": {
+    "/enumTest": {
       "get": {
-        "operationId": "noAdditionalProperiesTest",
         "responses": {
           "200": {
             "description": "Ok",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/NoAdditionalProperiesTest"
+                  "$ref": "#/components/schemas/FormatEnumTest"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/noAdditionalPropertiesTest": {
+      "get": {
+        "operationId": "noAdditionalPropertiesTest",
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NoAdditionalPropertiesTest"
                 }
               }
             }
@@ -1242,6 +1258,26 @@
           }
         }
       },
+      "FormatEnumTest": {
+        "properties": {
+          "byte": {
+            "type": "string",
+            "format": "byte",
+            "enum": [
+              "SGVsbG8=",
+              "V29ybGQ"
+            ]
+          },
+          "time": {
+            "type": "string",
+            "format": "time",
+            "enum": [
+              "15:04:05",
+              "16:04:05"
+            ]
+          }
+        }
+      },
       "AnyOfTest": {
         "description": "Type for testing some anyOf cases from Jaeger operator API schema",
         "required": [
@@ -1591,7 +1627,7 @@
           }
         }
       },
-      "NoAdditionalProperiesTest": {
+      "NoAdditionalPropertiesTest": {
         "properties": {
           "empty": {
             "$ref": "#/components/schemas/OnlyEmptyObject"
