@@ -552,15 +552,15 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	return result, nil
 }
 
-// NoAdditionalProperiesTest invokes noAdditionalProperiesTest operation.
+// NoAdditionalPropertiesTest invokes noAdditionalPropertiesTest operation.
 //
-// GET /noAdditionalProperiesTest
-func (c *Client) NoAdditionalProperiesTest(ctx context.Context) (res NoAdditionalProperiesTest, err error) {
+// GET /noAdditionalPropertiesTest
+func (c *Client) NoAdditionalPropertiesTest(ctx context.Context) (res NoAdditionalPropertiesTest, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
-		otelogen.OperationID("noAdditionalProperiesTest"),
+		otelogen.OperationID("noAdditionalPropertiesTest"),
 	}
-	ctx, span := c.cfg.Tracer.Start(ctx, "NoAdditionalProperiesTest",
+	ctx, span := c.cfg.Tracer.Start(ctx, "NoAdditionalPropertiesTest",
 		trace.WithAttributes(otelAttrs...),
 		trace.WithSpanKind(trace.SpanKindClient),
 	)
@@ -576,7 +576,7 @@ func (c *Client) NoAdditionalProperiesTest(ctx context.Context) (res NoAdditiona
 	}()
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
-	u.Path += "/noAdditionalProperiesTest"
+	u.Path += "/noAdditionalPropertiesTest"
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -587,7 +587,7 @@ func (c *Client) NoAdditionalProperiesTest(ctx context.Context) (res NoAdditiona
 	}
 	defer resp.Body.Close()
 
-	result, err := decodeNoAdditionalProperiesTestResponse(resp, span)
+	result, err := decodeNoAdditionalPropertiesTestResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}

@@ -704,8 +704,8 @@ func (o NilString) Or(d string) string {
 	return d
 }
 
-// Ref: #/components/schemas/NoAdditionalProperiesTest
-type NoAdditionalProperiesTest struct {
+// Ref: #/components/schemas/NoAdditionalPropertiesTest
+type NoAdditionalPropertiesTest struct {
 	Empty         *OnlyEmptyObject            "json:\"empty\""
 	OneProperty   OptOnePropertyObject        "json:\"oneProperty\""
 	OnlyPatterned OptOnlyPatternedPropsObject "json:\"onlyPatterned\""

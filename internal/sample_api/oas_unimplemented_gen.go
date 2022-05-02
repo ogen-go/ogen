@@ -72,10 +72,10 @@ func (UnimplementedHandler) GetHeader(ctx context.Context, params GetHeaderParam
 	return r, ht.ErrNotImplemented
 }
 
-// NoAdditionalProperiesTest implements noAdditionalProperiesTest operation.
+// NoAdditionalPropertiesTest implements noAdditionalPropertiesTest operation.
 //
-// GET /noAdditionalProperiesTest
-func (UnimplementedHandler) NoAdditionalProperiesTest(ctx context.Context) (r NoAdditionalProperiesTest, _ error) {
+// GET /noAdditionalPropertiesTest
+func (UnimplementedHandler) NoAdditionalPropertiesTest(ctx context.Context) (r NoAdditionalPropertiesTest, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
