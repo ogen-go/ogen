@@ -1,0 +1,900 @@
+openapi: 3.0.3
+info:
+  title: Два.ч
+  description: Открытое апи Два.ч
+  version: 1.0.29
+servers:
+  - url: 'http://127.0.0.1/'
+  - url: 'https://2ch.hk/'
+  - url: 'https://beta.2ch.hk/'
+
+paths:
+  /api/mobile/v2/boards:
+    get:
+      summary: Получение списка досок и их настроек.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Boards'
+
+  /api/mobile/v2/after/{board}/{thread}/{num}:
+    get:
+      summary: Получение постов в треде >= указанного. Не рекомендуется использовать для получения треда целиком, только для проверки новых постов.
+      parameters:
+        - in: path
+          name: board
+          schema:
+            type: string
+          required: true
+          description: ID доски, например, b.
+        - in: path
+          name: thread
+          schema:
+            type: integer
+            minimum: 1
+          required: true
+          description: Номер треда.
+        - in: path
+          name: num
+          schema:
+            type: integer
+            minimum: 1
+          required: true
+          description: Номер поста.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobileThreadPostsAfter'
+
+  /api/mobile/v2/info/{board}/{thread}:
+    get:
+      summary: Получение информации о треде.
+      parameters:
+        - in: path
+          name: board
+          schema:
+            type: string
+          required: true
+          description: ID доски, например, b.
+        - in: path
+          name: thread
+          schema:
+            type: integer
+            minimum: 1
+          required: true
+          description: Номер треда.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobileThreadLastInfo'
+
+  /api/mobile/v2/post/{board}/{num}:
+    get:
+      summary: Получение информации о посте.
+      parameters:
+        - in: path
+          name: board
+          schema:
+            type: string
+          required: true
+          description: ID доски, например, b.
+        - in: path
+          name: num
+          schema:
+            type: integer
+            minimum: 1
+          required: true
+          description: Номер поста.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MobilePost'
+
+  /api/captcha/recaptcha/id:
+    get:
+      summary: Получение публичного ключа recaptcha v2.
+      parameters:
+        - in: query
+          name: board
+          schema:
+            type: string
+          description: ID доски, например, b.
+        - in: query
+          name: thread
+          schema:
+            type: integer
+            minimum: 1
+          description: Номер треда.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Captcha'
+
+  /api/captcha/recaptcha/mobile:
+    get:
+      summary: Получение html страницы для решения капчи, CORS отключён.
+      responses:
+        '200':
+          description: OK
+
+  /api/captcha/invisible_recaptcha/id:
+    get:
+      summary: Получение публичного ключа invisible recaptcha.
+      parameters:
+        - in: query
+          name: board
+          schema:
+            type: string
+          description: ID доски, например, b.
+        - in: query
+          name: thread
+          schema:
+            type: integer
+            minimum: 1
+          description: Номер треда.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Captcha'
+
+  /api/captcha/invisible_recaptcha/mobile:
+    get:
+      summary: Получение html страницы для решения капчи, CORS отключён.
+      responses:
+        '200':
+          description: OK
+
+  /api/captcha/2chcaptcha/id:
+    get:
+      summary: Получение ид для использования 2chcaptcha.
+      parameters:
+        - in: query
+          name: board
+          schema:
+            type: string
+          description: ID доски, например, b.
+        - in: query
+          name: thread
+          schema:
+            type: integer
+            minimum: 1
+          description: Номер треда.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Captcha'
+
+  /api/captcha/2chcaptcha/show:
+    get:
+      summary: Отображение 2chcaptcha по id.
+      parameters:
+        - in: query
+          name: id
+          schema:
+            type: string
+          description: ID капчи
+          required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not found
+
+  /api/captcha/app/id/{public_key}:
+    get:
+      summary: Получение app_response_id для отправки поста.
+      description: |
+        Полученный id вам нужно отправить вместе с постом как app_response_id.
+        При этом нужно отправить app_response = sha256(app_response_id + '|' + private key).
+        Срок жизни id: 180 секунд.
+      parameters:
+        - in: path
+          name: public_key
+          schema:
+            type: string
+          required: true
+          description: Публичный ключ, для получения напишите admin@2ch.hk с темой письма "Получение ключа для приложения" и ссылкой на ваш клиент.
+        - in: query
+          name: board
+          schema:
+            type: string
+          description: ID доски, например, b.
+        - in: query
+          name: thread
+          schema:
+            type: integer
+            minimum: 1
+          description: Номер треда.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Captcha'
+
+  /user/posting:
+    post:
+      summary: Создание нового поста или треда.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                captcha_type:
+                  $ref: '#/components/schemas/CaptchaType'
+                board:
+                  type: string
+                thread:
+                  type: integer
+                  description: Если не указано, будет создан тред.
+                name:
+                  type: string
+                  description: Если не включено в настройках доски - поле будет проигнорировано.
+                email:
+                  type: string
+                  description: Если не включено в настройках доски - поле будет проигнорировано.
+                tags:
+                  type: string
+                  description: Если не включено в настройках доски - поле будет проигнорировано.
+                subject:
+                  type: string
+                  description: Если не включено в настройках доски - поле будет проигнорировано.
+                comment:
+                  type: string
+                icon:
+                  type: integer
+                op_mark:
+                  type: integer
+                  description: Если не включено в настройках доски - поле будет проигнорировано.
+                file[]:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+
+              required:
+                - captcha_type
+                - board
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: '#/components/schemas/PostingNewThread'
+                  - $ref: '#/components/schemas/PostingNewPost'
+
+  /user/report:
+    post:
+      summary: Отправка жалобы.
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                board:
+                  type: string
+                thread:
+                  type: integer
+                post:
+                  type: array
+                  items:
+                    type: integer
+                comment:
+                  type: string
+
+              required:
+                - board
+                - thread
+                - comment
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Report'
+
+  /user/passlogin:
+    post:
+      summary: Авторизация пасскода.
+      parameters:
+        - in: query
+          name: json
+          description: Параметр, указывающий что запрос выполняется не пользователем и ответ нужен в формате json.
+          schema:
+            type: integer
+            default: 1
+          required: true
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                passcode:
+                  type: string
+
+              required:
+                - passcode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Passcode'
+
+  /api/like:
+    get:
+      summary: Добавление лайка на пост.
+      parameters:
+        - in: query
+          name: board
+          schema:
+            type: string
+          required: true
+          description: ID доски, например, b.
+        - in: query
+          name: num
+          schema:
+            type: integer
+            minimum: 1
+          required: true
+          description: Номер поста.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Like'
+
+  /api/dislike:
+    get:
+      summary: Добавление дизлайка на пост.
+      parameters:
+        - in: query
+          name: board
+          schema:
+            type: string
+          required: true
+          description: ID доски, например, b.
+        - in: query
+          name: num
+          schema:
+            type: integer
+            minimum: 1
+          required: true
+          description: Номер поста.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Like'
+
+components:
+  schemas:
+    ErrorCode:
+      type: integer
+      description: |
+        * 0 NoError, ошибки нет.
+        * 403 ErrorForbidden, ошибка доступа.
+        * 666 ErrorInternal, внутренняя ошибка.
+        * 667 ErrorNotFound, используется для совместимости, если запрос не существует.
+
+        * -2 ErrorNoBoard, доска не существует.
+        * -3 ErrorNoParent, тред не существует.
+        * -31 ErrorNoPost, пост не существует.
+        * -4 ErrorNoAccess, контент существует, но у вас нет доступа.
+        * -41 ErrorBoardClosed, доска закрыта.
+        * -42 ErrorBoardOnlyVIP, доступ к доске возможен только с пасскодом.
+        * -5 ErrorCaptchaNotValid, капча не валидна.
+        * -6 ErrorBanned, вы были забанены. Сообщение содержит причину и номер бана.
+        * -7 ErrorThreadClosed, тред закрыт.
+        * -8 ErrorPostingToFast, вы постите слишком быстро ИЛИ установлен лимит на создание тредов на доске.
+        * -9 ErrorFieldTooBig, поле слишком большое. Например, комментарий превысил лимит.
+        * -10 ErrorFileSimilar, похожий файл уже был загружен.
+        * -11 ErrorFileNotSupported, файл не поддерживается.
+        * -12 ErrorFileTooBig, слишком большой файл.
+        * -13 ErrorFilesTooMuch, вы загрузили больше файлов, чем разрешено на доске.
+        * -14 ErrorTripBanned, трипкод был забанен.
+        * -15 ErrorWordBanned, в комментарии недопустимое выражение.
+        * -16 ErrorSpamList, в комментарии выражение из спамлиста.
+        * -19 ErrorEmptyOp, при создании треда необходимо загрузить файл.
+        * -20 ErrorEmptyPost, пост не может быть пустым, необходим комментарий/файл/etc.
+        * -21 ErrorPasscodeNotExist, пасскод не существует.
+        * -22 ErrorLimitReached, достигнут лимит запросов, попробуйте позже.
+        * -23 ErrorFieldTooSmall, слишком короткое сообщение. (используется в поиске).
+
+        * -50 ErrorReportTooManyPostsm, слишком много постов для жалобы.
+        * -51 ErrorReportEmpty, вы ничего не написали в жалобе.
+        * -52 ErrorReportExist, вы уже отправляли жалобу.
+
+        * -300 ErrorAppNotExist, приложение не существует или было отключено.
+        * -301 ErrorAppIDWrong, некорректный идентификатор приложения.
+        * -302 ErrorAppIDExpired, идентификатор приложения истёк.
+        * -303 ErrorAppIDSignature, неверная подпись поста с помощью идентификатора.
+        * -304 ErrorAppIDUsed, указанный идентификатор уже был использован.
+
+        * -24 ErrorWrongStickerID, некорректный идентификатор стикера.
+        * -25 ErrorStickerNotFound, стикер не найден.
+      enum:
+        - 0
+        - 403
+        - 666
+        - 667
+
+        - -2
+        - -3
+        - -31
+        - -4
+        - -41
+        - -42
+        - -5
+        - -6
+        - -7
+        - -8
+        - -9
+        - -10
+        - -11
+        - -12
+        - -13
+        - -14
+        - -15
+        - -16
+        - -19
+        - -20
+        - -21
+        - -22
+        - -23
+
+        - -300
+        - -301
+        - -302
+        - -303
+        - -304
+
+        - -24
+        - -25
+
+    Error:
+      type: object
+      description: Ошибка запроса.
+      properties:
+        code:
+          $ref: '#/components/schemas/ErrorCode'
+        message:
+          type: string
+          description: Описание ошибки на русском языке.
+
+    FileType:
+      type: integer
+      description: |
+        * 0 FileTypeNone
+        * 1 FileTypeJpg
+        * 2 FileTypePng
+        * 3 FileTypeAPng
+        * 4 FileTypeGif
+        * 5 FileTypeBmp
+        * 6 FileTypeWebm
+        * 7 FileTypeMp3, не используется в данный момент.
+        * 8 FileTypeOgg, не используется в данный момент.
+        * 10 FileTypeMp4
+        * 100 FileTypeSticker
+      enum:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 10
+        - 100
+
+    CaptchaType:
+      type: string
+      description: |
+        Каждый тип капчи так же требует дополнительные параметры для её валидации:
+        * recaptcha: g-recaptcha-response
+        * invisible_recaptcha: g-recaptcha-response
+        * recaptcha3: g-recaptcha-response
+        * 2chcaptcha: Два.ч капча
+        2chcaptcha_id - идентификатор Два.ч капчи.
+        2chcaptcha_value - строка, которую пользователь увидел на картинке.
+        * appid: app_response_id и app_response
+        app_response_id - результат запроса к этому методу с публичным ключём приложения: /api/captcha/app/id/{public_key}
+        app_response - sha256(app_response_id + '|' + private_key)
+        * passcode: cookie passcode_auth
+        * nocaptcha: капча не требуется, никакие дополнительные параметры тоже.
+      enum:
+        - recaptcha
+        - invisible_recaptcha
+        - recaptcha3
+        - 2chcaptcha
+        - appid
+        - passcode
+        - nocaptcha
+
+    File:
+      type: object
+      description: Модель файла.
+      properties:
+        name:
+          type: string
+        fullname:
+          type: string
+        displayname:
+          type: string
+        path:
+          type: string
+        thumbnail:
+          type: string
+        md5:
+          type: string
+        type:
+          $ref: '#/components/schemas/FileType'
+        size:
+          type: integer
+          description: Размер файла, в КБ.
+        width:
+          type: integer
+        height:
+          type: integer
+        tn_width:
+          type: integer
+        tn_height:
+          type: integer
+        nsfw:
+          type: integer
+          description: Если >= 0, файл содержит NSFW контент, в данный момент реализовано не на всех досках.
+        duration:
+          type: string
+          description: В случае видео/аудио файла, содержит продолжительность в формате XX:XX:XX.
+        duration_secs:
+          type: integer
+          description: В случае видео/аудио файла, содержит продолжительность в секундах.
+        pack:
+          type: string
+          description: В случае стикера, содержит ID стикер пака.
+        sticker:
+          type: string
+          description: В случае стикера, содержит ID стикера.
+        install:
+          type: string
+          description: В случае стикера, содержит ссылку на установку.
+      required:
+        - name
+        - fullname
+        - displayname
+        - path
+        - thumbnail
+        - type
+        - size
+        - width
+        - height
+        - tn_width
+        - tn_height
+
+    Board:
+      type: object
+      description: Модель доски.
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        category:
+          type: string
+        info:
+          type: string
+          description: Информация о доске.
+        info_outer:
+          type: string
+          description: Информация о доске для главной.
+        threads_per_page:
+          type: integer
+        bump_limit:
+          type: integer
+        max_pages:
+          type: integer
+        default_name:
+          type: string
+        enable_names:
+          type: boolean
+        enable_trips:
+          type: boolean
+        enable_subject:
+          type: boolean
+        enable_sage:
+          type: boolean
+        enable_icons:
+          type: boolean
+        enable_flags:
+          type: boolean
+        enable_dices:
+          type: boolean
+        enable_shield:
+          type: boolean
+        enable_thread_tags:
+          type: boolean
+        enable_posting:
+          type: boolean
+        enable_likes:
+          type: boolean
+        enable_oekaki:
+          type: boolean
+        file_types:
+          type: array
+          items:
+            type: string
+            description: Например, webm/jpeg/png/etc.
+        max_comment:
+          type: integer
+        max_files_size:
+          type: integer
+        tags:
+          type: array
+          description: Массив тегов, которые доступны на этой доске, если они включены.
+          items:
+            type: string
+        icons:
+          type: array
+          description: Массив иконок, которые доступны на этой доске, если они включены.
+          items:
+            type: object
+            properties:
+              num:
+                type: integer
+              name:
+                type: string
+              url:
+                type: string
+      required:
+        - id
+        - name
+        - category
+        - info
+        - info_outer
+        - threads_per_page
+        - bump_limit
+        - max_pages
+        - default_name
+        - enable_names
+        - enable_trips
+        - enable_subject
+        - enable_sage
+        - enable_icons
+        - enable_flags
+        - enable_dices
+        - enable_shield
+        - enable_thread_tags
+        - enable_posting
+        - enable_likes
+        - enable_oekaki
+        - file_types
+        - max_comment
+        - max_files_size
+
+    Boards:
+      type: array
+      items:
+        $ref: '#/components/schemas/Board'
+
+    Post:
+      type: object
+      description: Модель поста.
+      properties:
+        num:
+          type: integer
+        parent:
+          type: integer
+        board:
+          type: string
+        timestamp:
+          type: integer
+        lasthit:
+          type: integer
+        date:
+          type: string
+        email:
+          type: string
+        subject:
+          type: string
+        comment:
+          type: string
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        views:
+          type: integer
+        sticky:
+          type: integer
+        endless:
+          type: integer
+        closed:
+          type: integer
+        banned:
+          type: integer
+        op:
+          type: integer
+        name:
+          type: string
+        icon:
+          type: string
+        trip:
+          type: string
+        trip_style:
+          type: string
+        tags:
+          type: string
+        likes:
+          type: integer
+        dislikes:
+          type: integer
+      required:
+        - num
+        - parent
+        - board
+        - timestamp
+        - lasthit
+        - date
+        - comment
+        - views
+        - sticky
+        - endless
+        - closed
+        - banned
+        - op
+
+    MobileThreadPostsAfter:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
+        unique_posters:
+          type: integer
+        posts:
+          type: array
+          items:
+            $ref: '#/components/schemas/Post'
+
+    MobileThreadLastInfo:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
+        thread:
+          type: object
+          properties:
+            num:
+              type: integer
+            timestamp:
+              type: integer
+            posts:
+              type: integer
+
+    MobilePost:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
+        post:
+          $ref: '#/components/schemas/Post'
+
+    Captcha:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
+        type:
+          $ref: '#/components/schemas/CaptchaType'
+        id:
+          type: string
+        expires:
+          type: integer
+          description: Время в секундах после которого id перестанет действовать.
+        input:
+          type: string
+          description: |
+            Тип текста, изображённого на картинке капчи. Возможные варианты:
+            * numeric - только цифры. (0123456789)
+            * english - цифры и английские буквы. (0123456789abcdefghijklmnopqrstuvwxyz)
+            * russian - цифры и русские буквы. (0123456789абвгдеёжзийклмнопрстуфхцчшщъыьэюя)
+            * all - цифры, русские и английские буквы. (0123456789abcdefghijklmnopqrstuvwxyzабвгдеёжзийклмнопрстуфхцчшщъыьэюя)
+      required:
+        - result
+        - type
+        - id
+
+    PostingNewThread:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
+        thread:
+          type: integer
+          description: Номер нового треда.
+
+    PostingNewPost:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
+        num:
+          type: integer
+          description: Номер нового поста.
+
+    Report:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
+
+    Passcode:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
+        passcode:
+          type: object
+          properties:
+            type:
+              type: string
+            expires:
+              type: integer
+
+    Like:
+      type: object
+      properties:
+        result:
+          type: integer
+        error:
+          $ref: '#/components/schemas/Error'
