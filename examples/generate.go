@@ -32,3 +32,4 @@ import (
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/positive/api.github.com.json --target ex_github --clean --infer-types --debug.noerr --generate-tests
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/positive/telegram_bot_api.json --target ex_telegram --clean --debug.noerr --generate-tests
 //go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/positive/tinkoff.json --target ex_tinkoff --clean --debug.noerr "http security" --generate-tests
+//go:generate go run github.com/ogen-go/ogen/cmd/ogen --schema ../_testdata/positive/2ch.yml --target ex_2ch --clean --debug.noerr "unsupported content types" --generate-tests
