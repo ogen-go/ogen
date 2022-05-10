@@ -3,8 +3,8 @@ package uri
 import "strings"
 
 type HeaderEncoder struct {
-	*scraper
 	explode bool
+	*receiver
 }
 
 type HeaderEncoderConfig struct {
@@ -13,8 +13,8 @@ type HeaderEncoderConfig struct {
 
 func NewHeaderEncoder(cfg HeaderEncoderConfig) *HeaderEncoder {
 	return &HeaderEncoder{
-		scraper: newScraper(),
-		explode: cfg.Explode,
+		explode:  cfg.Explode,
+		receiver: newReceiver(),
 	}
 }
 

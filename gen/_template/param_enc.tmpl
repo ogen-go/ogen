@@ -32,15 +32,16 @@ q := u.Query()
 {
 	// Encode {{ quote $param.Spec.Name }} parameter.
 	e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-		Style: uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
+		Param:   "{{ $param.Spec.Name }}",
+		Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
 		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
-	})
+	}, q)
 	if err := func() error {
 		{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
 	}(); err != nil {
 		return res, errors.Wrap(err, "encode query")
 	}
-	q[{{ quote $param.Spec.Name }}] = e.Result()
+	q = e.Result()
 }
 {{- end }}{{/* Range over params */}}
 u.RawQuery = q.Encode()

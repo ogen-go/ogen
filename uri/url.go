@@ -18,6 +18,7 @@ func Acquire() *url.URL {
 
 // Put puts url.URL to pool.
 func Put(u *url.URL) {
+	u.RawQuery = ""
 	urlPool.Put(u)
 }
 

@@ -1,6 +1,7 @@
 package uri
 
 import (
+	"net/url"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -16,18 +17,19 @@ const (
 )
 
 type QueryDecoder struct {
-	param string
-	src   []string // r.URL.Query()["param"]
-
-	style   QueryStyle // immutable
-	explode bool       // immutable
+	paramName    string
+	style        QueryStyle // immutable
+	explode      bool       // immutable
+	values       url.Values
+	objectFields []string
 }
 
 type QueryDecoderConfig struct {
-	Param   string
-	Values  []string
-	Style   QueryStyle
-	Explode bool
+	Param        string
+	Values       url.Values
+	Style        QueryStyle
+	Explode      bool
+	ObjectFields []string // only for object param
 }
 
 func NewQueryDecoder(cfg QueryDecoderConfig) *QueryDecoder {
@@ -36,20 +38,27 @@ func NewQueryDecoder(cfg QueryDecoderConfig) *QueryDecoder {
 	}
 
 	return &QueryDecoder{
-		param:   cfg.Param,
-		src:     cfg.Values,
-		style:   cfg.Style,
-		explode: cfg.Explode,
+		paramName:    cfg.Param,
+		values:       cfg.Values,
+		style:        cfg.Style,
+		explode:      cfg.Explode,
+		objectFields: cfg.ObjectFields,
 	}
 }
 
 func (d *QueryDecoder) DecodeValue() (string, error) {
 	switch d.style {
 	case QueryStyleForm:
-		if len(d.src) != 1 {
-			return "", errors.New("multiple params")
+		values, ok := d.values[d.paramName]
+		if !ok {
+			return "", errors.Errorf("query parameter %q not set", d.paramName)
 		}
-		return d.src[0], nil
+
+		if len(values) != 1 {
+			return "", errors.Errorf("query parameter %q multiple values", d.paramName)
+		}
+
+		return values[0], nil
 	case QueryStyleSpaceDelimited,
 		QueryStylePipeDelimited,
 		QueryStyleDeepObject:
@@ -60,14 +69,15 @@ func (d *QueryDecoder) DecodeValue() (string, error) {
 }
 
 func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
-	if len(d.src) < 1 {
-		return errors.New("empty array")
+	values, ok := d.values[d.paramName]
+	if !ok {
+		return errors.Errorf("query parameter %q not set", d.paramName)
 	}
 
 	switch d.style {
 	case QueryStyleForm:
 		if d.explode {
-			for _, item := range d.src {
+			for _, item := range values {
 				if err := f(&constval{item}); err != nil {
 					return err
 				}
@@ -75,11 +85,11 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 			return nil
 		}
 
-		if len(d.src) != 1 {
+		if len(values) != 1 {
 			return errors.New("invalid value")
 		}
 
-		for _, item := range strings.Split(d.src[0], ",") {
+		for _, item := range strings.Split(values[0], ",") {
 			if err := f(&constval{item}); err != nil {
 				return err
 			}
@@ -89,7 +99,7 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 
 	case QueryStyleSpaceDelimited:
 		if d.explode {
-			for _, item := range d.src {
+			for _, item := range values {
 				if err := f(&constval{item}); err != nil {
 					return err
 				}
@@ -97,7 +107,7 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 			return nil
 		}
 
-		if len(d.src) != 1 {
+		if len(values) != 1 {
 			return errors.New("invalid value")
 		}
 
@@ -105,7 +115,7 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 
 	case QueryStylePipeDelimited:
 		if d.explode {
-			for _, item := range d.src {
+			for _, item := range values {
 				if err := f(&constval{item}); err != nil {
 					return err
 				}
@@ -113,11 +123,11 @@ func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
 			return nil
 		}
 
-		if len(d.src) != 1 {
+		if len(values) != 1 {
 			return errors.New("invalid value")
 		}
 
-		for _, item := range strings.Split(d.src[0], "|") {
+		for _, item := range strings.Split(values[0], "|") {
 			if err := f(&constval{item}); err != nil {
 				return err
 			}
@@ -138,33 +148,34 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 	switch d.style {
 	case QueryStyleForm:
 		if d.explode {
-			for _, v := range d.src {
-				if strings.Count(v, "=") != 1 {
-					return errors.Errorf("invalid value: %q", v)
+			for _, fname := range d.objectFields {
+				values, ok := d.values[fname]
+				if !ok || len(values) == 0 {
+					return errors.Errorf("query parameter %q field %q not set", d.paramName, fname)
 				}
 
-				s := strings.Split(v, "=")
-				if err := adapter(s[0], s[1]); err != nil {
+				if len(values) > 1 {
+					return errors.Errorf("query parameter %q field %q multiple values", d.paramName, fname)
+				}
+
+				if err := adapter(fname, values[0]); err != nil {
 					return err
 				}
 			}
+
 			return nil
 		}
 
-		if len(d.src) > 1 {
-			return errors.New("multiple values passed")
+		values, ok := d.values[d.paramName]
+		if !ok {
+			return errors.Errorf("query parameter %q not set", d.paramName)
 		}
 
-		cur := &cursor{src: []rune(d.src[0])}
-		param, err := cur.readUntil('=')
-		if err != nil {
-			return err
+		if len(values) > 1 {
+			return errors.Errorf("query parameter %q multiple values", d.paramName)
 		}
 
-		if param != d.param {
-			return errors.Errorf("invalid param name: %q", param)
-		}
-
+		cur := &cursor{src: []rune(values[0])}
 		return decodeObject(cur, ',', ',', adapter)
 
 	case QueryStyleSpaceDelimited:
@@ -178,35 +189,18 @@ func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error 
 			panic("invalid deepObject style configuration")
 		}
 
-		cur := &cursor{}
-		for _, v := range d.src {
-			cur.src = []rune(v)
-			cur.pos = 0
-
-			pname, err := cur.readUntil('[')
-			if err != nil {
-				return err
+		for _, fname := range d.objectFields {
+			qparam := d.paramName + "[" + fname + "]"
+			values, ok := d.values[qparam]
+			if !ok || len(values) == 0 {
+				return errors.Errorf("query parameter %q field %q not set", d.paramName, qparam)
 			}
 
-			if pname != d.param {
-				return errors.Errorf("invalid param name: %q", pname)
+			if len(values) > 1 {
+				return errors.Errorf("query parameter %q field %q multiple values", d.paramName, qparam)
 			}
 
-			key, err := cur.readUntil(']')
-			if err != nil {
-				return err
-			}
-
-			if !cur.eat('=') {
-				return errors.New("invalid value")
-			}
-
-			val, err := cur.readAll()
-			if err != nil {
-				return err
-			}
-
-			if err := adapter(key, val); err != nil {
+			if err := adapter(fname, values[0]); err != nil {
 				return err
 			}
 		}

@@ -2,14 +2,16 @@ package uri
 
 import (
 	"fmt"
+	"net/url"
 	"strings"
 )
 
 type QueryEncoder struct {
-	param   string
-	style   QueryStyle // immutable
-	explode bool       // immutable
-	*scraper
+	paramName string
+	style     QueryStyle // immutable
+	explode   bool       // immutable
+	*receiver
+	values url.Values
 }
 
 type QueryEncoderConfig struct {
@@ -18,19 +20,23 @@ type QueryEncoderConfig struct {
 	Explode bool
 }
 
-func NewQueryEncoder(cfg QueryEncoderConfig) *QueryEncoder {
+func NewQueryEncoder(cfg QueryEncoderConfig, values url.Values) *QueryEncoder {
+	if values == nil {
+		values = make(url.Values)
+	}
 	return &QueryEncoder{
-		scraper: newScraper(),
-		param:   cfg.Param,
-		style:   cfg.Style,
-		explode: cfg.Explode,
+		receiver:  newReceiver(),
+		paramName: cfg.Param,
+		style:     cfg.Style,
+		explode:   cfg.Explode,
+		values:    values,
 	}
 }
 
-func (e *QueryEncoder) Result() []string {
+func (e *QueryEncoder) Result() url.Values {
 	switch e.typ {
 	case typeNotSet:
-		return nil
+		return e.values
 	case typeValue:
 		return e.value()
 	case typeArray:
@@ -42,10 +48,11 @@ func (e *QueryEncoder) Result() []string {
 	}
 }
 
-func (e *QueryEncoder) value() []string {
+func (e *QueryEncoder) value() url.Values {
 	switch e.style {
 	case QueryStyleForm:
-		return []string{e.val}
+		e.values[e.paramName] = []string{e.val}
+		return e.values
 	case QueryStyleSpaceDelimited,
 		QueryStylePipeDelimited,
 		QueryStyleDeepObject:
@@ -55,28 +62,33 @@ func (e *QueryEncoder) value() []string {
 	}
 }
 
-func (e *QueryEncoder) array() []string {
+func (e *QueryEncoder) array() url.Values {
 	switch e.style {
 	case QueryStyleForm:
 		if e.explode {
-			return e.items
+			e.values[e.paramName] = e.items
+			return e.values
 		}
 
-		return []string{strings.Join(e.items, ",")}
+		e.values[e.paramName] = []string{strings.Join(e.items, ",")}
+		return e.values
 
 	case QueryStyleSpaceDelimited:
 		if e.explode {
-			return e.items
+			e.values[e.paramName] = e.items
+			return e.values
 		}
 
 		panic("spaceDelimited with explode: false not supported")
 
 	case QueryStylePipeDelimited:
 		if e.explode {
-			return e.items
+			e.values[e.paramName] = e.items
+			return e.values
 		}
 
-		return []string{strings.Join(e.items, "|")}
+		e.values[e.paramName] = []string{strings.Join(e.items, "|")}
+		return e.values
 
 	case QueryStyleDeepObject:
 		panic(fmt.Sprintf("style %q cannot be used for arrays", e.style))
@@ -86,15 +98,14 @@ func (e *QueryEncoder) array() []string {
 	}
 }
 
-func (e *QueryEncoder) object() []string {
+func (e *QueryEncoder) object() url.Values {
 	switch e.style {
 	case QueryStyleForm:
 		if e.explode {
-			out := make([]string, 0, len(e.fields))
 			for _, f := range e.fields {
-				out = append(out, f.Name+"="+f.Value)
+				e.values[f.Name] = []string{f.Value}
 			}
-			return out
+			return e.values
 		}
 
 		var out string
@@ -104,7 +115,9 @@ func (e *QueryEncoder) object() []string {
 				out += ","
 			}
 		}
-		return []string{out}
+
+		e.values[e.paramName] = []string{out}
+		return e.values
 
 	case QueryStyleSpaceDelimited:
 		panic("object cannot have spaceDelimited style")
@@ -117,11 +130,11 @@ func (e *QueryEncoder) object() []string {
 			panic("invalid deepObject style configuration")
 		}
 
-		out := make([]string, 0, len(e.fields))
 		for _, f := range e.fields {
-			out = append(out, e.param+"["+f.Name+"]="+f.Value)
+			e.values[e.paramName+"["+f.Name+"]"] = []string{f.Value}
 		}
-		return out
+
+		return e.values
 
 	default:
 		panic("unreachable")

@@ -2,6 +2,7 @@ package uri
 
 import (
 	"fmt"
+	"net/url"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -12,21 +13,21 @@ func TestQueryEncoder(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   string
-			Expect  []string
+			Expect  string
 			Style   QueryStyle
 			Explode bool
 		}{
 			{
 				Param:   "id",
 				Input:   "a",
-				Expect:  []string{"a"},
+				Expect:  "id=a",
 				Style:   QueryStyleForm,
 				Explode: true,
 			},
 			{
 				Param:   "id",
 				Input:   "a",
-				Expect:  []string{"a"},
+				Expect:  "id=a",
 				Style:   QueryStyleForm,
 				Explode: false,
 			},
@@ -37,9 +38,9 @@ func TestQueryEncoder(t *testing.T) {
 				Param:   test.Param,
 				Style:   test.Style,
 				Explode: test.Explode,
-			})
+			}, make(url.Values))
 			require.NoError(t, e.EncodeValue(test.Input))
-			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, e.Result().Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -47,28 +48,28 @@ func TestQueryEncoder(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   []string
-			Expect  []string
+			Expect  string
 			Style   QueryStyle
 			Explode bool
 		}{
 			{
 				Param:   "id",
-				Input:   []string{"a", "b", "c"},
-				Expect:  []string{"a", "b", "c"},
+				Input:   []string{"3", "4", "5"},
+				Expect:  "id=3&id=4&id=5",
 				Style:   QueryStyleForm,
 				Explode: true,
 			},
 			{
 				Param:   "id",
-				Input:   []string{"a", "b", "c"},
-				Expect:  []string{"a,b,c"},
+				Input:   []string{"3", "4", "5"},
+				Expect:  "id=3%2C4%2C5",
 				Style:   QueryStyleForm,
 				Explode: false,
 			},
 			{
 				Param:   "id",
-				Input:   []string{"a", "b", "c"},
-				Expect:  []string{"a", "b", "c"},
+				Input:   []string{"3", "4", "5"},
+				Expect:  "id=3&id=4&id=5",
 				Style:   QueryStyleSpaceDelimited,
 				Explode: true,
 			},
@@ -80,15 +81,15 @@ func TestQueryEncoder(t *testing.T) {
 			// },
 			{
 				Param:   "id",
-				Input:   []string{"a", "b", "c"},
-				Expect:  []string{"a", "b", "c"},
+				Input:   []string{"3", "4", "5"},
+				Expect:  "id=3&id=4&id=5",
 				Style:   QueryStylePipeDelimited,
 				Explode: true,
 			},
 			{
 				Param:   "id",
-				Input:   []string{"a", "b", "c"},
-				Expect:  []string{"a|b|c"},
+				Input:   []string{"3", "4", "5"},
+				Expect:  "id=3%7C4%7C5",
 				Style:   QueryStylePipeDelimited,
 				Explode: false,
 			},
@@ -99,7 +100,7 @@ func TestQueryEncoder(t *testing.T) {
 				Param:   test.Param,
 				Style:   test.Style,
 				Explode: test.Explode,
-			})
+			}, make(url.Values))
 			err := e.EncodeArray(func(e Encoder) error {
 				for _, item := range test.Input {
 					if err := e.EncodeValue(item); err != nil {
@@ -109,7 +110,7 @@ func TestQueryEncoder(t *testing.T) {
 				return nil
 			})
 			require.NoError(t, err)
-			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, e.Result().Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -117,7 +118,7 @@ func TestQueryEncoder(t *testing.T) {
 		tests := []struct {
 			Param   string
 			Input   []Field
-			Expect  []string
+			Expect  string
 			Style   QueryStyle
 			Explode bool
 		}{
@@ -129,7 +130,7 @@ func TestQueryEncoder(t *testing.T) {
 				},
 				Style:   QueryStyleForm,
 				Explode: true,
-				Expect:  []string{"role=admin", "firstName=Alex"},
+				Expect:  "firstName=Alex&role=admin",
 			},
 			{
 				Param: "id",
@@ -139,7 +140,7 @@ func TestQueryEncoder(t *testing.T) {
 				},
 				Style:   QueryStyleForm,
 				Explode: false,
-				Expect:  []string{"role,admin,firstName,Alex"},
+				Expect:  "id=role%2Cadmin%2CfirstName%2CAlex",
 			},
 			{
 				Param: "id",
@@ -149,7 +150,7 @@ func TestQueryEncoder(t *testing.T) {
 				},
 				Style:   QueryStyleDeepObject,
 				Explode: true,
-				Expect:  []string{"id[role]=admin", "id[firstName]=Alex"},
+				Expect:  "id%5BfirstName%5D=Alex&id%5Brole%5D=admin",
 			},
 		}
 
@@ -158,15 +159,14 @@ func TestQueryEncoder(t *testing.T) {
 				Param:   test.Param,
 				Style:   test.Style,
 				Explode: test.Explode,
-			})
+			}, make(url.Values))
 			for _, field := range test.Input {
 				err := e.EncodeField(field.Name, func(e Encoder) error {
 					return e.EncodeValue(field.Value)
 				})
 				require.NoError(t, err)
 			}
-			require.Equal(t, test.Expect, e.Result(), fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, e.Result().Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
-
 }

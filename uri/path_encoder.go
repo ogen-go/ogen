@@ -19,7 +19,7 @@ type PathEncoder struct {
 	param   string    // immutable
 	style   PathStyle // immutable
 	explode bool      // immutable
-	*scraper
+	*receiver
 }
 
 type PathEncoderConfig struct {
@@ -30,10 +30,10 @@ type PathEncoderConfig struct {
 
 func NewPathEncoder(cfg PathEncoderConfig) *PathEncoder {
 	return &PathEncoder{
-		scraper: newScraper(),
-		param:   cfg.Param,
-		style:   cfg.Style,
-		explode: cfg.Explode,
+		receiver: newReceiver(),
+		param:    cfg.Param,
+		style:    cfg.Style,
+		explode:  cfg.Explode,
 	}
 }
 

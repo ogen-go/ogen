@@ -15,23 +15,23 @@ const (
 	typeObject valueType = "object"
 )
 
-var _ Encoder = (*scraper)(nil)
+var _ Encoder = (*receiver)(nil)
 
-// scraper is used to receive data from code generated types.
-type scraper struct {
+// receiver is used to receive data from code generated types.
+type receiver struct {
 	typ    valueType
 	val    string   // value type
 	items  []string // array type
 	fields []Field  // object type
 }
 
-func newScraper() *scraper {
-	return &scraper{
+func newReceiver() *receiver {
+	return &receiver{
 		typ: typeNotSet,
 	}
 }
 
-func (s *scraper) EncodeValue(v string) error {
+func (s *receiver) EncodeValue(v string) error {
 	if s.typ == typeValue {
 		return errors.New("multiple Value calls")
 	}
@@ -44,13 +44,13 @@ func (s *scraper) EncodeValue(v string) error {
 	return nil
 }
 
-func (s *scraper) EncodeArray(f func(Encoder) error) error {
+func (s *receiver) EncodeArray(f func(Encoder) error) error {
 	if s.typ != typeNotSet && s.typ != typeArray {
 		return errors.Errorf("encode array: already encoded as %s", s.typ)
 	}
 
 	s.typ = typeArray
-	arr := &arrayScraper{}
+	arr := &arrayReceiver{}
 	if err := f(arr); err != nil {
 		return err
 	}
@@ -59,13 +59,13 @@ func (s *scraper) EncodeArray(f func(Encoder) error) error {
 	return nil
 }
 
-func (s *scraper) EncodeField(field string, f func(Encoder) error) error {
+func (s *receiver) EncodeField(field string, f func(Encoder) error) error {
 	if s.typ != typeNotSet && s.typ != typeObject {
 		return errors.Errorf("encode object: already encoded as %s", s.typ)
 	}
 
 	s.typ = typeObject
-	vs := &valueScraper{}
+	vs := &valueReceiver{}
 	if err := f(vs); err != nil {
 		return err
 	}
@@ -81,31 +81,31 @@ func (s *scraper) EncodeField(field string, f func(Encoder) error) error {
 	return nil
 }
 
-type arrayScraper struct {
+type arrayReceiver struct {
 	set   bool
 	items []string
 }
 
-func (e *arrayScraper) EncodeValue(v string) error {
+func (e *arrayReceiver) EncodeValue(v string) error {
 	e.set = true
 	e.items = append(e.items, v)
 	return nil
 }
 
-func (e *arrayScraper) EncodeArray(_ func(Encoder) error) error {
+func (e *arrayReceiver) EncodeArray(_ func(Encoder) error) error {
 	panic("nested arrays not allowed in path parameters")
 }
 
-func (e *arrayScraper) EncodeField(_ string, _ func(Encoder) error) error {
+func (e *arrayReceiver) EncodeField(_ string, _ func(Encoder) error) error {
 	panic("nested objects not allowed in path parameters")
 }
 
-type valueScraper struct {
+type valueReceiver struct {
 	set   bool
 	value string
 }
 
-func (e *valueScraper) EncodeValue(v string) error {
+func (e *valueReceiver) EncodeValue(v string) error {
 	if e.set {
 		panic("value already set")
 	}
@@ -114,10 +114,10 @@ func (e *valueScraper) EncodeValue(v string) error {
 	return nil
 }
 
-func (e *valueScraper) EncodeArray(_ func(Encoder) error) error {
+func (e *valueReceiver) EncodeArray(_ func(Encoder) error) error {
 	panic("nested arrays not allowed")
 }
 
-func (e *valueScraper) EncodeField(_ string, _ func(Encoder) error) error {
+func (e *valueReceiver) EncodeField(_ string, _ func(Encoder) error) error {
 	panic("nested objects not allowed")
 }

@@ -29,13 +29,16 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 	{{- end }}
 	// Decode {{ $loc }}.
 	{{- if $p.Spec.In.Query }}{{/* Switch location */}}
-	{
-		values, ok := queryArgs[{{ quote $p.Spec.Name }}]
-		if ok {
+	{	
+		if {{ queryParamPresentExpr "queryArgs" $p }} {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values: values,
-				Style: uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
+				Param:  "{{ $p.Spec.Name }}",
+				Values: queryArgs,
+				Style:  uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
 				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+				{{- if isObjectParam $p }}
+				ObjectFields: {{ paramObjectFieldsSlice $p }},
+				{{- end }}
 			})
 
 			if err := func() error {
@@ -127,4 +130,3 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 {{- end }}{{/* Check parameters existence */}}
 {{- end }}{{/* Range over methods */}}
 {{ end }}
-
