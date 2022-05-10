@@ -13,10 +13,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeDataGetFormatParams(args [5]string, r *http.Request) (DataGetFormatParams, error) {
-	var (
-		params DataGetFormatParams
-	)
+func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetFormatParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -175,11 +172,8 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (DataGetFormatPa
 	return params, nil
 }
 
-func decodeDefaultTestParams(args [0]string, r *http.Request) (DefaultTestParams, error) {
-	var (
-		params    DefaultTestParams
-		queryArgs = r.URL.Query()
-	)
+func decodeDefaultTestParams(args [0]string, r *http.Request) (params DefaultTestParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: default.
 	{
 		val := int32(10)
@@ -188,15 +182,14 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (DefaultTestParams
 	}
 	// Decode query: default.
 	{
-		if queryArgs.Has("default") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "default",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "default",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDefaultVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -216,7 +209,7 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (DefaultTestParams
 				}
 				params.Default.SetTo(paramsDotDefaultVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: default: parse")
 			}
 		}
@@ -224,22 +217,18 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (DefaultTestParams
 	return params, nil
 }
 
-func decodeFoobarGetParams(args [0]string, r *http.Request) (FoobarGetParams, error) {
-	var (
-		params    FoobarGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeFoobarGetParams(args [0]string, r *http.Request) (params FoobarGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: inlinedParam.
 	{
-		if queryArgs.Has("inlinedParam") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "inlinedParam",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "inlinedParam",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -252,24 +241,23 @@ func decodeFoobarGetParams(args [0]string, r *http.Request) (FoobarGetParams, er
 
 				params.InlinedParam = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: inlinedParam: parse")
 			}
 		} else {
-			return params, errors.New("query: inlinedParam: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: skip.
 	{
-		if queryArgs.Has("skip") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "skip",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "skip",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -282,20 +270,17 @@ func decodeFoobarGetParams(args [0]string, r *http.Request) (FoobarGetParams, er
 
 				params.Skip = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: skip: parse")
 			}
 		} else {
-			return params, errors.New("query: skip: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodeGetHeaderParams(args [0]string, r *http.Request) (GetHeaderParams, error) {
-	var (
-		params GetHeaderParams
-	)
+func decodeGetHeaderParams(args [0]string, r *http.Request) (params GetHeaderParams, _ error) {
 	// Decode header: x-auth-token.
 	{
 		param := r.Header.Get("x-auth-token")
@@ -327,10 +312,7 @@ func decodeGetHeaderParams(args [0]string, r *http.Request) (GetHeaderParams, er
 	return params, nil
 }
 
-func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (PetFriendsNamesByIDParams, error) {
-	var (
-		params PetFriendsNamesByIDParams
-	)
+func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params PetFriendsNamesByIDParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -365,22 +347,18 @@ func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (PetFriend
 	return params, nil
 }
 
-func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
-	var (
-		params    PetGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
 	{
-		if queryArgs.Has("petID") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "petID",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "petID",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -393,7 +371,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 
 				params.PetID = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: petID: parse")
 			}
 			if err := func() error {
@@ -414,7 +392,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 				return params, errors.Wrap(err, "query: petID: invalid")
 			}
 		} else {
-			return params, errors.New("query: petID: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode header: x-tags.
@@ -493,15 +471,14 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 	}
 	// Decode query: token.
 	{
-		if queryArgs.Has("token") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "token",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "token",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -514,32 +491,28 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 
 				params.Token = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: token: parse")
 			}
 		} else {
-			return params, errors.New("query: token: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (PetGetAvatarByIDParams, error) {
-	var (
-		params    PetGetAvatarByIDParams
-		queryArgs = r.URL.Query()
-	)
+func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (params PetGetAvatarByIDParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
 	{
-		if queryArgs.Has("petID") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "petID",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "petID",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -552,20 +525,17 @@ func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (PetGetAvatar
 
 				params.PetID = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: petID: parse")
 			}
 		} else {
-			return params, errors.New("query: petID: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (PetGetAvatarByNameParams, error) {
-	var (
-		params PetGetAvatarByNameParams
-	)
+func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (params PetGetAvatarByNameParams, _ error) {
 	// Decode path: name.
 	{
 		param := args[0]
@@ -600,10 +570,7 @@ func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (PetGetAvat
 	return params, nil
 }
 
-func decodePetGetByNameParams(args [1]string, r *http.Request) (PetGetByNameParams, error) {
-	var (
-		params PetGetByNameParams
-	)
+func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByNameParams, _ error) {
 	// Decode path: name.
 	{
 		param := args[0]
@@ -638,10 +605,7 @@ func decodePetGetByNameParams(args [1]string, r *http.Request) (PetGetByNamePara
 	return params, nil
 }
 
-func decodePetNameByIDParams(args [1]string, r *http.Request) (PetNameByIDParams, error) {
-	var (
-		params PetNameByIDParams
-	)
+func decodePetNameByIDParams(args [1]string, r *http.Request) (params PetNameByIDParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -676,22 +640,18 @@ func decodePetNameByIDParams(args [1]string, r *http.Request) (PetNameByIDParams
 	return params, nil
 }
 
-func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (PetUploadAvatarByIDParams, error) {
-	var (
-		params    PetUploadAvatarByIDParams
-		queryArgs = r.URL.Query()
-	)
+func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params PetUploadAvatarByIDParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
 	{
-		if queryArgs.Has("petID") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "petID",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "petID",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -704,33 +664,29 @@ func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (PetUpload
 
 				params.PetID = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: petID: parse")
 			}
 		} else {
-			return params, errors.New("query: petID: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (TestObjectQueryParameterParams, error) {
-	var (
-		params    TestObjectQueryParameterParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (params TestObjectQueryParameterParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: formObject.
 	{
-		if queryArgs.Has("min") && queryArgs.Has("max") && queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:        "formObject",
-				Values:       queryArgs,
-				Style:        uri.QueryStyleForm,
-				Explode:      true,
-				ObjectFields: []string{"min", "max", "filter"},
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "formObject",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+			Fields:  []uri.QueryParameterObjectField{{"min", true}, {"max", true}, {"filter", true}},
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFormObjectVal TestObjectQueryParameterFormObject
 				if err := func() error {
 					return paramsDotFormObjectVal.decodeURI(d)
@@ -739,23 +695,22 @@ func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (Test
 				}
 				params.FormObject.SetTo(paramsDotFormObjectVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: formObject: parse")
 			}
 		}
 	}
 	// Decode query: deepObject.
 	{
-		if queryArgs.Has("deepObject[min]") && queryArgs.Has("deepObject[max]") && queryArgs.Has("deepObject[filter]") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:        "deepObject",
-				Values:       queryArgs,
-				Style:        uri.QueryStyleDeepObject,
-				Explode:      true,
-				ObjectFields: []string{"min", "max", "filter"},
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "deepObject",
+			Style:   uri.QueryStyleDeepObject,
+			Explode: true,
+			Fields:  []uri.QueryParameterObjectField{{"min", true}, {"max", true}, {"filter", true}},
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDeepObjectVal TestObjectQueryParameterDeepObject
 				if err := func() error {
 					return paramsDotDeepObjectVal.decodeURI(d)
@@ -764,7 +719,7 @@ func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (Test
 				}
 				params.DeepObject.SetTo(paramsDotDeepObjectVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: deepObject: parse")
 			}
 		}

@@ -11,22 +11,18 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func decodeListPetsParams(args [0]string, r *http.Request) (ListPetsParams, error) {
-	var (
-		params    ListPetsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: limit.
 	{
-		if queryArgs.Has("limit") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "limit",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "limit",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLimitVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -46,7 +42,7 @@ func decodeListPetsParams(args [0]string, r *http.Request) (ListPetsParams, erro
 				}
 				params.Limit.SetTo(paramsDotLimitVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: limit: parse")
 			}
 		}
@@ -54,10 +50,7 @@ func decodeListPetsParams(args [0]string, r *http.Request) (ListPetsParams, erro
 	return params, nil
 }
 
-func decodeShowPetByIdParams(args [1]string, r *http.Request) (ShowPetByIdParams, error) {
-	var (
-		params ShowPetByIdParams
-	)
+func decodeShowPetByIdParams(args [1]string, r *http.Request) (params ShowPetByIdParams, _ error) {
 	// Decode path: petId.
 	{
 		param := args[0]

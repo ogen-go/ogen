@@ -118,25 +118,25 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "limit" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "limit",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "limit",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)

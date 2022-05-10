@@ -11,10 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func decodeDeletePetParams(args [1]string, r *http.Request) (DeletePetParams, error) {
-	var (
-		params DeletePetParams
-	)
+func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]

@@ -220,25 +220,25 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 	u := uri.Clone(c.serverURL)
 	u.Path += "/defaultTest"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "default" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "default",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "default",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Default.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
@@ -332,36 +332,36 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "inlinedParam" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "inlinedParam",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "inlinedParam",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int64ToString(params.InlinedParam))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "skip" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "skip",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "skip",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int32ToString(params.Skip))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -907,36 +907,36 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "petID" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "petID",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "petID",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int64ToString(params.PetID))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "token" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "token",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "token",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Token))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -1028,22 +1028,22 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/avatar"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "petID" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "petID",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "petID",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int64ToString(params.PetID))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -1427,22 +1427,22 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/avatar"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "petID" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "petID",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "petID",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int64ToString(params.PetID))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
@@ -1724,42 +1724,42 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 	u := uri.Clone(c.serverURL)
 	u.Path += "/testObjectQueryParameter"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "formObject" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "formObject",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "formObject",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.FormObject.Get(); ok {
 				return val.encodeURI(e)
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "deepObject" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "deepObject",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "deepObject",
 			Style:   uri.QueryStyleDeepObject,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.DeepObject.Get(); ok {
 				return val.encodeURI(e)
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)

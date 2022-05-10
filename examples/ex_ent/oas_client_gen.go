@@ -480,42 +480,42 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "page",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "itemsPerPage" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "itemsPerPage",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "itemsPerPage",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.ItemsPerPage.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -577,42 +577,42 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 	}
 	u.Path += "/categories"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "page",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "itemsPerPage" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "itemsPerPage",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "itemsPerPage",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.ItemsPerPage.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -674,42 +674,42 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 	}
 	u.Path += "/friends"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "page",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "itemsPerPage" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "itemsPerPage",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "itemsPerPage",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.ItemsPerPage.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)

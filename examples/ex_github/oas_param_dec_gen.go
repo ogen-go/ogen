@@ -14,10 +14,7 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, r *http.Request) (ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
-	var (
-		params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams
-	)
+func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, r *http.Request) (params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -114,10 +111,7 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 	return params, nil
 }
 
-func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Request) (ActionsAddSelectedRepoToOrgSecretParams, error) {
-	var (
-		params ActionsAddSelectedRepoToOrgSecretParams
-	)
+func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Request) (params ActionsAddSelectedRepoToOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -214,10 +208,7 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
-func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http.Request) (ActionsAddSelfHostedRunnerToGroupForOrgParams, error) {
-	var (
-		params ActionsAddSelfHostedRunnerToGroupForOrgParams
-	)
+func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http.Request) (params ActionsAddSelfHostedRunnerToGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -314,10 +305,7 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http
 	return params, nil
 }
 
-func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (ActionsApproveWorkflowRunParams, error) {
-	var (
-		params ActionsApproveWorkflowRunParams
-	)
+func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (params ActionsApproveWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -414,10 +402,7 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (Act
 	return params, nil
 }
 
-func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (ActionsCancelWorkflowRunParams, error) {
-	var (
-		params ActionsCancelWorkflowRunParams
-	)
+func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (params ActionsCancelWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -514,10 +499,7 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (Acti
 	return params, nil
 }
 
-func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.Request) (ActionsCreateOrUpdateEnvironmentSecretParams, error) {
-	var (
-		params ActionsCreateOrUpdateEnvironmentSecretParams
-	)
+func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsCreateOrUpdateEnvironmentSecretParams, _ error) {
 	// Decode path: repository_id.
 	{
 		param := args[0]
@@ -614,10 +596,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.
 	return params, nil
 }
 
-func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request) (ActionsCreateOrUpdateOrgSecretParams, error) {
-	var (
-		params ActionsCreateOrUpdateOrgSecretParams
-	)
+func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request) (params ActionsCreateOrUpdateOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -683,10 +662,7 @@ func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request) (ActionsCreateOrUpdateRepoSecretParams, error) {
-	var (
-		params ActionsCreateOrUpdateRepoSecretParams
-	)
+func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request) (params ActionsCreateOrUpdateRepoSecretParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -783,10 +759,7 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request
 	return params, nil
 }
 
-func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, r *http.Request) (ActionsCreateRegistrationTokenForOrgParams, error) {
-	var (
-		params ActionsCreateRegistrationTokenForOrgParams
-	)
+func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, r *http.Request) (params ActionsCreateRegistrationTokenForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -821,10 +794,7 @@ func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, r *http.Re
 	return params, nil
 }
 
-func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.Request) (ActionsCreateRegistrationTokenForRepoParams, error) {
-	var (
-		params ActionsCreateRegistrationTokenForRepoParams
-	)
+func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.Request) (params ActionsCreateRegistrationTokenForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -890,10 +860,7 @@ func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.R
 	return params, nil
 }
 
-func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, r *http.Request) (ActionsCreateRemoveTokenForOrgParams, error) {
-	var (
-		params ActionsCreateRemoveTokenForOrgParams
-	)
+func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, r *http.Request) (params ActionsCreateRemoveTokenForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -928,10 +895,7 @@ func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
-func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request) (ActionsCreateRemoveTokenForRepoParams, error) {
-	var (
-		params ActionsCreateRemoveTokenForRepoParams
-	)
+func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request) (params ActionsCreateRemoveTokenForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -997,10 +961,7 @@ func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request
 	return params, nil
 }
 
-func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, r *http.Request) (ActionsCreateSelfHostedRunnerGroupForOrgParams, error) {
-	var (
-		params ActionsCreateSelfHostedRunnerGroupForOrgParams
-	)
+func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, r *http.Request) (params ActionsCreateSelfHostedRunnerGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -1035,10 +996,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, r *htt
 	return params, nil
 }
 
-func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (ActionsDeleteArtifactParams, error) {
-	var (
-		params ActionsDeleteArtifactParams
-	)
+func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params ActionsDeleteArtifactParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -1135,10 +1093,7 @@ func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (Actions
 	return params, nil
 }
 
-func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request) (ActionsDeleteEnvironmentSecretParams, error) {
-	var (
-		params ActionsDeleteEnvironmentSecretParams
-	)
+func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsDeleteEnvironmentSecretParams, _ error) {
 	// Decode path: repository_id.
 	{
 		param := args[0]
@@ -1235,10 +1190,7 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (ActionsDeleteOrgSecretParams, error) {
-	var (
-		params ActionsDeleteOrgSecretParams
-	)
+func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (params ActionsDeleteOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -1304,10 +1256,7 @@ func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (Action
 	return params, nil
 }
 
-func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (ActionsDeleteRepoSecretParams, error) {
-	var (
-		params ActionsDeleteRepoSecretParams
-	)
+func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (params ActionsDeleteRepoSecretParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -1404,10 +1353,7 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (Actio
 	return params, nil
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Request) (ActionsDeleteSelfHostedRunnerFromOrgParams, error) {
-	var (
-		params ActionsDeleteSelfHostedRunnerFromOrgParams
-	)
+func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerFromOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -1473,10 +1419,7 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Re
 	return params, nil
 }
 
-func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.Request) (ActionsDeleteSelfHostedRunnerFromRepoParams, error) {
-	var (
-		params ActionsDeleteSelfHostedRunnerFromRepoParams
-	)
+func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerFromRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -1573,10 +1516,7 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.R
 	return params, nil
 }
 
-func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *http.Request) (ActionsDeleteSelfHostedRunnerGroupFromOrgParams, error) {
-	var (
-		params ActionsDeleteSelfHostedRunnerGroupFromOrgParams
-	)
+func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerGroupFromOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -1642,10 +1582,7 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *ht
 	return params, nil
 }
 
-func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (ActionsDeleteWorkflowRunParams, error) {
-	var (
-		params ActionsDeleteWorkflowRunParams
-	)
+func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (params ActionsDeleteWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -1742,10 +1679,7 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (Acti
 	return params, nil
 }
 
-func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (ActionsDeleteWorkflowRunLogsParams, error) {
-	var (
-		params ActionsDeleteWorkflowRunLogsParams
-	)
+func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (params ActionsDeleteWorkflowRunLogsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -1842,10 +1776,7 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, r *http.Request) (ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, error) {
-	var (
-		params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams
-	)
+func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, r *http.Request) (params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -1911,10 +1842,7 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 	return params, nil
 }
 
-func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (ActionsDownloadArtifactParams, error) {
-	var (
-		params ActionsDownloadArtifactParams
-	)
+func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (params ActionsDownloadArtifactParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -2042,10 +1970,7 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (Actio
 	return params, nil
 }
 
-func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Request) (ActionsDownloadJobLogsForWorkflowRunParams, error) {
-	var (
-		params ActionsDownloadJobLogsForWorkflowRunParams
-	)
+func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsDownloadJobLogsForWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -2142,10 +2067,7 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Re
 	return params, nil
 }
 
-func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request) (ActionsDownloadWorkflowRunLogsParams, error) {
-	var (
-		params ActionsDownloadWorkflowRunLogsParams
-	)
+func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request) (params ActionsDownloadWorkflowRunLogsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -2242,10 +2164,7 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, r *http.Request) (ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, error) {
-	var (
-		params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams
-	)
+func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, r *http.Request) (params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -2311,10 +2230,7 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [
 	return params, nil
 }
 
-func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, r *http.Request) (ActionsGetAllowedActionsOrganizationParams, error) {
-	var (
-		params ActionsGetAllowedActionsOrganizationParams
-	)
+func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsGetAllowedActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -2349,10 +2265,7 @@ func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, r *http.Re
 	return params, nil
 }
 
-func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Request) (ActionsGetAllowedActionsRepositoryParams, error) {
-	var (
-		params ActionsGetAllowedActionsRepositoryParams
-	)
+func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Request) (params ActionsGetAllowedActionsRepositoryParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -2418,10 +2331,7 @@ func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
-func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (ActionsGetArtifactParams, error) {
-	var (
-		params ActionsGetArtifactParams
-	)
+func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params ActionsGetArtifactParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -2518,10 +2428,7 @@ func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (ActionsGet
 	return params, nil
 }
 
-func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request) (ActionsGetEnvironmentPublicKeyParams, error) {
-	var (
-		params ActionsGetEnvironmentPublicKeyParams
-	)
+func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request) (params ActionsGetEnvironmentPublicKeyParams, _ error) {
 	// Decode path: repository_id.
 	{
 		param := args[0]
@@ -2587,10 +2494,7 @@ func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (ActionsGetEnvironmentSecretParams, error) {
-	var (
-		params ActionsGetEnvironmentSecretParams
-	)
+func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsGetEnvironmentSecretParams, _ error) {
 	// Decode path: repository_id.
 	{
 		param := args[0]
@@ -2687,10 +2591,7 @@ func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, r *http.Request) (ActionsGetGithubActionsPermissionsOrganizationParams, error) {
-	var (
-		params ActionsGetGithubActionsPermissionsOrganizationParams
-	)
+func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, r *http.Request) (params ActionsGetGithubActionsPermissionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -2725,10 +2626,7 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, 
 	return params, nil
 }
 
-func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r *http.Request) (ActionsGetGithubActionsPermissionsRepositoryParams, error) {
-	var (
-		params ActionsGetGithubActionsPermissionsRepositoryParams
-	)
+func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r *http.Request) (params ActionsGetGithubActionsPermissionsRepositoryParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -2794,10 +2692,7 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 	return params, nil
 }
 
-func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (ActionsGetJobForWorkflowRunParams, error) {
-	var (
-		params ActionsGetJobForWorkflowRunParams
-	)
+func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsGetJobForWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -2894,10 +2789,7 @@ func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeActionsGetOrgPublicKeyParams(args [1]string, r *http.Request) (ActionsGetOrgPublicKeyParams, error) {
-	var (
-		params ActionsGetOrgPublicKeyParams
-	)
+func decodeActionsGetOrgPublicKeyParams(args [1]string, r *http.Request) (params ActionsGetOrgPublicKeyParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -2932,10 +2824,7 @@ func decodeActionsGetOrgPublicKeyParams(args [1]string, r *http.Request) (Action
 	return params, nil
 }
 
-func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (ActionsGetOrgSecretParams, error) {
-	var (
-		params ActionsGetOrgSecretParams
-	)
+func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (params ActionsGetOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -3001,10 +2890,7 @@ func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (ActionsGe
 	return params, nil
 }
 
-func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (ActionsGetRepoPublicKeyParams, error) {
-	var (
-		params ActionsGetRepoPublicKeyParams
-	)
+func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (params ActionsGetRepoPublicKeyParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -3070,10 +2956,7 @@ func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (Actio
 	return params, nil
 }
 
-func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (ActionsGetRepoSecretParams, error) {
-	var (
-		params ActionsGetRepoSecretParams
-	)
+func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params ActionsGetRepoSecretParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -3170,10 +3053,7 @@ func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (ActionsG
 	return params, nil
 }
 
-func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (ActionsGetReviewsForRunParams, error) {
-	var (
-		params ActionsGetReviewsForRunParams
-	)
+func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (params ActionsGetReviewsForRunParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -3270,10 +3150,7 @@ func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (Actio
 	return params, nil
 }
 
-func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Request) (ActionsGetSelfHostedRunnerForOrgParams, error) {
-	var (
-		params ActionsGetSelfHostedRunnerForOrgParams
-	)
+func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Request) (params ActionsGetSelfHostedRunnerForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -3339,10 +3216,7 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
-func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Request) (ActionsGetSelfHostedRunnerForRepoParams, error) {
-	var (
-		params ActionsGetSelfHostedRunnerForRepoParams
-	)
+func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Request) (params ActionsGetSelfHostedRunnerForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -3439,10 +3313,7 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
-func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.Request) (ActionsGetSelfHostedRunnerGroupForOrgParams, error) {
-	var (
-		params ActionsGetSelfHostedRunnerGroupForOrgParams
-	)
+func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.Request) (params ActionsGetSelfHostedRunnerGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -3508,10 +3379,7 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.R
 	return params, nil
 }
 
-func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (ActionsGetWorkflowRunParams, error) {
-	var (
-		params ActionsGetWorkflowRunParams
-	)
+func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params ActionsGetWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -3608,10 +3476,7 @@ func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (Actions
 	return params, nil
 }
 
-func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (ActionsGetWorkflowRunUsageParams, error) {
-	var (
-		params ActionsGetWorkflowRunUsageParams
-	)
+func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (params ActionsGetWorkflowRunUsageParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -3708,11 +3573,8 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (Ac
 	return params, nil
 }
 
-func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (ActionsListArtifactsForRepoParams, error) {
-	var (
-		params    ActionsListArtifactsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (params ActionsListArtifactsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -3783,15 +3645,14 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -3811,7 +3672,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -3824,15 +3685,14 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -3852,7 +3712,7 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -3860,11 +3720,8 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) (ActionsListEnvironmentSecretsParams, error) {
-	var (
-		params    ActionsListEnvironmentSecretsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) (params ActionsListEnvironmentSecretsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: repository_id.
 	{
 		param := args[0]
@@ -3935,15 +3792,14 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -3963,7 +3819,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -3976,15 +3832,14 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4004,7 +3859,7 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -4012,11 +3867,8 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) (ActionsListJobsForWorkflowRunParams, error) {
-	var (
-		params    ActionsListJobsForWorkflowRunParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsListJobsForWorkflowRunParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -4118,15 +3970,14 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal ActionsListJobsForWorkflowRunFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4146,7 +3997,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 			if err := func() error {
@@ -4174,15 +4025,14 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4202,7 +4052,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -4215,15 +4065,14 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4243,7 +4092,7 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -4251,11 +4100,8 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (ActionsListOrgSecretsParams, error) {
-	var (
-		params    ActionsListOrgSecretsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (params ActionsListOrgSecretsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -4295,15 +4141,14 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4323,7 +4168,7 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -4336,15 +4181,14 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4364,7 +4208,7 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -4372,11 +4216,8 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 	return params, nil
 }
 
-func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, r *http.Request) (ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
-	var (
-		params    ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, r *http.Request) (params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -4447,15 +4288,14 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4475,7 +4315,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -4488,15 +4328,14 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4516,7 +4355,7 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -4524,11 +4363,8 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	return params, nil
 }
 
-func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (ActionsListRepoSecretsParams, error) {
-	var (
-		params    ActionsListRepoSecretsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params ActionsListRepoSecretsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -4599,15 +4435,14 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4627,7 +4462,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -4640,15 +4475,14 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4668,7 +4502,7 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -4676,11 +4510,8 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 	return params, nil
 }
 
-func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (ActionsListRepoWorkflowsParams, error) {
-	var (
-		params    ActionsListRepoWorkflowsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (params ActionsListRepoWorkflowsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -4751,15 +4582,14 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4779,7 +4609,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -4792,15 +4622,14 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -4820,7 +4649,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -4828,10 +4657,7 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 	return params, nil
 }
 
-func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, r *http.Request) (ActionsListRunnerApplicationsForOrgParams, error) {
-	var (
-		params ActionsListRunnerApplicationsForOrgParams
-	)
+func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, r *http.Request) (params ActionsListRunnerApplicationsForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -4866,10 +4692,7 @@ func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, r *http.Req
 	return params, nil
 }
 
-func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Request) (ActionsListRunnerApplicationsForRepoParams, error) {
-	var (
-		params ActionsListRunnerApplicationsForRepoParams
-	)
+func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Request) (params ActionsListRunnerApplicationsForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -4935,11 +4758,8 @@ func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Re
 	return params, nil
 }
 
-func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Request) (ActionsListSelectedReposForOrgSecretParams, error) {
-	var (
-		params    ActionsListSelectedReposForOrgSecretParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Request) (params ActionsListSelectedReposForOrgSecretParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -5010,15 +4830,14 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5038,7 +4857,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -5051,15 +4870,14 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5079,7 +4897,7 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -5087,11 +4905,8 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	return params, nil
 }
 
-func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, r *http.Request) (ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
-	var (
-		params    ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -5131,15 +4946,14 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5159,7 +4973,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -5172,15 +4986,14 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5200,7 +5013,7 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -5208,11 +5021,8 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	return params, nil
 }
 
-func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http.Request) (ActionsListSelfHostedRunnerGroupsForOrgParams, error) {
-	var (
-		params    ActionsListSelfHostedRunnerGroupsForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http.Request) (params ActionsListSelfHostedRunnerGroupsForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -5252,15 +5062,14 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5280,7 +5089,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -5293,15 +5102,14 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5321,7 +5129,7 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -5329,11 +5137,8 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	return params, nil
 }
 
-func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Request) (ActionsListSelfHostedRunnersForOrgParams, error) {
-	var (
-		params    ActionsListSelfHostedRunnersForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Request) (params ActionsListSelfHostedRunnersForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -5373,15 +5178,14 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5401,7 +5205,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -5414,15 +5218,14 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5442,7 +5245,7 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -5450,11 +5253,8 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
-func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Request) (ActionsListSelfHostedRunnersForRepoParams, error) {
-	var (
-		params    ActionsListSelfHostedRunnersForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Request) (params ActionsListSelfHostedRunnersForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -5525,15 +5325,14 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5553,7 +5352,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -5566,15 +5365,14 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5594,7 +5392,7 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -5602,11 +5400,8 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	return params, nil
 }
 
-func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *http.Request) (ActionsListSelfHostedRunnersInGroupForOrgParams, error) {
-	var (
-		params    ActionsListSelfHostedRunnersInGroupForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *http.Request) (params ActionsListSelfHostedRunnersInGroupForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -5677,15 +5472,14 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5705,7 +5499,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -5718,15 +5512,14 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5746,7 +5539,7 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -5754,11 +5547,8 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	return params, nil
 }
 
-func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request) (ActionsListWorkflowRunArtifactsParams, error) {
-	var (
-		params    ActionsListWorkflowRunArtifactsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request) (params ActionsListWorkflowRunArtifactsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -5860,15 +5650,14 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5888,7 +5677,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -5901,15 +5690,14 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -5929,7 +5717,7 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -5937,11 +5725,8 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	return params, nil
 }
 
-func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request) (ActionsListWorkflowRunsForRepoParams, error) {
-	var (
-		params    ActionsListWorkflowRunsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request) (params ActionsListWorkflowRunsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -6006,15 +5791,14 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: actor.
 	{
-		if queryArgs.Has("actor") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "actor",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "actor",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotActorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -6034,22 +5818,21 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Actor.SetTo(paramsDotActorVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: actor: parse")
 			}
 		}
 	}
 	// Decode query: branch.
 	{
-		if queryArgs.Has("branch") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "branch",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "branch",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBranchVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -6069,22 +5852,21 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Branch.SetTo(paramsDotBranchVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: branch: parse")
 			}
 		}
 	}
 	// Decode query: event.
 	{
-		if queryArgs.Has("event") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "event",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "event",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotEventVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -6104,22 +5886,21 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Event.SetTo(paramsDotEventVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: event: parse")
 			}
 		}
 	}
 	// Decode query: status.
 	{
-		if queryArgs.Has("status") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "status",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "status",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStatusVal ActionsListWorkflowRunsForRepoStatus
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -6139,7 +5920,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Status.SetTo(paramsDotStatusVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: status: parse")
 			}
 			if err := func() error {
@@ -6167,15 +5948,14 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -6195,7 +5975,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -6208,15 +5988,14 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -6236,22 +6015,21 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: created.
 	{
-		if queryArgs.Has("created") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "created",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "created",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCreatedVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -6271,7 +6049,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Created.SetTo(paramsDotCreatedVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: created: parse")
 			}
 		}
@@ -6279,10 +6057,7 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (ActionsReRunWorkflowParams, error) {
-	var (
-		params ActionsReRunWorkflowParams
-	)
+func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params ActionsReRunWorkflowParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -6379,10 +6154,7 @@ func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (ActionsR
 	return params, nil
 }
 
-func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, r *http.Request) (ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
-	var (
-		params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams
-	)
+func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, r *http.Request) (params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -6479,10 +6251,7 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 	return params, nil
 }
 
-func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.Request) (ActionsRemoveSelectedRepoFromOrgSecretParams, error) {
-	var (
-		params ActionsRemoveSelectedRepoFromOrgSecretParams
-	)
+func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.Request) (params ActionsRemoveSelectedRepoFromOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -6579,10 +6348,7 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.
 	return params, nil
 }
 
-func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r *http.Request) (ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, error) {
-	var (
-		params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams
-	)
+func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r *http.Request) (params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -6679,10 +6445,7 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r 
 	return params, nil
 }
 
-func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (ActionsRetryWorkflowParams, error) {
-	var (
-		params ActionsRetryWorkflowParams
-	)
+func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params ActionsRetryWorkflowParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -6779,10 +6542,7 @@ func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (ActionsR
 	return params, nil
 }
 
-func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.Request) (ActionsReviewPendingDeploymentsForRunParams, error) {
-	var (
-		params ActionsReviewPendingDeploymentsForRunParams
-	)
+func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.Request) (params ActionsReviewPendingDeploymentsForRunParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -6879,10 +6639,7 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.R
 	return params, nil
 }
 
-func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, r *http.Request) (ActionsSetAllowedActionsOrganizationParams, error) {
-	var (
-		params ActionsSetAllowedActionsOrganizationParams
-	)
+func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetAllowedActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -6917,10 +6674,7 @@ func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, r *http.Re
 	return params, nil
 }
 
-func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Request) (ActionsSetAllowedActionsRepositoryParams, error) {
-	var (
-		params ActionsSetAllowedActionsRepositoryParams
-	)
+func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Request) (params ActionsSetAllowedActionsRepositoryParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -6986,10 +6740,7 @@ func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
-func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, r *http.Request) (ActionsSetGithubActionsPermissionsOrganizationParams, error) {
-	var (
-		params ActionsSetGithubActionsPermissionsOrganizationParams
-	)
+func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetGithubActionsPermissionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -7024,10 +6775,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, 
 	return params, nil
 }
 
-func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r *http.Request) (ActionsSetGithubActionsPermissionsRepositoryParams, error) {
-	var (
-		params ActionsSetGithubActionsPermissionsRepositoryParams
-	)
+func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r *http.Request) (params ActionsSetGithubActionsPermissionsRepositoryParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -7093,10 +6841,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 	return params, nil
 }
 
-func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, r *http.Request) (ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, error) {
-	var (
-		params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams
-	)
+func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, r *http.Request) (params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -7162,10 +6907,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string
 	return params, nil
 }
 
-func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Request) (ActionsSetSelectedReposForOrgSecretParams, error) {
-	var (
-		params ActionsSetSelectedReposForOrgSecretParams
-	)
+func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Request) (params ActionsSetSelectedReposForOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -7231,10 +6973,7 @@ func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Req
 	return params, nil
 }
 
-func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, r *http.Request) (ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, error) {
-	var (
-		params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams
-	)
+func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -7269,79 +7008,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 	return params, nil
 }
 
-func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *http.Request) (ActionsSetSelfHostedRunnersInGroupForOrgParams, error) {
-	var (
-		params ActionsSetSelfHostedRunnersInGroupForOrgParams
-	)
-	// Decode path: org.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "org",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Org = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: org: not specified")
-		}
-	}
-	// Decode path: runner_group_id.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "runner_group_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.RunnerGroupID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: runner_group_id: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.Request) (ActionsUpdateSelfHostedRunnerGroupForOrgParams, error) {
-	var (
-		params ActionsUpdateSelfHostedRunnerGroupForOrgParams
-	)
+func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *http.Request) (params ActionsSetSelfHostedRunnersInGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -7407,10 +7074,73 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *htt
 	return params, nil
 }
 
-func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r *http.Request) (ActivityCheckRepoIsStarredByAuthenticatedUserParams, error) {
-	var (
-		params ActivityCheckRepoIsStarredByAuthenticatedUserParams
-	)
+func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.Request) (params ActionsUpdateSelfHostedRunnerGroupForOrgParams, _ error) {
+	// Decode path: org.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: org: not specified")
+		}
+	}
+	// Decode path: runner_group_id.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "runner_group_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.RunnerGroupID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: runner_group_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityCheckRepoIsStarredByAuthenticatedUserParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -7476,10 +7206,7 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r
 	return params, nil
 }
 
-func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request) (ActivityDeleteRepoSubscriptionParams, error) {
-	var (
-		params ActivityDeleteRepoSubscriptionParams
-	)
+func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivityDeleteRepoSubscriptionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -7545,10 +7272,7 @@ func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeActivityDeleteThreadSubscriptionParams(args [1]string, r *http.Request) (ActivityDeleteThreadSubscriptionParams, error) {
-	var (
-		params ActivityDeleteThreadSubscriptionParams
-	)
+func decodeActivityDeleteThreadSubscriptionParams(args [1]string, r *http.Request) (params ActivityDeleteThreadSubscriptionParams, _ error) {
 	// Decode path: thread_id.
 	{
 		param := args[0]
@@ -7583,10 +7307,7 @@ func decodeActivityDeleteThreadSubscriptionParams(args [1]string, r *http.Reques
 	return params, nil
 }
 
-func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (ActivityGetRepoSubscriptionParams, error) {
-	var (
-		params ActivityGetRepoSubscriptionParams
-	)
+func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivityGetRepoSubscriptionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -7652,10 +7373,7 @@ func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeActivityGetThreadParams(args [1]string, r *http.Request) (ActivityGetThreadParams, error) {
-	var (
-		params ActivityGetThreadParams
-	)
+func decodeActivityGetThreadParams(args [1]string, r *http.Request) (params ActivityGetThreadParams, _ error) {
 	// Decode path: thread_id.
 	{
 		param := args[0]
@@ -7690,10 +7408,7 @@ func decodeActivityGetThreadParams(args [1]string, r *http.Request) (ActivityGet
 	return params, nil
 }
 
-func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]string, r *http.Request) (ActivityGetThreadSubscriptionForAuthenticatedUserParams, error) {
-	var (
-		params ActivityGetThreadSubscriptionForAuthenticatedUserParams
-	)
+func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]string, r *http.Request) (params ActivityGetThreadSubscriptionForAuthenticatedUserParams, _ error) {
 	// Decode path: thread_id.
 	{
 		param := args[0]
@@ -7728,11 +7443,8 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]strin
 	return params, nil
 }
 
-func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.Request) (ActivityListEventsForAuthenticatedUserParams, error) {
-	var (
-		params    ActivityListEventsForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.Request) (params ActivityListEventsForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -7772,15 +7484,14 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -7800,7 +7511,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -7813,15 +7524,14 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -7841,7 +7551,7 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -7849,11 +7559,8 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 	return params, nil
 }
 
-func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r *http.Request) (ActivityListNotificationsForAuthenticatedUserParams, error) {
-	var (
-		params    ActivityListNotificationsForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListNotificationsForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: all.
 	{
 		val := bool(false)
@@ -7862,15 +7569,14 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: all.
 	{
-		if queryArgs.Has("all") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "all",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "all",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAllVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -7890,7 +7596,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 				}
 				params.All.SetTo(paramsDotAllVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: all: parse")
 			}
 		}
@@ -7903,15 +7609,14 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: participating.
 	{
-		if queryArgs.Has("participating") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "participating",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "participating",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotParticipatingVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -7931,22 +7636,21 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 				}
 				params.Participating.SetTo(paramsDotParticipatingVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: participating: parse")
 			}
 		}
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -7966,22 +7670,21 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
 	}
 	// Decode query: before.
 	{
-		if queryArgs.Has("before") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "before",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "before",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8001,7 +7704,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 				}
 				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
 			}
 		}
@@ -8014,15 +7717,14 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8042,7 +7744,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -8055,15 +7757,14 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8083,7 +7784,7 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -8091,11 +7792,8 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	return params, nil
 }
 
-func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *http.Request) (ActivityListOrgEventsForAuthenticatedUserParams, error) {
-	var (
-		params    ActivityListOrgEventsForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityListOrgEventsForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -8166,15 +7864,14 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8194,7 +7891,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -8207,15 +7904,14 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8235,7 +7931,7 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -8243,11 +7939,8 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	return params, nil
 }
 
-func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (ActivityListPublicEventsParams, error) {
-	var (
-		params    ActivityListPublicEventsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (params ActivityListPublicEventsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -8256,15 +7949,14 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8284,7 +7976,7 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -8297,15 +7989,14 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8325,7 +8016,7 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -8333,11 +8024,8 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 	return params, nil
 }
 
-func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.Request) (ActivityListPublicEventsForRepoNetworkParams, error) {
-	var (
-		params    ActivityListPublicEventsForRepoNetworkParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.Request) (params ActivityListPublicEventsForRepoNetworkParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -8408,15 +8096,14 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8436,7 +8123,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -8449,15 +8136,14 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8477,7 +8163,7 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -8485,11 +8171,8 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	return params, nil
 }
 
-func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request) (ActivityListPublicEventsForUserParams, error) {
-	var (
-		params    ActivityListPublicEventsForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request) (params ActivityListPublicEventsForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -8529,15 +8212,14 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8557,7 +8239,7 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -8570,15 +8252,14 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8598,7 +8279,7 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -8606,11 +8287,8 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 	return params, nil
 }
 
-func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (ActivityListPublicOrgEventsParams, error) {
-	var (
-		params    ActivityListPublicOrgEventsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (params ActivityListPublicOrgEventsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -8650,15 +8328,14 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8678,7 +8355,7 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -8691,15 +8368,14 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8719,7 +8395,7 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -8727,11 +8403,8 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Request) (ActivityListReceivedEventsForUserParams, error) {
-	var (
-		params    ActivityListReceivedEventsForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Request) (params ActivityListReceivedEventsForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -8771,15 +8444,14 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8799,7 +8471,7 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -8812,15 +8484,14 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8840,7 +8511,7 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -8848,11 +8519,8 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http.Request) (ActivityListReceivedPublicEventsForUserParams, error) {
-	var (
-		params    ActivityListReceivedPublicEventsForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http.Request) (params ActivityListReceivedPublicEventsForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -8892,15 +8560,14 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8920,7 +8587,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -8933,15 +8600,14 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -8961,7 +8627,7 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -8969,11 +8635,8 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 	return params, nil
 }
 
-func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (ActivityListRepoEventsParams, error) {
-	var (
-		params    ActivityListRepoEventsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params ActivityListRepoEventsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -9044,15 +8707,14 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9072,7 +8734,7 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -9085,15 +8747,14 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9113,7 +8774,7 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -9121,11 +8782,8 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 	return params, nil
 }
 
-func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]string, r *http.Request) (ActivityListRepoNotificationsForAuthenticatedUserParams, error) {
-	var (
-		params    ActivityListRepoNotificationsForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityListRepoNotificationsForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -9196,15 +8854,14 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: all.
 	{
-		if queryArgs.Has("all") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "all",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "all",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAllVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9224,7 +8881,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 				}
 				params.All.SetTo(paramsDotAllVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: all: parse")
 			}
 		}
@@ -9237,15 +8894,14 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: participating.
 	{
-		if queryArgs.Has("participating") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "participating",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "participating",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotParticipatingVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9265,22 +8921,21 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 				}
 				params.Participating.SetTo(paramsDotParticipatingVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: participating: parse")
 			}
 		}
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9300,22 +8955,21 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
 	}
 	// Decode query: before.
 	{
-		if queryArgs.Has("before") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "before",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "before",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9335,7 +8989,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 				}
 				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
 			}
 		}
@@ -9348,15 +9002,14 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9376,7 +9029,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -9389,15 +9042,14 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9417,7 +9069,7 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -9425,11 +9077,8 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	return params, nil
 }
 
-func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *http.Request) (ActivityListReposStarredByAuthenticatedUserParams, error) {
-	var (
-		params    ActivityListReposStarredByAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListReposStarredByAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: sort.
 	{
 		val := ActivityListReposStarredByAuthenticatedUserSort("created")
@@ -9438,15 +9087,14 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ActivityListReposStarredByAuthenticatedUserSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9466,7 +9114,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -9494,15 +9142,14 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal ActivityListReposStarredByAuthenticatedUserDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9522,7 +9169,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -9550,15 +9197,14 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9578,7 +9224,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -9591,15 +9237,14 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9619,7 +9264,7 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -9627,11 +9272,8 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	return params, nil
 }
 
-func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request) (ActivityListReposWatchedByUserParams, error) {
-	var (
-		params    ActivityListReposWatchedByUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request) (params ActivityListReposWatchedByUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -9671,15 +9313,14 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9699,7 +9340,7 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -9712,15 +9353,14 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9740,7 +9380,7 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -9748,11 +9388,8 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
-func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r *http.Request) (ActivityListWatchedReposForAuthenticatedUserParams, error) {
-	var (
-		params    ActivityListWatchedReposForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListWatchedReposForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -9761,15 +9398,14 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9789,7 +9425,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -9802,15 +9438,14 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9830,7 +9465,7 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -9838,11 +9473,8 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 	return params, nil
 }
 
-func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (ActivityListWatchersForRepoParams, error) {
-	var (
-		params    ActivityListWatchersForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (params ActivityListWatchersForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -9913,15 +9545,14 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9941,7 +9572,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -9954,15 +9585,14 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -9982,7 +9612,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -9990,10 +9620,7 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Request) (ActivityMarkRepoNotificationsAsReadParams, error) {
-	var (
-		params ActivityMarkRepoNotificationsAsReadParams
-	)
+func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Request) (params ActivityMarkRepoNotificationsAsReadParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -10059,10 +9686,7 @@ func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Req
 	return params, nil
 }
 
-func decodeActivityMarkThreadAsReadParams(args [1]string, r *http.Request) (ActivityMarkThreadAsReadParams, error) {
-	var (
-		params ActivityMarkThreadAsReadParams
-	)
+func decodeActivityMarkThreadAsReadParams(args [1]string, r *http.Request) (params ActivityMarkThreadAsReadParams, _ error) {
 	// Decode path: thread_id.
 	{
 		param := args[0]
@@ -10097,10 +9721,7 @@ func decodeActivityMarkThreadAsReadParams(args [1]string, r *http.Request) (Acti
 	return params, nil
 }
 
-func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (ActivitySetRepoSubscriptionParams, error) {
-	var (
-		params ActivitySetRepoSubscriptionParams
-	)
+func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivitySetRepoSubscriptionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -10166,10 +9787,7 @@ func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeActivitySetThreadSubscriptionParams(args [1]string, r *http.Request) (ActivitySetThreadSubscriptionParams, error) {
-	var (
-		params ActivitySetThreadSubscriptionParams
-	)
+func decodeActivitySetThreadSubscriptionParams(args [1]string, r *http.Request) (params ActivitySetThreadSubscriptionParams, _ error) {
 	// Decode path: thread_id.
 	{
 		param := args[0]
@@ -10204,10 +9822,7 @@ func decodeActivitySetThreadSubscriptionParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (ActivityStarRepoForAuthenticatedUserParams, error) {
-	var (
-		params ActivityStarRepoForAuthenticatedUserParams
-	)
+func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityStarRepoForAuthenticatedUserParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -10273,10 +9888,7 @@ func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Re
 	return params, nil
 }
 
-func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (ActivityUnstarRepoForAuthenticatedUserParams, error) {
-	var (
-		params ActivityUnstarRepoForAuthenticatedUserParams
-	)
+func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityUnstarRepoForAuthenticatedUserParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -10342,10 +9954,7 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.
 	return params, nil
 }
 
-func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (AppsAddRepoToInstallationParams, error) {
-	var (
-		params AppsAddRepoToInstallationParams
-	)
+func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (params AppsAddRepoToInstallationParams, _ error) {
 	// Decode path: installation_id.
 	{
 		param := args[0]
@@ -10411,10 +10020,7 @@ func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (App
 	return params, nil
 }
 
-func decodeAppsCheckTokenParams(args [1]string, r *http.Request) (AppsCheckTokenParams, error) {
-	var (
-		params AppsCheckTokenParams
-	)
+func decodeAppsCheckTokenParams(args [1]string, r *http.Request) (params AppsCheckTokenParams, _ error) {
 	// Decode path: client_id.
 	{
 		param := args[0]
@@ -10449,10 +10055,7 @@ func decodeAppsCheckTokenParams(args [1]string, r *http.Request) (AppsCheckToken
 	return params, nil
 }
 
-func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (AppsCreateContentAttachmentParams, error) {
-	var (
-		params AppsCreateContentAttachmentParams
-	)
+func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (params AppsCreateContentAttachmentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -10549,10 +10152,7 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeAppsCreateInstallationAccessTokenParams(args [1]string, r *http.Request) (AppsCreateInstallationAccessTokenParams, error) {
-	var (
-		params AppsCreateInstallationAccessTokenParams
-	)
+func decodeAppsCreateInstallationAccessTokenParams(args [1]string, r *http.Request) (params AppsCreateInstallationAccessTokenParams, _ error) {
 	// Decode path: installation_id.
 	{
 		param := args[0]
@@ -10587,10 +10187,7 @@ func decodeAppsCreateInstallationAccessTokenParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeAppsDeleteAuthorizationParams(args [1]string, r *http.Request) (AppsDeleteAuthorizationParams, error) {
-	var (
-		params AppsDeleteAuthorizationParams
-	)
+func decodeAppsDeleteAuthorizationParams(args [1]string, r *http.Request) (params AppsDeleteAuthorizationParams, _ error) {
 	// Decode path: client_id.
 	{
 		param := args[0]
@@ -10625,10 +10222,7 @@ func decodeAppsDeleteAuthorizationParams(args [1]string, r *http.Request) (AppsD
 	return params, nil
 }
 
-func decodeAppsDeleteInstallationParams(args [1]string, r *http.Request) (AppsDeleteInstallationParams, error) {
-	var (
-		params AppsDeleteInstallationParams
-	)
+func decodeAppsDeleteInstallationParams(args [1]string, r *http.Request) (params AppsDeleteInstallationParams, _ error) {
 	// Decode path: installation_id.
 	{
 		param := args[0]
@@ -10663,10 +10257,7 @@ func decodeAppsDeleteInstallationParams(args [1]string, r *http.Request) (AppsDe
 	return params, nil
 }
 
-func decodeAppsDeleteTokenParams(args [1]string, r *http.Request) (AppsDeleteTokenParams, error) {
-	var (
-		params AppsDeleteTokenParams
-	)
+func decodeAppsDeleteTokenParams(args [1]string, r *http.Request) (params AppsDeleteTokenParams, _ error) {
 	// Decode path: client_id.
 	{
 		param := args[0]
@@ -10701,10 +10292,7 @@ func decodeAppsDeleteTokenParams(args [1]string, r *http.Request) (AppsDeleteTok
 	return params, nil
 }
 
-func decodeAppsGetBySlugParams(args [1]string, r *http.Request) (AppsGetBySlugParams, error) {
-	var (
-		params AppsGetBySlugParams
-	)
+func decodeAppsGetBySlugParams(args [1]string, r *http.Request) (params AppsGetBySlugParams, _ error) {
 	// Decode path: app_slug.
 	{
 		param := args[0]
@@ -10739,10 +10327,7 @@ func decodeAppsGetBySlugParams(args [1]string, r *http.Request) (AppsGetBySlugPa
 	return params, nil
 }
 
-func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, r *http.Request) (AppsGetSubscriptionPlanForAccountParams, error) {
-	var (
-		params AppsGetSubscriptionPlanForAccountParams
-	)
+func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, r *http.Request) (params AppsGetSubscriptionPlanForAccountParams, _ error) {
 	// Decode path: account_id.
 	{
 		param := args[0]
@@ -10777,10 +10362,7 @@ func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, r *http.Request) (AppsGetSubscriptionPlanForAccountStubbedParams, error) {
-	var (
-		params AppsGetSubscriptionPlanForAccountStubbedParams
-	)
+func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, r *http.Request) (params AppsGetSubscriptionPlanForAccountStubbedParams, _ error) {
 	// Decode path: account_id.
 	{
 		param := args[0]
@@ -10815,10 +10397,7 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, r *htt
 	return params, nil
 }
 
-func decodeAppsGetWebhookDeliveryParams(args [1]string, r *http.Request) (AppsGetWebhookDeliveryParams, error) {
-	var (
-		params AppsGetWebhookDeliveryParams
-	)
+func decodeAppsGetWebhookDeliveryParams(args [1]string, r *http.Request) (params AppsGetWebhookDeliveryParams, _ error) {
 	// Decode path: delivery_id.
 	{
 		param := args[0]
@@ -10853,11 +10432,8 @@ func decodeAppsGetWebhookDeliveryParams(args [1]string, r *http.Request) (AppsGe
 	return params, nil
 }
 
-func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsListAccountsForPlanParams, error) {
-	var (
-		params    AppsListAccountsForPlanParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (params AppsListAccountsForPlanParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: plan_id.
 	{
 		param := args[0]
@@ -10897,15 +10473,14 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal AppsListAccountsForPlanSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -10925,7 +10500,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -10947,15 +10522,14 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal AppsListAccountsForPlanDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -10975,7 +10549,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -11003,15 +10577,14 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11031,7 +10604,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -11044,15 +10617,14 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11072,7 +10644,7 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -11080,11 +10652,8 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	return params, nil
 }
 
-func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request) (AppsListAccountsForPlanStubbedParams, error) {
-	var (
-		params    AppsListAccountsForPlanStubbedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request) (params AppsListAccountsForPlanStubbedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: plan_id.
 	{
 		param := args[0]
@@ -11124,15 +10693,14 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal AppsListAccountsForPlanStubbedSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11152,7 +10720,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -11174,15 +10742,14 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal AppsListAccountsForPlanStubbedDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11202,7 +10769,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -11230,15 +10797,14 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11258,7 +10824,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -11271,15 +10837,14 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11299,7 +10864,7 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -11307,11 +10872,8 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
-func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r *http.Request) (AppsListInstallationReposForAuthenticatedUserParams, error) {
-	var (
-		params    AppsListInstallationReposForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r *http.Request) (params AppsListInstallationReposForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: installation_id.
 	{
 		param := args[0]
@@ -11351,15 +10913,14 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11379,7 +10940,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -11392,15 +10953,14 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11420,7 +10980,7 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -11428,11 +10988,8 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	return params, nil
 }
 
-func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansParams, error) {
-	var (
-		params    AppsListPlansParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListPlansParams(args [0]string, r *http.Request) (params AppsListPlansParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -11441,15 +10998,14 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11469,7 +11025,7 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -11482,15 +11038,14 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11510,7 +11065,7 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -11518,11 +11073,8 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 	return params, nil
 }
 
-func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsListPlansStubbedParams, error) {
-	var (
-		params    AppsListPlansStubbedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (params AppsListPlansStubbedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -11531,15 +11083,14 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11559,7 +11110,7 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -11572,15 +11123,14 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11600,7 +11150,7 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -11608,11 +11158,8 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 	return params, nil
 }
 
-func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.Request) (AppsListReposAccessibleToInstallationParams, error) {
-	var (
-		params    AppsListReposAccessibleToInstallationParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.Request) (params AppsListReposAccessibleToInstallationParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -11621,15 +11168,14 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11649,7 +11195,7 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -11662,15 +11208,14 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11690,7 +11235,7 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -11698,11 +11243,8 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 	return params, nil
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *http.Request) (AppsListSubscriptionsForAuthenticatedUserParams, error) {
-	var (
-		params    AppsListSubscriptionsForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *http.Request) (params AppsListSubscriptionsForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -11711,15 +11253,14 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11739,7 +11280,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -11752,15 +11293,14 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11780,7 +11320,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -11788,11 +11328,8 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	return params, nil
 }
 
-func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string, r *http.Request) (AppsListSubscriptionsForAuthenticatedUserStubbedParams, error) {
-	var (
-		params    AppsListSubscriptionsForAuthenticatedUserStubbedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string, r *http.Request) (params AppsListSubscriptionsForAuthenticatedUserStubbedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -11801,15 +11338,14 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11829,7 +11365,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -11842,15 +11378,14 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11870,7 +11405,7 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -11878,11 +11413,8 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	return params, nil
 }
 
-func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (AppsListWebhookDeliveriesParams, error) {
-	var (
-		params    AppsListWebhookDeliveriesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (params AppsListWebhookDeliveriesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -11891,15 +11423,14 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11919,22 +11450,21 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
 	}
 	// Decode query: cursor.
 	{
-		if queryArgs.Has("cursor") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "cursor",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "cursor",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCursorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -11954,7 +11484,7 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 				}
 				params.Cursor.SetTo(paramsDotCursorVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: cursor: parse")
 			}
 		}
@@ -11962,10 +11492,7 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 	return params, nil
 }
 
-func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, r *http.Request) (AppsRedeliverWebhookDeliveryParams, error) {
-	var (
-		params AppsRedeliverWebhookDeliveryParams
-	)
+func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, r *http.Request) (params AppsRedeliverWebhookDeliveryParams, _ error) {
 	// Decode path: delivery_id.
 	{
 		param := args[0]
@@ -12000,10 +11527,7 @@ func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request) (AppsRemoveRepoFromInstallationParams, error) {
-	var (
-		params AppsRemoveRepoFromInstallationParams
-	)
+func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request) (params AppsRemoveRepoFromInstallationParams, _ error) {
 	// Decode path: installation_id.
 	{
 		param := args[0]
@@ -12069,10 +11593,7 @@ func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeAppsResetTokenParams(args [1]string, r *http.Request) (AppsResetTokenParams, error) {
-	var (
-		params AppsResetTokenParams
-	)
+func decodeAppsResetTokenParams(args [1]string, r *http.Request) (params AppsResetTokenParams, _ error) {
 	// Decode path: client_id.
 	{
 		param := args[0]
@@ -12107,10 +11628,7 @@ func decodeAppsResetTokenParams(args [1]string, r *http.Request) (AppsResetToken
 	return params, nil
 }
 
-func decodeAppsScopeTokenParams(args [1]string, r *http.Request) (AppsScopeTokenParams, error) {
-	var (
-		params AppsScopeTokenParams
-	)
+func decodeAppsScopeTokenParams(args [1]string, r *http.Request) (params AppsScopeTokenParams, _ error) {
 	// Decode path: client_id.
 	{
 		param := args[0]
@@ -12145,10 +11663,7 @@ func decodeAppsScopeTokenParams(args [1]string, r *http.Request) (AppsScopeToken
 	return params, nil
 }
 
-func decodeAppsSuspendInstallationParams(args [1]string, r *http.Request) (AppsSuspendInstallationParams, error) {
-	var (
-		params AppsSuspendInstallationParams
-	)
+func decodeAppsSuspendInstallationParams(args [1]string, r *http.Request) (params AppsSuspendInstallationParams, _ error) {
 	// Decode path: installation_id.
 	{
 		param := args[0]
@@ -12183,10 +11698,7 @@ func decodeAppsSuspendInstallationParams(args [1]string, r *http.Request) (AppsS
 	return params, nil
 }
 
-func decodeAppsUnsuspendInstallationParams(args [1]string, r *http.Request) (AppsUnsuspendInstallationParams, error) {
-	var (
-		params AppsUnsuspendInstallationParams
-	)
+func decodeAppsUnsuspendInstallationParams(args [1]string, r *http.Request) (params AppsUnsuspendInstallationParams, _ error) {
 	// Decode path: installation_id.
 	{
 		param := args[0]
@@ -12221,10 +11733,7 @@ func decodeAppsUnsuspendInstallationParams(args [1]string, r *http.Request) (App
 	return params, nil
 }
 
-func decodeBillingGetGithubActionsBillingGheParams(args [1]string, r *http.Request) (BillingGetGithubActionsBillingGheParams, error) {
-	var (
-		params BillingGetGithubActionsBillingGheParams
-	)
+func decodeBillingGetGithubActionsBillingGheParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingGheParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -12259,10 +11768,7 @@ func decodeBillingGetGithubActionsBillingGheParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, r *http.Request) (BillingGetGithubActionsBillingOrgParams, error) {
-	var (
-		params BillingGetGithubActionsBillingOrgParams
-	)
+func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -12297,10 +11803,7 @@ func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeBillingGetGithubActionsBillingUserParams(args [1]string, r *http.Request) (BillingGetGithubActionsBillingUserParams, error) {
-	var (
-		params BillingGetGithubActionsBillingUserParams
-	)
+func decodeBillingGetGithubActionsBillingUserParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingUserParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -12335,10 +11838,7 @@ func decodeBillingGetGithubActionsBillingUserParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
-func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, r *http.Request) (BillingGetGithubPackagesBillingGheParams, error) {
-	var (
-		params BillingGetGithubPackagesBillingGheParams
-	)
+func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingGheParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -12373,10 +11873,7 @@ func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
-func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, r *http.Request) (BillingGetGithubPackagesBillingOrgParams, error) {
-	var (
-		params BillingGetGithubPackagesBillingOrgParams
-	)
+func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -12411,10 +11908,7 @@ func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
-func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, r *http.Request) (BillingGetGithubPackagesBillingUserParams, error) {
-	var (
-		params BillingGetGithubPackagesBillingUserParams
-	)
+func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingUserParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -12449,10 +11943,7 @@ func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, r *http.Req
 	return params, nil
 }
 
-func decodeBillingGetSharedStorageBillingGheParams(args [1]string, r *http.Request) (BillingGetSharedStorageBillingGheParams, error) {
-	var (
-		params BillingGetSharedStorageBillingGheParams
-	)
+func decodeBillingGetSharedStorageBillingGheParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingGheParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -12487,10 +11978,7 @@ func decodeBillingGetSharedStorageBillingGheParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, r *http.Request) (BillingGetSharedStorageBillingOrgParams, error) {
-	var (
-		params BillingGetSharedStorageBillingOrgParams
-	)
+func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -12525,10 +12013,7 @@ func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeBillingGetSharedStorageBillingUserParams(args [1]string, r *http.Request) (BillingGetSharedStorageBillingUserParams, error) {
-	var (
-		params BillingGetSharedStorageBillingUserParams
-	)
+func decodeBillingGetSharedStorageBillingUserParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingUserParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -12563,10 +12048,7 @@ func decodeBillingGetSharedStorageBillingUserParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
-func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (ChecksCreateSuiteParams, error) {
-	var (
-		params ChecksCreateSuiteParams
-	)
+func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (params ChecksCreateSuiteParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -12632,10 +12114,7 @@ func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (ChecksCreat
 	return params, nil
 }
 
-func decodeChecksGetParams(args [3]string, r *http.Request) (ChecksGetParams, error) {
-	var (
-		params ChecksGetParams
-	)
+func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -12732,10 +12211,7 @@ func decodeChecksGetParams(args [3]string, r *http.Request) (ChecksGetParams, er
 	return params, nil
 }
 
-func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (ChecksGetSuiteParams, error) {
-	var (
-		params ChecksGetSuiteParams
-	)
+func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksGetSuiteParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -12832,11 +12308,8 @@ func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (ChecksGetSuite
 	return params, nil
 }
 
-func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksListAnnotationsParams, error) {
-	var (
-		params    ChecksListAnnotationsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params ChecksListAnnotationsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -12938,15 +12411,14 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -12966,7 +12438,7 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -12979,15 +12451,14 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13007,7 +12478,7 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -13015,11 +12486,8 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 	return params, nil
 }
 
-func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListForRefParams, error) {
-	var (
-		params    ChecksListForRefParams
-		queryArgs = r.URL.Query()
-	)
+func decodeChecksListForRefParams(args [3]string, r *http.Request) (params ChecksListForRefParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -13115,15 +12583,14 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: check_name.
 	{
-		if queryArgs.Has("check_name") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "check_name",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "check_name",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCheckNameVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13143,22 +12610,21 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 				}
 				params.CheckName.SetTo(paramsDotCheckNameVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: check_name: parse")
 			}
 		}
 	}
 	// Decode query: status.
 	{
-		if queryArgs.Has("status") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "status",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "status",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStatusVal ChecksListForRefStatus
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13178,7 +12644,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 				}
 				params.Status.SetTo(paramsDotStatusVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: status: parse")
 			}
 			if err := func() error {
@@ -13206,15 +12672,14 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal ChecksListForRefFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13234,7 +12699,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 			if err := func() error {
@@ -13262,15 +12727,14 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13290,7 +12754,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -13303,15 +12767,14 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13331,22 +12794,21 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: app_id.
 	{
-		if queryArgs.Has("app_id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "app_id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "app_id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAppIDVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13366,7 +12828,7 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 				}
 				params.AppID.SetTo(paramsDotAppIDVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: app_id: parse")
 			}
 		}
@@ -13374,11 +12836,8 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	return params, nil
 }
 
-func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksListForSuiteParams, error) {
-	var (
-		params    ChecksListForSuiteParams
-		queryArgs = r.URL.Query()
-	)
+func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params ChecksListForSuiteParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -13474,15 +12933,14 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: check_name.
 	{
-		if queryArgs.Has("check_name") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "check_name",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "check_name",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCheckNameVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13502,22 +12960,21 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 				}
 				params.CheckName.SetTo(paramsDotCheckNameVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: check_name: parse")
 			}
 		}
 	}
 	// Decode query: status.
 	{
-		if queryArgs.Has("status") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "status",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "status",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStatusVal ChecksListForSuiteStatus
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13537,7 +12994,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 				}
 				params.Status.SetTo(paramsDotStatusVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: status: parse")
 			}
 			if err := func() error {
@@ -13565,15 +13022,14 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal ChecksListForSuiteFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13593,7 +13049,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 			if err := func() error {
@@ -13621,15 +13077,14 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13649,7 +13104,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -13662,15 +13117,14 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13690,7 +13144,7 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -13698,11 +13152,8 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	return params, nil
 }
 
-func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (ChecksListSuitesForRefParams, error) {
-	var (
-		params    ChecksListSuitesForRefParams
-		queryArgs = r.URL.Query()
-	)
+func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params ChecksListSuitesForRefParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -13798,15 +13249,14 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 	}
 	// Decode query: app_id.
 	{
-		if queryArgs.Has("app_id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "app_id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "app_id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAppIDVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13826,22 +13276,21 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 				}
 				params.AppID.SetTo(paramsDotAppIDVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: app_id: parse")
 			}
 		}
 	}
 	// Decode query: check_name.
 	{
-		if queryArgs.Has("check_name") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "check_name",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "check_name",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCheckNameVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13861,7 +13310,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 				}
 				params.CheckName.SetTo(paramsDotCheckNameVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: check_name: parse")
 			}
 		}
@@ -13874,15 +13323,14 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13902,7 +13350,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -13915,15 +13363,14 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -13943,7 +13390,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -13951,10 +13398,7 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 	return params, nil
 }
 
-func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (ChecksRerequestSuiteParams, error) {
-	var (
-		params ChecksRerequestSuiteParams
-	)
+func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params ChecksRerequestSuiteParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -14051,10 +13495,7 @@ func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (ChecksRe
 	return params, nil
 }
 
-func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (ChecksSetSuitesPreferencesParams, error) {
-	var (
-		params ChecksSetSuitesPreferencesParams
-	)
+func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (params ChecksSetSuitesPreferencesParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -14120,11 +13561,8 @@ func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (Ch
 	return params, nil
 }
 
-func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (CodeScanningDeleteAnalysisParams, error) {
-	var (
-		params    CodeScanningDeleteAnalysisParams
-		queryArgs = r.URL.Query()
-	)
+func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (params CodeScanningDeleteAnalysisParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -14220,15 +13658,14 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (Co
 	}
 	// Decode query: confirm_delete.
 	{
-		if queryArgs.Has("confirm_delete") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "confirm_delete",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "confirm_delete",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotConfirmDeleteVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -14248,7 +13685,7 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (Co
 				}
 				params.ConfirmDelete.SetTo(paramsDotConfirmDeleteVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: confirm_delete: parse")
 			}
 		}
@@ -14256,10 +13693,7 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (Co
 	return params, nil
 }
 
-func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (CodeScanningGetAlertParams, error) {
-	var (
-		params CodeScanningGetAlertParams
-	)
+func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params CodeScanningGetAlertParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -14363,10 +13797,7 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (CodeScan
 	return params, nil
 }
 
-func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (CodeScanningGetAnalysisParams, error) {
-	var (
-		params CodeScanningGetAnalysisParams
-	)
+func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (params CodeScanningGetAnalysisParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -14463,10 +13894,7 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (CodeS
 	return params, nil
 }
 
-func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (CodeScanningGetSarifParams, error) {
-	var (
-		params CodeScanningGetSarifParams
-	)
+func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params CodeScanningGetSarifParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -14563,11 +13991,8 @@ func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (CodeScan
 	return params, nil
 }
 
-func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request) (CodeScanningListAlertInstancesParams, error) {
-	var (
-		params    CodeScanningListAlertInstancesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request) (params CodeScanningListAlertInstancesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -14676,15 +14101,14 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -14704,7 +14128,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -14717,15 +14141,14 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -14745,22 +14168,21 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
 	}
 	// Decode query: ref.
 	{
-		if queryArgs.Has("ref") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "ref",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "ref",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
 					var paramsDotRefValVal string
@@ -14787,7 +14209,7 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 				}
 				params.Ref.SetTo(paramsDotRefVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
 			}
 		}
@@ -14795,11 +14217,8 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) (CodeScanningListAlertsForRepoParams, error) {
-	var (
-		params    CodeScanningListAlertsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) (params CodeScanningListAlertsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -14864,15 +14283,14 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: tool_name.
 	{
-		if queryArgs.Has("tool_name") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "tool_name",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tool_name",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotToolNameVal CodeScanningAnalysisToolName
 				if err := func() error {
 					var paramsDotToolNameValVal string
@@ -14899,22 +14317,21 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 				}
 				params.ToolName.SetTo(paramsDotToolNameVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: tool_name: parse")
 			}
 		}
 	}
 	// Decode query: tool_guid.
 	{
-		if queryArgs.Has("tool_guid") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "tool_guid",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tool_guid",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotToolGUIDVal CodeScanningAnalysisToolGUID
 				if err := func() error {
 					var paramsDotToolGUIDValVal string
@@ -14941,7 +14358,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 				}
 				params.ToolGUID.SetTo(paramsDotToolGUIDVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: tool_guid: parse")
 			}
 		}
@@ -14954,15 +14371,14 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -14982,7 +14398,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -14995,15 +14411,14 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -15023,22 +14438,21 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
 	}
 	// Decode query: ref.
 	{
-		if queryArgs.Has("ref") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "ref",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "ref",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
 					var paramsDotRefValVal string
@@ -15065,22 +14479,21 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 				}
 				params.Ref.SetTo(paramsDotRefVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
 			}
 		}
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal CodeScanningAlertState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -15100,7 +14513,7 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -15123,11 +14536,8 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request) (CodeScanningListRecentAnalysesParams, error) {
-	var (
-		params    CodeScanningListRecentAnalysesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request) (params CodeScanningListRecentAnalysesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -15192,15 +14602,14 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: tool_name.
 	{
-		if queryArgs.Has("tool_name") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "tool_name",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tool_name",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotToolNameVal CodeScanningAnalysisToolName
 				if err := func() error {
 					var paramsDotToolNameValVal string
@@ -15227,22 +14636,21 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 				}
 				params.ToolName.SetTo(paramsDotToolNameVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: tool_name: parse")
 			}
 		}
 	}
 	// Decode query: tool_guid.
 	{
-		if queryArgs.Has("tool_guid") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "tool_guid",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tool_guid",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotToolGUIDVal CodeScanningAnalysisToolGUID
 				if err := func() error {
 					var paramsDotToolGUIDValVal string
@@ -15269,7 +14677,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 				}
 				params.ToolGUID.SetTo(paramsDotToolGUIDVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: tool_guid: parse")
 			}
 		}
@@ -15282,15 +14690,14 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -15310,7 +14717,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -15323,15 +14730,14 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -15351,22 +14757,21 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
 	}
 	// Decode query: ref.
 	{
-		if queryArgs.Has("ref") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "ref",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "ref",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal CodeScanningRef
 				if err := func() error {
 					var paramsDotRefValVal string
@@ -15393,22 +14798,21 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 				}
 				params.Ref.SetTo(paramsDotRefVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
 			}
 		}
 	}
 	// Decode query: sarif_id.
 	{
-		if queryArgs.Has("sarif_id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sarif_id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sarif_id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSarifIDVal CodeScanningAnalysisSarifID
 				if err := func() error {
 					var paramsDotSarifIDValVal string
@@ -15435,7 +14839,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 				}
 				params.SarifID.SetTo(paramsDotSarifIDVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sarif_id: parse")
 			}
 		}
@@ -15443,10 +14847,7 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (CodeScanningUpdateAlertParams, error) {
-	var (
-		params CodeScanningUpdateAlertParams
-	)
+func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (params CodeScanningUpdateAlertParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -15550,10 +14951,7 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (CodeS
 	return params, nil
 }
 
-func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (CodeScanningUploadSarifParams, error) {
-	var (
-		params CodeScanningUploadSarifParams
-	)
+func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (params CodeScanningUploadSarifParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -15619,10 +15017,7 @@ func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (CodeS
 	return params, nil
 }
 
-func decodeCodesOfConductGetConductCodeParams(args [1]string, r *http.Request) (CodesOfConductGetConductCodeParams, error) {
-	var (
-		params CodesOfConductGetConductCodeParams
-	)
+func decodeCodesOfConductGetConductCodeParams(args [1]string, r *http.Request) (params CodesOfConductGetConductCodeParams, _ error) {
 	// Decode path: key.
 	{
 		param := args[0]
@@ -15657,10 +15052,7 @@ func decodeCodesOfConductGetConductCodeParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, r *http.Request) (EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-	)
+func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -15757,10 +15149,7 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params, nil
 }
 
-func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]string, r *http.Request) (EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams
-	)
+func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -15857,10 +15246,7 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 	return params, nil
 }
 
-func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams
-	)
+func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -15895,10 +15281,7 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]str
 	return params, nil
 }
 
-func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminCreateRemoveTokenForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminCreateRemoveTokenForEnterpriseParams
-	)
+func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateRemoveTokenForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -15933,10 +15316,7 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, r
 	return params, nil
 }
 
-func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams
-	)
+func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -15971,10 +15351,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1
 	return params, nil
 }
 
-func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminDeleteScimGroupFromEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminDeleteScimGroupFromEnterpriseParams
-	)
+func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteScimGroupFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16040,10 +15417,7 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r 
 	return params, nil
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams
-	)
+func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16109,10 +15483,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]str
 	return params, nil
 }
 
-func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams
-	)
+func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16178,10 +15549,7 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [
 	return params, nil
 }
 
-func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminDeleteUserFromEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminDeleteUserFromEnterpriseParams
-	)
+func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteUserFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16247,10 +15615,7 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http
 	return params, nil
 }
 
-func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams
-	)
+func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16316,10 +15681,7 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 	return params, nil
 }
 
-func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams
-	)
+func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16385,10 +15747,7 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminGetAllowedActionsEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminGetAllowedActionsEnterpriseParams
-	)
+func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminGetAllowedActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16423,11 +15782,8 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, r *h
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (EnterpriseAdminGetAuditLogParams, error) {
-	var (
-		params    EnterpriseAdminGetAuditLogParams
-		queryArgs = r.URL.Query()
-	)
+func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (params EnterpriseAdminGetAuditLogParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16461,15 +15817,14 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: phrase.
 	{
-		if queryArgs.Has("phrase") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "phrase",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "phrase",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPhraseVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -16489,22 +15844,21 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 				}
 				params.Phrase.SetTo(paramsDotPhraseVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: phrase: parse")
 			}
 		}
 	}
 	// Decode query: include.
 	{
-		if queryArgs.Has("include") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "include",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "include",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotIncludeVal EnterpriseAdminGetAuditLogInclude
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -16524,7 +15878,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 				}
 				params.Include.SetTo(paramsDotIncludeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: include: parse")
 			}
 			if err := func() error {
@@ -16546,15 +15900,14 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: after.
 	{
-		if queryArgs.Has("after") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "after",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "after",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAfterVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -16574,22 +15927,21 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 				}
 				params.After.SetTo(paramsDotAfterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: after: parse")
 			}
 		}
 	}
 	// Decode query: before.
 	{
-		if queryArgs.Has("before") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "before",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "before",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -16609,22 +15961,21 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 				}
 				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
 			}
 		}
 	}
 	// Decode query: order.
 	{
-		if queryArgs.Has("order") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "order",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "order",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal EnterpriseAdminGetAuditLogOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -16644,7 +15995,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 				}
 				params.Order.SetTo(paramsDotOrderVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
 			}
 			if err := func() error {
@@ -16672,15 +16023,14 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -16700,7 +16050,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -16713,15 +16063,14 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -16741,7 +16090,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -16749,10 +16098,7 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams
-	)
+func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16787,11 +16133,8 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]st
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args [2]string, r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, error) {
-	var (
-		params    EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams
-		queryArgs = r.URL.Query()
-	)
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16856,15 +16199,14 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 	}
 	// Decode query: excludedAttributes.
 	{
-		if queryArgs.Has("excludedAttributes") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "excludedAttributes",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "excludedAttributes",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotExcludedAttributesVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -16884,7 +16226,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 				}
 				params.ExcludedAttributes.SetTo(paramsDotExcludedAttributesVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: excludedAttributes: parse")
 			}
 		}
@@ -16892,10 +16234,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args [2]string, r *http.Request) (EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, error) {
-	var (
-		params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams
-	)
+func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -16961,10 +16300,7 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams
-	)
+func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -17030,10 +16366,7 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string,
 	return params, nil
 }
 
-func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams
-	)
+func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -17099,11 +16432,8 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]st
 	return params, nil
 }
 
-func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
-	var (
-		params    EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-		queryArgs = r.URL.Query()
-	)
+func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -17174,15 +16504,14 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17202,7 +16531,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -17215,15 +16544,14 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17243,7 +16571,7 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -17251,11 +16579,8 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	return params, nil
 }
 
-func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminListProvisionedGroupsEnterpriseParams, error) {
-	var (
-		params    EnterpriseAdminListProvisionedGroupsEnterpriseParams
-		queryArgs = r.URL.Query()
-	)
+func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListProvisionedGroupsEnterpriseParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -17289,15 +16614,14 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 	}
 	// Decode query: startIndex.
 	{
-		if queryArgs.Has("startIndex") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "startIndex",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "startIndex",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStartIndexVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17317,22 +16641,21 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 				}
 				params.StartIndex.SetTo(paramsDotStartIndexVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: startIndex: parse")
 			}
 		}
 	}
 	// Decode query: count.
 	{
-		if queryArgs.Has("count") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "count",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "count",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCountVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17352,22 +16675,21 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 				}
 				params.Count.SetTo(paramsDotCountVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: count: parse")
 			}
 		}
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17387,22 +16709,21 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 		}
 	}
 	// Decode query: excludedAttributes.
 	{
-		if queryArgs.Has("excludedAttributes") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "excludedAttributes",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "excludedAttributes",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotExcludedAttributesVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17422,7 +16743,7 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 				}
 				params.ExcludedAttributes.SetTo(paramsDotExcludedAttributesVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: excludedAttributes: parse")
 			}
 		}
@@ -17430,11 +16751,8 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 	return params, nil
 }
 
-func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, error) {
-	var (
-		params    EnterpriseAdminListProvisionedIdentitiesEnterpriseParams
-		queryArgs = r.URL.Query()
-	)
+func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -17468,15 +16786,14 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 	}
 	// Decode query: startIndex.
 	{
-		if queryArgs.Has("startIndex") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "startIndex",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "startIndex",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStartIndexVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17496,22 +16813,21 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 				}
 				params.StartIndex.SetTo(paramsDotStartIndexVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: startIndex: parse")
 			}
 		}
 	}
 	// Decode query: count.
 	{
-		if queryArgs.Has("count") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "count",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "count",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCountVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17531,22 +16847,21 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 				}
 				params.Count.SetTo(paramsDotCountVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: count: parse")
 			}
 		}
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17566,7 +16881,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 		}
@@ -17574,10 +16889,7 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 	return params, nil
 }
 
-func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminListRunnerApplicationsForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminListRunnerApplicationsForEnterpriseParams
-	)
+func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListRunnerApplicationsForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -17612,132 +16924,8 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]stri
 	return params, nil
 }
 
-func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
-	var (
-		params    EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams
-		queryArgs = r.URL.Query()
-	)
-	// Decode path: enterprise.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "enterprise",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Enterprise = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: enterprise: not specified")
-		}
-	}
-	// Set default value for query: per_page.
-	{
-		val := int(30)
-
-		params.PerPage.SetTo(val)
-	}
-	// Decode query: per_page.
-	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
-
-			if err := func() error {
-				var paramsDotPerPageVal int
-				if err := func() error {
-					s, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToInt(s)
-					if err != nil {
-						return err
-					}
-
-					paramsDotPerPageVal = c
-					return nil
-				}(); err != nil {
-					return err
-				}
-				params.PerPage.SetTo(paramsDotPerPageVal)
-				return nil
-			}(); err != nil {
-				return params, errors.Wrap(err, "query: per_page: parse")
-			}
-		}
-	}
-	// Set default value for query: page.
-	{
-		val := int(1)
-
-		params.Page.SetTo(val)
-	}
-	// Decode query: page.
-	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
-
-			if err := func() error {
-				var paramsDotPageVal int
-				if err := func() error {
-					s, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToInt(s)
-					if err != nil {
-						return err
-					}
-
-					paramsDotPageVal = c
-					return nil
-				}(); err != nil {
-					return err
-				}
-				params.Page.SetTo(paramsDotPageVal)
-				return nil
-			}(); err != nil {
-				return params, errors.Wrap(err, "query: page: parse")
-			}
-		}
-	}
-	return params, nil
-}
-
-func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, error) {
-	var (
-		params    EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams
-		queryArgs = r.URL.Query()
-	)
+func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -17777,15 +16965,14 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17805,7 +16992,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -17818,15 +17005,14 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17846,7 +17032,7 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -17854,11 +17040,8 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	return params, nil
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, error) {
-	var (
-		params    EnterpriseAdminListSelfHostedRunnersForEnterpriseParams
-		queryArgs = r.URL.Query()
-	)
+func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -17898,15 +17081,14 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17926,7 +17108,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -17939,15 +17121,14 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -17967,7 +17148,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -17975,11 +17156,124 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 	return params, nil
 }
 
-func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, error) {
-	var (
-		params    EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams
-		queryArgs = r.URL.Query()
-	)
+func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
+	// Decode path: enterprise.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "enterprise",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Enterprise = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: enterprise: not specified")
+		}
+	}
+	// Set default value for query: per_page.
+	{
+		val := int(30)
+
+		params.PerPage.SetTo(val)
+	}
+	// Decode query: per_page.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPerPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPerPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.PerPage.SetTo(paramsDotPerPageVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: per_page: parse")
+			}
+		}
+	}
+	// Set default value for query: page.
+	{
+		val := int(1)
+
+		params.Page.SetTo(val)
+	}
+	// Decode query: page.
+	{
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				var paramsDotPageVal int
+				if err := func() error {
+					s, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(s)
+					if err != nil {
+						return err
+					}
+
+					paramsDotPageVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				params.Page.SetTo(paramsDotPageVal)
+				return nil
+			}); err != nil {
+				return params, errors.Wrap(err, "query: page: parse")
+			}
+		}
+	}
+	return params, nil
+}
+
+func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18050,15 +17344,14 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -18078,7 +17371,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -18091,15 +17384,14 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -18119,7 +17411,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -18127,10 +17419,7 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	return params, nil
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string, r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, error) {
-	var (
-		params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams
-	)
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string, r *http.Request) (params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18165,10 +17454,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string
 	return params, nil
 }
 
-func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string, r *http.Request) (EnterpriseAdminProvisionAndInviteEnterpriseUserParams, error) {
-	var (
-		params EnterpriseAdminProvisionAndInviteEnterpriseUserParams
-	)
+func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string, r *http.Request) (params EnterpriseAdminProvisionAndInviteEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18203,10 +17489,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string,
 	return params, nil
 }
 
-func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, r *http.Request) (EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-	)
+func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18303,10 +17586,7 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	return params, nil
 }
 
-func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args [3]string, r *http.Request) (EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams
-	)
+func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18403,10 +17683,7 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminSetAllowedActionsEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminSetAllowedActionsEnterpriseParams
-	)
+func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetAllowedActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18441,10 +17718,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, r *h
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams
-	)
+func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18479,324 +17753,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]st
 	return params, nil
 }
 
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args [2]string, r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, error) {
-	var (
-		params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams
-	)
-	// Decode path: enterprise.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "enterprise",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Enterprise = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: enterprise: not specified")
-		}
-	}
-	// Decode path: scim_group_id.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "scim_group_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.ScimGroupID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: scim_group_id: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args [2]string, r *http.Request) (EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, error) {
-	var (
-		params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams
-	)
-	// Decode path: enterprise.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "enterprise",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Enterprise = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: enterprise: not specified")
-		}
-	}
-	// Decode path: scim_user_id.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "scim_user_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.ScimUserID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: scim_user_id: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
-	)
-	// Decode path: enterprise.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "enterprise",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Enterprise = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: enterprise: not specified")
-		}
-	}
-	// Decode path: runner_group_id.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "runner_group_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.RunnerGroupID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: runner_group_id: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, r *http.Request) (EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams
-	)
-	// Decode path: enterprise.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "enterprise",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Enterprise = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: enterprise: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams
-	)
-	// Decode path: enterprise.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "enterprise",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Enterprise = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: enterprise: not specified")
-		}
-	}
-	// Decode path: runner_group_id.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "runner_group_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.RunnerGroupID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: runner_group_id: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string, r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseGroupParams, error) {
-	var (
-		params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams
-	)
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18862,10 +17819,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string
 	return params, nil
 }
 
-func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string, r *http.Request) (EnterpriseAdminUpdateAttributeForEnterpriseUserParams, error) {
-	var (
-		params EnterpriseAdminUpdateAttributeForEnterpriseUserParams
-	)
+func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -18931,10 +17885,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string,
 	return params, nil
 }
 
-func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2]string, r *http.Request) (EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, error) {
-	var (
-		params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams
-	)
+func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
 		param := args[0]
@@ -19000,10 +17951,306 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2
 	return params, nil
 }
 
-func decodeGistsCheckIsStarredParams(args [1]string, r *http.Request) (GistsCheckIsStarredParams, error) {
-	var (
-		params GistsCheckIsStarredParams
-	)
+func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, _ error) {
+	// Decode path: enterprise.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "enterprise",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Enterprise = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: enterprise: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, _ error) {
+	// Decode path: enterprise.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "enterprise",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Enterprise = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: enterprise: not specified")
+		}
+	}
+	// Decode path: runner_group_id.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "runner_group_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.RunnerGroupID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: runner_group_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams, _ error) {
+	// Decode path: enterprise.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "enterprise",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Enterprise = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: enterprise: not specified")
+		}
+	}
+	// Decode path: scim_group_id.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "scim_group_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ScimGroupID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: scim_group_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateAttributeForEnterpriseUserParams, _ error) {
+	// Decode path: enterprise.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "enterprise",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Enterprise = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: enterprise: not specified")
+		}
+	}
+	// Decode path: scim_user_id.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "scim_user_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.ScimUserID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: scim_user_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, _ error) {
+	// Decode path: enterprise.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "enterprise",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Enterprise = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: enterprise: not specified")
+		}
+	}
+	// Decode path: runner_group_id.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "runner_group_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.RunnerGroupID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: runner_group_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeGistsCheckIsStarredParams(args [1]string, r *http.Request) (params GistsCheckIsStarredParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19038,10 +18285,7 @@ func decodeGistsCheckIsStarredParams(args [1]string, r *http.Request) (GistsChec
 	return params, nil
 }
 
-func decodeGistsCreateCommentParams(args [1]string, r *http.Request) (GistsCreateCommentParams, error) {
-	var (
-		params GistsCreateCommentParams
-	)
+func decodeGistsCreateCommentParams(args [1]string, r *http.Request) (params GistsCreateCommentParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19076,10 +18320,7 @@ func decodeGistsCreateCommentParams(args [1]string, r *http.Request) (GistsCreat
 	return params, nil
 }
 
-func decodeGistsDeleteParams(args [1]string, r *http.Request) (GistsDeleteParams, error) {
-	var (
-		params GistsDeleteParams
-	)
+func decodeGistsDeleteParams(args [1]string, r *http.Request) (params GistsDeleteParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19114,10 +18355,7 @@ func decodeGistsDeleteParams(args [1]string, r *http.Request) (GistsDeleteParams
 	return params, nil
 }
 
-func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (GistsDeleteCommentParams, error) {
-	var (
-		params GistsDeleteCommentParams
-	)
+func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (params GistsDeleteCommentParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19183,10 +18421,7 @@ func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (GistsDelet
 	return params, nil
 }
 
-func decodeGistsForkParams(args [1]string, r *http.Request) (GistsForkParams, error) {
-	var (
-		params GistsForkParams
-	)
+func decodeGistsForkParams(args [1]string, r *http.Request) (params GistsForkParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19221,10 +18456,7 @@ func decodeGistsForkParams(args [1]string, r *http.Request) (GistsForkParams, er
 	return params, nil
 }
 
-func decodeGistsGetParams(args [1]string, r *http.Request) (GistsGetParams, error) {
-	var (
-		params GistsGetParams
-	)
+func decodeGistsGetParams(args [1]string, r *http.Request) (params GistsGetParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19259,10 +18491,7 @@ func decodeGistsGetParams(args [1]string, r *http.Request) (GistsGetParams, erro
 	return params, nil
 }
 
-func decodeGistsGetCommentParams(args [2]string, r *http.Request) (GistsGetCommentParams, error) {
-	var (
-		params GistsGetCommentParams
-	)
+func decodeGistsGetCommentParams(args [2]string, r *http.Request) (params GistsGetCommentParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19328,10 +18557,7 @@ func decodeGistsGetCommentParams(args [2]string, r *http.Request) (GistsGetComme
 	return params, nil
 }
 
-func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (GistsGetRevisionParams, error) {
-	var (
-		params GistsGetRevisionParams
-	)
+func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params GistsGetRevisionParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19397,22 +18623,18 @@ func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (GistsGetRevi
 	return params, nil
 }
 
-func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, error) {
-	var (
-		params    GistsListParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGistsListParams(args [0]string, r *http.Request) (params GistsListParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19432,7 +18654,7 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -19445,15 +18667,14 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19473,7 +18694,7 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -19486,15 +18707,14 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19514,7 +18734,7 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -19522,11 +18742,8 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 	return params, nil
 }
 
-func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCommentsParams, error) {
-	var (
-		params    GistsListCommentsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGistsListCommentsParams(args [1]string, r *http.Request) (params GistsListCommentsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19566,15 +18783,14 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19594,7 +18810,7 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -19607,15 +18823,14 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19635,7 +18850,7 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -19643,11 +18858,8 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 	return params, nil
 }
 
-func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCommitsParams, error) {
-	var (
-		params    GistsListCommitsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGistsListCommitsParams(args [1]string, r *http.Request) (params GistsListCommitsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19687,15 +18899,14 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19715,7 +18926,7 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -19728,15 +18939,14 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19756,7 +18966,7 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -19764,11 +18974,8 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 	return params, nil
 }
 
-func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListForUserParams, error) {
-	var (
-		params    GistsListForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGistsListForUserParams(args [1]string, r *http.Request) (params GistsListForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -19802,15 +19009,14 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19830,7 +19036,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -19843,15 +19049,14 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19871,7 +19076,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -19884,15 +19089,14 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19912,7 +19116,7 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -19920,11 +19124,8 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 	return params, nil
 }
 
-func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForksParams, error) {
-	var (
-		params    GistsListForksParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsListForksParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -19964,15 +19165,14 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -19992,7 +19192,7 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -20005,15 +19205,14 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -20033,7 +19232,7 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -20041,22 +19240,18 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 	return params, nil
 }
 
-func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPublicParams, error) {
-	var (
-		params    GistsListPublicParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsListPublicParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -20076,7 +19271,7 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -20089,15 +19284,14 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -20117,7 +19311,7 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -20130,15 +19324,14 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -20158,7 +19351,7 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -20166,22 +19359,18 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 	return params, nil
 }
 
-func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListStarredParams, error) {
-	var (
-		params    GistsListStarredParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGistsListStarredParams(args [0]string, r *http.Request) (params GistsListStarredParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -20201,7 +19390,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -20214,15 +19403,14 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -20242,7 +19430,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -20255,15 +19443,14 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -20283,7 +19470,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -20291,10 +19478,7 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 	return params, nil
 }
 
-func decodeGistsStarParams(args [1]string, r *http.Request) (GistsStarParams, error) {
-	var (
-		params GistsStarParams
-	)
+func decodeGistsStarParams(args [1]string, r *http.Request) (params GistsStarParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -20329,10 +19513,7 @@ func decodeGistsStarParams(args [1]string, r *http.Request) (GistsStarParams, er
 	return params, nil
 }
 
-func decodeGistsUnstarParams(args [1]string, r *http.Request) (GistsUnstarParams, error) {
-	var (
-		params GistsUnstarParams
-	)
+func decodeGistsUnstarParams(args [1]string, r *http.Request) (params GistsUnstarParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -20367,10 +19548,7 @@ func decodeGistsUnstarParams(args [1]string, r *http.Request) (GistsUnstarParams
 	return params, nil
 }
 
-func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (GistsUpdateCommentParams, error) {
-	var (
-		params GistsUpdateCommentParams
-	)
+func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (params GistsUpdateCommentParams, _ error) {
 	// Decode path: gist_id.
 	{
 		param := args[0]
@@ -20436,10 +19614,7 @@ func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (GistsUpdat
 	return params, nil
 }
 
-func decodeGitCreateBlobParams(args [2]string, r *http.Request) (GitCreateBlobParams, error) {
-	var (
-		params GitCreateBlobParams
-	)
+func decodeGitCreateBlobParams(args [2]string, r *http.Request) (params GitCreateBlobParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -20505,10 +19680,7 @@ func decodeGitCreateBlobParams(args [2]string, r *http.Request) (GitCreateBlobPa
 	return params, nil
 }
 
-func decodeGitCreateCommitParams(args [2]string, r *http.Request) (GitCreateCommitParams, error) {
-	var (
-		params GitCreateCommitParams
-	)
+func decodeGitCreateCommitParams(args [2]string, r *http.Request) (params GitCreateCommitParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -20574,10 +19746,7 @@ func decodeGitCreateCommitParams(args [2]string, r *http.Request) (GitCreateComm
 	return params, nil
 }
 
-func decodeGitCreateRefParams(args [2]string, r *http.Request) (GitCreateRefParams, error) {
-	var (
-		params GitCreateRefParams
-	)
+func decodeGitCreateRefParams(args [2]string, r *http.Request) (params GitCreateRefParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -20643,10 +19812,7 @@ func decodeGitCreateRefParams(args [2]string, r *http.Request) (GitCreateRefPara
 	return params, nil
 }
 
-func decodeGitCreateTagParams(args [2]string, r *http.Request) (GitCreateTagParams, error) {
-	var (
-		params GitCreateTagParams
-	)
+func decodeGitCreateTagParams(args [2]string, r *http.Request) (params GitCreateTagParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -20712,10 +19878,7 @@ func decodeGitCreateTagParams(args [2]string, r *http.Request) (GitCreateTagPara
 	return params, nil
 }
 
-func decodeGitCreateTreeParams(args [2]string, r *http.Request) (GitCreateTreeParams, error) {
-	var (
-		params GitCreateTreeParams
-	)
+func decodeGitCreateTreeParams(args [2]string, r *http.Request) (params GitCreateTreeParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -20781,10 +19944,7 @@ func decodeGitCreateTreeParams(args [2]string, r *http.Request) (GitCreateTreePa
 	return params, nil
 }
 
-func decodeGitDeleteRefParams(args [3]string, r *http.Request) (GitDeleteRefParams, error) {
-	var (
-		params GitDeleteRefParams
-	)
+func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDeleteRefParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -20881,10 +20041,7 @@ func decodeGitDeleteRefParams(args [3]string, r *http.Request) (GitDeleteRefPara
 	return params, nil
 }
 
-func decodeGitGetBlobParams(args [3]string, r *http.Request) (GitGetBlobParams, error) {
-	var (
-		params GitGetBlobParams
-	)
+func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -20981,10 +20138,7 @@ func decodeGitGetBlobParams(args [3]string, r *http.Request) (GitGetBlobParams, 
 	return params, nil
 }
 
-func decodeGitGetCommitParams(args [3]string, r *http.Request) (GitGetCommitParams, error) {
-	var (
-		params GitGetCommitParams
-	)
+func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCommitParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -21081,10 +20235,7 @@ func decodeGitGetCommitParams(args [3]string, r *http.Request) (GitGetCommitPara
 	return params, nil
 }
 
-func decodeGitGetRefParams(args [3]string, r *http.Request) (GitGetRefParams, error) {
-	var (
-		params GitGetRefParams
-	)
+func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -21181,10 +20332,7 @@ func decodeGitGetRefParams(args [3]string, r *http.Request) (GitGetRefParams, er
 	return params, nil
 }
 
-func decodeGitGetTagParams(args [3]string, r *http.Request) (GitGetTagParams, error) {
-	var (
-		params GitGetTagParams
-	)
+func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -21281,11 +20429,8 @@ func decodeGitGetTagParams(args [3]string, r *http.Request) (GitGetTagParams, er
 	return params, nil
 }
 
-func decodeGitGetTreeParams(args [3]string, r *http.Request) (GitGetTreeParams, error) {
-	var (
-		params    GitGetTreeParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -21381,15 +20526,14 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (GitGetTreeParams, 
 	}
 	// Decode query: recursive.
 	{
-		if queryArgs.Has("recursive") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "recursive",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "recursive",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRecursiveVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -21409,7 +20553,7 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (GitGetTreeParams, 
 				}
 				params.Recursive.SetTo(paramsDotRecursiveVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: recursive: parse")
 			}
 		}
@@ -21417,11 +20561,8 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (GitGetTreeParams, 
 	return params, nil
 }
 
-func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMatchingRefsParams, error) {
-	var (
-		params    GitListMatchingRefsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params GitListMatchingRefsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -21523,15 +20664,14 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -21551,7 +20691,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -21564,15 +20704,14 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -21592,7 +20731,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -21600,10 +20739,7 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 	return params, nil
 }
 
-func decodeGitUpdateRefParams(args [3]string, r *http.Request) (GitUpdateRefParams, error) {
-	var (
-		params GitUpdateRefParams
-	)
+func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdateRefParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -21700,10 +20836,7 @@ func decodeGitUpdateRefParams(args [3]string, r *http.Request) (GitUpdateRefPara
 	return params, nil
 }
 
-func decodeGitignoreGetTemplateParams(args [1]string, r *http.Request) (GitignoreGetTemplateParams, error) {
-	var (
-		params GitignoreGetTemplateParams
-	)
+func decodeGitignoreGetTemplateParams(args [1]string, r *http.Request) (params GitignoreGetTemplateParams, _ error) {
 	// Decode path: name.
 	{
 		param := args[0]
@@ -21738,10 +20871,7 @@ func decodeGitignoreGetTemplateParams(args [1]string, r *http.Request) (Gitignor
 	return params, nil
 }
 
-func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, r *http.Request) (InteractionsRemoveRestrictionsForOrgParams, error) {
-	var (
-		params InteractionsRemoveRestrictionsForOrgParams
-	)
+func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, r *http.Request) (params InteractionsRemoveRestrictionsForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -21776,10 +20906,7 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, r *http.Re
 	return params, nil
 }
 
-func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.Request) (InteractionsRemoveRestrictionsForRepoParams, error) {
-	var (
-		params InteractionsRemoveRestrictionsForRepoParams
-	)
+func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.Request) (params InteractionsRemoveRestrictionsForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -21845,10 +20972,7 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.R
 	return params, nil
 }
 
-func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, r *http.Request) (InteractionsSetRestrictionsForOrgParams, error) {
-	var (
-		params InteractionsSetRestrictionsForOrgParams
-	)
+func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, r *http.Request) (params InteractionsSetRestrictionsForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -21883,10 +21007,7 @@ func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Request) (InteractionsSetRestrictionsForRepoParams, error) {
-	var (
-		params InteractionsSetRestrictionsForRepoParams
-	)
+func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Request) (params InteractionsSetRestrictionsForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -21952,10 +21073,7 @@ func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
-func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (IssuesAddAssigneesParams, error) {
-	var (
-		params IssuesAddAssigneesParams
-	)
+func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params IssuesAddAssigneesParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22052,10 +21170,7 @@ func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (IssuesAddA
 	return params, nil
 }
 
-func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (IssuesCheckUserCanBeAssignedParams, error) {
-	var (
-		params IssuesCheckUserCanBeAssignedParams
-	)
+func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (params IssuesCheckUserCanBeAssignedParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22152,10 +21267,7 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeIssuesCreateParams(args [2]string, r *http.Request) (IssuesCreateParams, error) {
-	var (
-		params IssuesCreateParams
-	)
+func decodeIssuesCreateParams(args [2]string, r *http.Request) (params IssuesCreateParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22221,10 +21333,7 @@ func decodeIssuesCreateParams(args [2]string, r *http.Request) (IssuesCreatePara
 	return params, nil
 }
 
-func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (IssuesCreateCommentParams, error) {
-	var (
-		params IssuesCreateCommentParams
-	)
+func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params IssuesCreateCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22321,10 +21430,7 @@ func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (IssuesCre
 	return params, nil
 }
 
-func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (IssuesCreateLabelParams, error) {
-	var (
-		params IssuesCreateLabelParams
-	)
+func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (params IssuesCreateLabelParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22390,10 +21496,7 @@ func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (IssuesCreat
 	return params, nil
 }
 
-func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (IssuesCreateMilestoneParams, error) {
-	var (
-		params IssuesCreateMilestoneParams
-	)
+func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (params IssuesCreateMilestoneParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22459,10 +21562,7 @@ func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (IssuesC
 	return params, nil
 }
 
-func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (IssuesDeleteCommentParams, error) {
-	var (
-		params IssuesDeleteCommentParams
-	)
+func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params IssuesDeleteCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22559,10 +21659,7 @@ func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (IssuesDel
 	return params, nil
 }
 
-func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (IssuesDeleteLabelParams, error) {
-	var (
-		params IssuesDeleteLabelParams
-	)
+func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params IssuesDeleteLabelParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22659,10 +21756,7 @@ func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (IssuesDelet
 	return params, nil
 }
 
-func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (IssuesDeleteMilestoneParams, error) {
-	var (
-		params IssuesDeleteMilestoneParams
-	)
+func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params IssuesDeleteMilestoneParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22759,10 +21853,7 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (IssuesD
 	return params, nil
 }
 
-func decodeIssuesGetParams(args [3]string, r *http.Request) (IssuesGetParams, error) {
-	var (
-		params IssuesGetParams
-	)
+func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22859,10 +21950,7 @@ func decodeIssuesGetParams(args [3]string, r *http.Request) (IssuesGetParams, er
 	return params, nil
 }
 
-func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (IssuesGetCommentParams, error) {
-	var (
-		params IssuesGetCommentParams
-	)
+func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params IssuesGetCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -22959,10 +22047,7 @@ func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (IssuesGetCom
 	return params, nil
 }
 
-func decodeIssuesGetEventParams(args [3]string, r *http.Request) (IssuesGetEventParams, error) {
-	var (
-		params IssuesGetEventParams
-	)
+func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesGetEventParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -23059,10 +22144,7 @@ func decodeIssuesGetEventParams(args [3]string, r *http.Request) (IssuesGetEvent
 	return params, nil
 }
 
-func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (IssuesGetLabelParams, error) {
-	var (
-		params IssuesGetLabelParams
-	)
+func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesGetLabelParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -23159,10 +22241,7 @@ func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (IssuesGetLabel
 	return params, nil
 }
 
-func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (IssuesGetMilestoneParams, error) {
-	var (
-		params IssuesGetMilestoneParams
-	)
+func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params IssuesGetMilestoneParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -23259,11 +22338,8 @@ func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (IssuesGetM
 	return params, nil
 }
 
-func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, error) {
-	var (
-		params    IssuesListParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: filter.
 	{
 		val := IssuesListFilter("assigned")
@@ -23272,15 +22348,14 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal IssuesListFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23300,7 +22375,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 			if err := func() error {
@@ -23328,15 +22403,14 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23356,7 +22430,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -23378,15 +22452,14 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: labels.
 	{
-		if queryArgs.Has("labels") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "labels",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "labels",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelsVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23406,7 +22479,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Labels.SetTo(paramsDotLabelsVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: labels: parse")
 			}
 		}
@@ -23419,15 +22492,14 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23447,7 +22519,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -23475,15 +22547,14 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23503,7 +22574,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -23525,15 +22596,14 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23553,22 +22623,21 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
 	}
 	// Decode query: collab.
 	{
-		if queryArgs.Has("collab") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "collab",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "collab",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCollabVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23588,22 +22657,21 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Collab.SetTo(paramsDotCollabVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: collab: parse")
 			}
 		}
 	}
 	// Decode query: orgs.
 	{
-		if queryArgs.Has("orgs") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "orgs",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "orgs",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrgsVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23623,22 +22691,21 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Orgs.SetTo(paramsDotOrgsVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: orgs: parse")
 			}
 		}
 	}
 	// Decode query: owned.
 	{
-		if queryArgs.Has("owned") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "owned",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "owned",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOwnedVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23658,22 +22725,21 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Owned.SetTo(paramsDotOwnedVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: owned: parse")
 			}
 		}
 	}
 	// Decode query: pulls.
 	{
-		if queryArgs.Has("pulls") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "pulls",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "pulls",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPullsVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23693,7 +22759,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Pulls.SetTo(paramsDotPullsVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: pulls: parse")
 			}
 		}
@@ -23706,15 +22772,14 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23734,7 +22799,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -23747,15 +22812,14 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23775,7 +22839,7 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -23783,11 +22847,8 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	return params, nil
 }
 
-func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesListAssigneesParams, error) {
-	var (
-		params    IssuesListAssigneesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params IssuesListAssigneesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -23858,15 +22919,14 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23886,7 +22946,7 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -23899,15 +22959,14 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -23927,7 +22986,7 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -23935,11 +22994,8 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 	return params, nil
 }
 
-func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesListCommentsParams, error) {
-	var (
-		params    IssuesListCommentsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params IssuesListCommentsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -24035,15 +23091,14 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24063,7 +23118,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -24076,15 +23131,14 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24104,7 +23158,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -24117,15 +23171,14 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24145,7 +23198,7 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -24153,11 +23206,8 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 	return params, nil
 }
 
-func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (IssuesListCommentsForRepoParams, error) {
-	var (
-		params    IssuesListCommentsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (params IssuesListCommentsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -24228,15 +23278,14 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListCommentsForRepoSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24256,7 +23305,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -24278,15 +23327,14 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListCommentsForRepoDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24306,7 +23354,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -24328,15 +23376,14 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24356,7 +23403,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -24369,15 +23416,14 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24397,7 +23443,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -24410,15 +23456,14 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24438,7 +23483,7 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -24446,11 +23491,8 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	return params, nil
 }
 
-func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (IssuesListEventsForRepoParams, error) {
-	var (
-		params    IssuesListEventsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (params IssuesListEventsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -24521,15 +23563,14 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24549,7 +23590,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -24562,15 +23603,14 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24590,7 +23630,7 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -24598,11 +23638,8 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 	return params, nil
 }
 
-func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request) (IssuesListForAuthenticatedUserParams, error) {
-	var (
-		params    IssuesListForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request) (params IssuesListForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: filter.
 	{
 		val := IssuesListForAuthenticatedUserFilter("assigned")
@@ -24611,15 +23648,14 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal IssuesListForAuthenticatedUserFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24639,7 +23675,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 			if err := func() error {
@@ -24667,15 +23703,14 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListForAuthenticatedUserState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24695,7 +23730,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -24717,15 +23752,14 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: labels.
 	{
-		if queryArgs.Has("labels") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "labels",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "labels",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelsVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24745,7 +23779,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 				}
 				params.Labels.SetTo(paramsDotLabelsVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: labels: parse")
 			}
 		}
@@ -24758,15 +23792,14 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListForAuthenticatedUserSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24786,7 +23819,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -24814,15 +23847,14 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListForAuthenticatedUserDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24842,7 +23874,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -24864,15 +23896,14 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24892,7 +23923,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -24905,15 +23936,14 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24933,7 +23963,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -24946,15 +23976,14 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -24974,7 +24003,7 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -24982,11 +24011,8 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	return params, nil
 }
 
-func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListForOrgParams, error) {
-	var (
-		params    IssuesListForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params IssuesListForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -25026,15 +24052,14 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal IssuesListForOrgFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25054,7 +24079,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 			if err := func() error {
@@ -25082,15 +24107,14 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListForOrgState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25110,7 +24134,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -25132,15 +24156,14 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: labels.
 	{
-		if queryArgs.Has("labels") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "labels",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "labels",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelsVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25160,7 +24183,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 				}
 				params.Labels.SetTo(paramsDotLabelsVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: labels: parse")
 			}
 		}
@@ -25173,15 +24196,14 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListForOrgSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25201,7 +24223,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -25229,15 +24251,14 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListForOrgDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25257,7 +24278,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -25279,15 +24300,14 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25307,7 +24327,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -25320,15 +24340,14 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25348,7 +24367,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -25361,15 +24380,14 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25389,7 +24407,7 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -25397,11 +24415,8 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	return params, nil
 }
 
-func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListForRepoParams, error) {
-	var (
-		params    IssuesListForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params IssuesListForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -25466,15 +24481,14 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: milestone.
 	{
-		if queryArgs.Has("milestone") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "milestone",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "milestone",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotMilestoneVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25494,7 +24508,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Milestone.SetTo(paramsDotMilestoneVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: milestone: parse")
 			}
 		}
@@ -25507,15 +24521,14 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListForRepoState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25535,7 +24548,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -25557,15 +24570,14 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: assignee.
 	{
-		if queryArgs.Has("assignee") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "assignee",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "assignee",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAssigneeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25585,22 +24597,21 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Assignee.SetTo(paramsDotAssigneeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: assignee: parse")
 			}
 		}
 	}
 	// Decode query: creator.
 	{
-		if queryArgs.Has("creator") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "creator",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "creator",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCreatorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25620,22 +24631,21 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Creator.SetTo(paramsDotCreatorVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: creator: parse")
 			}
 		}
 	}
 	// Decode query: mentioned.
 	{
-		if queryArgs.Has("mentioned") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "mentioned",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "mentioned",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotMentionedVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25655,22 +24665,21 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Mentioned.SetTo(paramsDotMentionedVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: mentioned: parse")
 			}
 		}
 	}
 	// Decode query: labels.
 	{
-		if queryArgs.Has("labels") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "labels",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "labels",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLabelsVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25690,7 +24699,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Labels.SetTo(paramsDotLabelsVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: labels: parse")
 			}
 		}
@@ -25703,15 +24712,14 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListForRepoSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25731,7 +24739,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -25759,15 +24767,14 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListForRepoDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25787,7 +24794,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -25809,15 +24816,14 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25837,7 +24843,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -25850,15 +24856,14 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25878,7 +24883,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -25891,15 +24896,14 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -25919,7 +24923,7 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -25927,11 +24931,8 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	return params, nil
 }
 
-func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (IssuesListLabelsForMilestoneParams, error) {
-	var (
-		params    IssuesListLabelsForMilestoneParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (params IssuesListLabelsForMilestoneParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -26033,15 +25034,14 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26061,7 +25061,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -26074,15 +25074,14 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26102,7 +25101,7 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -26110,11 +25109,8 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (IssuesListLabelsForRepoParams, error) {
-	var (
-		params    IssuesListLabelsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (params IssuesListLabelsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -26185,15 +25181,14 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26213,7 +25208,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -26226,15 +25221,14 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26254,7 +25248,7 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -26262,11 +25256,8 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 	return params, nil
 }
 
-func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (IssuesListLabelsOnIssueParams, error) {
-	var (
-		params    IssuesListLabelsOnIssueParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (params IssuesListLabelsOnIssueParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -26368,15 +25359,14 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26396,7 +25386,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -26409,15 +25399,14 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26437,7 +25426,7 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -26445,11 +25434,8 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 	return params, nil
 }
 
-func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesListMilestonesParams, error) {
-	var (
-		params    IssuesListMilestonesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params IssuesListMilestonesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -26520,15 +25506,14 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal IssuesListMilestonesState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26548,7 +25533,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -26576,15 +25561,14 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal IssuesListMilestonesSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26604,7 +25588,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -26632,15 +25616,14 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal IssuesListMilestonesDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26660,7 +25643,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -26688,15 +25671,14 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26716,7 +25698,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -26729,15 +25711,14 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -26757,7 +25738,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -26765,10 +25746,7 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	return params, nil
 }
 
-func decodeIssuesLockParams(args [3]string, r *http.Request) (IssuesLockParams, error) {
-	var (
-		params IssuesLockParams
-	)
+func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -26865,10 +25843,7 @@ func decodeIssuesLockParams(args [3]string, r *http.Request) (IssuesLockParams, 
 	return params, nil
 }
 
-func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (IssuesRemoveAllLabelsParams, error) {
-	var (
-		params IssuesRemoveAllLabelsParams
-	)
+func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params IssuesRemoveAllLabelsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -26965,10 +25940,7 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (IssuesR
 	return params, nil
 }
 
-func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (IssuesRemoveAssigneesParams, error) {
-	var (
-		params IssuesRemoveAssigneesParams
-	)
+func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params IssuesRemoveAssigneesParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27065,10 +26037,7 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (IssuesR
 	return params, nil
 }
 
-func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (IssuesRemoveLabelParams, error) {
-	var (
-		params IssuesRemoveLabelParams
-	)
+func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params IssuesRemoveLabelParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27196,10 +26165,7 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (IssuesRemov
 	return params, nil
 }
 
-func decodeIssuesUnlockParams(args [3]string, r *http.Request) (IssuesUnlockParams, error) {
-	var (
-		params IssuesUnlockParams
-	)
+func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnlockParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27296,10 +26262,7 @@ func decodeIssuesUnlockParams(args [3]string, r *http.Request) (IssuesUnlockPara
 	return params, nil
 }
 
-func decodeIssuesUpdateParams(args [3]string, r *http.Request) (IssuesUpdateParams, error) {
-	var (
-		params IssuesUpdateParams
-	)
+func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpdateParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27396,10 +26359,7 @@ func decodeIssuesUpdateParams(args [3]string, r *http.Request) (IssuesUpdatePara
 	return params, nil
 }
 
-func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (IssuesUpdateCommentParams, error) {
-	var (
-		params IssuesUpdateCommentParams
-	)
+func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params IssuesUpdateCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27496,10 +26456,7 @@ func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (IssuesUpd
 	return params, nil
 }
 
-func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (IssuesUpdateLabelParams, error) {
-	var (
-		params IssuesUpdateLabelParams
-	)
+func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params IssuesUpdateLabelParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27596,10 +26553,7 @@ func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (IssuesUpdat
 	return params, nil
 }
 
-func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (IssuesUpdateMilestoneParams, error) {
-	var (
-		params IssuesUpdateMilestoneParams
-	)
+func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params IssuesUpdateMilestoneParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27696,10 +26650,7 @@ func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (IssuesU
 	return params, nil
 }
 
-func decodeLicensesGetParams(args [1]string, r *http.Request) (LicensesGetParams, error) {
-	var (
-		params LicensesGetParams
-	)
+func decodeLicensesGetParams(args [1]string, r *http.Request) (params LicensesGetParams, _ error) {
 	// Decode path: license.
 	{
 		param := args[0]
@@ -27734,22 +26685,18 @@ func decodeLicensesGetParams(args [1]string, r *http.Request) (LicensesGetParams
 	return params, nil
 }
 
-func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (LicensesGetAllCommonlyUsedParams, error) {
-	var (
-		params    LicensesGetAllCommonlyUsedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (params LicensesGetAllCommonlyUsedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: featured.
 	{
-		if queryArgs.Has("featured") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "featured",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "featured",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFeaturedVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -27769,7 +26716,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 				}
 				params.Featured.SetTo(paramsDotFeaturedVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: featured: parse")
 			}
 		}
@@ -27782,15 +26729,14 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -27810,7 +26756,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -27823,15 +26769,14 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -27851,7 +26796,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -27859,10 +26804,7 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 	return params, nil
 }
 
-func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (LicensesGetForRepoParams, error) {
-	var (
-		params LicensesGetForRepoParams
-	)
+func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params LicensesGetForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27928,10 +26870,7 @@ func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (LicensesGe
 	return params, nil
 }
 
-func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (MigrationsCancelImportParams, error) {
-	var (
-		params MigrationsCancelImportParams
-	)
+func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (params MigrationsCancelImportParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -27997,10 +26936,7 @@ func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (Migrat
 	return params, nil
 }
 
-func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, r *http.Request) (MigrationsDeleteArchiveForAuthenticatedUserParams, error) {
-	var (
-		params MigrationsDeleteArchiveForAuthenticatedUserParams
-	)
+func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsDeleteArchiveForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	{
 		param := args[0]
@@ -28035,10 +26971,7 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, r *
 	return params, nil
 }
 
-func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) (MigrationsDeleteArchiveForOrgParams, error) {
-	var (
-		params MigrationsDeleteArchiveForOrgParams
-	)
+func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) (params MigrationsDeleteArchiveForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -28104,10 +27037,7 @@ func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request) (MigrationsDownloadArchiveForOrgParams, error) {
-	var (
-		params MigrationsDownloadArchiveForOrgParams
-	)
+func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request) (params MigrationsDownloadArchiveForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -28173,10 +27103,7 @@ func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request
 	return params, nil
 }
 
-func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, r *http.Request) (MigrationsGetArchiveForAuthenticatedUserParams, error) {
-	var (
-		params MigrationsGetArchiveForAuthenticatedUserParams
-	)
+func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsGetArchiveForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	{
 		param := args[0]
@@ -28211,11 +27138,8 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, r *htt
 	return params, nil
 }
 
-func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (MigrationsGetCommitAuthorsParams, error) {
-	var (
-		params    MigrationsGetCommitAuthorsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (params MigrationsGetCommitAuthorsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -28280,15 +27204,14 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (Mi
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -28308,7 +27231,7 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (Mi
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -28316,10 +27239,7 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (Mi
 	return params, nil
 }
 
-func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (MigrationsGetImportStatusParams, error) {
-	var (
-		params MigrationsGetImportStatusParams
-	)
+func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (params MigrationsGetImportStatusParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -28385,10 +27305,7 @@ func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (Mig
 	return params, nil
 }
 
-func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (MigrationsGetLargeFilesParams, error) {
-	var (
-		params MigrationsGetLargeFilesParams
-	)
+func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (params MigrationsGetLargeFilesParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -28454,11 +27371,8 @@ func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (Migra
 	return params, nil
 }
 
-func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http.Request) (MigrationsGetStatusForAuthenticatedUserParams, error) {
-	var (
-		params    MigrationsGetStatusForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsGetStatusForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: migration_id.
 	{
 		param := args[0]
@@ -28492,15 +27406,14 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 	}
 	// Decode query: exclude.
 	{
-		if queryArgs.Has("exclude") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "exclude",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "exclude",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal string
 					if err := func() error {
@@ -28522,7 +27435,7 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 					params.Exclude = append(params.Exclude, paramsDotExcludeVal)
 					return nil
 				})
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: exclude: parse")
 			}
 		}
@@ -28530,11 +27443,8 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 	return params, nil
 }
 
-func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (MigrationsGetStatusForOrgParams, error) {
-	var (
-		params    MigrationsGetStatusForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (params MigrationsGetStatusForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -28599,15 +27509,14 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (Mig
 	}
 	// Decode query: exclude.
 	{
-		if queryArgs.Has("exclude") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "exclude",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "exclude",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal MigrationsGetStatusForOrgExcludeItem
 					if err := func() error {
@@ -28629,7 +27538,7 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (Mig
 					params.Exclude = append(params.Exclude, paramsDotExcludeVal)
 					return nil
 				})
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: exclude: parse")
 			}
 			if err := func() error {
@@ -28659,11 +27568,8 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (Mig
 	return params, nil
 }
 
-func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Request) (MigrationsListForAuthenticatedUserParams, error) {
-	var (
-		params    MigrationsListForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params MigrationsListForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -28672,15 +27578,14 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -28700,7 +27605,7 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -28713,15 +27618,14 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -28741,7 +27645,7 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -28749,11 +27653,8 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 	return params, nil
 }
 
-func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (MigrationsListForOrgParams, error) {
-	var (
-		params    MigrationsListForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (params MigrationsListForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -28793,15 +27694,14 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -28821,7 +27721,7 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -28834,15 +27734,14 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -28862,22 +27761,21 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: exclude.
 	{
-		if queryArgs.Has("exclude") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "exclude",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "exclude",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotExcludeVal MigrationsListForOrgExcludeItem
 					if err := func() error {
@@ -28899,7 +27797,7 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 					params.Exclude = append(params.Exclude, paramsDotExcludeVal)
 					return nil
 				})
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: exclude: parse")
 			}
 			if err := func() error {
@@ -28929,11 +27827,8 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 	return params, nil
 }
 
-func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (MigrationsListReposForOrgParams, error) {
-	var (
-		params    MigrationsListReposForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (params MigrationsListReposForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -29004,15 +27899,14 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -29032,7 +27926,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -29045,15 +27939,14 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -29073,7 +27966,7 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -29081,11 +27974,8 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 	return params, nil
 }
 
-func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (MigrationsListReposForUserParams, error) {
-	var (
-		params    MigrationsListReposForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (params MigrationsListReposForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: migration_id.
 	{
 		param := args[0]
@@ -29125,15 +28015,14 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -29153,7 +28042,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -29166,15 +28055,14 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -29194,7 +28082,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -29202,10 +28090,7 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 	return params, nil
 }
 
-func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (MigrationsMapCommitAuthorParams, error) {
-	var (
-		params MigrationsMapCommitAuthorParams
-	)
+func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (params MigrationsMapCommitAuthorParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -29302,10 +28187,7 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (Mig
 	return params, nil
 }
 
-func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (MigrationsSetLfsPreferenceParams, error) {
-	var (
-		params MigrationsSetLfsPreferenceParams
-	)
+func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (params MigrationsSetLfsPreferenceParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -29371,10 +28253,7 @@ func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (Mi
 	return params, nil
 }
 
-func decodeMigrationsStartForOrgParams(args [1]string, r *http.Request) (MigrationsStartForOrgParams, error) {
-	var (
-		params MigrationsStartForOrgParams
-	)
+func decodeMigrationsStartForOrgParams(args [1]string, r *http.Request) (params MigrationsStartForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -29409,10 +28288,7 @@ func decodeMigrationsStartForOrgParams(args [1]string, r *http.Request) (Migrati
 	return params, nil
 }
 
-func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (MigrationsStartImportParams, error) {
-	var (
-		params MigrationsStartImportParams
-	)
+func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (params MigrationsStartImportParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -29478,10 +28354,7 @@ func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (Migrati
 	return params, nil
 }
 
-func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (MigrationsUnlockRepoForAuthenticatedUserParams, error) {
-	var (
-		params MigrationsUnlockRepoForAuthenticatedUserParams
-	)
+func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params MigrationsUnlockRepoForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	{
 		param := args[0]
@@ -29547,10 +28420,7 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *htt
 	return params, nil
 }
 
-func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (MigrationsUnlockRepoForOrgParams, error) {
-	var (
-		params MigrationsUnlockRepoForOrgParams
-	)
+func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (params MigrationsUnlockRepoForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -29647,10 +28517,7 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (Mi
 	return params, nil
 }
 
-func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (MigrationsUpdateImportParams, error) {
-	var (
-		params MigrationsUpdateImportParams
-	)
+func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (params MigrationsUpdateImportParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -29716,10 +28583,7 @@ func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (Migrat
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, r *http.Request) (OAuthAuthorizationsDeleteAuthorizationParams, error) {
-	var (
-		params OAuthAuthorizationsDeleteAuthorizationParams
-	)
+func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsDeleteAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	{
 		param := args[0]
@@ -29754,10 +28618,7 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, r *http.
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, r *http.Request) (OAuthAuthorizationsDeleteGrantParams, error) {
-	var (
-		params OAuthAuthorizationsDeleteGrantParams
-	)
+func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, r *http.Request) (params OAuthAuthorizationsDeleteGrantParams, _ error) {
 	// Decode path: grant_id.
 	{
 		param := args[0]
@@ -29792,10 +28653,7 @@ func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, r *http.Request) (OAuthAuthorizationsGetAuthorizationParams, error) {
-	var (
-		params OAuthAuthorizationsGetAuthorizationParams
-	)
+func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	{
 		param := args[0]
@@ -29830,10 +28688,7 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, r *http.Req
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsGetGrantParams(args [1]string, r *http.Request) (OAuthAuthorizationsGetGrantParams, error) {
-	var (
-		params OAuthAuthorizationsGetGrantParams
-	)
+func decodeOAuthAuthorizationsGetGrantParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetGrantParams, _ error) {
 	// Decode path: grant_id.
 	{
 		param := args[0]
@@ -29868,10 +28723,7 @@ func decodeOAuthAuthorizationsGetGrantParams(args [1]string, r *http.Request) (O
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]string, r *http.Request) (OAuthAuthorizationsGetOrCreateAuthorizationForAppParams, error) {
-	var (
-		params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams
-	)
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams, _ error) {
 	// Decode path: client_id.
 	{
 		param := args[0]
@@ -29906,10 +28758,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]strin
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args [2]string, r *http.Request) (OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams, error) {
-	var (
-		params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
-	)
+func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args [2]string, r *http.Request) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams, _ error) {
 	// Decode path: client_id.
 	{
 		param := args[0]
@@ -29975,11 +28824,8 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.Request) (OAuthAuthorizationsListAuthorizationsParams, error) {
-	var (
-		params    OAuthAuthorizationsListAuthorizationsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.Request) (params OAuthAuthorizationsListAuthorizationsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -29988,15 +28834,14 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -30016,7 +28861,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -30029,15 +28874,14 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -30057,22 +28901,21 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: client_id.
 	{
-		if queryArgs.Has("client_id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "client_id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "client_id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotClientIDVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -30092,7 +28935,7 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 				}
 				params.ClientID.SetTo(paramsDotClientIDVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: client_id: parse")
 			}
 		}
@@ -30100,11 +28943,8 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) (OAuthAuthorizationsListGrantsParams, error) {
-	var (
-		params    OAuthAuthorizationsListGrantsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) (params OAuthAuthorizationsListGrantsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -30113,15 +28953,14 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -30141,7 +28980,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -30154,15 +28993,14 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -30182,22 +29020,21 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: client_id.
 	{
-		if queryArgs.Has("client_id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "client_id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "client_id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotClientIDVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -30217,7 +29054,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 				}
 				params.ClientID.SetTo(paramsDotClientIDVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: client_id: parse")
 			}
 		}
@@ -30225,10 +29062,7 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, r *http.Request) (OAuthAuthorizationsUpdateAuthorizationParams, error) {
-	var (
-		params OAuthAuthorizationsUpdateAuthorizationParams
-	)
+func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsUpdateAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	{
 		param := args[0]
@@ -30263,10 +29097,7 @@ func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, r *http.
 	return params, nil
 }
 
-func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (OrgsBlockUserParams, error) {
-	var (
-		params OrgsBlockUserParams
-	)
+func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (params OrgsBlockUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30332,10 +29163,7 @@ func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (OrgsBlockUserPa
 	return params, nil
 }
 
-func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (OrgsCancelInvitationParams, error) {
-	var (
-		params OrgsCancelInvitationParams
-	)
+func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (params OrgsCancelInvitationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30401,10 +29229,7 @@ func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (OrgsCanc
 	return params, nil
 }
 
-func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (OrgsCheckBlockedUserParams, error) {
-	var (
-		params OrgsCheckBlockedUserParams
-	)
+func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (params OrgsCheckBlockedUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30470,10 +29295,7 @@ func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (OrgsChec
 	return params, nil
 }
 
-func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (OrgsCheckMembershipForUserParams, error) {
-	var (
-		params OrgsCheckMembershipForUserParams
-	)
+func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (params OrgsCheckMembershipForUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30539,10 +29361,7 @@ func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (Or
 	return params, nil
 }
 
-func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Request) (OrgsCheckPublicMembershipForUserParams, error) {
-	var (
-		params OrgsCheckPublicMembershipForUserParams
-	)
+func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Request) (params OrgsCheckPublicMembershipForUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30608,10 +29427,7 @@ func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
-func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.Request) (OrgsConvertMemberToOutsideCollaboratorParams, error) {
-	var (
-		params OrgsConvertMemberToOutsideCollaboratorParams
-	)
+func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.Request) (params OrgsConvertMemberToOutsideCollaboratorParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30677,10 +29493,7 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.
 	return params, nil
 }
 
-func decodeOrgsCreateInvitationParams(args [1]string, r *http.Request) (OrgsCreateInvitationParams, error) {
-	var (
-		params OrgsCreateInvitationParams
-	)
+func decodeOrgsCreateInvitationParams(args [1]string, r *http.Request) (params OrgsCreateInvitationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30715,10 +29528,7 @@ func decodeOrgsCreateInvitationParams(args [1]string, r *http.Request) (OrgsCrea
 	return params, nil
 }
 
-func decodeOrgsCreateWebhookParams(args [1]string, r *http.Request) (OrgsCreateWebhookParams, error) {
-	var (
-		params OrgsCreateWebhookParams
-	)
+func decodeOrgsCreateWebhookParams(args [1]string, r *http.Request) (params OrgsCreateWebhookParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30753,10 +29563,7 @@ func decodeOrgsCreateWebhookParams(args [1]string, r *http.Request) (OrgsCreateW
 	return params, nil
 }
 
-func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (OrgsDeleteWebhookParams, error) {
-	var (
-		params OrgsDeleteWebhookParams
-	)
+func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (params OrgsDeleteWebhookParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30822,10 +29629,7 @@ func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (OrgsDeleteW
 	return params, nil
 }
 
-func decodeOrgsGetParams(args [1]string, r *http.Request) (OrgsGetParams, error) {
-	var (
-		params OrgsGetParams
-	)
+func decodeOrgsGetParams(args [1]string, r *http.Request) (params OrgsGetParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30860,11 +29664,8 @@ func decodeOrgsGetParams(args [1]string, r *http.Request) (OrgsGetParams, error)
 	return params, nil
 }
 
-func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditLogParams, error) {
-	var (
-		params    OrgsGetAuditLogParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (params OrgsGetAuditLogParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -30898,15 +29699,14 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: phrase.
 	{
-		if queryArgs.Has("phrase") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "phrase",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "phrase",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPhraseVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -30926,22 +29726,21 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 				}
 				params.Phrase.SetTo(paramsDotPhraseVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: phrase: parse")
 			}
 		}
 	}
 	// Decode query: include.
 	{
-		if queryArgs.Has("include") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "include",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "include",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotIncludeVal OrgsGetAuditLogInclude
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -30961,7 +29760,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 				}
 				params.Include.SetTo(paramsDotIncludeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: include: parse")
 			}
 			if err := func() error {
@@ -30983,15 +29782,14 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: after.
 	{
-		if queryArgs.Has("after") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "after",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "after",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAfterVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31011,22 +29809,21 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 				}
 				params.After.SetTo(paramsDotAfterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: after: parse")
 			}
 		}
 	}
 	// Decode query: before.
 	{
-		if queryArgs.Has("before") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "before",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "before",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31046,22 +29843,21 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 				}
 				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
 			}
 		}
 	}
 	// Decode query: order.
 	{
-		if queryArgs.Has("order") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "order",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "order",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal OrgsGetAuditLogOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31081,7 +29877,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 				}
 				params.Order.SetTo(paramsDotOrderVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
 			}
 			if err := func() error {
@@ -31109,15 +29905,14 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31137,7 +29932,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -31150,15 +29945,14 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31178,7 +29972,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -31186,10 +29980,7 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	return params, nil
 }
 
-func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, r *http.Request) (OrgsGetMembershipForAuthenticatedUserParams, error) {
-	var (
-		params OrgsGetMembershipForAuthenticatedUserParams
-	)
+func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, r *http.Request) (params OrgsGetMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -31224,10 +30015,7 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, r *http.R
 	return params, nil
 }
 
-func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (OrgsGetMembershipForUserParams, error) {
-	var (
-		params OrgsGetMembershipForUserParams
-	)
+func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (params OrgsGetMembershipForUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -31293,10 +30081,7 @@ func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (Orgs
 	return params, nil
 }
 
-func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (OrgsGetWebhookParams, error) {
-	var (
-		params OrgsGetWebhookParams
-	)
+func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (params OrgsGetWebhookParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -31362,10 +30147,7 @@ func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (OrgsGetWebhook
 	return params, nil
 }
 
-func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (OrgsGetWebhookConfigForOrgParams, error) {
-	var (
-		params OrgsGetWebhookConfigForOrgParams
-	)
+func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (params OrgsGetWebhookConfigForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -31431,10 +30213,7 @@ func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (Or
 	return params, nil
 }
 
-func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (OrgsGetWebhookDeliveryParams, error) {
-	var (
-		params OrgsGetWebhookDeliveryParams
-	)
+func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params OrgsGetWebhookDeliveryParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -31531,22 +30310,18 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (OrgsGe
 	return params, nil
 }
 
-func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, error) {
-	var (
-		params    OrgsListParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListParams(args [0]string, r *http.Request) (params OrgsListParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31566,7 +30341,7 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -31579,15 +30354,14 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31607,7 +30381,7 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -31615,10 +30389,7 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 	return params, nil
 }
 
-func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (OrgsListBlockedUsersParams, error) {
-	var (
-		params OrgsListBlockedUsersParams
-	)
+func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (params OrgsListBlockedUsersParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -31653,11 +30424,8 @@ func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (OrgsList
 	return params, nil
 }
 
-func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (OrgsListFailedInvitationsParams, error) {
-	var (
-		params    OrgsListFailedInvitationsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (params OrgsListFailedInvitationsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -31697,15 +30465,14 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31725,7 +30492,7 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -31738,15 +30505,14 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31766,7 +30532,7 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -31774,11 +30540,8 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 	return params, nil
 }
 
-func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (OrgsListForAuthenticatedUserParams, error) {
-	var (
-		params    OrgsListForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params OrgsListForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -31787,15 +30550,14 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31815,7 +30577,7 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -31828,15 +30590,14 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31856,7 +30617,7 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -31864,11 +30625,8 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUserParams, error) {
-	var (
-		params    OrgsListForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListForUserParams(args [1]string, r *http.Request) (params OrgsListForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -31908,15 +30666,14 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31936,7 +30693,7 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -31949,15 +30706,14 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -31977,7 +30733,7 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -31985,11 +30741,8 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 	return params, nil
 }
 
-func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsListInvitationTeamsParams, error) {
-	var (
-		params    OrgsListInvitationTeamsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (params OrgsListInvitationTeamsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -32060,15 +30813,14 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32088,7 +30840,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -32101,15 +30853,14 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32129,7 +30880,7 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -32137,11 +30888,8 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 	return params, nil
 }
 
-func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembersParams, error) {
-	var (
-		params    OrgsListMembersParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsListMembersParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -32181,15 +30929,14 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal OrgsListMembersFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32209,7 +30956,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 			if err := func() error {
@@ -32237,15 +30984,14 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	}
 	// Decode query: role.
 	{
-		if queryArgs.Has("role") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "role",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "role",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRoleVal OrgsListMembersRole
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32265,7 +31011,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 				}
 				params.Role.SetTo(paramsDotRoleVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: role: parse")
 			}
 			if err := func() error {
@@ -32293,15 +31039,14 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32321,7 +31066,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -32334,15 +31079,14 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32362,7 +31106,7 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -32370,22 +31114,18 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	return params, nil
 }
 
-func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http.Request) (OrgsListMembershipsForAuthenticatedUserParams, error) {
-	var (
-		params    OrgsListMembershipsForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http.Request) (params OrgsListMembershipsForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal OrgsListMembershipsForAuthenticatedUserState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32405,7 +31145,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -32433,15 +31173,14 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32461,7 +31200,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -32474,15 +31213,14 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32502,7 +31240,7 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -32510,11 +31248,8 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	return params, nil
 }
 
-func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (OrgsListOutsideCollaboratorsParams, error) {
-	var (
-		params    OrgsListOutsideCollaboratorsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (params OrgsListOutsideCollaboratorsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -32554,15 +31289,14 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	}
 	// Decode query: filter.
 	{
-		if queryArgs.Has("filter") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "filter",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "filter",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFilterVal OrgsListOutsideCollaboratorsFilter
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32582,7 +31316,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 				}
 				params.Filter.SetTo(paramsDotFilterVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: filter: parse")
 			}
 			if err := func() error {
@@ -32610,15 +31344,14 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32638,7 +31371,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -32651,15 +31384,14 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32679,7 +31411,7 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -32687,11 +31419,8 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (OrgsListPendingInvitationsParams, error) {
-	var (
-		params    OrgsListPendingInvitationsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (params OrgsListPendingInvitationsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -32731,15 +31460,14 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32759,7 +31487,7 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -32772,15 +31500,14 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32800,7 +31527,7 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -32808,11 +31535,8 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 	return params, nil
 }
 
-func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsListPublicMembersParams, error) {
-	var (
-		params    OrgsListPublicMembersParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (params OrgsListPublicMembersParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -32852,15 +31576,14 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32880,7 +31603,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -32893,15 +31616,14 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -32921,7 +31643,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -32929,10 +31651,7 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 	return params, nil
 }
 
-func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, r *http.Request) (OrgsListSamlSSOAuthorizationsParams, error) {
-	var (
-		params OrgsListSamlSSOAuthorizationsParams
-	)
+func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, r *http.Request) (params OrgsListSamlSSOAuthorizationsParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -32967,11 +31686,8 @@ func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (OrgsListWebhookDeliveriesParams, error) {
-	var (
-		params    OrgsListWebhookDeliveriesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (params OrgsListWebhookDeliveriesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33042,15 +31758,14 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -33070,22 +31785,21 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
 	}
 	// Decode query: cursor.
 	{
-		if queryArgs.Has("cursor") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "cursor",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "cursor",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCursorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -33105,7 +31819,7 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 				}
 				params.Cursor.SetTo(paramsDotCursorVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: cursor: parse")
 			}
 		}
@@ -33113,11 +31827,8 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 	return params, nil
 }
 
-func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebhooksParams, error) {
-	var (
-		params    OrgsListWebhooksParams
-		queryArgs = r.URL.Query()
-	)
+func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (params OrgsListWebhooksParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33157,15 +31868,14 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -33185,7 +31895,7 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -33198,15 +31908,14 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -33226,7 +31935,7 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -33234,10 +31943,7 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 	return params, nil
 }
 
-func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (OrgsPingWebhookParams, error) {
-	var (
-		params OrgsPingWebhookParams
-	)
+func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (params OrgsPingWebhookParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33303,10 +32009,7 @@ func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (OrgsPingWebho
 	return params, nil
 }
 
-func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (OrgsRedeliverWebhookDeliveryParams, error) {
-	var (
-		params OrgsRedeliverWebhookDeliveryParams
-	)
+func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (params OrgsRedeliverWebhookDeliveryParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33403,10 +32106,7 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (OrgsRemoveMemberParams, error) {
-	var (
-		params OrgsRemoveMemberParams
-	)
+func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (params OrgsRemoveMemberParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33472,10 +32172,7 @@ func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (OrgsRemoveMe
 	return params, nil
 }
 
-func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (OrgsRemoveMembershipForUserParams, error) {
-	var (
-		params OrgsRemoveMembershipForUserParams
-	)
+func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (params OrgsRemoveMembershipForUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33541,10 +32238,7 @@ func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (O
 	return params, nil
 }
 
-func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) (OrgsRemoveOutsideCollaboratorParams, error) {
-	var (
-		params OrgsRemoveOutsideCollaboratorParams
-	)
+func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) (params OrgsRemoveOutsideCollaboratorParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33610,10 +32304,7 @@ func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, r *http.Request) (OrgsRemovePublicMembershipForAuthenticatedUserParams, error) {
-	var (
-		params OrgsRemovePublicMembershipForAuthenticatedUserParams
-	)
+func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, r *http.Request) (params OrgsRemovePublicMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33679,10 +32370,7 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, 
 	return params, nil
 }
 
-func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request) (OrgsRemoveSamlSSOAuthorizationParams, error) {
-	var (
-		params OrgsRemoveSamlSSOAuthorizationParams
-	)
+func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request) (params OrgsRemoveSamlSSOAuthorizationParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33748,10 +32436,7 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (OrgsSetMembershipForUserParams, error) {
-	var (
-		params OrgsSetMembershipForUserParams
-	)
+func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (params OrgsSetMembershipForUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33817,10 +32502,7 @@ func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (Orgs
 	return params, nil
 }
 
-func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *http.Request) (OrgsSetPublicMembershipForAuthenticatedUserParams, error) {
-	var (
-		params OrgsSetPublicMembershipForAuthenticatedUserParams
-	)
+func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *http.Request) (params OrgsSetPublicMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33886,10 +32568,7 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *
 	return params, nil
 }
 
-func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (OrgsUnblockUserParams, error) {
-	var (
-		params OrgsUnblockUserParams
-	)
+func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (params OrgsUnblockUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33955,10 +32634,7 @@ func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (OrgsUnblockUs
 	return params, nil
 }
 
-func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, r *http.Request) (OrgsUpdateMembershipForAuthenticatedUserParams, error) {
-	var (
-		params OrgsUpdateMembershipForAuthenticatedUserParams
-	)
+func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, r *http.Request) (params OrgsUpdateMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -33993,10 +32669,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, r *htt
 	return params, nil
 }
 
-func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (OrgsUpdateWebhookParams, error) {
-	var (
-		params OrgsUpdateWebhookParams
-	)
+func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (params OrgsUpdateWebhookParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -34062,10 +32735,7 @@ func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (OrgsUpdateW
 	return params, nil
 }
 
-func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) (OrgsUpdateWebhookConfigForOrgParams, error) {
-	var (
-		params OrgsUpdateWebhookConfigForOrgParams
-	)
+func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) (params OrgsUpdateWebhookConfigForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -34131,10 +32801,7 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
-func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *http.Request) (PackagesDeletePackageForAuthenticatedUserParams, error) {
-	var (
-		params PackagesDeletePackageForAuthenticatedUserParams
-	)
+func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesDeletePackageForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[0]
@@ -34200,10 +32867,7 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *ht
 	return params, nil
 }
 
-func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (PackagesDeletePackageForOrgParams, error) {
-	var (
-		params PackagesDeletePackageForOrgParams
-	)
+func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (params PackagesDeletePackageForOrgParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -34300,10 +32964,7 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (P
 	return params, nil
 }
 
-func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (PackagesDeletePackageForUserParams, error) {
-	var (
-		params PackagesDeletePackageForUserParams
-	)
+func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (params PackagesDeletePackageForUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -34400,10 +33061,7 @@ func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (PackagesDeletePackageVersionForAuthenticatedUserParams, error) {
-	var (
-		params PackagesDeletePackageVersionForAuthenticatedUserParams
-	)
+func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesDeletePackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[0]
@@ -34500,10 +33158,7 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 	return params, nil
 }
 
-func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Request) (PackagesDeletePackageVersionForOrgParams, error) {
-	var (
-		params PackagesDeletePackageVersionForOrgParams
-	)
+func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Request) (params PackagesDeletePackageVersionForOrgParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -34631,10 +33286,7 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 	return params, nil
 }
 
-func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Request) (PackagesDeletePackageVersionForUserParams, error) {
-	var (
-		params PackagesDeletePackageVersionForUserParams
-	)
+func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesDeletePackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -34762,11 +33414,8 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 	return params, nil
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args [2]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, error) {
-	var (
-		params    PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	{
 		param := args[0]
@@ -34837,15 +33486,14 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -34865,7 +33513,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -34878,15 +33526,14 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -34906,7 +33553,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -34919,15 +33566,14 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -34947,7 +33593,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -34970,11 +33616,8 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	return params, nil
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, error) {
-	var (
-		params    PackagesGetAllPackageVersionsForPackageOwnedByOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -35076,15 +33719,14 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -35104,7 +33746,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -35117,15 +33759,14 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -35145,7 +33786,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -35158,15 +33799,14 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal PackagesGetAllPackageVersionsForPackageOwnedByOrgState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -35186,7 +33826,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -35209,10 +33849,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	return params, nil
 }
 
-func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]string, r *http.Request) (PackagesGetAllPackageVersionsForPackageOwnedByUserParams, error) {
-	var (
-		params PackagesGetAllPackageVersionsForPackageOwnedByUserParams
-	)
+func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -35309,10 +33946,7 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 	return params, nil
 }
 
-func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.Request) (PackagesGetPackageForAuthenticatedUserParams, error) {
-	var (
-		params PackagesGetPackageForAuthenticatedUserParams
-	)
+func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesGetPackageForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[0]
@@ -35378,10 +34012,7 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.
 	return params, nil
 }
 
-func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Request) (PackagesGetPackageForOrganizationParams, error) {
-	var (
-		params PackagesGetPackageForOrganizationParams
-	)
+func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Request) (params PackagesGetPackageForOrganizationParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -35478,10 +34109,7 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
-func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (PackagesGetPackageForUserParams, error) {
-	var (
-		params PackagesGetPackageForUserParams
-	)
+func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (params PackagesGetPackageForUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -35578,10 +34206,7 @@ func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (Pac
 	return params, nil
 }
 
-func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (PackagesGetPackageVersionForAuthenticatedUserParams, error) {
-	var (
-		params PackagesGetPackageVersionForAuthenticatedUserParams
-	)
+func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesGetPackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[0]
@@ -35678,10 +34303,7 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r
 	return params, nil
 }
 
-func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *http.Request) (PackagesGetPackageVersionForOrganizationParams, error) {
-	var (
-		params PackagesGetPackageVersionForOrganizationParams
-	)
+func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *http.Request) (params PackagesGetPackageVersionForOrganizationParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -35809,10 +34431,7 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 	return params, nil
 }
 
-func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Request) (PackagesGetPackageVersionForUserParams, error) {
-	var (
-		params PackagesGetPackageVersionForUserParams
-	)
+func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesGetPackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -35940,22 +34559,18 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 	return params, nil
 }
 
-func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *http.Request) (PackagesListPackagesForAuthenticatedUserParams, error) {
-	var (
-		params    PackagesListPackagesForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *http.Request) (params PackagesListPackagesForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: package_type.
 	{
-		if queryArgs.Has("package_type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "package_type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "package_type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -35968,7 +34583,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 
 				params.PackageType = PackagesListPackagesForAuthenticatedUserPackageType(c)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: package_type: parse")
 			}
 			if err := func() error {
@@ -35980,20 +34595,19 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 				return params, errors.Wrap(err, "query: package_type: invalid")
 			}
 		} else {
-			return params, errors.New("query: package_type: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: visibility.
 	{
-		if queryArgs.Has("visibility") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "visibility",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "visibility",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotVisibilityVal PackagesListPackagesForAuthenticatedUserVisibility
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -36013,7 +34627,7 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 				}
 				params.Visibility.SetTo(paramsDotVisibilityVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: visibility: parse")
 			}
 			if err := func() error {
@@ -36036,22 +34650,18 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 	return params, nil
 }
 
-func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Request) (PackagesListPackagesForOrganizationParams, error) {
-	var (
-		params    PackagesListPackagesForOrganizationParams
-		queryArgs = r.URL.Query()
-	)
+func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Request) (params PackagesListPackagesForOrganizationParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: package_type.
 	{
-		if queryArgs.Has("package_type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "package_type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "package_type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -36064,7 +34674,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 
 				params.PackageType = PackagesListPackagesForOrganizationPackageType(c)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: package_type: parse")
 			}
 			if err := func() error {
@@ -36076,7 +34686,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 				return params, errors.Wrap(err, "query: package_type: invalid")
 			}
 		} else {
-			return params, errors.New("query: package_type: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode path: org.
@@ -36112,15 +34722,14 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 	}
 	// Decode query: visibility.
 	{
-		if queryArgs.Has("visibility") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "visibility",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "visibility",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotVisibilityVal PackagesListPackagesForOrganizationVisibility
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -36140,7 +34749,7 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 				}
 				params.Visibility.SetTo(paramsDotVisibilityVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: visibility: parse")
 			}
 			if err := func() error {
@@ -36163,22 +34772,18 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 	return params, nil
 }
 
-func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (PackagesListPackagesForUserParams, error) {
-	var (
-		params    PackagesListPackagesForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (params PackagesListPackagesForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: package_type.
 	{
-		if queryArgs.Has("package_type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "package_type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "package_type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -36191,7 +34796,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (P
 
 				params.PackageType = PackagesListPackagesForUserPackageType(c)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: package_type: parse")
 			}
 			if err := func() error {
@@ -36203,20 +34808,19 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (P
 				return params, errors.Wrap(err, "query: package_type: invalid")
 			}
 		} else {
-			return params, errors.New("query: package_type: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: visibility.
 	{
-		if queryArgs.Has("visibility") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "visibility",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "visibility",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotVisibilityVal PackagesListPackagesForUserVisibility
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -36236,7 +34840,7 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (P
 				}
 				params.Visibility.SetTo(paramsDotVisibilityVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: visibility: parse")
 			}
 			if err := func() error {
@@ -36290,11 +34894,8 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (P
 	return params, nil
 }
 
-func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *http.Request) (PackagesRestorePackageForAuthenticatedUserParams, error) {
-	var (
-		params    PackagesRestorePackageForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesRestorePackageForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	{
 		param := args[0]
@@ -36359,15 +34960,14 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 	}
 	// Decode query: token.
 	{
-		if queryArgs.Has("token") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "token",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "token",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTokenVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -36387,7 +34987,7 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 				}
 				params.Token.SetTo(paramsDotTokenVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: token: parse")
 			}
 		}
@@ -36395,11 +34995,8 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 	return params, nil
 }
 
-func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (PackagesRestorePackageForOrgParams, error) {
-	var (
-		params    PackagesRestorePackageForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (params PackagesRestorePackageForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -36495,15 +35092,14 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: token.
 	{
-		if queryArgs.Has("token") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "token",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "token",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTokenVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -36523,7 +35119,7 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 				}
 				params.Token.SetTo(paramsDotTokenVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: token: parse")
 			}
 		}
@@ -36531,11 +35127,8 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) (PackagesRestorePackageForUserParams, error) {
-	var (
-		params    PackagesRestorePackageForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) (params PackagesRestorePackageForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -36631,15 +35224,14 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: token.
 	{
-		if queryArgs.Has("token") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "token",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "token",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTokenVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -36659,7 +35251,7 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 				}
 				params.Token.SetTo(paramsDotTokenVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: token: parse")
 			}
 		}
@@ -36667,10 +35259,7 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
-func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (PackagesRestorePackageVersionForAuthenticatedUserParams, error) {
-	var (
-		params PackagesRestorePackageVersionForAuthenticatedUserParams
-	)
+func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesRestorePackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[0]
@@ -36767,10 +35356,7 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 	return params, nil
 }
 
-func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Request) (PackagesRestorePackageVersionForOrgParams, error) {
-	var (
-		params PackagesRestorePackageVersionForOrgParams
-	)
+func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Request) (params PackagesRestorePackageVersionForOrgParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -36898,10 +35484,7 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 	return params, nil
 }
 
-func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Request) (PackagesRestorePackageVersionForUserParams, error) {
-	var (
-		params PackagesRestorePackageVersionForUserParams
-	)
+func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesRestorePackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	{
 		param := args[1]
@@ -37029,10 +35612,7 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 	return params, nil
 }
 
-func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (ProjectsAddCollaboratorParams, error) {
-	var (
-		params ProjectsAddCollaboratorParams
-	)
+func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (params ProjectsAddCollaboratorParams, _ error) {
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -37098,10 +35678,7 @@ func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (Proje
 	return params, nil
 }
 
-func decodeProjectsCreateColumnParams(args [1]string, r *http.Request) (ProjectsCreateColumnParams, error) {
-	var (
-		params ProjectsCreateColumnParams
-	)
+func decodeProjectsCreateColumnParams(args [1]string, r *http.Request) (params ProjectsCreateColumnParams, _ error) {
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -37136,10 +35713,7 @@ func decodeProjectsCreateColumnParams(args [1]string, r *http.Request) (Projects
 	return params, nil
 }
 
-func decodeProjectsCreateForOrgParams(args [1]string, r *http.Request) (ProjectsCreateForOrgParams, error) {
-	var (
-		params ProjectsCreateForOrgParams
-	)
+func decodeProjectsCreateForOrgParams(args [1]string, r *http.Request) (params ProjectsCreateForOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -37174,10 +35748,7 @@ func decodeProjectsCreateForOrgParams(args [1]string, r *http.Request) (Projects
 	return params, nil
 }
 
-func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (ProjectsCreateForRepoParams, error) {
-	var (
-		params ProjectsCreateForRepoParams
-	)
+func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (params ProjectsCreateForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -37243,10 +35814,7 @@ func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (Project
 	return params, nil
 }
 
-func decodeProjectsDeleteParams(args [1]string, r *http.Request) (ProjectsDeleteParams, error) {
-	var (
-		params ProjectsDeleteParams
-	)
+func decodeProjectsDeleteParams(args [1]string, r *http.Request) (params ProjectsDeleteParams, _ error) {
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -37281,10 +35849,7 @@ func decodeProjectsDeleteParams(args [1]string, r *http.Request) (ProjectsDelete
 	return params, nil
 }
 
-func decodeProjectsDeleteCardParams(args [1]string, r *http.Request) (ProjectsDeleteCardParams, error) {
-	var (
-		params ProjectsDeleteCardParams
-	)
+func decodeProjectsDeleteCardParams(args [1]string, r *http.Request) (params ProjectsDeleteCardParams, _ error) {
 	// Decode path: card_id.
 	{
 		param := args[0]
@@ -37319,10 +35884,7 @@ func decodeProjectsDeleteCardParams(args [1]string, r *http.Request) (ProjectsDe
 	return params, nil
 }
 
-func decodeProjectsDeleteColumnParams(args [1]string, r *http.Request) (ProjectsDeleteColumnParams, error) {
-	var (
-		params ProjectsDeleteColumnParams
-	)
+func decodeProjectsDeleteColumnParams(args [1]string, r *http.Request) (params ProjectsDeleteColumnParams, _ error) {
 	// Decode path: column_id.
 	{
 		param := args[0]
@@ -37357,10 +35919,7 @@ func decodeProjectsDeleteColumnParams(args [1]string, r *http.Request) (Projects
 	return params, nil
 }
 
-func decodeProjectsGetParams(args [1]string, r *http.Request) (ProjectsGetParams, error) {
-	var (
-		params ProjectsGetParams
-	)
+func decodeProjectsGetParams(args [1]string, r *http.Request) (params ProjectsGetParams, _ error) {
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -37395,10 +35954,7 @@ func decodeProjectsGetParams(args [1]string, r *http.Request) (ProjectsGetParams
 	return params, nil
 }
 
-func decodeProjectsGetCardParams(args [1]string, r *http.Request) (ProjectsGetCardParams, error) {
-	var (
-		params ProjectsGetCardParams
-	)
+func decodeProjectsGetCardParams(args [1]string, r *http.Request) (params ProjectsGetCardParams, _ error) {
 	// Decode path: card_id.
 	{
 		param := args[0]
@@ -37433,10 +35989,7 @@ func decodeProjectsGetCardParams(args [1]string, r *http.Request) (ProjectsGetCa
 	return params, nil
 }
 
-func decodeProjectsGetColumnParams(args [1]string, r *http.Request) (ProjectsGetColumnParams, error) {
-	var (
-		params ProjectsGetColumnParams
-	)
+func decodeProjectsGetColumnParams(args [1]string, r *http.Request) (params ProjectsGetColumnParams, _ error) {
 	// Decode path: column_id.
 	{
 		param := args[0]
@@ -37471,10 +36024,7 @@ func decodeProjectsGetColumnParams(args [1]string, r *http.Request) (ProjectsGet
 	return params, nil
 }
 
-func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (ProjectsGetPermissionForUserParams, error) {
-	var (
-		params ProjectsGetPermissionForUserParams
-	)
+func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (params ProjectsGetPermissionForUserParams, _ error) {
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -37540,11 +36090,8 @@ func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsListCardsParams, error) {
-	var (
-		params    ProjectsListCardsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params ProjectsListCardsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: column_id.
 	{
 		param := args[0]
@@ -37584,15 +36131,14 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 	}
 	// Decode query: archived_state.
 	{
-		if queryArgs.Has("archived_state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "archived_state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "archived_state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotArchivedStateVal ProjectsListCardsArchivedState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -37612,7 +36158,7 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 				}
 				params.ArchivedState.SetTo(paramsDotArchivedStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: archived_state: parse")
 			}
 			if err := func() error {
@@ -37640,15 +36186,14 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -37668,7 +36213,7 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -37681,15 +36226,14 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -37709,7 +36253,7 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -37717,11 +36261,8 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 	return params, nil
 }
 
-func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (ProjectsListCollaboratorsParams, error) {
-	var (
-		params    ProjectsListCollaboratorsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (params ProjectsListCollaboratorsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -37761,15 +36302,14 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 	}
 	// Decode query: affiliation.
 	{
-		if queryArgs.Has("affiliation") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "affiliation",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "affiliation",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAffiliationVal ProjectsListCollaboratorsAffiliation
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -37789,7 +36329,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 				}
 				params.Affiliation.SetTo(paramsDotAffiliationVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: affiliation: parse")
 			}
 			if err := func() error {
@@ -37817,15 +36357,14 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -37845,7 +36384,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -37858,15 +36397,14 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -37886,7 +36424,7 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -37894,11 +36432,8 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 	return params, nil
 }
 
-func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsListColumnsParams, error) {
-	var (
-		params    ProjectsListColumnsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params ProjectsListColumnsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -37938,15 +36473,14 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -37966,7 +36500,7 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -37979,15 +36513,14 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38007,7 +36540,7 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -38015,11 +36548,8 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 	return params, nil
 }
 
-func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsListForOrgParams, error) {
-	var (
-		params    ProjectsListForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params ProjectsListForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -38059,15 +36589,14 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal ProjectsListForOrgState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38087,7 +36616,7 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -38115,15 +36644,14 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38143,7 +36671,7 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -38156,15 +36684,14 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38184,7 +36711,7 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -38192,11 +36719,8 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 	return params, nil
 }
 
-func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsListForRepoParams, error) {
-	var (
-		params    ProjectsListForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params ProjectsListForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -38267,15 +36791,14 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal ProjectsListForRepoState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38295,7 +36818,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -38323,15 +36846,14 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38351,7 +36873,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -38364,15 +36886,14 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38392,7 +36913,7 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -38400,11 +36921,8 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 	return params, nil
 }
 
-func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsListForUserParams, error) {
-	var (
-		params    ProjectsListForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params ProjectsListForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -38444,15 +36962,14 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal ProjectsListForUserState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38472,7 +36989,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -38500,15 +37017,14 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38528,7 +37044,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -38541,15 +37057,14 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -38569,7 +37084,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -38577,10 +37092,7 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 	return params, nil
 }
 
-func decodeProjectsMoveCardParams(args [1]string, r *http.Request) (ProjectsMoveCardParams, error) {
-	var (
-		params ProjectsMoveCardParams
-	)
+func decodeProjectsMoveCardParams(args [1]string, r *http.Request) (params ProjectsMoveCardParams, _ error) {
 	// Decode path: card_id.
 	{
 		param := args[0]
@@ -38615,10 +37127,7 @@ func decodeProjectsMoveCardParams(args [1]string, r *http.Request) (ProjectsMove
 	return params, nil
 }
 
-func decodeProjectsMoveColumnParams(args [1]string, r *http.Request) (ProjectsMoveColumnParams, error) {
-	var (
-		params ProjectsMoveColumnParams
-	)
+func decodeProjectsMoveColumnParams(args [1]string, r *http.Request) (params ProjectsMoveColumnParams, _ error) {
 	// Decode path: column_id.
 	{
 		param := args[0]
@@ -38653,10 +37162,7 @@ func decodeProjectsMoveColumnParams(args [1]string, r *http.Request) (ProjectsMo
 	return params, nil
 }
 
-func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (ProjectsRemoveCollaboratorParams, error) {
-	var (
-		params ProjectsRemoveCollaboratorParams
-	)
+func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (params ProjectsRemoveCollaboratorParams, _ error) {
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -38722,10 +37228,7 @@ func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (Pr
 	return params, nil
 }
 
-func decodeProjectsUpdateParams(args [1]string, r *http.Request) (ProjectsUpdateParams, error) {
-	var (
-		params ProjectsUpdateParams
-	)
+func decodeProjectsUpdateParams(args [1]string, r *http.Request) (params ProjectsUpdateParams, _ error) {
 	// Decode path: project_id.
 	{
 		param := args[0]
@@ -38760,10 +37263,7 @@ func decodeProjectsUpdateParams(args [1]string, r *http.Request) (ProjectsUpdate
 	return params, nil
 }
 
-func decodeProjectsUpdateCardParams(args [1]string, r *http.Request) (ProjectsUpdateCardParams, error) {
-	var (
-		params ProjectsUpdateCardParams
-	)
+func decodeProjectsUpdateCardParams(args [1]string, r *http.Request) (params ProjectsUpdateCardParams, _ error) {
 	// Decode path: card_id.
 	{
 		param := args[0]
@@ -38798,10 +37298,7 @@ func decodeProjectsUpdateCardParams(args [1]string, r *http.Request) (ProjectsUp
 	return params, nil
 }
 
-func decodeProjectsUpdateColumnParams(args [1]string, r *http.Request) (ProjectsUpdateColumnParams, error) {
-	var (
-		params ProjectsUpdateColumnParams
-	)
+func decodeProjectsUpdateColumnParams(args [1]string, r *http.Request) (params ProjectsUpdateColumnParams, _ error) {
 	// Decode path: column_id.
 	{
 		param := args[0]
@@ -38836,10 +37333,7 @@ func decodeProjectsUpdateColumnParams(args [1]string, r *http.Request) (Projects
 	return params, nil
 }
 
-func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (PullsCheckIfMergedParams, error) {
-	var (
-		params PullsCheckIfMergedParams
-	)
+func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params PullsCheckIfMergedParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -38936,10 +37430,7 @@ func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (PullsCheck
 	return params, nil
 }
 
-func decodePullsCreateParams(args [2]string, r *http.Request) (PullsCreateParams, error) {
-	var (
-		params PullsCreateParams
-	)
+func decodePullsCreateParams(args [2]string, r *http.Request) (params PullsCreateParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39005,10 +37496,7 @@ func decodePullsCreateParams(args [2]string, r *http.Request) (PullsCreateParams
 	return params, nil
 }
 
-func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Request) (PullsCreateReplyForReviewCommentParams, error) {
-	var (
-		params PullsCreateReplyForReviewCommentParams
-	)
+func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Request) (params PullsCreateReplyForReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39136,10 +37624,7 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 	return params, nil
 }
 
-func decodePullsCreateReviewParams(args [3]string, r *http.Request) (PullsCreateReviewParams, error) {
-	var (
-		params PullsCreateReviewParams
-	)
+func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params PullsCreateReviewParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39236,10 +37721,7 @@ func decodePullsCreateReviewParams(args [3]string, r *http.Request) (PullsCreate
 	return params, nil
 }
 
-func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (PullsCreateReviewCommentParams, error) {
-	var (
-		params PullsCreateReviewCommentParams
-	)
+func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (params PullsCreateReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39336,10 +37818,7 @@ func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (Pull
 	return params, nil
 }
 
-func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (PullsDeletePendingReviewParams, error) {
-	var (
-		params PullsDeletePendingReviewParams
-	)
+func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (params PullsDeletePendingReviewParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39467,10 +37946,7 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (Pull
 	return params, nil
 }
 
-func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (PullsDeleteReviewCommentParams, error) {
-	var (
-		params PullsDeleteReviewCommentParams
-	)
+func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (params PullsDeleteReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39567,10 +38043,7 @@ func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (Pull
 	return params, nil
 }
 
-func decodePullsDismissReviewParams(args [4]string, r *http.Request) (PullsDismissReviewParams, error) {
-	var (
-		params PullsDismissReviewParams
-	)
+func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params PullsDismissReviewParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39698,10 +38171,7 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (PullsDismi
 	return params, nil
 }
 
-func decodePullsGetParams(args [3]string, r *http.Request) (PullsGetParams, error) {
-	var (
-		params PullsGetParams
-	)
+func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39798,10 +38268,7 @@ func decodePullsGetParams(args [3]string, r *http.Request) (PullsGetParams, erro
 	return params, nil
 }
 
-func decodePullsGetReviewParams(args [4]string, r *http.Request) (PullsGetReviewParams, error) {
-	var (
-		params PullsGetReviewParams
-	)
+func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGetReviewParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -39929,10 +38396,7 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (PullsGetReview
 	return params, nil
 }
 
-func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (PullsGetReviewCommentParams, error) {
-	var (
-		params PullsGetReviewCommentParams
-	)
+func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params PullsGetReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -40029,11 +38493,8 @@ func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (PullsGe
 	return params, nil
 }
 
-func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, error) {
-	var (
-		params    PullsListParams
-		queryArgs = r.URL.Query()
-	)
+func decodePullsListParams(args [2]string, r *http.Request) (params PullsListParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -40104,15 +38565,14 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal PullsListState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40132,7 +38592,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -40154,15 +38614,14 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: head.
 	{
-		if queryArgs.Has("head") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "head",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "head",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotHeadVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40182,22 +38641,21 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 				}
 				params.Head.SetTo(paramsDotHeadVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: head: parse")
 			}
 		}
 	}
 	// Decode query: base.
 	{
-		if queryArgs.Has("base") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "base",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "base",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBaseVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40217,7 +38675,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 				}
 				params.Base.SetTo(paramsDotBaseVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: base: parse")
 			}
 		}
@@ -40230,15 +38688,14 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal PullsListSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40258,7 +38715,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -40280,15 +38737,14 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal PullsListDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40308,7 +38764,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -40336,15 +38792,14 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40364,7 +38819,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -40377,15 +38832,14 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40405,7 +38859,7 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -40413,11 +38867,8 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	return params, nil
 }
 
-func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (PullsListCommentsForReviewParams, error) {
-	var (
-		params    PullsListCommentsForReviewParams
-		queryArgs = r.URL.Query()
-	)
+func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (params PullsListCommentsForReviewParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -40550,15 +39001,14 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40578,7 +39028,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -40591,15 +39041,14 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40619,7 +39068,7 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -40627,11 +39076,8 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 	return params, nil
 }
 
-func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCommitsParams, error) {
-	var (
-		params    PullsListCommitsParams
-		queryArgs = r.URL.Query()
-	)
+func decodePullsListCommitsParams(args [3]string, r *http.Request) (params PullsListCommitsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -40733,15 +39179,14 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40761,7 +39206,7 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -40774,15 +39219,14 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40802,7 +39246,7 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -40810,11 +39254,8 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 	return params, nil
 }
 
-func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFilesParams, error) {
-	var (
-		params    PullsListFilesParams
-		queryArgs = r.URL.Query()
-	)
+func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsListFilesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -40916,15 +39357,14 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40944,7 +39384,7 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -40957,15 +39397,14 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -40985,7 +39424,7 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -40993,11 +39432,8 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 	return params, nil
 }
 
-func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (PullsListRequestedReviewersParams, error) {
-	var (
-		params    PullsListRequestedReviewersParams
-		queryArgs = r.URL.Query()
-	)
+func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (params PullsListRequestedReviewersParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -41099,15 +39535,14 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41127,7 +39562,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -41140,15 +39575,14 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41168,7 +39602,7 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -41176,11 +39610,8 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 	return params, nil
 }
 
-func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (PullsListReviewCommentsParams, error) {
-	var (
-		params    PullsListReviewCommentsParams
-		queryArgs = r.URL.Query()
-	)
+func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (params PullsListReviewCommentsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -41282,15 +39713,14 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal PullsListReviewCommentsSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41310,7 +39740,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -41332,15 +39762,14 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal PullsListReviewCommentsDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41360,7 +39789,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -41382,15 +39811,14 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41410,7 +39838,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -41423,15 +39851,14 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41451,7 +39878,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -41464,15 +39891,14 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41492,7 +39918,7 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -41500,11 +39926,8 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	return params, nil
 }
 
-func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request) (PullsListReviewCommentsForRepoParams, error) {
-	var (
-		params    PullsListReviewCommentsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request) (params PullsListReviewCommentsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -41569,15 +39992,14 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal PullsListReviewCommentsForRepoSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41597,7 +40019,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -41619,15 +40041,14 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal PullsListReviewCommentsForRepoDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41647,7 +40068,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -41669,15 +40090,14 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41697,7 +40117,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -41710,15 +40130,14 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41738,7 +40157,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -41751,15 +40170,14 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41779,7 +40197,7 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -41787,11 +40205,8 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListReviewsParams, error) {
-	var (
-		params    PullsListReviewsParams
-		queryArgs = r.URL.Query()
-	)
+func decodePullsListReviewsParams(args [3]string, r *http.Request) (params PullsListReviewsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -41893,15 +40308,14 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41921,7 +40335,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -41934,15 +40348,14 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -41962,7 +40375,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -41970,10 +40383,7 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 	return params, nil
 }
 
-func decodePullsMergeParams(args [3]string, r *http.Request) (PullsMergeParams, error) {
-	var (
-		params PullsMergeParams
-	)
+func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -42070,10 +40480,7 @@ func decodePullsMergeParams(args [3]string, r *http.Request) (PullsMergeParams, 
 	return params, nil
 }
 
-func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) (PullsRemoveRequestedReviewersParams, error) {
-	var (
-		params PullsRemoveRequestedReviewersParams
-	)
+func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) (params PullsRemoveRequestedReviewersParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -42170,341 +40577,7 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
-func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (PullsSubmitReviewParams, error) {
-	var (
-		params PullsSubmitReviewParams
-	)
-	// Decode path: owner.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "owner",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Owner = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: owner: not specified")
-		}
-	}
-	// Decode path: repo.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "repo",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Repo = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: repo: not specified")
-		}
-	}
-	// Decode path: pull_number.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "pull_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.PullNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: pull_number: not specified")
-		}
-	}
-	// Decode path: review_id.
-	{
-		param := args[3]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "review_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.ReviewID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: review_id: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodePullsUpdateParams(args [3]string, r *http.Request) (PullsUpdateParams, error) {
-	var (
-		params PullsUpdateParams
-	)
-	// Decode path: owner.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "owner",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Owner = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: owner: not specified")
-		}
-	}
-	// Decode path: repo.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "repo",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Repo = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: repo: not specified")
-		}
-	}
-	// Decode path: pull_number.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "pull_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.PullNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: pull_number: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (PullsUpdateBranchParams, error) {
-	var (
-		params PullsUpdateBranchParams
-	)
-	// Decode path: owner.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "owner",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Owner = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: owner: not specified")
-		}
-	}
-	// Decode path: repo.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "repo",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Repo = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: repo: not specified")
-		}
-	}
-	// Decode path: pull_number.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "pull_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.PullNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: pull_number: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (PullsUpdateReviewParams, error) {
-	var (
-		params PullsUpdateReviewParams
-	)
+func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params PullsSubmitReviewParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -42632,10 +40705,329 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (PullsUpdate
 	return params, nil
 }
 
-func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (PullsUpdateReviewCommentParams, error) {
-	var (
-		params PullsUpdateReviewCommentParams
-	)
+func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdateParams, _ error) {
+	// Decode path: owner.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: owner: not specified")
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: repo: not specified")
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: pull_number: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params PullsUpdateBranchParams, _ error) {
+	// Decode path: owner.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: owner: not specified")
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: repo: not specified")
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: pull_number: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params PullsUpdateReviewParams, _ error) {
+	// Decode path: owner.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: owner: not specified")
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: repo: not specified")
+		}
+	}
+	// Decode path: pull_number.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "pull_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.PullNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: pull_number: not specified")
+		}
+	}
+	// Decode path: review_id.
+	{
+		param := args[3]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "review_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.ReviewID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: review_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (params PullsUpdateReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -42732,10 +41124,7 @@ func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (Pull
 	return params, nil
 }
 
-func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request) (ReactionsCreateForCommitCommentParams, error) {
-	var (
-		params ReactionsCreateForCommitCommentParams
-	)
+func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForCommitCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -42832,10 +41221,7 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request
 	return params, nil
 }
 
-func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (ReactionsCreateForIssueParams, error) {
-	var (
-		params ReactionsCreateForIssueParams
-	)
+func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (params ReactionsCreateForIssueParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -42932,10 +41318,7 @@ func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (React
 	return params, nil
 }
 
-func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request) (ReactionsCreateForIssueCommentParams, error) {
-	var (
-		params ReactionsCreateForIssueCommentParams
-	)
+func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForIssueCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -43032,10 +41415,7 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *http.Request) (ReactionsCreateForPullRequestReviewCommentParams, error) {
-	var (
-		params ReactionsCreateForPullRequestReviewCommentParams
-	)
+func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForPullRequestReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -43132,10 +41512,7 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *h
 	return params, nil
 }
 
-func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (ReactionsCreateForReleaseParams, error) {
-	var (
-		params ReactionsCreateForReleaseParams
-	)
+func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (params ReactionsCreateForReleaseParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -43232,10 +41609,7 @@ func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (Rea
 	return params, nil
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r *http.Request) (ReactionsCreateForTeamDiscussionCommentInOrgParams, error) {
-	var (
-		params ReactionsCreateForTeamDiscussionCommentInOrgParams
-	)
+func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params ReactionsCreateForTeamDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -43363,10 +41737,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 	return params, nil
 }
 
-func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r *http.Request) (ReactionsCreateForTeamDiscussionCommentLegacyParams, error) {
-	var (
-		params ReactionsCreateForTeamDiscussionCommentLegacyParams
-	)
+func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params ReactionsCreateForTeamDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -43463,10 +41834,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r
 	return params, nil
 }
 
-func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.Request) (ReactionsCreateForTeamDiscussionInOrgParams, error) {
-	var (
-		params ReactionsCreateForTeamDiscussionInOrgParams
-	)
+func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.Request) (params ReactionsCreateForTeamDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -43563,10 +41931,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.R
 	return params, nil
 }
 
-func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.Request) (ReactionsCreateForTeamDiscussionLegacyParams, error) {
-	var (
-		params ReactionsCreateForTeamDiscussionLegacyParams
-	)
+func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.Request) (params ReactionsCreateForTeamDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -43632,10 +41997,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.
 	return params, nil
 }
 
-func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request) (ReactionsDeleteForCommitCommentParams, error) {
-	var (
-		params ReactionsDeleteForCommitCommentParams
-	)
+func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForCommitCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -43763,10 +42125,7 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 	return params, nil
 }
 
-func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (ReactionsDeleteForIssueParams, error) {
-	var (
-		params ReactionsDeleteForIssueParams
-	)
+func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (params ReactionsDeleteForIssueParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -43894,10 +42253,7 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (React
 	return params, nil
 }
 
-func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request) (ReactionsDeleteForIssueCommentParams, error) {
-	var (
-		params ReactionsDeleteForIssueCommentParams
-	)
+func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForIssueCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -44025,10 +42381,7 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Request) (ReactionsDeleteForPullRequestCommentParams, error) {
-	var (
-		params ReactionsDeleteForPullRequestCommentParams
-	)
+func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForPullRequestCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -44156,10 +42509,7 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 	return params, nil
 }
 
-func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Request) (ReactionsDeleteForTeamDiscussionParams, error) {
-	var (
-		params ReactionsDeleteForTeamDiscussionParams
-	)
+func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Request) (params ReactionsDeleteForTeamDiscussionParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -44287,10 +42637,7 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 	return params, nil
 }
 
-func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http.Request) (ReactionsDeleteForTeamDiscussionCommentParams, error) {
-	var (
-		params ReactionsDeleteForTeamDiscussionCommentParams
-	)
+func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http.Request) (params ReactionsDeleteForTeamDiscussionCommentParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -44449,10 +42796,7 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 	return params, nil
 }
 
-func decodeReactionsDeleteLegacyParams(args [1]string, r *http.Request) (ReactionsDeleteLegacyParams, error) {
-	var (
-		params ReactionsDeleteLegacyParams
-	)
+func decodeReactionsDeleteLegacyParams(args [1]string, r *http.Request) (params ReactionsDeleteLegacyParams, _ error) {
 	// Decode path: reaction_id.
 	{
 		param := args[0]
@@ -44487,11 +42831,8 @@ func decodeReactionsDeleteLegacyParams(args [1]string, r *http.Request) (Reactio
 	return params, nil
 }
 
-func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) (ReactionsListForCommitCommentParams, error) {
-	var (
-		params    ReactionsListForCommitCommentParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) (params ReactionsListForCommitCommentParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -44587,15 +42928,14 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: content.
 	{
-		if queryArgs.Has("content") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "content",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "content",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForCommitCommentContent
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -44615,7 +42955,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 				}
 				params.Content.SetTo(paramsDotContentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
 			}
 			if err := func() error {
@@ -44643,15 +42983,14 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -44671,7 +43010,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -44684,15 +43023,14 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -44712,7 +43050,7 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -44720,11 +43058,8 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (ReactionsListForIssueParams, error) {
-	var (
-		params    ReactionsListForIssueParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params ReactionsListForIssueParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -44820,15 +43155,14 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 	}
 	// Decode query: content.
 	{
-		if queryArgs.Has("content") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "content",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "content",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForIssueContent
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -44848,7 +43182,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 				}
 				params.Content.SetTo(paramsDotContentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
 			}
 			if err := func() error {
@@ -44876,15 +43210,14 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -44904,7 +43237,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -44917,15 +43250,14 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -44945,7 +43277,7 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -44953,11 +43285,8 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 	return params, nil
 }
 
-func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (ReactionsListForIssueCommentParams, error) {
-	var (
-		params    ReactionsListForIssueCommentParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (params ReactionsListForIssueCommentParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -45053,15 +43382,14 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: content.
 	{
-		if queryArgs.Has("content") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "content",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "content",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForIssueCommentContent
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45081,7 +43409,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 				}
 				params.Content.SetTo(paramsDotContentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
 			}
 			if err := func() error {
@@ -45109,15 +43437,14 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45137,7 +43464,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -45150,15 +43477,14 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45178,7 +43504,7 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -45186,11 +43512,8 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *http.Request) (ReactionsListForPullRequestReviewCommentParams, error) {
-	var (
-		params    ReactionsListForPullRequestReviewCommentParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *http.Request) (params ReactionsListForPullRequestReviewCommentParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -45286,15 +43609,14 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	}
 	// Decode query: content.
 	{
-		if queryArgs.Has("content") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "content",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "content",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForPullRequestReviewCommentContent
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45314,7 +43636,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 				}
 				params.Content.SetTo(paramsDotContentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
 			}
 			if err := func() error {
@@ -45342,15 +43664,14 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45370,7 +43691,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -45383,15 +43704,14 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45411,7 +43731,7 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -45419,11 +43739,8 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	return params, nil
 }
 
-func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *http.Request) (ReactionsListForTeamDiscussionCommentInOrgParams, error) {
-	var (
-		params    ReactionsListForTeamDiscussionCommentInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params ReactionsListForTeamDiscussionCommentInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -45550,15 +43867,14 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode query: content.
 	{
-		if queryArgs.Has("content") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "content",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "content",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForTeamDiscussionCommentInOrgContent
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45578,7 +43894,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 				}
 				params.Content.SetTo(paramsDotContentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
 			}
 			if err := func() error {
@@ -45606,15 +43922,14 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45634,7 +43949,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -45647,15 +43962,14 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45675,7 +43989,7 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -45683,11 +43997,8 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	return params, nil
 }
 
-func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *http.Request) (ReactionsListForTeamDiscussionCommentLegacyParams, error) {
-	var (
-		params    ReactionsListForTeamDiscussionCommentLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params ReactionsListForTeamDiscussionCommentLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -45783,15 +44094,14 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	}
 	// Decode query: content.
 	{
-		if queryArgs.Has("content") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "content",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "content",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForTeamDiscussionCommentLegacyContent
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45811,7 +44121,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 				}
 				params.Content.SetTo(paramsDotContentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
 			}
 			if err := func() error {
@@ -45839,15 +44149,14 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45867,7 +44176,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -45880,15 +44189,14 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -45908,7 +44216,7 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -45916,11 +44224,8 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	return params, nil
 }
 
-func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Request) (ReactionsListForTeamDiscussionInOrgParams, error) {
-	var (
-		params    ReactionsListForTeamDiscussionInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Request) (params ReactionsListForTeamDiscussionInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -46016,15 +44321,14 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	}
 	// Decode query: content.
 	{
-		if queryArgs.Has("content") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "content",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "content",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForTeamDiscussionInOrgContent
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -46044,7 +44348,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 				}
 				params.Content.SetTo(paramsDotContentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
 			}
 			if err := func() error {
@@ -46072,15 +44376,14 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -46100,7 +44403,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -46113,15 +44416,14 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -46141,7 +44443,7 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -46149,11 +44451,8 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	return params, nil
 }
 
-func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Request) (ReactionsListForTeamDiscussionLegacyParams, error) {
-	var (
-		params    ReactionsListForTeamDiscussionLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Request) (params ReactionsListForTeamDiscussionLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -46218,15 +44517,14 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	}
 	// Decode query: content.
 	{
-		if queryArgs.Has("content") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "content",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "content",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotContentVal ReactionsListForTeamDiscussionLegacyContent
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -46246,7 +44544,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 				}
 				params.Content.SetTo(paramsDotContentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: content: parse")
 			}
 			if err := func() error {
@@ -46274,15 +44572,14 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -46302,7 +44599,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -46315,15 +44612,14 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -46343,7 +44639,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -46351,10 +44647,7 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	return params, nil
 }
 
-func decodeReposAcceptInvitationParams(args [1]string, r *http.Request) (ReposAcceptInvitationParams, error) {
-	var (
-		params ReposAcceptInvitationParams
-	)
+func decodeReposAcceptInvitationParams(args [1]string, r *http.Request) (params ReposAcceptInvitationParams, _ error) {
 	// Decode path: invitation_id.
 	{
 		param := args[0]
@@ -46389,10 +44682,7 @@ func decodeReposAcceptInvitationParams(args [1]string, r *http.Request) (ReposAc
 	return params, nil
 }
 
-func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) (ReposAddAppAccessRestrictionsParams, error) {
-	var (
-		params ReposAddAppAccessRestrictionsParams
-	)
+func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddAppAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -46489,10 +44779,7 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (ReposAddCollaboratorParams, error) {
-	var (
-		params ReposAddCollaboratorParams
-	)
+func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params ReposAddCollaboratorParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -46589,10 +44876,7 @@ func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (ReposAdd
 	return params, nil
 }
 
-func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (ReposAddStatusCheckContextsParams, error) {
-	var (
-		params ReposAddStatusCheckContextsParams
-	)
+func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposAddStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -46689,10 +44973,7 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request) (ReposAddTeamAccessRestrictionsParams, error) {
-	var (
-		params ReposAddTeamAccessRestrictionsParams
-	)
+func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -46789,10 +45070,7 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request) (ReposAddUserAccessRestrictionsParams, error) {
-	var (
-		params ReposAddUserAccessRestrictionsParams
-	)
+func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddUserAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -46889,10 +45167,7 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (ReposCheckCollaboratorParams, error) {
-	var (
-		params ReposCheckCollaboratorParams
-	)
+func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params ReposCheckCollaboratorParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -46989,10 +45264,7 @@ func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (ReposC
 	return params, nil
 }
 
-func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) (ReposCheckVulnerabilityAlertsParams, error) {
-	var (
-		params ReposCheckVulnerabilityAlertsParams
-	)
+func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposCheckVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47058,11 +45330,8 @@ func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposCompareCommitsParams, error) {
-	var (
-		params    ReposCompareCommitsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params ReposCompareCommitsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47133,15 +45402,14 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -47161,7 +45429,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -47174,15 +45442,14 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -47202,7 +45469,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -47241,10 +45508,7 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 	return params, nil
 }
 
-func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (ReposCreateAutolinkParams, error) {
-	var (
-		params ReposCreateAutolinkParams
-	)
+func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (params ReposCreateAutolinkParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47310,10 +45574,7 @@ func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (ReposCrea
 	return params, nil
 }
 
-func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (ReposCreateCommitCommentParams, error) {
-	var (
-		params ReposCreateCommitCommentParams
-	)
+func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (params ReposCreateCommitCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47410,10 +45671,7 @@ func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Request) (ReposCreateCommitSignatureProtectionParams, error) {
-	var (
-		params ReposCreateCommitSignatureProtectionParams
-	)
+func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposCreateCommitSignatureProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47510,10 +45768,7 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Re
 	return params, nil
 }
 
-func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (ReposCreateCommitStatusParams, error) {
-	var (
-		params ReposCreateCommitStatusParams
-	)
+func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (params ReposCreateCommitStatusParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47610,10 +45865,7 @@ func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (Repos
 	return params, nil
 }
 
-func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (ReposCreateDeployKeyParams, error) {
-	var (
-		params ReposCreateDeployKeyParams
-	)
+func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (params ReposCreateDeployKeyParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47679,10 +45931,7 @@ func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (ReposCre
 	return params, nil
 }
 
-func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (ReposCreateDeploymentParams, error) {
-	var (
-		params ReposCreateDeploymentParams
-	)
+func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (params ReposCreateDeploymentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47748,10 +45997,7 @@ func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (ReposCr
 	return params, nil
 }
 
-func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (ReposCreateDeploymentStatusParams, error) {
-	var (
-		params ReposCreateDeploymentStatusParams
-	)
+func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (params ReposCreateDeploymentStatusParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47848,10 +46094,7 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (ReposCreateDispatchEventParams, error) {
-	var (
-		params ReposCreateDispatchEventParams
-	)
+func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (params ReposCreateDispatchEventParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47917,10 +46160,7 @@ func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposCreateForkParams(args [2]string, r *http.Request) (ReposCreateForkParams, error) {
-	var (
-		params ReposCreateForkParams
-	)
+func decodeReposCreateForkParams(args [2]string, r *http.Request) (params ReposCreateForkParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -47986,10 +46226,7 @@ func decodeReposCreateForkParams(args [2]string, r *http.Request) (ReposCreateFo
 	return params, nil
 }
 
-func decodeReposCreateInOrgParams(args [1]string, r *http.Request) (ReposCreateInOrgParams, error) {
-	var (
-		params ReposCreateInOrgParams
-	)
+func decodeReposCreateInOrgParams(args [1]string, r *http.Request) (params ReposCreateInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -48024,10 +46261,7 @@ func decodeReposCreateInOrgParams(args [1]string, r *http.Request) (ReposCreateI
 	return params, nil
 }
 
-func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request) (ReposCreateOrUpdateFileContentsParams, error) {
-	var (
-		params ReposCreateOrUpdateFileContentsParams
-	)
+func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request) (params ReposCreateOrUpdateFileContentsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -48124,10 +46358,7 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request
 	return params, nil
 }
 
-func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (ReposCreatePagesSiteParams, error) {
-	var (
-		params ReposCreatePagesSiteParams
-	)
+func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (params ReposCreatePagesSiteParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -48193,10 +46424,7 @@ func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (ReposCre
 	return params, nil
 }
 
-func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (ReposCreateReleaseParams, error) {
-	var (
-		params ReposCreateReleaseParams
-	)
+func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (params ReposCreateReleaseParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -48262,10 +46490,7 @@ func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (ReposCreat
 	return params, nil
 }
 
-func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (ReposCreateUsingTemplateParams, error) {
-	var (
-		params ReposCreateUsingTemplateParams
-	)
+func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (params ReposCreateUsingTemplateParams, _ error) {
 	// Decode path: template_owner.
 	{
 		param := args[0]
@@ -48331,10 +46556,7 @@ func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (ReposCreateWebhookParams, error) {
-	var (
-		params ReposCreateWebhookParams
-	)
+func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (params ReposCreateWebhookParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -48400,10 +46622,7 @@ func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (ReposCreat
 	return params, nil
 }
 
-func decodeReposDeclineInvitationParams(args [1]string, r *http.Request) (ReposDeclineInvitationParams, error) {
-	var (
-		params ReposDeclineInvitationParams
-	)
+func decodeReposDeclineInvitationParams(args [1]string, r *http.Request) (params ReposDeclineInvitationParams, _ error) {
 	// Decode path: invitation_id.
 	{
 		param := args[0]
@@ -48438,10 +46657,7 @@ func decodeReposDeclineInvitationParams(args [1]string, r *http.Request) (ReposD
 	return params, nil
 }
 
-func decodeReposDeleteParams(args [2]string, r *http.Request) (ReposDeleteParams, error) {
-	var (
-		params ReposDeleteParams
-	)
+func decodeReposDeleteParams(args [2]string, r *http.Request) (params ReposDeleteParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -48507,110 +46723,7 @@ func decodeReposDeleteParams(args [2]string, r *http.Request) (ReposDeleteParams
 	return params, nil
 }
 
-func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) (ReposDeleteAccessRestrictionsParams, error) {
-	var (
-		params ReposDeleteAccessRestrictionsParams
-	)
-	// Decode path: owner.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "owner",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Owner = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: owner: not specified")
-		}
-	}
-	// Decode path: repo.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "repo",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Repo = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: repo: not specified")
-		}
-	}
-	// Decode path: branch.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "branch",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Branch = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: branch: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Request) (ReposDeleteAdminBranchProtectionParams, error) {
-	var (
-		params ReposDeleteAdminBranchProtectionParams
-	)
+func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposDeleteAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -48707,10 +46820,104 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
-func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (ReposDeleteAnEnvironmentParams, error) {
-	var (
-		params ReposDeleteAnEnvironmentParams
-	)
+func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposDeleteAdminBranchProtectionParams, _ error) {
+	// Decode path: owner.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: owner: not specified")
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: repo: not specified")
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: branch: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (params ReposDeleteAnEnvironmentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -48807,10 +47014,7 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (ReposDeleteAutolinkParams, error) {
-	var (
-		params ReposDeleteAutolinkParams
-	)
+func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params ReposDeleteAutolinkParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -48907,10 +47111,7 @@ func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (ReposDele
 	return params, nil
 }
 
-func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (ReposDeleteBranchProtectionParams, error) {
-	var (
-		params ReposDeleteBranchProtectionParams
-	)
+func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (params ReposDeleteBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49007,10 +47208,7 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (ReposDeleteCommitCommentParams, error) {
-	var (
-		params ReposDeleteCommitCommentParams
-	)
+func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (params ReposDeleteCommitCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49107,10 +47305,7 @@ func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Request) (ReposDeleteCommitSignatureProtectionParams, error) {
-	var (
-		params ReposDeleteCommitSignatureProtectionParams
-	)
+func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposDeleteCommitSignatureProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49207,10 +47402,7 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Re
 	return params, nil
 }
 
-func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (ReposDeleteDeployKeyParams, error) {
-	var (
-		params ReposDeleteDeployKeyParams
-	)
+func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params ReposDeleteDeployKeyParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49307,10 +47499,7 @@ func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (ReposDel
 	return params, nil
 }
 
-func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (ReposDeleteDeploymentParams, error) {
-	var (
-		params ReposDeleteDeploymentParams
-	)
+func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params ReposDeleteDeploymentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49407,10 +47596,7 @@ func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (ReposDe
 	return params, nil
 }
 
-func decodeReposDeleteFileParams(args [3]string, r *http.Request) (ReposDeleteFileParams, error) {
-	var (
-		params ReposDeleteFileParams
-	)
+func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposDeleteFileParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49507,10 +47693,7 @@ func decodeReposDeleteFileParams(args [3]string, r *http.Request) (ReposDeleteFi
 	return params, nil
 }
 
-func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (ReposDeleteInvitationParams, error) {
-	var (
-		params ReposDeleteInvitationParams
-	)
+func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params ReposDeleteInvitationParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49607,10 +47790,7 @@ func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (ReposDe
 	return params, nil
 }
 
-func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (ReposDeletePagesSiteParams, error) {
-	var (
-		params ReposDeletePagesSiteParams
-	)
+func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (params ReposDeletePagesSiteParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49676,10 +47856,7 @@ func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (ReposDel
 	return params, nil
 }
 
-func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.Request) (ReposDeletePullRequestReviewProtectionParams, error) {
-	var (
-		params ReposDeletePullRequestReviewProtectionParams
-	)
+func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposDeletePullRequestReviewProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49776,10 +47953,7 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.
 	return params, nil
 }
 
-func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (ReposDeleteReleaseParams, error) {
-	var (
-		params ReposDeleteReleaseParams
-	)
+func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params ReposDeleteReleaseParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49876,10 +48050,7 @@ func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (ReposDelet
 	return params, nil
 }
 
-func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (ReposDeleteReleaseAssetParams, error) {
-	var (
-		params ReposDeleteReleaseAssetParams
-	)
+func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (params ReposDeleteReleaseAssetParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -49976,10 +48147,7 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (Repos
 	return params, nil
 }
 
-func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (ReposDeleteWebhookParams, error) {
-	var (
-		params ReposDeleteWebhookParams
-	)
+func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params ReposDeleteWebhookParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50076,10 +48244,7 @@ func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (ReposDelet
 	return params, nil
 }
 
-func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Request) (ReposDisableAutomatedSecurityFixesParams, error) {
-	var (
-		params ReposDisableAutomatedSecurityFixesParams
-	)
+func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Request) (params ReposDisableAutomatedSecurityFixesParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50145,10 +48310,7 @@ func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
-func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (ReposDisableLfsForRepoParams, error) {
-	var (
-		params ReposDisableLfsForRepoParams
-	)
+func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (params ReposDisableLfsForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50214,10 +48376,7 @@ func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (ReposD
 	return params, nil
 }
 
-func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request) (ReposDisableVulnerabilityAlertsParams, error) {
-	var (
-		params ReposDisableVulnerabilityAlertsParams
-	)
+func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposDisableVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50283,110 +48442,7 @@ func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request
 	return params, nil
 }
 
-func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (ReposDownloadTarballArchiveParams, error) {
-	var (
-		params ReposDownloadTarballArchiveParams
-	)
-	// Decode path: owner.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "owner",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Owner = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: owner: not specified")
-		}
-	}
-	// Decode path: repo.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "repo",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Repo = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: repo: not specified")
-		}
-	}
-	// Decode path: ref.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "ref",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Ref = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: ref: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (ReposDownloadZipballArchiveParams, error) {
-	var (
-		params ReposDownloadZipballArchiveParams
-	)
+func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (params ReposDownloadTarballArchiveParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50483,10 +48539,104 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Request) (ReposEnableAutomatedSecurityFixesParams, error) {
-	var (
-		params ReposEnableAutomatedSecurityFixesParams
-	)
+func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (params ReposDownloadZipballArchiveParams, _ error) {
+	// Decode path: owner.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: owner: not specified")
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: repo: not specified")
+		}
+	}
+	// Decode path: ref.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "ref",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Ref = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: ref: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Request) (params ReposEnableAutomatedSecurityFixesParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50552,10 +48702,7 @@ func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
-func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (ReposEnableLfsForRepoParams, error) {
-	var (
-		params ReposEnableLfsForRepoParams
-	)
+func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (params ReposEnableLfsForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50621,10 +48768,7 @@ func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (ReposEn
 	return params, nil
 }
 
-func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request) (ReposEnableVulnerabilityAlertsParams, error) {
-	var (
-		params ReposEnableVulnerabilityAlertsParams
-	)
+func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposEnableVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50690,10 +48834,7 @@ func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposGetParams(args [2]string, r *http.Request) (ReposGetParams, error) {
-	var (
-		params ReposGetParams
-	)
+func decodeReposGetParams(args [2]string, r *http.Request) (params ReposGetParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50759,10 +48900,7 @@ func decodeReposGetParams(args [2]string, r *http.Request) (ReposGetParams, erro
 	return params, nil
 }
 
-func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (ReposGetAccessRestrictionsParams, error) {
-	var (
-		params ReposGetAccessRestrictionsParams
-	)
+func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposGetAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50859,10 +48997,7 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (Re
 	return params, nil
 }
 
-func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) (ReposGetAdminBranchProtectionParams, error) {
-	var (
-		params ReposGetAdminBranchProtectionParams
-	)
+func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposGetAdminBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -50959,10 +49094,7 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request) (ReposGetAllStatusCheckContextsParams, error) {
-	var (
-		params ReposGetAllStatusCheckContextsParams
-	)
+func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposGetAllStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51059,11 +49191,8 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAllTopicsParams, error) {
-	var (
-		params    ReposGetAllTopicsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params ReposGetAllTopicsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51134,15 +49263,14 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -51162,7 +49290,7 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -51175,15 +49303,14 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -51203,7 +49330,7 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -51211,10 +49338,7 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 	return params, nil
 }
 
-func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (ReposGetAppsWithAccessToProtectedBranchParams, error) {
-	var (
-		params ReposGetAppsWithAccessToProtectedBranchParams
-	)
+func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetAppsWithAccessToProtectedBranchParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51311,10 +49435,7 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http
 	return params, nil
 }
 
-func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (ReposGetAutolinkParams, error) {
-	var (
-		params ReposGetAutolinkParams
-	)
+func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params ReposGetAutolinkParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51411,10 +49532,7 @@ func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (ReposGetAuto
 	return params, nil
 }
 
-func decodeReposGetBranchParams(args [3]string, r *http.Request) (ReposGetBranchParams, error) {
-	var (
-		params ReposGetBranchParams
-	)
+func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGetBranchParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51511,10 +49629,7 @@ func decodeReposGetBranchParams(args [3]string, r *http.Request) (ReposGetBranch
 	return params, nil
 }
 
-func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (ReposGetBranchProtectionParams, error) {
-	var (
-		params ReposGetBranchProtectionParams
-	)
+func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (params ReposGetBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51611,11 +49726,8 @@ func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposGetClonesParams(args [2]string, r *http.Request) (ReposGetClonesParams, error) {
-	var (
-		params    ReposGetClonesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGetClonesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51686,15 +49798,14 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (ReposGetClones
 	}
 	// Decode query: per.
 	{
-		if queryArgs.Has("per") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerVal ReposGetClonesPer
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -51714,7 +49825,7 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (ReposGetClones
 				}
 				params.Per.SetTo(paramsDotPerVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per: parse")
 			}
 			if err := func() error {
@@ -51737,10 +49848,7 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (ReposGetClones
 	return params, nil
 }
 
-func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (ReposGetCodeFrequencyStatsParams, error) {
-	var (
-		params ReposGetCodeFrequencyStatsParams
-	)
+func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (params ReposGetCodeFrequencyStatsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51806,10 +49914,7 @@ func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (Re
 	return params, nil
 }
 
-func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Request) (ReposGetCollaboratorPermissionLevelParams, error) {
-	var (
-		params ReposGetCollaboratorPermissionLevelParams
-	)
+func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Request) (params ReposGetCollaboratorPermissionLevelParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -51906,11 +50011,8 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Req
 	return params, nil
 }
 
-func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (ReposGetCombinedStatusForRefParams, error) {
-	var (
-		params    ReposGetCombinedStatusForRefParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (params ReposGetCombinedStatusForRefParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52012,15 +50114,14 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -52040,7 +50141,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -52053,15 +50154,14 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -52081,7 +50181,7 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -52089,11 +50189,8 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommitParams, error) {
-	var (
-		params    ReposGetCommitParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGetCommitParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52164,15 +50261,14 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -52192,7 +50288,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -52205,15 +50301,14 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -52233,7 +50328,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -52272,10 +50367,7 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 	return params, nil
 }
 
-func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (ReposGetCommitActivityStatsParams, error) {
-	var (
-		params ReposGetCommitActivityStatsParams
-	)
+func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (params ReposGetCommitActivityStatsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52341,10 +50433,7 @@ func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (ReposGetCommitCommentParams, error) {
-	var (
-		params ReposGetCommitCommentParams
-	)
+func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params ReposGetCommitCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52441,10 +50530,7 @@ func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (ReposGe
 	return params, nil
 }
 
-func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Request) (ReposGetCommitSignatureProtectionParams, error) {
-	var (
-		params ReposGetCommitSignatureProtectionParams
-	)
+func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposGetCommitSignatureProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52541,10 +50627,7 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
-func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request) (ReposGetCommunityProfileMetricsParams, error) {
-	var (
-		params ReposGetCommunityProfileMetricsParams
-	)
+func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request) (params ReposGetCommunityProfileMetricsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52610,10 +50693,7 @@ func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request
 	return params, nil
 }
 
-func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (ReposGetContributorsStatsParams, error) {
-	var (
-		params ReposGetContributorsStatsParams
-	)
+func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (params ReposGetContributorsStatsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52679,10 +50759,7 @@ func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (Rep
 	return params, nil
 }
 
-func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (ReposGetDeployKeyParams, error) {
-	var (
-		params ReposGetDeployKeyParams
-	)
+func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params ReposGetDeployKeyParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52779,10 +50856,7 @@ func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (ReposGetDep
 	return params, nil
 }
 
-func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (ReposGetDeploymentParams, error) {
-	var (
-		params ReposGetDeploymentParams
-	)
+func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params ReposGetDeploymentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -52879,10 +50953,7 @@ func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (ReposGetDe
 	return params, nil
 }
 
-func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (ReposGetDeploymentStatusParams, error) {
-	var (
-		params ReposGetDeploymentStatusParams
-	)
+func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (params ReposGetDeploymentStatusParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53010,10 +51081,7 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (ReposGetLatestPagesBuildParams, error) {
-	var (
-		params ReposGetLatestPagesBuildParams
-	)
+func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (params ReposGetLatestPagesBuildParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53079,10 +51147,7 @@ func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (ReposGetLatestReleaseParams, error) {
-	var (
-		params ReposGetLatestReleaseParams
-	)
+func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (params ReposGetLatestReleaseParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53148,10 +51213,7 @@ func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (ReposGe
 	return params, nil
 }
 
-func decodeReposGetPagesParams(args [2]string, r *http.Request) (ReposGetPagesParams, error) {
-	var (
-		params ReposGetPagesParams
-	)
+func decodeReposGetPagesParams(args [2]string, r *http.Request) (params ReposGetPagesParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53217,10 +51279,7 @@ func decodeReposGetPagesParams(args [2]string, r *http.Request) (ReposGetPagesPa
 	return params, nil
 }
 
-func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (ReposGetPagesBuildParams, error) {
-	var (
-		params ReposGetPagesBuildParams
-	)
+func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params ReposGetPagesBuildParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53317,10 +51376,7 @@ func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (ReposGetPa
 	return params, nil
 }
 
-func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (ReposGetPagesHealthCheckParams, error) {
-	var (
-		params ReposGetPagesHealthCheckParams
-	)
+func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (params ReposGetPagesHealthCheckParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53386,10 +51442,7 @@ func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (ReposGetParticipationStatsParams, error) {
-	var (
-		params ReposGetParticipationStatsParams
-	)
+func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (params ReposGetParticipationStatsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53455,10 +51508,7 @@ func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (Re
 	return params, nil
 }
 
-func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Request) (ReposGetPullRequestReviewProtectionParams, error) {
-	var (
-		params ReposGetPullRequestReviewProtectionParams
-	)
+func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposGetPullRequestReviewProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53555,10 +51605,7 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Req
 	return params, nil
 }
 
-func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (ReposGetPunchCardStatsParams, error) {
-	var (
-		params ReposGetPunchCardStatsParams
-	)
+func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (params ReposGetPunchCardStatsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53624,11 +51671,8 @@ func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (ReposG
 	return params, nil
 }
 
-func decodeReposGetReadmeParams(args [2]string, r *http.Request) (ReposGetReadmeParams, error) {
-	var (
-		params    ReposGetReadmeParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposGetReadmeParams(args [2]string, r *http.Request) (params ReposGetReadmeParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53693,15 +51737,14 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (ReposGetReadme
 	}
 	// Decode query: ref.
 	{
-		if queryArgs.Has("ref") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "ref",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "ref",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -53721,7 +51764,7 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (ReposGetReadme
 				}
 				params.Ref.SetTo(paramsDotRefVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
 			}
 		}
@@ -53729,11 +51772,8 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (ReposGetReadme
 	return params, nil
 }
 
-func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (ReposGetReadmeInDirectoryParams, error) {
-	var (
-		params    ReposGetReadmeInDirectoryParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (params ReposGetReadmeInDirectoryParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53829,15 +51869,14 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (Rep
 	}
 	// Decode query: ref.
 	{
-		if queryArgs.Has("ref") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "ref",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "ref",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -53857,7 +51896,7 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (Rep
 				}
 				params.Ref.SetTo(paramsDotRefVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
 			}
 		}
@@ -53865,10 +51904,7 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (Rep
 	return params, nil
 }
 
-func decodeReposGetReleaseParams(args [3]string, r *http.Request) (ReposGetReleaseParams, error) {
-	var (
-		params ReposGetReleaseParams
-	)
+func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposGetReleaseParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -53965,10 +52001,7 @@ func decodeReposGetReleaseParams(args [3]string, r *http.Request) (ReposGetRelea
 	return params, nil
 }
 
-func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (ReposGetReleaseAssetParams, error) {
-	var (
-		params ReposGetReleaseAssetParams
-	)
+func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params ReposGetReleaseAssetParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54065,10 +52098,7 @@ func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (ReposGet
 	return params, nil
 }
 
-func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (ReposGetReleaseByTagParams, error) {
-	var (
-		params ReposGetReleaseByTagParams
-	)
+func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params ReposGetReleaseByTagParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54165,10 +52195,7 @@ func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (ReposGet
 	return params, nil
 }
 
-func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request) (ReposGetStatusChecksProtectionParams, error) {
-	var (
-		params ReposGetStatusChecksProtectionParams
-	)
+func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request) (params ReposGetStatusChecksProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54265,10 +52292,7 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (ReposGetTeamsWithAccessToProtectedBranchParams, error) {
-	var (
-		params ReposGetTeamsWithAccessToProtectedBranchParams
-	)
+func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetTeamsWithAccessToProtectedBranchParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54365,10 +52389,7 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *htt
 	return params, nil
 }
 
-func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (ReposGetTopPathsParams, error) {
-	var (
-		params ReposGetTopPathsParams
-	)
+func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (params ReposGetTopPathsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54434,10 +52455,7 @@ func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (ReposGetTopP
 	return params, nil
 }
 
-func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (ReposGetTopReferrersParams, error) {
-	var (
-		params ReposGetTopReferrersParams
-	)
+func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (params ReposGetTopReferrersParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54503,10 +52521,7 @@ func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (ReposGet
 	return params, nil
 }
 
-func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (ReposGetUsersWithAccessToProtectedBranchParams, error) {
-	var (
-		params ReposGetUsersWithAccessToProtectedBranchParams
-	)
+func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetUsersWithAccessToProtectedBranchParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54603,11 +52618,8 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *htt
 	return params, nil
 }
 
-func decodeReposGetViewsParams(args [2]string, r *http.Request) (ReposGetViewsParams, error) {
-	var (
-		params    ReposGetViewsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGetViewsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54678,15 +52690,14 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (ReposGetViewsPa
 	}
 	// Decode query: per.
 	{
-		if queryArgs.Has("per") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerVal ReposGetViewsPer
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -54706,7 +52717,7 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (ReposGetViewsPa
 				}
 				params.Per.SetTo(paramsDotPerVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per: parse")
 			}
 			if err := func() error {
@@ -54729,10 +52740,7 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (ReposGetViewsPa
 	return params, nil
 }
 
-func decodeReposGetWebhookParams(args [3]string, r *http.Request) (ReposGetWebhookParams, error) {
-	var (
-		params ReposGetWebhookParams
-	)
+func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposGetWebhookParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54829,10 +52837,7 @@ func decodeReposGetWebhookParams(args [3]string, r *http.Request) (ReposGetWebho
 	return params, nil
 }
 
-func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (ReposGetWebhookConfigForRepoParams, error) {
-	var (
-		params ReposGetWebhookConfigForRepoParams
-	)
+func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (params ReposGetWebhookConfigForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -54929,10 +52934,7 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
-func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (ReposGetWebhookDeliveryParams, error) {
-	var (
-		params ReposGetWebhookDeliveryParams
-	)
+func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (params ReposGetWebhookDeliveryParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -55060,11 +53062,8 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (Repos
 	return params, nil
 }
 
-func decodeReposListAutolinksParams(args [2]string, r *http.Request) (ReposListAutolinksParams, error) {
-	var (
-		params    ReposListAutolinksParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params ReposListAutolinksParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -55135,15 +53134,14 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (ReposListA
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55163,7 +53161,7 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (ReposListA
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -55171,11 +53169,8 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (ReposListA
 	return params, nil
 }
 
-func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBranchesParams, error) {
-	var (
-		params    ReposListBranchesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListBranchesParams(args [2]string, r *http.Request) (params ReposListBranchesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -55240,15 +53235,14 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 	}
 	// Decode query: protected.
 	{
-		if queryArgs.Has("protected") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "protected",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "protected",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotProtectedVal bool
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55268,7 +53262,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 				}
 				params.Protected.SetTo(paramsDotProtectedVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: protected: parse")
 			}
 		}
@@ -55281,15 +53275,14 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55309,7 +53302,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -55322,15 +53315,14 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55350,7 +53342,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -55358,10 +53350,7 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 	return params, nil
 }
 
-func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request) (ReposListBranchesForHeadCommitParams, error) {
-	var (
-		params ReposListBranchesForHeadCommitParams
-	)
+func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request) (params ReposListBranchesForHeadCommitParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -55458,11 +53447,8 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposListCollaboratorsParams, error) {
-	var (
-		params    ReposListCollaboratorsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params ReposListCollaboratorsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -55533,15 +53519,14 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 	}
 	// Decode query: affiliation.
 	{
-		if queryArgs.Has("affiliation") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "affiliation",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "affiliation",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAffiliationVal ReposListCollaboratorsAffiliation
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55561,7 +53546,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 				}
 				params.Affiliation.SetTo(paramsDotAffiliationVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: affiliation: parse")
 			}
 			if err := func() error {
@@ -55589,15 +53574,14 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55617,7 +53601,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -55630,15 +53614,14 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55658,7 +53641,7 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -55666,11 +53649,8 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 	return params, nil
 }
 
-func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (ReposListCommentsForCommitParams, error) {
-	var (
-		params    ReposListCommentsForCommitParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (params ReposListCommentsForCommitParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -55772,15 +53752,14 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55800,7 +53779,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -55813,15 +53792,14 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55841,7 +53819,7 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -55849,11 +53827,8 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 	return params, nil
 }
 
-func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request) (ReposListCommitCommentsForRepoParams, error) {
-	var (
-		params    ReposListCommitCommentsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request) (params ReposListCommitCommentsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -55924,15 +53899,14 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55952,7 +53926,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -55965,15 +53939,14 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -55993,7 +53966,7 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -56001,11 +53974,8 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) (ReposListCommitStatusesForRefParams, error) {
-	var (
-		params    ReposListCommitStatusesForRefParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) (params ReposListCommitStatusesForRefParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -56107,15 +54077,14 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56135,7 +54104,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -56148,15 +54117,14 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56176,7 +54144,7 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -56184,11 +54152,8 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCommitsParams, error) {
-	var (
-		params    ReposListCommitsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListCommitsParams(args [2]string, r *http.Request) (params ReposListCommitsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -56253,15 +54218,14 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: sha.
 	{
-		if queryArgs.Has("sha") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sha",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sha",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotShaVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56281,22 +54245,21 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 				}
 				params.Sha.SetTo(paramsDotShaVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sha: parse")
 			}
 		}
 	}
 	// Decode query: path.
 	{
-		if queryArgs.Has("path") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "path",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "path",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPathVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56316,22 +54279,21 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 				}
 				params.Path.SetTo(paramsDotPathVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: path: parse")
 			}
 		}
 	}
 	// Decode query: author.
 	{
-		if queryArgs.Has("author") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "author",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "author",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAuthorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56351,22 +54313,21 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 				}
 				params.Author.SetTo(paramsDotAuthorVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: author: parse")
 			}
 		}
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56386,22 +54347,21 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
 	}
 	// Decode query: until.
 	{
-		if queryArgs.Has("until") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "until",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "until",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotUntilVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56421,7 +54381,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 				}
 				params.Until.SetTo(paramsDotUntilVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: until: parse")
 			}
 		}
@@ -56434,15 +54394,14 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56462,7 +54421,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -56475,15 +54434,14 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56503,7 +54461,7 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -56511,11 +54469,8 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	return params, nil
 }
 
-func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposListContributorsParams, error) {
-	var (
-		params    ReposListContributorsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListContributorsParams(args [2]string, r *http.Request) (params ReposListContributorsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -56580,15 +54535,14 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 	}
 	// Decode query: anon.
 	{
-		if queryArgs.Has("anon") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "anon",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "anon",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAnonVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56608,7 +54562,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 				}
 				params.Anon.SetTo(paramsDotAnonVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: anon: parse")
 			}
 		}
@@ -56621,15 +54575,14 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56649,7 +54602,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -56662,15 +54615,14 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56690,7 +54642,7 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -56698,11 +54650,8 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 	return params, nil
 }
 
-func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposListDeployKeysParams, error) {
-	var (
-		params    ReposListDeployKeysParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params ReposListDeployKeysParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -56773,15 +54722,14 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56801,7 +54749,7 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -56814,15 +54762,14 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56842,7 +54789,7 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -56850,11 +54797,8 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 	return params, nil
 }
 
-func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (ReposListDeploymentStatusesParams, error) {
-	var (
-		params    ReposListDeploymentStatusesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (params ReposListDeploymentStatusesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -56956,15 +54900,14 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -56984,7 +54927,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -56997,15 +54940,14 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57025,7 +54967,7 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -57033,11 +54975,8 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposListDeploymentsParams, error) {
-	var (
-		params    ReposListDeploymentsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params ReposListDeploymentsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -57108,15 +55047,14 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: sha.
 	{
-		if queryArgs.Has("sha") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sha",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sha",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotShaVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57136,7 +55074,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.Sha.SetTo(paramsDotShaVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sha: parse")
 			}
 		}
@@ -57149,15 +55087,14 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: ref.
 	{
-		if queryArgs.Has("ref") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "ref",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "ref",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRefVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57177,7 +55114,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.Ref.SetTo(paramsDotRefVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: ref: parse")
 			}
 		}
@@ -57190,15 +55127,14 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: task.
 	{
-		if queryArgs.Has("task") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "task",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "task",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTaskVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57218,7 +55154,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.Task.SetTo(paramsDotTaskVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: task: parse")
 			}
 		}
@@ -57231,15 +55167,14 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: environment.
 	{
-		if queryArgs.Has("environment") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "environment",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "environment",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotEnvironmentVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57259,7 +55194,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.Environment.SetTo(paramsDotEnvironmentVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: environment: parse")
 			}
 		}
@@ -57272,15 +55207,14 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57300,7 +55234,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -57313,15 +55247,14 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57341,7 +55274,7 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -57349,11 +55282,8 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	return params, nil
 }
 
-func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) (ReposListForAuthenticatedUserParams, error) {
-	var (
-		params    ReposListForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) (params ReposListForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: visibility.
 	{
 		val := ReposListForAuthenticatedUserVisibility("all")
@@ -57362,15 +55292,14 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: visibility.
 	{
-		if queryArgs.Has("visibility") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "visibility",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "visibility",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotVisibilityVal ReposListForAuthenticatedUserVisibility
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57390,7 +55319,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Visibility.SetTo(paramsDotVisibilityVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: visibility: parse")
 			}
 			if err := func() error {
@@ -57418,15 +55347,14 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: affiliation.
 	{
-		if queryArgs.Has("affiliation") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "affiliation",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "affiliation",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotAffiliationVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57446,7 +55374,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Affiliation.SetTo(paramsDotAffiliationVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: affiliation: parse")
 			}
 		}
@@ -57459,15 +55387,14 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: type.
 	{
-		if queryArgs.Has("type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTypeVal ReposListForAuthenticatedUserType
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57487,7 +55414,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Type.SetTo(paramsDotTypeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: type: parse")
 			}
 			if err := func() error {
@@ -57515,15 +55442,14 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ReposListForAuthenticatedUserSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57543,7 +55469,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -57565,15 +55491,14 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal ReposListForAuthenticatedUserDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57593,7 +55518,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -57621,15 +55546,14 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57649,7 +55573,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -57662,15 +55586,14 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57690,22 +55613,21 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57725,22 +55647,21 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
 	}
 	// Decode query: before.
 	{
-		if queryArgs.Has("before") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "before",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "before",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBeforeVal time.Time
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57760,7 +55681,7 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Before.SetTo(paramsDotBeforeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: before: parse")
 			}
 		}
@@ -57768,11 +55689,8 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForOrgParams, error) {
-	var (
-		params    ReposListForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposListForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -57806,15 +55724,14 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: type.
 	{
-		if queryArgs.Has("type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTypeVal ReposListForOrgType
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57834,7 +55751,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 				}
 				params.Type.SetTo(paramsDotTypeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: type: parse")
 			}
 			if err := func() error {
@@ -57862,15 +55779,14 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ReposListForOrgSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57890,7 +55806,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -57912,15 +55828,14 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal ReposListForOrgDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57940,7 +55855,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -57968,15 +55883,14 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -57996,7 +55910,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -58009,15 +55923,14 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58037,7 +55950,7 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -58045,11 +55958,8 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	return params, nil
 }
 
-func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListForUserParams, error) {
-	var (
-		params    ReposListForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListForUserParams(args [1]string, r *http.Request) (params ReposListForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -58089,15 +55999,14 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: type.
 	{
-		if queryArgs.Has("type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotTypeVal ReposListForUserType
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58117,7 +56026,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 				}
 				params.Type.SetTo(paramsDotTypeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: type: parse")
 			}
 			if err := func() error {
@@ -58145,15 +56054,14 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ReposListForUserSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58173,7 +56081,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -58195,15 +56103,14 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal ReposListForUserDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58223,7 +56130,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -58251,15 +56158,14 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58279,7 +56185,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -58292,15 +56198,14 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58320,7 +56225,7 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -58328,11 +56233,8 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	return params, nil
 }
 
-func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForksParams, error) {
-	var (
-		params    ReposListForksParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposListForksParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -58403,15 +56305,14 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal ReposListForksSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58431,7 +56332,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -58459,15 +56360,14 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58487,7 +56387,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -58500,15 +56400,14 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58528,7 +56427,7 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -58536,11 +56435,8 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 	return params, nil
 }
 
-func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposListInvitationsParams, error) {
-	var (
-		params    ReposListInvitationsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params ReposListInvitationsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -58611,15 +56507,14 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58639,7 +56534,7 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -58652,15 +56547,14 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58680,7 +56574,7 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -58688,11 +56582,8 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 	return params, nil
 }
 
-func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *http.Request) (ReposListInvitationsForAuthenticatedUserParams, error) {
-	var (
-		params    ReposListInvitationsForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *http.Request) (params ReposListInvitationsForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -58701,15 +56592,14 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58729,7 +56619,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -58742,15 +56632,14 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58770,7 +56659,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -58778,10 +56667,7 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	return params, nil
 }
 
-func decodeReposListLanguagesParams(args [2]string, r *http.Request) (ReposListLanguagesParams, error) {
-	var (
-		params ReposListLanguagesParams
-	)
+func decodeReposListLanguagesParams(args [2]string, r *http.Request) (params ReposListLanguagesParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -58847,11 +56733,8 @@ func decodeReposListLanguagesParams(args [2]string, r *http.Request) (ReposListL
 	return params, nil
 }
 
-func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposListPagesBuildsParams, error) {
-	var (
-		params    ReposListPagesBuildsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params ReposListPagesBuildsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -58922,15 +56805,14 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58950,7 +56832,7 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -58963,15 +56845,14 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -58991,7 +56872,7 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -58999,22 +56880,18 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 	return params, nil
 }
 
-func decodeReposListPublicParams(args [0]string, r *http.Request) (ReposListPublicParams, error) {
-	var (
-		params    ReposListPublicParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListPublicParams(args [0]string, r *http.Request) (params ReposListPublicParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59034,7 +56911,7 @@ func decodeReposListPublicParams(args [0]string, r *http.Request) (ReposListPubl
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -59042,11 +56919,8 @@ func decodeReposListPublicParams(args [0]string, r *http.Request) (ReposListPubl
 	return params, nil
 }
 
-func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *http.Request) (ReposListPullRequestsAssociatedWithCommitParams, error) {
-	var (
-		params    ReposListPullRequestsAssociatedWithCommitParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *http.Request) (params ReposListPullRequestsAssociatedWithCommitParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -59148,15 +57022,14 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59176,7 +57049,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -59189,15 +57062,14 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59217,7 +57089,7 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -59225,11 +57097,8 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	return params, nil
 }
 
-func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposListReleaseAssetsParams, error) {
-	var (
-		params    ReposListReleaseAssetsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params ReposListReleaseAssetsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -59331,15 +57200,14 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59359,7 +57227,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -59372,15 +57240,14 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59400,7 +57267,7 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -59408,11 +57275,8 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 	return params, nil
 }
 
-func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListReleasesParams, error) {
-	var (
-		params    ReposListReleasesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListReleasesParams(args [2]string, r *http.Request) (params ReposListReleasesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -59483,15 +57347,14 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59511,7 +57374,7 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -59524,15 +57387,14 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59552,7 +57414,7 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -59560,11 +57422,8 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 	return params, nil
 }
 
-func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsParams, error) {
-	var (
-		params    ReposListTagsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposListTagsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -59635,15 +57494,14 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59663,7 +57521,7 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -59676,15 +57534,14 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59704,7 +57561,7 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -59712,11 +57569,8 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 	return params, nil
 }
 
-func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeamsParams, error) {
-	var (
-		params    ReposListTeamsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposListTeamsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -59787,15 +57641,14 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59815,7 +57668,7 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -59828,15 +57681,14 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59856,7 +57708,7 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -59864,11 +57716,8 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 	return params, nil
 }
 
-func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (ReposListWebhookDeliveriesParams, error) {
-	var (
-		params    ReposListWebhookDeliveriesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (params ReposListWebhookDeliveriesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -59970,15 +57819,14 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -59998,22 +57846,21 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
 	}
 	// Decode query: cursor.
 	{
-		if queryArgs.Has("cursor") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "cursor",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "cursor",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotCursorVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -60033,7 +57880,7 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 				}
 				params.Cursor.SetTo(paramsDotCursorVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: cursor: parse")
 			}
 		}
@@ -60041,11 +57888,8 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 	return params, nil
 }
 
-func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWebhooksParams, error) {
-	var (
-		params    ReposListWebhooksParams
-		queryArgs = r.URL.Query()
-	)
+func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params ReposListWebhooksParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60116,15 +57960,14 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -60144,7 +57987,7 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -60157,15 +58000,14 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -60185,7 +58027,7 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -60193,10 +58035,7 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 	return params, nil
 }
 
-func decodeReposMergeParams(args [2]string, r *http.Request) (ReposMergeParams, error) {
-	var (
-		params ReposMergeParams
-	)
+func decodeReposMergeParams(args [2]string, r *http.Request) (params ReposMergeParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60262,10 +58101,7 @@ func decodeReposMergeParams(args [2]string, r *http.Request) (ReposMergeParams, 
 	return params, nil
 }
 
-func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (ReposMergeUpstreamParams, error) {
-	var (
-		params ReposMergeUpstreamParams
-	)
+func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (params ReposMergeUpstreamParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60331,10 +58167,7 @@ func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (ReposMerge
 	return params, nil
 }
 
-func decodeReposPingWebhookParams(args [3]string, r *http.Request) (ReposPingWebhookParams, error) {
-	var (
-		params ReposPingWebhookParams
-	)
+func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params ReposPingWebhookParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60431,10 +58264,7 @@ func decodeReposPingWebhookParams(args [3]string, r *http.Request) (ReposPingWeb
 	return params, nil
 }
 
-func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) (ReposRedeliverWebhookDeliveryParams, error) {
-	var (
-		params ReposRedeliverWebhookDeliveryParams
-	)
+func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) (params ReposRedeliverWebhookDeliveryParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60562,10 +58392,7 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Request) (ReposRemoveAppAccessRestrictionsParams, error) {
-	var (
-		params ReposRemoveAppAccessRestrictionsParams
-	)
+func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveAppAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60662,10 +58489,7 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
-func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (ReposRemoveCollaboratorParams, error) {
-	var (
-		params ReposRemoveCollaboratorParams
-	)
+func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (params ReposRemoveCollaboratorParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60762,10 +58586,7 @@ func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (Repos
 	return params, nil
 }
 
-func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request) (ReposRemoveStatusCheckContextsParams, error) {
-	var (
-		params ReposRemoveStatusCheckContextsParams
-	)
+func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposRemoveStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60862,10 +58683,7 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Request) (ReposRemoveStatusCheckProtectionParams, error) {
-	var (
-		params ReposRemoveStatusCheckProtectionParams
-	)
+func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Request) (params ReposRemoveStatusCheckProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -60962,10 +58780,7 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
-func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Request) (ReposRemoveTeamAccessRestrictionsParams, error) {
-	var (
-		params ReposRemoveTeamAccessRestrictionsParams
-	)
+func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61062,10 +58877,7 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
-func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Request) (ReposRemoveUserAccessRestrictionsParams, error) {
-	var (
-		params ReposRemoveUserAccessRestrictionsParams
-	)
+func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveUserAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61162,10 +58974,7 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
-func decodeReposRenameBranchParams(args [3]string, r *http.Request) (ReposRenameBranchParams, error) {
-	var (
-		params ReposRenameBranchParams
-	)
+func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params ReposRenameBranchParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61262,10 +59071,7 @@ func decodeReposRenameBranchParams(args [3]string, r *http.Request) (ReposRename
 	return params, nil
 }
 
-func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (ReposReplaceAllTopicsParams, error) {
-	var (
-		params ReposReplaceAllTopicsParams
-	)
+func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (params ReposReplaceAllTopicsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61331,10 +59137,7 @@ func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (ReposRe
 	return params, nil
 }
 
-func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (ReposRequestPagesBuildParams, error) {
-	var (
-		params ReposRequestPagesBuildParams
-	)
+func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (params ReposRequestPagesBuildParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61400,110 +59203,7 @@ func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (ReposR
 	return params, nil
 }
 
-func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) (ReposSetAdminBranchProtectionParams, error) {
-	var (
-		params ReposSetAdminBranchProtectionParams
-	)
-	// Decode path: owner.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "owner",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Owner = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: owner: not specified")
-		}
-	}
-	// Decode path: repo.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "repo",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Repo = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: repo: not specified")
-		}
-	}
-	// Decode path: branch.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "branch",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Branch = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: branch: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) (ReposSetAppAccessRestrictionsParams, error) {
-	var (
-		params ReposSetAppAccessRestrictionsParams
-	)
+func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposSetAdminBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61600,10 +59300,7 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (ReposSetStatusCheckContextsParams, error) {
-	var (
-		params ReposSetStatusCheckContextsParams
-	)
+func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetAppAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61700,10 +59397,7 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request) (ReposSetTeamAccessRestrictionsParams, error) {
-	var (
-		params ReposSetTeamAccessRestrictionsParams
-	)
+func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposSetStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61800,10 +59494,7 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request) (ReposSetUserAccessRestrictionsParams, error) {
-	var (
-		params ReposSetUserAccessRestrictionsParams
-	)
+func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -61900,10 +59591,104 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (ReposTestPushWebhookParams, error) {
-	var (
-		params ReposTestPushWebhookParams
-	)
+func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetUserAccessRestrictionsParams, _ error) {
+	// Decode path: owner.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "owner",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Owner = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: owner: not specified")
+		}
+	}
+	// Decode path: repo.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "repo",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Repo = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: repo: not specified")
+		}
+	}
+	// Decode path: branch.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "branch",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Branch = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: branch: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params ReposTestPushWebhookParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62000,10 +59785,7 @@ func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (ReposTes
 	return params, nil
 }
 
-func decodeReposTransferParams(args [2]string, r *http.Request) (ReposTransferParams, error) {
-	var (
-		params ReposTransferParams
-	)
+func decodeReposTransferParams(args [2]string, r *http.Request) (params ReposTransferParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62069,10 +59851,7 @@ func decodeReposTransferParams(args [2]string, r *http.Request) (ReposTransferPa
 	return params, nil
 }
 
-func decodeReposUpdateParams(args [2]string, r *http.Request) (ReposUpdateParams, error) {
-	var (
-		params ReposUpdateParams
-	)
+func decodeReposUpdateParams(args [2]string, r *http.Request) (params ReposUpdateParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62138,10 +59917,7 @@ func decodeReposUpdateParams(args [2]string, r *http.Request) (ReposUpdateParams
 	return params, nil
 }
 
-func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (ReposUpdateBranchProtectionParams, error) {
-	var (
-		params ReposUpdateBranchProtectionParams
-	)
+func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (params ReposUpdateBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62238,10 +60014,7 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (R
 	return params, nil
 }
 
-func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (ReposUpdateCommitCommentParams, error) {
-	var (
-		params ReposUpdateCommitCommentParams
-	)
+func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (params ReposUpdateCommitCommentParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62338,10 +60111,7 @@ func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (Repo
 	return params, nil
 }
 
-func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (ReposUpdateInvitationParams, error) {
-	var (
-		params ReposUpdateInvitationParams
-	)
+func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params ReposUpdateInvitationParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62438,10 +60208,7 @@ func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (ReposUp
 	return params, nil
 }
 
-func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.Request) (ReposUpdatePullRequestReviewProtectionParams, error) {
-	var (
-		params ReposUpdatePullRequestReviewProtectionParams
-	)
+func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposUpdatePullRequestReviewProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62538,10 +60305,7 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.
 	return params, nil
 }
 
-func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (ReposUpdateReleaseParams, error) {
-	var (
-		params ReposUpdateReleaseParams
-	)
+func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params ReposUpdateReleaseParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62638,10 +60402,7 @@ func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (ReposUpdat
 	return params, nil
 }
 
-func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (ReposUpdateReleaseAssetParams, error) {
-	var (
-		params ReposUpdateReleaseAssetParams
-	)
+func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (params ReposUpdateReleaseAssetParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62738,10 +60499,7 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (Repos
 	return params, nil
 }
 
-func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Request) (ReposUpdateStatusCheckProtectionParams, error) {
-	var (
-		params ReposUpdateStatusCheckProtectionParams
-	)
+func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Request) (params ReposUpdateStatusCheckProtectionParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62838,10 +60596,7 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
-func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (ReposUpdateWebhookParams, error) {
-	var (
-		params ReposUpdateWebhookParams
-	)
+func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params ReposUpdateWebhookParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -62938,10 +60693,7 @@ func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (ReposUpdat
 	return params, nil
 }
 
-func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request) (ReposUpdateWebhookConfigForRepoParams, error) {
-	var (
-		params ReposUpdateWebhookConfigForRepoParams
-	)
+func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request) (params ReposUpdateWebhookConfigForRepoParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -63038,10 +60790,7 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 	return params, nil
 }
 
-func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (ScimDeleteUserFromOrgParams, error) {
-	var (
-		params ScimDeleteUserFromOrgParams
-	)
+func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (params ScimDeleteUserFromOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -63107,22 +60856,18 @@ func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (ScimDel
 	return params, nil
 }
 
-func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, error) {
-	var (
-		params    SearchCodeParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchCodeParams(args [0]string, r *http.Request) (params SearchCodeParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	{
-		if queryArgs.Has("q") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "q",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "q",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -63135,24 +60880,23 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 
 				params.Q = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: q: parse")
 			}
 		} else {
-			return params, errors.New("query: q: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchCodeSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63172,7 +60916,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -63200,15 +60944,14 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	}
 	// Decode query: order.
 	{
-		if queryArgs.Has("order") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "order",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "order",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchCodeOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63228,7 +60971,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 				}
 				params.Order.SetTo(paramsDotOrderVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
 			}
 			if err := func() error {
@@ -63256,15 +60999,14 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63284,7 +61026,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -63297,15 +61039,14 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63325,7 +61066,7 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -63333,22 +61074,18 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	return params, nil
 }
 
-func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsParams, error) {
-	var (
-		params    SearchCommitsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchCommitsParams(args [0]string, r *http.Request) (params SearchCommitsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	{
-		if queryArgs.Has("q") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "q",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "q",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -63361,24 +61098,23 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 
 				params.Q = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: q: parse")
 			}
 		} else {
-			return params, errors.New("query: q: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchCommitsSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63398,7 +61134,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -63426,15 +61162,14 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	}
 	// Decode query: order.
 	{
-		if queryArgs.Has("order") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "order",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "order",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchCommitsOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63454,7 +61189,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 				}
 				params.Order.SetTo(paramsDotOrderVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
 			}
 			if err := func() error {
@@ -63482,15 +61217,14 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63510,7 +61244,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -63523,15 +61257,14 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63551,7 +61284,7 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -63559,22 +61292,18 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	return params, nil
 }
 
-func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (SearchIssuesAndPullRequestsParams, error) {
-	var (
-		params    SearchIssuesAndPullRequestsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (params SearchIssuesAndPullRequestsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	{
-		if queryArgs.Has("q") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "q",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "q",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -63587,24 +61316,23 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 
 				params.Q = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: q: parse")
 			}
 		} else {
-			return params, errors.New("query: q: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchIssuesAndPullRequestsSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63624,7 +61352,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -63652,15 +61380,14 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	}
 	// Decode query: order.
 	{
-		if queryArgs.Has("order") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "order",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "order",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchIssuesAndPullRequestsOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63680,7 +61407,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 				}
 				params.Order.SetTo(paramsDotOrderVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
 			}
 			if err := func() error {
@@ -63708,15 +61435,14 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63736,7 +61462,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -63749,15 +61475,14 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63777,7 +61502,7 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -63785,22 +61510,18 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	return params, nil
 }
 
-func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsParams, error) {
-	var (
-		params    SearchLabelsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchLabelsParams(args [0]string, r *http.Request) (params SearchLabelsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: repository_id.
 	{
-		if queryArgs.Has("repository_id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "repository_id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "repository_id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -63813,24 +61534,23 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 
 				params.RepositoryID = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: repository_id: parse")
 			}
 		} else {
-			return params, errors.New("query: repository_id: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: q.
 	{
-		if queryArgs.Has("q") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "q",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "q",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -63843,24 +61563,23 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 
 				params.Q = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: q: parse")
 			}
 		} else {
-			return params, errors.New("query: q: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchLabelsSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63880,7 +61599,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -63908,15 +61627,14 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	}
 	// Decode query: order.
 	{
-		if queryArgs.Has("order") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "order",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "order",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchLabelsOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63936,7 +61654,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 				}
 				params.Order.SetTo(paramsDotOrderVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
 			}
 			if err := func() error {
@@ -63964,15 +61682,14 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -63992,7 +61709,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -64005,15 +61722,14 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64033,7 +61749,7 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -64041,22 +61757,18 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	return params, nil
 }
 
-func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams, error) {
-	var (
-		params    SearchReposParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchReposParams(args [0]string, r *http.Request) (params SearchReposParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	{
-		if queryArgs.Has("q") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "q",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "q",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -64069,24 +61781,23 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 
 				params.Q = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: q: parse")
 			}
 		} else {
-			return params, errors.New("query: q: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchReposSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64106,7 +61817,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -64134,15 +61845,14 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	}
 	// Decode query: order.
 	{
-		if queryArgs.Has("order") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "order",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "order",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchReposOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64162,7 +61872,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 				}
 				params.Order.SetTo(paramsDotOrderVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
 			}
 			if err := func() error {
@@ -64190,15 +61900,14 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64218,7 +61927,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -64231,15 +61940,14 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64259,7 +61967,7 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -64267,22 +61975,18 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	return params, nil
 }
 
-func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsParams, error) {
-	var (
-		params    SearchTopicsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchTopicsParams(args [0]string, r *http.Request) (params SearchTopicsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	{
-		if queryArgs.Has("q") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "q",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "q",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -64295,11 +61999,11 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 
 				params.Q = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: q: parse")
 			}
 		} else {
-			return params, errors.New("query: q: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Set default value for query: per_page.
@@ -64310,15 +62014,14 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64338,7 +62041,7 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -64351,15 +62054,14 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64379,7 +62081,7 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -64387,22 +62089,18 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 	return params, nil
 }
 
-func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams, error) {
-	var (
-		params    SearchUsersParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchUsersParams(args [0]string, r *http.Request) (params SearchUsersParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
 	{
-		if queryArgs.Has("q") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "q",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "q",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -64415,24 +62113,23 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 
 				params.Q = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: q: parse")
 			}
 		} else {
-			return params, errors.New("query: q: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: sort.
 	{
-		if queryArgs.Has("sort") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "sort",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "sort",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSortVal SearchUsersSort
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64452,7 +62149,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 				}
 				params.Sort.SetTo(paramsDotSortVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: sort: parse")
 			}
 			if err := func() error {
@@ -64480,15 +62177,14 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	}
 	// Decode query: order.
 	{
-		if queryArgs.Has("order") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "order",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "order",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotOrderVal SearchUsersOrder
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64508,7 +62204,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 				}
 				params.Order.SetTo(paramsDotOrderVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: order: parse")
 			}
 			if err := func() error {
@@ -64536,15 +62232,14 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64564,7 +62259,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -64577,15 +62272,14 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64605,7 +62299,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -64613,10 +62307,7 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	return params, nil
 }
 
-func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (SecretScanningGetAlertParams, error) {
-	var (
-		params SecretScanningGetAlertParams
-	)
+func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params SecretScanningGetAlertParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -64720,11 +62411,8 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (Secret
 	return params, nil
 }
 
-func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request) (SecretScanningListAlertsForOrgParams, error) {
-	var (
-		params    SecretScanningListAlertsForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request) (params SecretScanningListAlertsForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -64758,15 +62446,14 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal SecretScanningListAlertsForOrgState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64786,7 +62473,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -64808,15 +62495,14 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	}
 	// Decode query: secret_type.
 	{
-		if queryArgs.Has("secret_type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "secret_type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "secret_type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSecretTypeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64836,7 +62522,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 				}
 				params.SecretType.SetTo(paramsDotSecretTypeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: secret_type: parse")
 			}
 		}
@@ -64849,15 +62535,14 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64877,7 +62562,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -64890,15 +62575,14 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -64918,7 +62602,7 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -64926,11 +62610,8 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
-func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request) (SecretScanningListAlertsForRepoParams, error) {
-	var (
-		params    SecretScanningListAlertsForRepoParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request) (params SecretScanningListAlertsForRepoParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -64995,15 +62676,14 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode query: state.
 	{
-		if queryArgs.Has("state") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "state",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "state",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotStateVal SecretScanningListAlertsForRepoState
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -65023,7 +62703,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 				}
 				params.State.SetTo(paramsDotStateVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: state: parse")
 			}
 			if err := func() error {
@@ -65045,15 +62725,14 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode query: secret_type.
 	{
-		if queryArgs.Has("secret_type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "secret_type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "secret_type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSecretTypeVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -65073,7 +62752,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 				}
 				params.SecretType.SetTo(paramsDotSecretTypeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: secret_type: parse")
 			}
 		}
@@ -65086,15 +62765,14 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -65114,7 +62792,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -65127,15 +62805,14 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -65155,7 +62832,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -65163,10 +62840,7 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	return params, nil
 }
 
-func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (SecretScanningUpdateAlertParams, error) {
-	var (
-		params SecretScanningUpdateAlertParams
-	)
+func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (params SecretScanningUpdateAlertParams, _ error) {
 	// Decode path: owner.
 	{
 		param := args[0]
@@ -65270,10 +62944,7 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (Sec
 	return params, nil
 }
 
-func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (TeamsAddMemberLegacyParams, error) {
-	var (
-		params TeamsAddMemberLegacyParams
-	)
+func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (params TeamsAddMemberLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -65339,10 +63010,7 @@ func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (TeamsAdd
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.Request) (TeamsAddOrUpdateMembershipForUserInOrgParams, error) {
-	var (
-		params TeamsAddOrUpdateMembershipForUserInOrgParams
-	)
+func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateMembershipForUserInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -65439,10 +63107,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http.Request) (TeamsAddOrUpdateMembershipForUserLegacyParams, error) {
-	var (
-		params TeamsAddOrUpdateMembershipForUserLegacyParams
-	)
+func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsAddOrUpdateMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -65508,10 +63173,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http.Request) (TeamsAddOrUpdateProjectPermissionsInOrgParams, error) {
-	var (
-		params TeamsAddOrUpdateProjectPermissionsInOrgParams
-	)
+func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateProjectPermissionsInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -65608,10 +63270,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *http.Request) (TeamsAddOrUpdateProjectPermissionsLegacyParams, error) {
-	var (
-		params TeamsAddOrUpdateProjectPermissionsLegacyParams
-	)
+func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *http.Request) (params TeamsAddOrUpdateProjectPermissionsLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -65677,10 +63336,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *htt
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Request) (TeamsAddOrUpdateRepoPermissionsInOrgParams, error) {
-	var (
-		params TeamsAddOrUpdateRepoPermissionsInOrgParams
-	)
+func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Request) (params TeamsAddOrUpdateRepoPermissionsInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -65808,10 +63464,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 	return params, nil
 }
 
-func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.Request) (TeamsAddOrUpdateRepoPermissionsLegacyParams, error) {
-	var (
-		params TeamsAddOrUpdateRepoPermissionsLegacyParams
-	)
+func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateRepoPermissionsLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -65908,10 +63561,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.R
 	return params, nil
 }
 
-func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Request) (TeamsCheckPermissionsForProjectInOrgParams, error) {
-	var (
-		params TeamsCheckPermissionsForProjectInOrgParams
-	)
+func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Request) (params TeamsCheckPermissionsForProjectInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -66008,10 +63658,7 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Re
 	return params, nil
 }
 
-func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.Request) (TeamsCheckPermissionsForProjectLegacyParams, error) {
-	var (
-		params TeamsCheckPermissionsForProjectLegacyParams
-	)
+func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.Request) (params TeamsCheckPermissionsForProjectLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -66077,10 +63724,7 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.R
 	return params, nil
 }
 
-func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Request) (TeamsCheckPermissionsForRepoInOrgParams, error) {
-	var (
-		params TeamsCheckPermissionsForRepoInOrgParams
-	)
+func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Request) (params TeamsCheckPermissionsForRepoInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -66208,10 +63852,7 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 	return params, nil
 }
 
-func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Request) (TeamsCheckPermissionsForRepoLegacyParams, error) {
-	var (
-		params TeamsCheckPermissionsForRepoLegacyParams
-	)
+func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Request) (params TeamsCheckPermissionsForRepoLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -66308,10 +63949,7 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Requ
 	return params, nil
 }
 
-func decodeTeamsCreateParams(args [1]string, r *http.Request) (TeamsCreateParams, error) {
-	var (
-		params TeamsCreateParams
-	)
+func decodeTeamsCreateParams(args [1]string, r *http.Request) (params TeamsCreateParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -66346,624 +63984,7 @@ func decodeTeamsCreateParams(args [1]string, r *http.Request) (TeamsCreateParams
 	return params, nil
 }
 
-func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Request) (TeamsCreateDiscussionCommentInOrgParams, error) {
-	var (
-		params TeamsCreateDiscussionCommentInOrgParams
-	)
-	// Decode path: org.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "org",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Org = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: org: not specified")
-		}
-	}
-	// Decode path: team_slug.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "team_slug",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.TeamSlug = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: team_slug: not specified")
-		}
-	}
-	// Decode path: discussion_number.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "discussion_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.DiscussionNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: discussion_number: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Request) (TeamsCreateDiscussionCommentLegacyParams, error) {
-	var (
-		params TeamsCreateDiscussionCommentLegacyParams
-	)
-	// Decode path: team_id.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "team_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.TeamID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: team_id: not specified")
-		}
-	}
-	// Decode path: discussion_number.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "discussion_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.DiscussionNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: discussion_number: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (TeamsCreateDiscussionInOrgParams, error) {
-	var (
-		params TeamsCreateDiscussionInOrgParams
-	)
-	// Decode path: org.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "org",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Org = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: org: not specified")
-		}
-	}
-	// Decode path: team_slug.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "team_slug",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.TeamSlug = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: team_slug: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeTeamsCreateDiscussionLegacyParams(args [1]string, r *http.Request) (TeamsCreateDiscussionLegacyParams, error) {
-	var (
-		params TeamsCreateDiscussionLegacyParams
-	)
-	// Decode path: team_id.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "team_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.TeamID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: team_id: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *http.Request) (TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, error) {
-	var (
-		params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams
-	)
-	// Decode path: org.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "org",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Org = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: org: not specified")
-		}
-	}
-	// Decode path: team_slug.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "team_slug",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.TeamSlug = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: team_slug: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, r *http.Request) (TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams, error) {
-	var (
-		params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams
-	)
-	// Decode path: team_id.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "team_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.TeamID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: team_id: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Request) (TeamsDeleteDiscussionCommentInOrgParams, error) {
-	var (
-		params TeamsDeleteDiscussionCommentInOrgParams
-	)
-	// Decode path: org.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "org",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.Org = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: org: not specified")
-		}
-	}
-	// Decode path: team_slug.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "team_slug",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(s)
-				if err != nil {
-					return err
-				}
-
-				params.TeamSlug = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: team_slug: not specified")
-		}
-	}
-	// Decode path: discussion_number.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "discussion_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.DiscussionNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: discussion_number: not specified")
-		}
-	}
-	// Decode path: comment_number.
-	{
-		param := args[3]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "comment_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.CommentNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: comment_number: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Request) (TeamsDeleteDiscussionCommentLegacyParams, error) {
-	var (
-		params TeamsDeleteDiscussionCommentLegacyParams
-	)
-	// Decode path: team_id.
-	{
-		param := args[0]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "team_id",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.TeamID = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: team_id: not specified")
-		}
-	}
-	// Decode path: discussion_number.
-	{
-		param := args[1]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "discussion_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.DiscussionNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: discussion_number: not specified")
-		}
-	}
-	// Decode path: comment_number.
-	{
-		param := args[2]
-		if len(param) > 0 {
-			d := uri.NewPathDecoder(uri.PathDecoderConfig{
-				Param:   "comment_number",
-				Value:   param,
-				Style:   uri.PathStyleSimple,
-				Explode: false,
-			})
-
-			if err := func() error {
-				s, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToInt(s)
-				if err != nil {
-					return err
-				}
-
-				params.CommentNumber = c
-				return nil
-			}(); err != nil {
-				return params, err
-			}
-		} else {
-			return params, errors.New("path: comment_number: not specified")
-		}
-	}
-	return params, nil
-}
-
-func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (TeamsDeleteDiscussionInOrgParams, error) {
-	var (
-		params TeamsDeleteDiscussionInOrgParams
-	)
+func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Request) (params TeamsCreateDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -67060,10 +64081,7 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (Te
 	return params, nil
 }
 
-func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (TeamsDeleteDiscussionLegacyParams, error) {
-	var (
-		params TeamsDeleteDiscussionLegacyParams
-	)
+func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Request) (params TeamsCreateDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -67129,10 +64147,7 @@ func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (T
 	return params, nil
 }
 
-func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (TeamsDeleteInOrgParams, error) {
-	var (
-		params TeamsDeleteInOrgParams
-	)
+func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (params TeamsCreateDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -67198,10 +64213,7 @@ func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (TeamsDeleteI
 	return params, nil
 }
 
-func decodeTeamsDeleteLegacyParams(args [1]string, r *http.Request) (TeamsDeleteLegacyParams, error) {
-	var (
-		params TeamsDeleteLegacyParams
-	)
+func decodeTeamsCreateDiscussionLegacyParams(args [1]string, r *http.Request) (params TeamsCreateDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -67236,10 +64248,7 @@ func decodeTeamsDeleteLegacyParams(args [1]string, r *http.Request) (TeamsDelete
 	return params, nil
 }
 
-func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (TeamsGetByNameParams, error) {
-	var (
-		params TeamsGetByNameParams
-	)
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *http.Request) (params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -67305,10 +64314,42 @@ func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (TeamsGetByName
 	return params, nil
 }
 
-func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request) (TeamsGetDiscussionCommentInOrgParams, error) {
-	var (
-		params TeamsGetDiscussionCommentInOrgParams
-	)
+func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, r *http.Request) (params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams, _ error) {
+	// Decode path: team_id.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: team_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsDeleteDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -67436,10 +64477,7 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 	return params, nil
 }
 
-func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request) (TeamsGetDiscussionCommentLegacyParams, error) {
-	var (
-		params TeamsGetDiscussionCommentLegacyParams
-	)
+func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsDeleteDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -67536,10 +64574,7 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request
 	return params, nil
 }
 
-func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (TeamsGetDiscussionInOrgParams, error) {
-	var (
-		params TeamsGetDiscussionInOrgParams
-	)
+func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsDeleteDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -67636,10 +64671,7 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (Teams
 	return params, nil
 }
 
-func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (TeamsGetDiscussionLegacyParams, error) {
-	var (
-		params TeamsGetDiscussionLegacyParams
-	)
+func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsDeleteDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -67705,10 +64737,73 @@ func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (Team
 	return params, nil
 }
 
-func decodeTeamsGetLegacyParams(args [1]string, r *http.Request) (TeamsGetLegacyParams, error) {
-	var (
-		params TeamsGetLegacyParams
-	)
+func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (params TeamsDeleteInOrgParams, _ error) {
+	// Decode path: org.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: org: not specified")
+		}
+	}
+	// Decode path: team_slug.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_slug",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamSlug = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: team_slug: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsDeleteLegacyParams(args [1]string, r *http.Request) (params TeamsDeleteLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -67743,10 +64838,496 @@ func decodeTeamsGetLegacyParams(args [1]string, r *http.Request) (TeamsGetLegacy
 	return params, nil
 }
 
-func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (TeamsGetMemberLegacyParams, error) {
-	var (
-		params TeamsGetMemberLegacyParams
-	)
+func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (params TeamsGetByNameParams, _ error) {
+	// Decode path: org.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: org: not specified")
+		}
+	}
+	// Decode path: team_slug.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_slug",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamSlug = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: team_slug: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsGetDiscussionCommentInOrgParams, _ error) {
+	// Decode path: org.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: org: not specified")
+		}
+	}
+	// Decode path: team_slug.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_slug",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamSlug = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: team_slug: not specified")
+		}
+	}
+	// Decode path: discussion_number.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "discussion_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DiscussionNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: discussion_number: not specified")
+		}
+	}
+	// Decode path: comment_number.
+	{
+		param := args[3]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "comment_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.CommentNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: comment_number: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsGetDiscussionCommentLegacyParams, _ error) {
+	// Decode path: team_id.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: team_id: not specified")
+		}
+	}
+	// Decode path: discussion_number.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "discussion_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DiscussionNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: discussion_number: not specified")
+		}
+	}
+	// Decode path: comment_number.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "comment_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.CommentNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: comment_number: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsGetDiscussionInOrgParams, _ error) {
+	// Decode path: org.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "org",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.Org = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: org: not specified")
+		}
+	}
+	// Decode path: team_slug.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_slug",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamSlug = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: team_slug: not specified")
+		}
+	}
+	// Decode path: discussion_number.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "discussion_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DiscussionNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: discussion_number: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsGetDiscussionLegacyParams, _ error) {
+	// Decode path: team_id.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: team_id: not specified")
+		}
+	}
+	// Decode path: discussion_number.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "discussion_number",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.DiscussionNumber = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: discussion_number: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsGetLegacyParams(args [1]string, r *http.Request) (params TeamsGetLegacyParams, _ error) {
+	// Decode path: team_id.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "team_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				s, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(s)
+				if err != nil {
+					return err
+				}
+
+				params.TeamID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: team_id: not specified")
+		}
+	}
+	return params, nil
+}
+
+func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (params TeamsGetMemberLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -67812,10 +65393,7 @@ func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (TeamsGet
 	return params, nil
 }
 
-func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request) (TeamsGetMembershipForUserInOrgParams, error) {
-	var (
-		params TeamsGetMembershipForUserInOrgParams
-	)
+func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsGetMembershipForUserInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -67912,10 +65490,7 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
-func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request) (TeamsGetMembershipForUserLegacyParams, error) {
-	var (
-		params TeamsGetMembershipForUserLegacyParams
-	)
+func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsGetMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -67981,11 +65556,8 @@ func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request
 	return params, nil
 }
 
-func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, error) {
-	var (
-		params    TeamsListParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListParams(args [1]string, r *http.Request) (params TeamsListParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -68025,15 +65597,14 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68053,7 +65624,7 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -68066,15 +65637,14 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68094,7 +65664,7 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -68102,11 +65672,8 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 	return params, nil
 }
 
-func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsListChildInOrgParams, error) {
-	var (
-		params    TeamsListChildInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params TeamsListChildInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -68177,15 +65744,14 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68205,7 +65771,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -68218,15 +65784,14 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68246,7 +65811,7 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -68254,11 +65819,8 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 	return params, nil
 }
 
-func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsListChildLegacyParams, error) {
-	var (
-		params    TeamsListChildLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (params TeamsListChildLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -68298,15 +65860,14 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68326,7 +65887,7 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -68339,15 +65900,14 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68367,7 +65927,7 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -68375,11 +65935,8 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	return params, nil
 }
 
-func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Request) (TeamsListDiscussionCommentsInOrgParams, error) {
-	var (
-		params    TeamsListDiscussionCommentsInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Request) (params TeamsListDiscussionCommentsInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -68481,15 +66038,14 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal TeamsListDiscussionCommentsInOrgDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68509,7 +66065,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -68537,15 +66093,14 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68565,7 +66120,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -68578,15 +66133,14 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68606,7 +66160,7 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -68614,11 +66168,8 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
-func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Request) (TeamsListDiscussionCommentsLegacyParams, error) {
-	var (
-		params    TeamsListDiscussionCommentsLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Request) (params TeamsListDiscussionCommentsLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -68689,15 +66240,14 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal TeamsListDiscussionCommentsLegacyDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68717,7 +66267,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -68745,15 +66295,14 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68773,7 +66322,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -68786,15 +66335,14 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68814,7 +66362,7 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -68822,11 +66370,8 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	return params, nil
 }
 
-func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (TeamsListDiscussionsInOrgParams, error) {
-	var (
-		params    TeamsListDiscussionsInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (params TeamsListDiscussionsInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -68897,15 +66442,14 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal TeamsListDiscussionsInOrgDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68925,7 +66469,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -68953,15 +66497,14 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -68981,7 +66524,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -68994,15 +66537,14 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69022,22 +66564,21 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: pinned.
 	{
-		if queryArgs.Has("pinned") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "pinned",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "pinned",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPinnedVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69057,7 +66598,7 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 				}
 				params.Pinned.SetTo(paramsDotPinnedVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: pinned: parse")
 			}
 		}
@@ -69065,11 +66606,8 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 	return params, nil
 }
 
-func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (TeamsListDiscussionsLegacyParams, error) {
-	var (
-		params    TeamsListDiscussionsLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (params TeamsListDiscussionsLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -69109,15 +66647,14 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 	}
 	// Decode query: direction.
 	{
-		if queryArgs.Has("direction") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "direction",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "direction",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotDirectionVal TeamsListDiscussionsLegacyDirection
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69137,7 +66674,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 				}
 				params.Direction.SetTo(paramsDotDirectionVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: direction: parse")
 			}
 			if err := func() error {
@@ -69165,15 +66702,14 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69193,7 +66729,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -69206,15 +66742,14 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69234,7 +66769,7 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -69242,11 +66777,8 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 	return params, nil
 }
 
-func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) (TeamsListForAuthenticatedUserParams, error) {
-	var (
-		params    TeamsListForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params TeamsListForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -69255,15 +66787,14 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69283,7 +66814,7 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -69296,15 +66827,14 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69324,7 +66854,7 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -69332,10 +66862,7 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (TeamsListIdpGroupsForLegacyParams, error) {
-	var (
-		params TeamsListIdpGroupsForLegacyParams
-	)
+func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (params TeamsListIdpGroupsForLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -69370,11 +66897,8 @@ func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (T
 	return params, nil
 }
 
-func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (TeamsListIdpGroupsForOrgParams, error) {
-	var (
-		params    TeamsListIdpGroupsForOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (params TeamsListIdpGroupsForOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -69414,15 +66938,14 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69442,22 +66965,21 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69477,7 +66999,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -69485,10 +67007,7 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 	return params, nil
 }
 
-func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (TeamsListIdpGroupsInOrgParams, error) {
-	var (
-		params TeamsListIdpGroupsInOrgParams
-	)
+func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (params TeamsListIdpGroupsInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -69554,11 +67073,8 @@ func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (Teams
 	return params, nil
 }
 
-func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsListMembersInOrgParams, error) {
-	var (
-		params    TeamsListMembersInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params TeamsListMembersInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -69629,15 +67145,14 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 	}
 	// Decode query: role.
 	{
-		if queryArgs.Has("role") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "role",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "role",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRoleVal TeamsListMembersInOrgRole
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69657,7 +67172,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 				}
 				params.Role.SetTo(paramsDotRoleVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: role: parse")
 			}
 			if err := func() error {
@@ -69685,15 +67200,14 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69713,7 +67227,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -69726,15 +67240,14 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69754,7 +67267,7 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -69762,11 +67275,8 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 	return params, nil
 }
 
-func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsListMembersLegacyParams, error) {
-	var (
-		params    TeamsListMembersLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params TeamsListMembersLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -69806,15 +67316,14 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 	}
 	// Decode query: role.
 	{
-		if queryArgs.Has("role") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "role",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "role",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotRoleVal TeamsListMembersLegacyRole
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69834,7 +67343,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 				}
 				params.Role.SetTo(paramsDotRoleVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: role: parse")
 			}
 			if err := func() error {
@@ -69862,15 +67371,14 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69890,7 +67398,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -69903,15 +67411,14 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -69931,7 +67438,7 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -69939,11 +67446,8 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 	return params, nil
 }
 
-func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Request) (TeamsListPendingInvitationsInOrgParams, error) {
-	var (
-		params    TeamsListPendingInvitationsInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Request) (params TeamsListPendingInvitationsInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -70014,15 +67518,14 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70042,7 +67545,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -70055,15 +67558,14 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70083,7 +67585,7 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -70091,11 +67593,8 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
-func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Request) (TeamsListPendingInvitationsLegacyParams, error) {
-	var (
-		params    TeamsListPendingInvitationsLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Request) (params TeamsListPendingInvitationsLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -70135,15 +67634,14 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70163,7 +67661,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -70176,15 +67674,14 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70204,7 +67701,7 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -70212,11 +67709,8 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsListProjectsInOrgParams, error) {
-	var (
-		params    TeamsListProjectsInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params TeamsListProjectsInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -70287,15 +67781,14 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70315,7 +67808,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -70328,15 +67821,14 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70356,7 +67848,7 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -70364,11 +67856,8 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 	return params, nil
 }
 
-func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (TeamsListProjectsLegacyParams, error) {
-	var (
-		params    TeamsListProjectsLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (params TeamsListProjectsLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -70408,15 +67897,14 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70436,7 +67924,7 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -70449,15 +67937,14 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70477,7 +67964,7 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -70485,11 +67972,8 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 	return params, nil
 }
 
-func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsListReposInOrgParams, error) {
-	var (
-		params    TeamsListReposInOrgParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params TeamsListReposInOrgParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
 	{
 		param := args[0]
@@ -70560,15 +68044,14 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70588,7 +68071,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -70601,15 +68084,14 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70629,7 +68111,7 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -70637,11 +68119,8 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 	return params, nil
 }
 
-func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsListReposLegacyParams, error) {
-	var (
-		params    TeamsListReposLegacyParams
-		queryArgs = r.URL.Query()
-	)
+func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (params TeamsListReposLegacyParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -70681,15 +68160,14 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70709,7 +68187,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -70722,15 +68200,14 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -70750,7 +68227,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -70758,10 +68235,7 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	return params, nil
 }
 
-func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (TeamsRemoveMemberLegacyParams, error) {
-	var (
-		params TeamsRemoveMemberLegacyParams
-	)
+func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveMemberLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -70827,10 +68301,7 @@ func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (Teams
 	return params, nil
 }
 
-func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Request) (TeamsRemoveMembershipForUserInOrgParams, error) {
-	var (
-		params TeamsRemoveMembershipForUserInOrgParams
-	)
+func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsRemoveMembershipForUserInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -70927,10 +68398,7 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
-func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Request) (TeamsRemoveMembershipForUserLegacyParams, error) {
-	var (
-		params TeamsRemoveMembershipForUserLegacyParams
-	)
+func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -70996,10 +68464,7 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
-func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (TeamsRemoveProjectInOrgParams, error) {
-	var (
-		params TeamsRemoveProjectInOrgParams
-	)
+func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (params TeamsRemoveProjectInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -71096,10 +68561,7 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (Teams
 	return params, nil
 }
 
-func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (TeamsRemoveProjectLegacyParams, error) {
-	var (
-		params TeamsRemoveProjectLegacyParams
-	)
+func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveProjectLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -71165,10 +68627,7 @@ func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (Team
 	return params, nil
 }
 
-func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (TeamsRemoveRepoInOrgParams, error) {
-	var (
-		params TeamsRemoveRepoInOrgParams
-	)
+func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params TeamsRemoveRepoInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -71296,10 +68755,7 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (TeamsRem
 	return params, nil
 }
 
-func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (TeamsRemoveRepoLegacyParams, error) {
-	var (
-		params TeamsRemoveRepoLegacyParams
-	)
+func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params TeamsRemoveRepoLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -71396,10 +68852,7 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (TeamsRe
 	return params, nil
 }
 
-func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Request) (TeamsUpdateDiscussionCommentInOrgParams, error) {
-	var (
-		params TeamsUpdateDiscussionCommentInOrgParams
-	)
+func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsUpdateDiscussionCommentInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -71527,10 +68980,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	return params, nil
 }
 
-func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Request) (TeamsUpdateDiscussionCommentLegacyParams, error) {
-	var (
-		params TeamsUpdateDiscussionCommentLegacyParams
-	)
+func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsUpdateDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -71627,10 +69077,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 	return params, nil
 }
 
-func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (TeamsUpdateDiscussionInOrgParams, error) {
-	var (
-		params TeamsUpdateDiscussionInOrgParams
-	)
+func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsUpdateDiscussionInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -71727,10 +69174,7 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (Te
 	return params, nil
 }
 
-func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (TeamsUpdateDiscussionLegacyParams, error) {
-	var (
-		params TeamsUpdateDiscussionLegacyParams
-	)
+func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsUpdateDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -71796,10 +69240,7 @@ func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (T
 	return params, nil
 }
 
-func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (TeamsUpdateInOrgParams, error) {
-	var (
-		params TeamsUpdateInOrgParams
-	)
+func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (params TeamsUpdateInOrgParams, _ error) {
 	// Decode path: org.
 	{
 		param := args[0]
@@ -71865,10 +69306,7 @@ func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (TeamsUpdateI
 	return params, nil
 }
 
-func decodeTeamsUpdateLegacyParams(args [1]string, r *http.Request) (TeamsUpdateLegacyParams, error) {
-	var (
-		params TeamsUpdateLegacyParams
-	)
+func decodeTeamsUpdateLegacyParams(args [1]string, r *http.Request) (params TeamsUpdateLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
 		param := args[0]
@@ -71903,10 +69341,7 @@ func decodeTeamsUpdateLegacyParams(args [1]string, r *http.Request) (TeamsUpdate
 	return params, nil
 }
 
-func decodeUsersBlockParams(args [1]string, r *http.Request) (UsersBlockParams, error) {
-	var (
-		params UsersBlockParams
-	)
+func decodeUsersBlockParams(args [1]string, r *http.Request) (params UsersBlockParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -71941,10 +69376,7 @@ func decodeUsersBlockParams(args [1]string, r *http.Request) (UsersBlockParams, 
 	return params, nil
 }
 
-func decodeUsersCheckBlockedParams(args [1]string, r *http.Request) (UsersCheckBlockedParams, error) {
-	var (
-		params UsersCheckBlockedParams
-	)
+func decodeUsersCheckBlockedParams(args [1]string, r *http.Request) (params UsersCheckBlockedParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -71979,10 +69411,7 @@ func decodeUsersCheckBlockedParams(args [1]string, r *http.Request) (UsersCheckB
 	return params, nil
 }
 
-func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (UsersCheckFollowingForUserParams, error) {
-	var (
-		params UsersCheckFollowingForUserParams
-	)
+func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (params UsersCheckFollowingForUserParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -72048,10 +69477,7 @@ func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (Us
 	return params, nil
 }
 
-func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, r *http.Request) (UsersCheckPersonIsFollowedByAuthenticatedParams, error) {
-	var (
-		params UsersCheckPersonIsFollowedByAuthenticatedParams
-	)
+func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, r *http.Request) (params UsersCheckPersonIsFollowedByAuthenticatedParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -72086,10 +69512,7 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, r *ht
 	return params, nil
 }
 
-func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, r *http.Request) (UsersDeleteGpgKeyForAuthenticatedParams, error) {
-	var (
-		params UsersDeleteGpgKeyForAuthenticatedParams
-	)
+func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersDeleteGpgKeyForAuthenticatedParams, _ error) {
 	// Decode path: gpg_key_id.
 	{
 		param := args[0]
@@ -72124,10 +69547,7 @@ func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
-func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Request) (UsersDeletePublicSSHKeyForAuthenticatedParams, error) {
-	var (
-		params UsersDeletePublicSSHKeyForAuthenticatedParams
-	)
+func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersDeletePublicSSHKeyForAuthenticatedParams, _ error) {
 	// Decode path: key_id.
 	{
 		param := args[0]
@@ -72162,10 +69582,7 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, r *http
 	return params, nil
 }
 
-func decodeUsersFollowParams(args [1]string, r *http.Request) (UsersFollowParams, error) {
-	var (
-		params UsersFollowParams
-	)
+func decodeUsersFollowParams(args [1]string, r *http.Request) (params UsersFollowParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -72200,10 +69617,7 @@ func decodeUsersFollowParams(args [1]string, r *http.Request) (UsersFollowParams
 	return params, nil
 }
 
-func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (UsersGetByUsernameParams, error) {
-	var (
-		params UsersGetByUsernameParams
-	)
+func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (params UsersGetByUsernameParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -72238,11 +69652,8 @@ func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (UsersGetBy
 	return params, nil
 }
 
-func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersGetContextForUserParams, error) {
-	var (
-		params    UsersGetContextForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (params UsersGetContextForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -72276,15 +69687,14 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 	}
 	// Decode query: subject_type.
 	{
-		if queryArgs.Has("subject_type") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "subject_type",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "subject_type",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSubjectTypeVal UsersGetContextForUserSubjectType
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72304,7 +69714,7 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 				}
 				params.SubjectType.SetTo(paramsDotSubjectTypeVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: subject_type: parse")
 			}
 			if err := func() error {
@@ -72326,15 +69736,14 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 	}
 	// Decode query: subject_id.
 	{
-		if queryArgs.Has("subject_id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "subject_id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "subject_id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSubjectIDVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72354,7 +69763,7 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 				}
 				params.SubjectID.SetTo(paramsDotSubjectIDVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: subject_id: parse")
 			}
 		}
@@ -72362,10 +69771,7 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 	return params, nil
 }
 
-func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, r *http.Request) (UsersGetGpgKeyForAuthenticatedParams, error) {
-	var (
-		params UsersGetGpgKeyForAuthenticatedParams
-	)
+func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersGetGpgKeyForAuthenticatedParams, _ error) {
 	// Decode path: gpg_key_id.
 	{
 		param := args[0]
@@ -72400,10 +69806,7 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
-func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Request) (UsersGetPublicSSHKeyForAuthenticatedParams, error) {
-	var (
-		params UsersGetPublicSSHKeyForAuthenticatedParams
-	)
+func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersGetPublicSSHKeyForAuthenticatedParams, _ error) {
 	// Decode path: key_id.
 	{
 		param := args[0]
@@ -72438,22 +69841,18 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Re
 	return params, nil
 }
 
-func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, error) {
-	var (
-		params    UsersListParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListParams(args [0]string, r *http.Request) (params UsersListParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
 	{
-		if queryArgs.Has("since") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "since",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "since",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotSinceVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72473,7 +69872,7 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 				}
 				params.Since.SetTo(paramsDotSinceVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: since: parse")
 			}
 		}
@@ -72486,15 +69885,14 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72514,7 +69912,7 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -72522,11 +69920,8 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 	return params, nil
 }
 
-func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request) (UsersListEmailsForAuthenticatedParams, error) {
-	var (
-		params    UsersListEmailsForAuthenticatedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListEmailsForAuthenticatedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -72535,15 +69930,14 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72563,7 +69957,7 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -72576,15 +69970,14 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72604,7 +69997,7 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -72612,11 +70005,8 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	return params, nil
 }
 
-func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Request) (UsersListFollowedByAuthenticatedParams, error) {
-	var (
-		params    UsersListFollowedByAuthenticatedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Request) (params UsersListFollowedByAuthenticatedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -72625,15 +70015,14 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72653,7 +70042,7 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -72666,15 +70055,14 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72694,7 +70082,7 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -72702,11 +70090,8 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	return params, nil
 }
 
-func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.Request) (UsersListFollowersForAuthenticatedUserParams, error) {
-	var (
-		params    UsersListFollowersForAuthenticatedUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.Request) (params UsersListFollowersForAuthenticatedUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -72715,15 +70100,14 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72743,7 +70127,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -72756,15 +70140,14 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72784,7 +70167,7 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -72792,11 +70175,8 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 	return params, nil
 }
 
-func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (UsersListFollowersForUserParams, error) {
-	var (
-		params    UsersListFollowersForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (params UsersListFollowersForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -72836,15 +70216,14 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72864,7 +70243,7 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -72877,15 +70256,14 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72905,7 +70283,7 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -72913,11 +70291,8 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 	return params, nil
 }
 
-func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (UsersListFollowingForUserParams, error) {
-	var (
-		params    UsersListFollowingForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (params UsersListFollowingForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -72957,15 +70332,14 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -72985,7 +70359,7 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -72998,15 +70372,14 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73026,7 +70399,7 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -73034,11 +70407,8 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 	return params, nil
 }
 
-func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Request) (UsersListGpgKeysForAuthenticatedParams, error) {
-	var (
-		params    UsersListGpgKeysForAuthenticatedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListGpgKeysForAuthenticatedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -73047,15 +70417,14 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73075,7 +70444,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -73088,15 +70457,14 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73116,7 +70484,7 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -73124,11 +70492,8 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 	return params, nil
 }
 
-func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (UsersListGpgKeysForUserParams, error) {
-	var (
-		params    UsersListGpgKeysForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (params UsersListGpgKeysForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -73168,15 +70533,14 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73196,7 +70560,7 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -73209,15 +70573,14 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73237,7 +70600,7 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -73245,11 +70608,8 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 	return params, nil
 }
 
-func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.Request) (UsersListPublicEmailsForAuthenticatedParams, error) {
-	var (
-		params    UsersListPublicEmailsForAuthenticatedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListPublicEmailsForAuthenticatedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -73258,15 +70618,14 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73286,7 +70645,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -73299,15 +70658,14 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73327,7 +70685,7 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -73335,11 +70693,8 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 	return params, nil
 }
 
-func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (UsersListPublicKeysForUserParams, error) {
-	var (
-		params    UsersListPublicKeysForUserParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (params UsersListPublicKeysForUserParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
 	{
 		param := args[0]
@@ -73379,15 +70734,14 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73407,7 +70761,7 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -73420,15 +70774,14 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73448,7 +70801,7 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -73456,11 +70809,8 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 	return params, nil
 }
 
-func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.Request) (UsersListPublicSSHKeysForAuthenticatedParams, error) {
-	var (
-		params    UsersListPublicSSHKeysForAuthenticatedParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListPublicSSHKeysForAuthenticatedParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
 	{
 		val := int(30)
@@ -73469,15 +70819,14 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		if queryArgs.Has("per_page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "per_page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "per_page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPerPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73497,7 +70846,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 				}
 				params.PerPage.SetTo(paramsDotPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: per_page: parse")
 			}
 		}
@@ -73510,15 +70859,14 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -73538,7 +70886,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -73546,10 +70894,7 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	return params, nil
 }
 
-func decodeUsersUnblockParams(args [1]string, r *http.Request) (UsersUnblockParams, error) {
-	var (
-		params UsersUnblockParams
-	)
+func decodeUsersUnblockParams(args [1]string, r *http.Request) (params UsersUnblockParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]
@@ -73584,10 +70929,7 @@ func decodeUsersUnblockParams(args [1]string, r *http.Request) (UsersUnblockPara
 	return params, nil
 }
 
-func decodeUsersUnfollowParams(args [1]string, r *http.Request) (UsersUnfollowParams, error) {
-	var (
-		params UsersUnfollowParams
-	)
+func decodeUsersUnfollowParams(args [1]string, r *http.Request) (params UsersUnfollowParams, _ error) {
 	// Decode path: username.
 	{
 		param := args[0]

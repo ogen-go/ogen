@@ -11,22 +11,18 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func decodeCachingParams(args [0]string, r *http.Request) (CachingParams, error) {
-	var (
-		params    CachingParams
-		queryArgs = r.URL.Query()
-	)
+func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: count.
 	{
-		if queryArgs.Has("count") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "count",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "count",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -39,32 +35,28 @@ func decodeCachingParams(args [0]string, r *http.Request) (CachingParams, error)
 
 				params.Count = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: count: parse")
 			}
 		} else {
-			return params, errors.New("query: count: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodeQueriesParams(args [0]string, r *http.Request) (QueriesParams, error) {
-	var (
-		params    QueriesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: queries.
 	{
-		if queryArgs.Has("queries") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "queries",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "queries",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -77,32 +69,28 @@ func decodeQueriesParams(args [0]string, r *http.Request) (QueriesParams, error)
 
 				params.Queries = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: queries: parse")
 			}
 		} else {
-			return params, errors.New("query: queries: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodeUpdatesParams(args [0]string, r *http.Request) (UpdatesParams, error) {
-	var (
-		params    UpdatesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeUpdatesParams(args [0]string, r *http.Request) (params UpdatesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: queries.
 	{
-		if queryArgs.Has("queries") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "queries",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "queries",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -115,11 +103,11 @@ func decodeUpdatesParams(args [0]string, r *http.Request) (UpdatesParams, error)
 
 				params.Queries = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: queries: parse")
 			}
 		} else {
-			return params, errors.New("query: queries: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil

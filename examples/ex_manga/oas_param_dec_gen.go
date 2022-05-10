@@ -11,10 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func decodeGetBookParams(args [1]string, r *http.Request) (GetBookParams, error) {
-	var (
-		params GetBookParams
-	)
+func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams, _ error) {
 	// Decode path: book_id.
 	{
 		param := args[0]
@@ -49,22 +46,18 @@ func decodeGetBookParams(args [1]string, r *http.Request) (GetBookParams, error)
 	return params, nil
 }
 
-func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
-	var (
-		params    SearchParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: query.
 	{
-		if queryArgs.Has("query") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "query",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "query",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -77,24 +70,23 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 
 				params.Query = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: query: parse")
 			}
 		} else {
-			return params, errors.New("query: query: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -114,7 +106,7 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
@@ -122,22 +114,18 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 	return params, nil
 }
 
-func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDParams, error) {
-	var (
-		params    SearchByTagIDParams
-		queryArgs = r.URL.Query()
-	)
+func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchByTagIDParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: tag_id.
 	{
-		if queryArgs.Has("tag_id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "tag_id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "tag_id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -150,24 +138,23 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDPa
 
 				params.TagID = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: tag_id: parse")
 			}
 		} else {
-			return params, errors.New("query: tag_id: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -187,7 +174,7 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDPa
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}

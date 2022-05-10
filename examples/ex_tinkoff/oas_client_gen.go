@@ -123,64 +123,64 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/candles"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "figi",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "figi",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Figi))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "from" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "from",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "from",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.TimeToString(params.From))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "to" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "to",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "to",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.TimeToString(params.To))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "interval" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "interval",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "interval",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(string(params.Interval)))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -317,36 +317,36 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/orderbook"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "figi",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "figi",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Figi))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "depth" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "depth",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "depth",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int32ToString(params.Depth))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -393,22 +393,22 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/search/by-figi"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "figi",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "figi",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Figi))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -455,22 +455,22 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/search/by-ticker"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "ticker" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "ticker",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "ticker",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Ticker))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -562,70 +562,70 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/operations"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "from" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "from",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "from",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.TimeToString(params.From))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "to" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "to",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "to",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.TimeToString(params.To))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "figi" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "figi",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "figi",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Figi.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -672,39 +672,39 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/cancel"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "orderId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "orderId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "orderId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.OrderId))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
@@ -751,25 +751,25 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -836,39 +836,39 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/limit-order"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "figi",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "figi",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Figi))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
@@ -937,39 +937,39 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/market-order"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "figi",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "figi",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Figi))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
@@ -1018,25 +1018,25 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 	u := uri.Clone(c.serverURL)
 	u.Path += "/portfolio/currencies"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -1083,25 +1083,25 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 	u := uri.Clone(c.serverURL)
 	u.Path += "/portfolio"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -1150,25 +1150,25 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/clear"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)
@@ -1235,25 +1235,25 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/currencies/balance"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
@@ -1322,25 +1322,25 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/positions/balance"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, reqBody)
 	defer ht.PutRequest(r)
@@ -1467,25 +1467,25 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/remove"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "brokerAccountId",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "brokerAccountId",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.BrokerAccountId.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "POST", u, nil)
 	defer ht.PutRequest(r)

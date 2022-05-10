@@ -75,22 +75,22 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	u := uri.Clone(c.serverURL)
 	u.Path += "/cached-worlds"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "count" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "count",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "count",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int64ToString(params.Count))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -221,22 +221,22 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "queries" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "queries",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "queries",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int64ToString(params.Queries))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -281,22 +281,22 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	u := uri.Clone(c.serverURL)
 	u.Path += "/updates"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "queries" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "queries",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "queries",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.Int64ToString(params.Queries))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)

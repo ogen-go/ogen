@@ -132,39 +132,39 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/search"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "query" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "query",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "query",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Query))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "page",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -209,39 +209,39 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/tagged"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "tag_id" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "tag_id",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "tag_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.IntToString(params.TagID))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "page",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)

@@ -11,10 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func decodeDataGetParams(args [2]string, r *http.Request) (DataGetParams, error) {
-	var (
-		params DataGetParams
-	)
+func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -80,10 +77,7 @@ func decodeDataGetParams(args [2]string, r *http.Request) (DataGetParams, error)
 	return params, nil
 }
 
-func decodeDataGetIDParams(args [1]string, r *http.Request) (DataGetIDParams, error) {
-	var (
-		params DataGetIDParams
-	)
+func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]

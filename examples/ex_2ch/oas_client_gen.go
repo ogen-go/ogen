@@ -73,42 +73,42 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/2chcaptcha/id"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "board",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Board.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "thread" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "thread",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -151,22 +151,22 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/2chcaptcha/show"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "id" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "id",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.ID))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -229,42 +229,42 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 		u.Path += e.Result()
 	}
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "board",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Board.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "thread" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "thread",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -307,42 +307,42 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/invisible_recaptcha/id"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "board",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Board.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "thread" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "thread",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -426,42 +426,42 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/recaptcha/id"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "board",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Board.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "thread" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "thread",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
 			}
 			return nil
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -545,36 +545,36 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/dislike"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "board",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Board))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "num" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "num",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "num",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.IntToString(params.Num))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
@@ -617,36 +617,36 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/like"
 
-	q := u.Query()
+	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "board",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.StringToString(params.Board))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
 	{
 		// Encode "num" parameter.
-		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-			Param:   "num",
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "num",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		}, q)
-		if err := func() error {
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeValue(conv.IntToString(params.Num))
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q = e.Result()
 	}
-	u.RawQuery = q.Encode()
+	u.RawQuery = q.Values().Encode()
 
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)

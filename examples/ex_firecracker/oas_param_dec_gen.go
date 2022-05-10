@@ -11,10 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (PatchGuestDriveByIDParams, error) {
-	var (
-		params PatchGuestDriveByIDParams
-	)
+func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (params PatchGuestDriveByIDParams, _ error) {
 	// Decode path: drive_id.
 	{
 		param := args[0]
@@ -49,10 +46,7 @@ func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (PatchGues
 	return params, nil
 }
 
-func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (PatchGuestNetworkInterfaceByIDParams, error) {
-	var (
-		params PatchGuestNetworkInterfaceByIDParams
-	)
+func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (params PatchGuestNetworkInterfaceByIDParams, _ error) {
 	// Decode path: iface_id.
 	{
 		param := args[0]
@@ -87,10 +81,7 @@ func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
-func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (PutGuestDriveByIDParams, error) {
-	var (
-		params PutGuestDriveByIDParams
-	)
+func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (params PutGuestDriveByIDParams, _ error) {
 	// Decode path: drive_id.
 	{
 		param := args[0]
@@ -125,10 +116,7 @@ func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (PutGuestDri
 	return params, nil
 }
 
-func decodePutGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (PutGuestNetworkInterfaceByIDParams, error) {
-	var (
-		params PutGuestNetworkInterfaceByIDParams
-	)
+func decodePutGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (params PutGuestNetworkInterfaceByIDParams, _ error) {
 	// Decode path: iface_id.
 	{
 		param := args[0]

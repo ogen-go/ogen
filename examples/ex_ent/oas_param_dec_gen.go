@@ -11,10 +11,7 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (CreatePetCategoriesParams, error) {
-	var (
-		params CreatePetCategoriesParams
-	)
+func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params CreatePetCategoriesParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -49,10 +46,7 @@ func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (CreatePet
 	return params, nil
 }
 
-func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (CreatePetFriendsParams, error) {
-	var (
-		params CreatePetFriendsParams
-	)
+func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (params CreatePetFriendsParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -87,10 +81,7 @@ func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (CreatePetFri
 	return params, nil
 }
 
-func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (CreatePetOwnerParams, error) {
-	var (
-		params CreatePetOwnerParams
-	)
+func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreatePetOwnerParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -125,10 +116,7 @@ func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (CreatePetOwner
 	return params, nil
 }
 
-func decodeDeletePetParams(args [1]string, r *http.Request) (DeletePetParams, error) {
-	var (
-		params DeletePetParams
-	)
+func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -163,10 +151,7 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (DeletePetParams, er
 	return params, nil
 }
 
-func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (DeletePetOwnerParams, error) {
-	var (
-		params DeletePetOwnerParams
-	)
+func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeletePetOwnerParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -201,22 +186,18 @@ func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (DeletePetOwner
 	return params, nil
 }
 
-func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error) {
-	var (
-		params    ListPetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeListPetParams(args [0]string, r *http.Request) (params ListPetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -236,22 +217,21 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: itemsPerPage.
 	{
-		if queryArgs.Has("itemsPerPage") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "itemsPerPage",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "itemsPerPage",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -271,7 +251,7 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 				}
 				params.ItemsPerPage.SetTo(paramsDotItemsPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: itemsPerPage: parse")
 			}
 		}
@@ -279,11 +259,8 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 	return params, nil
 }
 
-func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCategoriesParams, error) {
-	var (
-		params    ListPetCategoriesParams
-		queryArgs = r.URL.Query()
-	)
+func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params ListPetCategoriesParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: id.
 	{
 		param := args[0]
@@ -317,15 +294,14 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -345,22 +321,21 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: itemsPerPage.
 	{
-		if queryArgs.Has("itemsPerPage") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "itemsPerPage",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "itemsPerPage",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -380,7 +355,7 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 				}
 				params.ItemsPerPage.SetTo(paramsDotItemsPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: itemsPerPage: parse")
 			}
 		}
@@ -388,11 +363,8 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 	return params, nil
 }
 
-func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriendsParams, error) {
-	var (
-		params    ListPetFriendsParams
-		queryArgs = r.URL.Query()
-	)
+func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPetFriendsParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: id.
 	{
 		param := args[0]
@@ -426,15 +398,14 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 	}
 	// Decode query: page.
 	{
-		if queryArgs.Has("page") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "page",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "page",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -454,22 +425,21 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 				}
 				params.Page.SetTo(paramsDotPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: page: parse")
 			}
 		}
 	}
 	// Decode query: itemsPerPage.
 	{
-		if queryArgs.Has("itemsPerPage") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "itemsPerPage",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "itemsPerPage",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -489,7 +459,7 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 				}
 				params.ItemsPerPage.SetTo(paramsDotItemsPerPageVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: itemsPerPage: parse")
 			}
 		}
@@ -497,10 +467,7 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 	return params, nil
 }
 
-func decodeReadPetParams(args [1]string, r *http.Request) (ReadPetParams, error) {
-	var (
-		params ReadPetParams
-	)
+func decodeReadPetParams(args [1]string, r *http.Request) (params ReadPetParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -535,10 +502,7 @@ func decodeReadPetParams(args [1]string, r *http.Request) (ReadPetParams, error)
 	return params, nil
 }
 
-func decodeReadPetOwnerParams(args [1]string, r *http.Request) (ReadPetOwnerParams, error) {
-	var (
-		params ReadPetOwnerParams
-	)
+func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOwnerParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]
@@ -573,10 +537,7 @@ func decodeReadPetOwnerParams(args [1]string, r *http.Request) (ReadPetOwnerPara
 	return params, nil
 }
 
-func decodeUpdatePetParams(args [1]string, r *http.Request) (UpdatePetParams, error) {
-	var (
-		params UpdatePetParams
-	)
+func decodeUpdatePetParams(args [1]string, r *http.Request) (params UpdatePetParams, _ error) {
 	// Decode path: id.
 	{
 		param := args[0]

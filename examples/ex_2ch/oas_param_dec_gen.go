@@ -12,22 +12,18 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (APICaptcha2chcaptchaIDGetParams, error) {
-	var (
-		params    APICaptcha2chcaptchaIDGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaIDGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	{
-		if queryArgs.Has("board") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "board",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "board",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -47,22 +43,21 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (API
 				}
 				params.Board.SetTo(paramsDotBoardVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: board: parse")
 			}
 		}
 	}
 	// Decode query: thread.
 	{
-		if queryArgs.Has("thread") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "thread",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "thread",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -82,7 +77,7 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (API
 				}
 				params.Thread.SetTo(paramsDotThreadVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: thread: parse")
 			}
 			if err := func() error {
@@ -114,22 +109,18 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (API
 	return params, nil
 }
 
-func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (APICaptcha2chcaptchaShowGetParams, error) {
-	var (
-		params    APICaptcha2chcaptchaShowGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaShowGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: id.
 	{
-		if queryArgs.Has("id") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "id",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -142,21 +133,18 @@ func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (A
 
 				params.ID = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: id: parse")
 			}
 		} else {
-			return params, errors.New("query: id: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (APICaptchaAppIDPublicKeyGetParams, error) {
-	var (
-		params    APICaptchaAppIDPublicKeyGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (params APICaptchaAppIDPublicKeyGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: public_key.
 	{
 		param := args[0]
@@ -190,15 +178,14 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (A
 	}
 	// Decode query: board.
 	{
-		if queryArgs.Has("board") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "board",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "board",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -218,22 +205,21 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (A
 				}
 				params.Board.SetTo(paramsDotBoardVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: board: parse")
 			}
 		}
 	}
 	// Decode query: thread.
 	{
-		if queryArgs.Has("thread") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "thread",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "thread",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -253,7 +239,7 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (A
 				}
 				params.Thread.SetTo(paramsDotThreadVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: thread: parse")
 			}
 			if err := func() error {
@@ -285,22 +271,18 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (A
 	return params, nil
 }
 
-func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Request) (APICaptchaInvisibleRecaptchaIDGetParams, error) {
-	var (
-		params    APICaptchaInvisibleRecaptchaIDGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaInvisibleRecaptchaIDGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	{
-		if queryArgs.Has("board") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "board",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "board",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -320,22 +302,21 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 				}
 				params.Board.SetTo(paramsDotBoardVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: board: parse")
 			}
 		}
 	}
 	// Decode query: thread.
 	{
-		if queryArgs.Has("thread") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "thread",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "thread",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -355,7 +336,7 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 				}
 				params.Thread.SetTo(paramsDotThreadVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: thread: parse")
 			}
 			if err := func() error {
@@ -387,22 +368,18 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 	return params, nil
 }
 
-func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (APICaptchaRecaptchaIDGetParams, error) {
-	var (
-		params    APICaptchaRecaptchaIDGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaRecaptchaIDGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	{
-		if queryArgs.Has("board") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "board",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "board",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -422,22 +399,21 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (APIC
 				}
 				params.Board.SetTo(paramsDotBoardVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: board: parse")
 			}
 		}
 	}
 	// Decode query: thread.
 	{
-		if queryArgs.Has("thread") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "thread",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "thread",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
 					s, err := d.DecodeValue()
@@ -457,7 +433,7 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (APIC
 				}
 				params.Thread.SetTo(paramsDotThreadVal)
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: thread: parse")
 			}
 			if err := func() error {
@@ -489,22 +465,18 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (APIC
 	return params, nil
 }
 
-func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (APIDislikeGetParams, error) {
-	var (
-		params    APIDislikeGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDislikeGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	{
-		if queryArgs.Has("board") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "board",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "board",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -517,24 +489,23 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (APIDislikeGetPa
 
 				params.Board = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: board: parse")
 			}
 		} else {
-			return params, errors.New("query: board: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: num.
 	{
-		if queryArgs.Has("num") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "num",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "num",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -547,7 +518,7 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (APIDislikeGetPa
 
 				params.Num = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: num: parse")
 			}
 			if err := func() error {
@@ -568,28 +539,24 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (APIDislikeGetPa
 				return params, errors.Wrap(err, "query: num: invalid")
 			}
 		} else {
-			return params, errors.New("query: num: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodeAPILikeGetParams(args [0]string, r *http.Request) (APILikeGetParams, error) {
-	var (
-		params    APILikeGetParams
-		queryArgs = r.URL.Query()
-	)
+func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetParams, _ error) {
+	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
 	{
-		if queryArgs.Has("board") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "board",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "board",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -602,24 +569,23 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (APILikeGetParams, 
 
 				params.Board = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: board: parse")
 			}
 		} else {
-			return params, errors.New("query: board: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	// Decode query: num.
 	{
-		if queryArgs.Has("num") {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:   "num",
-				Values:  queryArgs,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "num",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				s, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -632,7 +598,7 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (APILikeGetParams, 
 
 				params.Num = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "query: num: parse")
 			}
 			if err := func() error {
@@ -653,16 +619,13 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (APILikeGetParams, 
 				return params, errors.Wrap(err, "query: num: invalid")
 			}
 		} else {
-			return params, errors.New("query: num: not specified")
+			return params, errors.Wrap(err, "query")
 		}
 	}
 	return params, nil
 }
 
-func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Request) (APIMobileV2AfterBoardThreadNumGetParams, error) {
-	var (
-		params APIMobileV2AfterBoardThreadNumGetParams
-	)
+func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Request) (params APIMobileV2AfterBoardThreadNumGetParams, _ error) {
 	// Decode path: board.
 	{
 		param := args[0]
@@ -759,10 +722,7 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
-func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) (APIMobileV2InfoBoardThreadGetParams, error) {
-	var (
-		params APIMobileV2InfoBoardThreadGetParams
-	)
+func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) (params APIMobileV2InfoBoardThreadGetParams, _ error) {
 	// Decode path: board.
 	{
 		param := args[0]
@@ -828,10 +788,7 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
-func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (APIMobileV2PostBoardNumGetParams, error) {
-	var (
-		params APIMobileV2PostBoardNumGetParams
-	)
+func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (params APIMobileV2PostBoardNumGetParams, _ error) {
 	// Decode path: board.
 	{
 		param := args[0]
