@@ -27,24 +27,24 @@ u.Path += {{ quote $part.Raw }}
 {{ define "enc_param_query" }}
 {{ $pcount := len $.QueryParams }}
 {{ if ne $pcount 0 }}{{/* Check params existence */}}
-q := u.Query()
+q := uri.NewQueryEncoder()
 {{- range $param := $.QueryParams }}{{/* Range over params */}}
 {
 	// Encode {{ quote $param.Spec.Name }} parameter.
-	e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
-		Param:   "{{ $param.Spec.Name }}",
+	cfg := uri.QueryParameterEncodingConfig{
+		Name:    "{{ $param.Spec.Name }}",
 		Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
 		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
-	}, q)
-	if err := func() error {
+	}
+
+	if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 		{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
-	}(); err != nil {
+	}); err != nil {
 		return res, errors.Wrap(err, "encode query")
 	}
-	q = e.Result()
 }
 {{- end }}{{/* Range over params */}}
-u.RawQuery = q.Encode()
+u.RawQuery = q.Values().Encode()
 {{- end }}{{/* Check params existence */}}
 {{- end }}
 

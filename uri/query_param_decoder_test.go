@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestQueryDecoder(t *testing.T) {
+func TestQueryParamDecoder(t *testing.T) {
 	t.Run("Value", func(t *testing.T) {
 		tests := []struct {
 			Param   string
@@ -36,11 +36,12 @@ func TestQueryDecoder(t *testing.T) {
 		for i, test := range tests {
 			values, err := url.ParseQuery(test.Input)
 			require.NoError(t, err)
-			result, err := NewQueryDecoder(QueryDecoderConfig{
-				Param:   test.Param,
-				Values:  values,
-				Style:   test.Style,
-				Explode: test.Explode,
+
+			result, err := (&queryParamDecoder{
+				values:    values,
+				paramName: test.Param,
+				style:     test.Style,
+				explode:   test.Explode,
 			}).DecodeValue()
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
 			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
@@ -101,12 +102,12 @@ func TestQueryDecoder(t *testing.T) {
 		for i, test := range tests {
 			values, err := url.ParseQuery(test.Input)
 			require.NoError(t, err)
-			d := NewQueryDecoder(QueryDecoderConfig{
-				Param:   test.Param,
-				Values:  values,
-				Style:   test.Style,
-				Explode: test.Explode,
-			})
+			d := &queryParamDecoder{
+				values:    values,
+				paramName: test.Param,
+				style:     test.Style,
+				explode:   test.Explode,
+			}
 
 			var items []string
 			err = d.DecodeArray(func(d Decoder) error {
@@ -166,33 +167,33 @@ func TestQueryDecoder(t *testing.T) {
 			values, err := url.ParseQuery(test.Input)
 			require.NoError(t, err)
 
-			var (
-				fields     []Field
-				fieldNames []string
-			)
-
+			var fields []QueryParameterObjectField
 			for _, f := range test.Expect {
-				fieldNames = append(fieldNames, f.Name)
+				fields = append(fields, QueryParameterObjectField{
+					Name:     f.Name,
+					Required: true,
+				})
 			}
 
-			d := NewQueryDecoder(QueryDecoderConfig{
-				Param:        test.Param,
-				Values:       values,
-				Style:        test.Style,
-				Explode:      test.Explode,
-				ObjectFields: fieldNames,
-			})
+			d := &queryParamDecoder{
+				values:       values,
+				objectFields: fields,
+				paramName:    test.Param,
+				style:        test.Style,
+				explode:      test.Explode,
+			}
 
+			var result []Field
 			err = d.DecodeFields(func(name string, d Decoder) error {
 				v, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
-				fields = append(fields, Field{name, v})
+				result = append(result, Field{name, v})
 				return nil
 			})
 			require.NoError(t, err, fmt.Sprintf("Test %d", i+1))
-			require.Equal(t, test.Expect, fields, fmt.Sprintf("Test %d", i+1))
+			require.Equal(t, test.Expect, result, fmt.Sprintf("Test %d", i+1))
 		}
 	})
 }

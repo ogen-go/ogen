@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-func TestQueryEncoder(t *testing.T) {
+func TestQueryParamEncoder(t *testing.T) {
 	t.Run("Value", func(t *testing.T) {
 		tests := []struct {
 			Param   string
@@ -34,13 +34,16 @@ func TestQueryEncoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			e := NewQueryEncoder(QueryEncoderConfig{
-				Param:   test.Param,
-				Style:   test.Style,
-				Explode: test.Explode,
-			}, make(url.Values))
+			e := queryParamEncoder{
+				receiver:  newReceiver(),
+				paramName: test.Param,
+				style:     test.Style,
+				explode:   test.Explode,
+				values:    make(url.Values),
+			}
 			require.NoError(t, e.EncodeValue(test.Input))
-			require.Equal(t, test.Expect, e.Result().Encode(), fmt.Sprintf("Test %d", i+1))
+			e.serialize()
+			require.Equal(t, test.Expect, e.values.Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -96,11 +99,13 @@ func TestQueryEncoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			e := NewQueryEncoder(QueryEncoderConfig{
-				Param:   test.Param,
-				Style:   test.Style,
-				Explode: test.Explode,
-			}, make(url.Values))
+			e := queryParamEncoder{
+				receiver:  newReceiver(),
+				paramName: test.Param,
+				style:     test.Style,
+				explode:   test.Explode,
+				values:    make(url.Values),
+			}
 			err := e.EncodeArray(func(e Encoder) error {
 				for _, item := range test.Input {
 					if err := e.EncodeValue(item); err != nil {
@@ -110,7 +115,8 @@ func TestQueryEncoder(t *testing.T) {
 				return nil
 			})
 			require.NoError(t, err)
-			require.Equal(t, test.Expect, e.Result().Encode(), fmt.Sprintf("Test %d", i+1))
+			e.serialize()
+			require.Equal(t, test.Expect, e.values.Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
 
@@ -155,18 +161,21 @@ func TestQueryEncoder(t *testing.T) {
 		}
 
 		for i, test := range tests {
-			e := NewQueryEncoder(QueryEncoderConfig{
-				Param:   test.Param,
-				Style:   test.Style,
-				Explode: test.Explode,
-			}, make(url.Values))
+			e := queryParamEncoder{
+				receiver:  newReceiver(),
+				paramName: test.Param,
+				style:     test.Style,
+				explode:   test.Explode,
+				values:    make(url.Values),
+			}
 			for _, field := range test.Input {
 				err := e.EncodeField(field.Name, func(e Encoder) error {
 					return e.EncodeValue(field.Value)
 				})
 				require.NoError(t, err)
 			}
-			require.Equal(t, test.Expect, e.Result().Encode(), fmt.Sprintf("Test %d", i+1))
+			e.serialize()
+			require.Equal(t, test.Expect, e.values.Encode(), fmt.Sprintf("Test %d", i+1))
 		}
 	})
 }

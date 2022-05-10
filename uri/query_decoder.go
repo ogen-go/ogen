@@ -2,211 +2,78 @@ package uri
 
 import (
 	"net/url"
-	"strings"
 
 	"github.com/go-faster/errors"
 )
 
-type QueryStyle string
-
-const (
-	QueryStyleForm           QueryStyle = "form"
-	QueryStyleSpaceDelimited QueryStyle = "spaceDelimited"
-	QueryStylePipeDelimited  QueryStyle = "pipeDelimited"
-	QueryStyleDeepObject     QueryStyle = "deepObject"
-)
-
 type QueryDecoder struct {
-	paramName    string
-	style        QueryStyle // immutable
-	explode      bool       // immutable
-	values       url.Values
-	objectFields []string
+	values url.Values
 }
 
-type QueryDecoderConfig struct {
-	Param        string
-	Values       url.Values
-	Style        QueryStyle
-	Explode      bool
-	ObjectFields []string // only for object param
-}
-
-func NewQueryDecoder(cfg QueryDecoderConfig) *QueryDecoder {
-	if len(cfg.Values) == 0 {
-		panic("unreachable")
-	}
-
+func NewQueryDecoder(values url.Values) *QueryDecoder {
 	return &QueryDecoder{
-		paramName:    cfg.Param,
-		values:       cfg.Values,
-		style:        cfg.Style,
-		explode:      cfg.Explode,
-		objectFields: cfg.ObjectFields,
+		values: values,
 	}
 }
 
-func (d *QueryDecoder) DecodeValue() (string, error) {
-	switch d.style {
-	case QueryStyleForm:
-		values, ok := d.values[d.paramName]
-		if !ok {
-			return "", errors.Errorf("query parameter %q not set", d.paramName)
-		}
-
-		if len(values) != 1 {
-			return "", errors.Errorf("query parameter %q multiple values", d.paramName)
-		}
-
-		return values[0], nil
-	case QueryStyleSpaceDelimited,
-		QueryStylePipeDelimited,
-		QueryStyleDeepObject:
-		return "", errors.Errorf("style %q cannot be used for primitive values", d.style)
-	default:
-		panic("unreachable")
-	}
+type QueryParameterDecodingConfig struct {
+	Name    string
+	Style   QueryStyle
+	Explode bool
+	Fields  []QueryParameterObjectField // Only for object param.
 }
 
-func (d *QueryDecoder) DecodeArray(f func(d Decoder) error) error {
-	values, ok := d.values[d.paramName]
-	if !ok {
-		return errors.Errorf("query parameter %q not set", d.paramName)
-	}
-
-	switch d.style {
-	case QueryStyleForm:
-		if d.explode {
-			for _, item := range values {
-				if err := f(&constval{item}); err != nil {
-					return err
-				}
-			}
-			return nil
-		}
-
-		if len(values) != 1 {
-			return errors.New("invalid value")
-		}
-
-		for _, item := range strings.Split(values[0], ",") {
-			if err := f(&constval{item}); err != nil {
-				return err
-			}
-		}
-
-		return nil
-
-	case QueryStyleSpaceDelimited:
-		if d.explode {
-			for _, item := range values {
-				if err := f(&constval{item}); err != nil {
-					return err
-				}
-			}
-			return nil
-		}
-
-		if len(values) != 1 {
-			return errors.New("invalid value")
-		}
-
-		return errors.New("spaceDelimited with explode: false not supported")
-
-	case QueryStylePipeDelimited:
-		if d.explode {
-			for _, item := range values {
-				if err := f(&constval{item}); err != nil {
-					return err
-				}
-			}
-			return nil
-		}
-
-		if len(values) != 1 {
-			return errors.New("invalid value")
-		}
-
-		for _, item := range strings.Split(values[0], "|") {
-			if err := f(&constval{item}); err != nil {
-				return err
-			}
-		}
-
-		return nil
-
-	case QueryStyleDeepObject:
-		return errors.Errorf("style %q cannot be used for arrays", d.style)
-
-	default:
-		panic("unreachable")
-	}
+type QueryParameterObjectField struct {
+	Name     string
+	Required bool
 }
 
-func (d *QueryDecoder) DecodeFields(f func(name string, d Decoder) error) error {
-	adapter := func(name, value string) error { return f(name, &constval{value}) }
-	switch d.style {
-	case QueryStyleForm:
-		if d.explode {
-			for _, fname := range d.objectFields {
-				values, ok := d.values[fname]
-				if !ok || len(values) == 0 {
-					return errors.Errorf("query parameter %q field %q not set", d.paramName, fname)
+func (d *QueryDecoder) HasParam(cfg QueryParameterDecodingConfig) error {
+	if len(cfg.Fields) > 0 {
+		var (
+			case1 = cfg.Style == QueryStyleForm && cfg.Explode
+			case2 = cfg.Style == QueryStyleDeepObject && cfg.Explode
+		)
+
+		if case1 || case2 {
+			found := false
+			for _, field := range cfg.Fields {
+				qparam := field.Name
+				if case2 {
+					qparam = cfg.Name + "[" + field.Name + "]"
 				}
 
-				if len(values) > 1 {
-					return errors.Errorf("query parameter %q field %q multiple values", d.paramName, fname)
+				_, ok := d.values[qparam]
+				if !ok && field.Required {
+					return errors.Errorf("parameter %q not set", qparam)
 				}
 
-				if err := adapter(fname, values[0]); err != nil {
-					return err
-				}
+				found = true
+			}
+
+			if !found {
+				return errors.Errorf("none of parameters (%+v) are set", cfg.Fields)
 			}
 
 			return nil
 		}
-
-		values, ok := d.values[d.paramName]
-		if !ok {
-			return errors.Errorf("query parameter %q not set", d.paramName)
-		}
-
-		if len(values) > 1 {
-			return errors.Errorf("query parameter %q multiple values", d.paramName)
-		}
-
-		cur := &cursor{src: []rune(values[0])}
-		return decodeObject(cur, ',', ',', adapter)
-
-	case QueryStyleSpaceDelimited:
-		panic("object cannot have spaceDelimited style")
-
-	case QueryStylePipeDelimited:
-		panic("object cannot have pipeDelimited style")
-
-	case QueryStyleDeepObject:
-		if !d.explode {
-			panic("invalid deepObject style configuration")
-		}
-
-		for _, fname := range d.objectFields {
-			qparam := d.paramName + "[" + fname + "]"
-			values, ok := d.values[qparam]
-			if !ok || len(values) == 0 {
-				return errors.Errorf("query parameter %q field %q not set", d.paramName, qparam)
-			}
-
-			if len(values) > 1 {
-				return errors.Errorf("query parameter %q field %q multiple values", d.paramName, qparam)
-			}
-
-			if err := adapter(fname, values[0]); err != nil {
-				return err
-			}
-		}
-		return nil
-
-	default:
-		panic("unreachable")
 	}
+
+	if _, ok := d.values[cfg.Name]; !ok {
+		return errors.Errorf("parameter %q not set", cfg.Name)
+	}
+	return nil
+}
+
+func (d *QueryDecoder) DecodeParam(cfg QueryParameterDecodingConfig, f func(Decoder) error) error {
+	p := &queryParamDecoder{
+		values:       d.values,
+		objectFields: cfg.Fields,
+
+		paramName: cfg.Name,
+		style:     cfg.Style,
+		explode:   cfg.Explode,
+	}
+
+	return f(p)
 }

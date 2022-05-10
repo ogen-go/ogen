@@ -7,13 +7,11 @@
 {{- range $op := $.Operations }}{{/* Range over methods */}}
 {{ if $op.Params }}{{/* Check parameters existence */}}
 
-func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.Request) ({{ $op.Name }}Params, error) {
-	var (
-		params {{ $op.Name }}Params
-		{{- if $op.HasQueryParams }}
-		queryArgs = r.URL.Query()
-		{{- end }}
-	)
+func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.Request) (params {{ $op.Name }}Params, _ error) {
+	{{- if $op.HasQueryParams }}
+	q := uri.NewQueryDecoder(r.URL.Query())
+	{{- end }}
+
 	{{- range $p := $op.Params }}{{/* Range params */}}
     {{- $loc             := printf "%s: %s" $p.Spec.In $p.Spec.Name }}
     {{- $errParse        := printf "%s: parse"         $loc }}
@@ -30,20 +28,19 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 	// Decode {{ $loc }}.
 	{{- if $p.Spec.In.Query }}{{/* Switch location */}}
 	{	
-		if {{ queryParamPresentExpr "queryArgs" $p }} {
-			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Param:  "{{ $p.Spec.Name }}",
-				Values: queryArgs,
-				Style:  uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
-				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
-				{{- if isObjectParam $p }}
-				ObjectFields: {{ paramObjectFieldsSlice $p }},
-				{{- end }}
-			})
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "{{ $p.Spec.Name }}",
+			Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
+			Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+			{{- if isObjectParam $p }}
+			Fields: {{ paramObjectFields $p }},
+			{{- end }}
+		}
 
-			if err := func() error {
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				{{- template "uri/decode" $el }}
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, {{ quote $errParse }})
 			}
 
@@ -55,7 +52,7 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 			}
 			{{- end }}
 		} {{- if $p.Spec.Required }} else {
-			return params, errors.New({{ quote $errNotSpecified }})
+			return params, errors.Wrap(err, "query")
 		} {{- end }}
 	}
 	{{- else if $p.Spec.In.Path }}

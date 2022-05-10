@@ -11,8 +11,6 @@ import (
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/capitalize"
-	"github.com/ogen-go/ogen/jsonschema"
-	"github.com/ogen-go/ogen/openapi"
 )
 
 // RouterElem is variable helper for router generation.
@@ -204,9 +202,8 @@ func templateFunctions() template.FuncMap {
 		"mod": func(a, b int) int {
 			return a % b
 		},
-		"isObjectParam":          isObjectParam,
-		"paramObjectFieldsSlice": paramObjectFieldsSlice,
-		"queryParamPresentExpr":  queryParamPresentExpr,
+		"isObjectParam":     isObjectParam,
+		"paramObjectFields": paramObjectFields,
 	}
 }
 
@@ -230,78 +227,29 @@ func isObjectParam(p *ir.Parameter) bool {
 	return typ.IsStruct()
 }
 
-func paramObjectFields(p *ir.Parameter) []*jsonschema.Property {
+func paramObjectFields(p *ir.Parameter) string {
 	typ := p.Type
 	if typ.IsGeneric() {
 		typ = typ.GenericOf
 	}
 
 	if !typ.IsStruct() {
-		return nil
+		return "nil"
 	}
 
-	fields := make([]*jsonschema.Property, 0, len(p.Type.Fields))
+	fields := make([]string, 0, len(typ.Fields))
 	for _, f := range typ.Fields {
 		if f.Spec == nil {
 			continue
 		}
-		fields = append(fields, f.Spec)
-	}
 
-	return fields
-}
-
-func paramObjectFieldsSlice(p *ir.Parameter) string {
-	if !isObjectParam(p) {
-		panic("unreachable")
-	}
-
-	fields := paramObjectFields(p)
-	fieldNames := make([]string, 0, len(fields))
-	for _, prop := range fields {
-		fieldNames = append(fieldNames, "\""+prop.Name+"\"")
-	}
-	return "[]string{" + strings.Join(fieldNames, ",") + "}"
-}
-
-func queryParamPresentExpr(uvar string, p *ir.Parameter) string {
-	if !isObjectParam(p) {
-		return fmt.Sprintf("%s.Has(%q)", uvar, p.Spec.Name)
-	}
-
-	var (
-		case1 = p.Spec.Style == openapi.QueryStyleForm && p.Spec.Explode
-		case2 = p.Spec.Style == openapi.QueryStyleDeepObject && p.Spec.Explode
-	)
-	if case1 || case2 {
-		var (
-			fields   = paramObjectFields(p)
-			required []string
-			optional []string
-		)
-
-		for _, field := range fields {
-			expr := fmt.Sprintf("%s.Has(%q)", uvar, field.Name)
-			if case2 {
-				expr = fmt.Sprintf("%s.Has(\"%s[%s]\")", uvar, p.Spec.Name, field.Name)
-			}
-
-			if field.Required {
-				required = append(required, expr)
-				continue
-			}
-			optional = append(optional, expr)
+		req := "false"
+		if f.Spec.Required {
+			req = "true"
 		}
 
-		switch {
-		case len(required) > 0:
-			return strings.Join(required, " && ")
-		case len(required) == 0 && len(optional) > 0:
-			return strings.Join(optional, " || ")
-		default:
-			panic("unreachable")
-		}
+		fields = append(fields, "{\""+f.Spec.Name+"\","+req+"}")
 	}
 
-	return fmt.Sprintf("%s.Has(%q)", uvar, p.Spec.Name)
+	return "[]uri.QueryParameterObjectField{" + strings.Join(fields, ",") + "}"
 }
