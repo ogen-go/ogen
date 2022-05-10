@@ -4161,9 +4161,10 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4172,14 +4173,15 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4188,7 +4190,7 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -4273,9 +4275,10 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4284,14 +4287,15 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4300,7 +4304,7 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -4402,9 +4406,10 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -4413,14 +4418,15 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4429,14 +4435,15 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4445,7 +4452,7 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -4515,9 +4522,10 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4526,14 +4534,15 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4542,7 +4551,7 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -4629,9 +4638,10 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4640,14 +4650,15 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4656,7 +4667,7 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -4741,9 +4752,10 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4752,14 +4764,15 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4768,7 +4781,7 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -4853,9 +4866,10 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4864,14 +4878,15 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -4880,7 +4895,7 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -5103,9 +5118,10 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5114,14 +5130,15 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5130,7 +5147,7 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -5203,9 +5220,10 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5214,14 +5232,15 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5230,7 +5249,7 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -5302,9 +5321,10 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5313,14 +5333,15 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5329,7 +5350,7 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -5398,9 +5419,10 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5409,14 +5431,15 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5425,7 +5448,7 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -5509,9 +5532,10 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5520,14 +5544,15 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5536,7 +5561,7 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -5623,9 +5648,10 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5634,14 +5660,15 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5650,7 +5677,7 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -5750,9 +5777,10 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5761,14 +5789,15 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5777,7 +5806,7 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -5865,9 +5894,10 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 	{
 		// Encode "actor" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "actor",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Actor.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -5876,14 +5906,15 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["actor"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "branch" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "branch",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Branch.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -5892,14 +5923,15 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["branch"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "event" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "event",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Event.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -5908,14 +5940,15 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["event"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "status" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "status",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Status.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -5924,14 +5957,15 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["status"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5940,14 +5974,15 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -5956,14 +5991,15 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "created" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "created",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Created.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -5972,7 +6008,7 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["created"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -7952,9 +7988,10 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -7963,14 +8000,15 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -7979,7 +8017,7 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8032,9 +8070,10 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 	{
 		// Encode "all" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "all",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.All.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -8043,14 +8082,15 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["all"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "participating" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "participating",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Participating.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -8059,14 +8099,15 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["participating"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -8075,14 +8116,15 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "before" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "before",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Before.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -8091,14 +8133,15 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["before"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8107,14 +8150,15 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8123,7 +8167,7 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8205,9 +8249,10 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8216,14 +8261,15 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8232,7 +8278,7 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8286,9 +8332,10 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8297,14 +8344,15 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8313,7 +8361,7 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8394,9 +8442,10 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8405,14 +8454,15 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8421,7 +8471,7 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8487,9 +8537,10 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8498,14 +8549,15 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8514,7 +8566,7 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8580,9 +8632,10 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8591,14 +8644,15 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8607,7 +8661,7 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8677,9 +8731,10 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8688,14 +8743,15 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8704,7 +8760,7 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8770,9 +8826,10 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8781,14 +8838,15 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8797,7 +8855,7 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8878,9 +8936,10 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8889,14 +8948,15 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -8905,7 +8965,7 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -8988,9 +9048,10 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 	{
 		// Encode "all" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "all",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.All.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -8999,14 +9060,15 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["all"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "participating" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "participating",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Participating.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -9015,14 +9077,15 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["participating"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -9031,14 +9094,15 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "before" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "before",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Before.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -9047,14 +9111,15 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["before"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9063,14 +9128,15 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9079,7 +9145,7 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -9134,9 +9200,10 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -9145,14 +9212,15 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -9161,14 +9229,15 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9177,14 +9246,15 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9193,7 +9263,7 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -9261,9 +9331,10 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9272,14 +9343,15 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9288,7 +9360,7 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -9341,9 +9413,10 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9352,14 +9425,15 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9368,7 +9442,7 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -9451,9 +9525,10 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9462,14 +9537,15 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -9478,7 +9554,7 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11054,9 +11130,10 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -11065,14 +11142,15 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -11081,14 +11159,15 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11097,14 +11176,15 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11113,7 +11193,7 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11189,9 +11269,10 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -11200,14 +11281,15 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -11216,14 +11298,15 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11232,14 +11315,15 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11248,7 +11332,7 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11322,9 +11406,10 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11333,14 +11418,15 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11349,7 +11435,7 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11407,9 +11493,10 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11418,14 +11505,15 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11434,7 +11522,7 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11492,9 +11580,10 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11503,14 +11592,15 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11519,7 +11609,7 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11575,9 +11665,10 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11586,14 +11677,15 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11602,7 +11694,7 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11657,9 +11749,10 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11668,14 +11761,15 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11684,7 +11778,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11739,9 +11833,10 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11750,14 +11845,15 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11766,7 +11862,7 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -11822,9 +11918,10 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -11833,14 +11930,15 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "cursor" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "cursor",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Cursor.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -11849,7 +11947,7 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["cursor"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -13388,9 +13486,10 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13399,14 +13498,15 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13415,7 +13515,7 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -13519,9 +13619,10 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 	{
 		// Encode "check_name" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "check_name",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.CheckName.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -13530,14 +13631,15 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["check_name"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "status" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "status",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Status.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -13546,14 +13648,15 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["status"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -13562,14 +13665,15 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13578,14 +13682,15 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13594,14 +13699,15 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "app_id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "app_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.AppID.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13610,7 +13716,7 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["app_id"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -13713,9 +13819,10 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 	{
 		// Encode "check_name" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "check_name",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.CheckName.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -13724,14 +13831,15 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["check_name"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "status" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "status",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Status.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -13740,14 +13848,15 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["status"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -13756,14 +13865,15 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13772,14 +13882,15 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13788,7 +13899,7 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -13892,9 +14003,10 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 	{
 		// Encode "app_id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "app_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.AppID.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13903,14 +14015,15 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["app_id"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "check_name" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "check_name",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.CheckName.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -13919,14 +14032,15 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["check_name"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13935,14 +14049,15 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -13951,7 +14066,7 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -14292,9 +14407,10 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 	{
 		// Encode "confirm_delete" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "confirm_delete",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ConfirmDelete.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -14303,7 +14419,7 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["confirm_delete"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -14705,9 +14821,10 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -14716,14 +14833,15 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -14732,14 +14850,15 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "ref" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "ref",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				if unwrapped := string(val); true {
@@ -14751,7 +14870,7 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["ref"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -14841,9 +14960,10 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 	{
 		// Encode "tool_name" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "tool_name",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ToolName.Get(); ok {
 				if unwrapped := string(val); true {
@@ -14855,14 +14975,15 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["tool_name"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "tool_guid" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "tool_guid",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ToolGUID.Get(); ok {
 				if unwrapped := string(val); true {
@@ -14874,14 +14995,15 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["tool_guid"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -14890,14 +15012,15 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -14906,14 +15029,15 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "ref" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "ref",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				if unwrapped := string(val); true {
@@ -14925,14 +15049,15 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["ref"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -14941,7 +15066,7 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -15038,9 +15163,10 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 	{
 		// Encode "tool_name" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "tool_name",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ToolName.Get(); ok {
 				if unwrapped := string(val); true {
@@ -15052,14 +15178,15 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["tool_name"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "tool_guid" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "tool_guid",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ToolGUID.Get(); ok {
 				if unwrapped := string(val); true {
@@ -15071,14 +15198,15 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["tool_guid"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -15087,14 +15215,15 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -15103,14 +15232,15 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "ref" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "ref",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				if unwrapped := string(val); true {
@@ -15122,14 +15252,15 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["ref"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sarif_id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sarif_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.SarifID.Get(); ok {
 				if unwrapped := string(val); true {
@@ -15141,7 +15272,7 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sarif_id"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -16518,9 +16649,10 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 	{
 		// Encode "phrase" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "phrase",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Phrase.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -16529,14 +16661,15 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["phrase"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "include" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "include",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Include.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -16545,14 +16678,15 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["include"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "after" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "after",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.After.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -16561,14 +16695,15 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["after"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "before" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "before",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Before.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -16577,14 +16712,15 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["before"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "order" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "order",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Order.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -16593,14 +16729,15 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["order"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -16609,14 +16746,15 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -16625,7 +16763,7 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -16769,9 +16907,10 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 	{
 		// Encode "excludedAttributes" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "excludedAttributes",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ExcludedAttributes.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -16780,7 +16919,7 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["excludedAttributes"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -17089,9 +17228,10 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17100,14 +17240,15 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17116,7 +17257,7 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -17185,9 +17326,10 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 	{
 		// Encode "startIndex" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "startIndex",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.StartIndex.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17196,14 +17338,15 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["startIndex"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "count" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "count",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Count.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17212,14 +17355,15 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["count"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -17228,14 +17372,15 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "excludedAttributes" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "excludedAttributes",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ExcludedAttributes.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -17244,7 +17389,7 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["excludedAttributes"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -17338,9 +17483,10 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 	{
 		// Encode "startIndex" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "startIndex",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.StartIndex.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17349,14 +17495,15 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["startIndex"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "count" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "count",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Count.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17365,14 +17512,15 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["count"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -17381,7 +17529,7 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -17514,9 +17662,10 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17525,14 +17674,15 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17541,7 +17691,7 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -17610,9 +17760,10 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17621,14 +17772,15 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17637,7 +17789,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -17706,9 +17858,10 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17717,14 +17870,15 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17733,7 +17887,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -17817,9 +17971,10 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17828,14 +17983,15 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -17844,7 +18000,7 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -19825,9 +19981,10 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -19836,14 +19993,15 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -19852,14 +20010,15 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -19868,7 +20027,7 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -19934,9 +20093,10 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -19945,14 +20105,15 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -19961,7 +20122,7 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -20027,9 +20188,10 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20038,14 +20200,15 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20054,7 +20217,7 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -20122,9 +20285,10 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -20133,14 +20297,15 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20149,14 +20314,15 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20165,7 +20331,7 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -20231,9 +20397,10 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20242,14 +20409,15 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20258,7 +20426,7 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -20314,9 +20482,10 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -20325,14 +20494,15 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20341,14 +20511,15 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20357,7 +20528,7 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -20410,9 +20581,10 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -20421,14 +20593,15 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20437,14 +20610,15 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -20453,7 +20627,7 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -21818,9 +21992,10 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 	{
 		// Encode "recursive" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "recursive",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Recursive.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -21829,7 +22004,7 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["recursive"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -21940,9 +22115,10 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -21951,14 +22127,15 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -21967,7 +22144,7 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -23980,9 +24157,10 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -23991,14 +24169,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24007,14 +24186,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "labels" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "labels",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Labels.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -24023,14 +24203,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["labels"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24039,14 +24220,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24055,14 +24237,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -24071,14 +24254,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "collab" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "collab",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Collab.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -24087,14 +24271,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["collab"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "orgs" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "orgs",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Orgs.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -24103,14 +24288,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["orgs"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "owned" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "owned",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Owned.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -24119,14 +24305,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["owned"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "pulls" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "pulls",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Pulls.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -24135,14 +24322,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["pulls"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24151,14 +24339,15 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24167,7 +24356,7 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -24251,9 +24440,10 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24262,14 +24452,15 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24278,7 +24469,7 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -24376,9 +24567,10 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -24387,14 +24579,15 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24403,14 +24596,15 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24419,7 +24613,7 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -24502,9 +24696,10 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24513,14 +24708,15 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24529,14 +24725,15 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -24545,14 +24742,15 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24561,14 +24759,15 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24577,7 +24776,7 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -24658,9 +24857,10 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24669,14 +24869,15 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24685,7 +24886,7 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -24746,9 +24947,10 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24757,14 +24959,15 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24773,14 +24976,15 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "labels" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "labels",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Labels.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -24789,14 +24993,15 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["labels"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24805,14 +25010,15 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24821,14 +25027,15 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -24837,14 +25044,15 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24853,14 +25061,15 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -24869,7 +25078,7 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -24945,9 +25154,10 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24956,14 +25166,15 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -24972,14 +25183,15 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "labels" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "labels",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Labels.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -24988,14 +25200,15 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["labels"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -25004,14 +25217,15 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -25020,14 +25234,15 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -25036,14 +25251,15 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25052,14 +25268,15 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25068,7 +25285,7 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -25159,9 +25376,10 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 	{
 		// Encode "milestone" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "milestone",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Milestone.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -25170,14 +25388,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["milestone"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -25186,14 +25405,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "assignee" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "assignee",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Assignee.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -25202,14 +25422,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["assignee"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "creator" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "creator",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Creator.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -25218,14 +25439,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["creator"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "mentioned" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "mentioned",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Mentioned.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -25234,14 +25456,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["mentioned"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "labels" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "labels",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Labels.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -25250,14 +25473,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["labels"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -25266,14 +25490,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -25282,14 +25507,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -25298,14 +25524,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25314,14 +25541,15 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25330,7 +25558,7 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -25426,9 +25654,10 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25437,14 +25666,15 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25453,7 +25683,7 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -25534,9 +25764,10 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25545,14 +25776,15 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25561,7 +25793,7 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -25657,9 +25889,10 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25668,14 +25901,15 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25684,7 +25918,7 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -25765,9 +25999,10 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -25776,14 +26011,15 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -25792,14 +26028,15 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -25808,14 +26045,15 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25824,14 +26062,15 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -25840,7 +26079,7 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -26893,9 +27132,10 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	{
 		// Encode "featured" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "featured",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Featured.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -26904,14 +27144,15 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["featured"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -26920,14 +27161,15 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -26936,7 +27178,7 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -27569,9 +27811,10 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -27580,7 +27823,7 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -27856,9 +28099,10 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 	{
 		// Encode "exclude" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "exclude",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.Exclude {
@@ -27873,7 +28117,7 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["exclude"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -27960,9 +28204,10 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 	{
 		// Encode "exclude" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "exclude",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.Exclude {
@@ -27977,7 +28222,7 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["exclude"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -28030,9 +28275,10 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -28041,14 +28287,15 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -28057,7 +28304,7 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -28125,9 +28372,10 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -28136,14 +28384,15 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -28152,14 +28401,15 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "exclude" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "exclude",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.Exclude {
@@ -28174,7 +28424,7 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["exclude"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -28257,9 +28507,10 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -28268,14 +28519,15 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -28284,7 +28536,7 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -28352,9 +28604,10 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -28363,14 +28616,15 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -28379,7 +28633,7 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -29743,9 +29997,10 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -29754,14 +30009,15 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -29770,14 +30026,15 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "client_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ClientID.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -29786,7 +30043,7 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["client_id"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -29855,9 +30112,10 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -29866,14 +30124,15 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -29882,14 +30141,15 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "client_id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "client_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ClientID.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -29898,7 +30158,7 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["client_id"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -30833,9 +31093,10 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 	{
 		// Encode "phrase" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "phrase",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Phrase.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -30844,14 +31105,15 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["phrase"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "include" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "include",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Include.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -30860,14 +31122,15 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["include"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "after" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "after",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.After.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -30876,14 +31139,15 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["after"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "before" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "before",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Before.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -30892,14 +31156,15 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["before"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "order" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "order",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Order.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -30908,14 +31173,15 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["order"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -30924,14 +31190,15 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -30940,7 +31207,7 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -31373,9 +31640,10 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31384,14 +31652,15 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31400,7 +31669,7 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -31529,9 +31798,10 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31540,14 +31810,15 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31556,7 +31827,7 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -31614,9 +31885,10 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31625,14 +31897,15 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31641,7 +31914,7 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -31714,9 +31987,10 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31725,14 +31999,15 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31741,7 +32016,7 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -31825,9 +32100,10 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31836,14 +32112,15 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31852,7 +32129,7 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -31921,9 +32198,10 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -31932,14 +32210,15 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "role" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "role",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Role.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -31948,14 +32227,15 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["role"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31964,14 +32244,15 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -31980,7 +32261,7 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -32031,9 +32312,10 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -32042,14 +32324,15 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32058,14 +32341,15 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32074,7 +32358,7 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -32142,9 +32426,10 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 	{
 		// Encode "filter" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "filter",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Filter.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -32153,14 +32438,15 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["filter"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32169,14 +32455,15 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32185,7 +32472,7 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -32256,9 +32543,10 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32267,14 +32555,15 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32283,7 +32572,7 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -32351,9 +32640,10 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32362,14 +32652,15 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32378,7 +32669,7 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -32528,9 +32819,10 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32539,14 +32831,15 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "cursor" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "cursor",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Cursor.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -32555,7 +32848,7 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["cursor"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -32621,9 +32914,10 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32632,14 +32926,15 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -32648,7 +32943,7 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -34425,9 +34720,10 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -34436,14 +34732,15 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -34452,14 +34749,15 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -34468,7 +34766,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -34568,9 +34866,10 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -34579,14 +34878,15 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -34595,14 +34895,15 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -34611,7 +34912,7 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -35320,22 +35621,24 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "package_type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["package_type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "visibility" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "visibility",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Visibility.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -35344,7 +35647,7 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["visibility"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -35414,22 +35717,24 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "package_type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["package_type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "visibility" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "visibility",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Visibility.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -35438,7 +35743,7 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["visibility"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -35508,22 +35813,24 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 	{
 		// Encode "package_type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "package_type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(string(params.PackageType)))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["package_type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "visibility" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "visibility",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Visibility.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -35532,7 +35839,7 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["visibility"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -35624,9 +35931,10 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 	{
 		// Encode "token" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "token",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Token.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -35635,7 +35943,7 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["token"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -35744,9 +36052,10 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 	{
 		// Encode "token" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "token",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Token.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -35755,7 +36064,7 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["token"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -35864,9 +36173,10 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 	{
 		// Encode "token" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "token",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Token.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -35875,7 +36185,7 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["token"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -37097,9 +37407,10 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 	{
 		// Encode "archived_state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "archived_state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ArchivedState.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -37108,14 +37419,15 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["archived_state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37124,14 +37436,15 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37140,7 +37453,7 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -37212,9 +37525,10 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 	{
 		// Encode "affiliation" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "affiliation",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Affiliation.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -37223,14 +37537,15 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["affiliation"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37239,14 +37554,15 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37255,7 +37571,7 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -37321,9 +37637,10 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37332,14 +37649,15 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37348,7 +37666,7 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -37418,9 +37736,10 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -37429,14 +37748,15 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37445,14 +37765,15 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37461,7 +37782,7 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -37546,9 +37867,10 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -37557,14 +37879,15 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37573,14 +37896,15 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37589,7 +37913,7 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -37655,9 +37979,10 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -37666,14 +37991,15 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37682,14 +38008,15 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -37698,7 +38025,7 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -39464,9 +39791,10 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -39475,14 +39803,15 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "head" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "head",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Head.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -39491,14 +39820,15 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["head"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "base" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "base",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Base.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -39507,14 +39837,15 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["base"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -39523,14 +39854,15 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -39539,14 +39871,15 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -39555,14 +39888,15 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -39571,7 +39905,7 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -39684,9 +40018,10 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -39695,14 +40030,15 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -39711,7 +40047,7 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -39811,9 +40147,10 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -39822,14 +40159,15 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -39838,7 +40176,7 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -39937,9 +40275,10 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -39948,14 +40287,15 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -39964,7 +40304,7 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -40060,9 +40400,10 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -40071,14 +40412,15 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -40087,7 +40429,7 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -40186,9 +40528,10 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -40197,14 +40540,15 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -40213,14 +40557,15 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -40229,14 +40574,15 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -40245,14 +40591,15 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -40261,7 +40608,7 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -40345,9 +40692,10 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -40356,14 +40704,15 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -40372,14 +40721,15 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -40388,14 +40738,15 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -40404,14 +40755,15 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -40420,7 +40772,7 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -40518,9 +40870,10 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -40529,14 +40882,15 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -40545,7 +40899,7 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -43268,9 +43622,10 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 	{
 		// Encode "content" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "content",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Content.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -43279,14 +43634,15 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["content"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43295,14 +43651,15 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43311,7 +43668,7 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -43409,9 +43766,10 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 	{
 		// Encode "content" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "content",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Content.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -43420,14 +43778,15 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["content"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43436,14 +43795,15 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43452,7 +43812,7 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -43550,9 +43910,10 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 	{
 		// Encode "content" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "content",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Content.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -43561,14 +43922,15 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["content"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43577,14 +43939,15 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43593,7 +43956,7 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -43692,9 +44055,10 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 	{
 		// Encode "content" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "content",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Content.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -43703,14 +44067,15 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["content"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43719,14 +44084,15 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43735,7 +44101,7 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -43852,9 +44218,10 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 	{
 		// Encode "content" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "content",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Content.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -43863,14 +44230,15 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["content"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43879,14 +44247,15 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -43895,7 +44264,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -43999,9 +44368,10 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 	{
 		// Encode "content" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "content",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Content.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -44010,14 +44380,15 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["content"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -44026,14 +44397,15 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -44042,7 +44414,7 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -44144,9 +44516,10 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 	{
 		// Encode "content" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "content",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Content.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -44155,14 +44528,15 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["content"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -44171,14 +44545,15 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -44187,7 +44562,7 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -44276,9 +44651,10 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 	{
 		// Encode "content" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "content",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Content.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -44287,14 +44663,15 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["content"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -44303,14 +44680,15 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -44319,7 +44697,7 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -45348,9 +45726,10 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -45359,14 +45738,15 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -45375,7 +45755,7 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -49675,9 +50055,10 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -49686,14 +50067,15 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -49702,7 +50084,7 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -50154,9 +50536,10 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 	{
 		// Encode "per" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Per.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -50165,7 +50548,7 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -50437,9 +50820,10 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -50448,14 +50832,15 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -50464,7 +50849,7 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -50605,9 +50990,10 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -50616,14 +51002,15 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -50632,7 +51019,7 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -52065,9 +52452,10 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 	{
 		// Encode "ref" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "ref",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -52076,7 +52464,7 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["ref"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -52175,9 +52563,10 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 	{
 		// Encode "ref" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "ref",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -52186,7 +52575,7 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["ref"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -52976,9 +53365,10 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 	{
 		// Encode "per" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Per.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -52987,7 +53377,7 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -53360,9 +53750,10 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53371,7 +53762,7 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -53452,9 +53843,10 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 	{
 		// Encode "protected" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "protected",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Protected.Get(); ok {
 				return e.EncodeValue(conv.BoolToString(val))
@@ -53463,14 +53855,15 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["protected"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53479,14 +53872,15 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53495,7 +53889,7 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -53677,9 +54071,10 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 	{
 		// Encode "affiliation" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "affiliation",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Affiliation.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -53688,14 +54083,15 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["affiliation"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53704,14 +54100,15 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53720,7 +54117,7 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -53818,9 +54215,10 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53829,14 +54227,15 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53845,7 +54244,7 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -53931,9 +54330,10 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53942,14 +54342,15 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -53958,7 +54359,7 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -54059,9 +54460,10 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54070,14 +54472,15 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54086,7 +54489,7 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -54200,9 +54603,10 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 	{
 		// Encode "sha" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sha",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sha.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54211,14 +54615,15 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sha"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "path" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "path",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Path.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54227,14 +54632,15 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["path"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "author" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "author",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Author.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54243,14 +54649,15 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["author"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -54259,14 +54666,15 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "until" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "until",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Until.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -54275,14 +54683,15 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["until"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54291,14 +54700,15 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54307,7 +54717,7 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -54396,9 +54806,10 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 	{
 		// Encode "anon" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "anon",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Anon.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54407,14 +54818,15 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["anon"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54423,14 +54835,15 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54439,7 +54852,7 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -54520,9 +54933,10 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54531,14 +54945,15 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54547,7 +54962,7 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -54645,9 +55060,10 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54656,14 +55072,15 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54672,7 +55089,7 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -54755,9 +55172,10 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 	{
 		// Encode "sha" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sha",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sha.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54766,14 +55184,15 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sha"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "ref" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "ref",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Ref.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54782,14 +55201,15 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["ref"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "task" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "task",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Task.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54798,14 +55218,15 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["task"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "environment" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "environment",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Environment.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54814,14 +55235,15 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["environment"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54830,14 +55252,15 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54846,7 +55269,7 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -54902,9 +55325,10 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 	{
 		// Encode "visibility" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "visibility",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Visibility.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -54913,14 +55337,15 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["visibility"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "affiliation" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "affiliation",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Affiliation.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -54929,14 +55354,15 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["affiliation"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Type.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -54945,14 +55371,15 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -54961,14 +55388,15 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -54977,14 +55405,15 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -54993,14 +55422,15 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55009,14 +55439,15 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -55025,14 +55456,15 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "before" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "before",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Before.Get(); ok {
 				return e.EncodeValue(conv.TimeToString(val))
@@ -55041,7 +55473,7 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["before"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -55109,9 +55541,10 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 	{
 		// Encode "type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Type.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -55120,14 +55553,15 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -55136,14 +55570,15 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -55152,14 +55587,15 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55168,14 +55604,15 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55184,7 +55621,7 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -55253,9 +55690,10 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 	{
 		// Encode "type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Type.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -55264,14 +55702,15 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -55280,14 +55719,15 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -55296,14 +55736,15 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55312,14 +55753,15 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55328,7 +55770,7 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -55409,9 +55851,10 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -55420,14 +55863,15 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55436,14 +55880,15 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55452,7 +55897,7 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -55536,9 +55981,10 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55547,14 +55993,15 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55563,7 +56010,7 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -55617,9 +56064,10 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55628,14 +56076,15 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55644,7 +56093,7 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -55801,9 +56250,10 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55812,14 +56262,15 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55828,7 +56279,7 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -55887,9 +56338,10 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -55898,7 +56350,7 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -56001,9 +56453,10 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56012,14 +56465,15 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56028,7 +56482,7 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -56124,9 +56578,10 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56135,14 +56590,15 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56151,7 +56607,7 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -56238,9 +56694,10 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56249,14 +56706,15 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56265,7 +56723,7 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -56346,9 +56804,10 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56357,14 +56816,15 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56373,7 +56833,7 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -56454,9 +56914,10 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56465,14 +56926,15 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56481,7 +56943,7 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -56579,9 +57041,10 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56590,14 +57053,15 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "cursor" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "cursor",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Cursor.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -56606,7 +57070,7 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["cursor"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -56687,9 +57151,10 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56698,14 +57163,15 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -56714,7 +57180,7 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -60130,22 +60596,24 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 	{
 		// Encode "q" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "q",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["q"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60154,14 +60622,15 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "order" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "order",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Order.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60170,14 +60639,15 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["order"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60186,14 +60656,15 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60202,7 +60673,7 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -60265,22 +60736,24 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	{
 		// Encode "q" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "q",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["q"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60289,14 +60762,15 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "order" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "order",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Order.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60305,14 +60779,15 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["order"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60321,14 +60796,15 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60337,7 +60813,7 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -60410,22 +60886,24 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 	{
 		// Encode "q" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "q",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["q"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60434,14 +60912,15 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "order" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "order",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Order.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60450,14 +60929,15 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["order"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60466,14 +60946,15 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60482,7 +60963,7 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -60544,35 +61025,38 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 	{
 		// Encode "repository_id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "repository_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.RepositoryID))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["repository_id"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "q" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "q",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["q"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60581,14 +61065,15 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "order" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "order",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Order.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60597,14 +61082,15 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["order"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60613,14 +61099,15 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60629,7 +61116,7 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -60697,22 +61184,24 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 	{
 		// Encode "q" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "q",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["q"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60721,14 +61210,15 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "order" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "order",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Order.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60737,14 +61227,15 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["order"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60753,14 +61244,15 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60769,7 +61261,7 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -60835,22 +61327,24 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	{
 		// Encode "q" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "q",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["q"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60859,14 +61353,15 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60875,7 +61370,7 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -60939,22 +61434,24 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 	{
 		// Encode "q" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "q",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Q))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["q"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "sort" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "sort",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Sort.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60963,14 +61460,15 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["sort"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "order" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "order",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Order.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -60979,14 +61477,15 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["order"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -60995,14 +61494,15 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -61011,7 +61511,7 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -61178,9 +61678,10 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -61189,14 +61690,15 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "secret_type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "secret_type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.SecretType.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -61205,14 +61707,15 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["secret_type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -61221,14 +61724,15 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -61237,7 +61741,7 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -61323,9 +61827,10 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 	{
 		// Encode "state" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "state",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.State.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -61334,14 +61839,15 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["state"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "secret_type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "secret_type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.SecretType.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -61350,14 +61856,15 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["secret_type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -61366,14 +61873,15 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -61382,7 +61890,7 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -64758,9 +65266,10 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -64769,14 +65278,15 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -64785,7 +65295,7 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -64870,9 +65380,10 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -64881,14 +65392,15 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -64897,7 +65409,7 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -64967,9 +65479,10 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -64978,14 +65491,15 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -64994,7 +65508,7 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -65095,9 +65609,10 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -65106,14 +65621,15 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65122,14 +65638,15 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65138,7 +65655,7 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -65225,9 +65742,10 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -65236,14 +65754,15 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65252,14 +65771,15 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65268,7 +65788,7 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -65354,9 +65874,10 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -65365,14 +65886,15 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65381,14 +65903,15 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65397,14 +65920,15 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "pinned" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "pinned",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Pinned.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -65413,7 +65937,7 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["pinned"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -65485,9 +66009,10 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 	{
 		// Encode "direction" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "direction",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Direction.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -65496,14 +66021,15 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["direction"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65512,14 +66038,15 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65528,7 +66055,7 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -65584,9 +66111,10 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65595,14 +66123,15 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65611,7 +66140,7 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -65751,9 +66280,10 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65762,14 +66292,15 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -65778,7 +66309,7 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -65942,9 +66473,10 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 	{
 		// Encode "role" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "role",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Role.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -65953,14 +66485,15 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["role"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65969,14 +66502,15 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -65985,7 +66519,7 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -66056,9 +66590,10 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 	{
 		// Encode "role" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "role",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Role.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -66067,14 +66602,15 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["role"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66083,14 +66619,15 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66099,7 +66636,7 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -66187,9 +66724,10 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66198,14 +66736,15 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66214,7 +66753,7 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -66288,9 +66827,10 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66299,14 +66839,15 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66315,7 +66856,7 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -66400,9 +66941,10 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66411,14 +66953,15 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66427,7 +66970,7 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -66498,9 +67041,10 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66509,14 +67053,15 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66525,7 +67070,7 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -66610,9 +67155,10 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66621,14 +67167,15 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66637,7 +67184,7 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -66707,9 +67254,10 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66718,14 +67266,15 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -66734,7 +67283,7 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -68916,9 +69465,10 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 	{
 		// Encode "subject_type" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "subject_type",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.SubjectType.Get(); ok {
 				return e.EncodeValue(conv.StringToString(string(val)))
@@ -68927,14 +69477,15 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["subject_type"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "subject_id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "subject_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.SubjectID.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -68943,7 +69494,7 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["subject_id"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69122,9 +69673,10 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 	{
 		// Encode "since" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "since",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Since.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69133,14 +69685,15 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["since"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69149,7 +69702,7 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69248,9 +69801,10 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69259,14 +69813,15 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69275,7 +69830,7 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69328,9 +69883,10 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69339,14 +69895,15 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69355,7 +69912,7 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69408,9 +69965,10 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69419,14 +69977,15 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69435,7 +69994,7 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69503,9 +70062,10 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69514,14 +70074,15 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69530,7 +70091,7 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69598,9 +70159,10 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69609,14 +70171,15 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69625,7 +70188,7 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69680,9 +70243,10 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69691,14 +70255,15 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69707,7 +70272,7 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69775,9 +70340,10 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69786,14 +70352,15 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69802,7 +70369,7 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69858,9 +70425,10 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69869,14 +70437,15 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69885,7 +70454,7 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -69953,9 +70522,10 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69964,14 +70534,15 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -69980,7 +70551,7 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -70035,9 +70606,10 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	{
 		// Encode "per_page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "per_page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.PerPage.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -70046,14 +70618,15 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["per_page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -70062,7 +70635,7 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 

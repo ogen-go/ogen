@@ -188,10 +188,10 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (DefaultTestParams
 	}
 	// Decode query: default.
 	{
-		values, ok := queryArgs["default"]
-		if ok {
+		if queryArgs.Has("default") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "default",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -231,10 +231,10 @@ func decodeFoobarGetParams(args [0]string, r *http.Request) (FoobarGetParams, er
 	)
 	// Decode query: inlinedParam.
 	{
-		values, ok := queryArgs["inlinedParam"]
-		if ok {
+		if queryArgs.Has("inlinedParam") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "inlinedParam",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -261,10 +261,10 @@ func decodeFoobarGetParams(args [0]string, r *http.Request) (FoobarGetParams, er
 	}
 	// Decode query: skip.
 	{
-		values, ok := queryArgs["skip"]
-		if ok {
+		if queryArgs.Has("skip") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "skip",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -372,10 +372,10 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 	)
 	// Decode query: petID.
 	{
-		values, ok := queryArgs["petID"]
-		if ok {
+		if queryArgs.Has("petID") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "petID",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -493,10 +493,10 @@ func decodePetGetParams(args [0]string, r *http.Request) (PetGetParams, error) {
 	}
 	// Decode query: token.
 	{
-		values, ok := queryArgs["token"]
-		if ok {
+		if queryArgs.Has("token") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "token",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -531,10 +531,10 @@ func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (PetGetAvatar
 	)
 	// Decode query: petID.
 	{
-		values, ok := queryArgs["petID"]
-		if ok {
+		if queryArgs.Has("petID") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "petID",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -683,10 +683,10 @@ func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (PetUpload
 	)
 	// Decode query: petID.
 	{
-		values, ok := queryArgs["petID"]
-		if ok {
+		if queryArgs.Has("petID") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "petID",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -721,12 +721,13 @@ func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (Test
 	)
 	// Decode query: formObject.
 	{
-		values, ok := queryArgs["formObject"]
-		if ok {
+		if queryArgs.Has("min") && queryArgs.Has("max") && queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
-				Style:   uri.QueryStyleForm,
-				Explode: true,
+				Param:        "formObject",
+				Values:       queryArgs,
+				Style:        uri.QueryStyleForm,
+				Explode:      true,
+				ObjectFields: []string{"min", "max", "filter"},
 			})
 
 			if err := func() error {
@@ -745,12 +746,13 @@ func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (Test
 	}
 	// Decode query: deepObject.
 	{
-		values, ok := queryArgs["deepObject"]
-		if ok {
+		if queryArgs.Has("deepObject[min]") && queryArgs.Has("deepObject[max]") && queryArgs.Has("deepObject[filter]") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
-				Style:   uri.QueryStyleDeepObject,
-				Explode: true,
+				Param:        "deepObject",
+				Values:       queryArgs,
+				Style:        uri.QueryStyleDeepObject,
+				Explode:      true,
+				ObjectFields: []string{"min", "max", "filter"},
 			})
 
 			if err := func() error {

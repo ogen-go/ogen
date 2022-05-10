@@ -18,10 +18,10 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 	)
 	// Decode query: figi.
 	{
-		values, ok := queryArgs["figi"]
-		if ok {
+		if queryArgs.Has("figi") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "figi",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -48,10 +48,10 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 	}
 	// Decode query: from.
 	{
-		values, ok := queryArgs["from"]
-		if ok {
+		if queryArgs.Has("from") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "from",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -78,10 +78,10 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 	}
 	// Decode query: to.
 	{
-		values, ok := queryArgs["to"]
-		if ok {
+		if queryArgs.Has("to") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "to",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -108,10 +108,10 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (MarketCandle
 	}
 	// Decode query: interval.
 	{
-		values, ok := queryArgs["interval"]
-		if ok {
+		if queryArgs.Has("interval") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "interval",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -154,10 +154,10 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (MarketOrde
 	)
 	// Decode query: figi.
 	{
-		values, ok := queryArgs["figi"]
-		if ok {
+		if queryArgs.Has("figi") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "figi",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -184,10 +184,10 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (MarketOrde
 	}
 	// Decode query: depth.
 	{
-		values, ok := queryArgs["depth"]
-		if ok {
+		if queryArgs.Has("depth") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "depth",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -222,10 +222,10 @@ func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (MarketS
 	)
 	// Decode query: figi.
 	{
-		values, ok := queryArgs["figi"]
-		if ok {
+		if queryArgs.Has("figi") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "figi",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -260,10 +260,10 @@ func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (Marke
 	)
 	// Decode query: ticker.
 	{
-		values, ok := queryArgs["ticker"]
-		if ok {
+		if queryArgs.Has("ticker") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "ticker",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -298,10 +298,10 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 	)
 	// Decode query: from.
 	{
-		values, ok := queryArgs["from"]
-		if ok {
+		if queryArgs.Has("from") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "from",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -328,10 +328,10 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 	}
 	// Decode query: to.
 	{
-		values, ok := queryArgs["to"]
-		if ok {
+		if queryArgs.Has("to") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "to",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -358,10 +358,10 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 	}
 	// Decode query: figi.
 	{
-		values, ok := queryArgs["figi"]
-		if ok {
+		if queryArgs.Has("figi") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "figi",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -393,10 +393,10 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (OperationsGetPa
 	}
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -436,10 +436,10 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (OrdersCancel
 	)
 	// Decode query: orderId.
 	{
-		values, ok := queryArgs["orderId"]
-		if ok {
+		if queryArgs.Has("orderId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "orderId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -466,10 +466,10 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (OrdersCancel
 	}
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -509,10 +509,10 @@ func decodeOrdersGetParams(args [0]string, r *http.Request) (OrdersGetParams, er
 	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -552,10 +552,10 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (OrdersLi
 	)
 	// Decode query: figi.
 	{
-		values, ok := queryArgs["figi"]
-		if ok {
+		if queryArgs.Has("figi") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "figi",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -582,10 +582,10 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (OrdersLi
 	}
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -625,10 +625,10 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (OrdersM
 	)
 	// Decode query: figi.
 	{
-		values, ok := queryArgs["figi"]
-		if ok {
+		if queryArgs.Has("figi") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "figi",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -655,10 +655,10 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (OrdersM
 	}
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -698,10 +698,10 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (Portfo
 	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -741,10 +741,10 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (PortfolioGetPara
 	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -784,10 +784,10 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (SandboxClear
 	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -827,10 +827,10 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -870,10 +870,10 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (S
 	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -913,10 +913,10 @@ func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (SandboxRemo
 	)
 	// Decode query: brokerAccountId.
 	{
-		values, ok := queryArgs["brokerAccountId"]
-		if ok {
+		if queryArgs.Has("brokerAccountId") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "brokerAccountId",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})

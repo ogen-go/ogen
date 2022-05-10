@@ -122,9 +122,10 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 	{
 		// Encode "limit" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "limit",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Limit.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
@@ -133,7 +134,7 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["limit"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 

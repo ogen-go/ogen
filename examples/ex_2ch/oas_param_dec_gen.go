@@ -19,10 +19,10 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (API
 	)
 	// Decode query: board.
 	{
-		values, ok := queryArgs["board"]
-		if ok {
+		if queryArgs.Has("board") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "board",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -54,10 +54,10 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (API
 	}
 	// Decode query: thread.
 	{
-		values, ok := queryArgs["thread"]
-		if ok {
+		if queryArgs.Has("thread") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "thread",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -121,10 +121,10 @@ func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (A
 	)
 	// Decode query: id.
 	{
-		values, ok := queryArgs["id"]
-		if ok {
+		if queryArgs.Has("id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -190,10 +190,10 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (A
 	}
 	// Decode query: board.
 	{
-		values, ok := queryArgs["board"]
-		if ok {
+		if queryArgs.Has("board") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "board",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -225,10 +225,10 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (A
 	}
 	// Decode query: thread.
 	{
-		values, ok := queryArgs["thread"]
-		if ok {
+		if queryArgs.Has("thread") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "thread",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -292,10 +292,10 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 	)
 	// Decode query: board.
 	{
-		values, ok := queryArgs["board"]
-		if ok {
+		if queryArgs.Has("board") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "board",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -327,10 +327,10 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 	}
 	// Decode query: thread.
 	{
-		values, ok := queryArgs["thread"]
-		if ok {
+		if queryArgs.Has("thread") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "thread",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -394,10 +394,10 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (APIC
 	)
 	// Decode query: board.
 	{
-		values, ok := queryArgs["board"]
-		if ok {
+		if queryArgs.Has("board") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "board",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -429,10 +429,10 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (APIC
 	}
 	// Decode query: thread.
 	{
-		values, ok := queryArgs["thread"]
-		if ok {
+		if queryArgs.Has("thread") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "thread",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -496,10 +496,10 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (APIDislikeGetPa
 	)
 	// Decode query: board.
 	{
-		values, ok := queryArgs["board"]
-		if ok {
+		if queryArgs.Has("board") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "board",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -526,10 +526,10 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (APIDislikeGetPa
 	}
 	// Decode query: num.
 	{
-		values, ok := queryArgs["num"]
-		if ok {
+		if queryArgs.Has("num") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "num",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -581,10 +581,10 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (APILikeGetParams, 
 	)
 	// Decode query: board.
 	{
-		values, ok := queryArgs["board"]
-		if ok {
+		if queryArgs.Has("board") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "board",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -611,10 +611,10 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (APILikeGetParams, 
 	}
 	// Decode query: num.
 	{
-		values, ok := queryArgs["num"]
-		if ok {
+		if queryArgs.Has("num") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "num",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})

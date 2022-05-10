@@ -56,10 +56,10 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 	)
 	// Decode query: query.
 	{
-		values, ok := queryArgs["query"]
-		if ok {
+		if queryArgs.Has("query") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "query",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -86,10 +86,10 @@ func decodeSearchParams(args [0]string, r *http.Request) (SearchParams, error) {
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -129,10 +129,10 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDPa
 	)
 	// Decode query: tag_id.
 	{
-		values, ok := queryArgs["tag_id"]
-		if ok {
+		if queryArgs.Has("tag_id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "tag_id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -159,10 +159,10 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (SearchByTagIDPa
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})

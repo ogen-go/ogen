@@ -77,9 +77,10 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	{
 		// Encode "board" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Board.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -88,14 +89,15 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["board"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "thread" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -104,7 +106,7 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["thread"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -153,15 +155,16 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	{
 		// Encode "id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.ID))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["id"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -230,9 +233,10 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 	{
 		// Encode "board" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Board.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -241,14 +245,15 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["board"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "thread" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -257,7 +262,7 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["thread"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -306,9 +311,10 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	{
 		// Encode "board" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Board.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -317,14 +323,15 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["board"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "thread" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -333,7 +340,7 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["thread"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -423,9 +430,10 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	{
 		// Encode "board" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Board.Get(); ok {
 				return e.EncodeValue(conv.StringToString(val))
@@ -434,14 +442,15 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["board"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "thread" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "thread",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Thread.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -450,7 +459,7 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["thread"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -540,28 +549,30 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	{
 		// Encode "board" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Board))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["board"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "num" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "num",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Num))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["num"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -610,28 +621,30 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	{
 		// Encode "board" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "board",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Board))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["board"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "num" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "num",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.Num))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["num"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 

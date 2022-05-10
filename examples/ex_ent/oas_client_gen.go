@@ -484,9 +484,10 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
@@ -495,14 +496,15 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "itemsPerPage" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "itemsPerPage",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ItemsPerPage.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
@@ -511,7 +513,7 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["itemsPerPage"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -579,9 +581,10 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
@@ -590,14 +593,15 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "itemsPerPage" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "itemsPerPage",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ItemsPerPage.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
@@ -606,7 +610,7 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["itemsPerPage"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -674,9 +678,10 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
@@ -685,14 +690,15 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "itemsPerPage" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "itemsPerPage",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.ItemsPerPage.Get(); ok {
 				return e.EncodeValue(conv.Int32ToString(val))
@@ -701,7 +707,7 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["itemsPerPage"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 

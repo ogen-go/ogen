@@ -18,10 +18,10 @@ func decodeListPetsParams(args [0]string, r *http.Request) (ListPetsParams, erro
 	)
 	// Decode query: limit.
 	{
-		values, ok := queryArgs["limit"]
-		if ok {
+		if queryArgs.Has("limit") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "limit",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})

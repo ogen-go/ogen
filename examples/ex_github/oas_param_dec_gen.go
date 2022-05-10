@@ -3783,10 +3783,10 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -3824,10 +3824,10 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (A
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -3935,10 +3935,10 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -3976,10 +3976,10 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4118,10 +4118,10 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4174,10 +4174,10 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4215,10 +4215,10 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4295,10 +4295,10 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4336,10 +4336,10 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (Actions
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4447,10 +4447,10 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4488,10 +4488,10 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4599,10 +4599,10 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4640,10 +4640,10 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (Action
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4751,10 +4751,10 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -4792,10 +4792,10 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (Acti
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5010,10 +5010,10 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5051,10 +5051,10 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5131,10 +5131,10 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5172,10 +5172,10 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5252,10 +5252,10 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5293,10 +5293,10 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5373,10 +5373,10 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5414,10 +5414,10 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5525,10 +5525,10 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5566,10 +5566,10 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5677,10 +5677,10 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5718,10 +5718,10 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5860,10 +5860,10 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -5901,10 +5901,10 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -6006,10 +6006,10 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: actor.
 	{
-		values, ok := queryArgs["actor"]
-		if ok {
+		if queryArgs.Has("actor") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "actor",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -6041,10 +6041,10 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: branch.
 	{
-		values, ok := queryArgs["branch"]
-		if ok {
+		if queryArgs.Has("branch") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "branch",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -6076,10 +6076,10 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: event.
 	{
-		values, ok := queryArgs["event"]
-		if ok {
+		if queryArgs.Has("event") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "event",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -6111,10 +6111,10 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: status.
 	{
-		values, ok := queryArgs["status"]
-		if ok {
+		if queryArgs.Has("status") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "status",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -6167,10 +6167,10 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -6208,10 +6208,10 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -6243,10 +6243,10 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: created.
 	{
-		values, ok := queryArgs["created"]
-		if ok {
+		if queryArgs.Has("created") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "created",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -7772,10 +7772,10 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -7813,10 +7813,10 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -7862,10 +7862,10 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: all.
 	{
-		values, ok := queryArgs["all"]
-		if ok {
+		if queryArgs.Has("all") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "all",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -7903,10 +7903,10 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: participating.
 	{
-		values, ok := queryArgs["participating"]
-		if ok {
+		if queryArgs.Has("participating") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "participating",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -7938,10 +7938,10 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -7973,10 +7973,10 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: before.
 	{
-		values, ok := queryArgs["before"]
-		if ok {
+		if queryArgs.Has("before") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "before",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8014,10 +8014,10 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8055,10 +8055,10 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8166,10 +8166,10 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8207,10 +8207,10 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8256,10 +8256,10 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8297,10 +8297,10 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (Acti
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8408,10 +8408,10 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8449,10 +8449,10 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8529,10 +8529,10 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8570,10 +8570,10 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8650,10 +8650,10 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8691,10 +8691,10 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (A
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8771,10 +8771,10 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8812,10 +8812,10 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8892,10 +8892,10 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -8933,10 +8933,10 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9044,10 +9044,10 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9085,10 +9085,10 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (Activi
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9196,10 +9196,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: all.
 	{
-		values, ok := queryArgs["all"]
-		if ok {
+		if queryArgs.Has("all") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "all",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9237,10 +9237,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: participating.
 	{
-		values, ok := queryArgs["participating"]
-		if ok {
+		if queryArgs.Has("participating") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "participating",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9272,10 +9272,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9307,10 +9307,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: before.
 	{
-		values, ok := queryArgs["before"]
-		if ok {
+		if queryArgs.Has("before") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "before",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9348,10 +9348,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9389,10 +9389,10 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9438,10 +9438,10 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9494,10 +9494,10 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9550,10 +9550,10 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9591,10 +9591,10 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9671,10 +9671,10 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9712,10 +9712,10 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9761,10 +9761,10 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9802,10 +9802,10 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9913,10 +9913,10 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -9954,10 +9954,10 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (A
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -10897,10 +10897,10 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -10947,10 +10947,10 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11003,10 +11003,10 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11044,10 +11044,10 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (AppsL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11124,10 +11124,10 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11174,10 +11174,10 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11230,10 +11230,10 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11271,10 +11271,10 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11351,10 +11351,10 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11392,10 +11392,10 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11441,10 +11441,10 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11482,10 +11482,10 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (AppsListPlansPa
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11531,10 +11531,10 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11572,10 +11572,10 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (AppsList
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11621,10 +11621,10 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11662,10 +11662,10 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11711,10 +11711,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11752,10 +11752,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11801,10 +11801,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11842,10 +11842,10 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11891,10 +11891,10 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -11926,10 +11926,10 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (App
 	}
 	// Decode query: cursor.
 	{
-		values, ok := queryArgs["cursor"]
-		if ok {
+		if queryArgs.Has("cursor") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "cursor",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -12938,10 +12938,10 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -12979,10 +12979,10 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (ChecksL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13115,10 +13115,10 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: check_name.
 	{
-		values, ok := queryArgs["check_name"]
-		if ok {
+		if queryArgs.Has("check_name") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "check_name",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13150,10 +13150,10 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: status.
 	{
-		values, ok := queryArgs["status"]
-		if ok {
+		if queryArgs.Has("status") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "status",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13206,10 +13206,10 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13262,10 +13262,10 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13303,10 +13303,10 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13338,10 +13338,10 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (ChecksListFo
 	}
 	// Decode query: app_id.
 	{
-		values, ok := queryArgs["app_id"]
-		if ok {
+		if queryArgs.Has("app_id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "app_id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13474,10 +13474,10 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: check_name.
 	{
-		values, ok := queryArgs["check_name"]
-		if ok {
+		if queryArgs.Has("check_name") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "check_name",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13509,10 +13509,10 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: status.
 	{
-		values, ok := queryArgs["status"]
-		if ok {
+		if queryArgs.Has("status") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "status",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13565,10 +13565,10 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13621,10 +13621,10 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13662,10 +13662,10 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (ChecksList
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13798,10 +13798,10 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 	}
 	// Decode query: app_id.
 	{
-		values, ok := queryArgs["app_id"]
-		if ok {
+		if queryArgs.Has("app_id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "app_id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13833,10 +13833,10 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 	}
 	// Decode query: check_name.
 	{
-		values, ok := queryArgs["check_name"]
-		if ok {
+		if queryArgs.Has("check_name") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "check_name",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13874,10 +13874,10 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -13915,10 +13915,10 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (Checks
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -14220,10 +14220,10 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (Co
 	}
 	// Decode query: confirm_delete.
 	{
-		values, ok := queryArgs["confirm_delete"]
-		if ok {
+		if queryArgs.Has("confirm_delete") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "confirm_delete",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -14676,10 +14676,10 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -14717,10 +14717,10 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -14752,10 +14752,10 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	}
 	// Decode query: ref.
 	{
-		values, ok := queryArgs["ref"]
-		if ok {
+		if queryArgs.Has("ref") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "ref",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -14864,10 +14864,10 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: tool_name.
 	{
-		values, ok := queryArgs["tool_name"]
-		if ok {
+		if queryArgs.Has("tool_name") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "tool_name",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -14906,10 +14906,10 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: tool_guid.
 	{
-		values, ok := queryArgs["tool_guid"]
-		if ok {
+		if queryArgs.Has("tool_guid") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "tool_guid",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -14954,10 +14954,10 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -14995,10 +14995,10 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -15030,10 +15030,10 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: ref.
 	{
-		values, ok := queryArgs["ref"]
-		if ok {
+		if queryArgs.Has("ref") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "ref",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -15072,10 +15072,10 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -15192,10 +15192,10 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: tool_name.
 	{
-		values, ok := queryArgs["tool_name"]
-		if ok {
+		if queryArgs.Has("tool_name") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "tool_name",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -15234,10 +15234,10 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: tool_guid.
 	{
-		values, ok := queryArgs["tool_guid"]
-		if ok {
+		if queryArgs.Has("tool_guid") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "tool_guid",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -15282,10 +15282,10 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -15323,10 +15323,10 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -15358,10 +15358,10 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: ref.
 	{
-		values, ok := queryArgs["ref"]
-		if ok {
+		if queryArgs.Has("ref") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "ref",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -15400,10 +15400,10 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	}
 	// Decode query: sarif_id.
 	{
-		values, ok := queryArgs["sarif_id"]
-		if ok {
+		if queryArgs.Has("sarif_id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sarif_id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -16461,10 +16461,10 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: phrase.
 	{
-		values, ok := queryArgs["phrase"]
-		if ok {
+		if queryArgs.Has("phrase") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "phrase",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -16496,10 +16496,10 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: include.
 	{
-		values, ok := queryArgs["include"]
-		if ok {
+		if queryArgs.Has("include") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "include",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -16546,10 +16546,10 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: after.
 	{
-		values, ok := queryArgs["after"]
-		if ok {
+		if queryArgs.Has("after") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "after",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -16581,10 +16581,10 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: before.
 	{
-		values, ok := queryArgs["before"]
-		if ok {
+		if queryArgs.Has("before") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "before",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -16616,10 +16616,10 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: order.
 	{
-		values, ok := queryArgs["order"]
-		if ok {
+		if queryArgs.Has("order") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "order",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -16672,10 +16672,10 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -16713,10 +16713,10 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (En
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -16856,10 +16856,10 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 	}
 	// Decode query: excludedAttributes.
 	{
-		values, ok := queryArgs["excludedAttributes"]
-		if ok {
+		if queryArgs.Has("excludedAttributes") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "excludedAttributes",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17174,10 +17174,10 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17215,10 +17215,10 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17289,10 +17289,10 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 	}
 	// Decode query: startIndex.
 	{
-		values, ok := queryArgs["startIndex"]
-		if ok {
+		if queryArgs.Has("startIndex") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "startIndex",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17324,10 +17324,10 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 	}
 	// Decode query: count.
 	{
-		values, ok := queryArgs["count"]
-		if ok {
+		if queryArgs.Has("count") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "count",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17359,10 +17359,10 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17394,10 +17394,10 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 	}
 	// Decode query: excludedAttributes.
 	{
-		values, ok := queryArgs["excludedAttributes"]
-		if ok {
+		if queryArgs.Has("excludedAttributes") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "excludedAttributes",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17468,10 +17468,10 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 	}
 	// Decode query: startIndex.
 	{
-		values, ok := queryArgs["startIndex"]
-		if ok {
+		if queryArgs.Has("startIndex") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "startIndex",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17503,10 +17503,10 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 	}
 	// Decode query: count.
 	{
-		values, ok := queryArgs["count"]
-		if ok {
+		if queryArgs.Has("count") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "count",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17538,10 +17538,10 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17656,10 +17656,10 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17697,10 +17697,10 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17777,10 +17777,10 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17818,10 +17818,10 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17898,10 +17898,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -17939,10 +17939,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -18050,10 +18050,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -18091,10 +18091,10 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19404,10 +19404,10 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 	)
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19445,10 +19445,10 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19486,10 +19486,10 @@ func decodeGistsListParams(args [0]string, r *http.Request) (GistsListParams, er
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19566,10 +19566,10 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19607,10 +19607,10 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (GistsListCo
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19687,10 +19687,10 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19728,10 +19728,10 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (GistsListCom
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19802,10 +19802,10 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19843,10 +19843,10 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19884,10 +19884,10 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (GistsListFor
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -19964,10 +19964,10 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -20005,10 +20005,10 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (GistsListForks
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -20048,10 +20048,10 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 	)
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -20089,10 +20089,10 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -20130,10 +20130,10 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (GistsListPubl
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -20173,10 +20173,10 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 	)
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -20214,10 +20214,10 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -20255,10 +20255,10 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (GistsListSta
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -21381,10 +21381,10 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (GitGetTreeParams, 
 	}
 	// Decode query: recursive.
 	{
-		values, ok := queryArgs["recursive"]
-		if ok {
+		if queryArgs.Has("recursive") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "recursive",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -21523,10 +21523,10 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -21564,10 +21564,10 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (GitListMa
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23272,10 +23272,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23328,10 +23328,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23378,10 +23378,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: labels.
 	{
-		values, ok := queryArgs["labels"]
-		if ok {
+		if queryArgs.Has("labels") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "labels",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23419,10 +23419,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23475,10 +23475,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23525,10 +23525,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23560,10 +23560,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: collab.
 	{
-		values, ok := queryArgs["collab"]
-		if ok {
+		if queryArgs.Has("collab") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "collab",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23595,10 +23595,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: orgs.
 	{
-		values, ok := queryArgs["orgs"]
-		if ok {
+		if queryArgs.Has("orgs") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "orgs",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23630,10 +23630,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: owned.
 	{
-		values, ok := queryArgs["owned"]
-		if ok {
+		if queryArgs.Has("owned") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "owned",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23665,10 +23665,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: pulls.
 	{
-		values, ok := queryArgs["pulls"]
-		if ok {
+		if queryArgs.Has("pulls") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "pulls",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23706,10 +23706,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23747,10 +23747,10 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (IssuesListParams, 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23858,10 +23858,10 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -23899,10 +23899,10 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (IssuesLis
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24035,10 +24035,10 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24076,10 +24076,10 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24117,10 +24117,10 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (IssuesList
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24228,10 +24228,10 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24278,10 +24278,10 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24328,10 +24328,10 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24369,10 +24369,10 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24410,10 +24410,10 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (Iss
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24521,10 +24521,10 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24562,10 +24562,10 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (Issue
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24611,10 +24611,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24667,10 +24667,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24717,10 +24717,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: labels.
 	{
-		values, ok := queryArgs["labels"]
-		if ok {
+		if queryArgs.Has("labels") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "labels",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24758,10 +24758,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24814,10 +24814,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24864,10 +24864,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24905,10 +24905,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -24946,10 +24946,10 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25026,10 +25026,10 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25082,10 +25082,10 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25132,10 +25132,10 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: labels.
 	{
-		values, ok := queryArgs["labels"]
-		if ok {
+		if queryArgs.Has("labels") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "labels",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25173,10 +25173,10 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25229,10 +25229,10 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25279,10 +25279,10 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25320,10 +25320,10 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25361,10 +25361,10 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (IssuesListFo
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25466,10 +25466,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: milestone.
 	{
-		values, ok := queryArgs["milestone"]
-		if ok {
+		if queryArgs.Has("milestone") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "milestone",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25507,10 +25507,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25557,10 +25557,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: assignee.
 	{
-		values, ok := queryArgs["assignee"]
-		if ok {
+		if queryArgs.Has("assignee") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "assignee",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25592,10 +25592,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: creator.
 	{
-		values, ok := queryArgs["creator"]
-		if ok {
+		if queryArgs.Has("creator") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "creator",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25627,10 +25627,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: mentioned.
 	{
-		values, ok := queryArgs["mentioned"]
-		if ok {
+		if queryArgs.Has("mentioned") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "mentioned",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25662,10 +25662,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: labels.
 	{
-		values, ok := queryArgs["labels"]
-		if ok {
+		if queryArgs.Has("labels") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "labels",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25703,10 +25703,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25759,10 +25759,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25809,10 +25809,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25850,10 +25850,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -25891,10 +25891,10 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (IssuesListF
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26033,10 +26033,10 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26074,10 +26074,10 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26185,10 +26185,10 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26226,10 +26226,10 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (Issue
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26368,10 +26368,10 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26409,10 +26409,10 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (Issue
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26520,10 +26520,10 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26576,10 +26576,10 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26632,10 +26632,10 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26688,10 +26688,10 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -26729,10 +26729,10 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (IssuesLi
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -27741,10 +27741,10 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 	)
 	// Decode query: featured.
 	{
-		values, ok := queryArgs["featured"]
-		if ok {
+		if queryArgs.Has("featured") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "featured",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -27782,10 +27782,10 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -27823,10 +27823,10 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (Li
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -28280,10 +28280,10 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (Mi
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -28492,10 +28492,10 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 	}
 	// Decode query: exclude.
 	{
-		values, ok := queryArgs["exclude"]
-		if ok {
+		if queryArgs.Has("exclude") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "exclude",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -28599,10 +28599,10 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (Mig
 	}
 	// Decode query: exclude.
 	{
-		values, ok := queryArgs["exclude"]
-		if ok {
+		if queryArgs.Has("exclude") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "exclude",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -28672,10 +28672,10 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -28713,10 +28713,10 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -28793,10 +28793,10 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -28834,10 +28834,10 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -28869,10 +28869,10 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (Migratio
 	}
 	// Decode query: exclude.
 	{
-		values, ok := queryArgs["exclude"]
-		if ok {
+		if queryArgs.Has("exclude") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "exclude",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -29004,10 +29004,10 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -29045,10 +29045,10 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (Mig
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -29125,10 +29125,10 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -29166,10 +29166,10 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (Mi
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -29988,10 +29988,10 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -30029,10 +30029,10 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -30064,10 +30064,10 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	}
 	// Decode query: client_id.
 	{
-		values, ok := queryArgs["client_id"]
-		if ok {
+		if queryArgs.Has("client_id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "client_id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -30113,10 +30113,10 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -30154,10 +30154,10 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -30189,10 +30189,10 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: client_id.
 	{
-		values, ok := queryArgs["client_id"]
-		if ok {
+		if queryArgs.Has("client_id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "client_id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -30898,10 +30898,10 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: phrase.
 	{
-		values, ok := queryArgs["phrase"]
-		if ok {
+		if queryArgs.Has("phrase") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "phrase",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -30933,10 +30933,10 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: include.
 	{
-		values, ok := queryArgs["include"]
-		if ok {
+		if queryArgs.Has("include") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "include",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -30983,10 +30983,10 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: after.
 	{
-		values, ok := queryArgs["after"]
-		if ok {
+		if queryArgs.Has("after") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "after",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31018,10 +31018,10 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: before.
 	{
-		values, ok := queryArgs["before"]
-		if ok {
+		if queryArgs.Has("before") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "before",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31053,10 +31053,10 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: order.
 	{
-		values, ok := queryArgs["order"]
-		if ok {
+		if queryArgs.Has("order") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "order",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31109,10 +31109,10 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31150,10 +31150,10 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (OrgsGetAuditL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31538,10 +31538,10 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 	)
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31579,10 +31579,10 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (OrgsListParams, erro
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31697,10 +31697,10 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31738,10 +31738,10 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (Org
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31787,10 +31787,10 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31828,10 +31828,10 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31908,10 +31908,10 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -31949,10 +31949,10 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (OrgsListForUs
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32060,10 +32060,10 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32101,10 +32101,10 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (OrgsL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32181,10 +32181,10 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32237,10 +32237,10 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	}
 	// Decode query: role.
 	{
-		values, ok := queryArgs["role"]
-		if ok {
+		if queryArgs.Has("role") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "role",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32293,10 +32293,10 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32334,10 +32334,10 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (OrgsListMembe
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32377,10 +32377,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	)
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32433,10 +32433,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32474,10 +32474,10 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32554,10 +32554,10 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	}
 	// Decode query: filter.
 	{
-		values, ok := queryArgs["filter"]
-		if ok {
+		if queryArgs.Has("filter") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "filter",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32610,10 +32610,10 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32651,10 +32651,10 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32731,10 +32731,10 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32772,10 +32772,10 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (Or
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32852,10 +32852,10 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -32893,10 +32893,10 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (OrgsLis
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -33042,10 +33042,10 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -33077,10 +33077,10 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (Org
 	}
 	// Decode query: cursor.
 	{
-		values, ok := queryArgs["cursor"]
-		if ok {
+		if queryArgs.Has("cursor") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "cursor",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -33157,10 +33157,10 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -33198,10 +33198,10 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (OrgsListWebh
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -34837,10 +34837,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -34878,10 +34878,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -34919,10 +34919,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -35076,10 +35076,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -35117,10 +35117,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -35158,10 +35158,10 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -35947,10 +35947,10 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 	)
 	// Decode query: package_type.
 	{
-		values, ok := queryArgs["package_type"]
-		if ok {
+		if queryArgs.Has("package_type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "package_type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -35985,10 +35985,10 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 	}
 	// Decode query: visibility.
 	{
-		values, ok := queryArgs["visibility"]
-		if ok {
+		if queryArgs.Has("visibility") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "visibility",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -36043,10 +36043,10 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 	)
 	// Decode query: package_type.
 	{
-		values, ok := queryArgs["package_type"]
-		if ok {
+		if queryArgs.Has("package_type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "package_type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -36112,10 +36112,10 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 	}
 	// Decode query: visibility.
 	{
-		values, ok := queryArgs["visibility"]
-		if ok {
+		if queryArgs.Has("visibility") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "visibility",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -36170,10 +36170,10 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (P
 	)
 	// Decode query: package_type.
 	{
-		values, ok := queryArgs["package_type"]
-		if ok {
+		if queryArgs.Has("package_type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "package_type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -36208,10 +36208,10 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (P
 	}
 	// Decode query: visibility.
 	{
-		values, ok := queryArgs["visibility"]
-		if ok {
+		if queryArgs.Has("visibility") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "visibility",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -36359,10 +36359,10 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 	}
 	// Decode query: token.
 	{
-		values, ok := queryArgs["token"]
-		if ok {
+		if queryArgs.Has("token") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "token",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -36495,10 +36495,10 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: token.
 	{
-		values, ok := queryArgs["token"]
-		if ok {
+		if queryArgs.Has("token") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "token",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -36631,10 +36631,10 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: token.
 	{
-		values, ok := queryArgs["token"]
-		if ok {
+		if queryArgs.Has("token") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "token",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -37584,10 +37584,10 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 	}
 	// Decode query: archived_state.
 	{
-		values, ok := queryArgs["archived_state"]
-		if ok {
+		if queryArgs.Has("archived_state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "archived_state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -37640,10 +37640,10 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -37681,10 +37681,10 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (ProjectsLis
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -37761,10 +37761,10 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 	}
 	// Decode query: affiliation.
 	{
-		values, ok := queryArgs["affiliation"]
-		if ok {
+		if queryArgs.Has("affiliation") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "affiliation",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -37817,10 +37817,10 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -37858,10 +37858,10 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (Pro
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -37938,10 +37938,10 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -37979,10 +37979,10 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38059,10 +38059,10 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38115,10 +38115,10 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38156,10 +38156,10 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (ProjectsLi
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38267,10 +38267,10 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38323,10 +38323,10 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38364,10 +38364,10 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38444,10 +38444,10 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38500,10 +38500,10 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -38541,10 +38541,10 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (ProjectsL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40104,10 +40104,10 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40154,10 +40154,10 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: head.
 	{
-		values, ok := queryArgs["head"]
-		if ok {
+		if queryArgs.Has("head") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "head",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40189,10 +40189,10 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: base.
 	{
-		values, ok := queryArgs["base"]
-		if ok {
+		if queryArgs.Has("base") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "base",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40230,10 +40230,10 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40280,10 +40280,10 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40336,10 +40336,10 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40377,10 +40377,10 @@ func decodePullsListParams(args [2]string, r *http.Request) (PullsListParams, er
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40550,10 +40550,10 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40591,10 +40591,10 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (Pu
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40733,10 +40733,10 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40774,10 +40774,10 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (PullsListCom
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40916,10 +40916,10 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -40957,10 +40957,10 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (PullsListFiles
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41099,10 +41099,10 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41140,10 +41140,10 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (P
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41282,10 +41282,10 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41332,10 +41332,10 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41382,10 +41382,10 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41423,10 +41423,10 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41464,10 +41464,10 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (Pulls
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41569,10 +41569,10 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41619,10 +41619,10 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41669,10 +41669,10 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41710,10 +41710,10 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41751,10 +41751,10 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41893,10 +41893,10 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -41934,10 +41934,10 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (PullsListRev
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -44587,10 +44587,10 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: content.
 	{
-		values, ok := queryArgs["content"]
-		if ok {
+		if queryArgs.Has("content") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "content",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -44643,10 +44643,10 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -44684,10 +44684,10 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -44820,10 +44820,10 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 	}
 	// Decode query: content.
 	{
-		values, ok := queryArgs["content"]
-		if ok {
+		if queryArgs.Has("content") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "content",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -44876,10 +44876,10 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -44917,10 +44917,10 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (Reactio
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45053,10 +45053,10 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: content.
 	{
-		values, ok := queryArgs["content"]
-		if ok {
+		if queryArgs.Has("content") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "content",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45109,10 +45109,10 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45150,10 +45150,10 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45286,10 +45286,10 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	}
 	// Decode query: content.
 	{
-		values, ok := queryArgs["content"]
-		if ok {
+		if queryArgs.Has("content") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "content",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45342,10 +45342,10 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45383,10 +45383,10 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45550,10 +45550,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode query: content.
 	{
-		values, ok := queryArgs["content"]
-		if ok {
+		if queryArgs.Has("content") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "content",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45606,10 +45606,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45647,10 +45647,10 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45783,10 +45783,10 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	}
 	// Decode query: content.
 	{
-		values, ok := queryArgs["content"]
-		if ok {
+		if queryArgs.Has("content") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "content",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45839,10 +45839,10 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -45880,10 +45880,10 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -46016,10 +46016,10 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	}
 	// Decode query: content.
 	{
-		values, ok := queryArgs["content"]
-		if ok {
+		if queryArgs.Has("content") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "content",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -46072,10 +46072,10 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -46113,10 +46113,10 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -46218,10 +46218,10 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	}
 	// Decode query: content.
 	{
-		values, ok := queryArgs["content"]
-		if ok {
+		if queryArgs.Has("content") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "content",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -46274,10 +46274,10 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -46315,10 +46315,10 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -47133,10 +47133,10 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -47174,10 +47174,10 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (ReposComp
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -51134,10 +51134,10 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -51175,10 +51175,10 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (ReposGetAll
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -51686,10 +51686,10 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (ReposGetClones
 	}
 	// Decode query: per.
 	{
-		values, ok := queryArgs["per"]
-		if ok {
+		if queryArgs.Has("per") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -52012,10 +52012,10 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -52053,10 +52053,10 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -52164,10 +52164,10 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -52205,10 +52205,10 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (ReposGetCommit
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -53693,10 +53693,10 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (ReposGetReadme
 	}
 	// Decode query: ref.
 	{
-		values, ok := queryArgs["ref"]
-		if ok {
+		if queryArgs.Has("ref") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "ref",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -53829,10 +53829,10 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (Rep
 	}
 	// Decode query: ref.
 	{
-		values, ok := queryArgs["ref"]
-		if ok {
+		if queryArgs.Has("ref") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "ref",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -54678,10 +54678,10 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (ReposGetViewsPa
 	}
 	// Decode query: per.
 	{
-		values, ok := queryArgs["per"]
-		if ok {
+		if queryArgs.Has("per") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55135,10 +55135,10 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (ReposListA
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55240,10 +55240,10 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 	}
 	// Decode query: protected.
 	{
-		values, ok := queryArgs["protected"]
-		if ok {
+		if queryArgs.Has("protected") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "protected",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55281,10 +55281,10 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55322,10 +55322,10 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (ReposListBr
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55533,10 +55533,10 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 	}
 	// Decode query: affiliation.
 	{
-		values, ok := queryArgs["affiliation"]
-		if ok {
+		if queryArgs.Has("affiliation") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "affiliation",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55589,10 +55589,10 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55630,10 +55630,10 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (ReposL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55772,10 +55772,10 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55813,10 +55813,10 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (Re
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55924,10 +55924,10 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -55965,10 +55965,10 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56107,10 +56107,10 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56148,10 +56148,10 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56253,10 +56253,10 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: sha.
 	{
-		values, ok := queryArgs["sha"]
-		if ok {
+		if queryArgs.Has("sha") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sha",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56288,10 +56288,10 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: path.
 	{
-		values, ok := queryArgs["path"]
-		if ok {
+		if queryArgs.Has("path") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "path",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56323,10 +56323,10 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: author.
 	{
-		values, ok := queryArgs["author"]
-		if ok {
+		if queryArgs.Has("author") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "author",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56358,10 +56358,10 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56393,10 +56393,10 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: until.
 	{
-		values, ok := queryArgs["until"]
-		if ok {
+		if queryArgs.Has("until") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "until",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56434,10 +56434,10 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56475,10 +56475,10 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (ReposListCom
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56580,10 +56580,10 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 	}
 	// Decode query: anon.
 	{
-		values, ok := queryArgs["anon"]
-		if ok {
+		if queryArgs.Has("anon") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "anon",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56621,10 +56621,10 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56662,10 +56662,10 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (ReposLi
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56773,10 +56773,10 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56814,10 +56814,10 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (ReposList
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56956,10 +56956,10 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -56997,10 +56997,10 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (R
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57108,10 +57108,10 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: sha.
 	{
-		values, ok := queryArgs["sha"]
-		if ok {
+		if queryArgs.Has("sha") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sha",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57149,10 +57149,10 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: ref.
 	{
-		values, ok := queryArgs["ref"]
-		if ok {
+		if queryArgs.Has("ref") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "ref",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57190,10 +57190,10 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: task.
 	{
-		values, ok := queryArgs["task"]
-		if ok {
+		if queryArgs.Has("task") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "task",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57231,10 +57231,10 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: environment.
 	{
-		values, ok := queryArgs["environment"]
-		if ok {
+		if queryArgs.Has("environment") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "environment",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57272,10 +57272,10 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57313,10 +57313,10 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57362,10 +57362,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: visibility.
 	{
-		values, ok := queryArgs["visibility"]
-		if ok {
+		if queryArgs.Has("visibility") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "visibility",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57418,10 +57418,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: affiliation.
 	{
-		values, ok := queryArgs["affiliation"]
-		if ok {
+		if queryArgs.Has("affiliation") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "affiliation",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57459,10 +57459,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: type.
 	{
-		values, ok := queryArgs["type"]
-		if ok {
+		if queryArgs.Has("type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57515,10 +57515,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57565,10 +57565,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57621,10 +57621,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57662,10 +57662,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57697,10 +57697,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57732,10 +57732,10 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: before.
 	{
-		values, ok := queryArgs["before"]
-		if ok {
+		if queryArgs.Has("before") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "before",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57806,10 +57806,10 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: type.
 	{
-		values, ok := queryArgs["type"]
-		if ok {
+		if queryArgs.Has("type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57862,10 +57862,10 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57912,10 +57912,10 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -57968,10 +57968,10 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58009,10 +58009,10 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (ReposListForO
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58089,10 +58089,10 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: type.
 	{
-		values, ok := queryArgs["type"]
-		if ok {
+		if queryArgs.Has("type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58145,10 +58145,10 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58195,10 +58195,10 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58251,10 +58251,10 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58292,10 +58292,10 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (ReposListFor
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58403,10 +58403,10 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58459,10 +58459,10 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58500,10 +58500,10 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (ReposListForks
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58611,10 +58611,10 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58652,10 +58652,10 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58701,10 +58701,10 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58742,10 +58742,10 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58922,10 +58922,10 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -58963,10 +58963,10 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (ReposLis
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59006,10 +59006,10 @@ func decodeReposListPublicParams(args [0]string, r *http.Request) (ReposListPubl
 	)
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59148,10 +59148,10 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59189,10 +59189,10 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59331,10 +59331,10 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59372,10 +59372,10 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (ReposL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59483,10 +59483,10 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59524,10 +59524,10 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (ReposListRe
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59635,10 +59635,10 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59676,10 +59676,10 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (ReposListTagsPa
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59787,10 +59787,10 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59828,10 +59828,10 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (ReposListTeams
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -59970,10 +59970,10 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -60005,10 +60005,10 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (Re
 	}
 	// Decode query: cursor.
 	{
-		values, ok := queryArgs["cursor"]
-		if ok {
+		if queryArgs.Has("cursor") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "cursor",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -60116,10 +60116,10 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -60157,10 +60157,10 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (ReposListWe
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63114,10 +63114,10 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	)
 	// Decode query: q.
 	{
-		values, ok := queryArgs["q"]
-		if ok {
+		if queryArgs.Has("q") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "q",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63144,10 +63144,10 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63200,10 +63200,10 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	}
 	// Decode query: order.
 	{
-		values, ok := queryArgs["order"]
-		if ok {
+		if queryArgs.Has("order") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "order",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63256,10 +63256,10 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63297,10 +63297,10 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (SearchCodeParams, 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63340,10 +63340,10 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	)
 	// Decode query: q.
 	{
-		values, ok := queryArgs["q"]
-		if ok {
+		if queryArgs.Has("q") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "q",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63370,10 +63370,10 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63426,10 +63426,10 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	}
 	// Decode query: order.
 	{
-		values, ok := queryArgs["order"]
-		if ok {
+		if queryArgs.Has("order") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "order",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63482,10 +63482,10 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63523,10 +63523,10 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (SearchCommitsPa
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63566,10 +63566,10 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	)
 	// Decode query: q.
 	{
-		values, ok := queryArgs["q"]
-		if ok {
+		if queryArgs.Has("q") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "q",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63596,10 +63596,10 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63652,10 +63652,10 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	}
 	// Decode query: order.
 	{
-		values, ok := queryArgs["order"]
-		if ok {
+		if queryArgs.Has("order") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "order",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63708,10 +63708,10 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63749,10 +63749,10 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (S
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63792,10 +63792,10 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	)
 	// Decode query: repository_id.
 	{
-		values, ok := queryArgs["repository_id"]
-		if ok {
+		if queryArgs.Has("repository_id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "repository_id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63822,10 +63822,10 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	}
 	// Decode query: q.
 	{
-		values, ok := queryArgs["q"]
-		if ok {
+		if queryArgs.Has("q") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "q",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63852,10 +63852,10 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63908,10 +63908,10 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	}
 	// Decode query: order.
 	{
-		values, ok := queryArgs["order"]
-		if ok {
+		if queryArgs.Has("order") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "order",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -63964,10 +63964,10 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64005,10 +64005,10 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (SearchLabelsPara
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64048,10 +64048,10 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	)
 	// Decode query: q.
 	{
-		values, ok := queryArgs["q"]
-		if ok {
+		if queryArgs.Has("q") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "q",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64078,10 +64078,10 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64134,10 +64134,10 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	}
 	// Decode query: order.
 	{
-		values, ok := queryArgs["order"]
-		if ok {
+		if queryArgs.Has("order") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "order",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64190,10 +64190,10 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64231,10 +64231,10 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (SearchReposParams
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64274,10 +64274,10 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 	)
 	// Decode query: q.
 	{
-		values, ok := queryArgs["q"]
-		if ok {
+		if queryArgs.Has("q") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "q",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64310,10 +64310,10 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64351,10 +64351,10 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (SearchTopicsPara
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64394,10 +64394,10 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	)
 	// Decode query: q.
 	{
-		values, ok := queryArgs["q"]
-		if ok {
+		if queryArgs.Has("q") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "q",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64424,10 +64424,10 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	}
 	// Decode query: sort.
 	{
-		values, ok := queryArgs["sort"]
-		if ok {
+		if queryArgs.Has("sort") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "sort",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64480,10 +64480,10 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	}
 	// Decode query: order.
 	{
-		values, ok := queryArgs["order"]
-		if ok {
+		if queryArgs.Has("order") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "order",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64536,10 +64536,10 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64577,10 +64577,10 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (SearchUsersParams
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64758,10 +64758,10 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64808,10 +64808,10 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	}
 	// Decode query: secret_type.
 	{
-		values, ok := queryArgs["secret_type"]
-		if ok {
+		if queryArgs.Has("secret_type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "secret_type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64849,10 +64849,10 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64890,10 +64890,10 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -64995,10 +64995,10 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode query: state.
 	{
-		values, ok := queryArgs["state"]
-		if ok {
+		if queryArgs.Has("state") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "state",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -65045,10 +65045,10 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode query: secret_type.
 	{
-		values, ok := queryArgs["secret_type"]
-		if ok {
+		if queryArgs.Has("secret_type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "secret_type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -65086,10 +65086,10 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -65127,10 +65127,10 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68025,10 +68025,10 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68066,10 +68066,10 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (TeamsListParams, er
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68177,10 +68177,10 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68218,10 +68218,10 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (TeamsList
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68298,10 +68298,10 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68339,10 +68339,10 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68481,10 +68481,10 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68537,10 +68537,10 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68578,10 +68578,10 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68689,10 +68689,10 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68745,10 +68745,10 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68786,10 +68786,10 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68897,10 +68897,10 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68953,10 +68953,10 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -68994,10 +68994,10 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69029,10 +69029,10 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (Tea
 	}
 	// Decode query: pinned.
 	{
-		values, ok := queryArgs["pinned"]
-		if ok {
+		if queryArgs.Has("pinned") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "pinned",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69109,10 +69109,10 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 	}
 	// Decode query: direction.
 	{
-		values, ok := queryArgs["direction"]
-		if ok {
+		if queryArgs.Has("direction") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "direction",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69165,10 +69165,10 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69206,10 +69206,10 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (Te
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69255,10 +69255,10 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69296,10 +69296,10 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69414,10 +69414,10 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69449,10 +69449,10 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (Team
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69629,10 +69629,10 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 	}
 	// Decode query: role.
 	{
-		values, ok := queryArgs["role"]
-		if ok {
+		if queryArgs.Has("role") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "role",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69685,10 +69685,10 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69726,10 +69726,10 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (TeamsLi
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69806,10 +69806,10 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 	}
 	// Decode query: role.
 	{
-		values, ok := queryArgs["role"]
-		if ok {
+		if queryArgs.Has("role") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "role",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69862,10 +69862,10 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -69903,10 +69903,10 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (TeamsL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70014,10 +70014,10 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70055,10 +70055,10 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70135,10 +70135,10 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70176,10 +70176,10 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70287,10 +70287,10 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70328,10 +70328,10 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (TeamsL
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70408,10 +70408,10 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70449,10 +70449,10 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (Teams
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70560,10 +70560,10 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70601,10 +70601,10 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (TeamsList
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70681,10 +70681,10 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -70722,10 +70722,10 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (TeamsLis
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72276,10 +72276,10 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 	}
 	// Decode query: subject_type.
 	{
-		values, ok := queryArgs["subject_type"]
-		if ok {
+		if queryArgs.Has("subject_type") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "subject_type",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72326,10 +72326,10 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (UsersG
 	}
 	// Decode query: subject_id.
 	{
-		values, ok := queryArgs["subject_id"]
-		if ok {
+		if queryArgs.Has("subject_id") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "subject_id",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72445,10 +72445,10 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 	)
 	// Decode query: since.
 	{
-		values, ok := queryArgs["since"]
-		if ok {
+		if queryArgs.Has("since") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "since",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72486,10 +72486,10 @@ func decodeUsersListParams(args [0]string, r *http.Request) (UsersListParams, er
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72535,10 +72535,10 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72576,10 +72576,10 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72625,10 +72625,10 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72666,10 +72666,10 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72715,10 +72715,10 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72756,10 +72756,10 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72836,10 +72836,10 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72877,10 +72877,10 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (Use
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72957,10 +72957,10 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -72998,10 +72998,10 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (Use
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73047,10 +73047,10 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73088,10 +73088,10 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73168,10 +73168,10 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73209,10 +73209,10 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (Users
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73258,10 +73258,10 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73299,10 +73299,10 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73379,10 +73379,10 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73420,10 +73420,10 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (Us
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73469,10 +73469,10 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	}
 	// Decode query: per_page.
 	{
-		values, ok := queryArgs["per_page"]
-		if ok {
+		if queryArgs.Has("per_page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "per_page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -73510,10 +73510,10 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})

@@ -208,10 +208,10 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 	)
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -243,10 +243,10 @@ func decodeListPetParams(args [0]string, r *http.Request) (ListPetParams, error)
 	}
 	// Decode query: itemsPerPage.
 	{
-		values, ok := queryArgs["itemsPerPage"]
-		if ok {
+		if queryArgs.Has("itemsPerPage") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "itemsPerPage",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -317,10 +317,10 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -352,10 +352,10 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (ListPetCate
 	}
 	// Decode query: itemsPerPage.
 	{
-		values, ok := queryArgs["itemsPerPage"]
-		if ok {
+		if queryArgs.Has("itemsPerPage") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "itemsPerPage",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -426,10 +426,10 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 	}
 	// Decode query: page.
 	{
-		values, ok := queryArgs["page"]
-		if ok {
+		if queryArgs.Has("page") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "page",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})
@@ -461,10 +461,10 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (ListPetFriends
 	}
 	// Decode query: itemsPerPage.
 	{
-		values, ok := queryArgs["itemsPerPage"]
-		if ok {
+		if queryArgs.Has("itemsPerPage") {
 			d := uri.NewQueryDecoder(uri.QueryDecoderConfig{
-				Values:  values,
+				Param:   "itemsPerPage",
+				Values:  queryArgs,
 				Style:   uri.QueryStyleForm,
 				Explode: true,
 			})

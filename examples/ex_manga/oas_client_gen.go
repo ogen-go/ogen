@@ -136,22 +136,24 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	{
 		// Encode "query" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "query",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.StringToString(params.Query))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["query"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -160,7 +162,7 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
@@ -211,22 +213,24 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	{
 		// Encode "tag_id" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "tag_id",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			return e.EncodeValue(conv.IntToString(params.TagID))
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["tag_id"] = e.Result()
+		q = e.Result()
 	}
 	{
 		// Encode "page" parameter.
 		e := uri.NewQueryEncoder(uri.QueryEncoderConfig{
+			Param:   "page",
 			Style:   uri.QueryStyleForm,
 			Explode: true,
-		})
+		}, q)
 		if err := func() error {
 			if val, ok := params.Page.Get(); ok {
 				return e.EncodeValue(conv.IntToString(val))
@@ -235,7 +239,7 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 		}(); err != nil {
 			return res, errors.Wrap(err, "encode query")
 		}
-		q["page"] = e.Result()
+		q = e.Result()
 	}
 	u.RawQuery = q.Encode()
 
