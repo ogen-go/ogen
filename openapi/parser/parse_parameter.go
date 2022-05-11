@@ -1,11 +1,13 @@
 package parser
 
 import (
+	"fmt"
 	"strings"
 
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -84,7 +86,8 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 	if err != nil {
 		return nil, errors.Wrap(err, "style")
 	}
-	return &openapi.Parameter{
+
+	op := &openapi.Parameter{
 		Name:        param.Name,
 		Description: param.Description,
 		In:          locatedIn,
@@ -92,7 +95,13 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		Style:       style,
 		Explode:     paramExplode(locatedIn, param.Explode),
 		Required:    param.Required,
-	}, nil
+	}
+
+	if err := validateParameterStyle(op); err != nil {
+		return nil, err
+	}
+
+	return op, nil
 }
 
 // paramStyle checks parameter style field.
@@ -152,4 +161,99 @@ func paramExplode(locatedIn openapi.ParameterLocation, explode *bool) bool {
 	}
 
 	return false
+}
+
+func validateParameterStyle(p *openapi.Parameter) error {
+	// https://swagger.io/docs/specification/serialization/
+	const (
+		primitive byte = 1 << iota
+		array
+		object
+	)
+
+	type stexp struct {
+		style   openapi.ParameterStyle
+		explode bool
+	}
+
+	table := map[openapi.ParameterLocation]map[stexp]byte{
+		openapi.LocationPath: {
+			{openapi.PathStyleSimple, false}: primitive | array | object,
+			{openapi.PathStyleSimple, true}:  primitive | array | object,
+			{openapi.PathStyleLabel, false}:  primitive | array | object,
+			{openapi.PathStyleLabel, true}:   primitive | array | object,
+			{openapi.PathStyleMatrix, false}: primitive | array | object,
+			{openapi.PathStyleMatrix, true}:  primitive | array | object,
+		},
+		openapi.LocationQuery: {
+			{openapi.QueryStyleForm, true}:            primitive | array | object,
+			{openapi.QueryStyleForm, false}:           primitive | array | object,
+			{openapi.QueryStyleSpaceDelimited, true}:  array,
+			{openapi.QueryStyleSpaceDelimited, false}: array,
+			{openapi.QueryStylePipeDelimited, true}:   array,
+			{openapi.QueryStylePipeDelimited, false}:  array,
+			{openapi.QueryStyleDeepObject, true}:      object,
+		},
+		openapi.LocationHeader: {
+			{openapi.HeaderStyleSimple, false}: primitive | array | object,
+			{openapi.HeaderStyleSimple, true}:  primitive | array | object,
+		},
+		openapi.LocationCookie: {
+			{openapi.CookieStyleForm, true}:  primitive,
+			{openapi.CookieStyleForm, false}: primitive | array | object,
+		},
+	}
+
+	styles, ok := table[p.In]
+	if !ok {
+		return errors.Errorf("invalid style: %q", p.In)
+	}
+
+	types, ok := styles[stexp{p.Style, p.Explode}]
+	if !ok {
+		return errors.Errorf("invalid style explode combination")
+	}
+
+	allowed := func(t byte) bool { return types&t != 0 }
+
+	switch p.Schema.Type {
+	case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
+		if allowed(primitive) {
+			return nil
+		}
+	case jsonschema.Array:
+		if allowed(array) {
+			return nil
+		}
+	case jsonschema.Object:
+		if allowed(object) {
+			return nil
+		}
+	case jsonschema.Empty:
+		if p.Schema.OneOf != nil {
+			for _, s := range p.Schema.OneOf {
+				switch s.Type {
+				case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
+					// ok
+				default:
+					return errors.Errorf("all oneOf schemas must be simple types")
+				}
+			}
+
+			if allowed(primitive) {
+				return nil
+			}
+		}
+	}
+
+	var strs []string
+	for s := range styles {
+		exp := "false"
+		if s.explode {
+			exp = "true"
+		}
+		strs = append(strs, fmt.Sprintf("%s:%s", s.style, exp))
+	}
+
+	return errors.Errorf("allowed styles for schema type %q (style:explode): %v", p.Schema.Type, strs)
 }
