@@ -82,18 +82,13 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		return nil, errors.Wrap(err, "schema")
 	}
 
-	style, err := paramStyle(locatedIn, param.Style)
-	if err != nil {
-		return nil, errors.Wrap(err, "style")
-	}
-
 	op := &openapi.Parameter{
 		Name:        param.Name,
 		Description: param.Description,
 		In:          locatedIn,
 		Schema:      schema,
-		Style:       style,
-		Explode:     paramExplode(locatedIn, param.Explode),
+		Style:       inferParamStyle(locatedIn, param.Style),
+		Explode:     inferParamExplode(locatedIn, param.Explode),
 		Required:    param.Required,
 	}
 
@@ -104,9 +99,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 	return op, nil
 }
 
-// paramStyle checks parameter style field.
-// https://swagger.io/docs/specification/serialization/
-func paramStyle(locatedIn openapi.ParameterLocation, style string) (openapi.ParameterStyle, error) {
+func inferParamStyle(locatedIn openapi.ParameterLocation, style string) openapi.ParameterStyle {
 	if style == "" {
 		defaultStyles := map[openapi.ParameterLocation]openapi.ParameterStyle{
 			openapi.LocationPath:   openapi.PathStyleSimple,
@@ -115,41 +108,13 @@ func paramStyle(locatedIn openapi.ParameterLocation, style string) (openapi.Para
 			openapi.LocationCookie: openapi.CookieStyleForm,
 		}
 
-		return defaultStyles[locatedIn], nil
+		return defaultStyles[locatedIn]
 	}
 
-	allowedStyles := map[openapi.ParameterLocation]map[string]openapi.ParameterStyle{
-		openapi.LocationPath: {
-			"simple": openapi.PathStyleSimple,
-			"label":  openapi.PathStyleLabel,
-			"matrix": openapi.PathStyleMatrix,
-		},
-		openapi.LocationQuery: {
-			"form": openapi.QueryStyleForm,
-			// Not supported.
-			// "spaceDelimited": struct{}{},
-			"pipeDelimited": openapi.QueryStylePipeDelimited,
-			"deepObject":    openapi.QueryStyleDeepObject,
-		},
-		openapi.LocationHeader: {
-			"simple": openapi.HeaderStyleSimple,
-		},
-		openapi.LocationCookie: {
-			"form": openapi.CookieStyleForm,
-		},
-	}
-
-	s, found := allowedStyles[locatedIn][style]
-	if !found {
-		return "", errors.Errorf("unexpected style: %q", style)
-	}
-
-	return s, nil
+	return openapi.ParameterStyle(style)
 }
 
-// paramExplode checks parameter explode field.
-// https://swagger.io/docs/specification/serialization/
-func paramExplode(locatedIn openapi.ParameterLocation, explode *bool) bool {
+func inferParamExplode(locatedIn openapi.ParameterLocation, explode *bool) bool {
 	if explode != nil {
 		return *explode
 	}
