@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -215,14 +214,5 @@ func validateParameterStyle(p *openapi.Parameter) error {
 		}
 	}
 
-	var strs []string
-	for s := range styles {
-		exp := "false"
-		if s.explode {
-			exp = "true"
-		}
-		strs = append(strs, fmt.Sprintf("%s:%s", s.style, exp))
-	}
-
-	return errors.Errorf("allowed styles for schema type %q (style:explode): %v", p.Schema.Type, strs)
+	return errors.Errorf("invalid schema:style:explode combination")
 }
