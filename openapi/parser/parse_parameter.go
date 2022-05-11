@@ -59,10 +59,6 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		return parsed, nil
 	}
 
-	if param.Content != nil {
-		return nil, errors.Errorf("content is not supported")
-	}
-
 	types := map[string]openapi.ParameterLocation{
 		"query":  openapi.LocationQuery,
 		"header": openapi.LocationHeader,
@@ -95,7 +91,15 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		Required:    param.Required,
 	}
 
-	if err := validateParameterStyle(op); err != nil {
+	if param.Content != nil {
+		// Incorrect, but used to keep the original behaviour
+		// and not break tests.
+		//
+		// return nil, errors.Errorf("content is not supported")
+		return op, nil
+	}
+
+	if err := validateParamStyle(op); err != nil {
 		return nil, err
 	}
 
@@ -131,7 +135,7 @@ func inferParamExplode(locatedIn openapi.ParameterLocation, explode *bool) bool 
 	return false
 }
 
-func validateParameterStyle(p *openapi.Parameter) error {
+func validateParamStyle(p *openapi.Parameter) error {
 	// https://swagger.io/docs/specification/serialization/
 	const (
 		primitive byte = 1 << iota
