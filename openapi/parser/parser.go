@@ -98,7 +98,10 @@ func (p *parser) parseOps() error {
 
 			parsedOp, err := p.parseOp(path, method, op, itemParams)
 			if err != nil {
-				return errors.Wrapf(err, "operation %q", op.OperationID)
+				if op.OperationID != "" {
+					return errors.Wrapf(err, "operation %q", op.OperationID)
+				}
+				return err
 			}
 
 			p.operations = append(p.operations, parsedOp)

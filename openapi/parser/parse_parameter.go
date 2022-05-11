@@ -178,7 +178,7 @@ func validateParamStyle(p *openapi.Parameter) error {
 
 	styles, ok := table[p.In]
 	if !ok {
-		return errors.Errorf("invalid style: %q", p.In)
+		return errors.Errorf("invalid style: %q", p.Style)
 	}
 
 	types, ok := styles[stexp{p.Style, p.Explode}]
