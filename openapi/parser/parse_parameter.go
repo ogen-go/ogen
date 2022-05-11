@@ -60,6 +60,10 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		return parsed, nil
 	}
 
+	if param.Content != nil {
+		return nil, errors.Errorf("content is not supported")
+	}
+
 	types := map[string]openapi.ParameterLocation{
 		"query":  openapi.LocationQuery,
 		"header": openapi.LocationHeader,
