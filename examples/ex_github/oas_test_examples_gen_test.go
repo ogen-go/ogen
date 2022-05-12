@@ -184,6 +184,36 @@ func TestActionsCreateOrUpdateEnvironmentSecretReq_EncodeDecode(t *testing.T) {
 	var typ2 ActionsCreateOrUpdateEnvironmentSecretReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestActionsCreateOrUpdateEnvironmentSecretReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"encrypted_value\": \"c2VjcmV0\",\n                \"key_id\": \"012345678912345678\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsCreateOrUpdateEnvironmentSecretReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsCreateOrUpdateEnvironmentSecretReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestActionsCreateOrUpdateOrgSecretReq_EncodeDecode(t *testing.T) {
 	var typ ActionsCreateOrUpdateOrgSecretReq
 	typ.SetFake()
@@ -195,6 +225,36 @@ func TestActionsCreateOrUpdateOrgSecretReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ActionsCreateOrUpdateOrgSecretReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsCreateOrUpdateOrgSecretReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"encrypted_value\": \"c2VjcmV0\",\n                \"key_id\": \"012345678912345678\",\n                \"visibility\": \"selected\",\n                \"selected_repository_ids\": [\n                  \"1296269\",\n                  \"1296280\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsCreateOrUpdateOrgSecretReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsCreateOrUpdateOrgSecretReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestActionsCreateOrUpdateOrgSecretReqVisibility_EncodeDecode(t *testing.T) {
 	var typ ActionsCreateOrUpdateOrgSecretReqVisibility
@@ -232,6 +292,36 @@ func TestActionsCreateOrUpdateRepoSecretReq_EncodeDecode(t *testing.T) {
 	var typ2 ActionsCreateOrUpdateRepoSecretReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestActionsCreateOrUpdateRepoSecretReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"encrypted_value\": \"c2VjcmV0\",\n                \"key_id\": \"012345678912345678\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsCreateOrUpdateRepoSecretReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsCreateOrUpdateRepoSecretReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestActionsCreateSelfHostedRunnerGroupForOrgReq_EncodeDecode(t *testing.T) {
 	var typ ActionsCreateSelfHostedRunnerGroupForOrgReq
 	typ.SetFake()
@@ -243,6 +333,36 @@ func TestActionsCreateSelfHostedRunnerGroupForOrgReq_EncodeDecode(t *testing.T) 
 
 	var typ2 ActionsCreateSelfHostedRunnerGroupForOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsCreateSelfHostedRunnerGroupForOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Expensive hardware runners\",\n                \"visibility\": \"selected\",\n                \"selected_repository_ids\": [\n                  32,\n                  91\n                ],\n                \"runners\": [\n                  9,\n                  2\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsCreateSelfHostedRunnerGroupForOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsCreateSelfHostedRunnerGroupForOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestActionsCreateSelfHostedRunnerGroupForOrgReqVisibility_EncodeDecode(t *testing.T) {
 	var typ ActionsCreateSelfHostedRunnerGroupForOrgReqVisibility
@@ -1198,6 +1318,36 @@ func TestActionsSetGithubActionsPermissionsOrganizationReq_EncodeDecode(t *testi
 	var typ2 ActionsSetGithubActionsPermissionsOrganizationReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestActionsSetGithubActionsPermissionsOrganizationReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"enabled_repositories\": \"all\",\n                \"allowed_actions\": \"selected\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsSetGithubActionsPermissionsOrganizationReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsSetGithubActionsPermissionsOrganizationReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestActionsSetGithubActionsPermissionsRepositoryReq_EncodeDecode(t *testing.T) {
 	var typ ActionsSetGithubActionsPermissionsRepositoryReq
 	typ.SetFake()
@@ -1209,6 +1359,36 @@ func TestActionsSetGithubActionsPermissionsRepositoryReq_EncodeDecode(t *testing
 
 	var typ2 ActionsSetGithubActionsPermissionsRepositoryReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsSetGithubActionsPermissionsRepositoryReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"enabled\": true,\n                \"allowed_actions\": \"selected\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsSetGithubActionsPermissionsRepositoryReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsSetGithubActionsPermissionsRepositoryReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq_EncodeDecode(t *testing.T) {
 	var typ ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
@@ -1222,6 +1402,36 @@ func TestActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq_EncodeDecode(t *tes
 	var typ2 ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"selected_repository_ids\": [\n                  32,\n                  91\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestActionsSetSelectedReposForOrgSecretReq_EncodeDecode(t *testing.T) {
 	var typ ActionsSetSelectedReposForOrgSecretReq
 	typ.SetFake()
@@ -1233,6 +1443,36 @@ func TestActionsSetSelectedReposForOrgSecretReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ActionsSetSelectedReposForOrgSecretReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsSetSelectedReposForOrgSecretReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"selected_repository_ids\": [\n                  64780797\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsSetSelectedReposForOrgSecretReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsSetSelectedReposForOrgSecretReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq_EncodeDecode(t *testing.T) {
 	var typ ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
@@ -1246,6 +1486,36 @@ func TestActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq_Encod
 	var typ2 ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"selected_repository_ids\": [\n                  32,\n                  42\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestActionsSetSelfHostedRunnersInGroupForOrgReq_EncodeDecode(t *testing.T) {
 	var typ ActionsSetSelfHostedRunnersInGroupForOrgReq
 	typ.SetFake()
@@ -1258,6 +1528,36 @@ func TestActionsSetSelfHostedRunnersInGroupForOrgReq_EncodeDecode(t *testing.T) 
 	var typ2 ActionsSetSelfHostedRunnersInGroupForOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestActionsSetSelfHostedRunnersInGroupForOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"runners\": [\n                  9,\n                  2\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsSetSelfHostedRunnersInGroupForOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsSetSelfHostedRunnersInGroupForOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestActionsUpdateSelfHostedRunnerGroupForOrgReq_EncodeDecode(t *testing.T) {
 	var typ ActionsUpdateSelfHostedRunnerGroupForOrgReq
 	typ.SetFake()
@@ -1269,6 +1569,36 @@ func TestActionsUpdateSelfHostedRunnerGroupForOrgReq_EncodeDecode(t *testing.T) 
 
 	var typ2 ActionsUpdateSelfHostedRunnerGroupForOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestActionsUpdateSelfHostedRunnerGroupForOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Expensive hardware runners\",\n                \"visibility\": \"selected\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ActionsUpdateSelfHostedRunnerGroupForOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ActionsUpdateSelfHostedRunnerGroupForOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility_EncodeDecode(t *testing.T) {
 	var typ ActionsUpdateSelfHostedRunnerGroupForOrgReqVisibility
@@ -2446,6 +2776,36 @@ func TestAppsDeleteAuthorizationReq_EncodeDecode(t *testing.T) {
 	var typ2 AppsDeleteAuthorizationReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestAppsDeleteAuthorizationReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"access_token\": \"e72e16c7e42f292c6912e7710c838347ae178b4a\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ AppsDeleteAuthorizationReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 AppsDeleteAuthorizationReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestAppsDeleteTokenReq_EncodeDecode(t *testing.T) {
 	var typ AppsDeleteTokenReq
 	typ.SetFake()
@@ -2457,6 +2817,36 @@ func TestAppsDeleteTokenReq_EncodeDecode(t *testing.T) {
 
 	var typ2 AppsDeleteTokenReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestAppsDeleteTokenReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"access_token\": \"e72e16c7e42f292c6912e7710c838347ae178b4a\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ AppsDeleteTokenReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 AppsDeleteTokenReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestAppsGetBySlugApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ AppsGetBySlugApplicationJSONForbidden
@@ -4069,6 +4459,36 @@ func TestChecksCreateSuiteReq_EncodeDecode(t *testing.T) {
 	var typ2 ChecksCreateSuiteReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestChecksCreateSuiteReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"head_sha\": \"d6fde92930d4715a2b49857d24b940956b26d2d3\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ChecksCreateSuiteReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ChecksCreateSuiteReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestChecksListForRefOK_EncodeDecode(t *testing.T) {
 	var typ ChecksListForRefOK
 	typ.SetFake()
@@ -4218,6 +4638,36 @@ func TestChecksSetSuitesPreferencesReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ChecksSetSuitesPreferencesReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestChecksSetSuitesPreferencesReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"auto_trigger_checks\": [\n                  {\n                    \"app_id\": 4,\n                    \"setting\": false\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ChecksSetSuitesPreferencesReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ChecksSetSuitesPreferencesReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestChecksSetSuitesPreferencesReqAutoTriggerChecksItem_EncodeDecode(t *testing.T) {
 	var typ ChecksSetSuitesPreferencesReqAutoTriggerChecksItem
@@ -5125,6 +5575,36 @@ func TestCodeScanningUpdateAlertReq_EncodeDecode(t *testing.T) {
 
 	var typ2 CodeScanningUpdateAlertReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestCodeScanningUpdateAlertReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"state\": \"dismissed\",\n                \"dismissed_reason\": \"false positive\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ CodeScanningUpdateAlertReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 CodeScanningUpdateAlertReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestCodeScanningUploadSarifApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ CodeScanningUploadSarifApplicationJSONForbidden
@@ -6139,6 +6619,36 @@ func TestEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq_EncodeDecode
 	var typ2 EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Expensive hardware runners\",\n                \"visibility\": \"selected\",\n                \"selected_organization_ids\": [\n                  32,\n                  91\n                ],\n                \"runners\": [\n                  9,\n                  2\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseReqVisibility
 	typ.SetFake()
@@ -6373,6 +6883,36 @@ func TestEnterpriseAdminProvisionAndInviteEnterpriseGroupReq_EncodeDecode(t *tes
 	var typ2 EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestEnterpriseAdminProvisionAndInviteEnterpriseGroupReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"schemas\": [\n                  \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n                ],\n                \"displayName\": \"octo-org\",\n                \"members\": [\n                  {\n                    \"value\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\"\n                  },\n                  {\n                    \"value\": \"aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminProvisionAndInviteEnterpriseGroupReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestEnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminProvisionAndInviteEnterpriseGroupReqMembersItem
 	typ.SetFake()
@@ -6396,6 +6936,36 @@ func TestEnterpriseAdminProvisionAndInviteEnterpriseUserReq_EncodeDecode(t *test
 
 	var typ2 EnterpriseAdminProvisionAndInviteEnterpriseUserReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminProvisionAndInviteEnterpriseUserReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"schemas\": [\n                  \"urn:ietf:params:scim:schemas:core:2.0:User\"\n                ],\n                \"userName\": \"mona.octocat@okta.example.com\",\n                \"name\": {\n                  \"familyName\": \"Octocat\",\n                  \"givenName\": \"Mona\"\n                },\n                \"emails\": [\n                  {\n                    \"value\": \"mona.octocat@okta.example.com\",\n                    \"type\": \"work\",\n                    \"primary\": true\n                  }\n                ],\n                \"groups\": [\n                  {\n                    \"value\": \"468dd3fa-a1d6-11ea-9031-15a1f0d7811d\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminProvisionAndInviteEnterpriseUserReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminProvisionAndInviteEnterpriseUserReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestEnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminProvisionAndInviteEnterpriseUserReqEmailsItem
@@ -6445,6 +7015,36 @@ func TestEnterpriseAdminSetGithubActionsPermissionsEnterpriseReq_EncodeDecode(t 
 	var typ2 EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestEnterpriseAdminSetGithubActionsPermissionsEnterpriseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"enabled_organizations\": \"all\",\n                \"allowed_actions\": \"selected\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminSetGithubActionsPermissionsEnterpriseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestEnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
 	typ.SetFake()
@@ -6456,6 +7056,36 @@ func TestEnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq_EncodeDec
 
 	var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"schemas\": [\n                  \"urn:ietf:params:scim:schemas:core:2.0:Group\"\n                ],\n                \"displayName\": \"octo-org\",\n                \"members\": [\n                  {\n                    \"value\": \"92b58aaa-a1d6-11ea-8227-b9ce9e023ccc\"\n                  },\n                  {\n                    \"value\": \"aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestEnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseGroupReqMembersItem
@@ -6480,6 +7110,36 @@ func TestEnterpriseAdminSetInformationForProvisionedEnterpriseUserReq_EncodeDeco
 
 	var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminSetInformationForProvisionedEnterpriseUserReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"schemas\": [\n                  \"urn:ietf:params:scim:schemas:core:2.0:User\"\n                ],\n                \"userName\": \"mona.octocat@okta.example.com\",\n                \"name\": {\n                  \"familyName\": \"Octocat\",\n                  \"givenName\": \"Mona\"\n                },\n                \"emails\": [\n                  {\n                    \"value\": \"mona.octocat@okta.example.com\",\n                    \"type\": \"work\",\n                    \"primary\": true\n                  }\n                ],\n                \"groups\": [\n                  {\n                    \"value\": \"468dd3fa-a1d6-11ea-9031-15a1f0d7811d\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminSetInformationForProvisionedEnterpriseUserReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestEnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminSetInformationForProvisionedEnterpriseUserReqEmailsItem
@@ -6529,6 +7189,36 @@ func TestEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq_Encod
 	var typ2 EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"selected_organization_ids\": [\n                  32,\n                  91\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 	typ.SetFake()
@@ -6540,6 +7230,36 @@ func TestEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseRe
 
 	var typ2 EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"selected_organization_ids\": [\n                  32,\n                  91\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
@@ -6553,6 +7273,36 @@ func TestEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq_EncodeDecode
 	var typ2 EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"runners\": [\n                  9,\n                  2\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReq_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
 	typ.SetFake()
@@ -6564,6 +7314,36 @@ func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReq_EncodeDecode(t *tes
 
 	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"schemas\": [\n                  \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n                ],\n                \"Operations\": [\n                  {\n                    \"op\": \"remove\",\n                    \"path\": \"members\",\n                    \"value\": [\n                      {\n                        \"value\": \"aaaa8c34-a6b2-11ea-9d70-bbbbbd1c8fd5\"\n                      }\n                    ]\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminUpdateAttributeForEnterpriseGroupReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestEnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminUpdateAttributeForEnterpriseGroupReqOperationsItem
@@ -6625,6 +7405,36 @@ func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReq_EncodeDecode(t *test
 	var typ2 EnterpriseAdminUpdateAttributeForEnterpriseUserReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"schemas\": [\n                  \"urn:ietf:params:scim:api:messages:2.0:PatchOp\"\n                ],\n                \"Operations\": [\n                  {\n                    \"op\": \"add\",\n                    \"path\": \"emails\",\n                    \"value\": [\n                      {\n                        \"value\": \"monalisa@octocat.github.com\",\n                        \"type\": \"home\"\n                      }\n                    ]\n                  },\n                  {\n                    \"op\": \"replace\",\n                    \"path\": \"name.givenName\",\n                    \"value\": \"Monalisa\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminUpdateAttributeForEnterpriseUserReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminUpdateAttributeForEnterpriseUserReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestEnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminUpdateAttributeForEnterpriseUserReqOperationsItem
 	typ.SetFake()
@@ -6648,6 +7458,36 @@ func TestEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq_EncodeDecode
 
 	var typ2 EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Expensive hardware runners\",\n                \"visibility\": \"selected\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility_EncodeDecode(t *testing.T) {
 	var typ EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseReqVisibility
@@ -7999,6 +8839,36 @@ func TestGitCreateBlobReq_EncodeDecode(t *testing.T) {
 	var typ2 GitCreateBlobReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestGitCreateBlobReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"Content of the blob\",\n                \"encoding\": \"utf-8\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ GitCreateBlobReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 GitCreateBlobReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestGitCreateCommitReq_EncodeDecode(t *testing.T) {
 	var typ GitCreateCommitReq
 	typ.SetFake()
@@ -8010,6 +8880,36 @@ func TestGitCreateCommitReq_EncodeDecode(t *testing.T) {
 
 	var typ2 GitCreateCommitReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitCreateCommitReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"message\": \"my commit message\",\n                \"author\": {\n                  \"name\": \"Mona Octocat\",\n                  \"email\": \"octocat@github.com\",\n                  \"date\": \"2008-07-09T16:13:30+12:00\"\n                },\n                \"parents\": [\n                  \"7d1b31e74ee336d15cbd21741bc88a537ed063a0\"\n                ],\n                \"tree\": \"827efc6d56897b048c772eb4087f854f46256132\",\n                \"signature\": \"-----BEGIN PGP SIGNATURE-----\\n\\niQIzBAABAQAdFiEESn/54jMNIrGSE6Tp6cQjvhfv7nAFAlnT71cACgkQ6cQjvhfv\\n7nCWwA//XVqBKWO0zF+bZl6pggvky3Oc2j1pNFuRWZ29LXpNuD5WUGXGG209B0hI\\nDkmcGk19ZKUTnEUJV2Xd0R7AW01S/YSub7OYcgBkI7qUE13FVHN5ln1KvH2all2n\\n2+JCV1HcJLEoTjqIFZSSu/sMdhkLQ9/NsmMAzpf/iIM0nQOyU4YRex9eD1bYj6nA\\nOQPIDdAuaTQj1gFPHYLzM4zJnCqGdRlg0sOM/zC5apBNzIwlgREatOYQSCfCKV7k\\nnrU34X8b9BzQaUx48Qa+Dmfn5KQ8dl27RNeWAqlkuWyv3pUauH9UeYW+KyuJeMkU\\n+NyHgAsWFaCFl23kCHThbLStMZOYEnGagrd0hnm1TPS4GJkV4wfYMwnI4KuSlHKB\\njHl3Js9vNzEUQipQJbgCgTiWvRJoK3ENwBTMVkKHaqT4x9U4Jk/XZB6Q8MA09ezJ\\n3QgiTjTAGcum9E9QiJqMYdWQPWkaBIRRz5cET6HPB48YNXAAUsfmuYsGrnVLYbG+\\nUpC6I97VybYHTy2O9XSGoaLeMI9CsFn38ycAxxbWagk5mhclNTP5mezIq6wKSwmr\\nX11FW3n1J23fWZn5HJMBsRnUCgzqzX3871IqLYHqRJ/bpZ4h20RhTyPj5c/z7QXp\\neSakNQMfbbMcljkha+ZMuVQX1K9aRlVqbmv3ZMWh+OijLYVU2bc=\\n=5Io4\\n-----END PGP SIGNATURE-----\\n\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ GitCreateCommitReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 GitCreateCommitReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestGitCreateCommitReqAuthor_EncodeDecode(t *testing.T) {
 	var typ GitCreateCommitReqAuthor
@@ -8047,6 +8947,36 @@ func TestGitCreateRefReq_EncodeDecode(t *testing.T) {
 	var typ2 GitCreateRefReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestGitCreateRefReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"ref\": \"refs/heads/featureA\",\n                \"sha\": \"aa218f56b14c9653891f9e74264a383fa43fefbd\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ GitCreateRefReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 GitCreateRefReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestGitCreateTagReq_EncodeDecode(t *testing.T) {
 	var typ GitCreateTagReq
 	typ.SetFake()
@@ -8058,6 +8988,36 @@ func TestGitCreateTagReq_EncodeDecode(t *testing.T) {
 
 	var typ2 GitCreateTagReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitCreateTagReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"tag\": \"v0.0.1\",\n                \"message\": \"initial version\",\n                \"object\": \"c3d0be41ecbe669545ee3e94d31ed9a4bc91ee3c\",\n                \"type\": \"commit\",\n                \"tagger\": {\n                  \"name\": \"Monalisa Octocat\",\n                  \"email\": \"octocat@github.com\",\n                  \"date\": \"2011-06-17T14:53:35-07:00\"\n                }\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ GitCreateTagReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 GitCreateTagReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestGitCreateTagReqTagger_EncodeDecode(t *testing.T) {
 	var typ GitCreateTagReqTagger
@@ -8118,6 +9078,36 @@ func TestGitCreateTreeReq_EncodeDecode(t *testing.T) {
 
 	var typ2 GitCreateTreeReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitCreateTreeReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"base_tree\": \"9fb037999f264ba9a7fc6274d15fa3ae2ab98312\",\n                \"tree\": [\n                  {\n                    \"path\": \"file.rb\",\n                    \"mode\": \"100644\",\n                    \"type\": \"blob\",\n                    \"sha\": \"44b4fc6d56897b048c772eb4087f854f46256132\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ GitCreateTreeReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 GitCreateTreeReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestGitCreateTreeReqTreeItem_EncodeDecode(t *testing.T) {
 	var typ GitCreateTreeReqTreeItem
@@ -8366,6 +9356,36 @@ func TestGitUpdateRefReq_EncodeDecode(t *testing.T) {
 
 	var typ2 GitUpdateRefReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestGitUpdateRefReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"sha\": \"aa218f56b14c9653891f9e74264a383fa43fefbd\",\n                \"force\": true\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ GitUpdateRefReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 GitUpdateRefReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestGitignoreGetAllTemplatesOKApplicationJSON_EncodeDecode(t *testing.T) {
 	var typ GitignoreGetAllTemplatesOKApplicationJSON
@@ -9467,6 +10487,36 @@ func TestIssuesAddAssigneesReq_EncodeDecode(t *testing.T) {
 	var typ2 IssuesAddAssigneesReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestIssuesAddAssigneesReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"assignees\": [\n                  \"hubot\",\n                  \"other_user\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesAddAssigneesReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesAddAssigneesReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestIssuesCreateApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ IssuesCreateApplicationJSONForbidden
 	typ.SetFake()
@@ -9551,6 +10601,36 @@ func TestIssuesCreateCommentReq_EncodeDecode(t *testing.T) {
 	var typ2 IssuesCreateCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestIssuesCreateCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Me too\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesCreateCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesCreateCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestIssuesCreateLabelReq_EncodeDecode(t *testing.T) {
 	var typ IssuesCreateLabelReq
 	typ.SetFake()
@@ -9563,6 +10643,36 @@ func TestIssuesCreateLabelReq_EncodeDecode(t *testing.T) {
 	var typ2 IssuesCreateLabelReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestIssuesCreateLabelReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"bug\",\n                \"description\": \"Something isn't working\",\n                \"color\": \"f29513\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesCreateLabelReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesCreateLabelReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestIssuesCreateMilestoneReq_EncodeDecode(t *testing.T) {
 	var typ IssuesCreateMilestoneReq
 	typ.SetFake()
@@ -9574,6 +10684,36 @@ func TestIssuesCreateMilestoneReq_EncodeDecode(t *testing.T) {
 
 	var typ2 IssuesCreateMilestoneReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIssuesCreateMilestoneReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"v1.0\",\n                \"state\": \"open\",\n                \"description\": \"Tracking milestone for version 1.0\",\n                \"due_on\": \"2012-10-09T23:39:01Z\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesCreateMilestoneReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesCreateMilestoneReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestIssuesCreateMilestoneReqState_EncodeDecode(t *testing.T) {
 	var typ IssuesCreateMilestoneReqState
@@ -9598,6 +10738,36 @@ func TestIssuesCreateReq_EncodeDecode(t *testing.T) {
 
 	var typ2 IssuesCreateReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIssuesCreateReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"Found a bug\",\n                \"body\": \"I'm having a problem with this.\",\n                \"assignees\": [\n                  \"octocat\"\n                ],\n                \"milestone\": 1,\n                \"labels\": [\n                  \"bug\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesCreateReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesCreateReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestIssuesCreateReqLabelsItem_EncodeDecode(t *testing.T) {
 	var typ IssuesCreateReqLabelsItem
@@ -9971,6 +11141,36 @@ func TestIssuesRemoveAssigneesReq_EncodeDecode(t *testing.T) {
 	var typ2 IssuesRemoveAssigneesReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestIssuesRemoveAssigneesReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"assignees\": [\n                  \"hubot\",\n                  \"other_user\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesRemoveAssigneesReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesRemoveAssigneesReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestIssuesRemoveLabelApplicationJSONGone_EncodeDecode(t *testing.T) {
 	var typ IssuesRemoveLabelApplicationJSONGone
 	typ.SetFake()
@@ -10091,6 +11291,36 @@ func TestIssuesUpdateCommentReq_EncodeDecode(t *testing.T) {
 	var typ2 IssuesUpdateCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestIssuesUpdateCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Me too\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesUpdateCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesUpdateCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestIssuesUpdateLabelReq_EncodeDecode(t *testing.T) {
 	var typ IssuesUpdateLabelReq
 	typ.SetFake()
@@ -10103,6 +11333,36 @@ func TestIssuesUpdateLabelReq_EncodeDecode(t *testing.T) {
 	var typ2 IssuesUpdateLabelReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestIssuesUpdateLabelReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"new_name\": \"bug :bug:\",\n                \"description\": \"Small bug fix required\",\n                \"color\": \"b01f26\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesUpdateLabelReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesUpdateLabelReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestIssuesUpdateMilestoneReq_EncodeDecode(t *testing.T) {
 	var typ IssuesUpdateMilestoneReq
 	typ.SetFake()
@@ -10114,6 +11374,36 @@ func TestIssuesUpdateMilestoneReq_EncodeDecode(t *testing.T) {
 
 	var typ2 IssuesUpdateMilestoneReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIssuesUpdateMilestoneReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"v1.0\",\n                \"state\": \"open\",\n                \"description\": \"Tracking milestone for version 1.0\",\n                \"due_on\": \"2012-10-09T23:39:01Z\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesUpdateMilestoneReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesUpdateMilestoneReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestIssuesUpdateMilestoneReqState_EncodeDecode(t *testing.T) {
 	var typ IssuesUpdateMilestoneReqState
@@ -10138,6 +11428,36 @@ func TestIssuesUpdateReq_EncodeDecode(t *testing.T) {
 
 	var typ2 IssuesUpdateReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestIssuesUpdateReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"Found a bug\",\n                \"body\": \"I'm having a problem with this.\",\n                \"assignees\": [\n                  \"octocat\"\n                ],\n                \"milestone\": 1,\n                \"state\": \"open\",\n                \"labels\": [\n                  \"bug\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ IssuesUpdateReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 IssuesUpdateReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestIssuesUpdateReqLabelsItem_EncodeDecode(t *testing.T) {
 	var typ IssuesUpdateReqLabelsItem
@@ -11041,6 +12361,36 @@ func TestMigrationsMapCommitAuthorReq_EncodeDecode(t *testing.T) {
 	var typ2 MigrationsMapCommitAuthorReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestMigrationsMapCommitAuthorReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"email\": \"hubot@github.com\",\n                \"name\": \"Hubot the Robot\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ MigrationsMapCommitAuthorReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 MigrationsMapCommitAuthorReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestMigrationsSetLfsPreferenceReq_EncodeDecode(t *testing.T) {
 	var typ MigrationsSetLfsPreferenceReq
 	typ.SetFake()
@@ -11052,6 +12402,36 @@ func TestMigrationsSetLfsPreferenceReq_EncodeDecode(t *testing.T) {
 
 	var typ2 MigrationsSetLfsPreferenceReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMigrationsSetLfsPreferenceReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"use_lfs\": \"opt_in\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ MigrationsSetLfsPreferenceReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 MigrationsSetLfsPreferenceReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestMigrationsSetLfsPreferenceReqUseLfs_EncodeDecode(t *testing.T) {
 	var typ MigrationsSetLfsPreferenceReqUseLfs
@@ -11155,6 +12535,36 @@ func TestMigrationsStartForOrgReq_EncodeDecode(t *testing.T) {
 	var typ2 MigrationsStartForOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestMigrationsStartForOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"repositories\": [\n                  \"github/Hello-World\"\n                ],\n                \"lock_repositories\": true\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ MigrationsStartForOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 MigrationsStartForOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestMigrationsStartForOrgReqExcludeItem_EncodeDecode(t *testing.T) {
 	var typ MigrationsStartForOrgReqExcludeItem
 	typ.SetFake()
@@ -11178,6 +12588,36 @@ func TestMigrationsStartImportReq_EncodeDecode(t *testing.T) {
 
 	var typ2 MigrationsStartImportReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMigrationsStartImportReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"vcs\": \"subversion\",\n                \"vcs_url\": \"http://svn.mycompany.com/svn/myproject\",\n                \"vcs_username\": \"octocat\",\n                \"vcs_password\": \"secret\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ MigrationsStartImportReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 MigrationsStartImportReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestMigrationsStartImportReqVcs_EncodeDecode(t *testing.T) {
 	var typ MigrationsStartImportReqVcs
@@ -11238,6 +12678,36 @@ func TestMigrationsUpdateImportReq_EncodeDecode(t *testing.T) {
 
 	var typ2 MigrationsUpdateImportReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestMigrationsUpdateImportReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                    \"vcs_username\": \"octocat\",\n                    \"vcs_password\": \"secret\"\n                  }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ MigrationsUpdateImportReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 MigrationsUpdateImportReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestMilestone_EncodeDecode(t *testing.T) {
 	var typ Milestone
@@ -12480,6 +13950,36 @@ func TestOrgsCreateInvitationReq_EncodeDecode(t *testing.T) {
 	var typ2 OrgsCreateInvitationReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestOrgsCreateInvitationReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"email\": \"octocat@github.com\",\n                \"role\": \"direct_member\",\n                \"team_ids\": [\n                  12,\n                  26\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ OrgsCreateInvitationReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 OrgsCreateInvitationReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestOrgsCreateInvitationReqRole_EncodeDecode(t *testing.T) {
 	var typ OrgsCreateInvitationReqRole
 	typ.SetFake()
@@ -12503,6 +14003,36 @@ func TestOrgsCreateWebhookReq_EncodeDecode(t *testing.T) {
 
 	var typ2 OrgsCreateWebhookReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrgsCreateWebhookReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"web\",\n                \"active\": true,\n                \"events\": [\n                  \"push\",\n                  \"pull_request\"\n                ],\n                \"config\": {\n                  \"url\": \"http://example.com/webhook\",\n                  \"content_type\": \"json\"\n                }\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ OrgsCreateWebhookReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 OrgsCreateWebhookReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestOrgsCreateWebhookReqConfig_EncodeDecode(t *testing.T) {
 	var typ OrgsCreateWebhookReqConfig
@@ -12858,6 +14388,36 @@ func TestOrgsUpdateMembershipForAuthenticatedUserReq_EncodeDecode(t *testing.T) 
 	var typ2 OrgsUpdateMembershipForAuthenticatedUserReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestOrgsUpdateMembershipForAuthenticatedUserReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"state\": \"active\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ OrgsUpdateMembershipForAuthenticatedUserReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 OrgsUpdateMembershipForAuthenticatedUserReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestOrgsUpdateMembershipForAuthenticatedUserReqState_EncodeDecode(t *testing.T) {
 	var typ OrgsUpdateMembershipForAuthenticatedUserReqState
 	typ.SetFake()
@@ -12923,6 +14483,36 @@ func TestOrgsUpdateWebhookReq_EncodeDecode(t *testing.T) {
 
 	var typ2 OrgsUpdateWebhookReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestOrgsUpdateWebhookReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"active\": true,\n                \"events\": [\n                  \"pull_request\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ OrgsUpdateWebhookReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 OrgsUpdateWebhookReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestOrgsUpdateWebhookReqConfig_EncodeDecode(t *testing.T) {
 	var typ OrgsUpdateWebhookReqConfig
@@ -14754,6 +16344,36 @@ func TestProjectsCreateForOrgReq_EncodeDecode(t *testing.T) {
 	var typ2 ProjectsCreateForOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestProjectsCreateForOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Organization Roadmap\",\n                \"body\": \"High-level roadmap for the upcoming year.\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ProjectsCreateForOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ProjectsCreateForOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestProjectsCreateForRepoApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ProjectsCreateForRepoApplicationJSONForbidden
 	typ.SetFake()
@@ -14813,6 +16433,36 @@ func TestProjectsCreateForRepoReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ProjectsCreateForRepoReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestProjectsCreateForRepoReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Projects Documentation\",\n                \"body\": \"Developer documentation project for the developer site.\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ProjectsCreateForRepoReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ProjectsCreateForRepoReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestProjectsDeleteApplicationJSONGone_EncodeDecode(t *testing.T) {
 	var typ ProjectsDeleteApplicationJSONGone
@@ -16469,6 +18119,36 @@ func TestPullsCreateReplyForReviewCommentReq_EncodeDecode(t *testing.T) {
 	var typ2 PullsCreateReplyForReviewCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestPullsCreateReplyForReviewCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Great stuff!\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsCreateReplyForReviewCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsCreateReplyForReviewCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestPullsCreateReq_EncodeDecode(t *testing.T) {
 	var typ PullsCreateReq
 	typ.SetFake()
@@ -16481,6 +18161,36 @@ func TestPullsCreateReq_EncodeDecode(t *testing.T) {
 	var typ2 PullsCreateReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestPullsCreateReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"Amazing new feature\",\n                \"body\": \"Please pull these awesome changes in!\",\n                \"head\": \"octocat:new-feature\",\n                \"base\": \"master\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsCreateReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsCreateReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestPullsCreateReviewCommentReq_EncodeDecode(t *testing.T) {
 	var typ PullsCreateReviewCommentReq
 	typ.SetFake()
@@ -16492,6 +18202,37 @@ func TestPullsCreateReviewCommentReq_EncodeDecode(t *testing.T) {
 
 	var typ2 PullsCreateReviewCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullsCreateReviewCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                    \"body\": \"Great stuff!\",\n                    \"commit_id\": \"6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n                    \"path\": \"file1.txt\",\n                    \"start_line\": 1,\n                    \"start_side\": \"RIGHT\",\n                    \"line\": 2,\n                    \"side\": \"RIGHT\"\n                  }"},
+		{Input: "{\n                    \"body\": \"Let's add this deleted line back.\",\n                    \"commit_id\": \"6dcb09b5b57875f334f61aebed695e2e4193db5e\",\n                    \"path\": \"file1.txt\",\n                    \"line\": 5,\n                    \"side\": \"LEFT\"\n                  }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsCreateReviewCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsCreateReviewCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestPullsCreateReviewCommentReqSide_EncodeDecode(t *testing.T) {
 	var typ PullsCreateReviewCommentReqSide
@@ -16528,6 +18269,36 @@ func TestPullsCreateReviewReq_EncodeDecode(t *testing.T) {
 
 	var typ2 PullsCreateReviewReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullsCreateReviewReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"commit_id\": \"ecdd80bb57125d7ba9641ffaa4d7d2c19d3f3091\",\n                \"body\": \"This is close to perfect! Please address the suggested inline change.\",\n                \"event\": \"REQUEST_CHANGES\",\n                \"comments\": [\n                  {\n                    \"path\": \"file.md\",\n                    \"position\": 6,\n                    \"body\": \"Please add more information here, and fix this typo.\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsCreateReviewReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsCreateReviewReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestPullsCreateReviewReqCommentsItem_EncodeDecode(t *testing.T) {
 	var typ PullsCreateReviewReqCommentsItem
@@ -16769,6 +18540,36 @@ func TestPullsRemoveRequestedReviewersReq_EncodeDecode(t *testing.T) {
 	var typ2 PullsRemoveRequestedReviewersReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestPullsRemoveRequestedReviewersReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"reviewers\": [\n                  \"octocat\",\n                  \"hubot\",\n                  \"other_user\"\n                ],\n                \"team_reviewers\": [\n                  \"justice-league\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsRemoveRequestedReviewersReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsRemoveRequestedReviewersReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestPullsSubmitReviewApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ PullsSubmitReviewApplicationJSONForbidden
 	typ.SetFake()
@@ -16871,6 +18672,36 @@ func TestPullsUpdateBranchReq_EncodeDecode(t *testing.T) {
 	var typ2 PullsUpdateBranchReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestPullsUpdateBranchReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"expected_head_sha\": \"6dcb09b5b57875f334f61aebed695e2e4193db5e\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsUpdateBranchReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsUpdateBranchReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestPullsUpdateReq_EncodeDecode(t *testing.T) {
 	var typ PullsUpdateReq
 	typ.SetFake()
@@ -16882,6 +18713,36 @@ func TestPullsUpdateReq_EncodeDecode(t *testing.T) {
 
 	var typ2 PullsUpdateReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullsUpdateReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"new title\",\n                \"body\": \"updated body\",\n                \"state\": \"open\",\n                \"base\": \"master\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsUpdateReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsUpdateReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestPullsUpdateReqState_EncodeDecode(t *testing.T) {
 	var typ PullsUpdateReqState
@@ -16907,6 +18768,36 @@ func TestPullsUpdateReviewCommentReq_EncodeDecode(t *testing.T) {
 	var typ2 PullsUpdateReviewCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestPullsUpdateReviewCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"I like this too!\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsUpdateReviewCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsUpdateReviewCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestPullsUpdateReviewReq_EncodeDecode(t *testing.T) {
 	var typ PullsUpdateReviewReq
 	typ.SetFake()
@@ -16918,6 +18809,36 @@ func TestPullsUpdateReviewReq_EncodeDecode(t *testing.T) {
 
 	var typ2 PullsUpdateReviewReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestPullsUpdateReviewReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"This is close to perfect! Please address the suggested inline change. And add more about this.\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ PullsUpdateReviewReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 PullsUpdateReviewReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestRateLimit_EncodeDecode(t *testing.T) {
 	var typ RateLimit
@@ -17117,6 +19038,36 @@ func TestReactionsCreateForCommitCommentReq_EncodeDecode(t *testing.T) {
 	var typ2 ReactionsCreateForCommitCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReactionsCreateForCommitCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForCommitCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForCommitCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReactionsCreateForCommitCommentReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForCommitCommentReqContent
 	typ.SetFake()
@@ -17189,6 +19140,36 @@ func TestReactionsCreateForIssueCommentReq_EncodeDecode(t *testing.T) {
 	var typ2 ReactionsCreateForIssueCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReactionsCreateForIssueCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForIssueCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForIssueCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReactionsCreateForIssueCommentReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForIssueCommentReqContent
 	typ.SetFake()
@@ -17212,6 +19193,36 @@ func TestReactionsCreateForIssueReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReactionsCreateForIssueReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReactionsCreateForIssueReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForIssueReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForIssueReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReactionsCreateForIssueReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForIssueReqContent
@@ -17261,6 +19272,36 @@ func TestReactionsCreateForPullRequestReviewCommentReq_EncodeDecode(t *testing.T
 	var typ2 ReactionsCreateForPullRequestReviewCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReactionsCreateForPullRequestReviewCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForPullRequestReviewCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForPullRequestReviewCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReactionsCreateForPullRequestReviewCommentReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForPullRequestReviewCommentReqContent
 	typ.SetFake()
@@ -17308,6 +19349,36 @@ func TestReactionsCreateForReleaseReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReactionsCreateForReleaseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReactionsCreateForReleaseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForReleaseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForReleaseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReactionsCreateForReleaseReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForReleaseReqContent
@@ -17357,6 +19428,36 @@ func TestReactionsCreateForTeamDiscussionCommentInOrgReq_EncodeDecode(t *testing
 	var typ2 ReactionsCreateForTeamDiscussionCommentInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReactionsCreateForTeamDiscussionCommentInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForTeamDiscussionCommentInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForTeamDiscussionCommentInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReactionsCreateForTeamDiscussionCommentInOrgReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForTeamDiscussionCommentInOrgReqContent
 	typ.SetFake()
@@ -17380,6 +19481,36 @@ func TestReactionsCreateForTeamDiscussionCommentLegacyReq_EncodeDecode(t *testin
 
 	var typ2 ReactionsCreateForTeamDiscussionCommentLegacyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReactionsCreateForTeamDiscussionCommentLegacyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForTeamDiscussionCommentLegacyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForTeamDiscussionCommentLegacyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReactionsCreateForTeamDiscussionCommentLegacyReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForTeamDiscussionCommentLegacyReqContent
@@ -17429,6 +19560,36 @@ func TestReactionsCreateForTeamDiscussionInOrgReq_EncodeDecode(t *testing.T) {
 	var typ2 ReactionsCreateForTeamDiscussionInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReactionsCreateForTeamDiscussionInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForTeamDiscussionInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForTeamDiscussionInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReactionsCreateForTeamDiscussionInOrgReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForTeamDiscussionInOrgReqContent
 	typ.SetFake()
@@ -17452,6 +19613,36 @@ func TestReactionsCreateForTeamDiscussionLegacyReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReactionsCreateForTeamDiscussionLegacyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReactionsCreateForTeamDiscussionLegacyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"content\": \"heart\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReactionsCreateForTeamDiscussionLegacyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReactionsCreateForTeamDiscussionLegacyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReactionsCreateForTeamDiscussionLegacyReqContent_EncodeDecode(t *testing.T) {
 	var typ ReactionsCreateForTeamDiscussionLegacyReqContent
@@ -18089,6 +20280,36 @@ func TestReposCreateAutolinkReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateAutolinkReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposCreateAutolinkReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"key_prefix\": \"TICKET-\",\n                \"url_template\": \"https://example.com/TICKET?query=<num>\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateAutolinkReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateAutolinkReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposCreateCommitCommentReq_EncodeDecode(t *testing.T) {
 	var typ ReposCreateCommitCommentReq
 	typ.SetFake()
@@ -18101,6 +20322,36 @@ func TestReposCreateCommitCommentReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateCommitCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposCreateCommitCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Great stuff\",\n                \"path\": \"file1.txt\",\n                \"position\": 4,\n                \"line\": 1\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateCommitCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateCommitCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposCreateCommitStatusReq_EncodeDecode(t *testing.T) {
 	var typ ReposCreateCommitStatusReq
 	typ.SetFake()
@@ -18112,6 +20363,36 @@ func TestReposCreateCommitStatusReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposCreateCommitStatusReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposCreateCommitStatusReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"state\": \"success\",\n                \"target_url\": \"https://example.com/build/status\",\n                \"description\": \"The build succeeded!\",\n                \"context\": \"continuous-integration/jenkins\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateCommitStatusReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateCommitStatusReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposCreateCommitStatusReqState_EncodeDecode(t *testing.T) {
 	var typ ReposCreateCommitStatusReqState
@@ -18136,6 +20417,36 @@ func TestReposCreateDeployKeyReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposCreateDeployKeyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposCreateDeployKeyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"octocat@octomac\",\n                \"key\": \"ssh-rsa AAA...\",\n                \"read_only\": true\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateDeployKeyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateDeployKeyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposCreateDeploymentAccepted_EncodeDecode(t *testing.T) {
 	var typ ReposCreateDeploymentAccepted
@@ -18191,6 +20502,37 @@ func TestReposCreateDeploymentReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateDeploymentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposCreateDeploymentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                    \"ref\": \"topic-branch\",\n                    \"auto_merge\": false,\n                    \"payload\": \"{ \\\"deploy\\\": \\\"migrate\\\" }\",\n                    \"description\": \"Deploy request from hubot\",\n                    \"required_contexts\": [\n                      \"ci/janky\",\n                      \"security/brakeman\"\n                    ]\n                  }"},
+		{Input: "{\n                    \"ref\": \"topic-branch\",\n                    \"payload\": \"{ \\\"deploy\\\": \\\"migrate\\\" }\",\n                    \"description\": \"Deploy request from hubot\"\n                  }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateDeploymentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateDeploymentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposCreateDeploymentReqPayload_EncodeDecode(t *testing.T) {
 	var typ ReposCreateDeploymentReqPayload
 	typ.SetFake()
@@ -18229,6 +20571,36 @@ func TestReposCreateDeploymentStatusReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateDeploymentStatusReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposCreateDeploymentStatusReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"environment\": \"production\",\n                \"state\": \"success\",\n                \"log_url\": \"https://example.com/deployment/42/output\",\n                \"description\": \"Deployment finished successfully.\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateDeploymentStatusReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateDeploymentStatusReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposCreateDeploymentStatusReqEnvironment_EncodeDecode(t *testing.T) {
 	var typ ReposCreateDeploymentStatusReqEnvironment
 	typ.SetFake()
@@ -18264,6 +20636,36 @@ func TestReposCreateDispatchEventReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposCreateDispatchEventReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposCreateDispatchEventReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"event_type\": \"on-demand-test\",\n                \"client_payload\": {\n                  \"unit\": false,\n                  \"integration\": true\n                }\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateDispatchEventReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateDispatchEventReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposCreateDispatchEventReqClientPayload_EncodeDecode(t *testing.T) {
 	var typ ReposCreateDispatchEventReqClientPayload
@@ -18399,6 +20801,36 @@ func TestReposCreateInOrgReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposCreateInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Hello-World\",\n                \"description\": \"This is your first repository\",\n                \"homepage\": \"https://github.com\",\n                \"private\": false,\n                \"has_issues\": true,\n                \"has_projects\": true,\n                \"has_wiki\": true\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposCreateInOrgReqVisibility_EncodeDecode(t *testing.T) {
 	var typ ReposCreateInOrgReqVisibility
 	typ.SetFake()
@@ -18471,6 +20903,37 @@ func TestReposCreateOrUpdateFileContentsReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateOrUpdateFileContentsReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposCreateOrUpdateFileContentsReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                    \"message\": \"a new commit message\",\n                    \"committer\": {\n                      \"name\": \"Monalisa Octocat\",\n                      \"email\": \"octocat@github.com\"\n                    },\n                    \"content\": \"bXkgdXBkYXRlZCBmaWxlIGNvbnRlbnRz\",\n                    \"sha\": \"95b966ae1c166bd92f8ae7d1c313e738c731dfc3\"\n                  }"},
+		{Input: "{\n                    \"message\": \"my commit message\",\n                    \"committer\": {\n                      \"name\": \"Monalisa Octocat\",\n                      \"email\": \"octocat@github.com\"\n                    },\n                    \"content\": \"bXkgbmV3IGZpbGUgY29udGVudHM=\"\n                  }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateOrUpdateFileContentsReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateOrUpdateFileContentsReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposCreateOrUpdateFileContentsReqAuthor_EncodeDecode(t *testing.T) {
 	var typ ReposCreateOrUpdateFileContentsReqAuthor
 	typ.SetFake()
@@ -18506,6 +20969,36 @@ func TestReposCreatePagesSiteReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposCreatePagesSiteReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposCreatePagesSiteReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"source\": {\n                  \"branch\": \"main\",\n                  \"path\": \"/docs\"\n                }\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreatePagesSiteReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreatePagesSiteReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposCreatePagesSiteReqSource_EncodeDecode(t *testing.T) {
 	var typ ReposCreatePagesSiteReqSource
@@ -18543,6 +21036,36 @@ func TestReposCreateReleaseReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposCreateReleaseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposCreateReleaseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"tag_name\": \"v1.0.0\",\n                \"target_commitish\": \"master\",\n                \"name\": \"v1.0.0\",\n                \"body\": \"Description of the release\",\n                \"draft\": false,\n                \"prerelease\": false\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateReleaseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateReleaseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposCreateUsingTemplateReq_EncodeDecode(t *testing.T) {
 	var typ ReposCreateUsingTemplateReq
 	typ.SetFake()
@@ -18554,6 +21077,36 @@ func TestReposCreateUsingTemplateReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposCreateUsingTemplateReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposCreateUsingTemplateReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"owner\": \"octocat\",\n                \"name\": \"Hello-World\",\n                \"description\": \"This is your first repository\",\n                \"include_all_branches\": false,\n                \"private\": false\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateUsingTemplateReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateUsingTemplateReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposCreateWebhookApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ReposCreateWebhookApplicationJSONForbidden
@@ -18590,6 +21143,36 @@ func TestReposCreateWebhookReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposCreateWebhookReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposCreateWebhookReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"web\",\n                \"active\": true,\n                \"events\": [\n                  \"push\",\n                  \"pull_request\"\n                ],\n                \"config\": {\n                  \"url\": \"https://example.com/webhook\",\n                  \"content_type\": \"json\",\n                  \"insecure_ssl\": \"0\"\n                }\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposCreateWebhookReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposCreateWebhookReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposCreateWebhookReqConfig_EncodeDecode(t *testing.T) {
 	var typ ReposCreateWebhookReqConfig
@@ -18698,6 +21281,36 @@ func TestReposDeleteFileReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposDeleteFileReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposDeleteFileReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"message\": \"my commit message\",\n                \"committer\": {\n                  \"name\": \"Monalisa Octocat\",\n                  \"email\": \"octocat@github.com\"\n                },\n                \"sha\": \"329688480d39049927147c162b9d2deaf885005f\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposDeleteFileReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposDeleteFileReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposDeleteFileReqAuthor_EncodeDecode(t *testing.T) {
 	var typ ReposDeleteFileReqAuthor
@@ -19281,6 +21894,36 @@ func TestReposMergeReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposMergeReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposMergeReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"base\": \"master\",\n                \"head\": \"cool_feature\",\n                \"commit_message\": \"Shipped cool_feature!\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposMergeReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposMergeReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposMergeUpstreamReq_EncodeDecode(t *testing.T) {
 	var typ ReposMergeUpstreamReq
 	typ.SetFake()
@@ -19292,6 +21935,36 @@ func TestReposMergeUpstreamReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposMergeUpstreamReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposMergeUpstreamReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"branch\": \"main\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposMergeUpstreamReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposMergeUpstreamReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposRemoveAppAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
 	var typ ReposRemoveAppAccessRestrictionsOKApplicationJSON
@@ -19593,6 +22266,36 @@ func TestReposRenameBranchReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposRenameBranchReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposRenameBranchReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"new_name\": \"my_renamed_branch\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposRenameBranchReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposRenameBranchReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposReplaceAllTopicsReq_EncodeDecode(t *testing.T) {
 	var typ ReposReplaceAllTopicsReq
 	typ.SetFake()
@@ -19604,6 +22307,36 @@ func TestReposReplaceAllTopicsReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposReplaceAllTopicsReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposReplaceAllTopicsReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"names\": [\n                  \"octocat\",\n                  \"atom\",\n                  \"electron\",\n                  \"api\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposReplaceAllTopicsReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposReplaceAllTopicsReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposSetAppAccessRestrictionsOKApplicationJSON_EncodeDecode(t *testing.T) {
 	var typ ReposSetAppAccessRestrictionsOKApplicationJSON
@@ -19881,6 +22614,36 @@ func TestReposTransferReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposTransferReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposTransferReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"new_owner\": \"github\",\n                \"team_ids\": [\n                  12,\n                  345\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposTransferReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposTransferReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposUpdateApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateApplicationJSONForbidden
 	typ.SetFake()
@@ -19953,6 +22716,36 @@ func TestReposUpdateBranchProtectionReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposUpdateBranchProtectionReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposUpdateBranchProtectionReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"required_status_checks\": {\n                  \"strict\": true,\n                  \"contexts\": [\n                    \"continuous-integration/travis-ci\"\n                  ]\n                },\n                \"enforce_admins\": true,\n                \"required_pull_request_reviews\": {\n                  \"dismissal_restrictions\": {\n                    \"users\": [\n                      \"octocat\"\n                    ],\n                    \"teams\": [\n                      \"justice-league\"\n                    ]\n                  },\n                  \"dismiss_stale_reviews\": true,\n                  \"require_code_owner_reviews\": true,\n                  \"required_approving_review_count\": 2\n                },\n                \"restrictions\": {\n                  \"users\": [\n                    \"octocat\"\n                  ],\n                  \"teams\": [\n                    \"justice-league\"\n                  ],\n                  \"apps\": [\n                    \"super-ci\"\n                  ]\n                },\n                \"required_linear_history\": true,\n                \"allow_force_pushes\": true,\n                \"allow_deletions\": true,\n                \"required_conversation_resolution\": true\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposUpdateBranchProtectionReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposUpdateBranchProtectionReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposUpdateBranchProtectionReqRequiredPullRequestReviews_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateBranchProtectionReqRequiredPullRequestReviews
 	typ.SetFake()
@@ -20013,6 +22806,36 @@ func TestReposUpdateCommitCommentReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposUpdateCommitCommentReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposUpdateCommitCommentReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Nice change\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposUpdateCommitCommentReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposUpdateCommitCommentReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposUpdateInvitationReq_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateInvitationReq
 	typ.SetFake()
@@ -20049,6 +22872,36 @@ func TestReposUpdatePullRequestReviewProtectionReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposUpdatePullRequestReviewProtectionReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposUpdatePullRequestReviewProtectionReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"dismissal_restrictions\": {\n                  \"users\": [\n                    \"octocat\"\n                  ],\n                  \"teams\": [\n                    \"justice-league\"\n                  ]\n                },\n                \"dismiss_stale_reviews\": true,\n                \"require_code_owner_reviews\": true,\n                \"required_approving_review_count\": 2\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposUpdatePullRequestReviewProtectionReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposUpdatePullRequestReviewProtectionReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposUpdatePullRequestReviewProtectionReqDismissalRestrictions_EncodeDecode(t *testing.T) {
 	var typ ReposUpdatePullRequestReviewProtectionReqDismissalRestrictions
 	typ.SetFake()
@@ -20073,6 +22926,36 @@ func TestReposUpdateReleaseAssetReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposUpdateReleaseAssetReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposUpdateReleaseAssetReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"foo-1.0.0-osx.zip\",\n                \"label\": \"Mac binary\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposUpdateReleaseAssetReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposUpdateReleaseAssetReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposUpdateReleaseReq_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateReleaseReq
 	typ.SetFake()
@@ -20085,6 +22968,36 @@ func TestReposUpdateReleaseReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposUpdateReleaseReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposUpdateReleaseReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"tag_name\": \"v1.0.0\",\n                \"target_commitish\": \"master\",\n                \"name\": \"v1.0.0\",\n                \"body\": \"Description of the release\",\n                \"draft\": false,\n                \"prerelease\": false\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposUpdateReleaseReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposUpdateReleaseReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposUpdateReq_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateReq
 	typ.SetFake()
@@ -20096,6 +23009,36 @@ func TestReposUpdateReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposUpdateReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposUpdateReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Hello-World\",\n                \"description\": \"This is your first repository\",\n                \"homepage\": \"https://github.com\",\n                \"private\": true,\n                \"has_issues\": true,\n                \"has_projects\": true,\n                \"has_wiki\": true\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposUpdateReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposUpdateReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposUpdateReqSecurityAndAnalysis_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateReqSecurityAndAnalysis
@@ -20157,6 +23100,36 @@ func TestReposUpdateStatusCheckProtectionReq_EncodeDecode(t *testing.T) {
 	var typ2 ReposUpdateStatusCheckProtectionReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestReposUpdateStatusCheckProtectionReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"strict\": true,\n                \"contexts\": [\n                  \"continuous-integration/travis-ci\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposUpdateStatusCheckProtectionReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposUpdateStatusCheckProtectionReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestReposUpdateWebhookConfigForRepoReq_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateWebhookConfigForRepoReq
 	typ.SetFake()
@@ -20210,6 +23183,36 @@ func TestReposUpdateWebhookReq_EncodeDecode(t *testing.T) {
 
 	var typ2 ReposUpdateWebhookReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestReposUpdateWebhookReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"active\": true,\n                \"add_events\": [\n                  \"pull_request\"\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ ReposUpdateWebhookReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 ReposUpdateWebhookReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestReposUpdateWebhookReqConfig_EncodeDecode(t *testing.T) {
 	var typ ReposUpdateWebhookReqConfig
@@ -21526,6 +24529,36 @@ func TestSecretScanningUpdateAlertReq_EncodeDecode(t *testing.T) {
 	var typ2 SecretScanningUpdateAlertReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestSecretScanningUpdateAlertReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"state\": \"resolved\",\n                \"resolution\": \"false_positive\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ SecretScanningUpdateAlertReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 SecretScanningUpdateAlertReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestSelectedActions_EncodeDecode(t *testing.T) {
 	var typ SelectedActions
 	typ.SetFake()
@@ -22477,6 +25510,36 @@ func TestTeamsCreateDiscussionCommentInOrgReq_EncodeDecode(t *testing.T) {
 	var typ2 TeamsCreateDiscussionCommentInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestTeamsCreateDiscussionCommentInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Do you like apples?\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsCreateDiscussionCommentInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsCreateDiscussionCommentInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestTeamsCreateDiscussionCommentLegacyReq_EncodeDecode(t *testing.T) {
 	var typ TeamsCreateDiscussionCommentLegacyReq
 	typ.SetFake()
@@ -22488,6 +25551,36 @@ func TestTeamsCreateDiscussionCommentLegacyReq_EncodeDecode(t *testing.T) {
 
 	var typ2 TeamsCreateDiscussionCommentLegacyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamsCreateDiscussionCommentLegacyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Do you like apples?\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsCreateDiscussionCommentLegacyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsCreateDiscussionCommentLegacyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestTeamsCreateDiscussionInOrgReq_EncodeDecode(t *testing.T) {
 	var typ TeamsCreateDiscussionInOrgReq
@@ -22501,6 +25594,36 @@ func TestTeamsCreateDiscussionInOrgReq_EncodeDecode(t *testing.T) {
 	var typ2 TeamsCreateDiscussionInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestTeamsCreateDiscussionInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"Our first team post\",\n                \"body\": \"Hi! This is an area for us to collaborate as a team.\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsCreateDiscussionInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsCreateDiscussionInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestTeamsCreateDiscussionLegacyReq_EncodeDecode(t *testing.T) {
 	var typ TeamsCreateDiscussionLegacyReq
 	typ.SetFake()
@@ -22513,6 +25636,36 @@ func TestTeamsCreateDiscussionLegacyReq_EncodeDecode(t *testing.T) {
 	var typ2 TeamsCreateDiscussionLegacyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestTeamsCreateDiscussionLegacyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"Our first team post\",\n                \"body\": \"Hi! This is an area for us to collaborate as a team.\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsCreateDiscussionLegacyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsCreateDiscussionLegacyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReq_EncodeDecode(t *testing.T) {
 	var typ TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
 	typ.SetFake()
@@ -22524,6 +25677,36 @@ func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReq_EncodeDecode(t *testing.
 
 	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"groups\": [\n                  {\n                    \"group_id\": \"123\",\n                    \"group_name\": \"Octocat admins\",\n                    \"group_description\": \"string\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsCreateOrUpdateIdpGroupConnectionsInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestTeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem_EncodeDecode(t *testing.T) {
 	var typ TeamsCreateOrUpdateIdpGroupConnectionsInOrgReqGroupsItem
@@ -22549,6 +25732,36 @@ func TestTeamsCreateOrUpdateIdpGroupConnectionsLegacyReq_EncodeDecode(t *testing
 	var typ2 TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestTeamsCreateOrUpdateIdpGroupConnectionsLegacyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"groups\": [\n                  {\n                    \"group_id\": \"123\",\n                    \"group_name\": \"Octocat admins\",\n                    \"description\": \"The people who configure your octoworld.\",\n                    \"group_description\": \"string\"\n                  }\n                ]\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsCreateOrUpdateIdpGroupConnectionsLegacyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestTeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem_EncodeDecode(t *testing.T) {
 	var typ TeamsCreateOrUpdateIdpGroupConnectionsLegacyReqGroupsItem
 	typ.SetFake()
@@ -22572,6 +25785,36 @@ func TestTeamsCreateReq_EncodeDecode(t *testing.T) {
 
 	var typ2 TeamsCreateReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamsCreateReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"Justice League\",\n                \"description\": \"A great team\",\n                \"permission\": \"admin\",\n                \"privacy\": \"closed\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsCreateReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsCreateReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestTeamsCreateReqPermission_EncodeDecode(t *testing.T) {
 	var typ TeamsCreateReqPermission
@@ -22753,6 +25996,36 @@ func TestTeamsUpdateDiscussionCommentInOrgReq_EncodeDecode(t *testing.T) {
 	var typ2 TeamsUpdateDiscussionCommentInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestTeamsUpdateDiscussionCommentInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Do you like pineapples?\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsUpdateDiscussionCommentInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsUpdateDiscussionCommentInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestTeamsUpdateDiscussionCommentLegacyReq_EncodeDecode(t *testing.T) {
 	var typ TeamsUpdateDiscussionCommentLegacyReq
 	typ.SetFake()
@@ -22764,6 +26037,36 @@ func TestTeamsUpdateDiscussionCommentLegacyReq_EncodeDecode(t *testing.T) {
 
 	var typ2 TeamsUpdateDiscussionCommentLegacyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamsUpdateDiscussionCommentLegacyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"body\": \"Do you like pineapples?\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsUpdateDiscussionCommentLegacyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsUpdateDiscussionCommentLegacyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestTeamsUpdateDiscussionInOrgReq_EncodeDecode(t *testing.T) {
 	var typ TeamsUpdateDiscussionInOrgReq
@@ -22777,6 +26080,36 @@ func TestTeamsUpdateDiscussionInOrgReq_EncodeDecode(t *testing.T) {
 	var typ2 TeamsUpdateDiscussionInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestTeamsUpdateDiscussionInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"Welcome to our first team post\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsUpdateDiscussionInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsUpdateDiscussionInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestTeamsUpdateDiscussionLegacyReq_EncodeDecode(t *testing.T) {
 	var typ TeamsUpdateDiscussionLegacyReq
 	typ.SetFake()
@@ -22789,6 +26122,36 @@ func TestTeamsUpdateDiscussionLegacyReq_EncodeDecode(t *testing.T) {
 	var typ2 TeamsUpdateDiscussionLegacyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
+
+func TestTeamsUpdateDiscussionLegacyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"title\": \"Welcome to our first team post\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsUpdateDiscussionLegacyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsUpdateDiscussionLegacyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
+}
 func TestTeamsUpdateInOrgReq_EncodeDecode(t *testing.T) {
 	var typ TeamsUpdateInOrgReq
 	typ.SetFake()
@@ -22800,6 +26163,36 @@ func TestTeamsUpdateInOrgReq_EncodeDecode(t *testing.T) {
 
 	var typ2 TeamsUpdateInOrgReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamsUpdateInOrgReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"new team name\",\n                \"description\": \"new team description\",\n                \"privacy\": \"closed\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsUpdateInOrgReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsUpdateInOrgReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestTeamsUpdateInOrgReqPermission_EncodeDecode(t *testing.T) {
 	var typ TeamsUpdateInOrgReqPermission
@@ -22884,6 +26277,36 @@ func TestTeamsUpdateLegacyReq_EncodeDecode(t *testing.T) {
 
 	var typ2 TeamsUpdateLegacyReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
+}
+
+func TestTeamsUpdateLegacyReq_Examples(t *testing.T) {
+
+	for i, tc := range []struct {
+		Input string
+	}{
+		{Input: "{\n                \"name\": \"new team name\",\n                \"description\": \"new team description\",\n                \"privacy\": \"closed\"\n              }"},
+	} {
+		tc := tc
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			var typ TeamsUpdateLegacyReq
+
+			if err := typ.Decode(jx.DecodeStr(tc.Input)); err != nil {
+				var validateErr *validate.Error
+				if errors.As(err, &validateErr) {
+					t.Skipf("Validation error: %v", validateErr)
+					return
+				}
+				require.NoErrorf(t, err, "Input: %s", tc.Input)
+			}
+
+			e := jx.Encoder{}
+			typ.Encode(&e)
+			require.True(t, std.Valid(e.Bytes()), "Encoded: %s", e.Bytes())
+
+			var typ2 TeamsUpdateLegacyReq
+			require.NoError(t, typ2.Decode(jx.DecodeBytes(e.Bytes())))
+		})
+	}
 }
 func TestTeamsUpdateLegacyReqPermission_EncodeDecode(t *testing.T) {
 	var typ TeamsUpdateLegacyReqPermission
