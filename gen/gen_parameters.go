@@ -17,6 +17,8 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 			if err := g.fail(&ErrNotImplemented{"parameter content field"}); err != nil {
 				return nil, errors.Wrap(err, "fail")
 			}
+
+			continue
 		}
 
 		if p.In == openapi.LocationCookie {
