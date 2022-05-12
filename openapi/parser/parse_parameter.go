@@ -91,7 +91,7 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		Required:    param.Required,
 	}
 
-	if param.Content != nil {
+	if param.Content != nil || param.Schema == nil {
 		// Incorrect, but used to keep the original behaviour
 		// and not break tests.
 		//

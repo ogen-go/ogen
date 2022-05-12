@@ -625,7 +625,7 @@ func (p *Parameter) SetDescription(d string) *Parameter {
 // SetSchema sets the Schema of the Parameter.
 func (p *Parameter) SetSchema(s *Schema) *Parameter {
 	if s != nil {
-		p.Schema = *s
+		p.Schema = s
 	}
 	return p
 }
