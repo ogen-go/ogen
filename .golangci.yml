@@ -1,3 +1,7 @@
 linters:
   disable:
-    - staticcheck # Disable until https://github.com/dominikh/go-tools/issues/1270 fix be released.
+    # Disable until https://github.com/dominikh/go-tools/issues/1270 fix be released.
+    - staticcheck
+    - gosimple
+    - unused
+    - stylecheck
