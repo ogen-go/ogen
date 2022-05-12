@@ -13,6 +13,12 @@ import (
 func (g *Generator) generateParameters(ctx *genctx, opName string, params []*openapi.Parameter) (_ []*ir.Parameter, err error) {
 	result := make([]*ir.Parameter, 0, len(params))
 	for i, p := range params {
+		if p.Content != nil {
+			if err := g.fail(&ErrNotImplemented{"parameter content field"}); err != nil {
+				return nil, errors.Wrap(err, "fail")
+			}
+		}
+
 		if p.In == openapi.LocationCookie {
 			if err := g.fail(&ErrNotImplemented{"cookie params"}); err != nil {
 				return nil, errors.Wrap(err, "fail")
