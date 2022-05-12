@@ -27,9 +27,9 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 	{{- end }}
 	// Decode {{ $loc }}.
 	{{- if $p.Spec.In.Query }}{{/* Switch location */}}
-	{	
+	{
 		cfg := uri.QueryParameterDecodingConfig{
-			Name:    "{{ $p.Spec.Name }}",
+			Name:    {{ quote $p.Spec.Name }},
 			Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
 			Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			{{- if isObjectParam $p }}

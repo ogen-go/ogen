@@ -32,7 +32,7 @@ q := uri.NewQueryEncoder()
 {
 	// Encode {{ quote $param.Spec.Name }} parameter.
 	cfg := uri.QueryParameterEncodingConfig{
-		Name:    "{{ $param.Spec.Name }}",
+		Name:    {{ quote $param.Spec.Name }},
 		Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
 		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
 	}
