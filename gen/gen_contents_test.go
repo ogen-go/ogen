@@ -6,13 +6,13 @@ import (
 
 	"github.com/stretchr/testify/require"
 
-	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 func Test_filterMostSpecific(t *testing.T) {
-	sch := new(jsonschema.Schema)
-	list := func(input ...string) (r map[string]*jsonschema.Schema) {
-		r = map[string]*jsonschema.Schema{}
+	sch := new(openapi.MediaType)
+	list := func(input ...string) (r map[string]*openapi.MediaType) {
+		r = map[string]*openapi.MediaType{}
 		for _, value := range input {
 			r[value] = sch
 		}
@@ -20,8 +20,8 @@ func Test_filterMostSpecific(t *testing.T) {
 	}
 
 	tests := []struct {
-		contents map[string]*jsonschema.Schema
-		expected map[string]*jsonschema.Schema
+		contents map[string]*openapi.MediaType
+		expected map[string]*openapi.MediaType
 		wantErr  bool
 	}{
 		{list("text/html", "text/*"), list("text/html"), false},
@@ -38,7 +38,7 @@ func Test_filterMostSpecific(t *testing.T) {
 	for i, tt := range tests {
 		tt := tt
 		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
-			contents := map[string]*jsonschema.Schema{}
+			contents := map[string]*openapi.MediaType{}
 			for k, v := range tt.contents {
 				contents[k] = v
 			}

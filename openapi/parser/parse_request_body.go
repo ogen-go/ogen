@@ -4,7 +4,6 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
-	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -26,17 +25,17 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*open
 	}
 
 	result := &openapi.RequestBody{
-		Contents: make(map[string]*jsonschema.Schema, len(body.Content)),
+		Content:  make(map[string]*openapi.MediaType, len(body.Content)),
 		Required: body.Required,
 	}
 
 	for contentType, media := range body.Content {
-		schema, err := p.schemaParser.Parse(media.Schema.ToJSONSchema())
+		m, err := p.parseMediaType(media)
 		if err != nil {
-			return nil, errors.Wrapf(err, "content: %q: parse schema", contentType)
+			return nil, errors.Wrapf(err, "content: %q", contentType)
 		}
 
-		result.Contents[contentType] = schema
+		result.Content[contentType] = m
 	}
 
 	return result, nil

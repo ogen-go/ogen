@@ -7,10 +7,10 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/gen/ir"
-	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
-func filterMostSpecific(contents map[string]*jsonschema.Schema) error {
+func filterMostSpecific(contents map[string]*openapi.MediaType) error {
 	initialLength := len(contents)
 	keep := func(current, mask string) bool {
 		// Special case for "*", "**", etc.
@@ -49,7 +49,7 @@ func filterMostSpecific(contents map[string]*jsonschema.Schema) error {
 	return nil
 }
 
-func (g *Generator) generateContents(ctx *genctx, name string, optional bool, contents map[string]*jsonschema.Schema) (_ map[ir.ContentType]*ir.Type, err error) {
+func (g *Generator) generateContents(ctx *genctx, name string, optional bool, contents map[string]*openapi.MediaType) (_ map[ir.ContentType]*ir.Type, err error) {
 	var (
 		result      = make(map[ir.ContentType]*ir.Type, len(contents))
 		unsupported []string
@@ -58,7 +58,7 @@ func (g *Generator) generateContents(ctx *genctx, name string, optional bool, co
 		return nil, errors.Wrap(err, "filter most specific")
 	}
 
-	for contentType, schema := range contents {
+	for contentType, media := range contents {
 		parsedContentType, _, err := mime.ParseMediaType(contentType)
 		if err != nil {
 			return nil, errors.Wrapf(err, "parse content type %q", contentType)
@@ -76,7 +76,7 @@ func (g *Generator) generateContents(ctx *genctx, name string, optional bool, co
 		if err := func() error {
 			switch parsedContentType {
 			case "application/json":
-				t, err := g.generateSchema(ctx, typeName, schema)
+				t, err := g.generateSchema(ctx, typeName, media.Schema)
 				if err != nil {
 					return errors.Wrap(err, "schema")
 				}
@@ -94,8 +94,8 @@ func (g *Generator) generateContents(ctx *genctx, name string, optional bool, co
 				return nil
 
 			case "application/octet-stream":
-				if schema != nil && !isBinary(schema) {
-					return errors.Errorf("octet stream with %q schema not supported", schema.Type)
+				if media.Schema != nil && !isBinary(media.Schema) {
+					return errors.Errorf("octet stream with %q schema not supported", media.Schema.Type)
 				}
 
 				t := ir.Stream(typeName)
@@ -103,7 +103,7 @@ func (g *Generator) generateContents(ctx *genctx, name string, optional bool, co
 				return ctx.saveType(t)
 
 			default:
-				if isBinary(schema) {
+				if isBinary(media.Schema) {
 					t := ir.Stream(typeName)
 					result[ir.ContentType(contentType)] = t
 					return ctx.saveType(t)

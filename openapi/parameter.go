@@ -25,11 +25,11 @@ type Parameter struct {
 	Name        string
 	Description string
 	Schema      *jsonschema.Schema
-
-	In       ParameterLocation
-	Style    ParameterStyle
-	Explode  bool
-	Required bool
+	Content     map[string]*MediaType
+	In          ParameterLocation
+	Style       ParameterStyle
+	Explode     bool
+	Required    bool
 }
 
 type ParameterStyle string
