@@ -145,7 +145,7 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 		}()
 	}
 
-	if len(resp.Contents) == 0 {
+	if len(resp.Content) == 0 {
 		t := &ir.Type{
 			Kind: ir.KindStruct,
 			Name: name,
@@ -161,7 +161,7 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 		}, nil
 	}
 
-	contents, err := g.generateContents(ctx, name, false, resp.Contents)
+	contents, err := g.generateContents(ctx, name, false, resp.Content)
 	if err != nil {
 		return nil, errors.Wrap(err, "contents")
 	}

@@ -102,7 +102,7 @@ func (p *parser) resolveParameter(ref string, ctx resolveCtx) (*openapi.Paramete
 	return param, nil
 }
 
-func (p *parser) resolveExample(ref string) (*openapi.Example, error) {
+func (p *parser) resolveExample(ref string, ctx resolveCtx) (*openapi.Example, error) {
 	const prefix = "#/components/examples/"
 	if !strings.HasPrefix(ref, prefix) {
 		return nil, errors.Errorf("invalid example reference: %q", ref)
@@ -112,21 +112,25 @@ func (p *parser) resolveExample(ref string) (*openapi.Example, error) {
 		return param, nil
 	}
 
+	if _, ok := ctx[ref]; ok {
+		return nil, errors.Errorf("infinite recursion: %q", ref)
+	}
+	ctx[ref] = struct{}{}
+
 	name := strings.TrimPrefix(ref, prefix)
 	component, found := p.spec.Components.Examples[name]
 	if !found {
 		return nil, errors.Errorf("component by reference %q not found", ref)
 	}
-	example := &openapi.Example{
-		Ref:           component.Ref,
-		Summary:       component.Summary,
-		Description:   component.Description,
-		Value:         component.Value,
-		ExternalValue: component.ExternalValue,
+
+	ex, err := p.parseExample(component, ctx)
+	if err != nil {
+		return nil, err
 	}
 
-	p.refs.examples[ref] = example
-	return example, nil
+	ex.Ref = ref
+	p.refs.examples[ref] = ex
+	return ex, nil
 }
 
 func (p *parser) resolveSecuritySchema(ref string, ctx resolveCtx) (*ogen.SecuritySchema, error) {

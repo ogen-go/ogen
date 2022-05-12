@@ -196,9 +196,9 @@ type Parameter struct {
 	Name string `json:"name"`
 
 	// The location of the parameter. Possible values are "query", "header", "path" or "cookie".
-	In          string `json:"in"`
-	Description string `json:"description,omitempty"`
-	Schema      Schema `json:"schema"`
+	In          string  `json:"in"`
+	Description string  `json:"description,omitempty"`
+	Schema      *Schema `json:"schema,omitempty"`
 
 	// Determines whether this parameter is mandatory.
 	// If the parameter location is "path", this property is REQUIRED

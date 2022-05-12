@@ -123,7 +123,7 @@ func TestBuilder(t *testing.T) {
 							In:          "path",
 							Description: "ID Parameter in path",
 							Required:    true,
-							Schema:      ogen.Schema{Type: "integer", Format: "int32"},
+							Schema:      &ogen.Schema{Type: "integer", Format: "int32"},
 						},
 					},
 					Responses: ogen.Responses{
