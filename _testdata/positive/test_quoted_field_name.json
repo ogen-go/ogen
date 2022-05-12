@@ -5,10 +5,58 @@
     "version": "v0.1.0"
   },
   "paths": {
-    "/healthz": {
+    "/healthz/{`param3}/{\"param4}": {
       "get": {
         "operationId": "probeLiveness",
         "description": "Liveness probe for kubernetes",
+        "parameters": [
+          {
+            "name": "`param1",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "\"param2",
+            "in": "query",
+            "style": "form",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "`param3",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "\"param4",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "`param5",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "\"param6",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "User info",
@@ -17,7 +65,7 @@
                 "schema": {
                   "type": "object",
                   "required": [
-                    "object with `additionalProperties: { type: object, properties: ... }`",
+                    "object with `additionalProperties: { type: object, properties: ... }`"
                   ],
                   "properties": {
                     "object with `additionalProperties: { type: object, properties: ... }`": {
@@ -33,6 +81,12 @@
                           }
                         }
                       }
+                    },
+                    "`param1": {
+                      "type": "integer"
+                    },
+                    "\"param2": {
+                      "type": "integer"
                     }
                   }
                 }
