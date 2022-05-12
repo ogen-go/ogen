@@ -33,9 +33,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleMultipleGenericResponsesRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "anyContentTypeBinaryStringSchema"
@@ -86,9 +84,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOctetStreamEmptySchemaRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'B': // Prefix: "BinaryStringSchema"
@@ -167,10 +163,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "MultipleGenericResponses"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "anyContentTypeBinaryStringSchema"
@@ -224,10 +217,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OctetStreamEmptySchema"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'B': // Prefix: "BinaryStringSchema"

@@ -35,9 +35,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleErrorGetRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'e': // Prefix: "error"
@@ -74,9 +72,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleNoAdditionalPropertiesTestRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "ame/"
@@ -222,11 +218,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handlePetFriendsNamesByIDRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "atternRecursiveMap"
@@ -263,9 +255,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handlePetGetAvatarByIDRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "avatar"
@@ -365,9 +355,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleRecursiveMapGetRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'A': // Prefix: "Array"
@@ -405,9 +393,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleStringIntMapGetRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "ecurityTest"
@@ -445,9 +431,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleTestObjectQueryParameterRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/header"
@@ -492,9 +476,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleFoobarPostRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'd': // Prefix: "defaultTest"
@@ -557,9 +539,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handlePetUploadAvatarByIDRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "avatar"
@@ -685,10 +665,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "ErrorGet"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'e': // Prefix: "error"
@@ -727,10 +704,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "NoAdditionalPropertiesTest"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "ame/"
@@ -873,10 +847,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "PetFriendsNamesByID"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "atternRecursiveMap"
@@ -915,10 +886,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "PetGetAvatarByID"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "avatar"
@@ -1015,10 +983,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "RecursiveMapGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'A': // Prefix: "Array"
@@ -1058,10 +1023,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "StringIntMapGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "ecurityTest"
@@ -1101,10 +1063,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "TestObjectQueryParameter"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/header"
@@ -1151,10 +1110,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "FoobarPost"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'd': // Prefix: "defaultTest"
@@ -1221,10 +1177,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "PetUploadAvatarByID"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "avatar"

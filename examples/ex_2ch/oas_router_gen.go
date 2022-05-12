@@ -35,9 +35,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleAPIDislikeGetRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'c': // Prefix: "captcha/"
@@ -48,11 +46,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleAPICaptchaAppIDPublicKeyGetRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case '2': // Prefix: "2chcaptcha/"
@@ -63,9 +57,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAPICaptcha2chcaptchaShowGetRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'i': // Prefix: "id"
@@ -123,9 +115,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAPICaptchaInvisibleRecaptchaMobileGetRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'i': // Prefix: "id"
@@ -163,9 +153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAPICaptchaRecaptchaMobileGetRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'i': // Prefix: "id"
@@ -230,9 +218,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleAPIMobileV2BoardsGetRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "after/"
@@ -446,10 +432,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "APIDislikeGet"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'c': // Prefix: "captcha/"
@@ -460,10 +443,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "APICaptchaAppIDPublicKeyGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case '2': // Prefix: "2chcaptcha/"
@@ -474,10 +454,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "APICaptcha2chcaptchaShowGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'i': // Prefix: "id"
@@ -536,10 +513,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "APICaptchaInvisibleRecaptchaMobileGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'i': // Prefix: "id"
@@ -579,10 +553,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "APICaptchaRecaptchaMobileGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'i': // Prefix: "id"
@@ -651,10 +622,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "APIMobileV2BoardsGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "after/"

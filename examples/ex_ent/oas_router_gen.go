@@ -118,11 +118,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleListPetFriendsRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "categories"
@@ -246,11 +242,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleCreatePetFriendsRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "categories"
@@ -430,10 +422,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ListPetFriends"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "categories"
@@ -554,10 +543,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "CreatePetFriends"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "categories"

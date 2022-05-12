@@ -74,9 +74,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleMmdsGetRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
@@ -134,9 +132,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handlePatchBalloonRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'b': // Prefix: "balloon"
@@ -194,9 +190,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handlePatchMachineConfigurationRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
@@ -274,9 +268,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleCreateSyncActionRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "actions"
@@ -300,9 +292,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handlePutGuestBootSourceRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "alloon"
@@ -373,9 +363,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handlePutMachineConfigurationRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
@@ -460,9 +448,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleLoadSnapshotRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "create"
@@ -597,10 +583,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "MmdsGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
@@ -661,10 +644,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "PatchBalloon"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'b': // Prefix: "balloon"
@@ -723,10 +703,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "PatchMachineConfiguration"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
@@ -806,10 +783,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "CreateSyncAction"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "actions"
@@ -834,10 +808,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "PutGuestBootSource"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "alloon"
@@ -910,10 +881,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "PutMachineConfiguration"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "achine-config"
@@ -1001,10 +969,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "LoadSnapshot"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "create"

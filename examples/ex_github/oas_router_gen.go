@@ -35,12 +35,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleActionsDeleteOrgSecretRequest([2]string{
-					args[0],
-					args[1],
-				}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -51,11 +46,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsDeleteAuthorizationRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
@@ -66,11 +57,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAppsDeleteInstallationRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/installations/"
@@ -166,11 +153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleAppsDeleteTokenRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'g': // Prefix: "grant"
@@ -255,12 +238,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'p': // Prefix: "permissions/organizations/"
@@ -292,12 +270,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case '-': // Prefix: "-groups/"
@@ -333,13 +306,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'o': // Prefix: "organizations/"
@@ -444,11 +411,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleGistsUnstarRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "comments/"
@@ -566,11 +529,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleInteractionsRemoveRestrictionsForOrgRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "actions/"
@@ -581,12 +540,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleActionsDeleteSelfHostedRunnerFromOrgRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'p': // Prefix: "permissions/repositories/"
@@ -618,12 +572,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleActionsDeleteSelfHostedRunnerGroupFromOrgRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '-': // Prefix: "-groups/"
@@ -659,13 +608,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleActionsRemoveSelfHostedRunnerFromGroupForOrgRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "epositories/"
@@ -856,12 +799,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleOrgsCancelInvitationRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 't': // Prefix: "teraction-limits"
@@ -909,12 +847,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleOrgsRemoveMemberRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "embers"
@@ -925,12 +858,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleOrgsRemoveMembershipForUserRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -1004,13 +932,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleMigrationsUnlockRepoForOrgRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "archive"
@@ -1099,13 +1021,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handlePackagesDeletePackageForOrgRequest([3]string{
-								args[0],
-								args[1],
-								args[2],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages/"
@@ -1234,13 +1150,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTeamsRemoveMembershipForUserInOrgRequest([3]string{
-									args[0],
-									args[1],
-									args[2],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'd': // Prefix: "discussions/"
@@ -1277,15 +1187,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReactionsDeleteForTeamDiscussionCommentRequest([5]string{
-											args[0],
-											args[1],
-											args[2],
-											args[3],
-											args[4],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "comments/"
@@ -1476,11 +1378,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleProjectsDeleteColumnRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
@@ -1565,11 +1463,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleReactionsDeleteLegacyRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "actions/"
@@ -1600,13 +1494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleActionsDeleteEnvironmentSecretRequest([3]string{
-							args[0],
-							args[1],
-							args[2],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
@@ -1662,12 +1550,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleActivityDeleteRepoSubscriptionRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "a"
@@ -1678,13 +1561,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposDeleteAutolinkRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "ctions/"
@@ -1695,13 +1572,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleActionsDeleteRepoSecretRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "artifacts/"
@@ -1734,13 +1605,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleActionsDeleteWorkflowRunRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'n': // Prefix: "ners/"
@@ -1841,12 +1706,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReposDisableAutomatedSecurityFixesRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'l': // Prefix: "links/"
@@ -1934,13 +1794,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposDeleteAdminBranchProtectionRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "enforce_admins"
@@ -1968,13 +1822,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleReposDeleteCommitSignatureProtectionRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'q': // Prefix: "quired_"
@@ -1985,13 +1833,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleReposDeletePullRequestReviewProtectionRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'p': // Prefix: "pull_request_reviews"
@@ -2019,13 +1861,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleReposRemoveStatusCheckContextsRequest([3]string{
-																args[0],
-																args[1],
-																args[2],
-															}, w, r)
-
-															return
+															break
 														}
 														switch elem[0] {
 														case 'i': // Prefix: "ignatures"
@@ -2107,13 +1943,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleReposRemoveTeamAccessRestrictionsRequest([3]string{
-																args[0],
-																args[1],
-																args[2],
-															}, w, r)
-
-															return
+															break
 														}
 														switch elem[0] {
 														case 'a': // Prefix: "apps"
@@ -2181,14 +2011,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReactionsDeleteForCommitCommentRequest([4]string{
-											args[0],
-											args[1],
-											args[2],
-											args[3],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'd': // Prefix: "de-scanning/analyses/"
@@ -2404,13 +2227,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleIssuesDeleteCommentRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mport"
@@ -2437,13 +2254,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReposDeleteInvitationRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 't': // Prefix: "teraction-limits"
@@ -2493,13 +2304,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleIssuesRemoveAllLabelsRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments/"
@@ -2574,13 +2379,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleIssuesRemoveAssigneesRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "assignees"
@@ -2608,13 +2407,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleIssuesUnlockRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "abels"
@@ -2732,12 +2525,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposDisableLfsForRepoRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "abels/"
@@ -2809,12 +2597,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposDeletePagesSiteRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "ages"
@@ -2916,13 +2699,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handlePullsRemoveRequestedReviewersRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'q': // Prefix: "quested_reviewers"
@@ -3126,12 +2903,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleScimDeleteUserFromOrgRequest([2]string{
-						args[0],
-						args[1],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "enterprises/"
@@ -3162,12 +2934,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleEnterpriseAdminDeleteUserFromEnterpriseRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'G': // Prefix: "Groups/"
@@ -3289,12 +3056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleTeamsRemoveMemberLegacyRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'd': // Prefix: "discussions/"
@@ -3353,12 +3115,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTeamsRemoveMembershipForUserLegacyRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
@@ -3478,13 +3235,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handlePackagesDeletePackageForUserRequest([3]string{
-						args[0],
-						args[1],
-						args[2],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -3495,12 +3246,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAppsRemoveRepoFromInstallationRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'b': // Prefix: "blocks/"
@@ -3584,9 +3330,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleInteractionsRemoveRestrictionsForAuthenticatedUserRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 's': // Prefix: "stallations/"
@@ -3693,12 +3437,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleMigrationsUnlockRepoForAuthenticatedUserRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "archive"
@@ -4008,11 +3747,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsGetAuthorizationRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
@@ -4036,11 +3771,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleAppsGetWebhookDeliveryRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "config"
@@ -4223,11 +3954,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleBillingGetGithubActionsBillingGheRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'm': // Prefix: "mojis"
@@ -4271,11 +3998,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleEnterpriseAdminGetAllowedActionsEnterpriseRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "a"
@@ -4286,11 +4009,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleEnterpriseAdminGetAuditLogRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "ctions/"
@@ -4301,12 +4020,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleEnterpriseAdminGetSelfHostedRunnerForEnterpriseRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "permissions"
@@ -4332,11 +4046,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'o': // Prefix: "organizations"
@@ -4379,12 +4089,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case '-': // Prefix: "-groups"
@@ -4435,12 +4140,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'o': // Prefix: "organizations"
@@ -4561,11 +4261,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleBillingGetGithubPackagesBillingGheRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "actions"
@@ -4651,9 +4347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleGitignoreGetAllTemplatesRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 's': // Prefix: "sts"
@@ -4732,12 +4426,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGistsGetCommentRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "comm"
@@ -4748,11 +4437,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGistsListCommitsRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ents"
@@ -4898,9 +4583,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleIssuesListRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'n': // Prefix: "nstallation/repositories"
@@ -4972,9 +4655,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleMetaGetRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "arketplace_listing/"
@@ -4985,11 +4666,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAppsGetSubscriptionPlanForAccountStubbedRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "accounts/"
@@ -5070,11 +4747,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleAppsListAccountsForPlanStubbedRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "accounts/"
@@ -5171,12 +4844,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleActivityListPublicEventsForRepoNetworkRequest([2]string{
-						args[0],
-						args[1],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "etworks/"
@@ -5300,9 +4968,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOrgsListRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "anizations"
@@ -5350,11 +5016,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleActivityListPublicOrgEventsRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "a"
@@ -5365,11 +5027,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleOrgsGetAuditLogRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "ctions/"
@@ -5380,11 +5038,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleActionsGetOrgPublicKeyRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "permissions"
@@ -5410,11 +5064,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleActionsListSelectedRepositoriesEnabledGithubActionsOrganizationRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'r': // Prefix: "repositories"
@@ -5457,12 +5107,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleActionsGetSelfHostedRunnerGroupForOrgRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case '-': // Prefix: "-groups"
@@ -5513,12 +5158,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleActionsListSelfHostedRunnersInGroupForOrgRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "epositories"
@@ -5637,12 +5277,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleActionsGetOrgSecretRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'p': // Prefix: "public-key"
@@ -5844,13 +5479,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleOrgsGetWebhookDeliveryRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "config"
@@ -5919,12 +5548,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleOrgsListInvitationTeamsRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nvitations"
@@ -6004,12 +5628,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleOrgsCheckMembershipForUserRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "embers"
@@ -6118,12 +5737,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleMigrationsListReposForOrgRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "archive"
@@ -6185,13 +5799,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handlePackagesGetAllPackageVersionsForPackageOwnedByOrgRequest([3]string{
-									args[0],
-									args[1],
-									args[2],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ackages"
@@ -6375,11 +5983,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSecretScanningListAlertsForOrgRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "cret-scanning/alerts"
@@ -6405,11 +6009,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleBillingGetGithubPackagesBillingOrgRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "actions"
@@ -6467,11 +6067,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTeamsListIdpGroupsForOrgRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '-': // Prefix: "-sync/groups"
@@ -6537,13 +6133,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTeamsCheckPermissionsForProjectInOrgRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "discussions"
@@ -6596,13 +6186,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleReactionsListForTeamDiscussionInOrgRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'c': // Prefix: "comments"
@@ -6852,12 +6436,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTeamsListIdpGroupsInOrgRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case '-': // Prefix: "-sync/group-mappings"
@@ -6919,11 +6498,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleProjectsGetColumnRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
@@ -7006,11 +6581,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleProjectsListColumnsRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'l': // Prefix: "laborators"
@@ -7091,9 +6662,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleRateLimitGetRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "ate_limit"
@@ -7117,12 +6686,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleActionsGetEnvironmentPublicKeyRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
@@ -7178,12 +6742,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleActivityGetRepoSubscriptionRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "a"
@@ -7194,13 +6753,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleIssuesCheckUserCanBeAssignedRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "ctions/"
@@ -7211,13 +6764,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleActionsDownloadJobLogsForWorkflowRunRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "artifacts"
@@ -7372,13 +6919,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleActionsGetSelfHostedRunnerForRepoRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'n': // Prefix: "ners"
@@ -7491,13 +7032,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleActionsGetReviewsForRunRequest([3]string{
-																args[0],
-																args[1],
-																args[2],
-															}, w, r)
-
-															return
+															break
 														}
 														switch elem[0] {
 														case 'a': // Prefix: "a"
@@ -7508,13 +7043,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																s.handleActionsListWorkflowRunArtifactsRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-
-																return
+																break
 															}
 															switch elem[0] {
 															case 'p': // Prefix: "pprovals"
@@ -7631,13 +7160,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleActionsGetRepoSecretRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'p': // Prefix: "public-key"
@@ -7836,13 +7359,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleReposGetAdminBranchProtectionRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "enforce_admins"
@@ -7870,13 +7387,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleReposGetAllStatusCheckContextsRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'q': // Prefix: "quired_"
@@ -7887,13 +7398,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleReposGetPullRequestReviewProtectionRequest([3]string{
-																args[0],
-																args[1],
-																args[2],
-															}, w, r)
-
-															return
+															break
 														}
 														switch elem[0] {
 														case 'p': // Prefix: "pull_request_reviews"
@@ -7921,13 +7426,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																s.handleReposGetCommitSignatureProtectionRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-
-																return
+																break
 															}
 															switch elem[0] {
 															case 'i': // Prefix: "ignatures"
@@ -8009,13 +7508,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																s.handleReposGetTeamsWithAccessToProtectedBranchRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-
-																return
+																break
 															}
 															switch elem[0] {
 															case 'a': // Prefix: "apps"
@@ -8084,13 +7577,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleChecksListForRefRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'h': // Prefix: "heck-"
@@ -8101,13 +7588,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleChecksGetSuiteRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'r': // Prefix: "runs/"
@@ -8207,13 +7688,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleCodeScanningGetAlertRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "de-scanning/"
@@ -8224,13 +7699,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleCodeScanningGetSarifRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "a"
@@ -8241,13 +7710,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleCodeScanningGetAnalysisRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'l': // Prefix: "lerts"
@@ -8443,13 +7906,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposCompareCommitsRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'm': // Prefix: "m"
@@ -8460,13 +7917,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleReactionsListForCommitCommentRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "ents"
@@ -8580,13 +8031,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																s.handleReposGetCombinedStatusForRefRequest([3]string{
-																	args[0],
-																	args[1],
-																	args[2],
-																}, w, r)
-
-																return
+																break
 															}
 															switch elem[0] {
 															case 'b': // Prefix: "branches-where-head"
@@ -8614,13 +8059,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																}
 
 																if len(elem) == 0 {
-																	s.handleReposListCommentsForCommitRequest([3]string{
-																		args[0],
-																		args[1],
-																		args[2],
-																	}, w, r)
-
-																	return
+																	break
 																}
 																switch elem[0] {
 																case 'h': // Prefix: "heck-"
@@ -8631,13 +8070,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 																	}
 
 																	if len(elem) == 0 {
-																		s.handleChecksListSuitesForRefRequest([3]string{
-																			args[0],
-																			args[1],
-																			args[2],
-																		}, w, r)
-
-																		return
+																		break
 																	}
 																	switch elem[0] {
 																	case 'r': // Prefix: "runs"
@@ -8931,13 +8364,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGitGetCommitRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'b': // Prefix: "blobs/"
@@ -9036,13 +8463,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleGitGetTreeRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "ags/"
@@ -9141,14 +8562,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposGetWebhookDeliveryRequest([4]string{
-													args[0],
-													args[1],
-													args[2],
-													args[3],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "config"
@@ -9220,12 +8634,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleMigrationsGetCommitAuthorsRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mport"
@@ -9252,12 +8661,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleMigrationsGetLargeFilesRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "authors"
@@ -9465,13 +8869,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleIssuesListLabelsOnIssueRequest([3]string{
-														args[0],
-														args[1],
-														args[2],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "comments"
@@ -9576,12 +8974,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleLicensesGetForRepoRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "a"
@@ -9592,12 +8985,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReposListLanguagesRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'b': // Prefix: "bels"
@@ -9758,13 +9146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handlePullsCheckIfMergedRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "ages"
@@ -9791,12 +9173,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposGetPagesHealthCheckRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'b': // Prefix: "builds"
@@ -9823,13 +9200,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleReposGetPagesBuildRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'l': // Prefix: "latest"
@@ -10015,14 +9386,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handlePullsGetReviewRequest([4]string{
-														args[0],
-														args[1],
-														args[2],
-														args[3],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "comm"
@@ -10033,13 +9397,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handlePullsListReviewCommentsRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'e': // Prefix: "ents"
@@ -10119,13 +9477,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handlePullsListRequestedReviewersRequest([3]string{
-															args[0],
-															args[1],
-															args[2],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'q': // Prefix: "quested_reviewers"
@@ -10222,12 +9574,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposGetReadmeRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "adme"
@@ -10293,13 +9640,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposGetReleaseRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "assets/"
@@ -10410,12 +9751,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposGetCodeFrequencyStatsRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "ecret-scanning/alerts"
@@ -10465,12 +9801,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReposGetParticipationStatsRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "co"
@@ -10481,12 +9812,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposGetCommitActivityStatsRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'd': // Prefix: "de_frequency"
@@ -10546,12 +9872,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposGetPunchCardStatsRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "articipation"
@@ -10596,12 +9917,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleActivityListWatchersForRepoRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'b': // Prefix: "bers"
@@ -10646,12 +9962,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposGetAllTopicsRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "a"
@@ -10662,12 +9973,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReposListTagsRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'g': // Prefix: "gs"
@@ -10749,12 +10055,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReposGetTopPathsRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "clones"
@@ -10781,12 +10082,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposGetTopReferrersRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'p': // Prefix: "paths"
@@ -10958,13 +10254,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleActionsGetEnvironmentSecretRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'p': // Prefix: "public-key"
@@ -11013,9 +10303,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleSearchCodeRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "cim/v2/enterprises/"
@@ -11046,12 +10334,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleEnterpriseAdminGetProvisioningInformationForEnterpriseUserRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'G': // Prefix: "Groups"
@@ -11138,9 +10421,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleSearchIssuesAndPullRequestsRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "co"
@@ -11151,9 +10432,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleSearchCommitsRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'd': // Prefix: "de"
@@ -11282,12 +10561,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleTeamsCheckPermissionsForProjectLegacyRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'd': // Prefix: "discussions"
@@ -11338,12 +10612,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleReactionsListForTeamDiscussionLegacyRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "comments"
@@ -11603,11 +10872,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTeamsListIdpGroupsForLegacyRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case '-': // Prefix: "-sync/group-mappings"
@@ -11664,11 +10929,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAppsListInstallationReposForAuthenticatedUserRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'b': // Prefix: "blocks"
@@ -11726,9 +10987,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleUsersListFollowersForAuthenticatedUserRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "ers"
@@ -11821,9 +11080,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleIssuesListForAuthenticatedUserRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'n': // Prefix: "nstallations/"
@@ -11918,11 +11175,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleMigrationsGetArchiveForAuthenticatedUserRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "arketplace_purchases"
@@ -12031,11 +11284,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleMigrationsListReposForUserRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "archive"
@@ -12093,9 +11342,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleUsersListPublicEmailsForAuthenticatedRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages"
@@ -12247,9 +11494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleActivityListWatchedReposForAuthenticatedUserRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 't': // Prefix: "tarred"
@@ -12381,11 +11626,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleActivityListReceivedEventsForUserRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "events"
@@ -12411,11 +11652,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleActivityListPublicEventsForUserRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'o': // Prefix: "orgs/"
@@ -12464,11 +11701,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleUsersListFollowersForUserRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ers"
@@ -12532,11 +11765,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleUsersListGpgKeysForUserRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'i': // Prefix: "ists"
@@ -12623,11 +11852,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleProjectsListForUserRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "ackages"
@@ -12759,11 +11984,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleReposListForUserRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "ceived_events"
@@ -12821,11 +12042,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleBillingGetGithubActionsBillingUserRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ettings/billing/"
@@ -12836,11 +12053,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleBillingGetGithubPackagesBillingUserRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "actions"
@@ -12924,11 +12137,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleActivityMarkThreadAsReadRequest([1]string{
-					args[0],
-				}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -12939,11 +12148,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsUpdateAuthorizationRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
@@ -12954,9 +12159,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAppsUpdateWebhookConfigForAppRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/hook/config"
@@ -13162,12 +12365,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleOrgsUpdateWebhookRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "actions/runner-groups/"
@@ -13266,14 +12464,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTeamsUpdateDiscussionCommentInOrgRequest([4]string{
-									args[0],
-									args[1],
-									args[2],
-									args[3],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'd': // Prefix: "discussions/"
@@ -13365,11 +12556,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleProjectsUpdateColumnRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
@@ -13473,13 +12660,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGitUpdateRefRequest([3]string{
-								args[0],
-								args[1],
-								args[2],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'b': // Prefix: "branches/"
@@ -13510,13 +12691,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleReposUpdateStatusCheckProtectionRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "pull_request_reviews"
@@ -13563,13 +12738,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleCodeScanningUpdateAlertRequest([3]string{
-									args[0],
-									args[1],
-									args[2],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "heck-suites/preferences"
@@ -13596,13 +12765,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleReposUpdateCommitCommentRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'd': // Prefix: "de-scanning/alerts/"
@@ -13725,13 +12888,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleMigrationsMapCommitAuthorRequest([3]string{
-									args[0],
-									args[1],
-									args[2],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'm': // Prefix: "mport"
@@ -13758,12 +12915,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleMigrationsSetLfsPreferenceRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "authors/"
@@ -14073,12 +13225,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleEnterpriseAdminUpdateAttributeForEnterpriseUserRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'G': // Prefix: "Groups/"
@@ -14157,13 +13304,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleTeamsUpdateDiscussionCommentLegacyRequest([3]string{
-							args[0],
-							args[1],
-							args[2],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'd': // Prefix: "discussions/"
@@ -14252,11 +13393,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleReposAcceptInvitationRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "email/visibility"
@@ -14329,11 +13466,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleActionsCreateRegistrationTokenForOrgRequest([1]string{
-					args[0],
-				}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -14344,9 +13477,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsCreateAuthorizationRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
@@ -14357,11 +13488,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAppsCreateInstallationAccessTokenRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
@@ -14372,11 +13499,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleAppsRedeliverWebhookDeliveryRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'h': // Prefix: "hook/deliveries/"
@@ -14547,11 +13670,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case '-': // Prefix: "-groups"
@@ -14577,11 +13696,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleEnterpriseAdminCreateRemoveTokenForEnterpriseRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'g': // Prefix: "gistration-token"
@@ -14658,11 +13773,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGistsForkRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "comments"
@@ -14726,11 +13837,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleMigrationsStartForOrgRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "actions/runner"
@@ -14741,11 +13848,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleActionsCreateSelfHostedRunnerGroupForOrgRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case '-': // Prefix: "-groups"
@@ -14771,11 +13874,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleActionsCreateRemoveTokenForOrgRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'g': // Prefix: "gistration-token"
@@ -14853,13 +13952,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleOrgsRedeliverWebhookDeliveryRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'd': // Prefix: "deliveries/"
@@ -14957,11 +14050,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleProjectsCreateForOrgRequest([1]string{
-								args[0],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages/"
@@ -15012,14 +14101,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handlePackagesRestorePackageVersionForOrgRequest([4]string{
-											args[0],
-											args[1],
-											args[2],
-											args[3],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'r': // Prefix: "restore"
@@ -15191,13 +14273,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReactionsCreateForTeamDiscussionInOrgRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments"
@@ -15300,11 +14376,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleProjectsMoveColumnRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
@@ -15451,13 +14523,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleAppsCreateContentAttachmentRequest([3]string{
-								args[0],
-								args[1],
-								args[2],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "a"
@@ -15468,12 +14534,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleReposCreateAutolinkRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "ctions/run"
@@ -15484,12 +14545,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleActionsCreateRegistrationTokenForRepoRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "ners/re"
@@ -15500,12 +14556,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleActionsCreateRemoveTokenForRepoRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'g': // Prefix: "gistration-token"
@@ -15569,13 +14620,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleActionsCancelWorkflowRunRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "approve"
@@ -15637,13 +14682,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleActionsRetryWorkflowRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'r': // Prefix: "run"
@@ -15729,13 +14768,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleReposRenameBranchRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "protection/"
@@ -15746,13 +14779,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposSetAdminBranchProtectionRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "enforce_admins"
@@ -15780,13 +14807,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReposAddStatusCheckContextsRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'q': // Prefix: "quired_s"
@@ -15797,13 +14818,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposCreateCommitSignatureProtectionRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'i': // Prefix: "ignatures"
@@ -15849,13 +14864,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposAddTeamAccessRestrictionsRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "apps"
@@ -15939,12 +14948,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleChecksCreateSuiteRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "heck-suites"
@@ -16010,12 +15014,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleCodeScanningUploadSarifRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'd': // Prefix: "de-scanning/sarifs"
@@ -16042,13 +15041,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposCreateCommitCommentRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "ents/"
@@ -16176,12 +15169,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleReposCreateDispatchEventRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "eployments"
@@ -16280,12 +15268,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleReposCreateUsingTemplateRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "enerate"
@@ -16312,12 +15295,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGitCreateCommitRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'b': // Prefix: "blobs"
@@ -16376,12 +15354,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGitCreateTreeRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "ags"
@@ -16463,14 +15436,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleReposRedeliverWebhookDeliveryRequest([4]string{
-											args[0],
-											args[1],
-											args[2],
-											args[3],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'd': // Prefix: "deliveries/"
@@ -16636,13 +15602,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleIssuesCreateCommentRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "assignees"
@@ -16739,12 +15699,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleReposMergeRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "erge"
@@ -16755,12 +15710,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleReposMergeUpstreamRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case '-': // Prefix: "-upstream"
@@ -16821,12 +15771,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handlePullsCreateRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ages"
@@ -16965,13 +15910,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handlePullsCreateReviewRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments"
@@ -17216,11 +16155,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleEnterpriseAdminProvisionAndInviteEnterpriseUserRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'G': // Prefix: "Groups"
@@ -17318,12 +16253,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleReactionsCreateForTeamDiscussionLegacyRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "comments"
@@ -17409,13 +16339,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handlePackagesRestorePackageForUserRequest([3]string{
-						args[0],
-						args[1],
-						args[2],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -17426,12 +16350,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handlePackagesRestorePackageForAuthenticatedUserRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "emails"
@@ -17494,9 +16413,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleProjectsCreateForAuthenticatedUserRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages/"
@@ -17547,13 +16464,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handlePackagesRestorePackageVersionForAuthenticatedUserRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'r': // Prefix: "restore"
@@ -17709,14 +16620,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handlePackagesRestorePackageVersionForUserRequest([4]string{
-										args[0],
-										args[1],
-										args[2],
-										args[3],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'r': // Prefix: "restore"
@@ -17795,13 +16699,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleActionsCreateOrUpdateEnvironmentSecretRequest([3]string{
-					args[0],
-					args[1],
-					args[2],
-				}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -17812,11 +16710,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest([1]string{
-						args[0],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp/installations/"
@@ -17930,12 +16824,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'p': // Prefix: "permissions"
@@ -17961,11 +16850,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleEnterpriseAdminSetAllowedActionsEnterpriseRequest([1]string{
-									args[0],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'o': // Prefix: "organizations"
@@ -18050,13 +16935,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseRequest([3]string{
-									args[0],
-									args[1],
-									args[2],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'o': // Prefix: "organizations"
@@ -18255,11 +17134,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleInteractionsSetRestrictionsForOrgRequest([1]string{
-							args[0],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "actions/"
@@ -18270,13 +17145,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleActionsAddSelectedRepoToOrgSecretRequest([3]string{
-								args[0],
-								args[1],
-								args[2],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'p': // Prefix: "permissions"
@@ -18302,11 +17171,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleActionsSetAllowedActionsOrganizationRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'r': // Prefix: "repositories"
@@ -18391,13 +17256,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleActionsAddSelfHostedRunnerToGroupForOrgRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "epositories"
@@ -18673,13 +17532,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTeamsAddOrUpdateProjectPermissionsInOrgRequest([3]string{
-									args[0],
-									args[1],
-									args[2],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'm': // Prefix: "memberships/"
@@ -18824,13 +17677,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleActionsCreateOrUpdateRepoSecretRequest([3]string{
-						args[0],
-						args[1],
-						args[2],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -18881,12 +17728,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleActivityMarkRepoNotificationsAsReadRequest([2]string{
-									args[0],
-									args[1],
-								}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "a"
@@ -18897,12 +17739,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleReposEnableAutomatedSecurityFixesRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "ctions/"
@@ -18913,12 +17750,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleActionsSetAllowedActionsRepositoryRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'p': // Prefix: "permissions"
@@ -19039,13 +17871,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleReposSetStatusCheckContextsRequest([3]string{
-												args[0],
-												args[1],
-												args[2],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'q': // Prefix: "quired_status_checks/contexts"
@@ -19073,13 +17899,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReposSetTeamAccessRestrictionsRequest([3]string{
-													args[0],
-													args[1],
-													args[2],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "apps"
@@ -19145,13 +17965,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleReposCreateOrUpdateFileContentsRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'l': // Prefix: "llaborators/"
@@ -19207,13 +18021,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleIssuesLockRequest([3]string{
-										args[0],
-										args[1],
-										args[2],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'm': // Prefix: "mport"
@@ -19347,13 +18155,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handlePullsMergeRequest([3]string{
-											args[0],
-											args[1],
-											args[2],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "merge"
@@ -19582,12 +18384,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'G': // Prefix: "Groups/"
@@ -19662,12 +18459,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleTeamsAddOrUpdateProjectPermissionsLegacyRequest([2]string{
-							args[0],
-							args[1],
-						}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'm': // Prefix: "members"
@@ -19678,12 +18470,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTeamsAddOrUpdateMembershipForUserLegacyRequest([2]string{
-								args[0],
-								args[1],
-							}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
@@ -19803,12 +18590,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleAppsAddRepoToInstallationRequest([2]string{
-						args[0],
-						args[1],
-					}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'b': // Prefix: "blocks/"
@@ -19859,9 +18641,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleInteractionsSetRestrictionsForAuthenticatedUserRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 's': // Prefix: "stallations/"
@@ -20012,10 +18792,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "ActionsDeleteOrgSecret"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -20026,10 +18803,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OAuthAuthorizationsDeleteAuthorization"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
@@ -20040,10 +18814,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "AppsDeleteInstallation"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/installations/"
@@ -20136,10 +18907,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "AppsDeleteToken"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'g': // Prefix: "grant"
@@ -20221,10 +18989,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprise"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'p': // Prefix: "permissions/organizations/"
@@ -20254,10 +19019,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterprise"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case '-': // Prefix: "-groups/"
@@ -20291,10 +19053,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterprise"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'o': // Prefix: "organizations/"
@@ -20390,10 +19149,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "GistsUnstar"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "comments/"
@@ -20508,10 +19264,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "InteractionsRemoveRestrictionsForOrg"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "actions/"
@@ -20522,10 +19275,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "ActionsDeleteSelfHostedRunnerFromOrg"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'p': // Prefix: "permissions/repositories/"
@@ -20555,10 +19305,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ActionsDeleteSelfHostedRunnerGroupFromOrg"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '-': // Prefix: "-groups/"
@@ -20592,10 +19339,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ActionsRemoveSelfHostedRunnerFromGroupForOrg"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "epositories/"
@@ -20767,10 +19511,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "OrgsCancelInvitation"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 't': // Prefix: "teraction-limits"
@@ -20815,10 +19556,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "OrgsRemoveMember"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "embers"
@@ -20829,10 +19567,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "OrgsRemoveMembershipForUser"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -20902,10 +19637,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "MigrationsUnlockRepoForOrg"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "archive"
@@ -20987,10 +19719,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "PackagesDeletePackageForOrg"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages/"
@@ -21108,10 +19837,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TeamsRemoveMembershipForUserInOrg"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'd': // Prefix: "discussions/"
@@ -21145,10 +19871,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReactionsDeleteForTeamDiscussionComment"
-										r.args = args
-										r.count = 3
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "comments/"
@@ -21316,10 +20039,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ProjectsDeleteColumn"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
@@ -21399,10 +20119,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "ReactionsDeleteLegacy"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "actions/"
@@ -21432,10 +20149,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ActionsDeleteEnvironmentSecret"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
@@ -21489,10 +20203,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ActivityDeleteRepoSubscription"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "a"
@@ -21503,10 +20214,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposDeleteAutolink"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "ctions/"
@@ -21517,10 +20225,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ActionsDeleteRepoSecret"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "artifacts/"
@@ -21550,10 +20255,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ActionsDeleteWorkflowRun"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'n': // Prefix: "ners/"
@@ -21642,10 +20344,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReposDisableAutomatedSecurityFixes"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'l': // Prefix: "links/"
@@ -21725,10 +20424,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposDeleteAdminBranchProtection"
-												r.args = args
-												r.count = 3
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "enforce_admins"
@@ -21753,10 +20449,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ReposDeleteCommitSignatureProtection"
-													r.args = args
-													r.count = 3
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'q': // Prefix: "quired_"
@@ -21767,10 +20460,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ReposDeletePullRequestReviewProtection"
-														r.args = args
-														r.count = 3
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'p': // Prefix: "pull_request_reviews"
@@ -21795,10 +20485,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ReposRemoveStatusCheckContexts"
-															r.args = args
-															r.count = 3
-															return r, true
+															break
 														}
 														switch elem[0] {
 														case 'i': // Prefix: "ignatures"
@@ -21868,10 +20555,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ReposRemoveTeamAccessRestrictions"
-															r.args = args
-															r.count = 3
-															return r, true
+															break
 														}
 														switch elem[0] {
 														case 'a': // Prefix: "apps"
@@ -21930,10 +20614,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReactionsDeleteForCommitComment"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'd': // Prefix: "de-scanning/analyses/"
@@ -22121,10 +20802,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "IssuesDeleteComment"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mport"
@@ -22149,10 +20827,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReposDeleteInvitation"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 't': // Prefix: "teraction-limits"
@@ -22197,10 +20872,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "IssuesRemoveAllLabels"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments/"
@@ -22268,10 +20940,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "IssuesRemoveAssignees"
-												r.args = args
-												r.count = 3
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "assignees"
@@ -22296,10 +20965,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "IssuesUnlock"
-													r.args = args
-													r.count = 3
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "abels"
@@ -22400,10 +21066,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposDisableLfsForRepo"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "abels/"
@@ -22467,10 +21130,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposDeletePagesSite"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "ages"
@@ -22563,10 +21223,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "PullsRemoveRequestedReviewers"
-												r.args = args
-												r.count = 3
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'q': // Prefix: "quested_reviewers"
@@ -22750,10 +21407,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "ScimDeleteUserFromOrg"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "enterprises/"
@@ -22784,10 +21438,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "EnterpriseAdminDeleteUserFromEnterprise"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'G': // Prefix: "Groups/"
@@ -22902,10 +21553,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "TeamsRemoveMemberLegacy"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'd': // Prefix: "discussions/"
@@ -22959,10 +21607,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TeamsRemoveMembershipForUserLegacy"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
@@ -23073,10 +21718,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "PackagesDeletePackageForUser"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -23087,10 +21729,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "AppsRemoveRepoFromInstallation"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'b': // Prefix: "blocks/"
@@ -23172,10 +21811,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "InteractionsRemoveRestrictionsForAuthenticatedUser"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 's': // Prefix: "stallations/"
@@ -23280,10 +21916,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "MigrationsUnlockRepoForAuthenticatedUser"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "archive"
@@ -23576,10 +22209,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OAuthAuthorizationsGetAuthorization"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
@@ -23604,10 +22234,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "AppsGetWebhookDelivery"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "config"
@@ -23790,10 +22417,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "BillingGetGithubActionsBillingGhe"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'm': // Prefix: "mojis"
@@ -23838,10 +22462,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "EnterpriseAdminGetAllowedActionsEnterprise"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "a"
@@ -23852,10 +22473,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "EnterpriseAdminGetAuditLog"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "ctions/"
@@ -23866,10 +22484,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "EnterpriseAdminGetSelfHostedRunnerForEnterprise"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "permissions"
@@ -23894,10 +22509,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterprise"
-											r.args = args
-											r.count = 1
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'o': // Prefix: "organizations"
@@ -23938,10 +22550,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "EnterpriseAdminGetSelfHostedRunnerGroupForEnterprise"
-										r.args = args
-										r.count = 1
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case '-': // Prefix: "-groups"
@@ -23989,10 +22598,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise"
-													r.args = args
-													r.count = 2
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'o': // Prefix: "organizations"
@@ -24104,10 +22710,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "BillingGetGithubPackagesBillingGhe"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "actions"
@@ -24192,10 +22795,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "GitignoreGetAllTemplates"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 's': // Prefix: "sts"
@@ -24276,10 +22876,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GistsGetComment"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "comm"
@@ -24290,10 +22887,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GistsListCommits"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ents"
@@ -24431,10 +23025,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "IssuesList"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'n': // Prefix: "nstallation/repositories"
@@ -24508,10 +23099,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "MetaGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "arketplace_listing/"
@@ -24522,10 +23110,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "AppsGetSubscriptionPlanForAccountStubbed"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "accounts/"
@@ -24605,10 +23190,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "AppsListAccountsForPlanStubbed"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "accounts/"
@@ -24705,10 +23287,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "ActivityListPublicEventsForRepoNetwork"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "etworks/"
@@ -24829,10 +23408,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OrgsList"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "anizations"
@@ -24880,10 +23456,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "ActivityListPublicOrgEvents"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "a"
@@ -24894,10 +23467,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "OrgsGetAuditLog"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "ctions/"
@@ -24908,10 +23478,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ActionsGetOrgPublicKey"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "permissions"
@@ -24936,10 +23503,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ActionsListSelectedRepositoriesEnabledGithubActionsOrganization"
-											r.args = args
-											r.count = 1
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'r': // Prefix: "repositories"
@@ -24980,10 +23544,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ActionsGetSelfHostedRunnerGroupForOrg"
-										r.args = args
-										r.count = 1
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case '-': // Prefix: "-groups"
@@ -25031,10 +23592,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ActionsListSelfHostedRunnersInGroupForOrg"
-													r.args = args
-													r.count = 2
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "epositories"
@@ -25144,10 +23702,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ActionsGetOrgSecret"
-											r.args = args
-											r.count = 1
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'p': // Prefix: "public-key"
@@ -25334,10 +23889,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "OrgsGetWebhookDelivery"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "config"
@@ -25399,10 +23951,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "OrgsListInvitationTeams"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nvitations"
@@ -25478,10 +24027,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "OrgsCheckMembershipForUser"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "embers"
@@ -25582,10 +24128,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "MigrationsListReposForOrg"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "archive"
@@ -25642,10 +24185,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "PackagesGetAllPackageVersionsForPackageOwnedByOrg"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ackages"
@@ -25813,10 +24353,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SecretScanningListAlertsForOrg"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "cret-scanning/alerts"
@@ -25841,10 +24378,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "BillingGetGithubPackagesBillingOrg"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "actions"
@@ -25899,10 +24433,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TeamsListIdpGroupsForOrg"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '-': // Prefix: "-sync/groups"
@@ -25964,10 +24495,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TeamsCheckPermissionsForProjectInOrg"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "discussions"
@@ -26015,10 +24543,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ReactionsListForTeamDiscussionInOrg"
-														r.args = args
-														r.count = 3
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'c': // Prefix: "comments"
@@ -26236,10 +24761,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TeamsListIdpGroupsInOrg"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case '-': // Prefix: "-sync/group-mappings"
@@ -26297,10 +24819,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ProjectsGetColumn"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
@@ -26379,10 +24898,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ProjectsListColumns"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'l': // Prefix: "laborators"
@@ -26459,10 +24975,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "RateLimitGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'a': // Prefix: "ate_limit"
@@ -26487,10 +25000,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ActionsGetEnvironmentPublicKey"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
@@ -26544,10 +25054,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ActivityGetRepoSubscription"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "a"
@@ -26558,10 +25065,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "IssuesCheckUserCanBeAssigned"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "ctions/"
@@ -26572,10 +25076,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ActionsDownloadJobLogsForWorkflowRun"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "artifacts"
@@ -26711,10 +25212,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ActionsGetSelfHostedRunnerForRepo"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'n': // Prefix: "ners"
@@ -26815,10 +25313,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ActionsGetReviewsForRun"
-															r.args = args
-															r.count = 3
-															return r, true
+															break
 														}
 														switch elem[0] {
 														case 'a': // Prefix: "a"
@@ -26829,10 +25324,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																r.name = "ActionsListWorkflowRunArtifacts"
-																r.args = args
-																r.count = 3
-																return r, true
+																break
 															}
 															switch elem[0] {
 															case 'p': // Prefix: "pprovals"
@@ -26932,10 +25424,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ActionsGetRepoSecret"
-													r.args = args
-													r.count = 2
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'p': // Prefix: "public-key"
@@ -27109,10 +25598,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ReposGetAdminBranchProtection"
-													r.args = args
-													r.count = 3
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "enforce_admins"
@@ -27137,10 +25623,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ReposGetAllStatusCheckContexts"
-														r.args = args
-														r.count = 3
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'q': // Prefix: "quired_"
@@ -27151,10 +25634,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ReposGetPullRequestReviewProtection"
-															r.args = args
-															r.count = 3
-															return r, true
+															break
 														}
 														switch elem[0] {
 														case 'p': // Prefix: "pull_request_reviews"
@@ -27179,10 +25659,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																r.name = "ReposGetCommitSignatureProtection"
-																r.args = args
-																r.count = 3
-																return r, true
+																break
 															}
 															switch elem[0] {
 															case 'i': // Prefix: "ignatures"
@@ -27252,10 +25729,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																r.name = "ReposGetTeamsWithAccessToProtectedBranch"
-																r.args = args
-																r.count = 3
-																return r, true
+																break
 															}
 															switch elem[0] {
 															case 'a': // Prefix: "apps"
@@ -27315,10 +25789,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ChecksListForRef"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'h': // Prefix: "heck-"
@@ -27329,10 +25800,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ChecksGetSuite"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'r': // Prefix: "runs/"
@@ -27420,10 +25888,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "CodeScanningGetAlert"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "de-scanning/"
@@ -27434,10 +25899,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "CodeScanningGetSarif"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "a"
@@ -27448,10 +25910,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "CodeScanningGetAnalysis"
-													r.args = args
-													r.count = 2
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'l': // Prefix: "lerts"
@@ -27623,10 +26082,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposCompareCommits"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'm': // Prefix: "m"
@@ -27637,10 +26093,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ReactionsListForCommitComment"
-													r.args = args
-													r.count = 2
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "ents"
@@ -27741,10 +26194,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																r.name = "ReposGetCombinedStatusForRef"
-																r.args = args
-																r.count = 3
-																return r, true
+																break
 															}
 															switch elem[0] {
 															case 'b': // Prefix: "branches-where-head"
@@ -27769,10 +26219,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																}
 
 																if len(elem) == 0 {
-																	r.name = "ReposListCommentsForCommit"
-																	r.args = args
-																	r.count = 3
-																	return r, true
+																	break
 																}
 																switch elem[0] {
 																case 'h': // Prefix: "heck-"
@@ -27783,10 +26230,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 																	}
 
 																	if len(elem) == 0 {
-																		r.name = "ChecksListSuitesForRef"
-																		r.args = args
-																		r.count = 3
-																		return r, true
+																		break
 																	}
 																	switch elem[0] {
 																	case 'r': // Prefix: "runs"
@@ -28039,10 +26483,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GitGetCommit"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'b': // Prefix: "blobs/"
@@ -28129,10 +26570,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "GitGetTree"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "ags/"
@@ -28220,10 +26658,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposGetWebhookDelivery"
-												r.args = args
-												r.count = 3
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "config"
@@ -28285,10 +26720,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "MigrationsGetCommitAuthors"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mport"
@@ -28313,10 +26745,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "MigrationsGetLargeFiles"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "authors"
@@ -28500,10 +26929,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "IssuesListLabelsOnIssue"
-													r.args = args
-													r.count = 3
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "comments"
@@ -28594,10 +27020,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "LicensesGetForRepo"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "a"
@@ -28608,10 +27031,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReposListLanguages"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'b': // Prefix: "bels"
@@ -28753,10 +27173,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "PullsCheckIfMerged"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "ages"
@@ -28781,10 +27198,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposGetPagesHealthCheck"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'b': // Prefix: "builds"
@@ -28809,10 +27223,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ReposGetPagesBuild"
-														r.args = args
-														r.count = 2
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'l': // Prefix: "latest"
@@ -28976,10 +27387,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "PullsGetReview"
-													r.args = args
-													r.count = 3
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "comm"
@@ -28990,10 +27398,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "PullsListReviewComments"
-														r.args = args
-														r.count = 3
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'e': // Prefix: "ents"
@@ -29061,10 +27466,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "PullsListRequestedReviewers"
-														r.args = args
-														r.count = 3
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'q': // Prefix: "quested_reviewers"
@@ -29147,10 +27549,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposGetReadme"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "adme"
@@ -29209,10 +27608,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposGetRelease"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "assets/"
@@ -29309,10 +27705,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposGetCodeFrequencyStats"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "ecret-scanning/alerts"
@@ -29357,10 +27750,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReposGetParticipationStats"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "co"
@@ -29371,10 +27761,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposGetCommitActivityStats"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'd': // Prefix: "de_frequency"
@@ -29428,10 +27815,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposGetPunchCardStats"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "articipation"
@@ -29472,10 +27856,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ActivityListWatchersForRepo"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'b': // Prefix: "bers"
@@ -29516,10 +27897,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposGetAllTopics"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "a"
@@ -29530,10 +27908,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReposListTags"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'g': // Prefix: "gs"
@@ -29606,10 +27981,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReposGetTopPaths"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "clones"
@@ -29634,10 +28006,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposGetTopReferrers"
-												r.args = args
-												r.count = 2
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'p': // Prefix: "paths"
@@ -29797,10 +28166,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ActionsGetEnvironmentSecret"
-											r.args = args
-											r.count = 2
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'p': // Prefix: "public-key"
@@ -29844,10 +28210,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "SearchCode"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "cim/v2/enterprises/"
@@ -29878,10 +28241,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "EnterpriseAdminGetProvisioningInformationForEnterpriseUser"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'G': // Prefix: "Groups"
@@ -29962,10 +28322,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "SearchIssuesAndPullRequests"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "co"
@@ -29976,10 +28333,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "SearchCommits"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'd': // Prefix: "de"
@@ -30114,10 +28468,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "TeamsCheckPermissionsForProjectLegacy"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'd': // Prefix: "discussions"
@@ -30165,10 +28516,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ReactionsListForTeamDiscussionLegacy"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "comments"
@@ -30405,10 +28753,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TeamsListIdpGroupsForLegacy"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case '-': // Prefix: "-sync/group-mappings"
@@ -30464,10 +28809,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "AppsListInstallationReposForAuthenticatedUser"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'b': // Prefix: "blocks"
@@ -30526,10 +28868,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "UsersListFollowersForAuthenticatedUser"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "ers"
@@ -30623,10 +28962,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "IssuesListForAuthenticatedUser"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'n': // Prefix: "nstallations/"
@@ -30721,10 +29057,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "MigrationsGetArchiveForAuthenticatedUser"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "arketplace_purchases"
@@ -30835,10 +29168,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "MigrationsListReposForUser"
-										r.args = args
-										r.count = 1
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "archive"
@@ -30895,10 +29225,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "UsersListPublicEmailsForAuthenticated"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages"
@@ -31047,10 +29374,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "ActivityListWatchedReposForAuthenticatedUser"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 't': // Prefix: "tarred"
@@ -31183,10 +29507,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ActivityListReceivedEventsForUser"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "events"
@@ -31211,10 +29532,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ActivityListPublicEventsForUser"
-										r.args = args
-										r.count = 1
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'o': // Prefix: "orgs/"
@@ -31260,10 +29578,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "UsersListFollowersForUser"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ers"
@@ -31323,10 +29638,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "UsersListGpgKeysForUser"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'i': // Prefix: "ists"
@@ -31408,10 +29720,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ProjectsListForUser"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "ackages"
@@ -31531,10 +29840,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ReposListForUser"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "ceived_events"
@@ -31589,10 +29895,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "BillingGetGithubActionsBillingUser"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ettings/billing/"
@@ -31603,10 +29906,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "BillingGetGithubPackagesBillingUser"
-										r.args = args
-										r.count = 1
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "actions"
@@ -31686,10 +29986,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "ActivityMarkThreadAsRead"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -31700,10 +29997,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OAuthAuthorizationsUpdateAuthorization"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
@@ -31714,10 +30008,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "AppsUpdateWebhookConfigForApp"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/hook/config"
@@ -31917,10 +30208,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "OrgsUpdateWebhook"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "actions/runner-groups/"
@@ -32011,10 +30299,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TeamsUpdateDiscussionCommentInOrg"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'd': // Prefix: "discussions/"
@@ -32097,10 +30382,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ProjectsUpdateColumn"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
@@ -32199,10 +30481,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GitUpdateRef"
-							r.args = args
-							r.count = 2
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'b': // Prefix: "branches/"
@@ -32233,10 +30512,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ReposUpdateStatusCheckProtection"
-									r.args = args
-									r.count = 3
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "pull_request_reviews"
@@ -32277,10 +30553,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "CodeScanningUpdateAlert"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "heck-suites/preferences"
@@ -32305,10 +30578,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ReposUpdateCommitComment"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'd': // Prefix: "de-scanning/alerts/"
@@ -32416,10 +30686,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "MigrationsMapCommitAuthor"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'm': // Prefix: "mport"
@@ -32444,10 +30711,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "MigrationsSetLfsPreference"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "authors/"
@@ -32722,10 +30986,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "EnterpriseAdminUpdateAttributeForEnterpriseUser"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'G': // Prefix: "Groups/"
@@ -32799,10 +31060,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "TeamsUpdateDiscussionCommentLegacy"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'd': // Prefix: "discussions/"
@@ -32886,10 +31144,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ReposAcceptInvitation"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "email/visibility"
@@ -32961,10 +31216,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "ActionsCreateRegistrationTokenForOrg"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -32975,10 +31227,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OAuthAuthorizationsCreateAuthorization"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp"
@@ -32989,10 +31238,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "AppsCreateInstallationAccessToken"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case '/': // Prefix: "/"
@@ -33003,10 +31249,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "AppsRedeliverWebhookDelivery"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'h': // Prefix: "hook/deliveries/"
@@ -33174,10 +31417,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case '-': // Prefix: "-groups"
@@ -33202,10 +31442,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "EnterpriseAdminCreateRemoveTokenForEnterprise"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'g': // Prefix: "gistration-token"
@@ -33281,10 +31518,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GistsFork"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "comments"
@@ -33346,10 +31580,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "MigrationsStartForOrg"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "actions/runner"
@@ -33360,10 +31591,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "ActionsCreateSelfHostedRunnerGroupForOrg"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case '-': // Prefix: "-groups"
@@ -33388,10 +31616,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ActionsCreateRemoveTokenForOrg"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'g': // Prefix: "gistration-token"
@@ -33466,10 +31691,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "OrgsRedeliverWebhookDelivery"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'd': // Prefix: "deliveries/"
@@ -33560,10 +31782,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "ProjectsCreateForOrg"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages/"
@@ -33614,10 +31833,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "PackagesRestorePackageVersionForOrg"
-										r.args = args
-										r.count = 3
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'r': // Prefix: "restore"
@@ -33777,10 +31993,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReactionsCreateForTeamDiscussionInOrg"
-											r.args = args
-											r.count = 3
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments"
@@ -33873,10 +32086,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "ProjectsMoveColumn"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'c': // Prefix: "cards/"
@@ -34020,10 +32230,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "AppsCreateContentAttachment"
-							r.args = args
-							r.count = 2
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "a"
@@ -34034,10 +32241,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ReposCreateAutolink"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "ctions/run"
@@ -34048,10 +32252,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ActionsCreateRegistrationTokenForRepo"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "ners/re"
@@ -34062,10 +32263,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ActionsCreateRemoveTokenForRepo"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'g': // Prefix: "gistration-token"
@@ -34125,10 +32323,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ActionsCancelWorkflowRun"
-											r.args = args
-											r.count = 3
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "approve"
@@ -34181,10 +32376,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ActionsRetryWorkflow"
-												r.args = args
-												r.count = 3
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'r': // Prefix: "run"
@@ -34262,10 +32454,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ReposRenameBranch"
-									r.args = args
-									r.count = 3
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "protection/"
@@ -34276,10 +32465,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposSetAdminBranchProtection"
-										r.args = args
-										r.count = 3
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "enforce_admins"
@@ -34304,10 +32490,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReposAddStatusCheckContexts"
-											r.args = args
-											r.count = 3
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'q': // Prefix: "quired_s"
@@ -34318,10 +32501,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposCreateCommitSignatureProtection"
-												r.args = args
-												r.count = 3
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'i': // Prefix: "ignatures"
@@ -34361,10 +32541,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposAddTeamAccessRestrictions"
-												r.args = args
-												r.count = 3
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "apps"
@@ -34436,10 +32613,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ChecksCreateSuite"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "heck-suites"
@@ -34500,10 +32674,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "CodeScanningUploadSarif"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'd': // Prefix: "de-scanning/sarifs"
@@ -34528,10 +32699,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposCreateCommitComment"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "ents/"
@@ -34650,10 +32818,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ReposCreateDispatchEvent"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "eployments"
@@ -34743,10 +32908,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ReposCreateUsingTemplate"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "enerate"
@@ -34771,10 +32933,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GitCreateCommit"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'b': // Prefix: "blobs"
@@ -34827,10 +32986,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GitCreateTree"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "ags"
@@ -34906,10 +33062,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ReposRedeliverWebhookDelivery"
-										r.args = args
-										r.count = 3
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'd': // Prefix: "deliveries/"
@@ -35060,10 +33213,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "IssuesCreateComment"
-										r.args = args
-										r.count = 3
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "assignees"
@@ -35147,10 +33297,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ReposMerge"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "erge"
@@ -35161,10 +33308,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ReposMergeUpstream"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case '-': // Prefix: "-upstream"
@@ -35219,10 +33363,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "PullsCreate"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ages"
@@ -35350,10 +33491,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "PullsCreateReview"
-											r.args = args
-											r.count = 3
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "comments"
@@ -35574,10 +33712,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "EnterpriseAdminProvisionAndInviteEnterpriseUser"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'G': // Prefix: "Groups"
@@ -35672,10 +33807,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ReactionsCreateForTeamDiscussionLegacy"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "comments"
@@ -35754,10 +33886,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "PackagesRestorePackageForUser"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -35768,10 +33897,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "PackagesRestorePackageForAuthenticatedUser"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "emails"
@@ -35838,10 +33964,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "ProjectsCreateForAuthenticatedUser"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "ackages/"
@@ -35892,10 +34015,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "PackagesRestorePackageVersionForAuthenticatedUser"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'r': // Prefix: "restore"
@@ -36048,10 +34168,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "PackagesRestorePackageVersionForUser"
-									r.args = args
-									r.count = 3
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'r': // Prefix: "restore"
@@ -36123,10 +34240,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "ActionsCreateOrUpdateEnvironmentSecret"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -36137,10 +34251,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OAuthAuthorizationsGetOrCreateAuthorizationForApp"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "pp/installations/"
@@ -36250,10 +34361,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterprise"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'p': // Prefix: "permissions"
@@ -36278,10 +34386,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "EnterpriseAdminSetAllowedActionsEnterprise"
-								r.args = args
-								r.count = 1
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'o': // Prefix: "organizations"
@@ -36362,10 +34467,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "EnterpriseAdminAddSelfHostedRunnerToGroupForEnterprise"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'o': // Prefix: "organizations"
@@ -36553,10 +34655,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "InteractionsSetRestrictionsForOrg"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "actions/"
@@ -36567,10 +34666,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "ActionsAddSelectedRepoToOrgSecret"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'p': // Prefix: "permissions"
@@ -36595,10 +34691,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ActionsSetAllowedActionsOrganization"
-									r.args = args
-									r.count = 1
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'r': // Prefix: "repositories"
@@ -36679,10 +34772,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ActionsAddSelfHostedRunnerToGroupForOrg"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "epositories"
@@ -36932,10 +35022,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TeamsAddOrUpdateProjectPermissionsInOrg"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'm': // Prefix: "memberships/"
@@ -37068,10 +35155,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "ActionsCreateOrUpdateRepoSecret"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -37122,10 +35206,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ActivityMarkRepoNotificationsAsRead"
-								r.args = args
-								r.count = 2
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "a"
@@ -37136,10 +35217,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ReposEnableAutomatedSecurityFixes"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "ctions/"
@@ -37150,10 +35228,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ActionsSetAllowedActionsRepository"
-										r.args = args
-										r.count = 2
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'p': // Prefix: "permissions"
@@ -37262,10 +35337,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ReposSetStatusCheckContexts"
-											r.args = args
-											r.count = 3
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'q': // Prefix: "quired_status_checks/contexts"
@@ -37290,10 +35362,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReposSetTeamAccessRestrictions"
-												r.args = args
-												r.count = 3
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "apps"
@@ -37350,10 +35419,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ReposCreateOrUpdateFileContents"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'l': // Prefix: "llaborators/"
@@ -37403,10 +35469,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "IssuesLock"
-									r.args = args
-									r.count = 2
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'm': // Prefix: "mport"
@@ -37529,10 +35592,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "PullsMerge"
-										r.args = args
-										r.count = 3
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "merge"
@@ -37738,10 +35798,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "EnterpriseAdminSetInformationForProvisionedEnterpriseUser"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'G': // Prefix: "Groups/"
@@ -37812,10 +35869,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "TeamsAddOrUpdateProjectPermissionsLegacy"
-						r.args = args
-						r.count = 1
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'm': // Prefix: "members"
@@ -37826,10 +35880,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TeamsAddOrUpdateMembershipForUserLegacy"
-							r.args = args
-							r.count = 1
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case '/': // Prefix: "/"
@@ -37940,10 +35991,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "AppsAddRepoToInstallation"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'b': // Prefix: "blocks/"
@@ -37992,10 +36040,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "InteractionsSetRestrictionsForAuthenticatedUser"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 's': // Prefix: "stallations/"

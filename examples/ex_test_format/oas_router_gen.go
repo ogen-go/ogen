@@ -33,9 +33,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleTestResponseAnyRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'q': // Prefix: "quest_"
@@ -46,9 +44,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleTestRequestBooleanRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'A': // Prefix: "Any"
@@ -111,9 +107,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTestRequestBooleanNullableRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -207,9 +201,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTestRequestIntegerInt32Request([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -247,9 +239,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestIntegerInt64Request([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '3': // Prefix: "32"
@@ -273,9 +263,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestIntegerInt32NullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -369,9 +357,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestIntegerInt64NullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -496,9 +482,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleTestRequestNumberRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'l': // Prefix: "ll"
@@ -522,9 +506,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestNullNullableRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -618,9 +600,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestNumberDoubleRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -671,9 +651,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestNumberDoubleNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -767,9 +745,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestNumberFloatNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -850,9 +826,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestNumberInt64Request([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -876,9 +850,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestNumberInt32NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -972,9 +944,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestNumberInt64NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -1100,9 +1070,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleTestRequestRequiredBooleanRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'A': // Prefix: "Any"
@@ -1165,9 +1133,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestRequiredBooleanNullableRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -1261,9 +1227,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestRequiredIntegerInt32Request([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -1301,9 +1265,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestRequiredIntegerInt64Request([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -1327,9 +1289,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredIntegerInt32NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -1423,9 +1383,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredIntegerInt64NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -1550,9 +1508,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTestRequestRequiredNumberRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'l': // Prefix: "ll"
@@ -1576,9 +1532,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestRequiredNullNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -1672,9 +1626,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestRequiredNumberDoubleRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -1725,9 +1677,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredNumberDoubleNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -1821,9 +1771,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredNumberFloatNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -1904,9 +1852,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestRequiredNumberInt64Request([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case '3': // Prefix: "32"
@@ -1930,9 +1876,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestRequiredNumberInt32NullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -2026,9 +1970,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestRequiredNumberInt64NullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -2167,9 +2109,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestRequiredStringBinaryRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -2207,9 +2147,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestRequiredStringByteRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'i': // Prefix: "inary"
@@ -2233,9 +2171,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringBinaryNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -2329,9 +2265,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringByteNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -2413,9 +2347,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestRequiredStringDurationRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "ate"
@@ -2452,9 +2384,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestRequiredStringDateTimeNullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -2535,9 +2465,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringDateNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -2631,9 +2559,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringDurationNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -2728,9 +2654,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestRequiredStringEmailNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -2824,9 +2748,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestRequiredStringHostnameNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -2907,9 +2829,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestRequiredStringInt32Request([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "nt"
@@ -2920,9 +2840,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestRequiredStringInt64Request([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case '3': // Prefix: "32"
@@ -2946,9 +2864,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestRequiredStringInt32NullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -3042,9 +2958,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestRequiredStringInt64NullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -3139,9 +3053,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringIPNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -3221,9 +3133,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringIpv6Request([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case '4': // Prefix: "4"
@@ -3247,9 +3157,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleTestRequestRequiredStringIpv4NullableRequest([0]string{}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -3343,9 +3251,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleTestRequestRequiredStringIpv6NullableRequest([0]string{}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -3483,9 +3389,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestRequiredStringPasswordNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -3579,9 +3483,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestRequiredStringTimeNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -3662,9 +3564,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestRequiredStringUUIDRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "nix"
@@ -3688,9 +3588,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringUnixNanoRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'm': // Prefix: "mi"
@@ -3701,9 +3599,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestRequiredStringUnixMilliRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "cro"
@@ -3727,9 +3623,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleTestRequestRequiredStringUnixMicroNullableRequest([0]string{}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "array"
@@ -3823,9 +3717,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleTestRequestRequiredStringUnixMilliNullableRequest([0]string{}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "array"
@@ -3920,9 +3812,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleTestRequestRequiredStringUnixNanoNullableRequest([0]string{}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -4016,9 +3906,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleTestRequestRequiredStringUnixSecondsNullableRequest([0]string{}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -4100,9 +3988,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringUnixNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -4196,9 +4082,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringURINullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -4292,9 +4176,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestRequiredStringUUIDNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -4392,9 +4274,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTestRequestStringBinaryRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -4432,9 +4312,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestStringByteRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'i': // Prefix: "inary"
@@ -4458,9 +4336,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringBinaryNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -4554,9 +4430,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringByteNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -4638,9 +4512,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestStringDurationRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ate"
@@ -4677,9 +4549,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestStringDateTimeNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -4760,9 +4630,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringDateNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -4856,9 +4724,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringDurationNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -4953,9 +4819,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestStringEmailNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -5049,9 +4913,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestStringHostnameNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -5132,9 +4994,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestStringInt32Request([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nt"
@@ -5145,9 +5005,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestStringInt64Request([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -5171,9 +5029,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestStringInt32NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -5267,9 +5123,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestStringInt64NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -5364,9 +5218,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringIPNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -5446,9 +5298,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringIpv6Request([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case '4': // Prefix: "4"
@@ -5472,9 +5322,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestStringIpv4NullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -5568,9 +5416,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestStringIpv6NullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -5708,9 +5554,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestStringPasswordNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -5804,9 +5648,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestRequestStringTimeNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -5887,9 +5729,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestRequestStringUUIDRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nix"
@@ -5913,9 +5753,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringUnixNanoRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mi"
@@ -5926,9 +5764,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestRequestStringUnixMilliRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "cro"
@@ -5952,9 +5788,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleTestRequestStringUnixMicroNullableRequest([0]string{}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -6048,9 +5882,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleTestRequestStringUnixMilliNullableRequest([0]string{}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -6145,9 +5977,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestStringUnixNanoNullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -6241,9 +6071,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestRequestStringUnixSecondsNullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -6325,9 +6153,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringUnixNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -6421,9 +6247,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringURINullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -6517,9 +6341,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestRequestStringUUIDNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -6604,9 +6426,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleTestResponseBooleanRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'A': // Prefix: "Any"
@@ -6669,9 +6489,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTestResponseBooleanNullableRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -6765,9 +6583,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTestResponseIntegerInt32Request([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -6805,9 +6621,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestResponseIntegerInt64Request([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '3': // Prefix: "32"
@@ -6831,9 +6645,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseIntegerInt32NullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -6927,9 +6739,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseIntegerInt64NullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -7054,9 +6864,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleTestResponseNumberRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'l': // Prefix: "ll"
@@ -7080,9 +6888,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestResponseNullNullableRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -7176,9 +6982,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestResponseNumberDoubleRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -7229,9 +7033,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseNumberDoubleNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -7325,9 +7127,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseNumberFloatNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -7408,9 +7208,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestResponseNumberInt64Request([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -7434,9 +7232,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestResponseNumberInt32NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -7530,9 +7326,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestResponseNumberInt64NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -7671,9 +7465,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleTestResponseStringBinaryRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -7711,9 +7503,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestResponseStringByteRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'i': // Prefix: "inary"
@@ -7737,9 +7527,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringBinaryNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -7833,9 +7621,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringByteNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -7917,9 +7703,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestResponseStringDurationRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ate"
@@ -7956,9 +7740,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestResponseStringDateTimeNullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -8039,9 +7821,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringDateNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -8135,9 +7915,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringDurationNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -8232,9 +8010,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestResponseStringEmailNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -8328,9 +8104,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestResponseStringHostnameNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -8411,9 +8185,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestResponseStringInt32Request([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nt"
@@ -8424,9 +8196,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestResponseStringInt64Request([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -8450,9 +8220,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestResponseStringInt32NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -8546,9 +8314,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestResponseStringInt64NullableRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -8643,9 +8409,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringIPNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -8725,9 +8489,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringIpv6Request([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case '4': // Prefix: "4"
@@ -8751,9 +8513,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestResponseStringIpv4NullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -8847,9 +8607,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestResponseStringIpv6NullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -8987,9 +8745,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestResponseStringPasswordNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -9083,9 +8839,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleTestResponseStringTimeNullableRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -9166,9 +8920,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleTestResponseStringUUIDRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nix"
@@ -9192,9 +8944,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringUnixNanoRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mi"
@@ -9205,9 +8955,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleTestResponseStringUnixMilliRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "cro"
@@ -9231,9 +8979,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleTestResponseStringUnixMicroNullableRequest([0]string{}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -9327,9 +9073,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleTestResponseStringUnixMilliNullableRequest([0]string{}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -9424,9 +9168,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestResponseStringUnixNanoNullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -9520,9 +9262,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleTestResponseStringUnixSecondsNullableRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -9604,9 +9344,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringUnixNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -9700,9 +9438,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringURINullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -9796,9 +9532,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleTestResponseStringUUIDNullableRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -9924,10 +9658,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "TestResponseAny"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'q': // Prefix: "quest_"
@@ -9938,10 +9669,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "TestRequestBoolean"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'A': // Prefix: "Any"
@@ -10008,10 +9736,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestRequestBooleanNullable"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -10111,10 +9836,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestRequestIntegerInt32"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -10154,10 +9876,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestIntegerInt64"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '3': // Prefix: "32"
@@ -10182,10 +9901,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestIntegerInt32Nullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -10285,10 +10001,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestIntegerInt64Nullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -10421,10 +10134,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "TestRequestNumber"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'l': // Prefix: "ll"
@@ -10449,10 +10159,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestNullNullable"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -10552,10 +10259,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestNumberDouble"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -10609,10 +10313,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestNumberDoubleNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -10712,10 +10413,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestNumberFloatNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -10801,10 +10499,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestNumberInt64"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -10829,10 +10524,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestNumberInt32Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -10932,10 +10624,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestNumberInt64Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -11069,10 +10758,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "TestRequestRequiredBoolean"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'A': // Prefix: "Any"
@@ -11139,10 +10825,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestRequiredBooleanNullable"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -11242,10 +10925,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestRequiredIntegerInt32"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -11285,10 +10965,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestRequiredIntegerInt64"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -11313,10 +10990,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredIntegerInt32Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -11416,10 +11090,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredIntegerInt64Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -11552,10 +11223,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestRequestRequiredNumber"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'l': // Prefix: "ll"
@@ -11580,10 +11248,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestRequiredNullNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -11683,10 +11348,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestRequiredNumberDouble"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -11740,10 +11402,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredNumberDoubleNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -11843,10 +11502,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredNumberFloatNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -11932,10 +11588,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestRequiredNumberInt64"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case '3': // Prefix: "32"
@@ -11960,10 +11613,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestRequiredNumberInt32Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -12063,10 +11713,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestRequiredNumberInt64Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -12214,10 +11861,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestRequiredStringBinary"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -12257,10 +11901,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestRequiredStringByte"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'i': // Prefix: "inary"
@@ -12285,10 +11926,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringBinaryNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -12388,10 +12026,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringByteNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -12478,10 +12113,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestRequiredStringDuration"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "ate"
@@ -12520,10 +12152,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestRequiredStringDateTimeNullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -12609,10 +12238,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringDateNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -12712,10 +12338,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringDurationNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -12816,10 +12439,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestRequiredStringEmailNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -12919,10 +12539,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestRequiredStringHostnameNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -13008,10 +12625,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestRequiredStringInt32"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "nt"
@@ -13022,10 +12636,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestRequiredStringInt64"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case '3': // Prefix: "32"
@@ -13050,10 +12661,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestRequiredStringInt32Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -13153,10 +12761,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestRequiredStringInt64Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -13257,10 +12862,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringIPNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -13345,10 +12947,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringIpv6"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case '4': // Prefix: "4"
@@ -13373,10 +12972,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "TestRequestRequiredStringIpv4Nullable"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -13476,10 +13072,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "TestRequestRequiredStringIpv6Nullable"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -13626,10 +13219,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestRequiredStringPasswordNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -13729,10 +13319,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestRequiredStringTimeNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -13818,10 +13405,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestRequiredStringUUID"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "nix"
@@ -13846,10 +13430,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringUnixNano"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'm': // Prefix: "mi"
@@ -13860,10 +13441,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestRequiredStringUnixMilli"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "cro"
@@ -13888,10 +13466,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "TestRequestRequiredStringUnixMicroNullable"
-														r.args = args
-														r.count = 0
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "array"
@@ -13991,10 +13566,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "TestRequestRequiredStringUnixMilliNullable"
-														r.args = args
-														r.count = 0
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "array"
@@ -14095,10 +13667,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "TestRequestRequiredStringUnixNanoNullable"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -14198,10 +13767,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "TestRequestRequiredStringUnixSecondsNullable"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -14288,10 +13854,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringUnixNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -14391,10 +13954,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringURINullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -14494,10 +14054,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestRequiredStringUUIDNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -14601,10 +14158,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestRequestStringBinary"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -14644,10 +14198,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestStringByte"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'i': // Prefix: "inary"
@@ -14672,10 +14223,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringBinaryNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -14775,10 +14323,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringByteNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -14865,10 +14410,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestStringDuration"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ate"
@@ -14907,10 +14449,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestStringDateTimeNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -14996,10 +14535,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringDateNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -15099,10 +14635,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringDurationNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -15203,10 +14736,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestStringEmailNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -15306,10 +14836,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestStringHostnameNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -15395,10 +14922,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestStringInt32"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nt"
@@ -15409,10 +14933,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestStringInt64"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -15437,10 +14958,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestStringInt32Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -15540,10 +15058,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestStringInt64Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -15644,10 +15159,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringIPNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -15732,10 +15244,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringIpv6"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case '4': // Prefix: "4"
@@ -15760,10 +15269,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestStringIpv4Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -15863,10 +15369,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestStringIpv6Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -16013,10 +15516,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestStringPasswordNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -16116,10 +15616,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestRequestStringTimeNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -16205,10 +15702,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestRequestStringUUID"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nix"
@@ -16233,10 +15727,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringUnixNano"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mi"
@@ -16247,10 +15738,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestRequestStringUnixMilli"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "cro"
@@ -16275,10 +15763,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "TestRequestStringUnixMicroNullable"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -16378,10 +15863,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "TestRequestStringUnixMilliNullable"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -16482,10 +15964,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestStringUnixNanoNullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -16585,10 +16064,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestRequestStringUnixSecondsNullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -16675,10 +16151,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringUnixNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -16778,10 +16251,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringURINullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -16881,10 +16351,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestRequestStringUUIDNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -16974,10 +16441,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "TestResponseBoolean"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'A': // Prefix: "Any"
@@ -17044,10 +16508,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestResponseBooleanNullable"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -17147,10 +16608,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestResponseIntegerInt32"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -17190,10 +16648,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestResponseIntegerInt64"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '3': // Prefix: "32"
@@ -17218,10 +16673,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseIntegerInt32Nullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -17321,10 +16773,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseIntegerInt64Nullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -17457,10 +16906,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "TestResponseNumber"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'l': // Prefix: "ll"
@@ -17485,10 +16931,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestResponseNullNullable"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -17588,10 +17031,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestResponseNumberDouble"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "array"
@@ -17645,10 +17085,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseNumberDoubleNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -17748,10 +17185,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseNumberFloatNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -17837,10 +17271,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestResponseNumberInt64"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -17865,10 +17296,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestResponseNumberInt32Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -17968,10 +17396,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestResponseNumberInt64Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -18119,10 +17544,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "TestResponseStringBinary"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'a': // Prefix: "array"
@@ -18162,10 +17584,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestResponseStringByte"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'i': // Prefix: "inary"
@@ -18190,10 +17609,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringBinaryNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -18293,10 +17709,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringByteNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -18383,10 +17796,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestResponseStringDuration"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "ate"
@@ -18425,10 +17835,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestResponseStringDateTimeNullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -18514,10 +17921,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringDateNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -18617,10 +18021,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringDurationNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -18721,10 +18122,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestResponseStringEmailNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -18824,10 +18222,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestResponseStringHostnameNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -18913,10 +18308,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestResponseStringInt32"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nt"
@@ -18927,10 +18319,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestResponseStringInt64"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case '3': // Prefix: "32"
@@ -18955,10 +18344,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestResponseStringInt32Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -19058,10 +18444,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestResponseStringInt64Nullable"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "array"
@@ -19162,10 +18545,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringIPNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -19250,10 +18630,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringIpv6"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case '4': // Prefix: "4"
@@ -19278,10 +18655,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestResponseStringIpv4Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -19381,10 +18755,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestResponseStringIpv6Nullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -19531,10 +18902,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestResponseStringPasswordNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -19634,10 +19002,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "TestResponseStringTimeNullable"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "array"
@@ -19723,10 +19088,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "TestResponseStringUUID"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nix"
@@ -19751,10 +19113,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringUnixNano"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mi"
@@ -19765,10 +19124,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "TestResponseStringUnixMilli"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "cro"
@@ -19793,10 +19149,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "TestResponseStringUnixMicroNullable"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -19896,10 +19249,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "TestResponseStringUnixMilliNullable"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "array"
@@ -20000,10 +19350,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestResponseStringUnixNanoNullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -20103,10 +19450,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "TestResponseStringUnixSecondsNullable"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "array"
@@ -20193,10 +19537,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringUnixNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -20296,10 +19637,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringURINullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"
@@ -20399,10 +19737,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "TestResponseStringUUIDNullable"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "array"

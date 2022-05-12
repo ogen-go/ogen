@@ -33,9 +33,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleOperationsGetRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'm': // Prefix: "market/"
@@ -46,9 +44,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleMarketCandlesGetRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'b': // Prefix: "bonds"
@@ -72,9 +68,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleMarketCurrenciesGetRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "andles"
@@ -138,9 +132,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleMarketStocksGetRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "earch/by-"
@@ -151,9 +143,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleMarketSearchByTickerGetRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'f': // Prefix: "figi"
@@ -206,9 +196,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOrdersGetRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "perations"
@@ -293,9 +281,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleSandboxClearPostRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'o': // Prefix: "orders/"
@@ -306,9 +292,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleOrdersLimitOrderPostRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "cancel"
@@ -359,9 +343,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleSandboxPositionsBalancePostRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "c"
@@ -372,9 +354,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleSandboxCurrenciesBalancePostRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'l': // Prefix: "lear"
@@ -425,9 +405,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleSandboxRemovePostRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'g': // Prefix: "gister"
@@ -507,10 +485,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "OperationsGet"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'm': // Prefix: "market/"
@@ -521,10 +496,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "MarketCandlesGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'b': // Prefix: "bonds"
@@ -549,10 +521,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "MarketCurrenciesGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'a': // Prefix: "andles"
@@ -620,10 +589,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "MarketStocksGet"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "earch/by-"
@@ -634,10 +600,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "MarketSearchByTickerGet"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'f': // Prefix: "figi"
@@ -693,10 +656,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OrdersGet"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'p': // Prefix: "perations"
@@ -786,10 +746,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "SandboxClearPost"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'o': // Prefix: "orders/"
@@ -800,10 +757,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "OrdersLimitOrderPost"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "cancel"
@@ -857,10 +811,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "SandboxPositionsBalancePost"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "c"
@@ -871,10 +822,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "SandboxCurrenciesBalancePost"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'l': // Prefix: "lear"
@@ -928,10 +876,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "SandboxRemovePost"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'g': // Prefix: "gister"
