@@ -103,7 +103,6 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 		newChild := &RouteNode{
 			head:   path[0],
 			prefix: path[:commonPrefix],
-			op:     operation,
 		}
 		parent.replaceChild(path[0], newChild)
 
