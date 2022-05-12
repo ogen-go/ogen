@@ -10,6 +10,26 @@ import (
 	api "github.com/ogen-go/ogen/internal/sample_api"
 )
 
+func BenchmarkFindRoute(b *testing.B) {
+	bench := func(method, path string) func(b *testing.B) {
+		return func(b *testing.B) {
+			handler := &sampleAPIServer{}
+			s, err := api.NewServer(handler, handler)
+			require.NoError(b, err)
+
+			b.ReportAllocs()
+			b.ResetTimer()
+
+			for i := 0; i < b.N; i++ {
+				s.FindRoute(method, path)
+			}
+		}
+	}
+
+	b.Run("Plain", bench(http.MethodGet, "/pet"))
+	b.Run("Parameters", bench(http.MethodGet, "/pet/name/10"))
+}
+
 func TestRouter(t *testing.T) {
 	handler := &sampleAPIServer{}
 	s, err := api.NewServer(handler, handler)
@@ -21,13 +41,13 @@ func TestRouter(t *testing.T) {
 		Operation string
 		Args      []string
 	}
-	test := func(m, p, op string, args ...string) testCase {
+	test := func(method, route, op string, args ...string) testCase {
 		if len(args) == 0 {
 			args = []string{}
 		}
 		return testCase{
-			Method:    m,
-			Path:      p,
+			Method:    method,
+			Path:      route,
 			Operation: op,
 			Args:      args,
 		}
@@ -58,16 +78,22 @@ func TestRouter(t *testing.T) {
 		// "/name/{id}/{foo}1234{bar}-{baz}!{kek}"
 		get("/name/10/foobar1234barh-buzz!-kek", "DataGetFormat",
 			"10", "foobar", "barh", "buzz", "-kek"),
+		get("/testObjectQueryParameter", "TestObjectQueryParameter"),
+		post("/testFloatValidation", "TestFloatValidation"),
+		get("/test/header", "GetHeader"),
+
+		get("/test", ""),
+		post("/test", ""),
 	} {
 		tc := tc
 		t.Run(fmt.Sprintf("Test%d", i), func(t *testing.T) {
 			a := require.New(t)
 			r, ok := s.FindRoute(tc.Method, tc.Path)
 			if tc.Operation == "" {
-				a.False(ok)
+				a.False(ok, r.OperationID())
 				return
 			}
-			a.True(ok)
+			a.True(ok, tc.Operation)
 			a.Equal(tc.Operation, r.OperationID())
 			a.Equal(tc.Args, r.Args())
 		})

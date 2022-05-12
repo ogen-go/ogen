@@ -442,23 +442,3 @@ func BenchmarkJSON(b *testing.B) {
 		})
 	})
 }
-
-func BenchmarkFindRoute(b *testing.B) {
-	bench := func(method, path string) func(b *testing.B) {
-		return func(b *testing.B) {
-			handler := &sampleAPIServer{}
-			s, err := api.NewServer(handler, handler)
-			require.NoError(b, err)
-
-			b.ReportAllocs()
-			b.ResetTimer()
-
-			for i := 0; i < b.N; i++ {
-				s.FindRoute(method, path)
-			}
-		}
-	}
-
-	b.Run("Plain", bench(http.MethodGet, "/pet"))
-	b.Run("Parameters", bench(http.MethodGet, "/pet/name/10"))
-}

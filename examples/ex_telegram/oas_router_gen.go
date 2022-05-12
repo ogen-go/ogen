@@ -33,9 +33,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleBanChatMemberRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -46,9 +44,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleAnswerCallbackQueryRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'd': // Prefix: "ddStickerToSet"
@@ -72,9 +68,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleAnswerInlineQueryRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'C': // Prefix: "CallbackQuery"
@@ -152,9 +146,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleBanChatSenderChatRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'M': // Prefix: "Member"
@@ -192,9 +184,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleCopyMessageRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'l': // Prefix: "lose"
@@ -231,9 +221,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleCreateNewStickerSetRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'C': // Prefix: "ChatInviteLink"
@@ -272,9 +260,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleDeleteChatPhotoRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "clineChatJoinRequest"
@@ -298,9 +284,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleDeleteMessageRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'C': // Prefix: "Chat"
@@ -311,9 +295,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleDeleteChatStickerSetRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'P': // Prefix: "Photo"
@@ -351,9 +333,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleDeleteMyCommandsRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "essage"
@@ -419,9 +399,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleExportChatInviteLinkRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'd': // Prefix: "dit"
@@ -432,9 +410,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleEditMessageCaptionRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'C': // Prefix: "ChatInviteLink"
@@ -458,9 +434,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleEditMessageLiveLocationRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'C': // Prefix: "Caption"
@@ -565,9 +539,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleGetFileRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'C': // Prefix: "Chat"
@@ -658,9 +630,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleGetMyCommandsRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "e"
@@ -711,9 +681,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleGetUserProfilePhotosRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'p': // Prefix: "pdates"
@@ -765,9 +733,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleLogOutRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "eaveChat"
@@ -805,9 +771,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handlePromoteChatMemberRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'i': // Prefix: "inChatMessage"
@@ -845,9 +809,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleRevokeChatInviteLinkRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 's': // Prefix: "strictChatMember"
@@ -885,9 +847,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleStopMessageLiveLocationRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "e"
@@ -898,9 +858,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleSetChatAdministratorCustomTitleRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'n': // Prefix: "nd"
@@ -911,9 +869,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleSendChatActionRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'A': // Prefix: "A"
@@ -924,9 +880,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSendAudioRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nimation"
@@ -964,9 +918,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSendContactRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "hatAction"
@@ -1004,9 +956,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSendDocumentRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'i': // Prefix: "ice"
@@ -1083,9 +1033,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSendMessageRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'd': // Prefix: "diaGroup"
@@ -1123,9 +1071,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSendPollRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "hoto"
@@ -1176,9 +1122,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSendVideoRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "enue"
@@ -1244,9 +1188,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleSetGameScoreRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'C': // Prefix: "Chat"
@@ -1257,9 +1199,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSetChatDescriptionRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'A': // Prefix: "AdministratorCustomTitle"
@@ -1296,9 +1236,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleSetChatPhotoRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ermissions"
@@ -1402,9 +1340,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleSetStickerSetThumbRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'P': // Prefix: "PositionInSet"
@@ -1457,9 +1393,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleStopPollRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'M': // Prefix: "MessageLiveLocation"
@@ -1498,9 +1432,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleUploadStickerFileRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case 'n': // Prefix: "n"
@@ -1511,9 +1443,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					}
 
 					if len(elem) == 0 {
-						s.handleUnpinAllChatMessagesRequest([0]string{}, w, r)
-
-						return
+						break
 					}
 					switch elem[0] {
 					case 'b': // Prefix: "banChat"
@@ -1524,9 +1454,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleUnbanChatSenderChatRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'M': // Prefix: "Member"
@@ -1564,9 +1492,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleUnpinChatMessageRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'A': // Prefix: "AllChatMessages"
@@ -1660,10 +1586,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "BanChatMember"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case 'a': // Prefix: "a"
@@ -1674,10 +1597,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "AnswerCallbackQuery"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'd': // Prefix: "ddStickerToSet"
@@ -1702,10 +1622,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "AnswerInlineQuery"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'C': // Prefix: "CallbackQuery"
@@ -1788,10 +1705,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "BanChatSenderChat"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'M': // Prefix: "Member"
@@ -1831,10 +1745,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "CopyMessage"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'l': // Prefix: "lose"
@@ -1873,10 +1784,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "CreateNewStickerSet"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'C': // Prefix: "ChatInviteLink"
@@ -1917,10 +1825,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "DeleteChatPhoto"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'c': // Prefix: "clineChatJoinRequest"
@@ -1945,10 +1850,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "DeleteMessage"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'C': // Prefix: "Chat"
@@ -1959,10 +1861,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "DeleteChatStickerSet"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'P': // Prefix: "Photo"
@@ -2002,10 +1901,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "DeleteMyCommands"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "essage"
@@ -2075,10 +1971,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "ExportChatInviteLink"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'd': // Prefix: "dit"
@@ -2089,10 +1982,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "EditMessageCaption"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'C': // Prefix: "ChatInviteLink"
@@ -2117,10 +2007,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "EditMessageLiveLocation"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'C': // Prefix: "Caption"
@@ -2232,10 +2119,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "GetFile"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'C': // Prefix: "Chat"
@@ -2332,10 +2216,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "GetMyCommands"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'e': // Prefix: "e"
@@ -2389,10 +2270,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "GetUserProfilePhotos"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'p': // Prefix: "pdates"
@@ -2447,10 +2325,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "LogOut"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "eaveChat"
@@ -2490,10 +2365,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "PromoteChatMember"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'i': // Prefix: "inChatMessage"
@@ -2533,10 +2405,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "RevokeChatInviteLink"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 's': // Prefix: "strictChatMember"
@@ -2576,10 +2445,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "StopMessageLiveLocation"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'e': // Prefix: "e"
@@ -2590,10 +2456,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "SetChatAdministratorCustomTitle"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'n': // Prefix: "nd"
@@ -2604,10 +2467,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "SendChatAction"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'A': // Prefix: "A"
@@ -2618,10 +2478,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SendAudio"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "nimation"
@@ -2661,10 +2518,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SendContact"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "hatAction"
@@ -2704,10 +2558,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SendDocument"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'i': // Prefix: "ice"
@@ -2789,10 +2640,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SendMessage"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'd': // Prefix: "diaGroup"
@@ -2832,10 +2680,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SendPoll"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "hoto"
@@ -2889,10 +2734,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SendVideo"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "enue"
@@ -2962,10 +2804,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "SetGameScore"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'C': // Prefix: "Chat"
@@ -2976,10 +2815,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SetChatDescription"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'A': // Prefix: "AdministratorCustomTitle"
@@ -3018,10 +2854,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "SetChatPhoto"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ermissions"
@@ -3132,10 +2965,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "SetStickerSetThumb"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'P': // Prefix: "PositionInSet"
@@ -3191,10 +3021,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "StopPoll"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'M': // Prefix: "MessageLiveLocation"
@@ -3235,10 +3062,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "UploadStickerFile"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case 'n': // Prefix: "n"
@@ -3249,10 +3073,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					}
 
 					if len(elem) == 0 {
-						r.name = "UnpinAllChatMessages"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
 					switch elem[0] {
 					case 'b': // Prefix: "banChat"
@@ -3263,10 +3084,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "UnbanChatSenderChat"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'M': // Prefix: "Member"
@@ -3306,10 +3124,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "UnpinChatMessage"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'A': // Prefix: "AllChatMessages"

@@ -35,9 +35,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 			}
 
 			if len(elem) == 0 {
-				s.handleGetCodeVersionRequest([0]string{}, w, r)
-
-				return
+				break
 			}
 			switch elem[0] {
 			case '.': // Prefix: ".well-known/openid-configuration/"
@@ -61,9 +59,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 				}
 
 				if len(elem) == 0 {
-					s.handleGetCoreAPIVersionsRequest([0]string{}, w, r)
-
-					return
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -100,9 +96,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleListCoreV1ConfigMapForAllNamespacesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'm': // Prefix: "mponentstatuses"
@@ -161,9 +155,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleListCoreV1EventForAllNamespacesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "ndpoints"
@@ -214,9 +206,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleListCoreV1NodeRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "amespaces"
@@ -264,11 +254,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListCoreV1NamespacedEndpointsRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "configmaps"
@@ -316,11 +302,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListCoreV1NamespacedEventRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'n': // Prefix: "ndpoints"
@@ -443,11 +425,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListCoreV1NamespacedPodRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "ersistentvolumeclaims"
@@ -516,11 +494,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedPodTemplateRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 's': // Prefix: "s"
@@ -571,12 +545,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																s.handleReadCoreV1NamespacedPodLogRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
+																break
 															}
 															switch elem[0] {
 															case 'e': // Prefix: "ephemeralcontainers"
@@ -677,11 +646,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListCoreV1NamespacedResourceQuotaRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'p': // Prefix: "plicationcontrollers"
@@ -732,12 +697,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleReadCoreV1NamespacedReplicationControllerStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
+															break
 														}
 														switch elem[0] {
 														case 'c': // Prefix: "cale"
@@ -842,11 +802,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReadCoreV1NamespaceStatusRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "e"
@@ -857,11 +813,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListCoreV1NamespacedServiceRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "crets"
@@ -909,11 +861,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleListCoreV1NamespacedServiceAccountRequest([1]string{
-															args[0],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "accounts"
@@ -1095,9 +1043,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleListCoreV1PodForAllNamespacesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "ersistentvolume"
@@ -1108,9 +1054,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListCoreV1PersistentVolumeClaimForAllNamespacesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "claims"
@@ -1189,9 +1133,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListCoreV1PodTemplateForAllNamespacesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 's': // Prefix: "s"
@@ -1230,9 +1172,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleListCoreV1ResourceQuotaForAllNamespacesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'p': // Prefix: "plicationcontrollers"
@@ -1270,9 +1210,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleListCoreV1ServiceAccountForAllNamespacesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "crets"
@@ -1296,9 +1234,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListCoreV1ServiceForAllNamespacesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "accounts"
@@ -1337,9 +1273,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleWatchCoreV1EndpointsListForAllNamespacesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "configmaps"
@@ -1363,9 +1297,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleWatchCoreV1EventListForAllNamespacesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "ndpoints"
@@ -1416,11 +1348,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleWatchCoreV1NodeRequest([1]string{
-										args[0],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "amespaces"
@@ -1468,12 +1396,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchCoreV1NamespacedEndpointsRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "configmaps"
@@ -1521,12 +1444,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchCoreV1NamespacedEventRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'n': // Prefix: "ndpoints"
@@ -1649,12 +1567,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchCoreV1NamespacedPodRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "ersistentvolumeclaims"
@@ -1702,12 +1615,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedPodTemplateRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 's': // Prefix: "s"
@@ -1794,12 +1702,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchCoreV1NamespacedResourceQuotaRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'p': // Prefix: "plicationcontrollers"
@@ -1885,12 +1788,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchCoreV1NamespacedServiceRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "crets"
@@ -1938,12 +1836,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchCoreV1NamespacedServiceAccountRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "accounts"
@@ -2068,9 +1961,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleWatchCoreV1PodListForAllNamespacesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ersistentvolume"
@@ -2081,9 +1972,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchCoreV1PersistentVolumeClaimListForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "claims"
@@ -2142,9 +2031,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchCoreV1PodTemplateListForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 's': // Prefix: "s"
@@ -2183,9 +2070,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleWatchCoreV1ResourceQuotaListForAllNamespacesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "plicationcontrollers"
@@ -2223,9 +2108,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleWatchCoreV1ServiceAccountListForAllNamespacesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "crets"
@@ -2249,9 +2132,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchCoreV1ServiceListForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "accounts"
@@ -2306,9 +2187,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetApiextensionsAPIGroupRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'd': // Prefix: "dmissionregistration.k8s.io/"
@@ -2413,11 +2292,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchAdmissionregistrationV1ValidatingWebhookConfigurationRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mutatingwebhookconfigurations"
@@ -2499,9 +2374,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetAppsAPIGroupRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'i': // Prefix: "i"
@@ -2512,9 +2385,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetApiregistrationAPIGroupRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "extensions.k8s.io/"
@@ -2797,9 +2668,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListAppsV1DeploymentForAllNamespacesRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "aemonsets"
@@ -2857,11 +2726,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListAppsV1NamespacedDaemonSetRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "controllerrevisions"
@@ -2909,11 +2774,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleListAppsV1NamespacedDeploymentRequest([1]string{
-														args[0],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "aemonsets"
@@ -3022,12 +2883,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 															}
 
 															if len(elem) == 0 {
-																s.handleReadAppsV1NamespacedDeploymentStatusRequest([2]string{
-																	args[0],
-																	args[1],
-																}, w, r)
-
-																return
+																break
 															}
 															switch elem[0] {
 															case 'c': // Prefix: "cale"
@@ -3114,12 +2970,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleReadAppsV1NamespacedReplicaSetStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
+															break
 														}
 														switch elem[0] {
 														case 'c': // Prefix: "cale"
@@ -3205,12 +3056,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 														}
 
 														if len(elem) == 0 {
-															s.handleReadAppsV1NamespacedStatefulSetStatusRequest([2]string{
-																args[0],
-																args[1],
-															}, w, r)
-
-															return
+															break
 														}
 														switch elem[0] {
 														case 'c': // Prefix: "cale"
@@ -3284,9 +3130,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchAppsV1DaemonSetListForAllNamespacesRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "controllerrevisions"
@@ -3310,9 +3154,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchAppsV1DeploymentListForAllNamespacesRequest([0]string{}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "aemonsets"
@@ -3370,12 +3212,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchAppsV1NamespacedDaemonSetRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "controllerrevisions"
@@ -3423,12 +3260,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 													}
 
 													if len(elem) == 0 {
-														s.handleWatchAppsV1NamespacedDeploymentRequest([2]string{
-															args[0],
-															args[1],
-														}, w, r)
-
-														return
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "aemonsets"
@@ -3620,9 +3452,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetAutoscalingAPIGroupRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "h"
@@ -3633,9 +3463,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetAuthorizationAPIGroupRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "entication.k8s.io/"
@@ -3714,9 +3542,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleGetAutoscalingV2beta1APIResourcesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case '1': // Prefix: "1/"
@@ -3832,12 +3658,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchAutoscalingV1NamespacedHorizontalPodAutoscalerRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'h': // Prefix: "horizontalpodautoscalers"
@@ -3921,9 +3742,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleGetAutoscalingV2beta2APIResourcesRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case '1': // Prefix: "1/"
@@ -4039,12 +3858,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'h': // Prefix: "horizontalpodautoscalers"
@@ -4233,12 +4047,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'h': // Prefix: "horizontalpodautoscalers"
@@ -4340,9 +4149,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetBatchV1beta1APIResourcesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -4412,11 +4219,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListBatchV1NamespacedJobRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "cronjobs"
@@ -4545,9 +4348,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchBatchV1JobListForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "cronjobs"
@@ -4604,12 +4405,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchBatchV1NamespacedJobRequest([2]string{
-													args[0],
-													args[1],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "cronjobs"
@@ -4803,12 +4599,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchBatchV1beta1NamespacedCronJobRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "cronjobs"
@@ -4894,9 +4685,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetCoordinationAPIGroupRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "ertificates.k8s.io/"
@@ -4970,11 +4759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleReadCertificatesV1CertificateSigningRequestStatusRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "approval"
@@ -5151,12 +4936,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchCoordinationV1NamespacedLeaseRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'l': // Prefix: "leases"
@@ -5255,9 +5035,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetDiscoveryV1beta1APIResourcesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -5352,12 +5130,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchDiscoveryV1NamespacedEndpointSliceRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "endpointslices"
@@ -5525,12 +5298,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchDiscoveryV1beta1NamespacedEndpointSliceRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "endpointslices"
@@ -5629,9 +5397,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetEventsV1beta1APIResourcesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -5726,12 +5492,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchEventsV1NamespacedEventRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "events"
@@ -5899,12 +5660,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchEventsV1beta1NamespacedEventRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "events"
@@ -6003,9 +5759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetFlowcontrolApiserverV1beta2APIResourcesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '1': // Prefix: "1/"
@@ -6137,11 +5891,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'f': // Prefix: "flowschemas"
@@ -6343,11 +6093,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'f': // Prefix: "flowschemas"
@@ -6546,9 +6292,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetNodeAPIGroupRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "etworking.k8s.io/"
@@ -6585,9 +6329,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListNetworkingV1IngressForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "classes"
@@ -6646,9 +6388,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListNetworkingV1NetworkPolicyForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "amespaces/"
@@ -6679,11 +6419,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleListNetworkingV1NamespacedNetworkPolicyRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'i': // Prefix: "ingresses"
@@ -6805,12 +6541,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchNetworkingV1NamespacedIngressRequest([2]string{
-											args[0],
-											args[1],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'i': // Prefix: "ingress"
@@ -6821,9 +6552,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchNetworkingV1IngressListForAllNamespacesRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "classes"
@@ -6882,9 +6611,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchNetworkingV1NetworkPolicyListForAllNamespacesRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "amespaces/"
@@ -6915,12 +6642,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 												}
 
 												if len(elem) == 0 {
-													s.handleWatchNetworkingV1NamespacedNetworkPolicyRequest([2]string{
-														args[0],
-														args[1],
-													}, w, r)
-
-													return
+													break
 												}
 												switch elem[0] {
 												case 'i': // Prefix: "ingresses"
@@ -7037,9 +6759,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetNodeV1alpha1APIResourcesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -7312,9 +7032,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 							}
 
 							if len(elem) == 0 {
-								s.handleGetPolicyV1beta1APIResourcesRequest([0]string{}, w, r)
-
-								return
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -7430,9 +7148,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchPolicyV1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'n': // Prefix: "namespaces/"
@@ -7608,9 +7324,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListPolicyV1beta1PodSecurityPolicyRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'd': // Prefix: "disruptionbudgets"
@@ -7669,9 +7383,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'n': // Prefix: "namespaces/"
@@ -7740,11 +7452,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchPolicyV1beta1PodSecurityPolicyRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "disruptionbudgets"
@@ -7833,9 +7541,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListRbacAuthorizationV1ClusterRoleBindingRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'b': // Prefix: "bindings"
@@ -7935,11 +7641,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleListRbacAuthorizationV1NamespacedRoleBindingRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'b': // Prefix: "bindings"
@@ -8026,9 +7728,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleListRbacAuthorizationV1RoleForAllNamespacesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'b': // Prefix: "bindings"
@@ -8066,12 +7766,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleWatchRbacAuthorizationV1NamespacedRoleRequest([2]string{
-										args[0],
-										args[1],
-									}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "clusterrole"
@@ -8082,11 +7777,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchRbacAuthorizationV1ClusterRoleBindingRequest([1]string{
-											args[0],
-										}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'b': // Prefix: "bindings"
@@ -8186,12 +7877,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchRbacAuthorizationV1NamespacedRoleBindingRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'b': // Prefix: "bindings"
@@ -8278,9 +7964,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 									}
 
 									if len(elem) == 0 {
-										s.handleWatchRbacAuthorizationV1RoleListForAllNamespacesRequest([0]string{}, w, r)
-
-										return
+										break
 									}
 									switch elem[0] {
 									case 'b': // Prefix: "bindings"
@@ -8321,9 +8005,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 
 						if len(elem) == 0 {
-							s.handleGetStorageAPIGroupRequest([0]string{}, w, r)
-
-							return
+							break
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "cheduling.k8s.io/"
@@ -8443,9 +8125,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 								}
 
 								if len(elem) == 0 {
-									s.handleGetStorageV1alpha1APIResourcesRequest([0]string{}, w, r)
-
-									return
+									break
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -8469,9 +8149,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleListStorageV1CSINodeRequest([0]string{}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "drivers"
@@ -8639,11 +8317,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchStorageV1StorageClassRequest([1]string{
-												args[0],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "csi"
@@ -8654,11 +8328,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 											}
 
 											if len(elem) == 0 {
-												s.handleWatchStorageV1CSINodeRequest([1]string{
-													args[0],
-												}, w, r)
-
-												return
+												break
 											}
 											switch elem[0] {
 											case 'd': // Prefix: "drivers"
@@ -8892,12 +8562,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchStorageV1alpha1NamespacedCSIStorageCapacityRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "csistoragecapacities"
@@ -9065,12 +8730,7 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 										}
 
 										if len(elem) == 0 {
-											s.handleWatchStorageV1beta1NamespacedCSIStorageCapacityRequest([2]string{
-												args[0],
-												args[1],
-											}, w, r)
-
-											return
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "csistoragecapacities"
@@ -9233,10 +8893,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 			}
 
 			if len(elem) == 0 {
-				r.name = "GetCodeVersion"
-				r.args = args
-				r.count = 0
-				return r, true
+				break
 			}
 			switch elem[0] {
 			case '.': // Prefix: ".well-known/openid-configuration/"
@@ -9261,10 +8918,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 				}
 
 				if len(elem) == 0 {
-					r.name = "GetCoreAPIVersions"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
 				}
 				switch elem[0] {
 				case '/': // Prefix: "/"
@@ -9303,10 +8957,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ListCoreV1ConfigMapForAllNamespaces"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'm': // Prefix: "mponentstatuses"
@@ -9366,10 +9017,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ListCoreV1EventForAllNamespaces"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'n': // Prefix: "ndpoints"
@@ -9423,10 +9071,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ListCoreV1Node"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'a': // Prefix: "amespaces"
@@ -9474,10 +9119,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListCoreV1NamespacedEndpoints"
-											r.args = args
-											r.count = 1
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "configmaps"
@@ -9522,10 +9164,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListCoreV1NamespacedEvent"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'n': // Prefix: "ndpoints"
@@ -9639,10 +9278,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListCoreV1NamespacedPod"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "ersistentvolumeclaims"
@@ -9706,10 +9342,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedPodTemplate"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 's': // Prefix: "s"
@@ -9757,10 +9390,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																r.name = "ReadCoreV1NamespacedPodLog"
-																r.args = args
-																r.count = 2
-																return r, true
+																break
 															}
 															switch elem[0] {
 															case 'e': // Prefix: "ephemeralcontainers"
@@ -9852,10 +9482,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListCoreV1NamespacedResourceQuota"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'p': // Prefix: "plicationcontrollers"
@@ -9903,10 +9530,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ReadCoreV1NamespacedReplicationControllerStatus"
-															r.args = args
-															r.count = 2
-															return r, true
+															break
 														}
 														switch elem[0] {
 														case 'c': // Prefix: "cale"
@@ -10002,10 +9626,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReadCoreV1NamespaceStatus"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'e': // Prefix: "e"
@@ -10016,10 +9637,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListCoreV1NamespacedService"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "crets"
@@ -10064,10 +9682,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "ListCoreV1NamespacedServiceAccount"
-														r.args = args
-														r.count = 1
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "accounts"
@@ -10239,10 +9854,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ListCoreV1PodForAllNamespaces"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'e': // Prefix: "ersistentvolume"
@@ -10253,10 +9865,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListCoreV1PersistentVolumeClaimForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "claims"
@@ -10335,10 +9944,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListCoreV1PodTemplateForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 's': // Prefix: "s"
@@ -10379,10 +9985,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ListCoreV1ResourceQuotaForAllNamespaces"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'p': // Prefix: "plicationcontrollers"
@@ -10422,10 +10025,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "ListCoreV1ServiceAccountForAllNamespaces"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "crets"
@@ -10450,10 +10050,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListCoreV1ServiceForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "accounts"
@@ -10494,10 +10091,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "WatchCoreV1EndpointsListForAllNamespaces"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'c': // Prefix: "configmaps"
@@ -10522,10 +10116,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "WatchCoreV1EventListForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'n': // Prefix: "ndpoints"
@@ -10579,10 +10170,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "WatchCoreV1Node"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'a': // Prefix: "amespaces"
@@ -10630,10 +10218,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchCoreV1NamespacedEndpoints"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "configmaps"
@@ -10678,10 +10263,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchCoreV1NamespacedEvent"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'n': // Prefix: "ndpoints"
@@ -10795,10 +10377,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchCoreV1NamespacedPod"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'e': // Prefix: "ersistentvolumeclaims"
@@ -10843,10 +10422,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedPodTemplate"
-														r.args = args
-														r.count = 1
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 's': // Prefix: "s"
@@ -10927,10 +10503,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchCoreV1NamespacedResourceQuota"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'p': // Prefix: "plicationcontrollers"
@@ -11010,10 +10583,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchCoreV1NamespacedService"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "crets"
@@ -11058,10 +10628,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchCoreV1NamespacedServiceAccount"
-														r.args = args
-														r.count = 1
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "accounts"
@@ -11180,10 +10747,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "WatchCoreV1PodListForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "ersistentvolume"
@@ -11194,10 +10758,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchCoreV1PersistentVolumeClaimListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "claims"
@@ -11257,10 +10818,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchCoreV1PodTemplateListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 's': // Prefix: "s"
@@ -11301,10 +10859,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "WatchCoreV1ResourceQuotaListForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'p': // Prefix: "plicationcontrollers"
@@ -11344,10 +10899,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "WatchCoreV1ServiceAccountListForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "crets"
@@ -11372,10 +10924,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchCoreV1ServiceListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "accounts"
@@ -11433,10 +10982,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetApiextensionsAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'd': // Prefix: "dmissionregistration.k8s.io/"
@@ -11543,10 +11089,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchAdmissionregistrationV1ValidatingWebhookConfiguration"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'm': // Prefix: "mutatingwebhookconfigurations"
@@ -11628,10 +11171,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetAppsAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'i': // Prefix: "i"
@@ -11642,10 +11182,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetApiregistrationAPIGroup"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "extensions.k8s.io/"
@@ -11933,10 +11470,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListAppsV1DeploymentForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "aemonsets"
@@ -11996,10 +11530,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListAppsV1NamespacedDaemonSet"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "controllerrevisions"
@@ -12044,10 +11575,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "ListAppsV1NamespacedDeployment"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'a': // Prefix: "aemonsets"
@@ -12148,10 +11676,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 															}
 
 															if len(elem) == 0 {
-																r.name = "ReadAppsV1NamespacedDeploymentStatus"
-																r.args = args
-																r.count = 2
-																return r, true
+																break
 															}
 															switch elem[0] {
 															case 'c': // Prefix: "cale"
@@ -12231,10 +11756,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ReadAppsV1NamespacedReplicaSetStatus"
-															r.args = args
-															r.count = 2
-															return r, true
+															break
 														}
 														switch elem[0] {
 														case 'c': // Prefix: "cale"
@@ -12313,10 +11835,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 														}
 
 														if len(elem) == 0 {
-															r.name = "ReadAppsV1NamespacedStatefulSetStatus"
-															r.args = args
-															r.count = 2
-															return r, true
+															break
 														}
 														switch elem[0] {
 														case 'c': // Prefix: "cale"
@@ -12388,10 +11907,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchAppsV1DaemonSetListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "controllerrevisions"
@@ -12416,10 +11932,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchAppsV1DeploymentListForAllNamespaces"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "aemonsets"
@@ -12479,10 +11992,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchAppsV1NamespacedDaemonSet"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'c': // Prefix: "controllerrevisions"
@@ -12527,10 +12037,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 													}
 
 													if len(elem) == 0 {
-														r.name = "WatchAppsV1NamespacedDeployment"
-														r.args = args
-														r.count = 1
-														return r, true
+														break
 													}
 													switch elem[0] {
 													case 'a': // Prefix: "aemonsets"
@@ -12712,10 +12219,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetAutoscalingAPIGroup"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case 'h': // Prefix: "h"
@@ -12726,10 +12230,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetAuthorizationAPIGroup"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'e': // Prefix: "entication.k8s.io/"
@@ -12813,10 +12314,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "GetAutoscalingV2beta1APIResources"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case '1': // Prefix: "1/"
@@ -12929,10 +12427,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchAutoscalingV1NamespacedHorizontalPodAutoscaler"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'h': // Prefix: "horizontalpodautoscalers"
@@ -13014,10 +12509,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "GetAutoscalingV2beta2APIResources"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case '1': // Prefix: "1/"
@@ -13130,10 +12622,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'h': // Prefix: "horizontalpodautoscalers"
@@ -13317,10 +12806,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler"
-													r.args = args
-													r.count = 0
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'h': // Prefix: "horizontalpodautoscalers"
@@ -13421,10 +12907,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetBatchV1beta1APIResources"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -13497,10 +12980,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListBatchV1NamespacedJob"
-											r.args = args
-											r.count = 1
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "cronjobs"
@@ -13619,10 +13099,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchBatchV1JobListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "cronjobs"
@@ -13681,10 +13158,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchBatchV1NamespacedJob"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'c': // Prefix: "cronjobs"
@@ -13869,10 +13343,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchBatchV1beta1NamespacedCronJob"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "cronjobs"
@@ -13956,10 +13427,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetCoordinationAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "ertificates.k8s.io/"
@@ -14035,10 +13503,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ReadCertificatesV1CertificateSigningRequestStatus"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'a': // Prefix: "approval"
@@ -14213,10 +13678,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchCoordinationV1NamespacedLease"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'l': // Prefix: "leases"
@@ -14314,10 +13776,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetDiscoveryV1beta1APIResources"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -14411,10 +13870,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchDiscoveryV1NamespacedEndpointSlice"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "endpointslices"
@@ -14579,10 +14035,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchDiscoveryV1beta1NamespacedEndpointSlice"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "endpointslices"
@@ -14680,10 +14133,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetEventsV1beta1APIResources"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -14777,10 +14227,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchEventsV1NamespacedEvent"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "events"
@@ -14945,10 +14392,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchEventsV1beta1NamespacedEvent"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'e': // Prefix: "events"
@@ -15046,10 +14490,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetFlowcontrolApiserverV1beta2APIResources"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '1': // Prefix: "1/"
@@ -15180,10 +14621,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'f': // Prefix: "flowschemas"
@@ -15384,10 +14822,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'f': // Prefix: "flowschemas"
@@ -15587,10 +15022,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetNodeAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'e': // Prefix: "etworking.k8s.io/"
@@ -15629,10 +15061,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListNetworkingV1IngressForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'c': // Prefix: "classes"
@@ -15692,10 +15121,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListNetworkingV1NetworkPolicyForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'a': // Prefix: "amespaces/"
@@ -15726,10 +15152,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "ListNetworkingV1NamespacedNetworkPolicy"
-												r.args = args
-												r.count = 1
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'i': // Prefix: "ingresses"
@@ -15844,10 +15267,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchNetworkingV1NamespacedIngress"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'i': // Prefix: "ingress"
@@ -15858,10 +15278,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchNetworkingV1IngressListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "classes"
@@ -15921,10 +15338,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchNetworkingV1NetworkPolicyListForAllNamespaces"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'a': // Prefix: "amespaces/"
@@ -15955,10 +15369,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 												}
 
 												if len(elem) == 0 {
-													r.name = "WatchNetworkingV1NamespacedNetworkPolicy"
-													r.args = args
-													r.count = 1
-													return r, true
+													break
 												}
 												switch elem[0] {
 												case 'i': // Prefix: "ingresses"
@@ -16071,10 +15482,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetNodeV1alpha1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -16351,10 +15759,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 							}
 
 							if len(elem) == 0 {
-								r.name = "GetPolicyV1beta1APIResources"
-								r.args = args
-								r.count = 0
-								return r, true
+								break
 							}
 							switch elem[0] {
 							case '/': // Prefix: "/"
@@ -16467,10 +15872,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchPolicyV1PodDisruptionBudgetListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'n': // Prefix: "namespaces/"
@@ -16640,10 +16042,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListPolicyV1beta1PodSecurityPolicy"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'd': // Prefix: "disruptionbudgets"
@@ -16703,10 +16102,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'n': // Prefix: "namespaces/"
@@ -16772,10 +16168,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchPolicyV1beta1PodSecurityPolicy"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "disruptionbudgets"
@@ -16867,10 +16260,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListRbacAuthorizationV1ClusterRoleBinding"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'b': // Prefix: "bindings"
@@ -16970,10 +16360,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "ListRbacAuthorizationV1NamespacedRoleBinding"
-										r.args = args
-										r.count = 1
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'b': // Prefix: "bindings"
@@ -17054,10 +16441,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "ListRbacAuthorizationV1RoleForAllNamespaces"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'b': // Prefix: "bindings"
@@ -17097,10 +16481,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "WatchRbacAuthorizationV1NamespacedRole"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case 'c': // Prefix: "clusterrole"
@@ -17111,10 +16492,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchRbacAuthorizationV1ClusterRoleBinding"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'b': // Prefix: "bindings"
@@ -17214,10 +16592,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchRbacAuthorizationV1NamespacedRoleBinding"
-											r.args = args
-											r.count = 1
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'b': // Prefix: "bindings"
@@ -17298,10 +16673,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 									}
 
 									if len(elem) == 0 {
-										r.name = "WatchRbacAuthorizationV1RoleListForAllNamespaces"
-										r.args = args
-										r.count = 0
-										return r, true
+										break
 									}
 									switch elem[0] {
 									case 'b': // Prefix: "bindings"
@@ -17344,10 +16716,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 
 						if len(elem) == 0 {
-							r.name = "GetStorageAPIGroup"
-							r.args = args
-							r.count = 0
-							return r, true
+							break
 						}
 						switch elem[0] {
 						case 'c': // Prefix: "cheduling.k8s.io/"
@@ -17470,10 +16839,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 								}
 
 								if len(elem) == 0 {
-									r.name = "GetStorageV1alpha1APIResources"
-									r.args = args
-									r.count = 0
-									return r, true
+									break
 								}
 								switch elem[0] {
 								case '/': // Prefix: "/"
@@ -17498,10 +16864,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "ListStorageV1CSINode"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'd': // Prefix: "drivers"
@@ -17668,10 +17031,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchStorageV1StorageClass"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "csi"
@@ -17682,10 +17042,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 											}
 
 											if len(elem) == 0 {
-												r.name = "WatchStorageV1CSINode"
-												r.args = args
-												r.count = 0
-												return r, true
+												break
 											}
 											switch elem[0] {
 											case 'd': // Prefix: "drivers"
@@ -17918,10 +17275,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchStorageV1alpha1NamespacedCSIStorageCapacity"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "csistoragecapacities"
@@ -18086,10 +17440,7 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 										}
 
 										if len(elem) == 0 {
-											r.name = "WatchStorageV1beta1NamespacedCSIStorageCapacity"
-											r.args = args
-											r.count = 0
-											return r, true
+											break
 										}
 										switch elem[0] {
 										case 'c': // Prefix: "csistoragecapacities"
