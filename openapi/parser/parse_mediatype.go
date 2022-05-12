@@ -22,6 +22,19 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 		examples[name] = e
 	}
 
+	// OpenAPI 3.0.3 doc says:
+	//
+	//   Furthermore, referencing a schema which contains an example,
+	//   the example value SHALL override the example provided by the schema.
+	//
+	// Probably this will be rewritten later.
+	// Kept for backward compatibility.
+	s.AddExample(m.Example)
+	for _, ex := range examples {
+		s.AddExample(ex.Value)
+
+	}
+
 	return &openapi.MediaType{
 		Schema:   s,
 		Example:  m.Example,
