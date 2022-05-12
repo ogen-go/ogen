@@ -24,19 +24,13 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*open
 		return nil, errors.New("content must have at least one entry")
 	}
 
-	result := &openapi.RequestBody{
-		Content:  make(map[string]*openapi.MediaType, len(body.Content)),
+	content, err := p.parseContent(body.Content)
+	if err != nil {
+		return nil, errors.Wrap(err, "content")
+	}
+
+	return &openapi.RequestBody{
+		Content:  content,
 		Required: body.Required,
-	}
-
-	for contentType, media := range body.Content {
-		m, err := p.parseMediaType(media)
-		if err != nil {
-			return nil, errors.Wrapf(err, "content: %q", contentType)
-		}
-
-		result.Content[contentType] = m
-	}
-
-	return result, nil
+	}, nil
 }

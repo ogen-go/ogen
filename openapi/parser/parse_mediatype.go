@@ -6,6 +6,24 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
+func (p *parser) parseContent(content map[string]ogen.Media) (map[string]*openapi.MediaType, error) {
+	if content == nil {
+		return nil, nil
+	}
+
+	result := make(map[string]*openapi.MediaType, len(content))
+	for name, m := range content {
+		mm, err := p.parseMediaType(m)
+		if err != nil {
+			return nil, errors.Wrap(err, name)
+		}
+
+		result[name] = mm
+	}
+
+	return result, nil
+}
+
 func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 	s, err := p.schemaParser.Parse(m.Schema.ToJSONSchema())
 	if err != nil {

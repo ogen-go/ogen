@@ -59,6 +59,14 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		return parsed, nil
 	}
 
+	if param.Schema != nil && param.Content != nil {
+		return nil, errors.New("parameter MUST contain either a schema property, or a content property, but not both")
+	}
+
+	if param.Schema == nil && param.Content == nil {
+		return nil, errors.New("parameter MUST contain either a schema property, or a content property")
+	}
+
 	types := map[string]openapi.ParameterLocation{
 		"query":  openapi.LocationQuery,
 		"header": openapi.LocationHeader,
@@ -81,21 +89,24 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		return nil, errors.Wrap(err, "schema")
 	}
 
+	content, err := p.parseContent(param.Content)
+	if err != nil {
+		return nil, errors.Wrap(err, "content")
+	}
+
 	op := &openapi.Parameter{
 		Name:        param.Name,
 		Description: param.Description,
 		In:          locatedIn,
 		Schema:      schema,
+		Content:     content,
 		Style:       inferParamStyle(locatedIn, param.Style),
 		Explode:     inferParamExplode(locatedIn, param.Explode),
 		Required:    param.Required,
 	}
 
-	if param.Content != nil || param.Schema == nil {
-		// Incorrect, but used to keep the original behaviour
-		// and not break tests.
-		//
-		// return nil, errors.Errorf("content is not supported")
+	if param.Content != nil {
+		// TODO: Validate content?
 		return op, nil
 	}
 

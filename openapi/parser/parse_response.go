@@ -52,19 +52,14 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*openapi.Re
 		return resp, nil
 	}
 
-	response := &openapi.Response{
-		Content: make(map[string]*openapi.MediaType, len(resp.Content)),
-	}
-	for contentType, media := range resp.Content {
-		m, err := p.parseMediaType(media)
-		if err != nil {
-			return nil, errors.Wrapf(err, "content: %q", contentType)
-		}
-
-		response.Content[contentType] = m
+	content, err := p.parseContent(resp.Content)
+	if err != nil {
+		return nil, errors.Wrap(err, "content")
 	}
 
-	return response, nil
+	return &openapi.Response{
+		Content: content,
+	}, nil
 }
 
 func validateStatusCode(v string) error {
