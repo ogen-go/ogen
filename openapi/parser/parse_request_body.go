@@ -30,7 +30,8 @@ func (p *parser) parseRequestBody(body *ogen.RequestBody, ctx resolveCtx) (*open
 	}
 
 	return &openapi.RequestBody{
-		Content:  content,
-		Required: body.Required,
+		Description: body.Description,
+		Content:     content,
+		Required:    body.Required,
 	}, nil
 }

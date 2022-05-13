@@ -22,18 +22,17 @@ func (p *parser) parseStatus(status string, response *ogen.Response) (*openapi.R
 	return resp, nil
 }
 
-func (p *parser) parseResponses(responses ogen.Responses) (map[string]*openapi.Response, error) {
-	result := make(map[string]*openapi.Response, len(responses))
+func (p *parser) parseResponses(responses ogen.Responses) (_ map[string]*openapi.Response, err error) {
 	if len(responses) == 0 {
 		return nil, errors.New("no responses")
 	}
 
+	result := make(map[string]*openapi.Response, len(responses))
 	for status, response := range responses {
-		resp, err := p.parseStatus(status, response)
+		result[status], err = p.parseStatus(status, response)
 		if err != nil {
 			return nil, errors.Wrap(err, status)
 		}
-		result[status] = resp
 	}
 
 	return result, nil
@@ -58,7 +57,8 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*openapi.Re
 	}
 
 	return &openapi.Response{
-		Content: content,
+		Description: resp.Description,
+		Content:     content,
 	}, nil
 }
 

@@ -67,6 +67,11 @@ func (p *parser) parseParameter(param *ogen.Parameter, ctx resolveCtx) (*openapi
 		return nil, errors.New("parameter MUST contain either a schema property, or a content property")
 	}
 
+	if param.Content != nil && len(param.Content) < 1 {
+		// https://github.com/OAI/OpenAPI-Specification/discussions/2875
+		return nil, errors.New("content must have at least one entry")
+	}
+
 	types := map[string]openapi.ParameterLocation{
 		"query":  openapi.LocationQuery,
 		"header": openapi.LocationHeader,

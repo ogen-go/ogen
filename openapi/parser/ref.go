@@ -37,6 +37,7 @@ func (p *parser) resolveRequestBody(ref string, ctx resolveCtx) (*openapi.Reques
 		return nil, err
 	}
 
+	r.Ref = ref
 	p.refs.requestBodies[ref] = r
 	return r, nil
 }
@@ -98,6 +99,7 @@ func (p *parser) resolveParameter(ref string, ctx resolveCtx) (*openapi.Paramete
 		return nil, err
 	}
 
+	param.Ref = ref
 	p.refs.parameters[ref] = param
 	return param, nil
 }

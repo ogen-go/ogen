@@ -22,6 +22,7 @@ func (l ParameterLocation) Cookie() bool { return l == LocationCookie }
 
 // Parameter is an OpenAPI Operation Parameter.
 type Parameter struct {
+	Ref         string
 	Name        string
 	Description string
 	Schema      *jsonschema.Schema

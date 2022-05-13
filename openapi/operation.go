@@ -43,8 +43,10 @@ type PathPart struct {
 
 // RequestBody of an OpenAPI Operation.
 type RequestBody struct {
-	Content  map[string]*MediaType
-	Required bool
+	Ref         string
+	Description string
+	Content     map[string]*MediaType
+	Required    bool
 }
 
 // Response is an OpenAPI Response definition.

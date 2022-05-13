@@ -6,19 +6,17 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (p *parser) parseContent(content map[string]ogen.Media) (map[string]*openapi.MediaType, error) {
+func (p *parser) parseContent(content map[string]ogen.Media) (_ map[string]*openapi.MediaType, err error) {
 	if content == nil {
 		return nil, nil
 	}
 
 	result := make(map[string]*openapi.MediaType, len(content))
 	for name, m := range content {
-		mm, err := p.parseMediaType(m)
+		result[name], err = p.parseMediaType(m)
 		if err != nil {
 			return nil, errors.Wrap(err, name)
 		}
-
-		result[name] = mm
 	}
 
 	return result, nil
@@ -32,12 +30,10 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 
 	examples := make(map[string]*openapi.Example, len(m.Examples))
 	for name, ex := range m.Examples {
-		e, err := p.parseExample(ex, resolveCtx{})
+		examples[name], err = p.parseExample(ex, resolveCtx{})
 		if err != nil {
 			return nil, errors.Wrapf(err, "examples: %q", name)
 		}
-
-		examples[name] = e
 	}
 
 	// OpenAPI 3.0.3 doc says:
