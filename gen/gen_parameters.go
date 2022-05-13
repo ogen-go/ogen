@@ -14,8 +14,14 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 	result := make([]*ir.Parameter, 0, len(params))
 	for i, p := range params {
 		if p.Content != nil {
-			if err := g.fail(&ErrNotImplemented{"parameter content field"}); err != nil {
+			notImplemented := &ErrNotImplemented{"parameter content field"}
+			if err := g.fail(notImplemented); err != nil {
 				return nil, errors.Wrap(err, "fail")
+			}
+
+			// Path parameters are required.
+			if p.In == openapi.LocationPath {
+				return nil, notImplemented
 			}
 
 			continue

@@ -4,6 +4,7 @@ import (
 	"embed"
 	"io/fs"
 	"path/filepath"
+	"runtime/debug"
 	"strings"
 	"testing"
 
@@ -33,7 +34,7 @@ func testGenerate(_ bool, name string, ignore ...string) func(t *testing.T) {
 		t.Run("Gen", func(t *testing.T) {
 			defer func() {
 				if rr := recover(); rr != nil {
-					t.Fatalf("panic: %+v", rr)
+					t.Fatalf("panic: %+v\n%s", rr, debug.Stack())
 				}
 			}()
 
