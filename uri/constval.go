@@ -4,8 +4,8 @@ type constval struct {
 	v string
 }
 
-func (v constval) DecodeValue() (string, error) {
-	return v.v, nil
+func (d constval) DecodeValue() (string, error) {
+	return d.v, nil
 }
 
 func (d constval) DecodeArray(f func(Decoder) error) error {

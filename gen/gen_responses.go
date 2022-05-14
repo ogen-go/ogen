@@ -78,7 +78,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	)
 
 	if err := walkResponseTypes(result, func(_ string, t *ir.Type) (*ir.Type, error) {
-		countTypes += 1
+		countTypes++
 		lastWalked = t
 		return t, nil
 	}); err != nil {

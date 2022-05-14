@@ -27,6 +27,7 @@ type parser struct {
 	schemaParser *jsonschema.Parser
 }
 
+// Parse parses raw Spec into
 func Parse(spec *ogen.Spec, inferTypes bool) (*openapi.API, error) {
 	spec.Init()
 	p := &parser{

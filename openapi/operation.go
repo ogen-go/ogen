@@ -22,8 +22,10 @@ type Operation struct {
 	Responses map[string]*Response
 }
 
+// Path is an operation path.
 type Path []PathPart
 
+// String implements fmt.Stringer.
 func (p Path) String() (path string) {
 	for _, part := range p {
 		if part.Raw != "" {

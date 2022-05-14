@@ -30,6 +30,7 @@ func (n *Num) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// RawSchema is unparsed JSON Schema.
 type RawSchema struct {
 	Ref                  string                `json:"$ref,omitempty"`
 	Description          string                `json:"description,omitempty"`
@@ -67,6 +68,7 @@ type RawSchema struct {
 
 var xPrefix = []byte("x-")
 
+// UnmarshalJSON implements json.Unmarshaler.
 func (r *RawSchema) UnmarshalJSON(data []byte) error {
 	type Alias RawSchema
 	var val Alias
@@ -92,13 +94,16 @@ func (r *RawSchema) UnmarshalJSON(data []byte) error {
 	})
 }
 
+// RawProperty is item of RawProperties.
 type RawProperty struct {
 	Name   string
 	Schema *RawSchema
 }
 
+// RawProperties is unparsed JSON Schema properties validator description.
 type RawProperties []RawProperty
 
+// MarshalJSON implements json.Marshaler.
 func (p RawProperties) MarshalJSON() ([]byte, error) {
 	var e jx.Encoder
 	e.ObjStart()
@@ -114,6 +119,7 @@ func (p RawProperties) MarshalJSON() ([]byte, error) {
 	return e.Bytes(), nil
 }
 
+// UnmarshalJSON implements json.Unmarshaler.
 func (p *RawProperties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return d.Obj(func(d *jx.Decoder, key string) error {
@@ -135,11 +141,13 @@ func (p *RawProperties) UnmarshalJSON(data []byte) error {
 	})
 }
 
+// AdditionalProperties is JSON Schema additionalProperties validator description.
 type AdditionalProperties struct {
 	Bool   *bool
 	Schema RawSchema
 }
 
+// MarshalJSON implements json.Marshaler.
 func (p AdditionalProperties) MarshalJSON() ([]byte, error) {
 	if p.Bool != nil {
 		return json.Marshal(p.Bool)
@@ -147,6 +155,7 @@ func (p AdditionalProperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(p.Schema)
 }
 
+// UnmarshalJSON implements json.Unmarshaler.
 func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	switch tt := d.Next(); tt {
@@ -174,8 +183,16 @@ func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// RawPatternProperty is item of RawPatternProperties.
+type RawPatternProperty struct {
+	Pattern string
+	Schema  *RawSchema
+}
+
+// RawPatternProperties is unparsed JSON Schema patternProperties validator description.
 type RawPatternProperties []RawPatternProperty
 
+// MarshalJSON implements json.Marshaler.
 func (r RawPatternProperties) MarshalJSON() ([]byte, error) {
 	var e jx.Encoder
 	e.ObjStart()
@@ -191,6 +208,7 @@ func (r RawPatternProperties) MarshalJSON() ([]byte, error) {
 	return e.Bytes(), nil
 }
 
+// UnmarshalJSON implements json.Unmarshaler.
 func (r *RawPatternProperties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return d.Obj(func(d *jx.Decoder, key string) error {
@@ -212,11 +230,7 @@ func (r *RawPatternProperties) UnmarshalJSON(data []byte) error {
 	})
 }
 
-type RawPatternProperty struct {
-	Pattern string
-	Schema  *RawSchema
-}
-
+// Discriminator is JSON Schema discriminator description.
 type Discriminator struct {
 	PropertyName string            `json:"propertyName"`
 	Mapping      map[string]string `json:"mapping,omitempty"`

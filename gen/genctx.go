@@ -11,8 +11,9 @@ type genctx struct {
 }
 
 func (g *genctx) appendPath(v ...string) *genctx {
-	plen, pcap := len(g.path), len(g.path)
-	newPath := append(g.path[:plen:pcap], v...)
+	var newPath []string
+	newPath = append(newPath, g.path...)
+	newPath = append(newPath, v...)
 	return &genctx{
 		path:   newPath,
 		global: g.global,

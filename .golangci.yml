@@ -37,7 +37,7 @@ linters:
     - errcheck
     - goconst
     - gocritic
-    # - revive
+    - revive
     - gosec
     - govet
     - ineffassign
@@ -101,9 +101,15 @@ issues:
     - path: cmd\/.+\/main\.go
       linters: [ goconst, funlen, gocognit, gocyclo ]
 
-    - path: conv
+    # TODO(tdakkota): add comments?
+    - path: (conv|uri|gen)
       linters: [ revive, golint ]
-      text: "should have comment or be unexported"
+      text: "should have comment.+or be unexported"
+
+    # We don't need comments for command packages.
+    - path: (cmd|tools)(\/|\\).+(\/|\\).+\.go
+      linters: [ revive, golint ]
+      text: "should have comment.+or be unexported"
 
     # Intended in commands:
     # G307: Deferring unsafe method "Close" on type "*os.File"
@@ -111,12 +117,18 @@ issues:
     - path: (cmd|tools)(\/|\\).+(\/|\\).+\.go
       text: G(304|306|307)
 
-    # Checked unsafe:
+    # Checked unsafe.
     - path: http
       linters: [ gosec ]
       text: G103
 
-    # Not supposed to be constant:
+    # Intended design.
+    - path: http
+      source: Set
+      linters: [ revive ]
+      text: context-as-argument
+
+    # Not supposed to be constant.
     - linters: [ goconst ]
       text: 'string `(string|number|int32|int64)`'
 
