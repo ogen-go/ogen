@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"path"
 	"sort"
-	"strings"
 
 	"github.com/go-faster/errors"
 
@@ -213,7 +212,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 		sort.SliceStable(sum.SumSpec.Mapping, func(i, j int) bool {
 			a := sum.SumSpec.Mapping[i]
 			b := sum.SumSpec.Mapping[j]
-			return strings.Compare(a.Key, b.Key) < 0
+			return a.Key < b.Key
 		})
 		return sum, nil
 	}
@@ -286,7 +285,6 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 				metNoUniqueFields = true
 			}
 		}
-
 	}
 	type sumVariant struct {
 		Name   string
@@ -308,7 +306,7 @@ func (g *schemaGen) oneOf(name string, schema *jsonschema.Schema) (*ir.Type, err
 	sort.SliceStable(variants, func(i, j int) bool {
 		a := variants[i]
 		b := variants[j]
-		return strings.Compare(a.Name, b.Name) < 0
+		return a.Name < b.Name
 	})
 	for _, v := range variants {
 		for _, s := range sum.SumOf {

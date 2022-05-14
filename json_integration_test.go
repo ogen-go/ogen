@@ -133,7 +133,6 @@ func TestExampleJSON(t *testing.T) {
 			}
 		})
 	}
-
 }
 
 func TestTechEmpowerJSON(t *testing.T) {

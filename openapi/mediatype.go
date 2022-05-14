@@ -6,6 +6,7 @@ import (
 	"github.com/ogen-go/ogen/jsonschema"
 )
 
+// MediaType is Media Type Object.
 type MediaType struct {
 	Schema   *jsonschema.Schema
 	Example  json.RawMessage

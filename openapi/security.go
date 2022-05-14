@@ -1,11 +1,13 @@
 package openapi
 
+// SecurityRequirements is parsed security requirements.
 type SecurityRequirements struct {
 	Scopes   []string
 	Name     string
 	Security Security
 }
 
+// Security is parsed security scheme.
 type Security struct {
 	Type             string
 	Description      string

@@ -51,7 +51,7 @@ func EncodeStringInt64(e *jx.Encoder, v int64) {
 	buf[n] = '"'
 	n++
 	// Write integer
-	n += len(strconv.AppendInt(buf[n:n], int64(v), 10))
+	n += len(strconv.AppendInt(buf[n:n], v, 10))
 	// Write second quote
 	buf[n] = '"'
 	n++

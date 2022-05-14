@@ -2,7 +2,6 @@ package ir
 
 import (
 	"sort"
-	"strings"
 )
 
 type ResponseInfo struct {
@@ -67,7 +66,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 		if l.StatusCode != r.StatusCode {
 			return l.StatusCode < r.StatusCode
 		}
-		return strings.Compare(string(l.ContentType), string(r.ContentType)) < 0
+		return string(l.ContentType) < string(r.ContentType)
 	})
 
 	return result

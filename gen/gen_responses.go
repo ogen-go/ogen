@@ -78,7 +78,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	)
 
 	if err := walkResponseTypes(result, func(_ string, t *ir.Type) (*ir.Type, error) {
-		countTypes += 1
+		countTypes++
 		lastWalked = t
 		return t, nil
 	}); err != nil {
@@ -252,7 +252,7 @@ func wrapStatusCode(ctx *genctx, name string, t *ir.Type) (ret *ir.Type, rerr er
 		name = t.Name
 	}
 
-	name = name + "StatusCode"
+	name += "StatusCode"
 	return &ir.Type{
 		Kind: ir.KindStruct,
 		Name: name,

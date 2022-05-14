@@ -20,6 +20,7 @@ type Parser struct {
 	inferTypes bool
 }
 
+// NewParser creates new Parser.
 func NewParser(s Settings) *Parser {
 	s.setDefaults()
 	return &Parser{
@@ -29,10 +30,12 @@ func NewParser(s Settings) *Parser {
 	}
 }
 
+// Parse parses given RawSchema and returns parsed Schema.
 func (p *Parser) Parse(schema *RawSchema) (*Schema, error) {
 	return p.parse(schema, resolveCtx{})
 }
 
+// Resolve resolves Schema by given ref.
 func (p *Parser) Resolve(ref string) (*Schema, error) {
 	return p.resolve(ref, resolveCtx{})
 }

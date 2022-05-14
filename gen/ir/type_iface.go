@@ -3,7 +3,6 @@ package ir
 import (
 	"fmt"
 	"sort"
-	"strings"
 )
 
 func (t *Type) CanHaveMethods() bool {
@@ -73,7 +72,7 @@ func (t *Type) ListImplementations() []*Type {
 		result = append(result, impl)
 	}
 	sort.SliceStable(result, func(i, j int) bool {
-		return strings.Compare(result[i].Name, result[j].Name) < 0
+		return result[i].Name < result[j].Name
 	})
 	return result
 }

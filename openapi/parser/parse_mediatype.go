@@ -46,7 +46,6 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 	s.AddExample(m.Example)
 	for _, ex := range examples {
 		s.AddExample(ex.Value)
-
 	}
 
 	return &openapi.MediaType{

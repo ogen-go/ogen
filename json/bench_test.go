@@ -104,7 +104,6 @@ func BenchmarkMarshal(b *testing.B) {
 				}
 			})
 		})
-
 	})
 }
 

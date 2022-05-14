@@ -175,7 +175,7 @@ func (s *sampleAPIServer) PetUploadAvatarByID(ctx context.Context, req api.PetUp
 			}, nil
 		}
 
-		if string(avatar) != string(petAvatar) {
+		if !bytes.Equal(avatar, petAvatar) {
 			return &api.ErrorStatusCode{
 				StatusCode: http.StatusBadRequest,
 				Response:   api.Error{Message: "unexpected avatar"},
@@ -479,7 +479,7 @@ func TestIntegration(t *testing.T) {
 			h, err := client.GetHeader(ctx, api.GetHeaderParams{XAuthToken: "hello, world"})
 			require.NoError(t, err)
 			assert.NotEmpty(t, h.Raw)
-			assert.Equal(t, hex.EncodeToString(h.Raw[:]), h.Hex)
+			assert.Equal(t, hex.EncodeToString(h.Raw), h.Hex)
 			assert.Equal(t, "09ca7e4eaa6e8ae9c7d261167129184883644d07dfba7cbfbc4c8a2e08360d5b", h.Hex)
 		})
 		t.Run("DataGetFormat", func(t *testing.T) {

@@ -9,14 +9,22 @@ import (
 type SchemaType string
 
 const (
-	Empty   SchemaType = "" // OneOf, AnyOf, AllOf.
-	Object  SchemaType = "object"
-	Array   SchemaType = "array"
+	// Empty is empty (unset) schema type.
+	Empty SchemaType = "" // OneOf, AnyOf, AllOf.
+	// Object is "object" schema type.
+	Object SchemaType = "object"
+	// Array is "array" schema type.
+	Array SchemaType = "array"
+	// Integer is "integer" schema type.
 	Integer SchemaType = "integer"
-	Number  SchemaType = "number"
-	String  SchemaType = "string"
+	// Number is "number" schema type.
+	Number SchemaType = "number"
+	// String is "string" schema type.
+	String SchemaType = "string"
+	// Boolean is "boolean" schema type.
 	Boolean SchemaType = "boolean"
-	Null    SchemaType = "null"
+	// Null is "null" schema type.
+	Null SchemaType = "null"
 )
 
 // Schema is a JSON Schema.
@@ -68,6 +76,7 @@ type Schema struct {
 	DefaultSet bool
 }
 
+// AddExample adds example for this Schema.
 func (s *Schema) AddExample(r json.RawMessage) {
 	if s != nil && len(r) > 0 {
 		s.Examples = append(s.Examples, r)

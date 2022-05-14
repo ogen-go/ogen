@@ -2,6 +2,7 @@ package ogen
 
 import "github.com/ogen-go/ogen/jsonschema"
 
+// ToJSONSchema converts Schema to jsonschema.Schema.
 func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 	if s == nil {
 		return nil
@@ -50,6 +51,7 @@ func (s *Schema) ToJSONSchema() *jsonschema.RawSchema {
 	}
 }
 
+// ToJSONSchema converts Properties to jsonschema.RawProperties.
 func (p Properties) ToJSONSchema() jsonschema.RawProperties {
 	result := make([]jsonschema.RawProperty, 0, len(p))
 	for _, prop := range p {
@@ -58,6 +60,7 @@ func (p Properties) ToJSONSchema() jsonschema.RawProperties {
 	return result
 }
 
+// ToJSONSchema converts Property to jsonschema.Property.
 func (p Property) ToJSONSchema() jsonschema.RawProperty {
 	return jsonschema.RawProperty{
 		Name:   p.Name,
@@ -65,6 +68,7 @@ func (p Property) ToJSONSchema() jsonschema.RawProperty {
 	}
 }
 
+// ToJSONSchema converts AdditionalProperties to jsonschema.AdditionalProperties.
 func (p *AdditionalProperties) ToJSONSchema() *jsonschema.AdditionalProperties {
 	if p == nil {
 		return nil
@@ -81,6 +85,7 @@ func (p *AdditionalProperties) ToJSONSchema() *jsonschema.AdditionalProperties {
 	}
 }
 
+// ToJSONSchema converts PatternProperties to jsonschema.RawPatternProperties.
 func (r PatternProperties) ToJSONSchema() (result jsonschema.RawPatternProperties) {
 	for _, val := range r {
 		result = append(result, jsonschema.RawPatternProperty{
@@ -91,6 +96,7 @@ func (r PatternProperties) ToJSONSchema() (result jsonschema.RawPatternPropertie
 	return result
 }
 
+// ToJSONSchema converts Discriminator to jsonschema.Discriminator.
 func (d *Discriminator) ToJSONSchema() *jsonschema.Discriminator {
 	if d == nil {
 		return nil

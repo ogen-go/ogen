@@ -1,7 +1,136 @@
+linters-settings:
+  gocyclo:
+    min-complexity: 15
+  maligned:
+    suggest-new: true
+  dupl:
+    threshold: 120
+  goconst:
+    min-len: 2
+    min-occurrences: 3
+  misspell:
+    locale: US
+  lll:
+    line-length: 140
+  gocritic:
+    enabled-tags:
+      - diagnostic
+      - experimental
+      - opinionated
+      - performance
+      - style
+    disabled-checks:
+      - hugeParam
+      - rangeValCopy
+      - exitAfterDefer
+      - whyNoLint
+      - appendAssign
+      - octalLiteral
+      - httpNoBody
+      - unnecessaryBlock # for UUID encoder
+
 linters:
+  enable:
+    - deadcode
+    - depguard
+    - dogsled
+    - errcheck
+    - goconst
+    - gocritic
+    - revive
+    - gosec
+    - govet
+    - ineffassign
+    - lll
+    - misspell
+    - nakedret
+    - structcheck
+    - typecheck
+    - unconvert
+    - unparam
+    - varcheck
+    - whitespace
+    # Do not enable:
+    # - wsl       (too opinionated about newlines)
+    # - godox     (todos are OK)
+    # - bodyclose (false positives on helper functions)
+    # - prealloc  (not worth it in scope of this project)
+    # - maligned  (same as prealloc)
+    # - funlen    (gocyclo is enough)
+    # - gochecknoglobals (we know when it is ok to use globals)
+    # - gochecknoinits (we know when it is ok to use inits)
+    # - dupl (validator/parser package are false positive)
+
   disable:
     # Disable until https://github.com/dominikh/go-tools/issues/1270 fix be released.
     - staticcheck
     - gosimple
     - unused
     - stylecheck
+
+
+issues:
+  exclude-use-default: false
+  exclude-rules:
+    # Exclude go:generate from lll
+    - source: "//go:generate"
+      linters: [ lll ]
+
+    # Exclude links from lll
+    - source: "// See https://"
+      linters: [ lll ]
+
+    # Disable linters that are annoying in tests.
+    - path: _test\.go
+      linters:
+        - gocyclo
+        - errcheck
+        - dupl
+        - gosec
+        - funlen
+        - goconst
+        - gocognit
+        - scopelint
+        - lll
+
+    # Ignore shadowing of err.
+    - linters: [ govet ]
+      text: 'declaration of "(err|ctx|log)"'
+
+    # Ignore linters in main packages.
+    - path: cmd\/.+\/main\.go
+      linters: [ goconst, funlen, gocognit, gocyclo ]
+
+    # TODO(tdakkota): add comments?
+    - path: (conv|uri|gen)
+      linters: [ revive, golint ]
+      text: "should have comment.+or be unexported"
+
+    # We don't need comments for command packages.
+    - path: (cmd|tools)(\/|\\).+(\/|\\).+\.go
+      linters: [ revive, golint ]
+      text: "should have comment.+or be unexported"
+
+    # Intended in commands:
+    # G307: Deferring unsafe method "Close" on type "*os.File"
+    # G304: Potential file inclusion via variable
+    - path: (cmd|tools)(\/|\\).+(\/|\\).+\.go
+      text: G(304|306|307)
+
+    # Checked unsafe.
+    - path: http
+      linters: [ gosec ]
+      text: G103
+
+    # Intended design.
+    - path: http
+      source: Set
+      linters: [ revive ]
+      text: context-as-argument
+
+    # Not supposed to be constant.
+    - linters: [ goconst ]
+      text: 'string `(string|number|int32|int64)`'
+
+    - linters: [ revive ]
+      text: "if-return: redundant if ...; err != nil check, just return error instead."

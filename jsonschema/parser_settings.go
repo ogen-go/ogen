@@ -2,6 +2,7 @@ package jsonschema
 
 import "errors"
 
+// Settings is parser settings.
 type Settings struct {
 	Resolver ReferenceResolver
 

@@ -34,6 +34,7 @@ type Spec struct {
 	Raw []byte `json:"-"`
 }
 
+// UnmarshalJSON implements json.Unmarshaler.
 func (s *Spec) UnmarshalJSON(bytes []byte) error {
 	type Alias Spec
 	var a Alias
@@ -478,13 +479,16 @@ type Schema struct {
 	Deprecated bool `json:"deprecated,omitempty"`
 }
 
+// Property is item of Properties.
 type Property struct {
 	Name   string
 	Schema *Schema
 }
 
+// Properties represent JSON Schema properties validator description.
 type Properties []Property
 
+// MarshalJSON implements json.Marshaler.
 func (p Properties) MarshalJSON() ([]byte, error) {
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
@@ -502,6 +506,7 @@ func (p Properties) MarshalJSON() ([]byte, error) {
 	return e.Bytes(), nil
 }
 
+// UnmarshalJSON implements json.Unmarshaler.
 func (p *Properties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return d.Obj(func(d *jx.Decoder, key string) error {
@@ -523,11 +528,13 @@ func (p *Properties) UnmarshalJSON(data []byte) error {
 	})
 }
 
+// AdditionalProperties represent JSON Schema additionalProperties validator description.
 type AdditionalProperties struct {
 	Bool   *bool
 	Schema Schema
 }
 
+// MarshalJSON implements json.Marshaler.
 func (p AdditionalProperties) MarshalJSON() ([]byte, error) {
 	if p.Bool != nil {
 		return json.Marshal(p.Bool)
@@ -535,6 +542,7 @@ func (p AdditionalProperties) MarshalJSON() ([]byte, error) {
 	return json.Marshal(p.Schema)
 }
 
+// UnmarshalJSON implements json.Unmarshaler.
 func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	switch tt := d.Next(); tt {
@@ -562,8 +570,16 @@ func (p *AdditionalProperties) UnmarshalJSON(data []byte) error {
 	return nil
 }
 
+// PatternProperty is item of PatternProperties.
+type PatternProperty struct {
+	Pattern string
+	Schema  *Schema
+}
+
+// PatternProperties represent JSON Schema patternProperties validator description.
 type PatternProperties []PatternProperty
 
+// MarshalJSON implements json.Marshaler.
 func (r PatternProperties) MarshalJSON() ([]byte, error) {
 	var e jx.Encoder
 	e.ObjStart()
@@ -579,6 +595,7 @@ func (r PatternProperties) MarshalJSON() ([]byte, error) {
 	return e.Bytes(), nil
 }
 
+// UnmarshalJSON implements json.Unmarshaler.
 func (r *PatternProperties) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return d.Obj(func(d *jx.Decoder, key string) error {
@@ -598,9 +615,4 @@ func (r *PatternProperties) UnmarshalJSON(data []byte) error {
 		})
 		return nil
 	})
-}
-
-type PatternProperty struct {
-	Pattern string
-	Schema  *Schema
 }

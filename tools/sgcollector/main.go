@@ -75,7 +75,9 @@ func run(ctx context.Context) error {
 		if err != nil {
 			return errors.Wrap(err, "create CPU profile")
 		}
-		defer f.Close()
+		defer func() {
+			_ = f.Close()
+		}()
 
 		if err := pprof.StartCPUProfile(f); err != nil {
 			return errors.Wrap(err, "start CPU profile")
@@ -91,7 +93,9 @@ func run(ctx context.Context) error {
 		if err != nil {
 			return errors.Wrap(err, "create memory profile")
 		}
-		defer f.Close()
+		defer func() {
+			_ = f.Close()
+		}()
 
 		defer func() {
 			runtime.GC() // get up-to-date statistics

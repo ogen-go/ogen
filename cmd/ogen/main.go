@@ -29,8 +29,10 @@ func main() {
 		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
 		inferTypes        = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 
-		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "", "Ignore methods having functionality which is not implemented (all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
-		debugNoerr                = flag.Bool("debug.noerr", false, "Ignore all errors")
+		debugIgnoreNotImplemented = flag.String("debug.ignoreNotImplemented", "",
+			"Ignore methods having functionality which is not implemented "+
+				"(all, oneOf, anyOf, allOf, nullable types, complex parameter types)")
+		debugNoerr = flag.Bool("debug.noerr", false, "Ignore all errors")
 	)
 
 	flag.Parse()

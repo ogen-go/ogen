@@ -141,7 +141,7 @@ func (g *Generator) makeIR(ops []*openapi.Operation) error {
 
 	sort.SliceStable(g.operations, func(i, j int) bool {
 		a, b := g.operations[i], g.operations[j]
-		return strings.Compare(a.Name, b.Name) < 0
+		return a.Name < b.Name
 	})
 
 	return nil

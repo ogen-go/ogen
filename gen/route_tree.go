@@ -51,7 +51,7 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 		t.Root = n
 	}
 	for {
-		if len(path) == 0 {
+		if path == "" {
 			n.op = operation
 			return nil
 		}
@@ -115,7 +115,7 @@ func (t *RouteTree) addRoute(path string, operation *ir.Operation) error {
 
 		// Special case: if new node has exactly same path, replace existing node.
 		path = path[commonPrefix:]
-		if len(path) == 0 {
+		if path == "" {
 			newChild.op = operation
 			return nil
 		}

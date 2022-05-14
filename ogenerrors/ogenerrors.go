@@ -27,6 +27,7 @@ type SecurityError struct {
 	Err       error
 }
 
+// OperationID returns operation ID of failed request.
 func (d *SecurityError) OperationID() string {
 	return d.Operation
 }
@@ -52,6 +53,7 @@ type DecodeParamsError struct {
 	Err       error
 }
 
+// OperationID returns operation ID of failed request.
 func (d *DecodeParamsError) OperationID() string {
 	return d.Operation
 }
@@ -77,6 +79,7 @@ type DecodeRequestError struct {
 	Err       error
 }
 
+// OperationID returns operation ID of failed request.
 func (d *DecodeRequestError) OperationID() string {
 	return d.Operation
 }

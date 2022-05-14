@@ -8,6 +8,7 @@ import (
 	"github.com/go-faster/jx"
 )
 
+// Parse parses JSON/YAML into OpenAPI Spec.
 func Parse(data []byte) (*Spec, error) {
 	if !jx.Valid(data) {
 		d, err := yaml.YAMLToJSON(data)
