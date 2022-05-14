@@ -34,7 +34,6 @@ linters:
     - deadcode
     - depguard
     - dogsled
-    # - dupl
     - errcheck
     - goconst
     - gocritic
@@ -42,7 +41,7 @@ linters:
     - gosec
     - govet
     - ineffassign
-    # - lll
+    - lll
     - misspell
     - nakedret
     - structcheck
@@ -60,6 +59,7 @@ linters:
     # - funlen    (gocyclo is enough)
     # - gochecknoglobals (we know when it is ok to use globals)
     # - gochecknoinits (we know when it is ok to use inits)
+    # - dupl (validator/parser package are false positive)
 
   disable:
     # Disable until https://github.com/dominikh/go-tools/issues/1270 fix be released.
@@ -72,12 +72,12 @@ linters:
 issues:
   exclude-use-default: false
   exclude-rules:
-    - linters: [ gocritic ]
-      text: "commentedOutCode"
-      source: "SHA1"
-
     # Exclude go:generate from lll
     - source: "//go:generate"
+      linters: [ lll ]
+
+    # Exclude links from lll
+    - source: "// See https://"
       linters: [ lll ]
 
     # Disable linters that are annoying in tests.

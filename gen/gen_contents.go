@@ -49,7 +49,12 @@ func filterMostSpecific(contents map[string]*openapi.MediaType) error {
 	return nil
 }
 
-func (g *Generator) generateContents(ctx *genctx, name string, optional bool, contents map[string]*openapi.MediaType) (_ map[ir.ContentType]*ir.Type, err error) {
+func (g *Generator) generateContents(
+	ctx *genctx,
+	name string,
+	optional bool,
+	contents map[string]*openapi.MediaType,
+) (_ map[ir.ContentType]*ir.Type, err error) {
 	var (
 		result      = make(map[ir.ContentType]*ir.Type, len(contents))
 		unsupported []string
