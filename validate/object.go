@@ -30,10 +30,10 @@ func (t Object) Set() bool {
 // ValidateProperties returns error if object length (properties number) v is invalid.
 func (t Object) ValidateProperties(v int) error {
 	if t.MaxPropertiesSet && v > t.MaxProperties {
-		return errors.Errorf("len %d greater than maximum %d", v, t.MaxProperties)
+		return errors.Errorf("object properties number %d greater than maximum %d", v, t.MaxProperties)
 	}
 	if t.MinPropertiesSet && v < t.MinProperties {
-		return errors.Errorf("len %d less than minimum %d", v, t.MinProperties)
+		return errors.Errorf("object properties number %d less than minimum %d", v, t.MinProperties)
 	}
 
 	return nil
