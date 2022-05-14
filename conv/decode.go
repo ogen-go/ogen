@@ -136,7 +136,6 @@ func ToStringArray(a []string) ([]string, error) {
 func ToBytesArray(a []string) ([][]byte, error) {
 	var arr [][]byte
 	for _, s := range a {
-
 		arr = append(arr, []byte(s))
 	}
 

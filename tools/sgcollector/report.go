@@ -111,7 +111,7 @@ func (r *Reporters) report(ctx context.Context, stage Stage, report Report) erro
 
 func (r *Reporters) writeStats(output string, total int) error {
 	output = filepath.Clean(output)
-	if err := os.MkdirAll(filepath.Dir(output), 0o755); err != nil {
+	if err := os.MkdirAll(filepath.Dir(output), 0o750); err != nil {
 		return err
 	}
 
@@ -119,7 +119,9 @@ func (r *Reporters) writeStats(output string, total int) error {
 	if err != nil {
 		return err
 	}
-	defer f.Close()
+	defer func() {
+		_ = f.Close()
+	}()
 
 	w := tabwriter.NewWriter(f, 0, 0, 1, ' ', 0)
 	for idx, reporter := range r.reporters {

@@ -17,13 +17,13 @@ func (n Num) MarshalJSON() ([]byte, error) {
 }
 
 // UnmarshalJSON implements json.Unmarshaler.
-func (n *Num) UnmarshalJSON(bytes []byte) error {
-	j, err := jx.DecodeBytes(bytes).Num()
+func (n *Num) UnmarshalJSON(data []byte) error {
+	j, err := jx.DecodeBytes(data).Num()
 	if err != nil {
-		return errors.Wrapf(err, "invalid number %s", bytes)
+		return errors.Wrapf(err, "invalid number %s", data)
 	}
 	if j.Str() {
-		return errors.Errorf("invalid number %s", bytes)
+		return errors.Errorf("invalid number %s", data)
 	}
 
 	*n = Num(j)

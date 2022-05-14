@@ -14,7 +14,6 @@ func (t *Type) Examples() (r []string) {
 
 	dedup := make(map[string]struct{}, len(t.Schema.Examples))
 	for _, example := range t.Schema.Examples {
-
 		if !jx.Valid(example) {
 			continue
 		}

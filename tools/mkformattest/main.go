@@ -74,9 +74,11 @@ func generateSpec() *ogen.Spec {
 			if s.Nullable {
 				prefix += "_nullable"
 			}
-			testSchemas = append(testSchemas, ogen.NewNamedSchema(prefix, s))
-			testSchemas = append(testSchemas, ogen.NewNamedSchema(prefix+"_array", s.AsArray()))
-			testSchemas = append(testSchemas, ogen.NewNamedSchema(prefix+"_array"+"_array", s.AsArray().AsArray()))
+			testSchemas = append(testSchemas,
+				ogen.NewNamedSchema(prefix, s),
+				ogen.NewNamedSchema(prefix+"_array", s.AsArray()),
+				ogen.NewNamedSchema(prefix+"_array"+"_array", s.AsArray().AsArray()),
+			)
 		}
 		do(ogen.NewSchema().
 			SetType(typ).

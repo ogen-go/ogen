@@ -89,8 +89,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 						typ:        lresp.NoContent,
 						replaceNoc: true,
 						response:   lresp,
-					})
-					candidates = append(candidates, candidate{
+					}, candidate{
 						renameTo:   rname,
 						typ:        rresp.NoContent,
 						replaceNoc: true,
@@ -133,8 +132,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 							typ:       lschema,
 							replaceCT: lct,
 							response:  lresp,
-						})
-						candidates = append(candidates, candidate{
+						}, candidate{
 							renameTo:  rname,
 							typ:       rschema,
 							replaceCT: rct,
@@ -232,8 +230,7 @@ func fixEqualRequests(ctx *genctx, op *ir.Operation) error {
 					renameTo: lname,
 					ctype:    lcontent,
 					t:        lschema,
-				})
-				candidates = append(candidates, candidate{
+				}, candidate{
 					renameTo: rname,
 					ctype:    rcontent,
 					t:        rschema,

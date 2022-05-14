@@ -252,7 +252,7 @@ func wrapStatusCode(ctx *genctx, name string, t *ir.Type) (ret *ir.Type, rerr er
 		name = t.Name
 	}
 
-	name = name + "StatusCode"
+	name += "StatusCode"
 	return &ir.Type{
 		Kind: ir.KindStruct,
 		Name: name,

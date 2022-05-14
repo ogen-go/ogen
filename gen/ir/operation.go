@@ -3,7 +3,6 @@ package ir
 import (
 	"fmt"
 	"sort"
-	"strings"
 
 	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
@@ -159,7 +158,7 @@ func (s StatusResponse) ResponseInfo() []ResponseInfo {
 		if l.StatusCode != r.StatusCode {
 			return l.StatusCode < r.StatusCode
 		}
-		return strings.Compare(string(l.ContentType), string(r.ContentType)) < 0
+		return string(l.ContentType) < string(r.ContentType)
 	})
 
 	return result

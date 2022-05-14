@@ -3,8 +3,9 @@ package ir
 import (
 	"testing"
 
-	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/stretchr/testify/require"
+
+	"github.com/ogen-go/ogen/jsonschema"
 )
 
 func TestJSONFields_RequiredMask(t *testing.T) {

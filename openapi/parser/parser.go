@@ -174,7 +174,7 @@ func mergeParams(opParams, itemParams []*openapi.Parameter) []*openapi.Parameter
 	}
 
 	for _, param := range itemParams {
-		// Param defined in operation take precedense over param defined in pathItem.
+		// Param defined in operation take precedence over param defined in pathItem.
 		if lookupOp(param.Name, param.In) {
 			continue
 		}

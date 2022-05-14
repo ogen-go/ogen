@@ -178,9 +178,7 @@ func templateFunctions() template.FuncMap {
 				},
 			}
 		},
-		"print_go": func(val interface{}) string {
-			return ir.PrintGoValue(val)
-		},
+		"print_go": ir.PrintGoValue,
 		// We use interface{} to prevent template type matching errors
 		// for type aliases (e.g. for quoting ir.ContentType).
 		"quote": func(v interface{}) string {

@@ -44,7 +44,7 @@ func validateJSON(data []byte) error {
 func worker(ctx context.Context, m FileMatch, r *Reporters) (rErr error) {
 	data := bytes.TrimPrefix([]byte(m.File.Content), bomPrefix)
 	isYAML := strings.HasSuffix(m.File.Name, ".yml") || strings.HasSuffix(m.File.Name, ".yaml")
-	hash := sha256.Sum256(data[:])
+	hash := sha256.Sum256(data)
 
 	defer func() {
 		if rr := recover(); rr != nil {

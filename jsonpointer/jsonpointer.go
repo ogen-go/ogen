@@ -14,7 +14,7 @@ import (
 // If value not found, returns NotFoundError.
 func Resolve(ptr string, buf []byte) ([]byte, error) {
 	switch {
-	case len(ptr) == 0 || ptr == "#":
+	case ptr == "" || ptr == "#":
 		return validate(buf)
 	case ptr[0] == '/':
 		return find(ptr, buf)
@@ -45,7 +45,7 @@ func find(ptr string, buf []byte) ([]byte, error) {
 	d := jx.GetDecoder()
 	defer jx.PutDecoder(d)
 
-	if len(ptr) == 0 {
+	if ptr == "" {
 		return validate(buf)
 	}
 
