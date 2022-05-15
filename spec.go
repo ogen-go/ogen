@@ -257,11 +257,11 @@ type Responses map[string]*Response
 // Response describes a single response from an API Operation,
 // including design-time, static links to operations based on the response.
 type Response struct {
-	Ref         string                 `json:"$ref,omitempty"`
-	Description string                 `json:"description,omitempty"`
-	Header      map[string]interface{} `json:"header,omitempty"` // TODO: implement
-	Content     map[string]Media       `json:"content,omitempty"`
-	Links       map[string]interface{} `json:"links,omitempty"` // TODO: implement
+	Ref         string           `json:"$ref,omitempty"`
+	Description string           `json:"description,omitempty"`
+	Header      map[string]any   `json:"header,omitempty"` // TODO: implement
+	Content     map[string]Media `json:"content,omitempty"`
+	Links       map[string]any   `json:"links,omitempty"` // TODO: implement
 }
 
 // Media provides schema and examples for the media type identified by its key.

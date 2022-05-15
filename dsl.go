@@ -701,7 +701,7 @@ func (r *Response) SetDescription(d string) *Response {
 }
 
 // SetHeader sets the Header of the Response.
-func (r *Response) SetHeader(h map[string]interface{}) *Response {
+func (r *Response) SetHeader(h map[string]any) *Response {
 	r.Header = h
 	return r
 }
@@ -734,7 +734,7 @@ func (r *Response) initContent() {
 }
 
 // SetLinks sets the Links of the Response.
-func (r *Response) SetLinks(l map[string]interface{}) *Response {
+func (r *Response) SetLinks(l map[string]any) *Response {
 	r.Links = l
 	return r
 }
