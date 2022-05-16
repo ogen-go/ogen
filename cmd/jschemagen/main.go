@@ -63,8 +63,10 @@ func run() error {
 	}
 
 	dir, file := filepath.Split(filepath.Clean(*targetFile))
-	if err := os.MkdirAll(dir, 0o750); err != nil {
-		return errors.Wrap(err, "create output directory")
+	if dir != "" {
+		if err := os.MkdirAll(dir, 0o750); err != nil {
+			return errors.Wrap(err, "create output directory")
+		}
 	}
 	fs := genfs.FormattedSource{
 		Root:   dir,
