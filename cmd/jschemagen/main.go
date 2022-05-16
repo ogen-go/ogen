@@ -4,6 +4,7 @@ import (
 	"flag"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -28,14 +29,39 @@ func (i *StringArrayFlag) Set(value string) error {
 	return nil
 }
 
+func inferFileName(
+	targetFile *string,
+	typeName string,
+	rawSchema jsonschema.RawSchema,
+	trimPrefixes StringArrayFlag,
+) {
+	if typeName == "" {
+		if ref := rawSchema.Ref; ref != "" {
+			for _, prefix := range trimPrefixes {
+				ref = strings.TrimPrefix(ref, prefix)
+			}
+			typeName = ref
+		}
+	}
+
+	typeName = strings.ToLower(typeName)
+	// Check that type name contains only valid path characters.
+	if regexp.MustCompile(`^\w+$`).MatchString(typeName) {
+		*targetFile = typeName + "_json.go"
+	}
+
+	if *targetFile == "" {
+		*targetFile = "output.go"
+	}
+}
+
 func run() error {
 	var (
-		targetFile    = flag.String("target", "output.go", "Path to target")
+		targetFile    = flag.String("target", "", "Path to target")
 		packageName   = flag.String("package", os.Getenv("GOPACKAGE"), "Target package name")
 		typeName      = flag.String("typename", "", "Root schema type name")
 		performFormat = flag.Bool("format", true, "Perform code formatting")
-
-		trimPrefixes StringArrayFlag
+		trimPrefixes  = StringArrayFlag{"#/definitions/", "#/$defs/"}
 	)
 	flag.Var(&trimPrefixes, "trim-prefixes", "Ref prefixes to trim")
 
@@ -50,18 +76,19 @@ func run() error {
 		return errors.Wrap(err, "read file")
 	}
 
-	var rawSchema *jsonschema.RawSchema
+	var rawSchema jsonschema.RawSchema
 	if err := json.Unmarshal(data, &rawSchema); err != nil {
 		return errors.Wrap(err, "unmarshal")
 	}
 	p := jsonschema.NewParser(jsonschema.Settings{
 		Resolver: jsonschema.NewRootResolver(data),
 	})
-	schema, err := p.Parse(rawSchema)
+	schema, err := p.Parse(&rawSchema)
 	if err != nil {
 		return errors.Wrap(err, "parse")
 	}
 
+	inferFileName(targetFile, *typeName, rawSchema, trimPrefixes)
 	dir, file := filepath.Split(filepath.Clean(*targetFile))
 	if dir != "" {
 		if err := os.MkdirAll(dir, 0o750); err != nil {
@@ -73,6 +100,9 @@ func run() error {
 		Format: *performFormat,
 	}
 
+	if *packageName == "" {
+		*packageName = "output"
+	}
 	if err := gen.GenerateSchema(schema, fs, gen.GenerateSchemaOptions{
 		TypeName:   *typeName,
 		FileName:   file,
