@@ -30,7 +30,6 @@ func (i *StringArrayFlag) Set(value string) error {
 
 func run() error {
 	var (
-		specPath      = flag.String("schema", "", "Path to openapi spec file")
 		targetFile    = flag.String("target", "output.go", "Path to target")
 		packageName   = flag.String("package", os.Getenv("GOPACKAGE"), "Target package name")
 		typeName      = flag.String("typename", "", "Root schema type name")
@@ -41,11 +40,12 @@ func run() error {
 	flag.Var(&trimPrefixes, "trim-prefixes", "Ref prefixes to trim")
 
 	flag.Parse()
-	if *specPath == "" {
+	specPath := flag.Arg(0)
+	if flag.NArg() < 1 || specPath == "" {
 		return errors.New("no spec provided")
 	}
 
-	data, err := os.ReadFile(*specPath)
+	data, err := os.ReadFile(specPath)
 	if err != nil {
 		return errors.Wrap(err, "read file")
 	}
