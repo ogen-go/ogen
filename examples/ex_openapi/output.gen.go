@@ -22,13 +22,15 @@ var regexMap = map[string]*regexp.Regexp{
 	"^x-":                   regexp.MustCompile("^x-"),
 }
 
+type Any jx.Raw
+
 // Ref: #/definitions/anysOrExpressions
-type AnysOrExpressions map[string]jx.Raw
+type AnysOrExpressions map[string]Any
 
 func (s *AnysOrExpressions) init() AnysOrExpressions {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]Any{}
 		*s = m
 	}
 	return m
@@ -122,12 +124,12 @@ func (s *CallbackPattern0) init() CallbackPattern0 {
 	return m
 }
 
-type CallbackPattern1 map[string]jx.Raw
+type CallbackPattern1 map[string]SpecificationExtension
 
 func (s *CallbackPattern1) init() CallbackPattern1 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -163,12 +165,12 @@ type Components struct {
 	Pattern0Props ComponentsPattern0
 }
 
-type ComponentsPattern0 map[string]jx.Raw
+type ComponentsPattern0 map[string]SpecificationExtension
 
 func (s *ComponentsPattern0) init() ComponentsPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -184,16 +186,18 @@ type Contact struct {
 	Pattern0Props ContactPattern0
 }
 
-type ContactPattern0 map[string]jx.Raw
+type ContactPattern0 map[string]SpecificationExtension
 
 func (s *ContactPattern0) init() ContactPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
 }
+
+type DefaultType jx.Raw
 
 // When request bodies or response payloads may be one of a number of different schemas, a
 // `discriminator` object can be used to aid in serialization, deserialization, and validation.  The
@@ -218,12 +222,12 @@ type Encoding struct {
 	Pattern0Props EncodingPattern0
 }
 
-type EncodingPattern0 map[string]jx.Raw
+type EncodingPattern0 map[string]SpecificationExtension
 
 func (s *EncodingPattern0) init() EncodingPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -245,7 +249,7 @@ func (s *Encodings) init() Encodings {
 type Example struct {
 	Summary       OptString "json:\"summary\""
 	Description   OptString "json:\"description\""
-	Value         jx.Raw    "json:\"value\""
+	Value         *Any      "json:\"value\""
 	ExternalValue OptString "json:\"externalValue\""
 	// Pattern: "^x-".
 	Pattern0Props ExamplePattern0
@@ -316,12 +320,12 @@ func NewReferenceExampleOrReference(v Reference) ExampleOrReference {
 	return s
 }
 
-type ExamplePattern0 map[string]jx.Raw
+type ExamplePattern0 map[string]SpecificationExtension
 
 func (s *ExamplePattern0) init() ExamplePattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -348,12 +352,12 @@ type ExternalDocs struct {
 	Pattern0Props ExternalDocsPattern0
 }
 
-type ExternalDocsPattern0 map[string]jx.Raw
+type ExternalDocsPattern0 map[string]SpecificationExtension
 
 func (s *ExternalDocsPattern0) init() ExternalDocsPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -373,7 +377,7 @@ type Header struct {
 	Explode         OptBool                 "json:\"explode\""
 	AllowReserved   OptBool                 "json:\"allowReserved\""
 	Schema          OptSchemaOrReference    "json:\"schema\""
-	Example         jx.Raw                  "json:\"example\""
+	Example         *Any                    "json:\"example\""
 	Examples        OptExamplesOrReferences "json:\"examples\""
 	Content         OptMediaTypes           "json:\"content\""
 	// Pattern: "^x-".
@@ -445,12 +449,12 @@ func NewReferenceHeaderOrReference(v Reference) HeaderOrReference {
 	return s
 }
 
-type HeaderPattern0 map[string]jx.Raw
+type HeaderPattern0 map[string]SpecificationExtension
 
 func (s *HeaderPattern0) init() HeaderPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -482,12 +486,12 @@ type Info struct {
 	Pattern0Props InfoPattern0
 }
 
-type InfoPattern0 map[string]jx.Raw
+type InfoPattern0 map[string]SpecificationExtension
 
 func (s *InfoPattern0) init() InfoPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -520,12 +524,12 @@ type License struct {
 	Pattern0Props LicensePattern0
 }
 
-type LicensePattern0 map[string]jx.Raw
+type LicensePattern0 map[string]SpecificationExtension
 
 func (s *LicensePattern0) init() LicensePattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -543,7 +547,7 @@ type Link struct {
 	OperationRef OptString            "json:\"operationRef\""
 	OperationId  OptString            "json:\"operationId\""
 	Parameters   OptAnysOrExpressions "json:\"parameters\""
-	RequestBody  jx.Raw               "json:\"requestBody\""
+	RequestBody  *Any                 "json:\"requestBody\""
 	Description  OptString            "json:\"description\""
 	Server       OptServer            "json:\"server\""
 	// Pattern: "^x-".
@@ -615,12 +619,12 @@ func NewReferenceLinkOrReference(v Reference) LinkOrReference {
 	return s
 }
 
-type LinkPattern0 map[string]jx.Raw
+type LinkPattern0 map[string]SpecificationExtension
 
 func (s *LinkPattern0) init() LinkPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -642,19 +646,19 @@ func (s *LinksOrReferences) init() LinksOrReferences {
 // Ref: #/definitions/mediaType
 type MediaType struct {
 	Schema   OptSchemaOrReference    "json:\"schema\""
-	Example  jx.Raw                  "json:\"example\""
+	Example  *Any                    "json:\"example\""
 	Examples OptExamplesOrReferences "json:\"examples\""
 	Encoding OptEncodings            "json:\"encoding\""
 	// Pattern: "^x-".
 	Pattern0Props MediaTypePattern0
 }
 
-type MediaTypePattern0 map[string]jx.Raw
+type MediaTypePattern0 map[string]SpecificationExtension
 
 func (s *MediaTypePattern0) init() MediaTypePattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -683,12 +687,12 @@ type OauthFlow struct {
 	Pattern0Props OauthFlowPattern0
 }
 
-type OauthFlowPattern0 map[string]jx.Raw
+type OauthFlowPattern0 map[string]SpecificationExtension
 
 func (s *OauthFlowPattern0) init() OauthFlowPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -705,12 +709,12 @@ type OauthFlows struct {
 	Pattern0Props OauthFlowsPattern0
 }
 
-type OauthFlowsPattern0 map[string]jx.Raw
+type OauthFlowsPattern0 map[string]SpecificationExtension
 
 func (s *OauthFlowsPattern0) init() OauthFlowsPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -735,12 +739,12 @@ type Operation struct {
 	Pattern0Props OperationPattern0
 }
 
-type OperationPattern0 map[string]jx.Raw
+type OperationPattern0 map[string]SpecificationExtension
 
 func (s *OperationPattern0) init() OperationPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -2646,7 +2650,7 @@ type Parameter struct {
 	Explode         OptBool                 "json:\"explode\""
 	AllowReserved   OptBool                 "json:\"allowReserved\""
 	Schema          OptSchemaOrReference    "json:\"schema\""
-	Example         jx.Raw                  "json:\"example\""
+	Example         *Any                    "json:\"example\""
 	Examples        OptExamplesOrReferences "json:\"examples\""
 	Content         OptMediaTypes           "json:\"content\""
 	// Pattern: "^x-".
@@ -2727,12 +2731,12 @@ func NewReferenceParameterOrReference(v Reference) ParameterOrReference {
 	return s
 }
 
-type ParameterPattern0 map[string]jx.Raw
+type ParameterPattern0 map[string]SpecificationExtension
 
 func (s *ParameterPattern0) init() ParameterPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -2784,12 +2788,12 @@ type PathItem struct {
 	Pattern0Props PathItemPattern0
 }
 
-type PathItemPattern0 map[string]jx.Raw
+type PathItemPattern0 map[string]SpecificationExtension
 
 func (s *PathItemPattern0) init() PathItemPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -2817,12 +2821,12 @@ func (s *PathsPattern0) init() PathsPattern0 {
 	return m
 }
 
-type PathsPattern1 map[string]jx.Raw
+type PathsPattern1 map[string]SpecificationExtension
 
 func (s *PathsPattern1) init() PathsPattern1 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -2928,12 +2932,12 @@ func NewReferenceRequestBodyOrReference(v Reference) RequestBodyOrReference {
 	return s
 }
 
-type RequestBodyPattern0 map[string]jx.Raw
+type RequestBodyPattern0 map[string]SpecificationExtension
 
 func (s *RequestBodyPattern0) init() RequestBodyPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3016,12 +3020,12 @@ func NewReferenceResponseOrReference(v Reference) ResponseOrReference {
 	return s
 }
 
-type ResponsePattern0 map[string]jx.Raw
+type ResponsePattern0 map[string]SpecificationExtension
 
 func (s *ResponsePattern0) init() ResponsePattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3066,12 +3070,12 @@ func (s *ResponsesPattern0) init() ResponsesPattern0 {
 	return m
 }
 
-type ResponsesPattern1 map[string]jx.Raw
+type ResponsesPattern1 map[string]SpecificationExtension
 
 func (s *ResponsesPattern1) init() ResponsesPattern1 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3090,7 +3094,7 @@ type Schema struct {
 	WriteOnly            OptBool                                       "json:\"writeOnly\""
 	XML                  OptXML                                        "json:\"xml\""
 	ExternalDocs         OptExternalDocs                               "json:\"externalDocs\""
-	Example              jx.Raw                                        "json:\"example\""
+	Example              *Any                                          "json:\"example\""
 	Deprecated           OptBool                                       "json:\"deprecated\""
 	Title                OptJsonschemaDraft4PropertiesTitle            "json:\"title\""
 	MultipleOf           OptJsonschemaDraft4PropertiesMultipleOf       "json:\"multipleOf\""
@@ -3116,7 +3120,7 @@ type Schema struct {
 	Items                *SchemaOrReference                            "json:\"items\""
 	Properties           OptSchemaProperties                           "json:\"properties\""
 	AdditionalProperties *SchemaAdditionalProperties                   "json:\"additionalProperties\""
-	Default              jx.Raw                                        "json:\"default\""
+	Default              *DefaultType                                  "json:\"default\""
 	Description          OptString                                     "json:\"description\""
 	Format               OptString                                     "json:\"format\""
 	// Pattern: "^x-".
@@ -3254,12 +3258,12 @@ func NewReferenceSchemaOrReference(v Reference) SchemaOrReference {
 	return s
 }
 
-type SchemaPattern0 map[string]jx.Raw
+type SchemaPattern0 map[string]SpecificationExtension
 
 func (s *SchemaPattern0) init() SchemaPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3406,12 +3410,12 @@ func NewReferenceSecuritySchemeOrReference(v Reference) SecuritySchemeOrReferenc
 	return s
 }
 
-type SecuritySchemePattern0 map[string]jx.Raw
+type SecuritySchemePattern0 map[string]SpecificationExtension
 
 func (s *SecuritySchemePattern0) init() SecuritySchemePattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3439,12 +3443,12 @@ type Server struct {
 	Pattern0Props ServerPattern0
 }
 
-type ServerPattern0 map[string]jx.Raw
+type ServerPattern0 map[string]SpecificationExtension
 
 func (s *ServerPattern0) init() ServerPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3460,12 +3464,12 @@ type ServerVariable struct {
 	Pattern0Props ServerVariablePattern0
 }
 
-type ServerVariablePattern0 map[string]jx.Raw
+type ServerVariablePattern0 map[string]SpecificationExtension
 
 func (s *ServerVariablePattern0) init() ServerVariablePattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3497,16 +3501,18 @@ type Spec struct {
 	Pattern0Props SpecPattern0
 }
 
-type SpecPattern0 map[string]jx.Raw
+type SpecPattern0 map[string]SpecificationExtension
 
 func (s *SpecPattern0) init() SpecPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
 }
+
+type SpecificationExtension jx.Raw
 
 type StringArray []string
 
@@ -3533,12 +3539,12 @@ type Tag struct {
 	Pattern0Props TagPattern0
 }
 
-type TagPattern0 map[string]jx.Raw
+type TagPattern0 map[string]SpecificationExtension
 
 func (s *TagPattern0) init() TagPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3558,12 +3564,12 @@ type XML struct {
 	Pattern0Props XMLPattern0
 }
 
-type XMLPattern0 map[string]jx.Raw
+type XMLPattern0 map[string]SpecificationExtension
 
 func (s *XMLPattern0) init() XMLPattern0 {
 	m := *s
 	if m == nil {
-		m = map[string]jx.Raw{}
+		m = map[string]SpecificationExtension{}
 		*s = m
 	}
 	return m
@@ -3588,6 +3594,47 @@ func (s *Schema) setDefaults() {
 	}
 }
 
+// Encode encodes Any as json.
+func (s Any) Encode(e *jx.Encoder) {
+	unwrapped := jx.Raw(s)
+	if len(unwrapped) != 0 {
+		e.Raw(unwrapped)
+	}
+}
+
+// Decode decodes Any from json.
+func (s *Any) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode Any to nil")
+	}
+	var unwrapped jx.Raw
+	if err := func() error {
+		v, err := d.RawAppend(nil)
+		unwrapped = jx.Raw(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = Any(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s Any) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *Any) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
 // Encode implements json.Marshaler.
 func (s AnysOrExpressions) Encode(e *jx.Encoder) {
 	e.ObjStart()
@@ -3600,9 +3647,7 @@ func (s AnysOrExpressions) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -3613,11 +3658,9 @@ func (s *AnysOrExpressions) Decode(d *jx.Decoder) error {
 	}
 	m := s.init()
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
-		var elem jx.Raw
+		var elem Any
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -3663,9 +3706,7 @@ func (s Callback) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern1Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -3677,7 +3718,7 @@ func (s *Callback) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Callback to nil")
 	}
 	s.Pattern0Props = map[string]PathItem{}
-	s.Pattern1Props = map[string]jx.Raw{}
+	s.Pattern1Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -3698,11 +3739,9 @@ func (s *Callback) Decode(d *jx.Decoder) error {
 			}
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -3874,9 +3913,7 @@ func (s CallbackPattern1) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -3891,11 +3928,9 @@ func (s *CallbackPattern1) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -4044,9 +4079,7 @@ func (s Components) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -4067,7 +4100,7 @@ func (s *Components) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Components to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4165,11 +4198,9 @@ func (s *Components) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -4216,9 +4247,7 @@ func (s ComponentsPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -4233,11 +4262,9 @@ func (s *ComponentsPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -4296,9 +4323,7 @@ func (s Contact) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -4313,7 +4338,7 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Contact to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4351,11 +4376,9 @@ func (s *Contact) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -4402,9 +4425,7 @@ func (s ContactPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -4419,11 +4440,9 @@ func (s *ContactPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -4448,6 +4467,47 @@ func (s ContactPattern0) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *ContactPattern0) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes DefaultType as json.
+func (s DefaultType) Encode(e *jx.Encoder) {
+	unwrapped := jx.Raw(s)
+	if len(unwrapped) != 0 {
+		e.Raw(unwrapped)
+	}
+}
+
+// Decode decodes DefaultType from json.
+func (s *DefaultType) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode DefaultType to nil")
+	}
+	var unwrapped jx.Raw
+	if err := func() error {
+		v, err := d.RawAppend(nil)
+		unwrapped = jx.Raw(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = DefaultType(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s DefaultType) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *DefaultType) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -4608,9 +4668,7 @@ func (s Encoding) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -4627,7 +4685,7 @@ func (s *Encoding) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Encoding to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4685,11 +4743,9 @@ func (s *Encoding) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -4736,9 +4792,7 @@ func (s EncodingPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -4753,11 +4807,9 @@ func (s *EncodingPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -4862,10 +4914,9 @@ func (s Example) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		if len(s.Value) != 0 {
+		if s.Value != nil {
 			e.FieldStart("value")
-			e.Raw(s.Value)
+			s.Value.Encode(e)
 		}
 	}
 	{
@@ -4877,9 +4928,7 @@ func (s Example) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -4895,7 +4944,7 @@ func (s *Example) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Example to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -4921,11 +4970,12 @@ func (s *Example) Decode(d *jx.Decoder) error {
 			}
 		case "value":
 			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.Value = jx.Raw(v)
-				if err != nil {
+				s.Value = nil
+				var elem Any
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Value = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"value\"")
@@ -4944,11 +4994,9 @@ func (s *Example) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -5074,9 +5122,7 @@ func (s ExamplePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -5091,11 +5137,9 @@ func (s *ExamplePattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -5201,9 +5245,7 @@ func (s ExternalDocs) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -5218,7 +5260,7 @@ func (s *ExternalDocs) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ExternalDocs to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -5248,11 +5290,9 @@ func (s *ExternalDocs) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -5331,9 +5371,7 @@ func (s ExternalDocsPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -5348,11 +5386,9 @@ func (s *ExternalDocsPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -5439,10 +5475,9 @@ func (s Header) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		if len(s.Example) != 0 {
+		if s.Example != nil {
 			e.FieldStart("example")
-			e.Raw(s.Example)
+			s.Example.Encode(e)
 		}
 	}
 	{
@@ -5460,9 +5495,7 @@ func (s Header) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -5485,7 +5518,7 @@ func (s *Header) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Header to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -5571,11 +5604,12 @@ func (s *Header) Decode(d *jx.Decoder) error {
 			}
 		case "example":
 			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.Example = jx.Raw(v)
-				if err != nil {
+				s.Example = nil
+				var elem Any
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -5604,11 +5638,9 @@ func (s *Header) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -5755,9 +5787,7 @@ func (s HeaderPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -5772,11 +5802,9 @@ func (s *HeaderPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -5905,9 +5933,7 @@ func (s Info) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -5926,7 +5952,7 @@ func (s *Info) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Info to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -5998,11 +6024,9 @@ func (s *Info) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -6081,9 +6105,7 @@ func (s InfoPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -6098,11 +6120,9 @@ func (s *InfoPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -6519,9 +6539,7 @@ func (s License) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -6536,7 +6554,7 @@ func (s *License) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode License to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -6566,11 +6584,9 @@ func (s *License) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -6649,9 +6665,7 @@ func (s LicensePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -6666,11 +6680,9 @@ func (s *LicensePattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -6727,10 +6739,9 @@ func (s Link) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		if len(s.RequestBody) != 0 {
+		if s.RequestBody != nil {
 			e.FieldStart("requestBody")
-			e.Raw(s.RequestBody)
+			s.RequestBody.Encode(e)
 		}
 	}
 	{
@@ -6748,9 +6759,7 @@ func (s Link) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -6768,7 +6777,7 @@ func (s *Link) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode Link to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -6804,11 +6813,12 @@ func (s *Link) Decode(d *jx.Decoder) error {
 			}
 		case "requestBody":
 			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.RequestBody = jx.Raw(v)
-				if err != nil {
+				s.RequestBody = nil
+				var elem Any
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.RequestBody = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"requestBody\"")
@@ -6837,11 +6847,9 @@ func (s *Link) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -6973,9 +6981,7 @@ func (s LinkPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -6990,11 +6996,9 @@ func (s *LinkPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -7093,10 +7097,9 @@ func (s MediaType) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		if len(s.Example) != 0 {
+		if s.Example != nil {
 			e.FieldStart("example")
-			e.Raw(s.Example)
+			s.Example.Encode(e)
 		}
 	}
 	{
@@ -7114,9 +7117,7 @@ func (s MediaType) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -7132,7 +7133,7 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode MediaType to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -7148,11 +7149,12 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 			}
 		case "example":
 			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.Example = jx.Raw(v)
-				if err != nil {
+				s.Example = nil
+				var elem Any
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -7181,11 +7183,9 @@ func (s *MediaType) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -7232,9 +7232,7 @@ func (s MediaTypePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -7249,11 +7247,9 @@ func (s *MediaTypePattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -7372,9 +7368,7 @@ func (s OauthFlow) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -7390,7 +7384,7 @@ func (s *OauthFlow) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode OauthFlow to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -7438,11 +7432,9 @@ func (s *OauthFlow) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -7489,9 +7481,7 @@ func (s OauthFlowPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -7506,11 +7496,9 @@ func (s *OauthFlowPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -7575,9 +7563,7 @@ func (s OauthFlows) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -7593,7 +7579,7 @@ func (s *OauthFlows) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode OauthFlows to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -7641,11 +7627,9 @@ func (s *OauthFlows) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -7692,9 +7676,7 @@ func (s OauthFlowsPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -7709,11 +7691,9 @@ func (s *OauthFlowsPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -7841,9 +7821,7 @@ func (s Operation) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -7868,7 +7846,7 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Operation to nil")
 	}
 	var requiredBitSet [2]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -8026,11 +8004,9 @@ func (s *Operation) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -8110,9 +8086,7 @@ func (s OperationPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -8127,11 +8101,9 @@ func (s *OperationPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -9600,10 +9572,9 @@ func (s Parameter) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		if len(s.Example) != 0 {
+		if s.Example != nil {
 			e.FieldStart("example")
-			e.Raw(s.Example)
+			s.Example.Encode(e)
 		}
 	}
 	{
@@ -9621,9 +9592,7 @@ func (s Parameter) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -9649,7 +9618,7 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Parameter to nil")
 	}
 	var requiredBitSet [2]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -9757,11 +9726,12 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 			}
 		case "example":
 			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.Example = jx.Raw(v)
-				if err != nil {
+				s.Example = nil
+				var elem Any
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -9790,11 +9760,9 @@ func (s *Parameter) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -10024,9 +9992,7 @@ func (s ParameterPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -10041,11 +10007,9 @@ func (s *ParameterPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -10276,9 +10240,7 @@ func (s PathItem) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -10303,7 +10265,7 @@ func (s *PathItem) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode PathItem to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -10455,11 +10417,9 @@ func (s *PathItem) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -10506,9 +10466,7 @@ func (s PathItemPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -10523,11 +10481,9 @@ func (s *PathItemPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -10573,9 +10529,7 @@ func (s Paths) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern1Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -10587,7 +10541,7 @@ func (s *Paths) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Paths to nil")
 	}
 	s.Pattern0Props = map[string]PathItem{}
-	s.Pattern1Props = map[string]jx.Raw{}
+	s.Pattern1Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -10608,11 +10562,9 @@ func (s *Paths) Decode(d *jx.Decoder) error {
 			}
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -10717,9 +10669,7 @@ func (s PathsPattern1) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -10734,11 +10684,9 @@ func (s *PathsPattern1) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -10986,9 +10934,7 @@ func (s RequestBody) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -11004,7 +10950,7 @@ func (s *RequestBody) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode RequestBody to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -11042,11 +10988,9 @@ func (s *RequestBody) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -11201,9 +11145,7 @@ func (s RequestBodyPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -11218,11 +11160,9 @@ func (s *RequestBodyPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -11286,9 +11226,7 @@ func (s Response) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -11305,7 +11243,7 @@ func (s *Response) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Response to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -11355,11 +11293,9 @@ func (s *Response) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -11517,9 +11453,7 @@ func (s ResponsePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -11534,11 +11468,9 @@ func (s *ResponsePattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -11590,9 +11522,7 @@ func (s Responses) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern1Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -11606,7 +11536,7 @@ func (s *Responses) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Responses to nil")
 	}
 	s.Pattern0Props = map[string]ResponseOrReference{}
-	s.Pattern1Props = map[string]jx.Raw{}
+	s.Pattern1Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -11637,11 +11567,9 @@ func (s *Responses) Decode(d *jx.Decoder) error {
 			}
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -11800,9 +11728,7 @@ func (s ResponsesPattern1) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -11817,11 +11743,9 @@ func (s *ResponsesPattern1) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -11896,10 +11820,9 @@ func (s Schema) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		if len(s.Example) != 0 {
+		if s.Example != nil {
 			e.FieldStart("example")
-			e.Raw(s.Example)
+			s.Example.Encode(e)
 		}
 	}
 	{
@@ -12065,10 +11988,9 @@ func (s Schema) encodeFields(e *jx.Encoder) {
 		}
 	}
 	{
-
-		if len(s.Default) != 0 {
+		if s.Default != nil {
 			e.FieldStart("default")
-			e.Raw(s.Default)
+			s.Default.Encode(e)
 		}
 	}
 	{
@@ -12086,9 +12008,7 @@ func (s Schema) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -12136,7 +12056,7 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Schema to nil")
 	}
 	s.setDefaults()
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -12202,11 +12122,12 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 			}
 		case "example":
 			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.Example = jx.Raw(v)
-				if err != nil {
+				s.Example = nil
+				var elem Any
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Example = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"example\"")
@@ -12494,11 +12415,12 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 			}
 		case "default":
 			if err := func() error {
-				v, err := d.RawAppend(nil)
-				s.Default = jx.Raw(v)
-				if err != nil {
+				s.Default = nil
+				var elem DefaultType
+				if err := elem.Decode(d); err != nil {
 					return err
 				}
+				s.Default = &elem
 				return nil
 			}(); err != nil {
 				return errors.Wrap(err, "decode field \"default\"")
@@ -12527,11 +12449,9 @@ func (s *Schema) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -12798,9 +12718,7 @@ func (s SchemaPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -12815,11 +12733,9 @@ func (s *SchemaPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -13137,9 +13053,7 @@ func (s SecurityScheme) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -13160,7 +13074,7 @@ func (s *SecurityScheme) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SecurityScheme to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -13250,11 +13164,9 @@ func (s *SecurityScheme) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -13424,9 +13336,7 @@ func (s SecuritySchemePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -13441,11 +13351,9 @@ func (s *SecuritySchemePattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -13557,9 +13465,7 @@ func (s Server) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -13575,7 +13481,7 @@ func (s *Server) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Server to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -13615,11 +13521,9 @@ func (s *Server) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -13698,9 +13602,7 @@ func (s ServerPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -13715,11 +13617,9 @@ func (s *ServerPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -13781,9 +13681,7 @@ func (s ServerVariable) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -13799,7 +13697,7 @@ func (s *ServerVariable) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ServerVariable to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -13848,11 +13746,9 @@ func (s *ServerVariable) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -13931,9 +13827,7 @@ func (s ServerVariablePattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -13948,11 +13842,9 @@ func (s *ServerVariablePattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -14104,9 +13996,7 @@ func (s Spec) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -14127,7 +14017,7 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Spec to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -14238,11 +14128,9 @@ func (s *Spec) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -14321,9 +14209,7 @@ func (s SpecPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -14338,11 +14224,9 @@ func (s *SpecPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -14367,6 +14251,47 @@ func (s SpecPattern0) MarshalJSON() ([]byte, error) {
 
 // UnmarshalJSON implements stdjson.Unmarshaler.
 func (s *SpecPattern0) UnmarshalJSON(data []byte) error {
+	d := jx.DecodeBytes(data)
+	return s.Decode(d)
+}
+
+// Encode encodes SpecificationExtension as json.
+func (s SpecificationExtension) Encode(e *jx.Encoder) {
+	unwrapped := jx.Raw(s)
+	if len(unwrapped) != 0 {
+		e.Raw(unwrapped)
+	}
+}
+
+// Decode decodes SpecificationExtension from json.
+func (s *SpecificationExtension) Decode(d *jx.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode SpecificationExtension to nil")
+	}
+	var unwrapped jx.Raw
+	if err := func() error {
+		v, err := d.RawAppend(nil)
+		unwrapped = jx.Raw(v)
+		if err != nil {
+			return err
+		}
+		return nil
+	}(); err != nil {
+		return errors.Wrap(err, "alias")
+	}
+	*s = SpecificationExtension(unwrapped)
+	return nil
+}
+
+// MarshalJSON implements stdjson.Marshaler.
+func (s SpecificationExtension) MarshalJSON() ([]byte, error) {
+	e := jx.Encoder{}
+	s.Encode(&e)
+	return e.Bytes(), nil
+}
+
+// UnmarshalJSON implements stdjson.Unmarshaler.
+func (s *SpecificationExtension) UnmarshalJSON(data []byte) error {
 	d := jx.DecodeBytes(data)
 	return s.Decode(d)
 }
@@ -14507,9 +14432,7 @@ func (s Tag) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -14525,7 +14448,7 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Tag to nil")
 	}
 	var requiredBitSet [1]uint8
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -14565,11 +14488,9 @@ func (s *Tag) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -14648,9 +14569,7 @@ func (s TagPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -14665,11 +14584,9 @@ func (s *TagPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
@@ -14740,9 +14657,7 @@ func (s XML) encodeFields(e *jx.Encoder) {
 	for k, elem := range s.Pattern0Props {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -14759,7 +14674,7 @@ func (s *XML) Decode(d *jx.Decoder) error {
 	if s == nil {
 		return errors.New("invalid: unable to decode XML to nil")
 	}
-	s.Pattern0Props = map[string]jx.Raw{}
+	s.Pattern0Props = map[string]SpecificationExtension{}
 
 	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
 		switch string(k) {
@@ -14817,11 +14732,9 @@ func (s *XML) Decode(d *jx.Decoder) error {
 			var handled bool
 			if pattern := regexMap["^x-"]; pattern.Match(k) {
 				handled = true
-				var elem jx.Raw
+				var elem SpecificationExtension
 				if err := func() error {
-					v, err := d.RawAppend(nil)
-					elem = jx.Raw(v)
-					if err != nil {
+					if err := elem.Decode(d); err != nil {
 						return err
 					}
 					return nil
@@ -14868,9 +14781,7 @@ func (s XMLPattern0) encodeFields(e *jx.Encoder) {
 	for k, elem := range s {
 		e.FieldStart(k)
 
-		if len(elem) != 0 {
-			e.Raw(elem)
-		}
+		elem.Encode(e)
 	}
 }
 
@@ -14885,11 +14796,9 @@ func (s *XMLPattern0) Decode(d *jx.Decoder) error {
 		if !pattern.Match(k) {
 			return d.Skip()
 		}
-		var elem jx.Raw
+		var elem SpecificationExtension
 		if err := func() error {
-			v, err := d.RawAppend(nil)
-			elem = jx.Raw(v)
-			if err != nil {
+			if err := elem.Decode(d); err != nil {
 				return err
 			}
 			return nil
