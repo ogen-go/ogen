@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"testing"
 
+	"github.com/go-faster/jx"
 	"github.com/stretchr/testify/require"
 )
 
@@ -158,6 +159,62 @@ func TestResolve(t *testing.T) {
 			}
 			a.NoError(err)
 			a.Equal(tt.want, string(got))
+		})
+	}
+}
+
+func Test_findIdx(t *testing.T) {
+	inputs := []struct {
+		input      string
+		part       string
+		wantErr    bool
+		wantResult []byte
+	}{
+		{`{}`, "0", true, nil},
+		{`[baz]`, "1", true, nil},
+		{`["bar","baz"]`, "1", false, []byte(`"baz"`)},
+	}
+	for i, tt := range inputs {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			a := require.New(t)
+			gotResult, gotOk, err := findIdx(jx.DecodeStr(tt.input), tt.part)
+			if tt.wantErr {
+				a.Error(err)
+				a.False(gotOk)
+				return
+			}
+			a.NoError(err)
+			a.True(gotOk)
+			a.Equal(tt.wantResult, gotResult)
+		})
+	}
+}
+
+func Test_findKey(t *testing.T) {
+	inputs := []struct {
+		input      string
+		part       string
+		wantErr    bool
+		wantResult []byte
+	}{
+		{`[]`, "foo", true, nil},
+		{`{"bar":baz}`, "foo", true, nil},
+		{`{"foo":"baz"}`, "foo", false, []byte(`"baz"`)},
+	}
+	for i, tt := range inputs {
+		tt := tt
+		t.Run(fmt.Sprintf("Test%d", i+1), func(t *testing.T) {
+			a := require.New(t)
+			gotResult, gotOk, err := findKey(jx.DecodeStr(tt.input), tt.part)
+			if tt.wantErr {
+				a.Error(err)
+				a.False(gotOk)
+				return
+			}
+			a.NoError(err)
+			a.True(gotOk)
+			a.Equal(tt.wantResult, gotResult)
 		})
 	}
 }

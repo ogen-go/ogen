@@ -93,45 +93,50 @@ func findIdx(d *jx.Decoder, part string) (result []byte, ok bool, _ error) {
 	}
 
 	counter := uint64(0)
-	if err := d.Arr(func(d *jx.Decoder) error {
-		defer func() {
-			counter++
-		}()
 
+	iter, err := d.ArrIter()
+	if err != nil {
+		return nil, false, err
+	}
+	for iter.Next() {
 		if index == counter {
 			raw, err := d.Raw()
 			if err != nil {
-				return errors.Wrapf(err, "parse %d", counter)
+				return nil, false, errors.Wrapf(err, "parse %d", counter)
 			}
 			result = raw
 			ok = true
-			return nil
+			break
 		}
-		return d.Skip()
-	}); err != nil {
-		return nil, false, err
+		if err := d.Skip(); err != nil {
+			return nil, false, err
+		}
+		counter++
 	}
-	return result, ok, nil
+	return result, ok, iter.Err()
 }
 
 func findKey(d *jx.Decoder, part string) (result []byte, ok bool, _ error) {
-	if err := d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-		switch string(key) {
-		case part:
+	iter, err := d.ObjIter()
+	if err != nil {
+		return nil, false, err
+	}
+
+	for iter.Next() {
+		if key := iter.Key(); string(key) == part {
 			raw, err := d.Raw()
 			if err != nil {
-				return errors.Wrapf(err, "parse %q", key)
+				return nil, false, errors.Wrapf(err, "parse %q", key)
 			}
 			result = raw
 			ok = true
-		default:
-			return d.Skip()
+			break
 		}
-		return nil
-	}); err != nil {
-		return nil, false, err
+		if err := d.Skip(); err != nil {
+			return nil, false, err
+		}
 	}
-	return result, ok, nil
+	return result, ok, iter.Err()
 }
 
 var (
