@@ -35,6 +35,11 @@ func inferFileName(
 	rawSchema jsonschema.RawSchema,
 	trimPrefixes StringArrayFlag,
 ) {
+	// Output file already set.
+	if *targetFile != "" {
+		return
+	}
+
 	if typeName == "" {
 		if ref := rawSchema.Ref; ref != "" {
 			for _, prefix := range trimPrefixes {
