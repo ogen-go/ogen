@@ -12,7 +12,7 @@ import (
 
 // Generate JSON Schema:
 
-//go:generate go run github.com/ogen-go/ogen/cmd/jschemagen --typename Spec --schema ../gen/_testdata/jsonschema/openapi30.json --target ex_openapi/output.gen.go
+//go:generate go run github.com/ogen-go/ogen/cmd/jschemagen --typename Spec --target ex_openapi/output.gen.go ../gen/_testdata/jsonschema/openapi30.json
 
 // Fully supported:
 

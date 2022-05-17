@@ -59,9 +59,10 @@ func Generic(name string, of *Type, v GenericVariant) *Type {
 	}
 }
 
-func Any() *Type {
+func Any(schema *jsonschema.Schema) *Type {
 	return &Type{
-		Kind: KindAny,
+		Kind:   KindAny,
+		Schema: schema,
 	}
 }
 
