@@ -144,7 +144,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 
 		item := func(prefix string, schItem *jsonschema.Schema) (*ir.Type, error) {
 			if schItem == nil {
-				return ir.Any(), nil
+				return ir.Any(schItem), nil
 			}
 			return g.generate(prefix+"Item", schItem)
 		}
@@ -217,7 +217,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 				return nil, errors.Wrap(err, "item")
 			}
 		} else {
-			array.Item = ir.Any()
+			array.Item = ir.Any(schema.Item)
 		}
 
 		return ret, nil
@@ -245,7 +245,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 
 		return g.regtype(name, t), nil
 	case jsonschema.Empty:
-		return g.regtype(name, ir.Any()), nil
+		return g.regtype(name, ir.Any(schema)), nil
 	default:
 		panic(unreachable(schema.Type))
 	}
@@ -254,7 +254,7 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 func (g *schemaGen) regtype(name string, t *ir.Type) *ir.Type {
 	if t.Schema != nil {
 		if ref := t.Schema.Ref; ref != "" {
-			if t.Is(ir.KindPrimitive, ir.KindArray) {
+			if t.Is(ir.KindPrimitive, ir.KindArray, ir.KindAny) {
 				t = ir.Alias(name, t)
 			}
 
