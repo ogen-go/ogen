@@ -8,7 +8,7 @@ require (
 	github.com/go-faster/jx v0.35.0
 	github.com/google/uuid v1.3.0
 	github.com/stretchr/testify v1.7.1
-	github.com/valyala/fasthttp v1.36.0
+	github.com/valyala/fasthttp v1.37.0
 	go.opentelemetry.io/otel v1.7.0
 	go.opentelemetry.io/otel/metric v0.30.0
 	go.opentelemetry.io/otel/trace v1.7.0
