@@ -51,11 +51,14 @@ type RequestBody struct {
 	Required    bool
 }
 
+// Header is an OpenAPI Header definition.
+type Header = Parameter
+
 // Response is an OpenAPI Response definition.
 type Response struct {
 	Ref         string
 	Description string
-	// Headers map[string]*Header
-	Content map[string]*MediaType
+	Headers     map[string]*Header
+	Content     map[string]*MediaType
 	// Links map[string]*Link
 }

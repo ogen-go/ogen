@@ -56,9 +56,15 @@ func (p *parser) parseResponse(resp *ogen.Response, ctx resolveCtx) (*openapi.Re
 		return nil, errors.Wrap(err, "content")
 	}
 
+	headers, err := p.parseHeaders(resp.Headers)
+	if err != nil {
+		return nil, errors.Wrap(err, "headers")
+	}
+
 	return &openapi.Response{
 		Description: resp.Description,
 		Content:     content,
+		Headers:     headers,
 	}, nil
 }
 

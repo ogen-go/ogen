@@ -700,9 +700,9 @@ func (r *Response) SetDescription(d string) *Response {
 	return r
 }
 
-// SetHeader sets the Header of the Response.
-func (r *Response) SetHeader(h map[string]interface{}) *Response {
-	r.Header = h
+// SetHeaders sets the Headers of the Response.
+func (r *Response) SetHeaders(h map[string]*Header) *Response {
+	r.Headers = h
 	return r
 }
 
