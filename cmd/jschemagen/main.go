@@ -66,6 +66,7 @@ func run() error {
 		targetFile    = flag.String("target", "", "Path to target")
 		packageName   = flag.String("package", os.Getenv("GOPACKAGE"), "Target package name")
 		typeName      = flag.String("typename", "", "Root schema type name")
+		inferTypes    = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 		performFormat = flag.Bool("format", true, "Perform code formatting")
 		trimPrefixes  = StringArrayFlag{"#/definitions/", "#/$defs/"}
 	)
@@ -87,7 +88,8 @@ func run() error {
 		return errors.Wrap(err, "unmarshal")
 	}
 	p := jsonschema.NewParser(jsonschema.Settings{
-		Resolver: jsonschema.NewRootResolver(data),
+		Resolver:   jsonschema.NewRootResolver(data),
+		InferTypes: *inferTypes,
 	})
 	schema, err := p.Parse(&rawSchema)
 	if err != nil {
