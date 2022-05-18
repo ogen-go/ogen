@@ -9,6 +9,8 @@ import (
 	"regexp"
 	"strings"
 
+	"go.uber.org/zap"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
@@ -101,6 +103,14 @@ func main() {
 		}
 	}
 
+	logger, err := zap.NewDevelopment()
+	if err != nil {
+		panic(err)
+	}
+	defer func() {
+		_ = logger.Sync()
+	}()
+
 	opts := gen.Options{
 		VerboseRoute:         *verbose,
 		GenerateExampleTests: *generateTests,
@@ -110,6 +120,7 @@ func main() {
 		Filters:              filters,
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 		NotImplementedHook:   nil,
+		Logger:               logger,
 	}
 	if expr := *skipTestsRegex; expr != "" {
 		r, err := regexp.Compile(expr)

@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
@@ -108,11 +109,20 @@ func run() error {
 	if *packageName == "" {
 		*packageName = "output"
 	}
+
+	logger, err := zap.NewDevelopment()
+	if err != nil {
+		return errors.Wrap(err, "logger")
+	}
+	defer func() {
+		_ = logger.Sync()
+	}()
 	if err := gen.GenerateSchema(schema, fs, gen.GenerateSchemaOptions{
 		TypeName:   *typeName,
 		FileName:   file,
 		PkgName:    *packageName,
 		TrimPrefix: trimPrefixes,
+		Logger:     logger,
 	}); err != nil {
 		return errors.Wrap(err, "generate")
 	}
