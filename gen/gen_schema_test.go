@@ -9,6 +9,7 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/stretchr/testify/require"
+	"go.uber.org/zap/zaptest"
 
 	"github.com/ogen-go/ogen/gen/genfs"
 	"github.com/ogen-go/ogen/json"
@@ -19,6 +20,8 @@ import (
 var testdata embed.FS
 
 func TestGenerateSchema(t *testing.T) {
+	logger := zaptest.NewLogger(t)
+
 	require.NoError(t, fs.WalkDir(testdata, ".", func(path string, d fs.DirEntry, err error) error {
 		if err != nil || d == nil || d.IsDir() {
 			return err
@@ -46,7 +49,9 @@ func TestGenerateSchema(t *testing.T) {
 			require.NoError(t, GenerateSchema(
 				schema,
 				genfs.CheckFS{},
-				GenerateSchemaOptions{},
+				GenerateSchemaOptions{
+					Logger: logger,
+				},
 			))
 		})
 
