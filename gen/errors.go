@@ -7,10 +7,17 @@ import (
 	"github.com/go-faster/errors"
 )
 
+type unimplementedError interface {
+	unimplemented()
+	error
+}
+
 // ErrNotImplemented reports that feature is not implemented.
 type ErrNotImplemented struct {
 	Name string
 }
+
+func (e *ErrNotImplemented) unimplemented() {}
 
 // Error implements error.
 func (e *ErrNotImplemented) Error() string {
@@ -21,6 +28,8 @@ func (e *ErrNotImplemented) Error() string {
 type ErrUnsupportedContentTypes struct {
 	ContentTypes []string
 }
+
+func (e *ErrUnsupportedContentTypes) unimplemented() {}
 
 // Error implements error.
 func (e *ErrUnsupportedContentTypes) Error() string {

@@ -9,6 +9,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	"go.uber.org/zap/zaptest"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen"
@@ -27,9 +28,12 @@ func testGenerate(_ bool, name string, ignore ...string) func(t *testing.T) {
 		require.NoError(t, err)
 		spec, err := ogen.Parse(data)
 		require.NoError(t, err)
+
+		log := zaptest.NewLogger(t)
 		opt := gen.Options{
 			IgnoreNotImplemented: ignore,
 			InferSchemaType:      true,
+			Logger:               log,
 		}
 		t.Run("Gen", func(t *testing.T) {
 			defer func() {
@@ -130,6 +134,31 @@ func TestGenerate(t *testing.T) {
 		testName = strings.TrimSuffix(testName, ".yaml")
 
 		t.Run(testName, testGenerate(build, path, skip...))
+		return nil
+	}); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestNegative(t *testing.T) {
+	if err := fs.WalkDir(testdata, "_testdata/negative", func(path string, d fs.DirEntry, err error) error {
+		if err != nil || d == nil || d.IsDir() {
+			return err
+		}
+		_, file := filepath.Split(path)
+
+		t.Run(strings.TrimSuffix(file, ".json"), func(t *testing.T) {
+			a := require.New(t)
+			data, err := testdata.ReadFile(path)
+			a.NoError(err)
+
+			spec, err := ogen.Parse(data)
+			a.NoError(err)
+
+			_, err = gen.NewGenerator(spec, gen.Options{})
+			a.Error(err)
+			t.Log(err.Error())
+		})
 		return nil
 	}); err != nil {
 		t.Fatal(err)

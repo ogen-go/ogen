@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/jsonschema"
@@ -39,6 +40,7 @@ func saveSchemaTypes(ctx *genctx, gen *schemaGen) error {
 
 func (g *Generator) generateSchema(ctx *genctx, name string, schema *jsonschema.Schema) (*ir.Type, error) {
 	gen := newSchemaGen(ctx.lookupRef)
+	gen.log = g.log.Named("schemagen")
 
 	t, err := gen.generate(name, schema)
 	if err != nil {
@@ -62,6 +64,8 @@ type GenerateSchemaOptions struct {
 	PkgName string
 	// TrimPrefix is a ref name prefixes to trim. Defaults to []string{"#/definitions/", "#/$defs/"}.
 	TrimPrefix []string
+	// Logger to use.
+	Logger *zap.Logger
 }
 
 func (o *GenerateSchemaOptions) setDefaults() {
@@ -80,6 +84,9 @@ func (o *GenerateSchemaOptions) setDefaults() {
 	if o.TrimPrefix == nil {
 		o.TrimPrefix = []string{"#/definitions/", "#/$defs/"}
 	}
+	if o.Logger == nil {
+		o.Logger = zap.NewNop()
+	}
 }
 
 // GenerateSchema generates type, validation and JSON encoding for given schema.
@@ -91,9 +98,11 @@ func GenerateSchema(schema *jsonschema.Schema, fs FileSystem, opts GenerateSchem
 		global: newTStorage(),
 		local:  newTStorage(),
 	}
+
 	gen := newSchemaGen(func(ref string) (*ir.Type, bool) {
 		return nil, false
 	})
+	gen.log = opts.Logger.Named("schemagen")
 
 	{
 		prev := gen.nameRef

@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen"
 	"github.com/ogen-go/ogen/gen/genfs"
@@ -65,6 +66,7 @@ func run() error {
 		targetFile    = flag.String("target", "", "Path to target")
 		packageName   = flag.String("package", os.Getenv("GOPACKAGE"), "Target package name")
 		typeName      = flag.String("typename", "", "Root schema type name")
+		inferTypes    = flag.Bool("infer-types", false, "Infer schema types, if type is not defined explicitly")
 		performFormat = flag.Bool("format", true, "Perform code formatting")
 		trimPrefixes  = StringArrayFlag{"#/definitions/", "#/$defs/"}
 	)
@@ -86,7 +88,8 @@ func run() error {
 		return errors.Wrap(err, "unmarshal")
 	}
 	p := jsonschema.NewParser(jsonschema.Settings{
-		Resolver: jsonschema.NewRootResolver(data),
+		Resolver:   jsonschema.NewRootResolver(data),
+		InferTypes: *inferTypes,
 	})
 	schema, err := p.Parse(&rawSchema)
 	if err != nil {
@@ -108,11 +111,20 @@ func run() error {
 	if *packageName == "" {
 		*packageName = "output"
 	}
+
+	logger, err := zap.NewDevelopment()
+	if err != nil {
+		return errors.Wrap(err, "logger")
+	}
+	defer func() {
+		_ = logger.Sync()
+	}()
 	if err := gen.GenerateSchema(schema, fs, gen.GenerateSchemaOptions{
 		TypeName:   *typeName,
 		FileName:   file,
 		PkgName:    *packageName,
 		TrimPrefix: trimPrefixes,
+		Logger:     logger,
 	}); err != nil {
 		return errors.Wrap(err, "generate")
 	}

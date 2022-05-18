@@ -5,6 +5,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen/gen/ir"
 	"github.com/ogen-go/ogen/internal/capitalize"
@@ -16,6 +17,7 @@ type schemaGen struct {
 	localRefs map[string]*ir.Type
 	lookupRef func(ref string) (*ir.Type, bool)
 	nameRef   func(ref string) (string, error)
+	log       *zap.Logger
 }
 
 func newSchemaGen(lookupRef func(ref string) (*ir.Type, bool)) *schemaGen {
@@ -30,6 +32,7 @@ func newSchemaGen(lookupRef func(ref string) (*ir.Type, bool)) *schemaGen {
 			}
 			return name, nil
 		},
+		log: zap.NewNop(),
 	}
 }
 
@@ -245,6 +248,10 @@ func (g *schemaGen) generate(name string, schema *jsonschema.Schema) (_ *ir.Type
 
 		return g.regtype(name, t), nil
 	case jsonschema.Empty:
+		g.log.Info("Type is not defined, using any",
+			zap.String("name", name),
+			zap.String("ref", schema.Ref),
+		)
 		return g.regtype(name, ir.Any(schema)), nil
 	default:
 		panic(unreachable(schema.Type))

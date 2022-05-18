@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/go-faster/errors"
+	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/gen/ir"
@@ -22,6 +23,8 @@ type Generator struct {
 	tstorage   *tstorage
 	errType    *ir.StatusResponse
 	router     Router
+
+	log *zap.Logger
 }
 
 // Options is Generator options.
@@ -43,6 +46,14 @@ type Options struct {
 	IgnoreNotImplemented []string
 	// NotImplementedHook is hook for ErrNotImplemented errors.
 	NotImplementedHook func(name string, err error)
+	// Logger to use.
+	Logger *zap.Logger
+}
+
+func (o *Options) setDefaults() {
+	if o.Logger == nil {
+		o.Logger = zap.NewNop()
+	}
 }
 
 // Filters contains filters to skip operations.
@@ -70,6 +81,8 @@ func (f Filters) accept(op *openapi.Operation) bool {
 
 // NewGenerator creates new Generator.
 func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
+	opts.setDefaults()
+
 	api, err := parser.Parse(spec, opts.InferSchemaType)
 	if err != nil {
 		return nil, &ErrParseSpec{err: err}
@@ -83,6 +96,7 @@ func NewGenerator(spec *ogen.Spec, opts Options) (*Generator, error) {
 		tstorage:   newTStorage(),
 		errType:    nil,
 		router:     Router{},
+		log:        opts.Logger,
 	}
 
 	if err := g.makeIR(api.Operations); err != nil {
@@ -102,12 +116,20 @@ func (g *Generator) makeIR(ops []*openapi.Operation) error {
 	}
 
 	for _, spec := range ops {
+		routePath := spec.Path.String()
+		log := g.log.With(
+			zap.String("path", routePath),
+			zap.String("method", spec.HTTPMethod),
+			zap.String("operationID", spec.OperationID),
+		)
+
 		if !g.opt.Filters.accept(spec) {
+			g.log.Info("Skipping filtered operation")
 			continue
 		}
 
 		ctx := &genctx{
-			path:   []string{"#", "paths", spec.Path.String(), spec.HTTPMethod},
+			path:   []string{"#", "paths", routePath, spec.HTTPMethod},
 			global: g.tstorage,
 			local:  newTStorage(),
 		}
@@ -115,13 +137,18 @@ func (g *Generator) makeIR(ops []*openapi.Operation) error {
 		op, err := g.generateOperation(ctx, spec)
 		if err != nil {
 			err = errors.Wrapf(err, "path %q: %s",
-				spec.Path.String(),
+				routePath,
 				strings.ToLower(spec.HTTPMethod),
 			)
 			if err := g.fail(err); err != nil {
 				return err
 			}
 
+			msg := err.Error()
+			if uErr := unimplementedError(nil); errors.As(err, &uErr) {
+				msg = uErr.Error()
+			}
+			log.Info("Skipping operation", zap.String("reason_error", msg))
 			continue
 		}
 
