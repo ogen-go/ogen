@@ -225,8 +225,7 @@ func isObjectParam(p *ir.Parameter) bool {
 	return typ.IsStruct()
 }
 
-func paramObjectFields(p *ir.Parameter) string {
-	typ := p.Type
+func paramObjectFields(typ *ir.Type) string {
 	if typ.IsGeneric() {
 		typ = typ.GenericOf
 	}

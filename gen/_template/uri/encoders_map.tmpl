@@ -1,0 +1,72 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
+{{- define "uri/encoders_map" }}
+{{- $va := $.Validators }}
+
+// EncodeURI encodes {{ $.Name }} as URI form.
+func (s {{ $.Name }}) EncodeURI(e uri.Encoder) error {
+	for k, elem := range s {
+		if err := e.EncodeField(k, func(e uri.Encoder) error {
+    		{{ template "uri/encode" map_elem $.Item }}
+		}); err != nil {
+			return errors.Wrapf(err, {{ quote "encode field %q" }}, k)
+		}
+	}
+	return nil
+}
+
+// DecodeURI decodes {{ $.Name }} from URI form.
+func (s *{{ $.Name }}) DecodeURI(d uri.Decoder) error {
+	if s == nil {
+		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
+	}
+	m := s.init()
+
+	{{- if $va.Object.Set }}
+	var propertiesCount int
+	{{- end }}
+
+	{{- if $.MapPattern }}
+	pattern := regexMap[{{ quote $.MapPattern.String }}]
+	{{- end }}
+	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
+		{{- if $va.Object.Set }}
+		propertiesCount++
+		{{- end }}
+		{{- if $.MapPattern }}
+		if !pattern.MatchString(k) {
+			{{- if $.DenyAdditionalProps }}
+			return errors.Errorf("unexpected field %q", k)
+			{{- else }}
+			return nil
+			{{- end }}
+		}
+		{{- end }}
+		var elem {{ $.Item.Go }}
+		if err := func() error {
+			{{- template "uri/decode" map_elem $.Item }}
+		}(); err != nil {
+			return errors.Wrapf(err, "decode field %q", k)
+		}
+		m[string(k)] = elem
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, {{ printf "decode %s" $.Name | quote }})
+	}
+
+	{{- if $va.Object.Set }}
+	{{- $v := $va.Object }}
+	// Validate properties count.
+	if err := (validate.Object{
+		MinProperties:	{{ $v.MinProperties }},
+		MinPropertiesSet: {{ $v.MinPropertiesSet }},
+		MaxProperties:	{{ $v.MaxProperties }},
+		MaxPropertiesSet: {{ $v.MaxPropertiesSet }},
+	}).ValidateProperties(propertiesCount); err != nil {
+		return errors.Wrap(err, "object")
+	}
+	{{- end }}
+
+	return nil
+}
+
+{{ end }}

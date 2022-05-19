@@ -83,7 +83,7 @@ func (g *Generator) generateContents(
 			case "application/json":
 				t, err := g.generateSchema(ctx, typeName, media.Schema)
 				if err != nil {
-					return errors.Wrap(err, "schema")
+					return errors.Wrap(err, "generate schema")
 				}
 
 				t.AddFeature("json")
@@ -92,10 +92,31 @@ func (g *Generator) generateContents(
 					Optional: optional,
 				}, t)
 				if err != nil {
-					return errors.Wrap(err, "schema")
+					return errors.Wrap(err, "box schema")
 				}
 
 				result[ir.ContentTypeJSON] = t
+				return nil
+
+			case "application/x-www-form-urlencoded":
+				t, err := g.generateSchema(ctx, typeName, media.Schema)
+				if err != nil {
+					return errors.Wrap(err, "generate schema")
+				}
+				if !t.IsStruct() {
+					return errors.Wrapf(&ErrNotImplemented{"urlencoded schema type"}, "%s", t.Kind)
+				}
+
+				t.AddFeature("urlencoded")
+				t, err = boxType(ctx, ir.GenericVariant{
+					Nullable: t.Schema != nil && t.Schema.Nullable,
+					Optional: optional,
+				}, t)
+				if err != nil {
+					return errors.Wrap(err, "box schema")
+				}
+
+				result[ir.ContentTypeFormURLEncoded] = t
 				return nil
 
 			case "application/octet-stream":

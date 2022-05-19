@@ -33,17 +33,8 @@
 	}
 	return nil
 {{- else if $t.IsStruct }}
-	return {{ $var }}.encodeURI(e)
-{{- else if $t.IsSum }}
-	switch t := {{ $var }}.Type; t {
-	{{- range $of := $t.SumOf }}
-	case {{ $of.Name }}{{ $t.Name }}:
-		{{- template "uri/encode" elem $of (printf "%s.%s" $var $of.Name) }}
-	{{- end }}
-	default:
-		panic(fmt.Sprintf("unexpected type: %T", t))
-	}
+	return {{ $var }}.EncodeURI(e)
 {{- else }}
-{{ errorf "unexpected kind %s" $t.Kind }}
+	{{ errorf "unexpected kind %s" $t.Kind }}
 {{- end }}
 {{- end }}

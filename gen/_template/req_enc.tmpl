@@ -1,10 +1,28 @@
-{{ define "req_json/enc"}}
+{{ define "req_json/enc" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 e := jx.GetEncoder()
 {{ template "json/enc" req_enc_elem $ }}
 {{ end }}
 
-{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{ define "req_uri/enc" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
+q := uri.NewQueryEncoder()
+cfg := uri.QueryParameterEncodingConfig{
+	Name:    "",
+	Style:   uri.QueryStyleForm,
+	Explode: true,
+}
+
+if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+	{{- template "uri/encode" elem $ "req" }}
+}); err != nil {
+	return data, errors.Wrap(err, "encode query")
+}
+e := strings.NewReader(q.Values().Encode())
+{{ end }}
+
 {{ define "req_enc" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
@@ -17,6 +35,9 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.
 	return req, nil
 	{{- else if $contentType.JSON }}
 	{{- template "req_json/enc" $type }}
+	return e, nil
+	{{- else if $contentType.FormURLEncode }}
+	{{- template "req_uri/enc" $type }}
 	return e, nil
 	{{- else }}
 	{{- errorf "%s encoder not implemented" $contentType }}
