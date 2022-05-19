@@ -24,9 +24,9 @@ func decodeURI(input url.Values, r *api.URIStruct) error {
 		Style:   uri.QueryStyleForm,
 		Explode: true,
 		Fields: []uri.QueryParameterObjectField{
-			{"id", false},
-			{"uuid", false},
-			{"description", true},
+			{Name: "id"},
+			{Name: "uuid"},
+			{Name: "description", Required: true},
 		},
 	}
 	if err := q.HasParam(cfg); err != nil {
