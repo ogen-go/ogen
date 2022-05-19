@@ -2,12 +2,13 @@ package parser
 
 import (
 	"github.com/go-faster/errors"
+
 	"github.com/ogen-go/ogen"
 	"github.com/ogen-go/ogen/openapi"
 )
 
 func (p *parser) parseContent(content map[string]ogen.Media) (_ map[string]*openapi.MediaType, err error) {
-	if content == nil {
+	if len(content) == 0 {
 		return nil, nil
 	}
 

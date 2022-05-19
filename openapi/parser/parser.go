@@ -20,6 +20,7 @@ type parser struct {
 		requestBodies   map[string]*openapi.RequestBody
 		responses       map[string]*openapi.Response
 		parameters      map[string]*openapi.Parameter
+		headers         map[string]*openapi.Header
 		examples        map[string]*openapi.Example
 		securitySchemes map[string]*ogen.SecuritySchema
 	}
@@ -37,12 +38,14 @@ func Parse(spec *ogen.Spec, inferTypes bool) (*openapi.API, error) {
 			requestBodies   map[string]*openapi.RequestBody
 			responses       map[string]*openapi.Response
 			parameters      map[string]*openapi.Parameter
+			headers         map[string]*openapi.Header
 			examples        map[string]*openapi.Example
 			securitySchemes map[string]*ogen.SecuritySchema
 		}{
 			requestBodies:   map[string]*openapi.RequestBody{},
 			responses:       map[string]*openapi.Response{},
 			parameters:      map[string]*openapi.Parameter{},
+			headers:         map[string]*openapi.Header{},
 			examples:        map[string]*openapi.Example{},
 			securitySchemes: map[string]*ogen.SecuritySchema{},
 		},

@@ -137,11 +137,10 @@ type Components struct {
 	Schemas         map[string]*Schema         `json:"schemas,omitempty"`
 	Responses       map[string]*Response       `json:"responses,omitempty"`
 	Parameters      map[string]*Parameter      `json:"parameters,omitempty"`
+	Headers         map[string]*Header         `json:"headers,omitempty"`
 	Examples        map[string]*Example        `json:"examples,omitempty"`
 	RequestBodies   map[string]*RequestBody    `json:"requestBodies,omitempty"`
 	SecuritySchemes map[string]*SecuritySchema `json:"securitySchemes,omitempty"`
-
-	// Headers         map[string]Header          `json:"headers"`
 	// Links           map[string]Link            `json:"links"`
 	// Callbacks       map[string]Callback        `json:"callback"`
 }
@@ -259,10 +258,20 @@ type Responses map[string]*Response
 type Response struct {
 	Ref         string                 `json:"$ref,omitempty"`
 	Description string                 `json:"description,omitempty"`
-	Header      map[string]interface{} `json:"header,omitempty"` // TODO: implement
+	Headers     map[string]*Header     `json:"headers,omitempty"`
 	Content     map[string]Media       `json:"content,omitempty"`
 	Links       map[string]interface{} `json:"links,omitempty"` // TODO: implement
 }
+
+// Header describes header response.
+//
+// Header Object follows the structure of the Parameter Object with the following changes:
+//
+// 	1. `name` MUST NOT be specified, it is given in the corresponding headers map.
+// 	2. `in` MUST NOT be specified, it is implicitly in header.
+// 	3. All traits that are affected by the location MUST be applicable to a location of header.
+//
+type Header = Parameter
 
 // Media provides schema and examples for the media type identified by its key.
 type Media struct {
