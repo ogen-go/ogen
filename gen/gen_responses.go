@@ -166,6 +166,23 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 		return nil, errors.Wrap(err, "contents")
 	}
 
+	// Check for unsupported response content types.
+	var unsupported []string
+	for ct, content := range contents {
+		if isBinary(content.Schema) {
+			continue
+		}
+		switch ct {
+		case ir.ContentTypeJSON, ir.ContentTypeOctetStream:
+		default:
+			delete(contents, ct)
+			unsupported = append(unsupported, string(ct))
+		}
+	}
+	if len(contents) == 0 && len(unsupported) > 0 {
+		return nil, &ErrUnsupportedContentTypes{ContentTypes: unsupported}
+	}
+
 	return &ir.StatusResponse{
 		Contents: contents,
 		Spec:     resp,
