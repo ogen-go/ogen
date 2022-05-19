@@ -3,12 +3,12 @@ package main
 
 import (
 	"flag"
-	"fmt"
 	"os"
 	"path/filepath"
 	"regexp"
 	"strings"
 
+	"github.com/go-faster/errors"
 	"go.uber.org/zap"
 
 	"github.com/ogen-go/ogen"
@@ -16,16 +16,55 @@ import (
 	"github.com/ogen-go/ogen/gen/genfs"
 )
 
-func main() {
+func cleanDir(targetDir string, files []os.DirEntry) error {
+	for _, f := range files {
+		if f.IsDir() {
+			continue
+		}
+		name := f.Name()
+		if !strings.HasSuffix(name, "_gen.go") || !strings.HasSuffix(name, "_gen_test.go") {
+			continue
+		}
+		if !(strings.HasPrefix(name, "openapi") || strings.HasPrefix(name, "oas")) {
+			continue
+		}
+		if err := os.Remove(filepath.Join(targetDir, name)); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+func generate(specPath, packageName string, fs gen.FileSystem, opts gen.Options) error {
+	data, err := os.ReadFile(specPath)
+	if err != nil {
+		return err
+	}
+
+	spec, err := ogen.Parse(data)
+	if err != nil {
+		return errors.Wrap(err, "parse spec")
+	}
+
+	g, err := gen.NewGenerator(spec, opts)
+	if err != nil {
+		return errors.Wrap(err, "build IR")
+	}
+
+	if err := g.WriteSource(fs, packageName); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+}
+
+func run() error {
 	var (
-		specPath          = flag.String("schema", "", "Path to openapi spec file")
 		targetDir         = flag.String("target", "api", "Path to target dir")
 		packageName       = flag.String("package", "api", "Target package name")
-		performFormat     = flag.Bool("format", true, "perform code formatting")
-		filterPath        = flag.String("filter-path", "", "Filter operations by path regex")
-		filterMethods     = flag.String("filter-methods", "", "Filter operations by HTTP methods (comma-separated)")
+		performFormat     = flag.Bool("format", true, "Perform code formatting")
 		clean             = flag.Bool("clean", false, "Clean generated files before generation")
-		verbose           = flag.Bool("v", false, "verbose")
+		verbose           = flag.Bool("v", false, "Enable verbose logging")
 		generateTests     = flag.Bool("generate-tests", false, "Generate tests encode-decode/based on schema examples")
 		skipTestsRegex    = flag.String("skip-tests", "", "Skip tests matched by regex")
 		skipUnimplemented = flag.Bool("skip-unimplemented", false, "Disables generation of UnimplementedHandler")
@@ -37,75 +76,54 @@ func main() {
 		debugNoerr = flag.Bool("debug.noerr", false, "Ignore all errors")
 	)
 
+	var (
+		filterPath    *regexp.Regexp
+		filterMethods []string
+	)
+	flag.Func("filter-path", "Filter operations by path regex", func(s string) (err error) {
+		filterPath, err = regexp.Compile(s)
+		return err
+	})
+	flag.Func("filter-methods", "Filter operations by HTTP methods (comma-separated)", func(s string) error {
+		for _, m := range strings.Split(s, ",") {
+			m = strings.TrimSpace(m)
+			if m == "" {
+				continue
+			}
+			filterMethods = append(filterMethods, m)
+		}
+		return nil
+	})
+
 	flag.Parse()
-	if *specPath == "" {
-		panic("no spec provided")
-	}
-	data, err := os.ReadFile(*specPath)
-	if err != nil {
-		panic(err)
+
+	specPath := flag.Arg(0)
+	if flag.NArg() == 0 || specPath == "" {
+		return errors.New("no spec provided")
 	}
 
-	spec, err := ogen.Parse(data)
-	if err != nil {
-		panic(err)
-	}
-	files, err := os.ReadDir(*targetDir)
-	if err != nil && !os.IsNotExist(err) {
-		panic(err)
-	}
-	if os.IsNotExist(err) {
+	switch files, err := os.ReadDir(*targetDir); {
+	case os.IsNotExist(err):
 		if err := os.MkdirAll(*targetDir, 0750); err != nil {
-			panic(err)
+			return err
 		}
-	}
-	if *clean {
-		for _, f := range files {
-			if f.IsDir() {
-				continue
-			}
-			name := f.Name()
-			if !strings.HasSuffix(name, "_gen.go") || !strings.HasSuffix(name, "_gen_test.go") {
-				continue
-			}
-			if !(strings.HasPrefix(name, "openapi") || strings.HasPrefix(name, "oas")) {
-				continue
-			}
-			if err := os.Remove(filepath.Join(*targetDir, name)); err != nil {
-				panic(err)
+	case err != nil:
+		return err
+	default:
+		if *clean {
+			if err := cleanDir(*targetDir, files); err != nil {
+				return errors.Wrap(err, "clean")
 			}
 		}
 	}
 
-	fs := genfs.FormattedSource{
-		Root:   *targetDir,
-		Format: *performFormat,
+	level := zap.InfoLevel
+	if *verbose {
+		level = zap.DebugLevel
 	}
-
-	var filters gen.Filters
-	{
-		if filterPath != nil {
-			filters.PathRegex, err = regexp.Compile(*filterPath)
-			if err != nil {
-				fmt.Fprintf(os.Stderr, "Invalid filter.path flag value: %s", err)
-				return
-			}
-		}
-
-		if filterMethods != nil {
-			for _, m := range strings.Split(*filterMethods, ",") {
-				m = strings.TrimSpace(m)
-				if m == "" {
-					continue
-				}
-				filters.Methods = append(filters.Methods, m)
-			}
-		}
-	}
-
-	logger, err := zap.NewDevelopment()
+	logger, err := zap.NewDevelopment(zap.IncreaseLevel(level))
 	if err != nil {
-		panic(err)
+		return errors.Wrap(err, "create logger")
 	}
 	defer func() {
 		_ = logger.Sync()
@@ -114,10 +132,13 @@ func main() {
 	opts := gen.Options{
 		VerboseRoute:         *verbose,
 		GenerateExampleTests: *generateTests,
-		SkipTestRegex:        nil,
+		SkipTestRegex:        nil, // Set below.
 		SkipUnimplemented:    *skipUnimplemented,
 		InferSchemaType:      *inferTypes,
-		Filters:              filters,
+		Filters: gen.Filters{
+			PathRegex: filterPath,
+			Methods:   filterMethods,
+		},
 		IgnoreNotImplemented: strings.Split(*debugIgnoreNotImplemented, ","),
 		NotImplementedHook:   nil,
 		Logger:               logger,
@@ -125,21 +146,27 @@ func main() {
 	if expr := *skipTestsRegex; expr != "" {
 		r, err := regexp.Compile(expr)
 		if err != nil {
-			panic(fmt.Sprintf("%+v", err))
+			return errors.Wrap(err, "skipTestsRegex")
 		}
 		opts.SkipTestRegex = r
 	}
-
 	if *debugNoerr {
 		opts.IgnoreNotImplemented = []string{"all"}
 	}
 
-	g, err := gen.NewGenerator(spec, opts)
-	if err != nil {
-		panic(fmt.Sprintf("%s: %+v", *specPath, err))
+	fs := genfs.FormattedSource{
+		Root:   *targetDir,
+		Format: *performFormat,
+	}
+	if err := generate(specPath, *packageName, fs, opts); err != nil {
+		return errors.Wrap(err, "generate")
 	}
 
-	if err := g.WriteSource(fs, *packageName); err != nil {
-		panic(fmt.Sprintf("%s: %+v", *specPath, err))
+	return nil
+}
+
+func main() {
+	if err := run(); err != nil {
+		panic(err)
 	}
 }
