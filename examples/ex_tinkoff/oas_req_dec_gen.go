@@ -41,7 +41,7 @@ func decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req Li
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OrdersLimitOrderPost:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -49,7 +49,7 @@ func decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req Li
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OrdersLimitOrderPost request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -85,7 +85,7 @@ func decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req M
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OrdersMarketOrderPost:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -93,7 +93,7 @@ func decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req M
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OrdersMarketOrderPost request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -129,7 +129,7 @@ func decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SandboxCurrenciesBalancePost:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -137,7 +137,7 @@ func decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SandboxCurrenciesBalancePost request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -173,7 +173,7 @@ func decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SandboxPositionsBalancePost:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -181,7 +181,7 @@ func decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SandboxPositionsBalancePost request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -218,7 +218,7 @@ func decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req Opt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SandboxRegisterPost:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -233,7 +233,7 @@ func decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req Opt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SandboxRegisterPost request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:

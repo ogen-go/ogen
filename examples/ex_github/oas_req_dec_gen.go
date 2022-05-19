@@ -41,7 +41,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsCreateOrUpdateEnvironmentSecret:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -49,7 +49,7 @@ func decodeActionsCreateOrUpdateEnvironmentSecretRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsCreateOrUpdateEnvironmentSecret request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -85,7 +85,7 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsCreateOrUpdateOrgSecret:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -93,7 +93,7 @@ func decodeActionsCreateOrUpdateOrgSecretRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsCreateOrUpdateOrgSecret request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -129,7 +129,7 @@ func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsCreateOrUpdateRepoSecret:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -137,7 +137,7 @@ func decodeActionsCreateOrUpdateRepoSecretRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsCreateOrUpdateRepoSecret request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -173,7 +173,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsCreateSelfHostedRunnerGroupForOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -181,7 +181,7 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsCreateSelfHostedRunnerGroupForOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -217,7 +217,7 @@ func decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsReviewPendingDeploymentsForRun:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -225,7 +225,7 @@ func decodeActionsReviewPendingDeploymentsForRunRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsReviewPendingDeploymentsForRun request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -262,7 +262,7 @@ func decodeActionsSetAllowedActionsOrganizationRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsSetAllowedActionsOrganization:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -299,7 +299,7 @@ func decodeActionsSetAllowedActionsRepositoryRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsSetAllowedActionsRepository:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -335,7 +335,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsSetGithubActionsPermissionsOrganization:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -343,7 +343,7 @@ func decodeActionsSetGithubActionsPermissionsOrganizationRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsSetGithubActionsPermissionsOrganization request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -379,7 +379,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsSetGithubActionsPermissionsRepository:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -387,7 +387,7 @@ func decodeActionsSetGithubActionsPermissionsRepositoryRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsSetGithubActionsPermissionsRepository request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -423,7 +423,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -431,7 +431,7 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsSetRepoAccessToSelfHostedRunnerGroupInOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -467,7 +467,7 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsSetSelectedReposForOrgSecret:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -475,7 +475,7 @@ func decodeActionsSetSelectedReposForOrgSecretRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsSetSelectedReposForOrgSecret request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -511,7 +511,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -519,7 +519,7 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationRequest
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsSetSelectedRepositoriesEnabledGithubActionsOrganization request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -555,7 +555,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsSetSelfHostedRunnersInGroupForOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -563,7 +563,7 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsSetSelfHostedRunnersInGroupForOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -599,7 +599,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActionsUpdateSelfHostedRunnerGroupForOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -607,7 +607,7 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ActionsUpdateSelfHostedRunnerGroupForOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -644,7 +644,7 @@ func decodeActivityMarkNotificationsAsReadRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActivityMarkNotificationsAsRead:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -681,7 +681,7 @@ func decodeActivityMarkRepoNotificationsAsReadRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActivityMarkRepoNotificationsAsRead:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -718,7 +718,7 @@ func decodeActivitySetRepoSubscriptionRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActivitySetRepoSubscription:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -755,7 +755,7 @@ func decodeActivitySetThreadSubscriptionRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ActivitySetThreadSubscription:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -791,7 +791,7 @@ func decodeAppsCheckTokenRequest(r *http.Request, span trace.Span) (req AppsChec
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AppsCheckToken:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -827,7 +827,7 @@ func decodeAppsCreateContentAttachmentRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AppsCreateContentAttachment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -835,7 +835,7 @@ func decodeAppsCreateContentAttachmentRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AppsCreateContentAttachment request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -872,7 +872,7 @@ func decodeAppsCreateInstallationAccessTokenRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AppsCreateInstallationAccessToken:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -887,7 +887,7 @@ func decodeAppsCreateInstallationAccessTokenRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AppsCreateInstallationAccessToken request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -923,7 +923,7 @@ func decodeAppsDeleteAuthorizationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AppsDeleteAuthorization:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -959,7 +959,7 @@ func decodeAppsDeleteTokenRequest(r *http.Request, span trace.Span) (req AppsDel
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AppsDeleteToken:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -995,7 +995,7 @@ func decodeAppsResetTokenRequest(r *http.Request, span trace.Span) (req AppsRese
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AppsResetToken:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1031,7 +1031,7 @@ func decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (req AppsScop
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AppsScopeToken:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1039,7 +1039,7 @@ func decodeAppsScopeTokenRequest(r *http.Request, span trace.Span) (req AppsScop
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AppsScopeToken request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1076,7 +1076,7 @@ func decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AppsUpdateWebhookConfigForApp:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -1091,7 +1091,7 @@ func decodeAppsUpdateWebhookConfigForAppRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AppsUpdateWebhookConfigForApp request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1127,7 +1127,7 @@ func decodeChecksCreateSuiteRequest(r *http.Request, span trace.Span) (req Check
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ChecksCreateSuite:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1163,7 +1163,7 @@ func decodeChecksSetSuitesPreferencesRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ChecksSetSuitesPreferences:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1199,7 +1199,7 @@ func decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CodeScanningUpdateAlert:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1207,7 +1207,7 @@ func decodeCodeScanningUpdateAlertRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate CodeScanningUpdateAlert request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1243,7 +1243,7 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CodeScanningUploadSarif:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1251,7 +1251,7 @@ func decodeCodeScanningUploadSarifRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate CodeScanningUploadSarif request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1287,7 +1287,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1295,7 +1295,7 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminCreateSelfHostedRunnerGroupForEnterprise request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1331,7 +1331,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminProvisionAndInviteEnterpriseGroup:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1339,7 +1339,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminProvisionAndInviteEnterpriseGroup request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1375,7 +1375,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminProvisionAndInviteEnterpriseUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1383,7 +1383,7 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminProvisionAndInviteEnterpriseUser request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1419,7 +1419,7 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminSetAllowedActionsEnterprise:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1455,7 +1455,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminSetGithubActionsPermissionsEnterprise:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1463,7 +1463,7 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminSetGithubActionsPermissionsEnterprise request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1499,7 +1499,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminSetInformationForProvisionedEnterpriseGroup:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1507,7 +1507,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupRequest(r *
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminSetInformationForProvisionedEnterpriseGroup request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1543,7 +1543,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *h
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminSetInformationForProvisionedEnterpriseUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1551,7 +1551,7 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserRequest(r *h
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminSetInformationForProvisionedEnterpriseUser request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1587,7 +1587,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1595,7 +1595,7 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseRequest
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterprise request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1631,7 +1631,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1639,7 +1639,7 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1675,7 +1675,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1683,7 +1683,7 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseRequest(r *htt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminSetSelfHostedRunnersInGroupForEnterprise request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1719,7 +1719,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseGroup:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1727,7 +1727,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminUpdateAttributeForEnterpriseGroup request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1763,7 +1763,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminUpdateAttributeForEnterpriseUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1771,7 +1771,7 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminUpdateAttributeForEnterpriseUser request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1808,7 +1808,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -1823,7 +1823,7 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseRequest(r *htt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterprise request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1859,7 +1859,7 @@ func decodeGistsCreateRequest(r *http.Request, span trace.Span) (req GistsCreate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GistsCreate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1867,7 +1867,7 @@ func decodeGistsCreateRequest(r *http.Request, span trace.Span) (req GistsCreate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate GistsCreate request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1903,7 +1903,7 @@ func decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GistsCreateComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1911,7 +1911,7 @@ func decodeGistsCreateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate GistsCreateComment request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1947,7 +1947,7 @@ func decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GistsUpdateComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1955,7 +1955,7 @@ func decodeGistsUpdateCommentRequest(r *http.Request, span trace.Span) (req Gist
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate GistsUpdateComment request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1991,7 +1991,7 @@ func decodeGitCreateBlobRequest(r *http.Request, span trace.Span) (req GitCreate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GitCreateBlob:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2027,7 +2027,7 @@ func decodeGitCreateCommitRequest(r *http.Request, span trace.Span) (req GitCrea
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GitCreateCommit:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2063,7 +2063,7 @@ func decodeGitCreateRefRequest(r *http.Request, span trace.Span) (req GitCreateR
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GitCreateRef:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2099,7 +2099,7 @@ func decodeGitCreateTagRequest(r *http.Request, span trace.Span) (req GitCreateT
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GitCreateTag:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2107,7 +2107,7 @@ func decodeGitCreateTagRequest(r *http.Request, span trace.Span) (req GitCreateT
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate GitCreateTag request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2143,7 +2143,7 @@ func decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (req GitCreate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GitCreateTree:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2151,7 +2151,7 @@ func decodeGitCreateTreeRequest(r *http.Request, span trace.Span) (req GitCreate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate GitCreateTree request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2187,7 +2187,7 @@ func decodeGitUpdateRefRequest(r *http.Request, span trace.Span) (req GitUpdateR
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GitUpdateRef:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2223,7 +2223,7 @@ func decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode InteractionsSetRestrictionsForAuthenticatedUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2231,7 +2231,7 @@ func decodeInteractionsSetRestrictionsForAuthenticatedUserRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate InteractionsSetRestrictionsForAuthenticatedUser request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2267,7 +2267,7 @@ func decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode InteractionsSetRestrictionsForOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2275,7 +2275,7 @@ func decodeInteractionsSetRestrictionsForOrgRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate InteractionsSetRestrictionsForOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2311,7 +2311,7 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode InteractionsSetRestrictionsForRepo:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2319,7 +2319,7 @@ func decodeInteractionsSetRestrictionsForRepoRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate InteractionsSetRestrictionsForRepo request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2356,7 +2356,7 @@ func decodeIssuesAddAssigneesRequest(r *http.Request, span trace.Span) (req OptI
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesAddAssignees:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2392,7 +2392,7 @@ func decodeIssuesCreateRequest(r *http.Request, span trace.Span) (req IssuesCrea
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesCreate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2428,7 +2428,7 @@ func decodeIssuesCreateCommentRequest(r *http.Request, span trace.Span) (req Iss
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesCreateComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2464,7 +2464,7 @@ func decodeIssuesCreateLabelRequest(r *http.Request, span trace.Span) (req Issue
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesCreateLabel:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2500,7 +2500,7 @@ func decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.Span) (req I
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesCreateMilestone:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2508,7 +2508,7 @@ func decodeIssuesCreateMilestoneRequest(r *http.Request, span trace.Span) (req I
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate IssuesCreateMilestone request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2545,7 +2545,7 @@ func decodeIssuesLockRequest(r *http.Request, span trace.Span) (req OptNilIssues
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesLock:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2560,7 +2560,7 @@ func decodeIssuesLockRequest(r *http.Request, span trace.Span) (req OptNilIssues
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate IssuesLock request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2597,7 +2597,7 @@ func decodeIssuesRemoveAssigneesRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesRemoveAssignees:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2634,7 +2634,7 @@ func decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (req OptIssuesU
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesUpdate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2649,7 +2649,7 @@ func decodeIssuesUpdateRequest(r *http.Request, span trace.Span) (req OptIssuesU
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate IssuesUpdate request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2685,7 +2685,7 @@ func decodeIssuesUpdateCommentRequest(r *http.Request, span trace.Span) (req Iss
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesUpdateComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2722,7 +2722,7 @@ func decodeIssuesUpdateLabelRequest(r *http.Request, span trace.Span) (req OptIs
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesUpdateLabel:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2759,7 +2759,7 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode IssuesUpdateMilestone:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2774,7 +2774,7 @@ func decodeIssuesUpdateMilestoneRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate IssuesUpdateMilestone request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2811,7 +2811,7 @@ func decodeMigrationsMapCommitAuthorRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MigrationsMapCommitAuthor:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2847,7 +2847,7 @@ func decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MigrationsSetLfsPreference:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2855,7 +2855,7 @@ func decodeMigrationsSetLfsPreferenceRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate MigrationsSetLfsPreference request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2891,7 +2891,7 @@ func decodeMigrationsStartForAuthenticatedUserRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MigrationsStartForAuthenticatedUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2899,7 +2899,7 @@ func decodeMigrationsStartForAuthenticatedUserRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate MigrationsStartForAuthenticatedUser request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2935,7 +2935,7 @@ func decodeMigrationsStartForOrgRequest(r *http.Request, span trace.Span) (req M
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MigrationsStartForOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2943,7 +2943,7 @@ func decodeMigrationsStartForOrgRequest(r *http.Request, span trace.Span) (req M
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate MigrationsStartForOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2979,7 +2979,7 @@ func decodeMigrationsStartImportRequest(r *http.Request, span trace.Span) (req M
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MigrationsStartImport:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2987,7 +2987,7 @@ func decodeMigrationsStartImportRequest(r *http.Request, span trace.Span) (req M
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate MigrationsStartImport request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3024,7 +3024,7 @@ func decodeMigrationsUpdateImportRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MigrationsUpdateImport:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3061,7 +3061,7 @@ func decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OAuthAuthorizationsCreateAuthorization:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3076,7 +3076,7 @@ func decodeOAuthAuthorizationsCreateAuthorizationRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OAuthAuthorizationsCreateAuthorization request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3112,7 +3112,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OAuthAuthorizationsGetOrCreateAuthorizationForApp:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3120,7 +3120,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OAuthAuthorizationsGetOrCreateAuthorizationForApp request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3156,7 +3156,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3164,7 +3164,7 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprint request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3201,7 +3201,7 @@ func decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OAuthAuthorizationsUpdateAuthorization:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3216,7 +3216,7 @@ func decodeOAuthAuthorizationsUpdateAuthorizationRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OAuthAuthorizationsUpdateAuthorization request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3253,7 +3253,7 @@ func decodeOrgsCreateInvitationRequest(r *http.Request, span trace.Span) (req Op
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OrgsCreateInvitation:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3268,7 +3268,7 @@ func decodeOrgsCreateInvitationRequest(r *http.Request, span trace.Span) (req Op
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OrgsCreateInvitation request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3304,7 +3304,7 @@ func decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span) (req OrgsC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OrgsCreateWebhook:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3312,7 +3312,7 @@ func decodeOrgsCreateWebhookRequest(r *http.Request, span trace.Span) (req OrgsC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OrgsCreateWebhook request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3349,7 +3349,7 @@ func decodeOrgsSetMembershipForUserRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OrgsSetMembershipForUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3364,7 +3364,7 @@ func decodeOrgsSetMembershipForUserRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OrgsSetMembershipForUser request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3400,7 +3400,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OrgsUpdateMembershipForAuthenticatedUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3408,7 +3408,7 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OrgsUpdateMembershipForAuthenticatedUser request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3445,7 +3445,7 @@ func decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptOr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OrgsUpdateWebhook:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3460,7 +3460,7 @@ func decodeOrgsUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptOr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OrgsUpdateWebhook request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3497,7 +3497,7 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OrgsUpdateWebhookConfigForOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3512,7 +3512,7 @@ func decodeOrgsUpdateWebhookConfigForOrgRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OrgsUpdateWebhookConfigForOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3549,7 +3549,7 @@ func decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsAddCollaborator:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3564,7 +3564,7 @@ func decodeProjectsAddCollaboratorRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ProjectsAddCollaborator request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3600,7 +3600,7 @@ func decodeProjectsCreateColumnRequest(r *http.Request, span trace.Span) (req Pr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsCreateColumn:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3636,7 +3636,7 @@ func decodeProjectsCreateForAuthenticatedUserRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsCreateForAuthenticatedUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3672,7 +3672,7 @@ func decodeProjectsCreateForOrgRequest(r *http.Request, span trace.Span) (req Pr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsCreateForOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3708,7 +3708,7 @@ func decodeProjectsCreateForRepoRequest(r *http.Request, span trace.Span) (req P
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsCreateForRepo:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3744,7 +3744,7 @@ func decodeProjectsMoveCardRequest(r *http.Request, span trace.Span) (req Projec
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsMoveCard:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3752,7 +3752,7 @@ func decodeProjectsMoveCardRequest(r *http.Request, span trace.Span) (req Projec
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ProjectsMoveCard request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3788,7 +3788,7 @@ func decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (req Proj
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsMoveColumn:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3796,7 +3796,7 @@ func decodeProjectsMoveColumnRequest(r *http.Request, span trace.Span) (req Proj
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ProjectsMoveColumn request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3833,7 +3833,7 @@ func decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (req OptProje
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsUpdate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3848,7 +3848,7 @@ func decodeProjectsUpdateRequest(r *http.Request, span trace.Span) (req OptProje
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ProjectsUpdate request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3885,7 +3885,7 @@ func decodeProjectsUpdateCardRequest(r *http.Request, span trace.Span) (req OptP
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsUpdateCard:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3921,7 +3921,7 @@ func decodeProjectsUpdateColumnRequest(r *http.Request, span trace.Span) (req Pr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ProjectsUpdateColumn:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3957,7 +3957,7 @@ func decodePullsCreateRequest(r *http.Request, span trace.Span) (req PullsCreate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsCreate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3993,7 +3993,7 @@ func decodePullsCreateReplyForReviewCommentRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsCreateReplyForReviewComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4030,7 +4030,7 @@ func decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (req OptPu
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsCreateReview:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4045,7 +4045,7 @@ func decodePullsCreateReviewRequest(r *http.Request, span trace.Span) (req OptPu
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PullsCreateReview request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4081,7 +4081,7 @@ func decodePullsCreateReviewCommentRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsCreateReviewComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4089,7 +4089,7 @@ func decodePullsCreateReviewCommentRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PullsCreateReviewComment request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4125,7 +4125,7 @@ func decodePullsDismissReviewRequest(r *http.Request, span trace.Span) (req Pull
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsDismissReview:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4162,7 +4162,7 @@ func decodePullsMergeRequest(r *http.Request, span trace.Span) (req OptNilPullsM
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsMerge:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4177,7 +4177,7 @@ func decodePullsMergeRequest(r *http.Request, span trace.Span) (req OptNilPullsM
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PullsMerge request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4213,7 +4213,7 @@ func decodePullsRemoveRequestedReviewersRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsRemoveRequestedReviewers:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4221,7 +4221,7 @@ func decodePullsRemoveRequestedReviewersRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PullsRemoveRequestedReviewers request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4257,7 +4257,7 @@ func decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsSubmitReview:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4265,7 +4265,7 @@ func decodePullsSubmitReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PullsSubmitReview request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4302,7 +4302,7 @@ func decodePullsUpdateRequest(r *http.Request, span trace.Span) (req OptPullsUpd
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsUpdate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4317,7 +4317,7 @@ func decodePullsUpdateRequest(r *http.Request, span trace.Span) (req OptPullsUpd
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PullsUpdate request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4354,7 +4354,7 @@ func decodePullsUpdateBranchRequest(r *http.Request, span trace.Span) (req OptNi
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsUpdateBranch:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4390,7 +4390,7 @@ func decodePullsUpdateReviewRequest(r *http.Request, span trace.Span) (req Pulls
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsUpdateReview:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4426,7 +4426,7 @@ func decodePullsUpdateReviewCommentRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PullsUpdateReviewComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4462,7 +4462,7 @@ func decodeReactionsCreateForCommitCommentRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForCommitComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4470,7 +4470,7 @@ func decodeReactionsCreateForCommitCommentRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForCommitComment request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4506,7 +4506,7 @@ func decodeReactionsCreateForIssueRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForIssue:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4514,7 +4514,7 @@ func decodeReactionsCreateForIssueRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForIssue request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4550,7 +4550,7 @@ func decodeReactionsCreateForIssueCommentRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForIssueComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4558,7 +4558,7 @@ func decodeReactionsCreateForIssueCommentRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForIssueComment request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4594,7 +4594,7 @@ func decodeReactionsCreateForPullRequestReviewCommentRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForPullRequestReviewComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4602,7 +4602,7 @@ func decodeReactionsCreateForPullRequestReviewCommentRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForPullRequestReviewComment request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4638,7 +4638,7 @@ func decodeReactionsCreateForReleaseRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForRelease:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4646,7 +4646,7 @@ func decodeReactionsCreateForReleaseRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForRelease request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4682,7 +4682,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForTeamDiscussionCommentInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4690,7 +4690,7 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForTeamDiscussionCommentInOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4726,7 +4726,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForTeamDiscussionCommentLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4734,7 +4734,7 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForTeamDiscussionCommentLegacy request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4770,7 +4770,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForTeamDiscussionInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4778,7 +4778,7 @@ func decodeReactionsCreateForTeamDiscussionInOrgRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForTeamDiscussionInOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4814,7 +4814,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReactionsCreateForTeamDiscussionLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4822,7 +4822,7 @@ func decodeReactionsCreateForTeamDiscussionLegacyRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReactionsCreateForTeamDiscussionLegacy request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4859,7 +4859,7 @@ func decodeReposAddAppAccessRestrictionsRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposAddAppAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4874,7 +4874,7 @@ func decodeReposAddAppAccessRestrictionsRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposAddAppAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4911,7 +4911,7 @@ func decodeReposAddCollaboratorRequest(r *http.Request, span trace.Span) (req Op
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposAddCollaborator:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4926,7 +4926,7 @@ func decodeReposAddCollaboratorRequest(r *http.Request, span trace.Span) (req Op
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposAddCollaborator request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4963,7 +4963,7 @@ func decodeReposAddStatusCheckContextsRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposAddStatusCheckContexts:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -4978,7 +4978,7 @@ func decodeReposAddStatusCheckContextsRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposAddStatusCheckContexts request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5015,7 +5015,7 @@ func decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposAddTeamAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5030,7 +5030,7 @@ func decodeReposAddTeamAccessRestrictionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposAddTeamAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5067,7 +5067,7 @@ func decodeReposAddUserAccessRestrictionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposAddUserAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5082,7 +5082,7 @@ func decodeReposAddUserAccessRestrictionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposAddUserAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5118,7 +5118,7 @@ func decodeReposCreateAutolinkRequest(r *http.Request, span trace.Span) (req Rep
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateAutolink:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5154,7 +5154,7 @@ func decodeReposCreateCommitCommentRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateCommitComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5190,7 +5190,7 @@ func decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateCommitStatus:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5198,7 +5198,7 @@ func decodeReposCreateCommitStatusRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposCreateCommitStatus request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5234,7 +5234,7 @@ func decodeReposCreateDeployKeyRequest(r *http.Request, span trace.Span) (req Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateDeployKey:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5270,7 +5270,7 @@ func decodeReposCreateDeploymentRequest(r *http.Request, span trace.Span) (req R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateDeployment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5306,7 +5306,7 @@ func decodeReposCreateDeploymentStatusRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateDeploymentStatus:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5314,7 +5314,7 @@ func decodeReposCreateDeploymentStatusRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposCreateDeploymentStatus request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5350,7 +5350,7 @@ func decodeReposCreateDispatchEventRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateDispatchEvent:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5358,7 +5358,7 @@ func decodeReposCreateDispatchEventRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposCreateDispatchEvent request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5394,7 +5394,7 @@ func decodeReposCreateForAuthenticatedUserRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateForAuthenticatedUser:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5431,7 +5431,7 @@ func decodeReposCreateForkRequest(r *http.Request, span trace.Span) (req OptNilR
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateFork:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5467,7 +5467,7 @@ func decodeReposCreateInOrgRequest(r *http.Request, span trace.Span) (req ReposC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -5475,7 +5475,7 @@ func decodeReposCreateInOrgRequest(r *http.Request, span trace.Span) (req ReposC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposCreateInOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5511,7 +5511,7 @@ func decodeReposCreateOrUpdateFileContentsRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateOrUpdateFileContents:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5547,7 +5547,7 @@ func decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (req Ni
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreatePagesSite:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Value.Validate(); err != nil {
@@ -5555,7 +5555,7 @@ func decodeReposCreatePagesSiteRequest(r *http.Request, span trace.Span) (req Ni
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposCreatePagesSite request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5591,7 +5591,7 @@ func decodeReposCreateReleaseRequest(r *http.Request, span trace.Span) (req Repo
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateRelease:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5627,7 +5627,7 @@ func decodeReposCreateUsingTemplateRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateUsingTemplate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5664,7 +5664,7 @@ func decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptN
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposCreateWebhook:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5679,7 +5679,7 @@ func decodeReposCreateWebhookRequest(r *http.Request, span trace.Span) (req OptN
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposCreateWebhook request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5715,7 +5715,7 @@ func decodeReposDeleteFileRequest(r *http.Request, span trace.Span) (req ReposDe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposDeleteFile:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5751,7 +5751,7 @@ func decodeReposMergeRequest(r *http.Request, span trace.Span) (req ReposMergeRe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposMerge:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5787,7 +5787,7 @@ func decodeReposMergeUpstreamRequest(r *http.Request, span trace.Span) (req Repo
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposMergeUpstream:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5824,7 +5824,7 @@ func decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposRemoveAppAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5839,7 +5839,7 @@ func decodeReposRemoveAppAccessRestrictionsRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposRemoveAppAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5876,7 +5876,7 @@ func decodeReposRemoveStatusCheckContextsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposRemoveStatusCheckContexts:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5891,7 +5891,7 @@ func decodeReposRemoveStatusCheckContextsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposRemoveStatusCheckContexts request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5928,7 +5928,7 @@ func decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposRemoveTeamAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5943,7 +5943,7 @@ func decodeReposRemoveTeamAccessRestrictionsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposRemoveTeamAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5980,7 +5980,7 @@ func decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposRemoveUserAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -5995,7 +5995,7 @@ func decodeReposRemoveUserAccessRestrictionsRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposRemoveUserAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6032,7 +6032,7 @@ func decodeReposRenameBranchRequest(r *http.Request, span trace.Span) (req OptRe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposRenameBranch:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6068,7 +6068,7 @@ func decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (req R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposReplaceAllTopics:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -6076,7 +6076,7 @@ func decodeReposReplaceAllTopicsRequest(r *http.Request, span trace.Span) (req R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposReplaceAllTopics request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6113,7 +6113,7 @@ func decodeReposSetAppAccessRestrictionsRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposSetAppAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6128,7 +6128,7 @@ func decodeReposSetAppAccessRestrictionsRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposSetAppAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6165,7 +6165,7 @@ func decodeReposSetStatusCheckContextsRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposSetStatusCheckContexts:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6180,7 +6180,7 @@ func decodeReposSetStatusCheckContextsRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposSetStatusCheckContexts request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6217,7 +6217,7 @@ func decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposSetTeamAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6232,7 +6232,7 @@ func decodeReposSetTeamAccessRestrictionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposSetTeamAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6269,7 +6269,7 @@ func decodeReposSetUserAccessRestrictionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposSetUserAccessRestrictions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6284,7 +6284,7 @@ func decodeReposSetUserAccessRestrictionsRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposSetUserAccessRestrictions request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6320,7 +6320,7 @@ func decodeReposTransferRequest(r *http.Request, span trace.Span) (req ReposTran
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposTransfer:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6357,7 +6357,7 @@ func decodeReposUpdateRequest(r *http.Request, span trace.Span) (req OptReposUpd
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6372,7 +6372,7 @@ func decodeReposUpdateRequest(r *http.Request, span trace.Span) (req OptReposUpd
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposUpdate request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6408,7 +6408,7 @@ func decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdateBranchProtection:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -6416,7 +6416,7 @@ func decodeReposUpdateBranchProtectionRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposUpdateBranchProtection request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6452,7 +6452,7 @@ func decodeReposUpdateCommitCommentRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdateCommitComment:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6489,7 +6489,7 @@ func decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdateInvitation:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6504,7 +6504,7 @@ func decodeReposUpdateInvitationRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposUpdateInvitation request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6541,7 +6541,7 @@ func decodeReposUpdatePullRequestReviewProtectionRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdatePullRequestReviewProtection:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6578,7 +6578,7 @@ func decodeReposUpdateReleaseRequest(r *http.Request, span trace.Span) (req OptR
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdateRelease:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6615,7 +6615,7 @@ func decodeReposUpdateReleaseAssetRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdateReleaseAsset:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6652,7 +6652,7 @@ func decodeReposUpdateStatusCheckProtectionRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdateStatusCheckProtection:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6689,7 +6689,7 @@ func decodeReposUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptR
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdateWebhook:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6704,7 +6704,7 @@ func decodeReposUpdateWebhookRequest(r *http.Request, span trace.Span) (req OptR
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposUpdateWebhook request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6741,7 +6741,7 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ReposUpdateWebhookConfigForRepo:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6756,7 +6756,7 @@ func decodeReposUpdateWebhookConfigForRepoRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate ReposUpdateWebhookConfigForRepo request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6792,7 +6792,7 @@ func decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SecretScanningUpdateAlert:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -6800,7 +6800,7 @@ func decodeSecretScanningUpdateAlertRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SecretScanningUpdateAlert request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6837,7 +6837,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsAddOrUpdateMembershipForUserInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6852,7 +6852,7 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsAddOrUpdateMembershipForUserInOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6889,7 +6889,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsAddOrUpdateMembershipForUserLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6904,7 +6904,7 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsAddOrUpdateMembershipForUserLegacy request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6941,7 +6941,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsAddOrUpdateProjectPermissionsInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -6956,7 +6956,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsAddOrUpdateProjectPermissionsInOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6993,7 +6993,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsAddOrUpdateProjectPermissionsLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7008,7 +7008,7 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsAddOrUpdateProjectPermissionsLegacy request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7045,7 +7045,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsAddOrUpdateRepoPermissionsInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7060,7 +7060,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsAddOrUpdateRepoPermissionsInOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7097,7 +7097,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsAddOrUpdateRepoPermissionsLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7112,7 +7112,7 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsAddOrUpdateRepoPermissionsLegacy request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7148,7 +7148,7 @@ func decodeTeamsCreateRequest(r *http.Request, span trace.Span) (req TeamsCreate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsCreate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -7156,7 +7156,7 @@ func decodeTeamsCreateRequest(r *http.Request, span trace.Span) (req TeamsCreate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsCreate request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7192,7 +7192,7 @@ func decodeTeamsCreateDiscussionCommentInOrgRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsCreateDiscussionCommentInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7228,7 +7228,7 @@ func decodeTeamsCreateDiscussionCommentLegacyRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsCreateDiscussionCommentLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7264,7 +7264,7 @@ func decodeTeamsCreateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsCreateDiscussionInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7300,7 +7300,7 @@ func decodeTeamsCreateDiscussionLegacyRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsCreateDiscussionLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7336,7 +7336,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsCreateOrUpdateIdpGroupConnectionsInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7372,7 +7372,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsCreateOrUpdateIdpGroupConnectionsLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -7380,7 +7380,7 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsCreateOrUpdateIdpGroupConnectionsLegacy request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7416,7 +7416,7 @@ func decodeTeamsUpdateDiscussionCommentInOrgRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsUpdateDiscussionCommentInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7452,7 +7452,7 @@ func decodeTeamsUpdateDiscussionCommentLegacyRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsUpdateDiscussionCommentLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7489,7 +7489,7 @@ func decodeTeamsUpdateDiscussionInOrgRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsUpdateDiscussionInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7526,7 +7526,7 @@ func decodeTeamsUpdateDiscussionLegacyRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsUpdateDiscussionLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7563,7 +7563,7 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (req OptTea
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsUpdateInOrg:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7578,7 +7578,7 @@ func decodeTeamsUpdateInOrgRequest(r *http.Request, span trace.Span) (req OptTea
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsUpdateInOrg request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7614,7 +7614,7 @@ func decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span) (req Teams
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TeamsUpdateLegacy:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -7622,7 +7622,7 @@ func decodeTeamsUpdateLegacyRequest(r *http.Request, span trace.Span) (req Teams
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TeamsUpdateLegacy request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7659,7 +7659,7 @@ func decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UsersAddEmailForAuthenticated:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7674,7 +7674,7 @@ func decodeUsersAddEmailForAuthenticatedRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate UsersAddEmailForAuthenticated request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7710,7 +7710,7 @@ func decodeUsersCreateGpgKeyForAuthenticatedRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UsersCreateGpgKeyForAuthenticated:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7746,7 +7746,7 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UsersCreatePublicSSHKeyForAuthenticated:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -7754,7 +7754,7 @@ func decodeUsersCreatePublicSSHKeyForAuthenticatedRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate UsersCreatePublicSSHKeyForAuthenticated request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7791,7 +7791,7 @@ func decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UsersDeleteEmailForAuthenticated:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -7806,7 +7806,7 @@ func decodeUsersDeleteEmailForAuthenticatedRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate UsersDeleteEmailForAuthenticated request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7842,7 +7842,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UsersSetPrimaryEmailVisibilityForAuthenticated:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -7850,7 +7850,7 @@ func decodeUsersSetPrimaryEmailVisibilityForAuthenticatedRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate UsersSetPrimaryEmailVisibilityForAuthenticated request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7887,7 +7887,7 @@ func decodeUsersUpdateAuthenticatedRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UsersUpdateAuthenticated:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:

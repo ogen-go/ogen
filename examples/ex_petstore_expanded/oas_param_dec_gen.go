@@ -24,12 +24,12 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetPar
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt64(s)
+				c, err := conv.ToInt64(val)
 				if err != nil {
 					return err
 				}

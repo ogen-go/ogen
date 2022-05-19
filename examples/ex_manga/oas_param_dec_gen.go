@@ -24,12 +24,12 @@ func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams,
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -58,12 +58,12 @@ func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -89,12 +89,12 @@ func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt(s)
+					c, err := conv.ToInt(val)
 					if err != nil {
 						return err
 					}
@@ -126,12 +126,12 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchBy
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -157,12 +157,12 @@ func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchBy
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt(s)
+					c, err := conv.ToInt(val)
 					if err != nil {
 						return err
 					}
