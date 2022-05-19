@@ -891,6 +891,15 @@ func decodeTestFloatValidationResponse(resp *http.Response, span trace.Span) (re
 	}
 }
 
+func decodeTestFormURLEncodedResponse(resp *http.Response, span trace.Span) (res TestFormURLEncodedOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return TestFormURLEncodedOK{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+
 func decodeTestObjectQueryParameterResponse(resp *http.Response, span trace.Span) (res TestObjectQueryParameterOK, err error) {
 	switch resp.StatusCode {
 	case 200:

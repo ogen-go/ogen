@@ -142,6 +142,10 @@ type Handler interface {
 	//
 	// POST /testFloatValidation
 	TestFloatValidation(ctx context.Context, req TestFloatValidation) (TestFloatValidationOK, error)
+	// TestFormURLEncoded implements testFormURLEncoded operation.
+	//
+	// POST /testFormURLEncoded
+	TestFormURLEncoded(ctx context.Context, req URIStruct) (TestFormURLEncodedOK, error)
 	// TestObjectQueryParameter implements testObjectQueryParameter operation.
 	//
 	// GET /testObjectQueryParameter

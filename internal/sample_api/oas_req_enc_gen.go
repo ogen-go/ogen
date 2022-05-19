@@ -4,9 +4,13 @@ package api
 
 import (
 	"io"
+	"strings"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/uri"
 )
 
 func encodeDefaultTestRequestJSON(req DefaultTest, span trace.Span) (data *jx.Encoder, err error) {
@@ -69,6 +73,24 @@ func encodeTestFloatValidationRequestJSON(req TestFloatValidation, span trace.Sp
 	e := jx.GetEncoder()
 
 	req.Encode(e)
+
+	return e, nil
+}
+
+func encodeTestFormURLEncodedRequestFormURLEncoded(req URIStruct, span trace.Span) (data io.Reader, err error) {
+	q := uri.NewQueryEncoder()
+	cfg := uri.QueryParameterEncodingConfig{
+		Name:    "",
+		Style:   uri.QueryStyleForm,
+		Explode: true,
+	}
+
+	if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+		return req.EncodeURI(e)
+	}); err != nil {
+		return data, errors.Wrap(err, "encode query")
+	}
+	e := strings.NewReader(q.Values().Encode())
 
 	return e, nil
 }

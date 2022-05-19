@@ -10,6 +10,7 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -41,7 +42,7 @@ func decodeDefaultTestRequest(r *http.Request, span trace.Span) (req DefaultTest
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DefaultTest:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -49,7 +50,7 @@ func decodeDefaultTestRequest(r *http.Request, span trace.Span) (req DefaultTest
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate DefaultTest request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -86,7 +87,7 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode FoobarPost:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -101,7 +102,7 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate FoobarPost request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -137,7 +138,7 @@ func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode OneofBug:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -145,7 +146,7 @@ func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate OneofBug request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -182,7 +183,7 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err e
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PetCreate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -197,7 +198,7 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err e
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PetCreate request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -234,7 +235,7 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PetUpdateNameAliasPost:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -249,7 +250,7 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PetUpdateNameAliasPost request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -286,7 +287,7 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PetUpdateNamePost:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -309,7 +310,7 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PetUpdateNamePost request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -354,7 +355,7 @@ func decodeTestFloatValidationRequest(r *http.Request, span trace.Span) (req Tes
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestFloatValidation:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -362,7 +363,46 @@ func decodeTestFloatValidationRequest(r *http.Request, span trace.Span) (req Tes
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestFloatValidation request")
+			return req, errors.Wrap(err, "validate")
+		}
+		return request, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func decodeTestFormURLEncodedRequest(r *http.Request, span trace.Span) (req URIStruct, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+	case "application/x-www-form-urlencoded":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		var request URIStruct
+		if err := r.ParseForm(); err != nil {
+			return req, errors.Wrap(err, "parse form")
+		}
+
+		if len(r.PostForm) == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		q := uri.NewQueryDecoder(r.PostForm)
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+			Fields:  []uri.QueryParameterObjectField{{"id", false}, {"uuid", false}, {"description", true}},
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				return request.DecodeURI(d)
+			}); err != nil {
+				return req, errors.Wrap(err, "decode \"application/x-www-form-urlencoded\"")
+			}
+		} else {
+			return req, validate.ErrBodyRequired
 		}
 		return request, nil
 	default:
