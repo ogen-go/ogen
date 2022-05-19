@@ -3050,6 +3050,9 @@ type TestFloatValidation struct {
 // TestFloatValidationOK is response for TestFloatValidation operation.
 type TestFloatValidationOK struct{}
 
+// TestFormURLEncodedOK is response for TestFormURLEncoded operation.
+type TestFormURLEncodedOK struct{}
+
 type TestObjectQueryParameterDeepObject struct {
 	Min    int    "json:\"min\""
 	Max    int    "json:\"max\""
@@ -3067,6 +3070,13 @@ type TestObjectQueryParameterOK struct {
 	Min    int    "json:\"min\""
 	Max    int    "json:\"max\""
 	Filter string "json:\"filter\""
+}
+
+// Ref: #/components/schemas/URIStruct
+type URIStruct struct {
+	ID          OptInt  "json:\"id\""
+	UUID        OptUUID "json:\"uuid\""
+	Description string  "json:\"description\""
 }
 
 // Ref: #/components/schemas/ValidationStringMap

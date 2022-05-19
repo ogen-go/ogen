@@ -33,7 +33,7 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 			Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
 			Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
 			{{- if isObjectParam $p }}
-			Fields: {{ paramObjectFields $p }},
+			Fields: {{ paramObjectFields $p.Type }},
 			{{- end }}
 		}
 

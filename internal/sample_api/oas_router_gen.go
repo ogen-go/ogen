@@ -584,18 +584,43 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-			case 't': // Prefix: "testFloatValidation"
-				if l := len("testFloatValidation"); len(elem) >= l && elem[0:l] == "testFloatValidation" {
+			case 't': // Prefix: "testF"
+				if l := len("testF"); len(elem) >= l && elem[0:l] == "testF" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: TestFloatValidation
-					s.handleTestFloatValidationRequest([0]string{}, w, r)
+					break
+				}
+				switch elem[0] {
+				case 'l': // Prefix: "loatValidation"
+					if l := len("loatValidation"); len(elem) >= l && elem[0:l] == "loatValidation" {
+						elem = elem[l:]
+					} else {
+						break
+					}
 
-					return
+					if len(elem) == 0 {
+						// Leaf: TestFloatValidation
+						s.handleTestFloatValidationRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'o': // Prefix: "ormURLEncoded"
+					if l := len("ormURLEncoded"); len(elem) >= l && elem[0:l] == "ormURLEncoded" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestFormURLEncoded
+						s.handleTestFormURLEncodedRequest([0]string{}, w, r)
+
+						return
+					}
 				}
 			}
 		}
@@ -1225,19 +1250,45 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 					}
 				}
-			case 't': // Prefix: "testFloatValidation"
-				if l := len("testFloatValidation"); len(elem) >= l && elem[0:l] == "testFloatValidation" {
+			case 't': // Prefix: "testF"
+				if l := len("testF"); len(elem) >= l && elem[0:l] == "testF" {
 					elem = elem[l:]
 				} else {
 					break
 				}
 
 				if len(elem) == 0 {
-					// Leaf: TestFloatValidation
-					r.name = "TestFloatValidation"
-					r.args = args
-					r.count = 0
-					return r, true
+					break
+				}
+				switch elem[0] {
+				case 'l': // Prefix: "loatValidation"
+					if l := len("loatValidation"); len(elem) >= l && elem[0:l] == "loatValidation" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestFloatValidation
+						r.name = "TestFloatValidation"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'o': // Prefix: "ormURLEncoded"
+					if l := len("ormURLEncoded"); len(elem) >= l && elem[0:l] == "ormURLEncoded" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: TestFormURLEncoded
+						r.name = "TestFormURLEncoded"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
 				}
 			}
 		}

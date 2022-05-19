@@ -24,12 +24,12 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -55,12 +55,12 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -90,12 +90,12 @@ func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDPar
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}

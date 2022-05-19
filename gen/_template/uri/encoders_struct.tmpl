@@ -1,51 +1,48 @@
-{{- define "json/encode_struct_fields" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.JSONFields*/ -}}
-	{{- range $i, $f := $ }}
-		{
-		{{- $elem := field_elem $f }}
-		{{ template "json/enc" $elem }}
-		}
-	{{- end }}
-{{- end }}
-
-{{- define "json/encoders_struct" }}
+{{- define "uri/encoders_struct" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
 {{- $fields := $.JSON.Fields }}
 {{- $additional := $.JSON.AdditionalProps }}
 {{- $pattern := $.JSON.PatternProps }}
 {{- $va := $.Validators }}
-// Encode implements json.Marshaler.
-func (s {{ $.Name }}) Encode(e *jx.Encoder) {
-	e.ObjStart()
-	s.encodeFields(e)
-	e.ObjEnd()
-}
 
-// encodeFields encodes fields.
-func (s {{ $.Name }}) encodeFields(e *jx.Encoder) {
-	{{- template "json/encode_struct_fields" $fields }}
+// EncodeURI encodes {{ $.Name }} as URI form.
+func (s {{ $.Name }}) EncodeURI(e uri.Encoder) error {
+	{{- range $f := $fields }}
+		if err := e.EncodeField({{ quote $f.Tag.JSON }}, func(e uri.Encoder) error {
+			{{- template "uri/encode" field_elem $f }}
+		}); err != nil {
+			return errors.Wrap(err, {{ printf "encode field %q" $f.Spec.Name | quote }})
+		}
+	{{- end }}
 	{{- if $additional }}
 	for k, elem := range s.{{ $additional.Name }} {
-		e.FieldStart(k)
-    	{{ template "json/enc" map_elem $additional.Type.Item }}
+		if err := e.EncodeField(k, func(e uri.Encoder) error {
+    		{{ template "uri/encode" map_elem $additional.Type.Item }}
+		}); err != nil {
+			return errors.Wrapf(err, "encode field %q", k)
+		}
 	}
 	{{- end }}
 	{{- range $p := $pattern }}
 	for k, elem := range s.{{ $p.Name }} {
-		e.FieldStart(k)
-    	{{ template "json/enc" map_elem $p.Type.Item }}
+		if err := e.EncodeField(k, func(e uri.Encoder) error {
+    		{{ template "uri/encode" map_elem $p.Type.Item }}
+		}); err != nil {
+			return errors.Wrapf(err, "encode field %q", k)
+		}
 	}
 	{{- end }}
+	return nil
 }
 
-var jsonFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{
+var uriFieldsNameOf{{ $.Name }} = [{{ len $fields }}]string{
 	{{- range $i, $f := $fields }}
 	{{ $i }}: {{ quote $f.Tag.JSON }},
 	{{- end }}
 }
 
-// Decode decodes {{ $.Name }} from json.
-func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
+// DecodeURI decodes {{ $.Name }} from URI form.
+func (s *{{ $.Name }}) DecodeURI(d uri.Decoder) error {
 	if s == nil {
 		return errors.New({{ printf "invalid: unable to decode %s to nil" $.Name | quote }})
 	}
@@ -71,35 +68,33 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 	s.{{ $p.Name }} = map[string]{{ $item.Go }}{}
 	{{- end }}
 
-	if err := d.ObjBytes(func(d *jx.Decoder, k []byte) error {
+	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
 		{{- if $va.Object.Set }}
 		propertiesCount++
 		{{- end }}
-		switch string(k) {
-	{{- range $i, $f := $fields }}
-	case {{ quote $f.Tag.JSON }}:
-		{{- if $f.Spec.Required }}
-		requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
-		{{ end -}}
+		switch k {
+		{{- range $i, $f := $fields }}
+		case {{ quote $f.Tag.JSON }}:
+			{{- if $f.Spec.Required }}
+			requiredBitSet[{{ div $i 8 }}] |= 1 << {{ mod $i 8 }}
+			{{ end -}}
 
-		if err := func() error {
-			{{- template "json/dec" field_elem $f }}
-			return nil
-		}(); err != nil {
-			return errors.Wrap(err, {{ printf "decode field %q" $f.Tag.JSON | quote }})
-		}
-	{{- end }}
+			if err := func() error {
+				{{- template "uri/decode" field_elem $f }}
+			}(); err != nil {
+				return errors.Wrap(err, {{ printf "decode field %q" $f.Tag.JSON | quote }})
+			}
+		{{- end }}
 		default:
 			{{- if $pattern }}
 			var handled bool
 			{{- range $p := $pattern }}
 			{{- $item := $p.Type.Item }}
-			if pattern := regexMap[{{ quote $p.Type.MapPattern }}]; pattern.Match(k) {
+			if pattern := regexMap[{{ quote $p.Type.MapPattern }}]; pattern.MatchString(k) {
 				handled = true
 				var elem {{ $item.Go }}
 				if err := func() error {
-					{{- template "json/dec" map_elem $item }}
-					return nil
+					{{- template "uri/decode" map_elem $item }}
 				}(); err != nil {
 					return errors.Wrapf(err, "decode field %q", k)
 				}
@@ -115,8 +110,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 			{{- $item := $additional.Type.Item }}
 			var elem {{ $item.Go }}
 			if err := func() error {
-				{{- template "json/dec" map_elem $item }}
-				return nil
+				{{- template "uri/decode" map_elem $item }}
 			}(); err != nil {
 				return errors.Wrapf(err, "decode field %q", k)
 			}
@@ -124,7 +118,7 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
             {{- else if $.DenyAdditionalProps }}
 			return errors.Errorf("unexpected field %q", k)
 			{{- else }}
-			return d.Skip()
+			return nil
 			{{- end }}
 		}
 		return nil
@@ -163,8 +157,8 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 				bitIdx := bits.TrailingZeros8(result)
 				fieldIdx := i * 8 + bitIdx
 				var name string
-				if fieldIdx < len(jsonFieldsNameOf{{ $.Name }}) {
-					name = jsonFieldsNameOf{{ $.Name }}[fieldIdx]
+				if fieldIdx < len(uriFieldsNameOf{{ $.Name }}) {
+					name = uriFieldsNameOf{{ $.Name }}[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}
@@ -186,3 +180,4 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 }
 
 {{ end }}
+

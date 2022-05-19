@@ -49,7 +49,7 @@ func decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestAny:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -86,7 +86,7 @@ func decodeTestRequestBooleanRequest(r *http.Request, span trace.Span) (req OptB
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestBoolean:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -132,7 +132,7 @@ func decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestBooleanArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -186,7 +186,7 @@ func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestBooleanArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -208,7 +208,7 @@ func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestBooleanArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -245,7 +245,7 @@ func decodeTestRequestBooleanNullableRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestBooleanNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -291,7 +291,7 @@ func decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestBooleanNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -345,7 +345,7 @@ func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestBooleanNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -367,7 +367,7 @@ func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestBooleanNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -406,7 +406,7 @@ func decodeTestRequestEmptyStructRequest(r *http.Request, span trace.Span) (req 
 			request = &elem
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestEmptyStruct:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -443,7 +443,7 @@ func decodeTestRequestFormatTestRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestFormatTest:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -458,7 +458,7 @@ func decodeTestRequestFormatTestRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestFormatTest request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -495,7 +495,7 @@ func decodeTestRequestIntegerRequest(r *http.Request, span trace.Span) (req OptI
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestInteger:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -541,7 +541,7 @@ func decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -595,7 +595,7 @@ func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -617,7 +617,7 @@ func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -654,7 +654,7 @@ func decodeTestRequestIntegerInt32Request(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -700,7 +700,7 @@ func decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -754,7 +754,7 @@ func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -776,7 +776,7 @@ func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerInt32ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -813,7 +813,7 @@ func decodeTestRequestIntegerInt32NullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -859,7 +859,7 @@ func decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -913,7 +913,7 @@ func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -935,7 +935,7 @@ func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerInt32NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -972,7 +972,7 @@ func decodeTestRequestIntegerInt64Request(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1018,7 +1018,7 @@ func decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1072,7 +1072,7 @@ func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1094,7 +1094,7 @@ func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerInt64ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1131,7 +1131,7 @@ func decodeTestRequestIntegerInt64NullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1177,7 +1177,7 @@ func decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1231,7 +1231,7 @@ func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1253,7 +1253,7 @@ func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerInt64NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1290,7 +1290,7 @@ func decodeTestRequestIntegerNullableRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1336,7 +1336,7 @@ func decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1390,7 +1390,7 @@ func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestIntegerNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1412,7 +1412,7 @@ func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestIntegerNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1449,7 +1449,7 @@ func decodeTestRequestNullRequest(r *http.Request, span trace.Span) (req OptNull
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNull:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1493,7 +1493,7 @@ func decodeTestRequestNullArrayRequest(r *http.Request, span trace.Span) (req []
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNullArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1545,7 +1545,7 @@ func decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNullArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1567,7 +1567,7 @@ func decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNullArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1604,7 +1604,7 @@ func decodeTestRequestNullNullableRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNullNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1648,7 +1648,7 @@ func decodeTestRequestNullNullableArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNullNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1700,7 +1700,7 @@ func decodeTestRequestNullNullableArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNullNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1722,7 +1722,7 @@ func decodeTestRequestNullNullableArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNullNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1759,7 +1759,7 @@ func decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFl
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumber:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -1774,7 +1774,7 @@ func decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFl
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumber request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1820,7 +1820,7 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1842,7 +1842,7 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1896,7 +1896,7 @@ func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -1935,7 +1935,7 @@ func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1972,7 +1972,7 @@ func decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberDouble:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -1987,7 +1987,7 @@ func decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberDouble request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2033,7 +2033,7 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberDoubleArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2055,7 +2055,7 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberDoubleArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2109,7 +2109,7 @@ func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberDoubleArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2148,7 +2148,7 @@ func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberDoubleArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2185,7 +2185,7 @@ func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberDoubleNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2200,7 +2200,7 @@ func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2246,7 +2246,7 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberDoubleNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2268,7 +2268,7 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2322,7 +2322,7 @@ func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberDoubleNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2361,7 +2361,7 @@ func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberDoubleNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2398,7 +2398,7 @@ func decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberFloat:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2413,7 +2413,7 @@ func decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberFloat request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2459,7 +2459,7 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberFloatArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2481,7 +2481,7 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberFloatArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2535,7 +2535,7 @@ func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberFloatArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2574,7 +2574,7 @@ func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberFloatArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2611,7 +2611,7 @@ func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberFloatNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -2626,7 +2626,7 @@ func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2672,7 +2672,7 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberFloatNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2694,7 +2694,7 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2748,7 +2748,7 @@ func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberFloatNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2787,7 +2787,7 @@ func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberFloatNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2824,7 +2824,7 @@ func decodeTestRequestNumberInt32Request(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2870,7 +2870,7 @@ func decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2924,7 +2924,7 @@ func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -2946,7 +2946,7 @@ func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberInt32ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2983,7 +2983,7 @@ func decodeTestRequestNumberInt32NullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3029,7 +3029,7 @@ func decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3083,7 +3083,7 @@ func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3105,7 +3105,7 @@ func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberInt32NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3142,7 +3142,7 @@ func decodeTestRequestNumberInt64Request(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3188,7 +3188,7 @@ func decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3242,7 +3242,7 @@ func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3264,7 +3264,7 @@ func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberInt64ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3301,7 +3301,7 @@ func decodeTestRequestNumberInt64NullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3347,7 +3347,7 @@ func decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3401,7 +3401,7 @@ func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3423,7 +3423,7 @@ func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberInt64NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3460,7 +3460,7 @@ func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -3475,7 +3475,7 @@ func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3521,7 +3521,7 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3543,7 +3543,7 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3597,7 +3597,7 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestNumberNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -3636,7 +3636,7 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestNumberNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3674,7 +3674,7 @@ func decodeTestRequestRequiredAnyRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredAny:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3712,7 +3712,7 @@ func decodeTestRequestRequiredBooleanRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredBoolean:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3758,7 +3758,7 @@ func decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -3766,7 +3766,7 @@ func decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3820,7 +3820,7 @@ func decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -3845,7 +3845,7 @@ func decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3881,7 +3881,7 @@ func decodeTestRequestRequiredBooleanNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3927,7 +3927,7 @@ func decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -3935,7 +3935,7 @@ func decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3989,7 +3989,7 @@ func decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredBooleanNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4014,7 +4014,7 @@ func decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredBooleanNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4050,7 +4050,7 @@ func decodeTestRequestRequiredEmptyStructRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredEmptyStruct:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4086,7 +4086,7 @@ func decodeTestRequestRequiredFormatTestRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredFormatTest:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -4094,7 +4094,7 @@ func decodeTestRequestRequiredFormatTestRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredFormatTest request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4132,7 +4132,7 @@ func decodeTestRequestRequiredIntegerRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredInteger:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4178,7 +4178,7 @@ func decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4186,7 +4186,7 @@ func decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4240,7 +4240,7 @@ func decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4265,7 +4265,7 @@ func decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4303,7 +4303,7 @@ func decodeTestRequestRequiredIntegerInt32Request(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4349,7 +4349,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4357,7 +4357,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32Array request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4411,7 +4411,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4436,7 +4436,7 @@ func decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4472,7 +4472,7 @@ func decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4518,7 +4518,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4526,7 +4526,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32NullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4580,7 +4580,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4605,7 +4605,7 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt32NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4643,7 +4643,7 @@ func decodeTestRequestRequiredIntegerInt64Request(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4689,7 +4689,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4697,7 +4697,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64Array request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4751,7 +4751,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4776,7 +4776,7 @@ func decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4812,7 +4812,7 @@ func decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -4858,7 +4858,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4866,7 +4866,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64NullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4920,7 +4920,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -4945,7 +4945,7 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerInt64NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -4981,7 +4981,7 @@ func decodeTestRequestRequiredIntegerNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5027,7 +5027,7 @@ func decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5035,7 +5035,7 @@ func decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5089,7 +5089,7 @@ func decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredIntegerNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5114,7 +5114,7 @@ func decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredIntegerNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5150,7 +5150,7 @@ func decodeTestRequestRequiredNullRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNull:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5194,7 +5194,7 @@ func decodeTestRequestRequiredNullArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNullArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5202,7 +5202,7 @@ func decodeTestRequestRequiredNullArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNullArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5254,7 +5254,7 @@ func decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNullArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5279,7 +5279,7 @@ func decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNullArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5315,7 +5315,7 @@ func decodeTestRequestRequiredNullNullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNullNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -5359,7 +5359,7 @@ func decodeTestRequestRequiredNullNullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNullNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5367,7 +5367,7 @@ func decodeTestRequestRequiredNullNullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNullNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5419,7 +5419,7 @@ func decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNullNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5444,7 +5444,7 @@ func decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNullNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5482,7 +5482,7 @@ func decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumber:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
@@ -5490,7 +5490,7 @@ func decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumber request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5536,7 +5536,7 @@ func decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5561,7 +5561,7 @@ func decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5615,7 +5615,7 @@ func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5657,7 +5657,7 @@ func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5695,7 +5695,7 @@ func decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDouble:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
@@ -5703,7 +5703,7 @@ func decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDouble request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5749,7 +5749,7 @@ func decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5774,7 +5774,7 @@ func decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5828,7 +5828,7 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5870,7 +5870,7 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5906,7 +5906,7 @@ func decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
@@ -5914,7 +5914,7 @@ func decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -5960,7 +5960,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -5985,7 +5985,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6039,7 +6039,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberDoubleNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6081,7 +6081,7 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberDoubleNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6119,7 +6119,7 @@ func decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloat:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request)); err != nil {
@@ -6127,7 +6127,7 @@ func decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloat request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6173,7 +6173,7 @@ func decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6198,7 +6198,7 @@ func decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6252,7 +6252,7 @@ func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6294,7 +6294,7 @@ func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6330,7 +6330,7 @@ func decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
@@ -6338,7 +6338,7 @@ func decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6384,7 +6384,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6409,7 +6409,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6463,7 +6463,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberFloatNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6505,7 +6505,7 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberFloatNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6543,7 +6543,7 @@ func decodeTestRequestRequiredNumberInt32Request(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6589,7 +6589,7 @@ func decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6597,7 +6597,7 @@ func decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32Array request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6651,7 +6651,7 @@ func decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6676,7 +6676,7 @@ func decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6712,7 +6712,7 @@ func decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6758,7 +6758,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6766,7 +6766,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32NullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6820,7 +6820,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6845,7 +6845,7 @@ func decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt32NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6883,7 +6883,7 @@ func decodeTestRequestRequiredNumberInt64Request(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -6929,7 +6929,7 @@ func decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -6937,7 +6937,7 @@ func decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64Array request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -6991,7 +6991,7 @@ func decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7016,7 +7016,7 @@ func decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7052,7 +7052,7 @@ func decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7098,7 +7098,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7106,7 +7106,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64NullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7160,7 +7160,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7185,7 +7185,7 @@ func decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberInt64NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7221,7 +7221,7 @@ func decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.Float{}).Validate(float64(request.Value)); err != nil {
@@ -7229,7 +7229,7 @@ func decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7275,7 +7275,7 @@ func decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7300,7 +7300,7 @@ func decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7354,7 +7354,7 @@ func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredNumberNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7396,7 +7396,7 @@ func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredNumberNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7434,7 +7434,7 @@ func decodeTestRequestRequiredStringRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredString:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7480,7 +7480,7 @@ func decodeTestRequestRequiredStringArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7488,7 +7488,7 @@ func decodeTestRequestRequiredStringArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7542,7 +7542,7 @@ func decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7567,7 +7567,7 @@ func decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7605,7 +7605,7 @@ func decodeTestRequestRequiredStringBinaryRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinary:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7651,7 +7651,7 @@ func decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7659,7 +7659,7 @@ func decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7713,7 +7713,7 @@ func decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7738,7 +7738,7 @@ func decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7774,7 +7774,7 @@ func decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7820,7 +7820,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7828,7 +7828,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7882,7 +7882,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringBinaryNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7907,7 +7907,7 @@ func decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringBinaryNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -7945,7 +7945,7 @@ func decodeTestRequestRequiredStringByteRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringByte:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -7991,7 +7991,7 @@ func decodeTestRequestRequiredStringByteArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -7999,7 +7999,7 @@ func decodeTestRequestRequiredStringByteArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8053,7 +8053,7 @@ func decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8078,7 +8078,7 @@ func decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8116,7 +8116,7 @@ func decodeTestRequestRequiredStringByteNullableRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -8162,7 +8162,7 @@ func decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8170,7 +8170,7 @@ func decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8224,7 +8224,7 @@ func decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringByteNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8249,7 +8249,7 @@ func decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringByteNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8287,7 +8287,7 @@ func decodeTestRequestRequiredStringDateRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -8333,7 +8333,7 @@ func decodeTestRequestRequiredStringDateArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8341,7 +8341,7 @@ func decodeTestRequestRequiredStringDateArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8395,7 +8395,7 @@ func decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8420,7 +8420,7 @@ func decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8456,7 +8456,7 @@ func decodeTestRequestRequiredStringDateNullableRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -8502,7 +8502,7 @@ func decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8510,7 +8510,7 @@ func decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8564,7 +8564,7 @@ func decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8589,7 +8589,7 @@ func decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8627,7 +8627,7 @@ func decodeTestRequestRequiredStringDateTimeRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTime:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -8673,7 +8673,7 @@ func decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8681,7 +8681,7 @@ func decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8735,7 +8735,7 @@ func decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8760,7 +8760,7 @@ func decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8796,7 +8796,7 @@ func decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -8842,7 +8842,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8850,7 +8850,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8904,7 +8904,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDateTimeNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -8929,7 +8929,7 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDateTimeNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -8967,7 +8967,7 @@ func decodeTestRequestRequiredStringDurationRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDuration:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -9013,7 +9013,7 @@ func decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9021,7 +9021,7 @@ func decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9075,7 +9075,7 @@ func decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9100,7 +9100,7 @@ func decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9136,7 +9136,7 @@ func decodeTestRequestRequiredStringDurationNullableRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -9182,7 +9182,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9190,7 +9190,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9244,7 +9244,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringDurationNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9269,7 +9269,7 @@ func decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringDurationNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9307,7 +9307,7 @@ func decodeTestRequestRequiredStringEmailRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmail:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.String{
@@ -9323,7 +9323,7 @@ func decodeTestRequestRequiredStringEmailRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmail request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9369,7 +9369,7 @@ func decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9402,7 +9402,7 @@ func decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9456,7 +9456,7 @@ func decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9506,7 +9506,7 @@ func decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9542,7 +9542,7 @@ func decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.String{
@@ -9558,7 +9558,7 @@ func decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9604,7 +9604,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9637,7 +9637,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9691,7 +9691,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringEmailNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9741,7 +9741,7 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringEmailNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9779,7 +9779,7 @@ func decodeTestRequestRequiredStringHostnameRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostname:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.String{
@@ -9795,7 +9795,7 @@ func decodeTestRequestRequiredStringHostnameRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostname request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9841,7 +9841,7 @@ func decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9874,7 +9874,7 @@ func decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -9928,7 +9928,7 @@ func decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -9978,7 +9978,7 @@ func decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10014,7 +10014,7 @@ func decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := (validate.String{
@@ -10030,7 +10030,7 @@ func decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10076,7 +10076,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10109,7 +10109,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10163,7 +10163,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringHostnameNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10213,7 +10213,7 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringHostnameNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10251,7 +10251,7 @@ func decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIP:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -10297,7 +10297,7 @@ func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10305,7 +10305,7 @@ func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10359,7 +10359,7 @@ func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10384,7 +10384,7 @@ func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10420,7 +10420,7 @@ func decodeTestRequestRequiredStringIPNullableRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -10466,7 +10466,7 @@ func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10474,7 +10474,7 @@ func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10528,7 +10528,7 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIPNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10553,7 +10553,7 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIPNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10591,7 +10591,7 @@ func decodeTestRequestRequiredStringInt32Request(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -10637,7 +10637,7 @@ func decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10645,7 +10645,7 @@ func decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt32Array request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10699,7 +10699,7 @@ func decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10724,7 +10724,7 @@ func decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt32ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10760,7 +10760,7 @@ func decodeTestRequestRequiredStringInt32NullableRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -10806,7 +10806,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10814,7 +10814,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt32NullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10868,7 +10868,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10893,7 +10893,7 @@ func decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt32NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -10931,7 +10931,7 @@ func decodeTestRequestRequiredStringInt64Request(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -10977,7 +10977,7 @@ func decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -10985,7 +10985,7 @@ func decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt64Array request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11039,7 +11039,7 @@ func decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11064,7 +11064,7 @@ func decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt64ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11100,7 +11100,7 @@ func decodeTestRequestRequiredStringInt64NullableRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -11146,7 +11146,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11154,7 +11154,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt64NullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11208,7 +11208,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11233,7 +11233,7 @@ func decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Reque
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringInt64NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11271,7 +11271,7 @@ func decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -11317,7 +11317,7 @@ func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11325,7 +11325,7 @@ func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4Array request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11379,7 +11379,7 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11404,7 +11404,7 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11440,7 +11440,7 @@ func decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -11486,7 +11486,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11494,7 +11494,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4NullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11548,7 +11548,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv4NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11573,7 +11573,7 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv4NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11611,7 +11611,7 @@ func decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -11657,7 +11657,7 @@ func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11665,7 +11665,7 @@ func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6Array request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11719,7 +11719,7 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11744,7 +11744,7 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11780,7 +11780,7 @@ func decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -11826,7 +11826,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11834,7 +11834,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6NullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11888,7 +11888,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringIpv6NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -11913,7 +11913,7 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringIpv6NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -11949,7 +11949,7 @@ func decodeTestRequestRequiredStringNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -11995,7 +11995,7 @@ func decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12003,7 +12003,7 @@ func decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12057,7 +12057,7 @@ func decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12082,7 +12082,7 @@ func decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12120,7 +12120,7 @@ func decodeTestRequestRequiredStringPasswordRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringPassword:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -12166,7 +12166,7 @@ func decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12174,7 +12174,7 @@ func decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12228,7 +12228,7 @@ func decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12253,7 +12253,7 @@ func decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12289,7 +12289,7 @@ func decodeTestRequestRequiredStringPasswordNullableRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -12335,7 +12335,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12343,7 +12343,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12397,7 +12397,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringPasswordNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12422,7 +12422,7 @@ func decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringPasswordNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12460,7 +12460,7 @@ func decodeTestRequestRequiredStringTimeRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringTime:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -12506,7 +12506,7 @@ func decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12514,7 +12514,7 @@ func decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12568,7 +12568,7 @@ func decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12593,7 +12593,7 @@ func decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12629,7 +12629,7 @@ func decodeTestRequestRequiredStringTimeNullableRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -12675,7 +12675,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12683,7 +12683,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12737,7 +12737,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringTimeNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12762,7 +12762,7 @@ func decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringTimeNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12800,7 +12800,7 @@ func decodeTestRequestRequiredStringURIRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringURI:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -12846,7 +12846,7 @@ func decodeTestRequestRequiredStringURIArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringURIArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12854,7 +12854,7 @@ func decodeTestRequestRequiredStringURIArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringURIArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12908,7 +12908,7 @@ func decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringURIArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -12933,7 +12933,7 @@ func decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringURIArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -12969,7 +12969,7 @@ func decodeTestRequestRequiredStringURINullableRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringURINullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -13015,7 +13015,7 @@ func decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringURINullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13023,7 +13023,7 @@ func decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringURINullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13077,7 +13077,7 @@ func decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringURINullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13102,7 +13102,7 @@ func decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringURINullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13140,7 +13140,7 @@ func decodeTestRequestRequiredStringUUIDRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUID:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -13186,7 +13186,7 @@ func decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13194,7 +13194,7 @@ func decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13248,7 +13248,7 @@ func decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13273,7 +13273,7 @@ func decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13309,7 +13309,7 @@ func decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -13355,7 +13355,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13363,7 +13363,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13417,7 +13417,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUUIDNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13442,7 +13442,7 @@ func decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUUIDNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13480,7 +13480,7 @@ func decodeTestRequestRequiredStringUnixRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnix:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -13526,7 +13526,7 @@ func decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13534,7 +13534,7 @@ func decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13588,7 +13588,7 @@ func decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13613,7 +13613,7 @@ func decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13651,7 +13651,7 @@ func decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMicro:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -13697,7 +13697,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMicroArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13705,7 +13705,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMicroArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13759,7 +13759,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMicroArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13784,7 +13784,7 @@ func decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMicroArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13820,7 +13820,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMicroNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -13866,7 +13866,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMicroNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13874,7 +13874,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMicroNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13928,7 +13928,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMicroNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -13953,7 +13953,7 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMicroNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -13991,7 +13991,7 @@ func decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMilli:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -14037,7 +14037,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMilliArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14045,7 +14045,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMilliArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14099,7 +14099,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMilliArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14124,7 +14124,7 @@ func decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMilliArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14160,7 +14160,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMilliNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -14206,7 +14206,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMilliNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14214,7 +14214,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMilliNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14268,7 +14268,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixMilliNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14293,7 +14293,7 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.R
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixMilliNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14331,7 +14331,7 @@ func decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNano:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -14377,7 +14377,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNanoArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14385,7 +14385,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNanoArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14439,7 +14439,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNanoArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14464,7 +14464,7 @@ func decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNanoArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14500,7 +14500,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNanoNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -14546,7 +14546,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNanoNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14554,7 +14554,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNanoNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14608,7 +14608,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNanoNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14633,7 +14633,7 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNanoNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14669,7 +14669,7 @@ func decodeTestRequestRequiredStringUnixNullableRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -14715,7 +14715,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14723,7 +14723,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14777,7 +14777,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14802,7 +14802,7 @@ func decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14840,7 +14840,7 @@ func decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixSeconds:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -14886,7 +14886,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixSecondsArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14894,7 +14894,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixSecondsArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -14948,7 +14948,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixSecondsArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -14973,7 +14973,7 @@ func decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixSecondsArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -15009,7 +15009,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixSecondsNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15055,7 +15055,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixSecondsNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -15063,7 +15063,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Requ
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixSecondsNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -15117,7 +15117,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestRequiredStringUnixSecondsNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request == nil {
@@ -15142,7 +15142,7 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestRequiredStringUnixSecondsNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -15179,7 +15179,7 @@ func decodeTestRequestStringRequest(r *http.Request, span trace.Span) (req OptSt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestString:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15225,7 +15225,7 @@ func decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15279,7 +15279,7 @@ func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -15301,7 +15301,7 @@ func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -15338,7 +15338,7 @@ func decodeTestRequestStringBinaryRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringBinary:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15384,7 +15384,7 @@ func decodeTestRequestStringBinaryArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringBinaryArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15438,7 +15438,7 @@ func decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringBinaryArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -15460,7 +15460,7 @@ func decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringBinaryArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -15497,7 +15497,7 @@ func decodeTestRequestStringBinaryNullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringBinaryNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15543,7 +15543,7 @@ func decodeTestRequestStringBinaryNullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringBinaryNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15597,7 +15597,7 @@ func decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringBinaryNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -15619,7 +15619,7 @@ func decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringBinaryNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -15657,7 +15657,7 @@ func decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (req [
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringByte:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15703,7 +15703,7 @@ func decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringByteArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15757,7 +15757,7 @@ func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringByteArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -15779,7 +15779,7 @@ func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringByteArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -15816,7 +15816,7 @@ func decodeTestRequestStringByteNullableRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringByteNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15862,7 +15862,7 @@ func decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringByteNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -15916,7 +15916,7 @@ func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringByteNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -15938,7 +15938,7 @@ func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringByteNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -15975,7 +15975,7 @@ func decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16021,7 +16021,7 @@ func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16075,7 +16075,7 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -16097,7 +16097,7 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDateArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -16134,7 +16134,7 @@ func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16180,7 +16180,7 @@ func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16234,7 +16234,7 @@ func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -16256,7 +16256,7 @@ func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDateNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -16293,7 +16293,7 @@ func decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateTime:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16339,7 +16339,7 @@ func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateTimeArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16393,7 +16393,7 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateTimeArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -16415,7 +16415,7 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDateTimeArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -16452,7 +16452,7 @@ func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateTimeNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16498,7 +16498,7 @@ func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateTimeNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16552,7 +16552,7 @@ func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDateTimeNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -16574,7 +16574,7 @@ func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDateTimeNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -16611,7 +16611,7 @@ func decodeTestRequestStringDurationRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDuration:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16657,7 +16657,7 @@ func decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDurationArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16711,7 +16711,7 @@ func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDurationArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -16733,7 +16733,7 @@ func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDurationArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -16770,7 +16770,7 @@ func decodeTestRequestStringDurationNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDurationNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16816,7 +16816,7 @@ func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDurationNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -16870,7 +16870,7 @@ func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringDurationNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -16892,7 +16892,7 @@ func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringDurationNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -16929,7 +16929,7 @@ func decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringEmail:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -16952,7 +16952,7 @@ func decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringEmail request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -16998,7 +16998,7 @@ func decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringEmailArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17028,7 +17028,7 @@ func decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringEmailArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17082,7 +17082,7 @@ func decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringEmailArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17129,7 +17129,7 @@ func decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringEmailArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17166,7 +17166,7 @@ func decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringEmailNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -17189,7 +17189,7 @@ func decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringEmailNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17235,7 +17235,7 @@ func decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringEmailNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17265,7 +17265,7 @@ func decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringEmailNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17319,7 +17319,7 @@ func decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringEmailNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17366,7 +17366,7 @@ func decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringEmailNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17403,7 +17403,7 @@ func decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringHostname:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -17426,7 +17426,7 @@ func decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringHostname request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17472,7 +17472,7 @@ func decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringHostnameArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17502,7 +17502,7 @@ func decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringHostnameArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17556,7 +17556,7 @@ func decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringHostnameArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17603,7 +17603,7 @@ func decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringHostnameArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17640,7 +17640,7 @@ func decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringHostnameNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -17663,7 +17663,7 @@ func decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullable request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17709,7 +17709,7 @@ func decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringHostnameNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17739,7 +17739,7 @@ func decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullableArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17793,7 +17793,7 @@ func decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringHostnameNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17840,7 +17840,7 @@ func decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringHostnameNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -17877,7 +17877,7 @@ func decodeTestRequestStringIPRequest(r *http.Request, span trace.Span) (req Opt
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIP:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -17923,7 +17923,7 @@ func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIPArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -17977,7 +17977,7 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIPArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -17999,7 +17999,7 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIPArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -18036,7 +18036,7 @@ func decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIPNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18082,7 +18082,7 @@ func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIPNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18136,7 +18136,7 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIPNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -18158,7 +18158,7 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIPNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -18195,7 +18195,7 @@ func decodeTestRequestStringInt32Request(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18241,7 +18241,7 @@ func decodeTestRequestStringInt32ArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18295,7 +18295,7 @@ func decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -18317,7 +18317,7 @@ func decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringInt32ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -18354,7 +18354,7 @@ func decodeTestRequestStringInt32NullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18400,7 +18400,7 @@ func decodeTestRequestStringInt32NullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18454,7 +18454,7 @@ func decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -18476,7 +18476,7 @@ func decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringInt32NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -18513,7 +18513,7 @@ func decodeTestRequestStringInt64Request(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18559,7 +18559,7 @@ func decodeTestRequestStringInt64ArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18613,7 +18613,7 @@ func decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -18635,7 +18635,7 @@ func decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringInt64ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -18672,7 +18672,7 @@ func decodeTestRequestStringInt64NullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18718,7 +18718,7 @@ func decodeTestRequestStringInt64NullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18772,7 +18772,7 @@ func decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -18794,7 +18794,7 @@ func decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringInt64NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -18831,7 +18831,7 @@ func decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv4:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18877,7 +18877,7 @@ func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv4Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -18931,7 +18931,7 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv4ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -18953,7 +18953,7 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIpv4ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -18990,7 +18990,7 @@ func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv4Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19036,7 +19036,7 @@ func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv4NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19090,7 +19090,7 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv4NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -19112,7 +19112,7 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIpv4NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -19149,7 +19149,7 @@ func decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv6:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19195,7 +19195,7 @@ func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv6Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19249,7 +19249,7 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv6ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -19271,7 +19271,7 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIpv6ArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -19308,7 +19308,7 @@ func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv6Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19354,7 +19354,7 @@ func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv6NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19408,7 +19408,7 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringIpv6NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -19430,7 +19430,7 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringIpv6NullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -19467,7 +19467,7 @@ func decodeTestRequestStringNullableRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19513,7 +19513,7 @@ func decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19567,7 +19567,7 @@ func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -19589,7 +19589,7 @@ func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -19626,7 +19626,7 @@ func decodeTestRequestStringPasswordRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringPassword:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19672,7 +19672,7 @@ func decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringPasswordArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19726,7 +19726,7 @@ func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringPasswordArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -19748,7 +19748,7 @@ func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringPasswordArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -19785,7 +19785,7 @@ func decodeTestRequestStringPasswordNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringPasswordNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19831,7 +19831,7 @@ func decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringPasswordNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19885,7 +19885,7 @@ func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringPasswordNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -19907,7 +19907,7 @@ func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringPasswordNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -19944,7 +19944,7 @@ func decodeTestRequestStringTimeRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringTime:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -19990,7 +19990,7 @@ func decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringTimeArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20044,7 +20044,7 @@ func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringTimeArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -20066,7 +20066,7 @@ func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringTimeArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -20103,7 +20103,7 @@ func decodeTestRequestStringTimeNullableRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringTimeNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20149,7 +20149,7 @@ func decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringTimeNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20203,7 +20203,7 @@ func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringTimeNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -20225,7 +20225,7 @@ func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringTimeNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -20262,7 +20262,7 @@ func decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (req Op
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringURI:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20308,7 +20308,7 @@ func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringURIArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20362,7 +20362,7 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringURIArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -20384,7 +20384,7 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringURIArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -20421,7 +20421,7 @@ func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringURINullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20467,7 +20467,7 @@ func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringURINullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20521,7 +20521,7 @@ func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringURINullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -20543,7 +20543,7 @@ func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringURINullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -20580,7 +20580,7 @@ func decodeTestRequestStringUUIDRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUUID:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20626,7 +20626,7 @@ func decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUUIDArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20680,7 +20680,7 @@ func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUUIDArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -20702,7 +20702,7 @@ func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUUIDArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -20739,7 +20739,7 @@ func decodeTestRequestStringUUIDNullableRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUUIDNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20785,7 +20785,7 @@ func decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUUIDNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20839,7 +20839,7 @@ func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUUIDNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -20861,7 +20861,7 @@ func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUUIDNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -20898,7 +20898,7 @@ func decodeTestRequestStringUnixRequest(r *http.Request, span trace.Span) (req O
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnix:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20944,7 +20944,7 @@ func decodeTestRequestStringUnixArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -20998,7 +20998,7 @@ func decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -21020,7 +21020,7 @@ func decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -21057,7 +21057,7 @@ func decodeTestRequestStringUnixMicroRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMicro:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21103,7 +21103,7 @@ func decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMicroArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21157,7 +21157,7 @@ func decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMicroArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -21179,7 +21179,7 @@ func decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixMicroArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -21216,7 +21216,7 @@ func decodeTestRequestStringUnixMicroNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMicroNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21262,7 +21262,7 @@ func decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMicroNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21316,7 +21316,7 @@ func decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMicroNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -21338,7 +21338,7 @@ func decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixMicroNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -21375,7 +21375,7 @@ func decodeTestRequestStringUnixMilliRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMilli:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21421,7 +21421,7 @@ func decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMilliArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21475,7 +21475,7 @@ func decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMilliArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -21497,7 +21497,7 @@ func decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixMilliArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -21534,7 +21534,7 @@ func decodeTestRequestStringUnixMilliNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMilliNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21580,7 +21580,7 @@ func decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMilliNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21634,7 +21634,7 @@ func decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixMilliNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -21656,7 +21656,7 @@ func decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixMilliNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -21693,7 +21693,7 @@ func decodeTestRequestStringUnixNanoRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNano:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21739,7 +21739,7 @@ func decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNanoArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21793,7 +21793,7 @@ func decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNanoArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -21815,7 +21815,7 @@ func decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixNanoArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -21852,7 +21852,7 @@ func decodeTestRequestStringUnixNanoNullableRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNanoNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21898,7 +21898,7 @@ func decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNanoNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -21952,7 +21952,7 @@ func decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNanoNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -21974,7 +21974,7 @@ func decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixNanoNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -22011,7 +22011,7 @@ func decodeTestRequestStringUnixNullableRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22057,7 +22057,7 @@ func decodeTestRequestStringUnixNullableArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22111,7 +22111,7 @@ func decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -22133,7 +22133,7 @@ func decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -22170,7 +22170,7 @@ func decodeTestRequestStringUnixSecondsRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixSeconds:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22216,7 +22216,7 @@ func decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixSecondsArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22270,7 +22270,7 @@ func decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixSecondsArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -22292,7 +22292,7 @@ func decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixSecondsArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -22329,7 +22329,7 @@ func decodeTestRequestStringUnixSecondsNullableRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixSecondsNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22375,7 +22375,7 @@ func decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixSecondsNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22429,7 +22429,7 @@ func decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestRequestStringUnixSecondsNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			var failures []validate.FieldError
@@ -22451,7 +22451,7 @@ func decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate TestRequestStringUnixSecondsNullableArrayArray request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -22489,7 +22489,7 @@ func decodeTestResponseAnyRequest(r *http.Request, span trace.Span) (req string,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseAny:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22527,7 +22527,7 @@ func decodeTestResponseBooleanRequest(r *http.Request, span trace.Span) (req str
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseBoolean:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22565,7 +22565,7 @@ func decodeTestResponseBooleanArrayRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseBooleanArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22603,7 +22603,7 @@ func decodeTestResponseBooleanArrayArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseBooleanArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22641,7 +22641,7 @@ func decodeTestResponseBooleanNullableRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseBooleanNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22679,7 +22679,7 @@ func decodeTestResponseBooleanNullableArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseBooleanNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22717,7 +22717,7 @@ func decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseBooleanNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22755,7 +22755,7 @@ func decodeTestResponseEmptyStructRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseEmptyStruct:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22793,7 +22793,7 @@ func decodeTestResponseFormatTestRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseFormatTest:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22831,7 +22831,7 @@ func decodeTestResponseIntegerRequest(r *http.Request, span trace.Span) (req str
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseInteger:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22869,7 +22869,7 @@ func decodeTestResponseIntegerArrayRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22907,7 +22907,7 @@ func decodeTestResponseIntegerArrayArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22945,7 +22945,7 @@ func decodeTestResponseIntegerInt32Request(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -22983,7 +22983,7 @@ func decodeTestResponseIntegerInt32ArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23021,7 +23021,7 @@ func decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23059,7 +23059,7 @@ func decodeTestResponseIntegerInt32NullableRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23097,7 +23097,7 @@ func decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23135,7 +23135,7 @@ func decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23173,7 +23173,7 @@ func decodeTestResponseIntegerInt64Request(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23211,7 +23211,7 @@ func decodeTestResponseIntegerInt64ArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23249,7 +23249,7 @@ func decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23287,7 +23287,7 @@ func decodeTestResponseIntegerInt64NullableRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23325,7 +23325,7 @@ func decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23363,7 +23363,7 @@ func decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23401,7 +23401,7 @@ func decodeTestResponseIntegerNullableRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23439,7 +23439,7 @@ func decodeTestResponseIntegerNullableArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23477,7 +23477,7 @@ func decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseIntegerNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23515,7 +23515,7 @@ func decodeTestResponseNullRequest(r *http.Request, span trace.Span) (req string
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNull:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23553,7 +23553,7 @@ func decodeTestResponseNullArrayRequest(r *http.Request, span trace.Span) (req s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNullArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23591,7 +23591,7 @@ func decodeTestResponseNullArrayArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNullArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23629,7 +23629,7 @@ func decodeTestResponseNullNullableRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNullNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23667,7 +23667,7 @@ func decodeTestResponseNullNullableArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNullNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23705,7 +23705,7 @@ func decodeTestResponseNullNullableArrayArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNullNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23743,7 +23743,7 @@ func decodeTestResponseNumberRequest(r *http.Request, span trace.Span) (req stri
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumber:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23781,7 +23781,7 @@ func decodeTestResponseNumberArrayRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23819,7 +23819,7 @@ func decodeTestResponseNumberArrayArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23857,7 +23857,7 @@ func decodeTestResponseNumberDoubleRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberDouble:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23895,7 +23895,7 @@ func decodeTestResponseNumberDoubleArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberDoubleArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23933,7 +23933,7 @@ func decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberDoubleArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -23971,7 +23971,7 @@ func decodeTestResponseNumberDoubleNullableRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberDoubleNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24009,7 +24009,7 @@ func decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberDoubleNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24047,7 +24047,7 @@ func decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberDoubleNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24085,7 +24085,7 @@ func decodeTestResponseNumberFloatRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberFloat:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24123,7 +24123,7 @@ func decodeTestResponseNumberFloatArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberFloatArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24161,7 +24161,7 @@ func decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberFloatArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24199,7 +24199,7 @@ func decodeTestResponseNumberFloatNullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberFloatNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24237,7 +24237,7 @@ func decodeTestResponseNumberFloatNullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberFloatNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24275,7 +24275,7 @@ func decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberFloatNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24313,7 +24313,7 @@ func decodeTestResponseNumberInt32Request(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24351,7 +24351,7 @@ func decodeTestResponseNumberInt32ArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24389,7 +24389,7 @@ func decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24427,7 +24427,7 @@ func decodeTestResponseNumberInt32NullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24465,7 +24465,7 @@ func decodeTestResponseNumberInt32NullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24503,7 +24503,7 @@ func decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24541,7 +24541,7 @@ func decodeTestResponseNumberInt64Request(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24579,7 +24579,7 @@ func decodeTestResponseNumberInt64ArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24617,7 +24617,7 @@ func decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24655,7 +24655,7 @@ func decodeTestResponseNumberInt64NullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24693,7 +24693,7 @@ func decodeTestResponseNumberInt64NullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24731,7 +24731,7 @@ func decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24769,7 +24769,7 @@ func decodeTestResponseNumberNullableRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24807,7 +24807,7 @@ func decodeTestResponseNumberNullableArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24845,7 +24845,7 @@ func decodeTestResponseNumberNullableArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseNumberNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24883,7 +24883,7 @@ func decodeTestResponseStringRequest(r *http.Request, span trace.Span) (req stri
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseString:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24921,7 +24921,7 @@ func decodeTestResponseStringArrayRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24959,7 +24959,7 @@ func decodeTestResponseStringArrayArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -24997,7 +24997,7 @@ func decodeTestResponseStringBinaryRequest(r *http.Request, span trace.Span) (re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringBinary:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25035,7 +25035,7 @@ func decodeTestResponseStringBinaryArrayRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringBinaryArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25073,7 +25073,7 @@ func decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringBinaryArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25111,7 +25111,7 @@ func decodeTestResponseStringBinaryNullableRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringBinaryNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25149,7 +25149,7 @@ func decodeTestResponseStringBinaryNullableArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringBinaryNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25187,7 +25187,7 @@ func decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringBinaryNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25225,7 +25225,7 @@ func decodeTestResponseStringByteRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringByte:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25263,7 +25263,7 @@ func decodeTestResponseStringByteArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringByteArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25301,7 +25301,7 @@ func decodeTestResponseStringByteArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringByteArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25339,7 +25339,7 @@ func decodeTestResponseStringByteNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringByteNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25377,7 +25377,7 @@ func decodeTestResponseStringByteNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringByteNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25415,7 +25415,7 @@ func decodeTestResponseStringByteNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringByteNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25453,7 +25453,7 @@ func decodeTestResponseStringDateRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25491,7 +25491,7 @@ func decodeTestResponseStringDateArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25529,7 +25529,7 @@ func decodeTestResponseStringDateArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25567,7 +25567,7 @@ func decodeTestResponseStringDateNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25605,7 +25605,7 @@ func decodeTestResponseStringDateNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25643,7 +25643,7 @@ func decodeTestResponseStringDateNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25681,7 +25681,7 @@ func decodeTestResponseStringDateTimeRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateTime:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25719,7 +25719,7 @@ func decodeTestResponseStringDateTimeArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateTimeArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25757,7 +25757,7 @@ func decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateTimeArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25795,7 +25795,7 @@ func decodeTestResponseStringDateTimeNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateTimeNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25833,7 +25833,7 @@ func decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateTimeNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25871,7 +25871,7 @@ func decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDateTimeNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25909,7 +25909,7 @@ func decodeTestResponseStringDurationRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDuration:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25947,7 +25947,7 @@ func decodeTestResponseStringDurationArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDurationArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -25985,7 +25985,7 @@ func decodeTestResponseStringDurationArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDurationArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26023,7 +26023,7 @@ func decodeTestResponseStringDurationNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDurationNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26061,7 +26061,7 @@ func decodeTestResponseStringDurationNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDurationNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26099,7 +26099,7 @@ func decodeTestResponseStringDurationNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringDurationNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26137,7 +26137,7 @@ func decodeTestResponseStringEmailRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringEmail:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26175,7 +26175,7 @@ func decodeTestResponseStringEmailArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringEmailArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26213,7 +26213,7 @@ func decodeTestResponseStringEmailArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringEmailArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26251,7 +26251,7 @@ func decodeTestResponseStringEmailNullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringEmailNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26289,7 +26289,7 @@ func decodeTestResponseStringEmailNullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringEmailNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26327,7 +26327,7 @@ func decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringEmailNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26365,7 +26365,7 @@ func decodeTestResponseStringHostnameRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringHostname:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26403,7 +26403,7 @@ func decodeTestResponseStringHostnameArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringHostnameArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26441,7 +26441,7 @@ func decodeTestResponseStringHostnameArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringHostnameArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26479,7 +26479,7 @@ func decodeTestResponseStringHostnameNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringHostnameNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26517,7 +26517,7 @@ func decodeTestResponseStringHostnameNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringHostnameNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26555,7 +26555,7 @@ func decodeTestResponseStringHostnameNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringHostnameNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26593,7 +26593,7 @@ func decodeTestResponseStringIPRequest(r *http.Request, span trace.Span) (req st
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIP:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26631,7 +26631,7 @@ func decodeTestResponseStringIPArrayRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIPArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26669,7 +26669,7 @@ func decodeTestResponseStringIPArrayArrayRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIPArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26707,7 +26707,7 @@ func decodeTestResponseStringIPNullableRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIPNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26745,7 +26745,7 @@ func decodeTestResponseStringIPNullableArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIPNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26783,7 +26783,7 @@ func decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Request, span t
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIPNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26821,7 +26821,7 @@ func decodeTestResponseStringInt32Request(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt32:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26859,7 +26859,7 @@ func decodeTestResponseStringInt32ArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt32Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26897,7 +26897,7 @@ func decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt32ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26935,7 +26935,7 @@ func decodeTestResponseStringInt32NullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt32Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -26973,7 +26973,7 @@ func decodeTestResponseStringInt32NullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt32NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27011,7 +27011,7 @@ func decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt32NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27049,7 +27049,7 @@ func decodeTestResponseStringInt64Request(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt64:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27087,7 +27087,7 @@ func decodeTestResponseStringInt64ArrayRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt64Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27125,7 +27125,7 @@ func decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request, span trace.
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt64ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27163,7 +27163,7 @@ func decodeTestResponseStringInt64NullableRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt64Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27201,7 +27201,7 @@ func decodeTestResponseStringInt64NullableArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt64NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27239,7 +27239,7 @@ func decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.Request, spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringInt64NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27277,7 +27277,7 @@ func decodeTestResponseStringIpv4Request(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv4:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27315,7 +27315,7 @@ func decodeTestResponseStringIpv4ArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv4Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27353,7 +27353,7 @@ func decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv4ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27391,7 +27391,7 @@ func decodeTestResponseStringIpv4NullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv4Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27429,7 +27429,7 @@ func decodeTestResponseStringIpv4NullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv4NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27467,7 +27467,7 @@ func decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv4NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27505,7 +27505,7 @@ func decodeTestResponseStringIpv6Request(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv6:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27543,7 +27543,7 @@ func decodeTestResponseStringIpv6ArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv6Array:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27581,7 +27581,7 @@ func decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv6ArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27619,7 +27619,7 @@ func decodeTestResponseStringIpv6NullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv6Nullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27657,7 +27657,7 @@ func decodeTestResponseStringIpv6NullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv6NullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27695,7 +27695,7 @@ func decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringIpv6NullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27733,7 +27733,7 @@ func decodeTestResponseStringNullableRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27771,7 +27771,7 @@ func decodeTestResponseStringNullableArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27809,7 +27809,7 @@ func decodeTestResponseStringNullableArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27847,7 +27847,7 @@ func decodeTestResponseStringPasswordRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringPassword:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27885,7 +27885,7 @@ func decodeTestResponseStringPasswordArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringPasswordArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27923,7 +27923,7 @@ func decodeTestResponseStringPasswordArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringPasswordArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27961,7 +27961,7 @@ func decodeTestResponseStringPasswordNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringPasswordNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -27999,7 +27999,7 @@ func decodeTestResponseStringPasswordNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringPasswordNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28037,7 +28037,7 @@ func decodeTestResponseStringPasswordNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringPasswordNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28075,7 +28075,7 @@ func decodeTestResponseStringTimeRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringTime:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28113,7 +28113,7 @@ func decodeTestResponseStringTimeArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringTimeArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28151,7 +28151,7 @@ func decodeTestResponseStringTimeArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringTimeArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28189,7 +28189,7 @@ func decodeTestResponseStringTimeNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringTimeNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28227,7 +28227,7 @@ func decodeTestResponseStringTimeNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringTimeNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28265,7 +28265,7 @@ func decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringTimeNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28303,7 +28303,7 @@ func decodeTestResponseStringURIRequest(r *http.Request, span trace.Span) (req s
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringURI:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28341,7 +28341,7 @@ func decodeTestResponseStringURIArrayRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringURIArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28379,7 +28379,7 @@ func decodeTestResponseStringURIArrayArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringURIArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28417,7 +28417,7 @@ func decodeTestResponseStringURINullableRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringURINullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28455,7 +28455,7 @@ func decodeTestResponseStringURINullableArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringURINullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28493,7 +28493,7 @@ func decodeTestResponseStringURINullableArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringURINullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28531,7 +28531,7 @@ func decodeTestResponseStringUUIDRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUUID:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28569,7 +28569,7 @@ func decodeTestResponseStringUUIDArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUUIDArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28607,7 +28607,7 @@ func decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUUIDArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28645,7 +28645,7 @@ func decodeTestResponseStringUUIDNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUUIDNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28683,7 +28683,7 @@ func decodeTestResponseStringUUIDNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUUIDNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28721,7 +28721,7 @@ func decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUUIDNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28759,7 +28759,7 @@ func decodeTestResponseStringUnixRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnix:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28797,7 +28797,7 @@ func decodeTestResponseStringUnixArrayRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28835,7 +28835,7 @@ func decodeTestResponseStringUnixArrayArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28873,7 +28873,7 @@ func decodeTestResponseStringUnixMicroRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMicro:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28911,7 +28911,7 @@ func decodeTestResponseStringUnixMicroArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMicroArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28949,7 +28949,7 @@ func decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMicroArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -28987,7 +28987,7 @@ func decodeTestResponseStringUnixMicroNullableRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMicroNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29025,7 +29025,7 @@ func decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMicroNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29063,7 +29063,7 @@ func decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMicroNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29101,7 +29101,7 @@ func decodeTestResponseStringUnixMilliRequest(r *http.Request, span trace.Span) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMilli:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29139,7 +29139,7 @@ func decodeTestResponseStringUnixMilliArrayRequest(r *http.Request, span trace.S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMilliArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29177,7 +29177,7 @@ func decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMilliArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29215,7 +29215,7 @@ func decodeTestResponseStringUnixMilliNullableRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMilliNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29253,7 +29253,7 @@ func decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMilliNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29291,7 +29291,7 @@ func decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *http.Request,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixMilliNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29329,7 +29329,7 @@ func decodeTestResponseStringUnixNanoRequest(r *http.Request, span trace.Span) (
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNano:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29367,7 +29367,7 @@ func decodeTestResponseStringUnixNanoArrayRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNanoArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29405,7 +29405,7 @@ func decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Request, span tra
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNanoArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29443,7 +29443,7 @@ func decodeTestResponseStringUnixNanoNullableRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNanoNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29481,7 +29481,7 @@ func decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNanoNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29519,7 +29519,7 @@ func decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *http.Request, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNanoNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29557,7 +29557,7 @@ func decodeTestResponseStringUnixNullableRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29595,7 +29595,7 @@ func decodeTestResponseStringUnixNullableArrayRequest(r *http.Request, span trac
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29633,7 +29633,7 @@ func decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.Request, span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29671,7 +29671,7 @@ func decodeTestResponseStringUnixSecondsRequest(r *http.Request, span trace.Span
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixSeconds:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29709,7 +29709,7 @@ func decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request, span trace
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixSecondsArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29747,7 +29747,7 @@ func decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Request, span 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixSecondsArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29785,7 +29785,7 @@ func decodeTestResponseStringUnixSecondsNullableRequest(r *http.Request, span tr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixSecondsNullable:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29823,7 +29823,7 @@ func decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http.Request, sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixSecondsNullableArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -29861,7 +29861,7 @@ func decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r *http.Reques
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode TestResponseStringUnixSecondsNullableArrayArray:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:

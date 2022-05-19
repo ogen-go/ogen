@@ -26,12 +26,12 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (par
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -60,12 +60,12 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (par
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt(s)
+					c, err := conv.ToInt(val)
 					if err != nil {
 						return err
 					}
@@ -121,12 +121,12 @@ func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (p
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -157,12 +157,12 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -188,12 +188,12 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -222,12 +222,12 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt(s)
+					c, err := conv.ToInt(val)
 					if err != nil {
 						return err
 					}
@@ -285,12 +285,12 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -319,12 +319,12 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt(s)
+					c, err := conv.ToInt(val)
 					if err != nil {
 						return err
 					}
@@ -382,12 +382,12 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (para
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBoardVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -416,12 +416,12 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (para
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotThreadVal int
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt(s)
+					c, err := conv.ToInt(val)
 					if err != nil {
 						return err
 					}
@@ -477,12 +477,12 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDisli
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -506,12 +506,12 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDisli
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -557,12 +557,12 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetP
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -586,12 +586,12 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetP
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -638,12 +638,12 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -669,12 +669,12 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -700,12 +700,12 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -735,12 +735,12 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -766,12 +766,12 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -801,12 +801,12 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -832,12 +832,12 @@ func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (pa
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}

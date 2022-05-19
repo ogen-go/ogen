@@ -1698,6 +1698,62 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 	return result, nil
 }
 
+// TestFormURLEncoded invokes testFormURLEncoded operation.
+//
+// POST /testFormURLEncoded
+func (c *Client) TestFormURLEncoded(ctx context.Context, request URIStruct) (res TestFormURLEncodedOK, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testFormURLEncoded"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestFormURLEncoded",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "application/x-www-form-urlencoded"
+	buf, err := encodeTestFormURLEncodedRequestFormURLEncoded(request, span)
+	if err != nil {
+		return res, err
+	}
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testFormURLEncoded"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestFormURLEncodedResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestObjectQueryParameter invokes testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter
@@ -1735,7 +1791,7 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.FormObject.Get(); ok {
-				return val.encodeURI(e)
+				return val.EncodeURI(e)
 			}
 			return nil
 		}); err != nil {
@@ -1752,7 +1808,7 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 
 		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
 			if val, ok := params.DeepObject.Get(); ok {
-				return val.encodeURI(e)
+				return val.EncodeURI(e)
 			}
 			return nil
 		}); err != nil {

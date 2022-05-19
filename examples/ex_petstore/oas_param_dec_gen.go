@@ -25,12 +25,12 @@ func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParam
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotLimitVal int32
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt32(s)
+					c, err := conv.ToInt32(val)
 					if err != nil {
 						return err
 					}
@@ -63,12 +63,12 @@ func decodeShowPetByIdParams(args [1]string, r *http.Request) (params ShowPetByI
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}

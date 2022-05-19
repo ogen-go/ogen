@@ -41,7 +41,7 @@ func decodeCreatePetRequest(r *http.Request, span trace.Span) (req CreatePetReq,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CreatePet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -77,7 +77,7 @@ func decodeCreatePetCategoriesRequest(r *http.Request, span trace.Span) (req Cre
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CreatePetCategories:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -113,7 +113,7 @@ func decodeCreatePetFriendsRequest(r *http.Request, span trace.Span) (req Create
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CreatePetFriends:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -149,7 +149,7 @@ func decodeCreatePetOwnerRequest(r *http.Request, span trace.Span) (req CreatePe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CreatePetOwner:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -185,7 +185,7 @@ func decodeUpdatePetRequest(r *http.Request, span trace.Span) (req UpdatePetReq,
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UpdatePet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:

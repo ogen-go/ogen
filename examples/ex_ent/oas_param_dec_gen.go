@@ -24,12 +24,12 @@ func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params Cr
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -59,12 +59,12 @@ func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (params Creat
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -94,12 +94,12 @@ func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreateP
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -129,12 +129,12 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetPar
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -164,12 +164,12 @@ func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeleteP
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -200,12 +200,12 @@ func decodeListPetParams(args [0]string, r *http.Request) (params ListPetParams,
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt32(s)
+					c, err := conv.ToInt32(val)
 					if err != nil {
 						return err
 					}
@@ -234,12 +234,12 @@ func decodeListPetParams(args [0]string, r *http.Request) (params ListPetParams,
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt32(s)
+					c, err := conv.ToInt32(val)
 					if err != nil {
 						return err
 					}
@@ -273,12 +273,12 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params List
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -304,12 +304,12 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params List
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt32(s)
+					c, err := conv.ToInt32(val)
 					if err != nil {
 						return err
 					}
@@ -338,12 +338,12 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params List
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt32(s)
+					c, err := conv.ToInt32(val)
 					if err != nil {
 						return err
 					}
@@ -377,12 +377,12 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPet
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -408,12 +408,12 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPet
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotPageVal int32
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt32(s)
+					c, err := conv.ToInt32(val)
 					if err != nil {
 						return err
 					}
@@ -442,12 +442,12 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPet
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotItemsPerPageVal int32
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToInt32(s)
+					c, err := conv.ToInt32(val)
 					if err != nil {
 						return err
 					}
@@ -480,12 +480,12 @@ func decodeReadPetParams(args [1]string, r *http.Request) (params ReadPetParams,
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -515,12 +515,12 @@ func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOw
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}
@@ -550,12 +550,12 @@ func decodeUpdatePetParams(args [1]string, r *http.Request) (params UpdatePetPar
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt(s)
+				c, err := conv.ToInt(val)
 				if err != nil {
 					return err
 				}

@@ -41,7 +41,7 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CreateSnapshot:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -49,7 +49,7 @@ func decodeCreateSnapshotRequest(r *http.Request, span trace.Span) (req Snapshot
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate CreateSnapshot request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -85,7 +85,7 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CreateSyncAction:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -93,7 +93,7 @@ func decodeCreateSyncActionRequest(r *http.Request, span trace.Span) (req Instan
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate CreateSyncAction request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -129,7 +129,7 @@ func decodeLoadSnapshotRequest(r *http.Request, span trace.Span) (req SnapshotLo
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode LoadSnapshot:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -165,7 +165,7 @@ func decodeMmdsConfigPutRequest(r *http.Request, span trace.Span) (req MmdsConfi
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MmdsConfigPut:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -204,7 +204,7 @@ func decodeMmdsPatchRequest(r *http.Request, span trace.Span) (req *MmdsPatchReq
 			request = &elem
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MmdsPatch:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -243,7 +243,7 @@ func decodeMmdsPutRequest(r *http.Request, span trace.Span) (req *MmdsPutReq, er
 			request = &elem
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode MmdsPut:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -279,7 +279,7 @@ func decodePatchBalloonRequest(r *http.Request, span trace.Span) (req BalloonUpd
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PatchBalloon:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -315,7 +315,7 @@ func decodePatchBalloonStatsIntervalRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PatchBalloonStatsInterval:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -351,7 +351,7 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PatchGuestDriveByID:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -359,7 +359,7 @@ func decodePatchGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Par
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PatchGuestDriveByID request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -395,7 +395,7 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PatchGuestNetworkInterfaceByID:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -403,7 +403,7 @@ func decodePatchGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Spa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PatchGuestNetworkInterfaceByID request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -440,7 +440,7 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PatchMachineConfiguration:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -455,7 +455,7 @@ func decodePatchMachineConfigurationRequest(r *http.Request, span trace.Span) (r
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PatchMachineConfiguration request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -491,7 +491,7 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PatchVm:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -499,7 +499,7 @@ func decodePatchVmRequest(r *http.Request, span trace.Span) (req VM, err error) 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PatchVm request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -535,7 +535,7 @@ func decodePutBalloonRequest(r *http.Request, span trace.Span) (req Balloon, err
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PutBalloon:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -571,7 +571,7 @@ func decodePutGuestBootSourceRequest(r *http.Request, span trace.Span) (req Boot
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PutGuestBootSource:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -607,7 +607,7 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PutGuestDriveByID:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -615,7 +615,7 @@ func decodePutGuestDriveByIDRequest(r *http.Request, span trace.Span) (req Drive
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PutGuestDriveByID request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -651,7 +651,7 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PutGuestNetworkInterfaceByID:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -659,7 +659,7 @@ func decodePutGuestNetworkInterfaceByIDRequest(r *http.Request, span trace.Span)
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PutGuestNetworkInterfaceByID request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -695,7 +695,7 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PutGuestVsock:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -703,7 +703,7 @@ func decodePutGuestVsockRequest(r *http.Request, span trace.Span) (req Vsock, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PutGuestVsock request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -739,7 +739,7 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PutLogger:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -747,7 +747,7 @@ func decodePutLoggerRequest(r *http.Request, span trace.Span) (req Logger, err e
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PutLogger request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -784,7 +784,7 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PutMachineConfiguration:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -799,7 +799,7 @@ func decodePutMachineConfigurationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate PutMachineConfiguration request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -835,7 +835,7 @@ func decodePutMetricsRequest(r *http.Request, span trace.Span) (req Metrics, err
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PutMetrics:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:

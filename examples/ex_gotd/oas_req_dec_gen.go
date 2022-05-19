@@ -41,7 +41,7 @@ func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStic
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AddStickerToSet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -49,7 +49,7 @@ func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStic
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AddStickerToSet request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -85,7 +85,7 @@ func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req Ans
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AnswerCallbackQuery:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -93,7 +93,7 @@ func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req Ans
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AnswerCallbackQuery request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -129,7 +129,7 @@ func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req Answe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AnswerInlineQuery:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -137,7 +137,7 @@ func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req Answe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AnswerInlineQuery request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -173,7 +173,7 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AnswerPreCheckoutQuery:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -209,7 +209,7 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AnswerShippingQuery:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -217,7 +217,7 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AnswerShippingQuery request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -253,7 +253,7 @@ func decodeAnswerWebAppQueryRequest(r *http.Request, span trace.Span) (req Answe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode AnswerWebAppQuery:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -261,7 +261,7 @@ func decodeAnswerWebAppQueryRequest(r *http.Request, span trace.Span) (req Answe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate AnswerWebAppQuery request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -297,7 +297,7 @@ func decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ApproveChatJoinRequest:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -333,7 +333,7 @@ func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode BanChatMember:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -369,7 +369,7 @@ func decodeBanChatSenderChatRequest(r *http.Request, span trace.Span) (req BanCh
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode BanChatSenderChat:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -405,7 +405,7 @@ func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CopyMessage:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -413,7 +413,7 @@ func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate CopyMessage request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -449,7 +449,7 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CreateChatInviteLink:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -457,7 +457,7 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate CreateChatInviteLink request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -493,7 +493,7 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode CreateNewStickerSet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -501,7 +501,7 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate CreateNewStickerSet request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -537,7 +537,7 @@ func decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DeclineChatJoinRequest:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -573,7 +573,7 @@ func decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DeleteChatPhoto:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -609,7 +609,7 @@ func decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req De
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DeleteChatStickerSet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -645,7 +645,7 @@ func decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMes
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DeleteMessage:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -682,7 +682,7 @@ func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req OptDel
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DeleteMyCommands:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -718,7 +718,7 @@ func decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req De
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DeleteStickerFromSet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -755,7 +755,7 @@ func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req OptDelete
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DeleteWebhook:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -791,7 +791,7 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EditChatInviteLink:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -799,7 +799,7 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EditChatInviteLink request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -835,7 +835,7 @@ func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req Edit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EditMessageCaption:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -843,7 +843,7 @@ func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req Edit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EditMessageCaption request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -879,7 +879,7 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EditMessageLiveLocation:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -887,7 +887,7 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EditMessageLiveLocation request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -923,7 +923,7 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EditMessageMedia:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -931,7 +931,7 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EditMessageMedia request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -967,7 +967,7 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EditMessageReplyMarkup:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -975,7 +975,7 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EditMessageReplyMarkup request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1011,7 +1011,7 @@ func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMes
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode EditMessageText:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1019,7 +1019,7 @@ func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMes
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate EditMessageText request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1055,7 +1055,7 @@ func decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req Ex
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ExportChatInviteLink:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1091,7 +1091,7 @@ func decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardM
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode ForwardMessage:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1127,7 +1127,7 @@ func decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetChat:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1163,7 +1163,7 @@ func decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req G
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetChatAdministrators:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1199,7 +1199,7 @@ func decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetChatMember:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1235,7 +1235,7 @@ func decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetChatMemberCount:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1272,7 +1272,7 @@ func decodeGetChatMenuButtonRequest(r *http.Request, span trace.Span) (req OptGe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetChatMenuButton:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1308,7 +1308,7 @@ func decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetFile:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1344,7 +1344,7 @@ func decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetGameHighScores:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1381,7 +1381,7 @@ func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req OptGetMyC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetMyCommands:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1418,7 +1418,7 @@ func decodeGetMyDefaultAdministratorRightsRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetMyDefaultAdministratorRights:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1454,7 +1454,7 @@ func decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetSticke
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetStickerSet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1491,7 +1491,7 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req OptGetUpdate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetUpdates:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if request.Set {
@@ -1506,7 +1506,7 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req OptGetUpdate
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate GetUpdates request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1542,7 +1542,7 @@ func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req Ge
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode GetUserProfilePhotos:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1550,7 +1550,7 @@ func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req Ge
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate GetUserProfilePhotos request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1586,7 +1586,7 @@ func decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode LeaveChat:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1622,7 +1622,7 @@ func decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatM
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PinChatMessage:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1658,7 +1658,7 @@ func decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req Promo
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode PromoteChatMember:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1694,7 +1694,7 @@ func decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req Rest
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode RestrictChatMember:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1730,7 +1730,7 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req Re
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode RevokeChatInviteLink:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1766,7 +1766,7 @@ func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnima
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendAnimation:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1774,7 +1774,7 @@ func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnima
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendAnimation request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1810,7 +1810,7 @@ func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendAudio:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1818,7 +1818,7 @@ func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendAudio request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1854,7 +1854,7 @@ func decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChat
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendChatAction:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -1890,7 +1890,7 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendContact:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1898,7 +1898,7 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendContact request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1934,7 +1934,7 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendDice:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1942,7 +1942,7 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendDice request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -1978,7 +1978,7 @@ func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocume
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendDocument:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -1986,7 +1986,7 @@ func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocume
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendDocument request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2022,7 +2022,7 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendGame:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2030,7 +2030,7 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendGame request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2066,7 +2066,7 @@ func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendInvoice:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2074,7 +2074,7 @@ func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendInvoice request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2110,7 +2110,7 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendLocation:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2118,7 +2118,7 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendLocation request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2154,7 +2154,7 @@ func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMedi
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendMediaGroup:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2162,7 +2162,7 @@ func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMedi
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendMediaGroup request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2198,7 +2198,7 @@ func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendMessage:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2206,7 +2206,7 @@ func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendMessage request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2242,7 +2242,7 @@ func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendPhoto:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2250,7 +2250,7 @@ func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendPhoto request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2286,7 +2286,7 @@ func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendPoll:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2294,7 +2294,7 @@ func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendPoll request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2330,7 +2330,7 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendSticker:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2338,7 +2338,7 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendSticker request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2374,7 +2374,7 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendVenue:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2382,7 +2382,7 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendVenue request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2418,7 +2418,7 @@ func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendVideo:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2426,7 +2426,7 @@ func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendVideo request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2462,7 +2462,7 @@ func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideo
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendVideoNote:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2470,7 +2470,7 @@ func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideo
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendVideoNote request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2506,7 +2506,7 @@ func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SendVoice:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2514,7 +2514,7 @@ func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, er
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SendVoice request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2550,7 +2550,7 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetChatAdministratorCustomTitle:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2558,7 +2558,7 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SetChatAdministratorCustomTitle request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2594,7 +2594,7 @@ func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetChatDescription:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2602,7 +2602,7 @@ func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SetChatDescription request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2639,7 +2639,7 @@ func decodeSetChatMenuButtonRequest(r *http.Request, span trace.Span) (req OptSe
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetChatMenuButton:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2675,7 +2675,7 @@ func decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetChatPermissions:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2711,7 +2711,7 @@ func decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPho
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetChatPhoto:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2747,7 +2747,7 @@ func decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetCh
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetChatStickerSet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2783,7 +2783,7 @@ func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetChatTitle:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2791,7 +2791,7 @@ func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTit
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SetChatTitle request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2827,7 +2827,7 @@ func decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameSco
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetGameScore:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2863,7 +2863,7 @@ func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyComm
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetMyCommands:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2871,7 +2871,7 @@ func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyComm
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SetMyCommands request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2908,7 +2908,7 @@ func decodeSetMyDefaultAdministratorRightsRequest(r *http.Request, span trace.Sp
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetMyDefaultAdministratorRights:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -2944,7 +2944,7 @@ func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetPassportDataErrors:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -2952,7 +2952,7 @@ func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req S
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate SetPassportDataErrors request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -2988,7 +2988,7 @@ func decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetStickerPositionInSet:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3024,7 +3024,7 @@ func decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetS
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetStickerSetThumb:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3060,7 +3060,7 @@ func decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode SetWebhook:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3096,7 +3096,7 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode StopMessageLiveLocation:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3104,7 +3104,7 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate StopMessageLiveLocation request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3140,7 +3140,7 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode StopPoll:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		if err := func() error {
 			if err := request.Validate(); err != nil {
@@ -3148,7 +3148,7 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "validate StopPoll request")
+			return req, errors.Wrap(err, "validate")
 		}
 		return request, nil
 	default:
@@ -3184,7 +3184,7 @@ func decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanCh
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UnbanChatMember:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3220,7 +3220,7 @@ func decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Span) (req Unb
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UnbanChatSenderChat:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3256,7 +3256,7 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req Un
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UnpinAllChatMessages:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3292,7 +3292,7 @@ func decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinC
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UnpinChatMessage:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:
@@ -3328,7 +3328,7 @@ func decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (req Uploa
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode UploadStickerFile:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:

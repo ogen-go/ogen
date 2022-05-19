@@ -619,6 +619,26 @@
         }
       }
     },
+    "/testFormURLEncoded": {
+      "post": {
+        "operationId": "testFormURLEncoded",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/URIStruct"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
     "/oneofBug": {
       "post": {
         "operationId": "oneofBug",
@@ -846,6 +866,24 @@
           "description"
         ],
         "properties": {
+          "description": {
+            "type": "string"
+          }
+        }
+      },
+      "URIStruct": {
+        "type": "object",
+        "required": [
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "uuid": {
+            "type": "string",
+            "format": "uuid"
+          },
           "description": {
             "type": "string"
           }

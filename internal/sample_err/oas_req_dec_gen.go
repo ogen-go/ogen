@@ -42,7 +42,7 @@ func decodeDataCreateRequest(r *http.Request, span trace.Span) (req OptData, err
 			}
 			return nil
 		}(); err != nil {
-			return req, errors.Wrap(err, "decode DataCreate:application/json request")
+			return req, errors.Wrap(err, "decode \"application/json\"")
 		}
 		return request, nil
 	default:

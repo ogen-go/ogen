@@ -1,4 +1,4 @@
-{{ define "enc_param_path" }}
+{{ define "enc_param_path" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
 u := uri.Clone(c.serverURL)
 {{- range $part := $.PathParts }}{{/* Range over path parts */}}
 {{- if $part.Raw }}
@@ -24,7 +24,7 @@ u.Path += {{ quote $part.Raw }}
 {{- end }}
 {{- end }}
 
-{{ define "enc_param_query" }}
+{{ define "enc_param_query" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
 {{ $pcount := len $.QueryParams }}
 {{ if ne $pcount 0 }}{{/* Check params existence */}}
 q := uri.NewQueryEncoder()

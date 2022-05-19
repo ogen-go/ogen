@@ -23,12 +23,12 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -52,12 +52,12 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToTime(s)
+				c, err := conv.ToTime(val)
 				if err != nil {
 					return err
 				}
@@ -81,12 +81,12 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToTime(s)
+				c, err := conv.ToTime(val)
 				if err != nil {
 					return err
 				}
@@ -110,12 +110,12 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -152,12 +152,12 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params Mar
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -181,12 +181,12 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params Mar
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt32(s)
+				c, err := conv.ToInt32(val)
 				if err != nil {
 					return err
 				}
@@ -215,12 +215,12 @@ func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params 
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -249,12 +249,12 @@ func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (param
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -283,12 +283,12 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToTime(s)
+				c, err := conv.ToTime(val)
 				if err != nil {
 					return err
 				}
@@ -312,12 +312,12 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToTime(s)
+				c, err := conv.ToTime(val)
 				if err != nil {
 					return err
 				}
@@ -343,12 +343,12 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotFigiVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -377,12 +377,12 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -414,12 +414,12 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params Order
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -445,12 +445,12 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params Order
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -484,12 +484,12 @@ func decodeOrdersGetParams(args [0]string, r *http.Request) (params OrdersGetPar
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -521,12 +521,12 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params O
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -552,12 +552,12 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params O
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -589,12 +589,12 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params 
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -620,12 +620,12 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params 
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -659,12 +659,12 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -698,12 +698,12 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (params Portfolio
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -737,12 +737,12 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params Sandb
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -776,12 +776,12 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -815,12 +815,12 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (p
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}
@@ -854,12 +854,12 @@ func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (params Sand
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
 				var paramsDotBrokerAccountIdVal string
 				if err := func() error {
-					s, err := d.DecodeValue()
+					val, err := d.DecodeValue()
 					if err != nil {
 						return err
 					}
 
-					c, err := conv.ToString(s)
+					c, err := conv.ToString(val)
 					if err != nil {
 						return err
 					}

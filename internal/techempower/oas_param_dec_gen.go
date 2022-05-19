@@ -23,12 +23,12 @@ func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams,
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt64(s)
+				c, err := conv.ToInt64(val)
 				if err != nil {
 					return err
 				}
@@ -57,12 +57,12 @@ func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams,
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt64(s)
+				c, err := conv.ToInt64(val)
 				if err != nil {
 					return err
 				}
@@ -91,12 +91,12 @@ func decodeUpdatesParams(args [0]string, r *http.Request) (params UpdatesParams,
 
 		if err := q.HasParam(cfg); err == nil {
 			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToInt64(s)
+				c, err := conv.ToInt64(val)
 				if err != nil {
 					return err
 				}

@@ -24,12 +24,12 @@ func decodePatchGuestDriveByIDParams(args [1]string, r *http.Request) (params Pa
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -59,12 +59,12 @@ func decodePatchGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request)
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -94,12 +94,12 @@ func decodePutGuestDriveByIDParams(args [1]string, r *http.Request) (params PutG
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
@@ -129,12 +129,12 @@ func decodePutGuestNetworkInterfaceByIDParams(args [1]string, r *http.Request) (
 			})
 
 			if err := func() error {
-				s, err := d.DecodeValue()
+				val, err := d.DecodeValue()
 				if err != nil {
 					return err
 				}
 
-				c, err := conv.ToString(s)
+				c, err := conv.ToString(val)
 				if err != nil {
 					return err
 				}
