@@ -297,6 +297,7 @@ func (s *Pet) UnmarshalJSON(data []byte) error {
 // Encode encodes Pets as json.
 func (s Pets) Encode(e *jx.Encoder) {
 	unwrapped := []Pet(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)

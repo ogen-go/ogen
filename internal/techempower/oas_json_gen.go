@@ -228,6 +228,7 @@ func (s *WorldObject) UnmarshalJSON(data []byte) error {
 // Encode encodes WorldObjects as json.
 func (s WorldObjects) Encode(e *jx.Encoder) {
 	unwrapped := []WorldObject(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)

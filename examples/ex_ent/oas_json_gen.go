@@ -707,6 +707,7 @@ func (s *CreatePetReq) UnmarshalJSON(data []byte) error {
 // Encode encodes ListPetCategoriesOKApplicationJSON as json.
 func (s ListPetCategoriesOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := []PetCategoriesList(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)
@@ -756,6 +757,7 @@ func (s *ListPetCategoriesOKApplicationJSON) UnmarshalJSON(data []byte) error {
 // Encode encodes ListPetFriendsOKApplicationJSON as json.
 func (s ListPetFriendsOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := []PetFriendsList(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)
@@ -805,6 +807,7 @@ func (s *ListPetFriendsOKApplicationJSON) UnmarshalJSON(data []byte) error {
 // Encode encodes ListPetOKApplicationJSON as json.
 func (s ListPetOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := []PetList(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)

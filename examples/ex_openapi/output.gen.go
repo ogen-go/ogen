@@ -3597,6 +3597,7 @@ func (s *Schema) setDefaults() {
 // Encode encodes Any as json.
 func (s Any) Encode(e *jx.Encoder) {
 	unwrapped := jx.Raw(s)
+
 	if len(unwrapped) != 0 {
 		e.Raw(unwrapped)
 	}
@@ -4474,6 +4475,7 @@ func (s *ContactPattern0) UnmarshalJSON(data []byte) error {
 // Encode encodes DefaultType as json.
 func (s DefaultType) Encode(e *jx.Encoder) {
 	unwrapped := jx.Raw(s)
+
 	if len(unwrapped) != 0 {
 		e.Raw(unwrapped)
 	}
@@ -6154,6 +6156,7 @@ func (s *InfoPattern0) UnmarshalJSON(data []byte) error {
 // Encode encodes JsonschemaDraft4PropertiesEnum as json.
 func (s JsonschemaDraft4PropertiesEnum) Encode(e *jx.Encoder) {
 	unwrapped := []jx.Raw(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		if len(elem) != 0 {
@@ -6207,6 +6210,7 @@ func (s *JsonschemaDraft4PropertiesEnum) UnmarshalJSON(data []byte) error {
 // Encode encodes JsonschemaDraft4PropertiesExclusiveMaximum as json.
 func (s JsonschemaDraft4PropertiesExclusiveMaximum) Encode(e *jx.Encoder) {
 	unwrapped := bool(s)
+
 	e.Bool(unwrapped)
 }
 
@@ -6246,6 +6250,7 @@ func (s *JsonschemaDraft4PropertiesExclusiveMaximum) UnmarshalJSON(data []byte) 
 // Encode encodes JsonschemaDraft4PropertiesExclusiveMinimum as json.
 func (s JsonschemaDraft4PropertiesExclusiveMinimum) Encode(e *jx.Encoder) {
 	unwrapped := bool(s)
+
 	e.Bool(unwrapped)
 }
 
@@ -6285,6 +6290,7 @@ func (s *JsonschemaDraft4PropertiesExclusiveMinimum) UnmarshalJSON(data []byte) 
 // Encode encodes JsonschemaDraft4PropertiesMaximum as json.
 func (s JsonschemaDraft4PropertiesMaximum) Encode(e *jx.Encoder) {
 	unwrapped := float64(s)
+
 	e.Float64(unwrapped)
 }
 
@@ -6324,6 +6330,7 @@ func (s *JsonschemaDraft4PropertiesMaximum) UnmarshalJSON(data []byte) error {
 // Encode encodes JsonschemaDraft4PropertiesMinimum as json.
 func (s JsonschemaDraft4PropertiesMinimum) Encode(e *jx.Encoder) {
 	unwrapped := float64(s)
+
 	e.Float64(unwrapped)
 }
 
@@ -6363,6 +6370,7 @@ func (s *JsonschemaDraft4PropertiesMinimum) UnmarshalJSON(data []byte) error {
 // Encode encodes JsonschemaDraft4PropertiesMultipleOf as json.
 func (s JsonschemaDraft4PropertiesMultipleOf) Encode(e *jx.Encoder) {
 	unwrapped := float64(s)
+
 	e.Float64(unwrapped)
 }
 
@@ -6402,6 +6410,7 @@ func (s *JsonschemaDraft4PropertiesMultipleOf) UnmarshalJSON(data []byte) error 
 // Encode encodes JsonschemaDraft4PropertiesPattern as json.
 func (s JsonschemaDraft4PropertiesPattern) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
+
 	e.Str(unwrapped)
 }
 
@@ -6441,6 +6450,7 @@ func (s *JsonschemaDraft4PropertiesPattern) UnmarshalJSON(data []byte) error {
 // Encode encodes JsonschemaDraft4PropertiesTitle as json.
 func (s JsonschemaDraft4PropertiesTitle) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
+
 	e.Str(unwrapped)
 }
 
@@ -6480,6 +6490,7 @@ func (s *JsonschemaDraft4PropertiesTitle) UnmarshalJSON(data []byte) error {
 // Encode encodes JsonschemaDraft4PropertiesUniqueItems as json.
 func (s JsonschemaDraft4PropertiesUniqueItems) Encode(e *jx.Encoder) {
 	unwrapped := bool(s)
+
 	e.Bool(unwrapped)
 }
 
@@ -10718,6 +10729,7 @@ func (s *PathsPattern1) UnmarshalJSON(data []byte) error {
 // Encode encodes PositiveInteger as json.
 func (s PositiveInteger) Encode(e *jx.Encoder) {
 	unwrapped := int(s)
+
 	e.Int(unwrapped)
 }
 
@@ -14258,6 +14270,7 @@ func (s *SpecPattern0) UnmarshalJSON(data []byte) error {
 // Encode encodes SpecificationExtension as json.
 func (s SpecificationExtension) Encode(e *jx.Encoder) {
 	unwrapped := jx.Raw(s)
+
 	if len(unwrapped) != 0 {
 		e.Raw(unwrapped)
 	}
@@ -14299,6 +14312,7 @@ func (s *SpecificationExtension) UnmarshalJSON(data []byte) error {
 // Encode encodes StringArray as json.
 func (s StringArray) Encode(e *jx.Encoder) {
 	unwrapped := []string(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		e.Str(elem)

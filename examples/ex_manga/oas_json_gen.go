@@ -627,6 +627,7 @@ func (s *OptTitle) UnmarshalJSON(data []byte) error {
 // Encode encodes SearchByTagIDOKApplicationJSON as json.
 func (s SearchByTagIDOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := []SearchResponse(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)
@@ -676,6 +677,7 @@ func (s *SearchByTagIDOKApplicationJSON) UnmarshalJSON(data []byte) error {
 // Encode encodes SearchOKApplicationJSON as json.
 func (s SearchOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := []SearchResponse(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)
