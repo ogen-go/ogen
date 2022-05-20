@@ -3,7 +3,7 @@
 // Encode encodes {{ $.Name }} as json.
 func (s {{ $.Name }}) Encode(e *jx.Encoder) {
 	unwrapped := {{ $.AliasTo.Go }}(s)
-	{{- template "json/enc" elem $.AliasTo "unwrapped" -}}
+	{{ template "json/enc" elem $.AliasTo "unwrapped" -}}
 }
 
 // Decode decodes {{ $.Name }} from json.

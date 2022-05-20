@@ -696,6 +696,7 @@ func (s *BoardIconsItem) UnmarshalJSON(data []byte) error {
 // Encode encodes Boards as json.
 func (s Boards) Encode(e *jx.Encoder) {
 	unwrapped := []Board(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)

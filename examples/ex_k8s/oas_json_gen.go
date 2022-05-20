@@ -17,6 +17,7 @@ import (
 // Encode encodes GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON as json.
 func (s GetServiceAccountIssuerOpenIDConfigurationOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
+
 	e.Str(unwrapped)
 }
 
@@ -72813,6 +72814,7 @@ func (s *IoK8sApiextensionsApiserverPkgApisApiextensionsV1WebhookConversion) Unm
 // Encode encodes IoK8sApimachineryPkgAPIResourceQuantity as json.
 func (s IoK8sApimachineryPkgAPIResourceQuantity) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
+
 	e.Str(unwrapped)
 }
 
@@ -74737,6 +74739,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ManagedFieldsEntry) UnmarshalJSON(data []
 // Encode encodes IoK8sApimachineryPkgApisMetaV1MicroTime as json.
 func (s IoK8sApimachineryPkgApisMetaV1MicroTime) Encode(e *jx.Encoder) {
 	unwrapped := time.Time(s)
+
 	json.EncodeDateTime(e, unwrapped)
 }
 
@@ -75541,6 +75544,7 @@ func (s *IoK8sApimachineryPkgApisMetaV1ServerAddressByClientCIDR) UnmarshalJSON(
 // Encode encodes IoK8sApimachineryPkgApisMetaV1Time as json.
 func (s IoK8sApimachineryPkgApisMetaV1Time) Encode(e *jx.Encoder) {
 	unwrapped := time.Time(s)
+
 	json.EncodeDateTime(e, unwrapped)
 }
 
@@ -75738,6 +75742,7 @@ func (s *IoK8sApimachineryPkgRuntimeRawExtension) UnmarshalJSON(data []byte) err
 // Encode encodes IoK8sApimachineryPkgUtilIntstrIntOrString as json.
 func (s IoK8sApimachineryPkgUtilIntstrIntOrString) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
+
 	e.Str(unwrapped)
 }
 
@@ -86537,6 +86542,7 @@ func (s *OptString) UnmarshalJSON(data []byte) error {
 // Encode encodes ReadCoreV1NamespacedPodLogOKApplicationJSON as json.
 func (s ReadCoreV1NamespacedPodLogOKApplicationJSON) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
+
 	e.Str(unwrapped)
 }
 

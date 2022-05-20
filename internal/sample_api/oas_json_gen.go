@@ -3115,6 +3115,7 @@ func (s *NoAdditionalPropertiesTest) UnmarshalJSON(data []byte) error {
 // Encode encodes NullValue as json.
 func (s NullValue) Encode(e *jx.Encoder) {
 	unwrapped := struct{}(s)
+
 	_ = unwrapped
 	e.Null()
 }
@@ -6620,6 +6621,7 @@ func (s *PetKind) UnmarshalJSON(data []byte) error {
 // Encode encodes PetName as json.
 func (s PetName) Encode(e *jx.Encoder) {
 	unwrapped := string(s)
+
 	e.Str(unwrapped)
 }
 
@@ -6699,6 +6701,7 @@ func (s *PetType) UnmarshalJSON(data []byte) error {
 // Encode encodes RecursiveArray as json.
 func (s RecursiveArray) Encode(e *jx.Encoder) {
 	unwrapped := []RecursiveArray(s)
+
 	e.ArrStart()
 	for _, elem := range unwrapped {
 		elem.Encode(e)
