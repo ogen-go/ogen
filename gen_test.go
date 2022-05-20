@@ -19,21 +19,25 @@ import (
 //go:embed _testdata
 var testdata embed.FS
 
-func testGenerate(_ bool, name string, ignore ...string) func(t *testing.T) {
+func testGenerate(name string, ignore ...string) func(t *testing.T) {
 	return func(t *testing.T) {
 		t.Helper()
 		t.Parallel()
+		log := zaptest.NewLogger(t)
 
 		data, err := testdata.ReadFile(name)
 		require.NoError(t, err)
 		spec, err := ogen.Parse(data)
 		require.NoError(t, err)
 
-		log := zaptest.NewLogger(t)
+		notImplemented := map[string]struct{}{}
 		opt := gen.Options{
-			IgnoreNotImplemented: ignore,
 			InferSchemaType:      true,
-			Logger:               log,
+			IgnoreNotImplemented: ignore,
+			NotImplementedHook: func(name string, err error) {
+				notImplemented[name] = struct{}{}
+			},
+			Logger: log,
 		}
 		t.Run("Gen", func(t *testing.T) {
 			defer func() {
@@ -47,6 +51,13 @@ func testGenerate(_ bool, name string, ignore ...string) func(t *testing.T) {
 			require.NoError(t, g.WriteSource(genfs.CheckFS{}, "api"))
 		})
 		if len(opt.IgnoreNotImplemented) > 0 {
+			// Check that all ignore rules are necessary.
+			for _, feature := range ignore {
+				if _, ok := notImplemented[feature]; !ok {
+					t.Errorf("Ignore rule %q hasn' been used", feature)
+				}
+			}
+
 			t.Run("Full", func(t *testing.T) {
 				t.Skipf("Ignoring: %s", opt.IgnoreNotImplemented)
 			})
@@ -58,57 +69,61 @@ func TestGenerate(t *testing.T) {
 	t.Parallel()
 
 	skipSets := map[string][]string{
-		"petstore.yaml": {},
-		"petstore-expanded.yaml": {
+		"autorest/additionalProperties.json": {
 			"allOf",
 		},
-		"firecracker.json": {},
-		"sample.json": {
-			"enum format",
+		"autorest/ApiManagementClient-openapi.json": {
+			"allOf",
+			"oauth2 security",
 		},
-		"manga.json": {
+		"autorest/lro.json": {
+			"allOf",
+		},
+		"autorest/storage.json": {
+			"allOf",
+		},
+		"autorest/xml-service.json": {
 			"unsupported content types",
 		},
-		"techempower.json": {},
-		"telegram_bot_api.json": {
-			"anyOf",
-			"unsupported content types",
+		"autorest/xms-error-responses.json": {
+			"allOf",
 		},
-		"gotd_bot_api.json": {
-			"unsupported content types",
-		},
-		"k8s.json": {
+		"2ch.yml": {
 			"unsupported content types",
 		},
 		"api.github.com.json": {
-			"complex parameter types",
 			"complex anyOf",
 			"allOf",
 			"discriminator inference",
 			"sum types with same names",
 			"sum type parameter",
 			"unsupported content types",
-			"empty schema",
 		},
-		"test_empty_property_name.yaml": {},
-		"tinkoff.json": {
-			"http security scheme",
+		"sample.json": {
+			"enum format",
 		},
-	}
-	// Do not build these schemas because they checked by test examples workflow.
-	doNotBuild := map[string]struct{}{
-		"test_format.json":         {},
-		"petstore.yaml":            {},
-		"firecracker.json":         {},
-		"gotd_bot_api.json":        {},
-		"ent.json":                 {},
-		"ex_route_params.json":     {},
-		"manga.json":               {},
-		"petstore - expanded.yaml": {},
-		"k8s.json":                 {},
-		"api.github.com.json":      {},
-		"telegram_bot_api.json":    {},
-		"tinkoff.json":             {},
+		"manga.json": {
+			"unsupported content types",
+		},
+		"telegram_bot_api.json": {},
+		"gotd_bot_api.json":     {},
+		"k8s.json": {
+			"unsupported content types",
+		},
+		"test_content_path_parameter.yml": {
+			"parameter content field",
+		},
+		"petstore-expanded.yml": {
+			"allOf",
+		},
+		"redoc/discriminator.json": {
+			"unsupported content types",
+		},
+		"superset.json": {
+			"allOf",
+			"unsupported content types",
+			"parameter content field",
+		},
 	}
 
 	testDataPath := "_testdata/positive"
@@ -117,26 +132,28 @@ func TestGenerate(t *testing.T) {
 			return err
 		}
 
-		_, file := filepath.Split(path)
-		skip, ok := skipSets[file]
-		if !ok {
-			skip = []string{"all"}
-		}
+		file := strings.TrimPrefix(path, testDataPath+"/")
+		skip := skipSets[file]
+		delete(skipSets, file)
 
-		build := !testing.Short()
-		if _, ok := doNotBuild[file]; ok {
-			build = false
-		}
-
-		testName := strings.TrimPrefix(path, testDataPath+"/")
+		testName := file
 		testName = strings.TrimSuffix(testName, ".json")
 		testName = strings.TrimSuffix(testName, ".yml")
 		testName = strings.TrimSuffix(testName, ".yaml")
 
-		t.Run(testName, testGenerate(build, path, skip...))
+		t.Run(testName, testGenerate(path, skip...))
 		return nil
 	}); err != nil {
 		t.Fatal(err)
+	}
+
+	// Check that skipSets needs update.
+	if len(skipSets) > 0 {
+		var schemas []string
+		for k := range skipSets {
+			schemas = append(schemas, k)
+		}
+		t.Fatalf("Schema ignore rules %+v have not been used.", schemas)
 	}
 }
 
