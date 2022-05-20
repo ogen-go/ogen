@@ -169,7 +169,7 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 	// Check for unsupported response content types.
 	var unsupported []string
 	for ct, content := range contents {
-		if isBinary(content.Schema) {
+		if content.IsStream() || isBinary(content.Schema) {
 			continue
 		}
 		switch ct {
