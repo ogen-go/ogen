@@ -117,7 +117,6 @@ func (c *Client) ListPets(ctx context.Context, params ListPetsParams) (res ListP
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "limit" parameter.

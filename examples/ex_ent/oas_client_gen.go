@@ -479,7 +479,6 @@ func (c *Client) ListPet(ctx context.Context, params ListPetParams) (res ListPet
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -576,7 +575,6 @@ func (c *Client) ListPetCategories(ctx context.Context, params ListPetCategories
 		u.Path += e.Result()
 	}
 	u.Path += "/categories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -673,7 +671,6 @@ func (c *Client) ListPetFriends(ctx context.Context, params ListPetFriendsParams
 		u.Path += e.Result()
 	}
 	u.Path += "/friends"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.

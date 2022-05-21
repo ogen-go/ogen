@@ -72,7 +72,6 @@ func (c *Client) APICaptcha2chcaptchaIDGet(ctx context.Context, params APICaptch
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/2chcaptcha/id"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -150,7 +149,6 @@ func (c *Client) APICaptcha2chcaptchaShowGet(ctx context.Context, params APICapt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/2chcaptcha/show"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "id" parameter.
@@ -228,7 +226,6 @@ func (c *Client) APICaptchaAppIDPublicKeyGet(ctx context.Context, params APICapt
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -306,7 +303,6 @@ func (c *Client) APICaptchaInvisibleRecaptchaIDGet(ctx context.Context, params A
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/invisible_recaptcha/id"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -425,7 +421,6 @@ func (c *Client) APICaptchaRecaptchaIDGet(ctx context.Context, params APICaptcha
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/captcha/recaptcha/id"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -544,7 +539,6 @@ func (c *Client) APIDislikeGet(ctx context.Context, params APIDislikeGetParams) 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/dislike"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.
@@ -616,7 +610,6 @@ func (c *Client) APILikeGet(ctx context.Context, params APILikeGetParams) (res L
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/like"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "board" parameter.

@@ -74,7 +74,6 @@ func (c *Client) Caching(ctx context.Context, params CachingParams) (res WorldOb
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/cached-worlds"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "count" parameter.
@@ -220,7 +219,6 @@ func (c *Client) Queries(ctx context.Context, params QueriesParams) (res WorldOb
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/queries"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "queries" parameter.
@@ -280,7 +278,6 @@ func (c *Client) Updates(ctx context.Context, params UpdatesParams) (res WorldOb
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/updates"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "queries" parameter.

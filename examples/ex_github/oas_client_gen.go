@@ -4156,7 +4156,6 @@ func (c *Client) ActionsListArtifactsForRepo(ctx context.Context, params Actions
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/artifacts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -4270,7 +4269,6 @@ func (c *Client) ActionsListEnvironmentSecrets(ctx context.Context, params Actio
 		u.Path += e.Result()
 	}
 	u.Path += "/secrets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -4401,7 +4399,6 @@ func (c *Client) ActionsListJobsForWorkflowRun(ctx context.Context, params Actio
 		u.Path += e.Result()
 	}
 	u.Path += "/jobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "filter" parameter.
@@ -4517,7 +4514,6 @@ func (c *Client) ActionsListOrgSecrets(ctx context.Context, params ActionsListOr
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/secrets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -4633,7 +4629,6 @@ func (c *Client) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ctx context.C
 		u.Path += e.Result()
 	}
 	u.Path += "/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -4747,7 +4742,6 @@ func (c *Client) ActionsListRepoSecrets(ctx context.Context, params ActionsListR
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/secrets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -4861,7 +4855,6 @@ func (c *Client) ActionsListRepoWorkflows(ctx context.Context, params ActionsLis
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/workflows"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -5113,7 +5106,6 @@ func (c *Client) ActionsListSelectedReposForOrgSecret(ctx context.Context, param
 		u.Path += e.Result()
 	}
 	u.Path += "/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -5215,7 +5207,6 @@ func (c *Client) ActionsListSelectedRepositoriesEnabledGithubActionsOrganization
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/permissions/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -5316,7 +5307,6 @@ func (c *Client) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.Context, pa
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/runner-groups"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -5414,7 +5404,6 @@ func (c *Client) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params 
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/runners"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -5527,7 +5516,6 @@ func (c *Client) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/runners"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -5643,7 +5631,6 @@ func (c *Client) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, 
 		u.Path += e.Result()
 	}
 	u.Path += "/runners"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -5772,7 +5759,6 @@ func (c *Client) ActionsListWorkflowRunArtifacts(ctx context.Context, params Act
 		u.Path += e.Result()
 	}
 	u.Path += "/artifacts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -5889,7 +5875,6 @@ func (c *Client) ActionsListWorkflowRunsForRepo(ctx context.Context, params Acti
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/runs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "actor" parameter.
@@ -7983,7 +7968,6 @@ func (c *Client) ActivityListEventsForAuthenticatedUser(ctx context.Context, par
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -8065,7 +8049,6 @@ func (c *Client) ActivityListNotificationsForAuthenticatedUser(ctx context.Conte
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/notifications"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "all" parameter.
@@ -8244,7 +8227,6 @@ func (c *Client) ActivityListOrgEventsForAuthenticatedUser(ctx context.Context, 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -8327,7 +8309,6 @@ func (c *Client) ActivityListPublicEvents(ctx context.Context, params ActivityLi
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -8437,7 +8418,6 @@ func (c *Client) ActivityListPublicEventsForRepoNetwork(ctx context.Context, par
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -8532,7 +8512,6 @@ func (c *Client) ActivityListPublicEventsForUser(ctx context.Context, params Act
 		u.Path += e.Result()
 	}
 	u.Path += "/events/public"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -8627,7 +8606,6 @@ func (c *Client) ActivityListPublicOrgEvents(ctx context.Context, params Activit
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -8726,7 +8704,6 @@ func (c *Client) ActivityListReceivedEventsForUser(ctx context.Context, params A
 		u.Path += e.Result()
 	}
 	u.Path += "/received_events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -8821,7 +8798,6 @@ func (c *Client) ActivityListReceivedPublicEventsForUser(ctx context.Context, pa
 		u.Path += e.Result()
 	}
 	u.Path += "/received_events/public"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -8931,7 +8907,6 @@ func (c *Client) ActivityListRepoEvents(ctx context.Context, params ActivityList
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -9043,7 +9018,6 @@ func (c *Client) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.C
 		u.Path += e.Result()
 	}
 	u.Path += "/notifications"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "all" parameter.
@@ -9195,7 +9169,6 @@ func (c *Client) ActivityListReposStarredByAuthenticatedUser(ctx context.Context
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/starred"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sort" parameter.
@@ -9326,7 +9299,6 @@ func (c *Client) ActivityListReposWatchedByUser(ctx context.Context, params Acti
 		u.Path += e.Result()
 	}
 	u.Path += "/subscriptions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -9408,7 +9380,6 @@ func (c *Client) ActivityListWatchedReposForAuthenticatedUser(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/subscriptions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -9520,7 +9491,6 @@ func (c *Client) ActivityListWatchersForRepo(ctx context.Context, params Activit
 		u.Path += e.Result()
 	}
 	u.Path += "/subscribers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -11125,7 +11095,6 @@ func (c *Client) AppsListAccountsForPlan(ctx context.Context, params AppsListAcc
 		u.Path += e.Result()
 	}
 	u.Path += "/accounts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sort" parameter.
@@ -11264,7 +11233,6 @@ func (c *Client) AppsListAccountsForPlanStubbed(ctx context.Context, params Apps
 		u.Path += e.Result()
 	}
 	u.Path += "/accounts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sort" parameter.
@@ -11401,7 +11369,6 @@ func (c *Client) AppsListInstallationReposForAuthenticatedUser(ctx context.Conte
 		u.Path += e.Result()
 	}
 	u.Path += "/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -11488,7 +11455,6 @@ func (c *Client) AppsListPlans(ctx context.Context, params AppsListPlansParams) 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/plans"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -11575,7 +11541,6 @@ func (c *Client) AppsListPlansStubbed(ctx context.Context, params AppsListPlansS
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/marketplace_listing/stubbed/plans"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -11660,7 +11625,6 @@ func (c *Client) AppsListReposAccessibleToInstallation(ctx context.Context, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/installation/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -11744,7 +11708,6 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUser(ctx context.Context, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/marketplace_purchases"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -11828,7 +11791,6 @@ func (c *Client) AppsListSubscriptionsForAuthenticatedUserStubbed(ctx context.Co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/marketplace_purchases/stubbed"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -11913,7 +11875,6 @@ func (c *Client) AppsListWebhookDeliveries(ctx context.Context, params AppsListW
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/app/hook/deliveries"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -13481,7 +13442,6 @@ func (c *Client) ChecksListAnnotations(ctx context.Context, params ChecksListAnn
 		u.Path += e.Result()
 	}
 	u.Path += "/annotations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -13614,7 +13574,6 @@ func (c *Client) ChecksListForRef(ctx context.Context, params ChecksListForRefPa
 		u.Path += e.Result()
 	}
 	u.Path += "/check-runs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "check_name" parameter.
@@ -13814,7 +13773,6 @@ func (c *Client) ChecksListForSuite(ctx context.Context, params ChecksListForSui
 		u.Path += e.Result()
 	}
 	u.Path += "/check-runs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "check_name" parameter.
@@ -13998,7 +13956,6 @@ func (c *Client) ChecksListSuitesForRef(ctx context.Context, params ChecksListSu
 		u.Path += e.Result()
 	}
 	u.Path += "/check-suites"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "app_id" parameter.
@@ -14402,7 +14359,6 @@ func (c *Client) CodeScanningDeleteAnalysis(ctx context.Context, params CodeScan
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "confirm_delete" parameter.
@@ -14816,7 +14772,6 @@ func (c *Client) CodeScanningListAlertInstances(ctx context.Context, params Code
 		u.Path += e.Result()
 	}
 	u.Path += "/instances"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -14955,7 +14910,6 @@ func (c *Client) CodeScanningListAlertsForRepo(ctx context.Context, params CodeS
 		u.Path += e.Result()
 	}
 	u.Path += "/code-scanning/alerts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "tool_name" parameter.
@@ -15158,7 +15112,6 @@ func (c *Client) CodeScanningListRecentAnalyses(ctx context.Context, params Code
 		u.Path += e.Result()
 	}
 	u.Path += "/code-scanning/analyses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "tool_name" parameter.
@@ -16644,7 +16597,6 @@ func (c *Client) EnterpriseAdminGetAuditLog(ctx context.Context, params Enterpri
 		u.Path += e.Result()
 	}
 	u.Path += "/audit-log"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "phrase" parameter.
@@ -16902,7 +16854,6 @@ func (c *Client) EnterpriseAdminGetProvisioningInformationForEnterpriseGroup(ctx
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "excludedAttributes" parameter.
@@ -17223,7 +17174,6 @@ func (c *Client) EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterprise
 		u.Path += e.Result()
 	}
 	u.Path += "/organizations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -17321,7 +17271,6 @@ func (c *Client) EnterpriseAdminListProvisionedGroupsEnterprise(ctx context.Cont
 		u.Path += e.Result()
 	}
 	u.Path += "/Groups"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "startIndex" parameter.
@@ -17478,7 +17427,6 @@ func (c *Client) EnterpriseAdminListProvisionedIdentitiesEnterprise(ctx context.
 		u.Path += e.Result()
 	}
 	u.Path += "/Users"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "startIndex" parameter.
@@ -17657,7 +17605,6 @@ func (c *Client) EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnt
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/permissions/organizations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -17755,7 +17702,6 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnerGroupsForEnterprise(ctx cont
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/runner-groups"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -17853,7 +17799,6 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.C
 		u.Path += e.Result()
 	}
 	u.Path += "/actions/runners"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -17966,7 +17911,6 @@ func (c *Client) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx co
 		u.Path += e.Result()
 	}
 	u.Path += "/runners"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -19976,7 +19920,6 @@ func (c *Client) GistsList(ctx context.Context, params GistsListParams) (res Gis
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -20088,7 +20031,6 @@ func (c *Client) GistsListComments(ctx context.Context, params GistsListComments
 		u.Path += e.Result()
 	}
 	u.Path += "/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -20183,7 +20125,6 @@ func (c *Client) GistsListCommits(ctx context.Context, params GistsListCommitsPa
 		u.Path += e.Result()
 	}
 	u.Path += "/commits"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -20280,7 +20221,6 @@ func (c *Client) GistsListForUser(ctx context.Context, params GistsListForUserPa
 		u.Path += e.Result()
 	}
 	u.Path += "/gists"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -20392,7 +20332,6 @@ func (c *Client) GistsListForks(ctx context.Context, params GistsListForksParams
 		u.Path += e.Result()
 	}
 	u.Path += "/forks"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -20477,7 +20416,6 @@ func (c *Client) GistsListPublic(ctx context.Context, params GistsListPublicPara
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/public"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -20576,7 +20514,6 @@ func (c *Client) GistsListStarred(ctx context.Context, params GistsListStarredPa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/gists/starred"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -21987,7 +21924,6 @@ func (c *Client) GitGetTree(ctx context.Context, params GitGetTreeParams) (res G
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "recursive" parameter.
@@ -22110,7 +22046,6 @@ func (c *Client) GitListMatchingRefs(ctx context.Context, params GitListMatching
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -24152,7 +24087,6 @@ func (c *Client) IssuesList(ctx context.Context, params IssuesListParams) (res I
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/issues"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "filter" parameter.
@@ -24435,7 +24369,6 @@ func (c *Client) IssuesListAssignees(ctx context.Context, params IssuesListAssig
 		u.Path += e.Result()
 	}
 	u.Path += "/assignees"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -24562,7 +24495,6 @@ func (c *Client) IssuesListComments(ctx context.Context, params IssuesListCommen
 		u.Path += e.Result()
 	}
 	u.Path += "/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -24691,7 +24623,6 @@ func (c *Client) IssuesListCommentsForRepo(ctx context.Context, params IssuesLis
 		u.Path += e.Result()
 	}
 	u.Path += "/issues/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sort" parameter.
@@ -24852,7 +24783,6 @@ func (c *Client) IssuesListEventsForRepo(ctx context.Context, params IssuesListE
 		u.Path += e.Result()
 	}
 	u.Path += "/issues/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -24942,7 +24872,6 @@ func (c *Client) IssuesListForAuthenticatedUser(ctx context.Context, params Issu
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/issues"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "filter" parameter.
@@ -25149,7 +25078,6 @@ func (c *Client) IssuesListForOrg(ctx context.Context, params IssuesListForOrgPa
 		u.Path += e.Result()
 	}
 	u.Path += "/issues"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "filter" parameter.
@@ -25371,7 +25299,6 @@ func (c *Client) IssuesListForRepo(ctx context.Context, params IssuesListForRepo
 		u.Path += e.Result()
 	}
 	u.Path += "/issues"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "milestone" parameter.
@@ -25649,7 +25576,6 @@ func (c *Client) IssuesListLabelsForMilestone(ctx context.Context, params Issues
 		u.Path += e.Result()
 	}
 	u.Path += "/labels"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -25759,7 +25685,6 @@ func (c *Client) IssuesListLabelsForRepo(ctx context.Context, params IssuesListL
 		u.Path += e.Result()
 	}
 	u.Path += "/labels"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -25884,7 +25809,6 @@ func (c *Client) IssuesListLabelsOnIssue(ctx context.Context, params IssuesListL
 		u.Path += e.Result()
 	}
 	u.Path += "/labels"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -25994,7 +25918,6 @@ func (c *Client) IssuesListMilestones(ctx context.Context, params IssuesListMile
 		u.Path += e.Result()
 	}
 	u.Path += "/milestones"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "state" parameter.
@@ -27127,7 +27050,6 @@ func (c *Client) LicensesGetAllCommonlyUsed(ctx context.Context, params Licenses
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/licenses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "featured" parameter.
@@ -27806,7 +27728,6 @@ func (c *Client) MigrationsGetCommitAuthors(ctx context.Context, params Migratio
 		u.Path += e.Result()
 	}
 	u.Path += "/import/authors"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -28094,7 +28015,6 @@ func (c *Client) MigrationsGetStatusForAuthenticatedUser(ctx context.Context, pa
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "exclude" parameter.
@@ -28199,7 +28119,6 @@ func (c *Client) MigrationsGetStatusForOrg(ctx context.Context, params Migration
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "exclude" parameter.
@@ -28270,7 +28189,6 @@ func (c *Client) MigrationsListForAuthenticatedUser(ctx context.Context, params 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/migrations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -28367,7 +28285,6 @@ func (c *Client) MigrationsListForOrg(ctx context.Context, params MigrationsList
 		u.Path += e.Result()
 	}
 	u.Path += "/migrations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -28502,7 +28419,6 @@ func (c *Client) MigrationsListReposForOrg(ctx context.Context, params Migration
 		u.Path += e.Result()
 	}
 	u.Path += "/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -28599,7 +28515,6 @@ func (c *Client) MigrationsListReposForUser(ctx context.Context, params Migratio
 		u.Path += e.Result()
 	}
 	u.Path += "/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -29992,7 +29907,6 @@ func (c *Client) OAuthAuthorizationsListAuthorizations(ctx context.Context, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/authorizations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -30107,7 +30021,6 @@ func (c *Client) OAuthAuthorizationsListGrants(ctx context.Context, params OAuth
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/applications/grants"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -31088,7 +31001,6 @@ func (c *Client) OrgsGetAuditLog(ctx context.Context, params OrgsGetAuditLogPara
 		u.Path += e.Result()
 	}
 	u.Path += "/audit-log"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "phrase" parameter.
@@ -31635,7 +31547,6 @@ func (c *Client) OrgsList(ctx context.Context, params OrgsListParams) (res OrgsL
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/organizations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -31793,7 +31704,6 @@ func (c *Client) OrgsListFailedInvitations(ctx context.Context, params OrgsListF
 		u.Path += e.Result()
 	}
 	u.Path += "/failed_invitations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -31880,7 +31790,6 @@ func (c *Client) OrgsListForAuthenticatedUser(ctx context.Context, params OrgsLi
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/orgs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -31982,7 +31891,6 @@ func (c *Client) OrgsListForUser(ctx context.Context, params OrgsListForUserPara
 		u.Path += e.Result()
 	}
 	u.Path += "/orgs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -32095,7 +32003,6 @@ func (c *Client) OrgsListInvitationTeams(ctx context.Context, params OrgsListInv
 		u.Path += e.Result()
 	}
 	u.Path += "/teams"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -32193,7 +32100,6 @@ func (c *Client) OrgsListMembers(ctx context.Context, params OrgsListMembersPara
 		u.Path += e.Result()
 	}
 	u.Path += "/members"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "filter" parameter.
@@ -32307,7 +32213,6 @@ func (c *Client) OrgsListMembershipsForAuthenticatedUser(ctx context.Context, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/memberships/orgs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "state" parameter.
@@ -32421,7 +32326,6 @@ func (c *Client) OrgsListOutsideCollaborators(ctx context.Context, params OrgsLi
 		u.Path += e.Result()
 	}
 	u.Path += "/outside_collaborators"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "filter" parameter.
@@ -32538,7 +32442,6 @@ func (c *Client) OrgsListPendingInvitations(ctx context.Context, params OrgsList
 		u.Path += e.Result()
 	}
 	u.Path += "/invitations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -32635,7 +32538,6 @@ func (c *Client) OrgsListPublicMembers(ctx context.Context, params OrgsListPubli
 		u.Path += e.Result()
 	}
 	u.Path += "/public_members"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -32814,7 +32716,6 @@ func (c *Client) OrgsListWebhookDeliveries(ctx context.Context, params OrgsListW
 		u.Path += e.Result()
 	}
 	u.Path += "/deliveries"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -32909,7 +32810,6 @@ func (c *Client) OrgsListWebhooks(ctx context.Context, params OrgsListWebhooksPa
 		u.Path += e.Result()
 	}
 	u.Path += "/hooks"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -34715,7 +34615,6 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUser
 		u.Path += e.Result()
 	}
 	u.Path += "/versions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -34861,7 +34760,6 @@ func (c *Client) PackagesGetAllPackageVersionsForPackageOwnedByOrg(ctx context.C
 		u.Path += e.Result()
 	}
 	u.Path += "/versions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -35616,7 +35514,6 @@ func (c *Client) PackagesListPackagesForAuthenticatedUser(ctx context.Context, p
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/packages"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "package_type" parameter.
@@ -35712,7 +35609,6 @@ func (c *Client) PackagesListPackagesForOrganization(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/packages"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "package_type" parameter.
@@ -35808,7 +35704,6 @@ func (c *Client) PackagesListPackagesForUser(ctx context.Context, params Package
 		u.Path += e.Result()
 	}
 	u.Path += "/packages"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "package_type" parameter.
@@ -35926,7 +35821,6 @@ func (c *Client) PackagesRestorePackageForAuthenticatedUser(ctx context.Context,
 		u.Path += e.Result()
 	}
 	u.Path += "/restore"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "token" parameter.
@@ -36047,7 +35941,6 @@ func (c *Client) PackagesRestorePackageForOrg(ctx context.Context, params Packag
 		u.Path += e.Result()
 	}
 	u.Path += "/restore"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "token" parameter.
@@ -36168,7 +36061,6 @@ func (c *Client) PackagesRestorePackageForUser(ctx context.Context, params Packa
 		u.Path += e.Result()
 	}
 	u.Path += "/restore"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "token" parameter.
@@ -37402,7 +37294,6 @@ func (c *Client) ProjectsListCards(ctx context.Context, params ProjectsListCards
 		u.Path += e.Result()
 	}
 	u.Path += "/cards"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "archived_state" parameter.
@@ -37520,7 +37411,6 @@ func (c *Client) ProjectsListCollaborators(ctx context.Context, params ProjectsL
 		u.Path += e.Result()
 	}
 	u.Path += "/collaborators"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "affiliation" parameter.
@@ -37632,7 +37522,6 @@ func (c *Client) ProjectsListColumns(ctx context.Context, params ProjectsListCol
 		u.Path += e.Result()
 	}
 	u.Path += "/columns"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -37731,7 +37620,6 @@ func (c *Client) ProjectsListForOrg(ctx context.Context, params ProjectsListForO
 		u.Path += e.Result()
 	}
 	u.Path += "/projects"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "state" parameter.
@@ -37862,7 +37750,6 @@ func (c *Client) ProjectsListForRepo(ctx context.Context, params ProjectsListFor
 		u.Path += e.Result()
 	}
 	u.Path += "/projects"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "state" parameter.
@@ -37974,7 +37861,6 @@ func (c *Client) ProjectsListForUser(ctx context.Context, params ProjectsListFor
 		u.Path += e.Result()
 	}
 	u.Path += "/projects"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "state" parameter.
@@ -39786,7 +39672,6 @@ func (c *Client) PullsList(ctx context.Context, params PullsListParams) (res Pul
 		u.Path += e.Result()
 	}
 	u.Path += "/pulls"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "state" parameter.
@@ -40013,7 +39898,6 @@ func (c *Client) PullsListCommentsForReview(ctx context.Context, params PullsLis
 		u.Path += e.Result()
 	}
 	u.Path += "/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -40142,7 +40026,6 @@ func (c *Client) PullsListCommits(ctx context.Context, params PullsListCommitsPa
 		u.Path += e.Result()
 	}
 	u.Path += "/commits"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -40270,7 +40153,6 @@ func (c *Client) PullsListFiles(ctx context.Context, params PullsListFilesParams
 		u.Path += e.Result()
 	}
 	u.Path += "/files"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -40395,7 +40277,6 @@ func (c *Client) PullsListRequestedReviewers(ctx context.Context, params PullsLi
 		u.Path += e.Result()
 	}
 	u.Path += "/requested_reviewers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -40523,7 +40404,6 @@ func (c *Client) PullsListReviewComments(ctx context.Context, params PullsListRe
 		u.Path += e.Result()
 	}
 	u.Path += "/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sort" parameter.
@@ -40687,7 +40567,6 @@ func (c *Client) PullsListReviewCommentsForRepo(ctx context.Context, params Pull
 		u.Path += e.Result()
 	}
 	u.Path += "/pulls/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sort" parameter.
@@ -40865,7 +40744,6 @@ func (c *Client) PullsListReviews(ctx context.Context, params PullsListReviewsPa
 		u.Path += e.Result()
 	}
 	u.Path += "/reviews"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -43617,7 +43495,6 @@ func (c *Client) ReactionsListForCommitComment(ctx context.Context, params React
 		u.Path += e.Result()
 	}
 	u.Path += "/reactions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "content" parameter.
@@ -43761,7 +43638,6 @@ func (c *Client) ReactionsListForIssue(ctx context.Context, params ReactionsList
 		u.Path += e.Result()
 	}
 	u.Path += "/reactions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "content" parameter.
@@ -43905,7 +43781,6 @@ func (c *Client) ReactionsListForIssueComment(ctx context.Context, params Reacti
 		u.Path += e.Result()
 	}
 	u.Path += "/reactions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "content" parameter.
@@ -44050,7 +43925,6 @@ func (c *Client) ReactionsListForPullRequestReviewComment(ctx context.Context, p
 		u.Path += e.Result()
 	}
 	u.Path += "/reactions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "content" parameter.
@@ -44213,7 +44087,6 @@ func (c *Client) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context,
 		u.Path += e.Result()
 	}
 	u.Path += "/reactions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "content" parameter.
@@ -44363,7 +44236,6 @@ func (c *Client) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context
 		u.Path += e.Result()
 	}
 	u.Path += "/reactions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "content" parameter.
@@ -44511,7 +44383,6 @@ func (c *Client) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/reactions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "content" parameter.
@@ -44646,7 +44517,6 @@ func (c *Client) ReactionsListForTeamDiscussionLegacy(ctx context.Context, param
 		u.Path += e.Result()
 	}
 	u.Path += "/reactions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "content" parameter.
@@ -45721,7 +45591,6 @@ func (c *Client) ReposCompareCommits(ctx context.Context, params ReposCompareCom
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -50050,7 +49919,6 @@ func (c *Client) ReposGetAllTopics(ctx context.Context, params ReposGetAllTopics
 		u.Path += e.Result()
 	}
 	u.Path += "/topics"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -50531,7 +50399,6 @@ func (c *Client) ReposGetClones(ctx context.Context, params ReposGetClonesParams
 		u.Path += e.Result()
 	}
 	u.Path += "/traffic/clones"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per" parameter.
@@ -50815,7 +50682,6 @@ func (c *Client) ReposGetCombinedStatusForRef(ctx context.Context, params ReposG
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -50985,7 +50851,6 @@ func (c *Client) ReposGetCommit(ctx context.Context, params ReposGetCommitParams
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -52447,7 +52312,6 @@ func (c *Client) ReposGetReadme(ctx context.Context, params ReposGetReadmeParams
 		u.Path += e.Result()
 	}
 	u.Path += "/readme"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "ref" parameter.
@@ -52558,7 +52422,6 @@ func (c *Client) ReposGetReadmeInDirectory(ctx context.Context, params ReposGetR
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "ref" parameter.
@@ -53360,7 +53223,6 @@ func (c *Client) ReposGetViews(ctx context.Context, params ReposGetViewsParams) 
 		u.Path += e.Result()
 	}
 	u.Path += "/traffic/views"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per" parameter.
@@ -53745,7 +53607,6 @@ func (c *Client) ReposListAutolinks(ctx context.Context, params ReposListAutolin
 		u.Path += e.Result()
 	}
 	u.Path += "/autolinks"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "page" parameter.
@@ -53838,7 +53699,6 @@ func (c *Client) ReposListBranches(ctx context.Context, params ReposListBranches
 		u.Path += e.Result()
 	}
 	u.Path += "/branches"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "protected" parameter.
@@ -54066,7 +53926,6 @@ func (c *Client) ReposListCollaborators(ctx context.Context, params ReposListCol
 		u.Path += e.Result()
 	}
 	u.Path += "/collaborators"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "affiliation" parameter.
@@ -54210,7 +54069,6 @@ func (c *Client) ReposListCommentsForCommit(ctx context.Context, params ReposLis
 		u.Path += e.Result()
 	}
 	u.Path += "/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -54325,7 +54183,6 @@ func (c *Client) ReposListCommitCommentsForRepo(ctx context.Context, params Repo
 		u.Path += e.Result()
 	}
 	u.Path += "/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -54455,7 +54312,6 @@ func (c *Client) ReposListCommitStatusesForRef(ctx context.Context, params Repos
 		u.Path += e.Result()
 	}
 	u.Path += "/statuses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -54598,7 +54454,6 @@ func (c *Client) ReposListCommits(ctx context.Context, params ReposListCommitsPa
 		u.Path += e.Result()
 	}
 	u.Path += "/commits"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sha" parameter.
@@ -54801,7 +54656,6 @@ func (c *Client) ReposListContributors(ctx context.Context, params ReposListCont
 		u.Path += e.Result()
 	}
 	u.Path += "/contributors"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "anon" parameter.
@@ -54928,7 +54782,6 @@ func (c *Client) ReposListDeployKeys(ctx context.Context, params ReposListDeploy
 		u.Path += e.Result()
 	}
 	u.Path += "/keys"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -55055,7 +54908,6 @@ func (c *Client) ReposListDeploymentStatuses(ctx context.Context, params ReposLi
 		u.Path += e.Result()
 	}
 	u.Path += "/statuses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -55167,7 +55019,6 @@ func (c *Client) ReposListDeployments(ctx context.Context, params ReposListDeplo
 		u.Path += e.Result()
 	}
 	u.Path += "/deployments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sha" parameter.
@@ -55320,7 +55171,6 @@ func (c *Client) ReposListForAuthenticatedUser(ctx context.Context, params Repos
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repos"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "visibility" parameter.
@@ -55536,7 +55386,6 @@ func (c *Client) ReposListForOrg(ctx context.Context, params ReposListForOrgPara
 		u.Path += e.Result()
 	}
 	u.Path += "/repos"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "type" parameter.
@@ -55685,7 +55534,6 @@ func (c *Client) ReposListForUser(ctx context.Context, params ReposListForUserPa
 		u.Path += e.Result()
 	}
 	u.Path += "/repos"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "type" parameter.
@@ -55846,7 +55694,6 @@ func (c *Client) ReposListForks(ctx context.Context, params ReposListForksParams
 		u.Path += e.Result()
 	}
 	u.Path += "/forks"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "sort" parameter.
@@ -55976,7 +55823,6 @@ func (c *Client) ReposListInvitations(ctx context.Context, params ReposListInvit
 		u.Path += e.Result()
 	}
 	u.Path += "/invitations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -56059,7 +55905,6 @@ func (c *Client) ReposListInvitationsForAuthenticatedUser(ctx context.Context, p
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/repository_invitations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -56245,7 +56090,6 @@ func (c *Client) ReposListPagesBuilds(ctx context.Context, params ReposListPages
 		u.Path += e.Result()
 	}
 	u.Path += "/pages/builds"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -56333,7 +56177,6 @@ func (c *Client) ReposListPublic(ctx context.Context, params ReposListPublicPara
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -56448,7 +56291,6 @@ func (c *Client) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, 
 		u.Path += e.Result()
 	}
 	u.Path += "/pulls"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -56573,7 +56415,6 @@ func (c *Client) ReposListReleaseAssets(ctx context.Context, params ReposListRel
 		u.Path += e.Result()
 	}
 	u.Path += "/assets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -56689,7 +56530,6 @@ func (c *Client) ReposListReleases(ctx context.Context, params ReposListReleases
 		u.Path += e.Result()
 	}
 	u.Path += "/releases"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -56799,7 +56639,6 @@ func (c *Client) ReposListTags(ctx context.Context, params ReposListTagsParams) 
 		u.Path += e.Result()
 	}
 	u.Path += "/tags"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -56909,7 +56748,6 @@ func (c *Client) ReposListTeams(ctx context.Context, params ReposListTeamsParams
 		u.Path += e.Result()
 	}
 	u.Path += "/teams"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -57036,7 +56874,6 @@ func (c *Client) ReposListWebhookDeliveries(ctx context.Context, params ReposLis
 		u.Path += e.Result()
 	}
 	u.Path += "/deliveries"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -57146,7 +56983,6 @@ func (c *Client) ReposListWebhooks(ctx context.Context, params ReposListWebhooks
 		u.Path += e.Result()
 	}
 	u.Path += "/hooks"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -60591,7 +60427,6 @@ func (c *Client) SearchCode(ctx context.Context, params SearchCodeParams) (res S
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/code"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "q" parameter.
@@ -60731,7 +60566,6 @@ func (c *Client) SearchCommits(ctx context.Context, params SearchCommitsParams) 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/commits"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "q" parameter.
@@ -60881,7 +60715,6 @@ func (c *Client) SearchIssuesAndPullRequests(ctx context.Context, params SearchI
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/issues"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "q" parameter.
@@ -61020,7 +60853,6 @@ func (c *Client) SearchLabels(ctx context.Context, params SearchLabelsParams) (r
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/labels"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "repository_id" parameter.
@@ -61179,7 +61011,6 @@ func (c *Client) SearchRepos(ctx context.Context, params SearchReposParams) (res
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/repositories"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "q" parameter.
@@ -61322,7 +61153,6 @@ func (c *Client) SearchTopics(ctx context.Context, params SearchTopicsParams) (r
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/topics"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "q" parameter.
@@ -61429,7 +61259,6 @@ func (c *Client) SearchUsers(ctx context.Context, params SearchUsersParams) (res
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/search/users"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "q" parameter.
@@ -61673,7 +61502,6 @@ func (c *Client) SecretScanningListAlertsForOrg(ctx context.Context, params Secr
 		u.Path += e.Result()
 	}
 	u.Path += "/secret-scanning/alerts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "state" parameter.
@@ -61822,7 +61650,6 @@ func (c *Client) SecretScanningListAlertsForRepo(ctx context.Context, params Sec
 		u.Path += e.Result()
 	}
 	u.Path += "/secret-scanning/alerts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "state" parameter.
@@ -65261,7 +65088,6 @@ func (c *Client) TeamsList(ctx context.Context, params TeamsListParams) (res Tea
 		u.Path += e.Result()
 	}
 	u.Path += "/teams"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -65375,7 +65201,6 @@ func (c *Client) TeamsListChildInOrg(ctx context.Context, params TeamsListChildI
 		u.Path += e.Result()
 	}
 	u.Path += "/teams"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -65474,7 +65299,6 @@ func (c *Client) TeamsListChildLegacy(ctx context.Context, params TeamsListChild
 		u.Path += e.Result()
 	}
 	u.Path += "/teams"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -65604,7 +65428,6 @@ func (c *Client) TeamsListDiscussionCommentsInOrg(ctx context.Context, params Te
 		u.Path += e.Result()
 	}
 	u.Path += "/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "direction" parameter.
@@ -65737,7 +65560,6 @@ func (c *Client) TeamsListDiscussionCommentsLegacy(ctx context.Context, params T
 		u.Path += e.Result()
 	}
 	u.Path += "/comments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "direction" parameter.
@@ -65869,7 +65691,6 @@ func (c *Client) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsList
 		u.Path += e.Result()
 	}
 	u.Path += "/discussions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "direction" parameter.
@@ -66004,7 +65825,6 @@ func (c *Client) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsLis
 		u.Path += e.Result()
 	}
 	u.Path += "/discussions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "direction" parameter.
@@ -66106,7 +65926,6 @@ func (c *Client) TeamsListForAuthenticatedUser(ctx context.Context, params Teams
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/teams"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -66275,7 +66094,6 @@ func (c *Client) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListI
 		u.Path += e.Result()
 	}
 	u.Path += "/team-sync/groups"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -66468,7 +66286,6 @@ func (c *Client) TeamsListMembersInOrg(ctx context.Context, params TeamsListMemb
 		u.Path += e.Result()
 	}
 	u.Path += "/members"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "role" parameter.
@@ -66585,7 +66402,6 @@ func (c *Client) TeamsListMembersLegacy(ctx context.Context, params TeamsListMem
 		u.Path += e.Result()
 	}
 	u.Path += "/members"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "role" parameter.
@@ -66719,7 +66535,6 @@ func (c *Client) TeamsListPendingInvitationsInOrg(ctx context.Context, params Te
 		u.Path += e.Result()
 	}
 	u.Path += "/invitations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -66822,7 +66637,6 @@ func (c *Client) TeamsListPendingInvitationsLegacy(ctx context.Context, params T
 		u.Path += e.Result()
 	}
 	u.Path += "/invitations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -66936,7 +66750,6 @@ func (c *Client) TeamsListProjectsInOrg(ctx context.Context, params TeamsListPro
 		u.Path += e.Result()
 	}
 	u.Path += "/projects"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -67036,7 +66849,6 @@ func (c *Client) TeamsListProjectsLegacy(ctx context.Context, params TeamsListPr
 		u.Path += e.Result()
 	}
 	u.Path += "/projects"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -67150,7 +66962,6 @@ func (c *Client) TeamsListReposInOrg(ctx context.Context, params TeamsListReposI
 		u.Path += e.Result()
 	}
 	u.Path += "/repos"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -67249,7 +67060,6 @@ func (c *Client) TeamsListReposLegacy(ctx context.Context, params TeamsListRepos
 		u.Path += e.Result()
 	}
 	u.Path += "/repos"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -69460,7 +69270,6 @@ func (c *Client) UsersGetContextForUser(ctx context.Context, params UsersGetCont
 		u.Path += e.Result()
 	}
 	u.Path += "/hovercard"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "subject_type" parameter.
@@ -69668,7 +69477,6 @@ func (c *Client) UsersList(ctx context.Context, params UsersListParams) (res Use
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/users"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "since" parameter.
@@ -69796,7 +69604,6 @@ func (c *Client) UsersListEmailsForAuthenticated(ctx context.Context, params Use
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/emails"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -69878,7 +69685,6 @@ func (c *Client) UsersListFollowedByAuthenticated(ctx context.Context, params Us
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/following"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -69960,7 +69766,6 @@ func (c *Client) UsersListFollowersForAuthenticatedUser(ctx context.Context, par
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/followers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -70057,7 +69862,6 @@ func (c *Client) UsersListFollowersForUser(ctx context.Context, params UsersList
 		u.Path += e.Result()
 	}
 	u.Path += "/followers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -70154,7 +69958,6 @@ func (c *Client) UsersListFollowingForUser(ctx context.Context, params UsersList
 		u.Path += e.Result()
 	}
 	u.Path += "/following"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -70238,7 +70041,6 @@ func (c *Client) UsersListGpgKeysForAuthenticated(ctx context.Context, params Us
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/gpg_keys"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -70335,7 +70137,6 @@ func (c *Client) UsersListGpgKeysForUser(ctx context.Context, params UsersListGp
 		u.Path += e.Result()
 	}
 	u.Path += "/gpg_keys"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -70420,7 +70221,6 @@ func (c *Client) UsersListPublicEmailsForAuthenticated(ctx context.Context, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/public_emails"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -70517,7 +70317,6 @@ func (c *Client) UsersListPublicKeysForUser(ctx context.Context, params UsersLis
 		u.Path += e.Result()
 	}
 	u.Path += "/keys"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.
@@ -70601,7 +70400,6 @@ func (c *Client) UsersListPublicSSHKeysForAuthenticated(ctx context.Context, par
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/user/keys"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "per_page" parameter.

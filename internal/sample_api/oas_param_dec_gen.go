@@ -281,15 +281,15 @@ func decodeFoobarGetParams(args [0]string, r *http.Request) (params FoobarGetPar
 }
 
 func decodeGetHeaderParams(args [0]string, r *http.Request) (params GetHeaderParams, _ error) {
+	h := uri.NewHeaderDecoder(r.Header)
 	// Decode header: x-auth-token.
 	{
-		param := r.Header.Get("x-auth-token")
-		if len(param) > 0 {
-			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
-				Value:   param,
-				Explode: false,
-			})
-			if err := func() error {
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:    "x-auth-token",
+			Explode: false,
+		}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				val, err := d.DecodeValue()
 				if err != nil {
 					return err
@@ -302,7 +302,7 @@ func decodeGetHeaderParams(args [0]string, r *http.Request) (params GetHeaderPar
 
 				params.XAuthToken = c
 				return nil
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "header: x-auth-token: parse")
 			}
 		} else {
@@ -349,6 +349,7 @@ func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params Pe
 
 func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
+	h := uri.NewHeaderDecoder(r.Header)
 	// Decode query: petID.
 	{
 		cfg := uri.QueryParameterDecodingConfig{
@@ -397,13 +398,12 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 	}
 	// Decode header: x-tags.
 	{
-		param := r.Header.Get("x-tags")
-		if len(param) > 0 {
-			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
-				Value:   param,
-				Explode: false,
-			})
-			if err := func() error {
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:    "x-tags",
+			Explode: false,
+		}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotXTagsVal uuid.UUID
 					if err := func() error {
@@ -425,7 +425,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 					params.XTags = append(params.XTags, paramsDotXTagsVal)
 					return nil
 				})
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "header: x-tags: parse")
 			}
 		} else {
@@ -434,13 +434,12 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 	}
 	// Decode header: x-scope.
 	{
-		param := r.Header.Get("x-scope")
-		if len(param) > 0 {
-			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
-				Value:   param,
-				Explode: false,
-			})
-			if err := func() error {
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:    "x-scope",
+			Explode: false,
+		}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				return d.DecodeArray(func(d uri.Decoder) error {
 					var paramsDotXScopeVal string
 					if err := func() error {
@@ -462,7 +461,7 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 					params.XScope = append(params.XScope, paramsDotXScopeVal)
 					return nil
 				})
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, "header: x-scope: parse")
 			}
 		} else {

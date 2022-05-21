@@ -122,7 +122,6 @@ func (c *Client) MarketCandlesGet(ctx context.Context, params MarketCandlesGetPa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/candles"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -316,7 +315,6 @@ func (c *Client) MarketOrderbookGet(ctx context.Context, params MarketOrderbookG
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/orderbook"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -392,7 +390,6 @@ func (c *Client) MarketSearchByFigiGet(ctx context.Context, params MarketSearchB
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/search/by-figi"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -454,7 +451,6 @@ func (c *Client) MarketSearchByTickerGet(ctx context.Context, params MarketSearc
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/market/search/by-ticker"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "ticker" parameter.
@@ -561,7 +557,6 @@ func (c *Client) OperationsGet(ctx context.Context, params OperationsGetParams) 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/operations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "from" parameter.
@@ -671,7 +666,6 @@ func (c *Client) OrdersCancelPost(ctx context.Context, params OrdersCancelPostPa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/cancel"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "orderId" parameter.
@@ -750,7 +744,6 @@ func (c *Client) OrdersGet(ctx context.Context, params OrdersGetParams) (res Ord
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -835,7 +828,6 @@ func (c *Client) OrdersLimitOrderPost(ctx context.Context, request LimitOrderReq
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/limit-order"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -936,7 +928,6 @@ func (c *Client) OrdersMarketOrderPost(ctx context.Context, request MarketOrderR
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/orders/market-order"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "figi" parameter.
@@ -1017,7 +1008,6 @@ func (c *Client) PortfolioCurrenciesGet(ctx context.Context, params PortfolioCur
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/portfolio/currencies"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1082,7 +1072,6 @@ func (c *Client) PortfolioGet(ctx context.Context, params PortfolioGetParams) (r
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/portfolio"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1149,7 +1138,6 @@ func (c *Client) SandboxClearPost(ctx context.Context, params SandboxClearPostPa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/clear"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1234,7 +1222,6 @@ func (c *Client) SandboxCurrenciesBalancePost(ctx context.Context, request Sandb
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/currencies/balance"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1321,7 +1308,6 @@ func (c *Client) SandboxPositionsBalancePost(ctx context.Context, request Sandbo
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/positions/balance"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.
@@ -1466,7 +1452,6 @@ func (c *Client) SandboxRemovePost(ctx context.Context, params SandboxRemovePost
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/sandbox/remove"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "brokerAccountId" parameter.

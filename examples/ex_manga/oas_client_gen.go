@@ -131,7 +131,6 @@ func (c *Client) Search(ctx context.Context, params SearchParams) (res SearchRes
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/search"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "query" parameter.
@@ -208,7 +207,6 @@ func (c *Client) SearchByTagID(ctx context.Context, params SearchByTagIDParams) 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/galleries/tagged"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "tag_id" parameter.

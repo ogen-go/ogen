@@ -2822,7 +2822,6 @@ func (c *Client) ListAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/mutatingwebhookconfigurations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -3044,7 +3043,6 @@ func (c *Client) ListAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/validatingwebhookconfigurations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -3266,7 +3264,6 @@ func (c *Client) ListApiextensionsV1CustomResourceDefinition(ctx context.Context
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/customresourcedefinitions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -3488,7 +3485,6 @@ func (c *Client) ListApiregistrationV1APIService(ctx context.Context, params Lis
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/apiservices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -3710,7 +3706,6 @@ func (c *Client) ListAppsV1ControllerRevisionForAllNamespaces(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/controllerrevisions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -3932,7 +3927,6 @@ func (c *Client) ListAppsV1DaemonSetForAllNamespaces(ctx context.Context, params
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/daemonsets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -4154,7 +4148,6 @@ func (c *Client) ListAppsV1DeploymentForAllNamespaces(ctx context.Context, param
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/deployments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -4391,7 +4384,6 @@ func (c *Client) ListAppsV1NamespacedControllerRevision(ctx context.Context, par
 		u.Path += e.Result()
 	}
 	u.Path += "/controllerrevisions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -4628,7 +4620,6 @@ func (c *Client) ListAppsV1NamespacedDaemonSet(ctx context.Context, params ListA
 		u.Path += e.Result()
 	}
 	u.Path += "/daemonsets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -4865,7 +4856,6 @@ func (c *Client) ListAppsV1NamespacedDeployment(ctx context.Context, params List
 		u.Path += e.Result()
 	}
 	u.Path += "/deployments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -5102,7 +5092,6 @@ func (c *Client) ListAppsV1NamespacedReplicaSet(ctx context.Context, params List
 		u.Path += e.Result()
 	}
 	u.Path += "/replicasets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -5339,7 +5328,6 @@ func (c *Client) ListAppsV1NamespacedStatefulSet(ctx context.Context, params Lis
 		u.Path += e.Result()
 	}
 	u.Path += "/statefulsets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -5561,7 +5549,6 @@ func (c *Client) ListAppsV1ReplicaSetForAllNamespaces(ctx context.Context, param
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/replicasets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -5783,7 +5770,6 @@ func (c *Client) ListAppsV1StatefulSetForAllNamespaces(ctx context.Context, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/statefulsets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -6005,7 +5991,6 @@ func (c *Client) ListAutoscalingV1HorizontalPodAutoscalerForAllNamespaces(ctx co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -6242,7 +6227,6 @@ func (c *Client) ListAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 		u.Path += e.Result()
 	}
 	u.Path += "/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -6464,7 +6448,6 @@ func (c *Client) ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespaces(c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -6701,7 +6684,6 @@ func (c *Client) ListAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 		u.Path += e.Result()
 	}
 	u.Path += "/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -6923,7 +6905,6 @@ func (c *Client) ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespaces(c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -7160,7 +7141,6 @@ func (c *Client) ListAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 		u.Path += e.Result()
 	}
 	u.Path += "/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -7382,7 +7362,6 @@ func (c *Client) ListBatchV1CronJobForAllNamespaces(ctx context.Context, params 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/cronjobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -7604,7 +7583,6 @@ func (c *Client) ListBatchV1JobForAllNamespaces(ctx context.Context, params List
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/jobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -7841,7 +7819,6 @@ func (c *Client) ListBatchV1NamespacedCronJob(ctx context.Context, params ListBa
 		u.Path += e.Result()
 	}
 	u.Path += "/cronjobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -8078,7 +8055,6 @@ func (c *Client) ListBatchV1NamespacedJob(ctx context.Context, params ListBatchV
 		u.Path += e.Result()
 	}
 	u.Path += "/jobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -8300,7 +8276,6 @@ func (c *Client) ListBatchV1beta1CronJobForAllNamespaces(ctx context.Context, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/cronjobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -8537,7 +8512,6 @@ func (c *Client) ListBatchV1beta1NamespacedCronJob(ctx context.Context, params L
 		u.Path += e.Result()
 	}
 	u.Path += "/cronjobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -8759,7 +8733,6 @@ func (c *Client) ListCertificatesV1CertificateSigningRequest(ctx context.Context
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/certificatesigningrequests"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -8981,7 +8954,6 @@ func (c *Client) ListCoordinationV1LeaseForAllNamespaces(ctx context.Context, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/leases"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -9218,7 +9190,6 @@ func (c *Client) ListCoordinationV1NamespacedLease(ctx context.Context, params L
 		u.Path += e.Result()
 	}
 	u.Path += "/leases"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -9440,7 +9411,6 @@ func (c *Client) ListCoreV1ComponentStatus(ctx context.Context, params ListCoreV
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/componentstatuses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -9662,7 +9632,6 @@ func (c *Client) ListCoreV1ConfigMapForAllNamespaces(ctx context.Context, params
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/configmaps"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -9884,7 +9853,6 @@ func (c *Client) ListCoreV1EndpointsForAllNamespaces(ctx context.Context, params
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/endpoints"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -10106,7 +10074,6 @@ func (c *Client) ListCoreV1EventForAllNamespaces(ctx context.Context, params Lis
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -10328,7 +10295,6 @@ func (c *Client) ListCoreV1LimitRangeForAllNamespaces(ctx context.Context, param
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/limitranges"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -10550,7 +10516,6 @@ func (c *Client) ListCoreV1Namespace(ctx context.Context, params ListCoreV1Names
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/namespaces"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -10787,7 +10752,6 @@ func (c *Client) ListCoreV1NamespacedConfigMap(ctx context.Context, params ListC
 		u.Path += e.Result()
 	}
 	u.Path += "/configmaps"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -11024,7 +10988,6 @@ func (c *Client) ListCoreV1NamespacedEndpoints(ctx context.Context, params ListC
 		u.Path += e.Result()
 	}
 	u.Path += "/endpoints"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -11261,7 +11224,6 @@ func (c *Client) ListCoreV1NamespacedEvent(ctx context.Context, params ListCoreV
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -11498,7 +11460,6 @@ func (c *Client) ListCoreV1NamespacedLimitRange(ctx context.Context, params List
 		u.Path += e.Result()
 	}
 	u.Path += "/limitranges"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -11735,7 +11696,6 @@ func (c *Client) ListCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 		u.Path += e.Result()
 	}
 	u.Path += "/persistentvolumeclaims"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -11972,7 +11932,6 @@ func (c *Client) ListCoreV1NamespacedPod(ctx context.Context, params ListCoreV1N
 		u.Path += e.Result()
 	}
 	u.Path += "/pods"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -12209,7 +12168,6 @@ func (c *Client) ListCoreV1NamespacedPodTemplate(ctx context.Context, params Lis
 		u.Path += e.Result()
 	}
 	u.Path += "/podtemplates"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -12446,7 +12404,6 @@ func (c *Client) ListCoreV1NamespacedReplicationController(ctx context.Context, 
 		u.Path += e.Result()
 	}
 	u.Path += "/replicationcontrollers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -12683,7 +12640,6 @@ func (c *Client) ListCoreV1NamespacedResourceQuota(ctx context.Context, params L
 		u.Path += e.Result()
 	}
 	u.Path += "/resourcequotas"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -12920,7 +12876,6 @@ func (c *Client) ListCoreV1NamespacedSecret(ctx context.Context, params ListCore
 		u.Path += e.Result()
 	}
 	u.Path += "/secrets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -13157,7 +13112,6 @@ func (c *Client) ListCoreV1NamespacedService(ctx context.Context, params ListCor
 		u.Path += e.Result()
 	}
 	u.Path += "/services"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -13394,7 +13348,6 @@ func (c *Client) ListCoreV1NamespacedServiceAccount(ctx context.Context, params 
 		u.Path += e.Result()
 	}
 	u.Path += "/serviceaccounts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -13616,7 +13569,6 @@ func (c *Client) ListCoreV1Node(ctx context.Context, params ListCoreV1NodeParams
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/nodes"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -13838,7 +13790,6 @@ func (c *Client) ListCoreV1PersistentVolume(ctx context.Context, params ListCore
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumes"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -14060,7 +14011,6 @@ func (c *Client) ListCoreV1PersistentVolumeClaimForAllNamespaces(ctx context.Con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/persistentvolumeclaims"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -14282,7 +14232,6 @@ func (c *Client) ListCoreV1PodForAllNamespaces(ctx context.Context, params ListC
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/pods"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -14504,7 +14453,6 @@ func (c *Client) ListCoreV1PodTemplateForAllNamespaces(ctx context.Context, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/podtemplates"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -14726,7 +14674,6 @@ func (c *Client) ListCoreV1ReplicationControllerForAllNamespaces(ctx context.Con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/replicationcontrollers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -14948,7 +14895,6 @@ func (c *Client) ListCoreV1ResourceQuotaForAllNamespaces(ctx context.Context, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/resourcequotas"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -15170,7 +15116,6 @@ func (c *Client) ListCoreV1SecretForAllNamespaces(ctx context.Context, params Li
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/secrets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -15392,7 +15337,6 @@ func (c *Client) ListCoreV1ServiceAccountForAllNamespaces(ctx context.Context, p
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/serviceaccounts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -15614,7 +15558,6 @@ func (c *Client) ListCoreV1ServiceForAllNamespaces(ctx context.Context, params L
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/services"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -15836,7 +15779,6 @@ func (c *Client) ListDiscoveryV1EndpointSliceForAllNamespaces(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/endpointslices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -16073,7 +16015,6 @@ func (c *Client) ListDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 		u.Path += e.Result()
 	}
 	u.Path += "/endpointslices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -16295,7 +16236,6 @@ func (c *Client) ListDiscoveryV1beta1EndpointSliceForAllNamespaces(ctx context.C
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/endpointslices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -16532,7 +16472,6 @@ func (c *Client) ListDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 		u.Path += e.Result()
 	}
 	u.Path += "/endpointslices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -16754,7 +16693,6 @@ func (c *Client) ListEventsV1EventForAllNamespaces(ctx context.Context, params L
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -16991,7 +16929,6 @@ func (c *Client) ListEventsV1NamespacedEvent(ctx context.Context, params ListEve
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -17213,7 +17150,6 @@ func (c *Client) ListEventsV1beta1EventForAllNamespaces(ctx context.Context, par
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -17450,7 +17386,6 @@ func (c *Client) ListEventsV1beta1NamespacedEvent(ctx context.Context, params Li
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -17672,7 +17607,6 @@ func (c *Client) ListFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/flowschemas"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -17894,7 +17828,6 @@ func (c *Client) ListFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/prioritylevelconfigurations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -18116,7 +18049,6 @@ func (c *Client) ListFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/flowschemas"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -18338,7 +18270,6 @@ func (c *Client) ListFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/prioritylevelconfigurations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -18560,7 +18491,6 @@ func (c *Client) ListInternalApiserverV1alpha1StorageVersion(ctx context.Context
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/storageversions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -18782,7 +18712,6 @@ func (c *Client) ListNetworkingV1IngressClass(ctx context.Context, params ListNe
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingressclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -19004,7 +18933,6 @@ func (c *Client) ListNetworkingV1IngressForAllNamespaces(ctx context.Context, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/ingresses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -19241,7 +19169,6 @@ func (c *Client) ListNetworkingV1NamespacedIngress(ctx context.Context, params L
 		u.Path += e.Result()
 	}
 	u.Path += "/ingresses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -19478,7 +19405,6 @@ func (c *Client) ListNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 		u.Path += e.Result()
 	}
 	u.Path += "/networkpolicies"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -19700,7 +19626,6 @@ func (c *Client) ListNetworkingV1NetworkPolicyForAllNamespaces(ctx context.Conte
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/networkpolicies"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -19922,7 +19847,6 @@ func (c *Client) ListNodeV1RuntimeClass(ctx context.Context, params ListNodeV1Ru
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/runtimeclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -20144,7 +20068,6 @@ func (c *Client) ListNodeV1alpha1RuntimeClass(ctx context.Context, params ListNo
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/runtimeclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -20366,7 +20289,6 @@ func (c *Client) ListNodeV1beta1RuntimeClass(ctx context.Context, params ListNod
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/runtimeclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -20603,7 +20525,6 @@ func (c *Client) ListPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 		u.Path += e.Result()
 	}
 	u.Path += "/poddisruptionbudgets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -20825,7 +20746,6 @@ func (c *Client) ListPolicyV1PodDisruptionBudgetForAllNamespaces(ctx context.Con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/poddisruptionbudgets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -21062,7 +20982,6 @@ func (c *Client) ListPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 		u.Path += e.Result()
 	}
 	u.Path += "/poddisruptionbudgets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -21284,7 +21203,6 @@ func (c *Client) ListPolicyV1beta1PodDisruptionBudgetForAllNamespaces(ctx contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/poddisruptionbudgets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -21506,7 +21424,6 @@ func (c *Client) ListPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/podsecuritypolicies"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -21728,7 +21645,6 @@ func (c *Client) ListRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterroles"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -21950,7 +21866,6 @@ func (c *Client) ListRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/clusterrolebindings"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -22187,7 +22102,6 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 		u.Path += e.Result()
 	}
 	u.Path += "/roles"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -22424,7 +22338,6 @@ func (c *Client) ListRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 		u.Path += e.Result()
 	}
 	u.Path += "/rolebindings"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -22646,7 +22559,6 @@ func (c *Client) ListRbacAuthorizationV1RoleBindingForAllNamespaces(ctx context.
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/rolebindings"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -22868,7 +22780,6 @@ func (c *Client) ListRbacAuthorizationV1RoleForAllNamespaces(ctx context.Context
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/roles"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -23090,7 +23001,6 @@ func (c *Client) ListSchedulingV1PriorityClass(ctx context.Context, params ListS
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/priorityclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -23312,7 +23222,6 @@ func (c *Client) ListStorageV1CSIDriver(ctx context.Context, params ListStorageV
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csidrivers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -23534,7 +23443,6 @@ func (c *Client) ListStorageV1CSINode(ctx context.Context, params ListStorageV1C
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/csinodes"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -23756,7 +23664,6 @@ func (c *Client) ListStorageV1StorageClass(ctx context.Context, params ListStora
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/storageclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -23978,7 +23885,6 @@ func (c *Client) ListStorageV1VolumeAttachment(ctx context.Context, params ListS
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/volumeattachments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -24200,7 +24106,6 @@ func (c *Client) ListStorageV1alpha1CSIStorageCapacityForAllNamespaces(ctx conte
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/csistoragecapacities"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -24437,7 +24342,6 @@ func (c *Client) ListStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 		u.Path += e.Result()
 	}
 	u.Path += "/csistoragecapacities"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -24659,7 +24563,6 @@ func (c *Client) ListStorageV1beta1CSIStorageCapacityForAllNamespaces(ctx contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/csistoragecapacities"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -24896,7 +24799,6 @@ func (c *Client) ListStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 		u.Path += e.Result()
 	}
 	u.Path += "/csistoragecapacities"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -25240,7 +25142,6 @@ func (c *Client) ReadAdmissionregistrationV1MutatingWebhookConfiguration(ctx con
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -25323,7 +25224,6 @@ func (c *Client) ReadAdmissionregistrationV1ValidatingWebhookConfiguration(ctx c
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -25406,7 +25306,6 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinition(ctx context.Context
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -25490,7 +25389,6 @@ func (c *Client) ReadApiextensionsV1CustomResourceDefinitionStatus(ctx context.C
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -25573,7 +25471,6 @@ func (c *Client) ReadApiregistrationV1APIService(ctx context.Context, params Rea
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -25657,7 +25554,6 @@ func (c *Client) ReadApiregistrationV1APIServiceStatus(ctx context.Context, para
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -25755,7 +25651,6 @@ func (c *Client) ReadAppsV1NamespacedControllerRevision(ctx context.Context, par
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -25853,7 +25748,6 @@ func (c *Client) ReadAppsV1NamespacedDaemonSet(ctx context.Context, params ReadA
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -25952,7 +25846,6 @@ func (c *Client) ReadAppsV1NamespacedDaemonSetStatus(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26050,7 +25943,6 @@ func (c *Client) ReadAppsV1NamespacedDeployment(ctx context.Context, params Read
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26149,7 +26041,6 @@ func (c *Client) ReadAppsV1NamespacedDeploymentScale(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/scale"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26248,7 +26139,6 @@ func (c *Client) ReadAppsV1NamespacedDeploymentStatus(ctx context.Context, param
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26346,7 +26236,6 @@ func (c *Client) ReadAppsV1NamespacedReplicaSet(ctx context.Context, params Read
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26445,7 +26334,6 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetScale(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/scale"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26544,7 +26432,6 @@ func (c *Client) ReadAppsV1NamespacedReplicaSetStatus(ctx context.Context, param
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26642,7 +26529,6 @@ func (c *Client) ReadAppsV1NamespacedStatefulSet(ctx context.Context, params Rea
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26741,7 +26627,6 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetScale(ctx context.Context, param
 		u.Path += e.Result()
 	}
 	u.Path += "/scale"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26840,7 +26725,6 @@ func (c *Client) ReadAppsV1NamespacedStatefulSetStatus(ctx context.Context, para
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -26938,7 +26822,6 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context.
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27037,7 +26920,6 @@ func (c *Client) ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatus(ctx co
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27135,7 +27017,6 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx con
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27234,7 +27115,6 @@ func (c *Client) ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatus(c
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27332,7 +27212,6 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx con
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27431,7 +27310,6 @@ func (c *Client) ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatus(c
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27529,7 +27407,6 @@ func (c *Client) ReadBatchV1NamespacedCronJob(ctx context.Context, params ReadBa
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27628,7 +27505,6 @@ func (c *Client) ReadBatchV1NamespacedCronJobStatus(ctx context.Context, params 
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27726,7 +27602,6 @@ func (c *Client) ReadBatchV1NamespacedJob(ctx context.Context, params ReadBatchV
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27825,7 +27700,6 @@ func (c *Client) ReadBatchV1NamespacedJobStatus(ctx context.Context, params Read
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -27923,7 +27797,6 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJob(ctx context.Context, params R
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28022,7 +27895,6 @@ func (c *Client) ReadBatchV1beta1NamespacedCronJobStatus(ctx context.Context, pa
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28105,7 +27977,6 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequest(ctx context.Context
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28189,7 +28060,6 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestApproval(ctx context
 		u.Path += e.Result()
 	}
 	u.Path += "/approval"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28273,7 +28143,6 @@ func (c *Client) ReadCertificatesV1CertificateSigningRequestStatus(ctx context.C
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28371,7 +28240,6 @@ func (c *Client) ReadCoordinationV1NamespacedLease(ctx context.Context, params R
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28454,7 +28322,6 @@ func (c *Client) ReadCoreV1ComponentStatus(ctx context.Context, params ReadCoreV
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28537,7 +28404,6 @@ func (c *Client) ReadCoreV1Namespace(ctx context.Context, params ReadCoreV1Names
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28621,7 +28487,6 @@ func (c *Client) ReadCoreV1NamespaceStatus(ctx context.Context, params ReadCoreV
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28719,7 +28584,6 @@ func (c *Client) ReadCoreV1NamespacedConfigMap(ctx context.Context, params ReadC
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28817,7 +28681,6 @@ func (c *Client) ReadCoreV1NamespacedEndpoints(ctx context.Context, params ReadC
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -28915,7 +28778,6 @@ func (c *Client) ReadCoreV1NamespacedEvent(ctx context.Context, params ReadCoreV
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -29013,7 +28875,6 @@ func (c *Client) ReadCoreV1NamespacedLimitRange(ctx context.Context, params Read
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -29111,7 +28972,6 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaim(ctx context.Context, 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -29210,7 +29070,6 @@ func (c *Client) ReadCoreV1NamespacedPersistentVolumeClaimStatus(ctx context.Con
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -29308,7 +29167,6 @@ func (c *Client) ReadCoreV1NamespacedPod(ctx context.Context, params ReadCoreV1N
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -29407,7 +29265,6 @@ func (c *Client) ReadCoreV1NamespacedPodEphemeralcontainers(ctx context.Context,
 		u.Path += e.Result()
 	}
 	u.Path += "/ephemeralcontainers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -29506,7 +29363,6 @@ func (c *Client) ReadCoreV1NamespacedPodLog(ctx context.Context, params ReadCore
 		u.Path += e.Result()
 	}
 	u.Path += "/log"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "container" parameter.
@@ -29741,7 +29597,6 @@ func (c *Client) ReadCoreV1NamespacedPodStatus(ctx context.Context, params ReadC
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -29839,7 +29694,6 @@ func (c *Client) ReadCoreV1NamespacedPodTemplate(ctx context.Context, params Rea
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -29937,7 +29791,6 @@ func (c *Client) ReadCoreV1NamespacedReplicationController(ctx context.Context, 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30036,7 +29889,6 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerScale(ctx context.Cont
 		u.Path += e.Result()
 	}
 	u.Path += "/scale"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30135,7 +29987,6 @@ func (c *Client) ReadCoreV1NamespacedReplicationControllerStatus(ctx context.Con
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30233,7 +30084,6 @@ func (c *Client) ReadCoreV1NamespacedResourceQuota(ctx context.Context, params R
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30332,7 +30182,6 @@ func (c *Client) ReadCoreV1NamespacedResourceQuotaStatus(ctx context.Context, pa
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30430,7 +30279,6 @@ func (c *Client) ReadCoreV1NamespacedSecret(ctx context.Context, params ReadCore
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30528,7 +30376,6 @@ func (c *Client) ReadCoreV1NamespacedService(ctx context.Context, params ReadCor
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30626,7 +30473,6 @@ func (c *Client) ReadCoreV1NamespacedServiceAccount(ctx context.Context, params 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30725,7 +30571,6 @@ func (c *Client) ReadCoreV1NamespacedServiceStatus(ctx context.Context, params R
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30808,7 +30653,6 @@ func (c *Client) ReadCoreV1Node(ctx context.Context, params ReadCoreV1NodeParams
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30892,7 +30736,6 @@ func (c *Client) ReadCoreV1NodeStatus(ctx context.Context, params ReadCoreV1Node
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -30975,7 +30818,6 @@ func (c *Client) ReadCoreV1PersistentVolume(ctx context.Context, params ReadCore
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31059,7 +30901,6 @@ func (c *Client) ReadCoreV1PersistentVolumeStatus(ctx context.Context, params Re
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31157,7 +30998,6 @@ func (c *Client) ReadDiscoveryV1NamespacedEndpointSlice(ctx context.Context, par
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31255,7 +31095,6 @@ func (c *Client) ReadDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Context
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31353,7 +31192,6 @@ func (c *Client) ReadEventsV1NamespacedEvent(ctx context.Context, params ReadEve
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31451,7 +31289,6 @@ func (c *Client) ReadEventsV1beta1NamespacedEvent(ctx context.Context, params Re
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31534,7 +31371,6 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context, 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31618,7 +31454,6 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1FlowSchemaStatus(ctx context.Con
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31701,7 +31536,6 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx c
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31785,7 +31619,6 @@ func (c *Client) ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatus
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31868,7 +31701,6 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context, 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -31952,7 +31784,6 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2FlowSchemaStatus(ctx context.Con
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32035,7 +31866,6 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx c
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32119,7 +31949,6 @@ func (c *Client) ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatus
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32202,7 +32031,6 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersion(ctx context.Context
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32286,7 +32114,6 @@ func (c *Client) ReadInternalApiserverV1alpha1StorageVersionStatus(ctx context.C
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32369,7 +32196,6 @@ func (c *Client) ReadNetworkingV1IngressClass(ctx context.Context, params ReadNe
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32467,7 +32293,6 @@ func (c *Client) ReadNetworkingV1NamespacedIngress(ctx context.Context, params R
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32566,7 +32391,6 @@ func (c *Client) ReadNetworkingV1NamespacedIngressStatus(ctx context.Context, pa
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32664,7 +32488,6 @@ func (c *Client) ReadNetworkingV1NamespacedNetworkPolicy(ctx context.Context, pa
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32747,7 +32570,6 @@ func (c *Client) ReadNodeV1RuntimeClass(ctx context.Context, params ReadNodeV1Ru
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32830,7 +32652,6 @@ func (c *Client) ReadNodeV1alpha1RuntimeClass(ctx context.Context, params ReadNo
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -32913,7 +32734,6 @@ func (c *Client) ReadNodeV1beta1RuntimeClass(ctx context.Context, params ReadNod
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33011,7 +32831,6 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudget(ctx context.Context, 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33110,7 +32929,6 @@ func (c *Client) ReadPolicyV1NamespacedPodDisruptionBudgetStatus(ctx context.Con
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33208,7 +33026,6 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Cont
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33307,7 +33124,6 @@ func (c *Client) ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatus(ctx contex
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33390,7 +33206,6 @@ func (c *Client) ReadPolicyV1beta1PodSecurityPolicy(ctx context.Context, params 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33473,7 +33288,6 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRole(ctx context.Context, params 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33556,7 +33370,6 @@ func (c *Client) ReadRbacAuthorizationV1ClusterRoleBinding(ctx context.Context, 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33654,7 +33467,6 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRole(ctx context.Context, para
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33752,7 +33564,6 @@ func (c *Client) ReadRbacAuthorizationV1NamespacedRoleBinding(ctx context.Contex
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33835,7 +33646,6 @@ func (c *Client) ReadSchedulingV1PriorityClass(ctx context.Context, params ReadS
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -33918,7 +33728,6 @@ func (c *Client) ReadStorageV1CSIDriver(ctx context.Context, params ReadStorageV
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -34001,7 +33810,6 @@ func (c *Client) ReadStorageV1CSINode(ctx context.Context, params ReadStorageV1C
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -34084,7 +33892,6 @@ func (c *Client) ReadStorageV1StorageClass(ctx context.Context, params ReadStora
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -34167,7 +33974,6 @@ func (c *Client) ReadStorageV1VolumeAttachment(ctx context.Context, params ReadS
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -34251,7 +34057,6 @@ func (c *Client) ReadStorageV1VolumeAttachmentStatus(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/status"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -34349,7 +34154,6 @@ func (c *Client) ReadStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Con
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -34447,7 +34251,6 @@ func (c *Client) ReadStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Cont
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "pretty" parameter.
@@ -34532,7 +34335,6 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfiguration(ctx co
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -34755,7 +34557,6 @@ func (c *Client) WatchAdmissionregistrationV1MutatingWebhookConfigurationList(ct
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/mutatingwebhookconfigurations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -34993,7 +34794,6 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfiguration(ctx 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -35216,7 +35016,6 @@ func (c *Client) WatchAdmissionregistrationV1ValidatingWebhookConfigurationList(
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/admissionregistration.k8s.io/v1/watch/validatingwebhookconfigurations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -35453,7 +35252,6 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinition(ctx context.Contex
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -35676,7 +35474,6 @@ func (c *Client) WatchApiextensionsV1CustomResourceDefinitionList(ctx context.Co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiextensions.k8s.io/v1/watch/customresourcedefinitions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -35913,7 +35710,6 @@ func (c *Client) WatchApiregistrationV1APIService(ctx context.Context, params Wa
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -36136,7 +35932,6 @@ func (c *Client) WatchApiregistrationV1APIServiceList(ctx context.Context, param
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apiregistration.k8s.io/v1/watch/apiservices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -36359,7 +36154,6 @@ func (c *Client) WatchAppsV1ControllerRevisionListForAllNamespaces(ctx context.C
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/controllerrevisions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -36582,7 +36376,6 @@ func (c *Client) WatchAppsV1DaemonSetListForAllNamespaces(ctx context.Context, p
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/daemonsets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -36805,7 +36598,6 @@ func (c *Client) WatchAppsV1DeploymentListForAllNamespaces(ctx context.Context, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/deployments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -37057,7 +36849,6 @@ func (c *Client) WatchAppsV1NamespacedControllerRevision(ctx context.Context, pa
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -37295,7 +37086,6 @@ func (c *Client) WatchAppsV1NamespacedControllerRevisionList(ctx context.Context
 		u.Path += e.Result()
 	}
 	u.Path += "/controllerrevisions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -37547,7 +37337,6 @@ func (c *Client) WatchAppsV1NamespacedDaemonSet(ctx context.Context, params Watc
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -37785,7 +37574,6 @@ func (c *Client) WatchAppsV1NamespacedDaemonSetList(ctx context.Context, params 
 		u.Path += e.Result()
 	}
 	u.Path += "/daemonsets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -38037,7 +37825,6 @@ func (c *Client) WatchAppsV1NamespacedDeployment(ctx context.Context, params Wat
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -38275,7 +38062,6 @@ func (c *Client) WatchAppsV1NamespacedDeploymentList(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/deployments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -38527,7 +38313,6 @@ func (c *Client) WatchAppsV1NamespacedReplicaSet(ctx context.Context, params Wat
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -38765,7 +38550,6 @@ func (c *Client) WatchAppsV1NamespacedReplicaSetList(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/replicasets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -39017,7 +38801,6 @@ func (c *Client) WatchAppsV1NamespacedStatefulSet(ctx context.Context, params Wa
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -39255,7 +39038,6 @@ func (c *Client) WatchAppsV1NamespacedStatefulSetList(ctx context.Context, param
 		u.Path += e.Result()
 	}
 	u.Path += "/statefulsets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -39478,7 +39260,6 @@ func (c *Client) WatchAppsV1ReplicaSetListForAllNamespaces(ctx context.Context, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/replicasets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -39701,7 +39482,6 @@ func (c *Client) WatchAppsV1StatefulSetListForAllNamespaces(ctx context.Context,
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/apps/v1/watch/statefulsets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -39924,7 +39704,6 @@ func (c *Client) WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespaces(c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v1/watch/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -40176,7 +39955,6 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscaler(ctx context
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -40414,7 +40192,6 @@ func (c *Client) WatchAutoscalingV1NamespacedHorizontalPodAutoscalerList(ctx con
 		u.Path += e.Result()
 	}
 	u.Path += "/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -40637,7 +40414,6 @@ func (c *Client) WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta1/watch/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -40889,7 +40665,6 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscaler(ctx co
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -41127,7 +40902,6 @@ func (c *Client) WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerList(ct
 		u.Path += e.Result()
 	}
 	u.Path += "/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -41350,7 +41124,6 @@ func (c *Client) WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/autoscaling/v2beta2/watch/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -41602,7 +41375,6 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscaler(ctx co
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -41840,7 +41612,6 @@ func (c *Client) WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerList(ct
 		u.Path += e.Result()
 	}
 	u.Path += "/horizontalpodautoscalers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -42063,7 +41834,6 @@ func (c *Client) WatchBatchV1CronJobListForAllNamespaces(ctx context.Context, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/cronjobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -42286,7 +42056,6 @@ func (c *Client) WatchBatchV1JobListForAllNamespaces(ctx context.Context, params
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1/watch/jobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -42538,7 +42307,6 @@ func (c *Client) WatchBatchV1NamespacedCronJob(ctx context.Context, params Watch
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -42776,7 +42544,6 @@ func (c *Client) WatchBatchV1NamespacedCronJobList(ctx context.Context, params W
 		u.Path += e.Result()
 	}
 	u.Path += "/cronjobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -43028,7 +42795,6 @@ func (c *Client) WatchBatchV1NamespacedJob(ctx context.Context, params WatchBatc
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -43266,7 +43032,6 @@ func (c *Client) WatchBatchV1NamespacedJobList(ctx context.Context, params Watch
 		u.Path += e.Result()
 	}
 	u.Path += "/jobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -43489,7 +43254,6 @@ func (c *Client) WatchBatchV1beta1CronJobListForAllNamespaces(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/batch/v1beta1/watch/cronjobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -43741,7 +43505,6 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJob(ctx context.Context, params 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -43979,7 +43742,6 @@ func (c *Client) WatchBatchV1beta1NamespacedCronJobList(ctx context.Context, par
 		u.Path += e.Result()
 	}
 	u.Path += "/cronjobs"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -44217,7 +43979,6 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequest(ctx context.Contex
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -44440,7 +44201,6 @@ func (c *Client) WatchCertificatesV1CertificateSigningRequestList(ctx context.Co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/certificates.k8s.io/v1/watch/certificatesigningrequests"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -44663,7 +44423,6 @@ func (c *Client) WatchCoordinationV1LeaseListForAllNamespaces(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/coordination.k8s.io/v1/watch/leases"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -44915,7 +44674,6 @@ func (c *Client) WatchCoordinationV1NamespacedLease(ctx context.Context, params 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -45153,7 +44911,6 @@ func (c *Client) WatchCoordinationV1NamespacedLeaseList(ctx context.Context, par
 		u.Path += e.Result()
 	}
 	u.Path += "/leases"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -45376,7 +45133,6 @@ func (c *Client) WatchCoreV1ConfigMapListForAllNamespaces(ctx context.Context, p
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/configmaps"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -45599,7 +45355,6 @@ func (c *Client) WatchCoreV1EndpointsListForAllNamespaces(ctx context.Context, p
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/endpoints"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -45822,7 +45577,6 @@ func (c *Client) WatchCoreV1EventListForAllNamespaces(ctx context.Context, param
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -46045,7 +45799,6 @@ func (c *Client) WatchCoreV1LimitRangeListForAllNamespaces(ctx context.Context, 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/limitranges"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -46282,7 +46035,6 @@ func (c *Client) WatchCoreV1Namespace(ctx context.Context, params WatchCoreV1Nam
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -46505,7 +46257,6 @@ func (c *Client) WatchCoreV1NamespaceList(ctx context.Context, params WatchCoreV
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/namespaces"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -46757,7 +46508,6 @@ func (c *Client) WatchCoreV1NamespacedConfigMap(ctx context.Context, params Watc
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -46995,7 +46745,6 @@ func (c *Client) WatchCoreV1NamespacedConfigMapList(ctx context.Context, params 
 		u.Path += e.Result()
 	}
 	u.Path += "/configmaps"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -47247,7 +46996,6 @@ func (c *Client) WatchCoreV1NamespacedEndpoints(ctx context.Context, params Watc
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -47485,7 +47233,6 @@ func (c *Client) WatchCoreV1NamespacedEndpointsList(ctx context.Context, params 
 		u.Path += e.Result()
 	}
 	u.Path += "/endpoints"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -47737,7 +47484,6 @@ func (c *Client) WatchCoreV1NamespacedEvent(ctx context.Context, params WatchCor
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -47975,7 +47721,6 @@ func (c *Client) WatchCoreV1NamespacedEventList(ctx context.Context, params Watc
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -48227,7 +47972,6 @@ func (c *Client) WatchCoreV1NamespacedLimitRange(ctx context.Context, params Wat
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -48465,7 +48209,6 @@ func (c *Client) WatchCoreV1NamespacedLimitRangeList(ctx context.Context, params
 		u.Path += e.Result()
 	}
 	u.Path += "/limitranges"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -48717,7 +48460,6 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaim(ctx context.Context,
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -48955,7 +48697,6 @@ func (c *Client) WatchCoreV1NamespacedPersistentVolumeClaimList(ctx context.Cont
 		u.Path += e.Result()
 	}
 	u.Path += "/persistentvolumeclaims"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -49207,7 +48948,6 @@ func (c *Client) WatchCoreV1NamespacedPod(ctx context.Context, params WatchCoreV
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -49445,7 +49185,6 @@ func (c *Client) WatchCoreV1NamespacedPodList(ctx context.Context, params WatchC
 		u.Path += e.Result()
 	}
 	u.Path += "/pods"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -49697,7 +49436,6 @@ func (c *Client) WatchCoreV1NamespacedPodTemplate(ctx context.Context, params Wa
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -49935,7 +49673,6 @@ func (c *Client) WatchCoreV1NamespacedPodTemplateList(ctx context.Context, param
 		u.Path += e.Result()
 	}
 	u.Path += "/podtemplates"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -50187,7 +49924,6 @@ func (c *Client) WatchCoreV1NamespacedReplicationController(ctx context.Context,
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -50425,7 +50161,6 @@ func (c *Client) WatchCoreV1NamespacedReplicationControllerList(ctx context.Cont
 		u.Path += e.Result()
 	}
 	u.Path += "/replicationcontrollers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -50677,7 +50412,6 @@ func (c *Client) WatchCoreV1NamespacedResourceQuota(ctx context.Context, params 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -50915,7 +50649,6 @@ func (c *Client) WatchCoreV1NamespacedResourceQuotaList(ctx context.Context, par
 		u.Path += e.Result()
 	}
 	u.Path += "/resourcequotas"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -51167,7 +50900,6 @@ func (c *Client) WatchCoreV1NamespacedSecret(ctx context.Context, params WatchCo
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -51405,7 +51137,6 @@ func (c *Client) WatchCoreV1NamespacedSecretList(ctx context.Context, params Wat
 		u.Path += e.Result()
 	}
 	u.Path += "/secrets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -51657,7 +51388,6 @@ func (c *Client) WatchCoreV1NamespacedService(ctx context.Context, params WatchC
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -51909,7 +51639,6 @@ func (c *Client) WatchCoreV1NamespacedServiceAccount(ctx context.Context, params
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -52147,7 +51876,6 @@ func (c *Client) WatchCoreV1NamespacedServiceAccountList(ctx context.Context, pa
 		u.Path += e.Result()
 	}
 	u.Path += "/serviceaccounts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -52385,7 +52113,6 @@ func (c *Client) WatchCoreV1NamespacedServiceList(ctx context.Context, params Wa
 		u.Path += e.Result()
 	}
 	u.Path += "/services"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -52622,7 +52349,6 @@ func (c *Client) WatchCoreV1Node(ctx context.Context, params WatchCoreV1NodePara
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -52845,7 +52571,6 @@ func (c *Client) WatchCoreV1NodeList(ctx context.Context, params WatchCoreV1Node
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/nodes"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -53082,7 +52807,6 @@ func (c *Client) WatchCoreV1PersistentVolume(ctx context.Context, params WatchCo
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -53305,7 +53029,6 @@ func (c *Client) WatchCoreV1PersistentVolumeClaimListForAllNamespaces(ctx contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumeclaims"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -53528,7 +53251,6 @@ func (c *Client) WatchCoreV1PersistentVolumeList(ctx context.Context, params Wat
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/persistentvolumes"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -53751,7 +53473,6 @@ func (c *Client) WatchCoreV1PodListForAllNamespaces(ctx context.Context, params 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/pods"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -53974,7 +53695,6 @@ func (c *Client) WatchCoreV1PodTemplateListForAllNamespaces(ctx context.Context,
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/podtemplates"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -54197,7 +53917,6 @@ func (c *Client) WatchCoreV1ReplicationControllerListForAllNamespaces(ctx contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/replicationcontrollers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -54420,7 +54139,6 @@ func (c *Client) WatchCoreV1ResourceQuotaListForAllNamespaces(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/resourcequotas"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -54643,7 +54361,6 @@ func (c *Client) WatchCoreV1SecretListForAllNamespaces(ctx context.Context, para
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/secrets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -54866,7 +54583,6 @@ func (c *Client) WatchCoreV1ServiceAccountListForAllNamespaces(ctx context.Conte
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/serviceaccounts"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -55089,7 +54805,6 @@ func (c *Client) WatchCoreV1ServiceListForAllNamespaces(ctx context.Context, par
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/api/v1/watch/services"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -55312,7 +55027,6 @@ func (c *Client) WatchDiscoveryV1EndpointSliceListForAllNamespaces(ctx context.C
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1/watch/endpointslices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -55564,7 +55278,6 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSlice(ctx context.Context, pa
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -55802,7 +55515,6 @@ func (c *Client) WatchDiscoveryV1NamespacedEndpointSliceList(ctx context.Context
 		u.Path += e.Result()
 	}
 	u.Path += "/endpointslices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -56025,7 +55737,6 @@ func (c *Client) WatchDiscoveryV1beta1EndpointSliceListForAllNamespaces(ctx cont
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/discovery.k8s.io/v1beta1/watch/endpointslices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -56277,7 +55988,6 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSlice(ctx context.Contex
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -56515,7 +56225,6 @@ func (c *Client) WatchDiscoveryV1beta1NamespacedEndpointSliceList(ctx context.Co
 		u.Path += e.Result()
 	}
 	u.Path += "/endpointslices"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -56738,7 +56447,6 @@ func (c *Client) WatchEventsV1EventListForAllNamespaces(ctx context.Context, par
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1/watch/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -56990,7 +56698,6 @@ func (c *Client) WatchEventsV1NamespacedEvent(ctx context.Context, params WatchE
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -57228,7 +56935,6 @@ func (c *Client) WatchEventsV1NamespacedEventList(ctx context.Context, params Wa
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -57451,7 +57157,6 @@ func (c *Client) WatchEventsV1beta1EventListForAllNamespaces(ctx context.Context
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/events.k8s.io/v1beta1/watch/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -57703,7 +57408,6 @@ func (c *Client) WatchEventsV1beta1NamespacedEvent(ctx context.Context, params W
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -57941,7 +57645,6 @@ func (c *Client) WatchEventsV1beta1NamespacedEventList(ctx context.Context, para
 		u.Path += e.Result()
 	}
 	u.Path += "/events"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -58178,7 +57881,6 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchema(ctx context.Context,
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -58401,7 +58103,6 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1FlowSchemaList(ctx context.Cont
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/flowschemas"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -58639,7 +58340,6 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfiguration(ctx 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -58862,7 +58562,6 @@ func (c *Client) WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationList(
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta1/watch/prioritylevelconfigurations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -59099,7 +58798,6 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchema(ctx context.Context,
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -59322,7 +59020,6 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2FlowSchemaList(ctx context.Cont
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/flowschemas"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -59560,7 +59257,6 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfiguration(ctx 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -59783,7 +59479,6 @@ func (c *Client) WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationList(
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/flowcontrol.apiserver.k8s.io/v1beta2/watch/prioritylevelconfigurations"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -60020,7 +59715,6 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersion(ctx context.Contex
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -60243,7 +59937,6 @@ func (c *Client) WatchInternalApiserverV1alpha1StorageVersionList(ctx context.Co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/internal.apiserver.k8s.io/v1alpha1/watch/storageversions"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -60480,7 +60173,6 @@ func (c *Client) WatchNetworkingV1IngressClass(ctx context.Context, params Watch
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -60703,7 +60395,6 @@ func (c *Client) WatchNetworkingV1IngressClassList(ctx context.Context, params W
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingressclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -60926,7 +60617,6 @@ func (c *Client) WatchNetworkingV1IngressListForAllNamespaces(ctx context.Contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/ingresses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -61178,7 +60868,6 @@ func (c *Client) WatchNetworkingV1NamespacedIngress(ctx context.Context, params 
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -61416,7 +61105,6 @@ func (c *Client) WatchNetworkingV1NamespacedIngressList(ctx context.Context, par
 		u.Path += e.Result()
 	}
 	u.Path += "/ingresses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -61668,7 +61356,6 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicy(ctx context.Context, p
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -61906,7 +61593,6 @@ func (c *Client) WatchNetworkingV1NamespacedNetworkPolicyList(ctx context.Contex
 		u.Path += e.Result()
 	}
 	u.Path += "/networkpolicies"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -62129,7 +61815,6 @@ func (c *Client) WatchNetworkingV1NetworkPolicyListForAllNamespaces(ctx context.
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/networking.k8s.io/v1/watch/networkpolicies"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -62366,7 +62051,6 @@ func (c *Client) WatchNodeV1RuntimeClass(ctx context.Context, params WatchNodeV1
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -62589,7 +62273,6 @@ func (c *Client) WatchNodeV1RuntimeClassList(ctx context.Context, params WatchNo
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1/watch/runtimeclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -62826,7 +62509,6 @@ func (c *Client) WatchNodeV1alpha1RuntimeClass(ctx context.Context, params Watch
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -63049,7 +62731,6 @@ func (c *Client) WatchNodeV1alpha1RuntimeClassList(ctx context.Context, params W
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1alpha1/watch/runtimeclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -63286,7 +62967,6 @@ func (c *Client) WatchNodeV1beta1RuntimeClass(ctx context.Context, params WatchN
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -63509,7 +63189,6 @@ func (c *Client) WatchNodeV1beta1RuntimeClassList(ctx context.Context, params Wa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/node.k8s.io/v1beta1/watch/runtimeclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -63761,7 +63440,6 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudget(ctx context.Context,
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -63999,7 +63677,6 @@ func (c *Client) WatchPolicyV1NamespacedPodDisruptionBudgetList(ctx context.Cont
 		u.Path += e.Result()
 	}
 	u.Path += "/poddisruptionbudgets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -64222,7 +63899,6 @@ func (c *Client) WatchPolicyV1PodDisruptionBudgetListForAllNamespaces(ctx contex
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1/watch/poddisruptionbudgets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -64474,7 +64150,6 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudget(ctx context.Con
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -64712,7 +64387,6 @@ func (c *Client) WatchPolicyV1beta1NamespacedPodDisruptionBudgetList(ctx context
 		u.Path += e.Result()
 	}
 	u.Path += "/poddisruptionbudgets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -64935,7 +64609,6 @@ func (c *Client) WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespaces(ctx c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/poddisruptionbudgets"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -65172,7 +64845,6 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicy(ctx context.Context, params
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -65395,7 +65067,6 @@ func (c *Client) WatchPolicyV1beta1PodSecurityPolicyList(ctx context.Context, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/policy/v1beta1/watch/podsecuritypolicies"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -65632,7 +65303,6 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRole(ctx context.Context, params
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -65869,7 +65539,6 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBinding(ctx context.Context,
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -66092,7 +65761,6 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleBindingList(ctx context.Cont
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterrolebindings"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -66315,7 +65983,6 @@ func (c *Client) WatchRbacAuthorizationV1ClusterRoleList(ctx context.Context, pa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/clusterroles"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -66567,7 +66234,6 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRole(ctx context.Context, par
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -66819,7 +66485,6 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBinding(ctx context.Conte
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -67057,7 +66722,6 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleBindingList(ctx context.C
 		u.Path += e.Result()
 	}
 	u.Path += "/rolebindings"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -67295,7 +66959,6 @@ func (c *Client) WatchRbacAuthorizationV1NamespacedRoleList(ctx context.Context,
 		u.Path += e.Result()
 	}
 	u.Path += "/roles"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -67518,7 +67181,6 @@ func (c *Client) WatchRbacAuthorizationV1RoleBindingListForAllNamespaces(ctx con
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/rolebindings"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -67741,7 +67403,6 @@ func (c *Client) WatchRbacAuthorizationV1RoleListForAllNamespaces(ctx context.Co
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/rbac.authorization.k8s.io/v1/watch/roles"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -67978,7 +67639,6 @@ func (c *Client) WatchSchedulingV1PriorityClass(ctx context.Context, params Watc
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -68201,7 +67861,6 @@ func (c *Client) WatchSchedulingV1PriorityClassList(ctx context.Context, params 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/scheduling.k8s.io/v1/watch/priorityclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -68438,7 +68097,6 @@ func (c *Client) WatchStorageV1CSIDriver(ctx context.Context, params WatchStorag
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -68661,7 +68319,6 @@ func (c *Client) WatchStorageV1CSIDriverList(ctx context.Context, params WatchSt
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csidrivers"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -68898,7 +68555,6 @@ func (c *Client) WatchStorageV1CSINode(ctx context.Context, params WatchStorageV
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -69121,7 +68777,6 @@ func (c *Client) WatchStorageV1CSINodeList(ctx context.Context, params WatchStor
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/csinodes"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -69358,7 +69013,6 @@ func (c *Client) WatchStorageV1StorageClass(ctx context.Context, params WatchSto
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -69581,7 +69235,6 @@ func (c *Client) WatchStorageV1StorageClassList(ctx context.Context, params Watc
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/storageclasses"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -69818,7 +69471,6 @@ func (c *Client) WatchStorageV1VolumeAttachment(ctx context.Context, params Watc
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -70041,7 +69693,6 @@ func (c *Client) WatchStorageV1VolumeAttachmentList(ctx context.Context, params 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1/watch/volumeattachments"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -70264,7 +69915,6 @@ func (c *Client) WatchStorageV1alpha1CSIStorageCapacityListForAllNamespaces(ctx 
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1alpha1/watch/csistoragecapacities"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -70516,7 +70166,6 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacity(ctx context.Co
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -70754,7 +70403,6 @@ func (c *Client) WatchStorageV1alpha1NamespacedCSIStorageCapacityList(ctx contex
 		u.Path += e.Result()
 	}
 	u.Path += "/csistoragecapacities"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -70977,7 +70625,6 @@ func (c *Client) WatchStorageV1beta1CSIStorageCapacityListForAllNamespaces(ctx c
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/apis/storage.k8s.io/v1beta1/watch/csistoragecapacities"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -71229,7 +70876,6 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacity(ctx context.Con
 		}
 		u.Path += e.Result()
 	}
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.
@@ -71467,7 +71113,6 @@ func (c *Client) WatchStorageV1beta1NamespacedCSIStorageCapacityList(ctx context
 		u.Path += e.Result()
 	}
 	u.Path += "/csistoragecapacities"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "allowWatchBookmarks" parameter.

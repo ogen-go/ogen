@@ -219,7 +219,6 @@ func (c *Client) DefaultTest(ctx context.Context, request DefaultTest, params De
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/defaultTest"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "default" parameter.
@@ -331,7 +330,6 @@ func (c *Client) FoobarGet(ctx context.Context, params FoobarGetParams) (res Foo
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/foobar"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "inlinedParam" parameter.
@@ -526,17 +524,16 @@ func (c *Client) GetHeader(ctx context.Context, params GetHeaderParams) (res Has
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	h := uri.NewHeaderEncoder(r.Header)
 	{
-		e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    "x-auth-token",
 			Explode: false,
-		})
-		if err := func() error {
-			return e.EncodeValue(conv.StringToString(params.XAuthToken))
-		}(); err != nil {
-			return res, errors.Wrap(err, "encode header param x-auth-token")
 		}
-		if v, ok := e.Result(); ok {
-			r.Header.Set("x-auth-token", v)
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringToString(params.XAuthToken))
+		}); err != nil {
+			return res, errors.Wrap(err, "encode header param x-auth-token")
 		}
 	}
 
@@ -906,7 +903,6 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "petID" parameter.
@@ -941,11 +937,13 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 	r := ht.NewRequest(ctx, "GET", u, nil)
 	defer ht.PutRequest(r)
 
+	h := uri.NewHeaderEncoder(r.Header)
 	{
-		e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    "x-tags",
 			Explode: false,
-		})
-		if err := func() error {
+		}
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.XTags {
 					if err := func() error {
@@ -956,18 +954,16 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 				}
 				return nil
 			})
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode header param x-tags")
-		}
-		if v, ok := e.Result(); ok {
-			r.Header.Set("x-tags", v)
 		}
 	}
 	{
-		e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    "x-scope",
 			Explode: false,
-		})
-		if err := func() error {
+		}
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
 			return e.EncodeArray(func(e uri.Encoder) error {
 				for i, item := range params.XScope {
 					if err := func() error {
@@ -978,11 +974,8 @@ func (c *Client) PetGet(ctx context.Context, params PetGetParams) (res PetGetRes
 				}
 				return nil
 			})
-		}(); err != nil {
+		}); err != nil {
 			return res, errors.Wrap(err, "encode header param x-scope")
-		}
-		if v, ok := e.Result(); ok {
-			r.Header.Set("x-scope", v)
 		}
 	}
 
@@ -1027,7 +1020,6 @@ func (c *Client) PetGetAvatarByID(ctx context.Context, params PetGetAvatarByIDPa
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/avatar"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "petID" parameter.
@@ -1426,7 +1418,6 @@ func (c *Client) PetUploadAvatarByID(ctx context.Context, request PetUploadAvata
 
 	u := uri.Clone(c.serverURL)
 	u.Path += "/pet/avatar"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "petID" parameter.
@@ -1779,7 +1770,6 @@ func (c *Client) TestObjectQueryParameter(ctx context.Context, params TestObject
 	c.requests.Add(ctx, 1, otelAttrs...)
 	u := uri.Clone(c.serverURL)
 	u.Path += "/testObjectQueryParameter"
-
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "formObject" parameter.
