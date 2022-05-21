@@ -26,15 +26,15 @@ if err := func() error {
 
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 
-func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ $op.Response.Type.Go }}, err error) {
+func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ $op.Responses.Type.Go }}, err error) {
 	switch resp.StatusCode {
-	{{- range $statusCode, $response := $op.Response.StatusCode }}{{/* Range over responses */}}
+	{{- range $statusCode, $response := $op.Responses.StatusCode }}{{/* Range over responses */}}
 	case {{ $statusCode }}:
-		{{- template "dec_res" status_res_elem $response $op.Response.Type.IsInterface }}
+		{{- template "dec_res" status_res_elem $response $op.Responses.Type.IsInterface }}
 	{{- end }}
 	default:
-		{{- if $op.Response.Default }}
-			{{- template "dec_res" status_res_elem $op.Response.Default $op.Response.Type.IsInterface }}
+		{{- if $op.Responses.Default }}
+			{{- template "dec_res" status_res_elem $op.Responses.Default $op.Responses.Type.IsInterface }}
 		{{- else if $.Error }}
 			defRes, err := func() (res {{ $.ErrorType.Go }}, err error) {
             	{{- template "dec_res" status_res_elem $.Error false }}

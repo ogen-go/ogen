@@ -21,7 +21,7 @@ type Generator struct {
 	operations []*ir.Operation
 	securities map[string]*ir.Security
 	tstorage   *tstorage
-	errType    *ir.StatusResponse
+	errType    *ir.Response
 	router     Router
 
 	log *zap.Logger

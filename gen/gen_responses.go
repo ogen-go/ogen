@@ -12,10 +12,10 @@ import (
 	"github.com/ogen-go/ogen/openapi"
 )
 
-func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[string]*openapi.Response) (*ir.Response, error) {
+func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[string]*openapi.Response) (*ir.Responses, error) {
 	name := opName + "Res"
-	result := &ir.Response{
-		StatusCode: make(map[int]*ir.StatusResponse, len(responses)),
+	result := &ir.Responses{
+		StatusCode: make(map[int]*ir.Response, len(responses)),
 	}
 
 	// Sort responses by status code.
@@ -121,7 +121,7 @@ func (g *Generator) generateResponses(ctx *genctx, opName string, responses map[
 	return result, nil
 }
 
-func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Response) (ret *ir.StatusResponse, rerr error) {
+func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Response) (ret *ir.Response, rerr error) {
 	if ref := resp.Ref; ref != "" {
 		if r, ok := ctx.lookupResponse(ref); ok {
 			return r, nil
@@ -155,7 +155,7 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 		if err := ctx.saveType(t); err != nil {
 			return nil, errors.Wrap(err, "save type")
 		}
-		return &ir.StatusResponse{
+		return &ir.Response{
 			NoContent: t,
 			Spec:      resp,
 		}, nil
@@ -183,13 +183,13 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 		return nil, &ErrUnsupportedContentTypes{ContentTypes: unsupported}
 	}
 
-	return &ir.StatusResponse{
+	return &ir.Response{
 		Contents: contents,
 		Spec:     resp,
 	}, nil
 }
 
-func wrapResponseStatusCode(ctx *genctx, name string, resp *ir.StatusResponse) (ret *ir.StatusResponse, rerr error) {
+func wrapResponseStatusCode(ctx *genctx, name string, resp *ir.Response) (ret *ir.Response, rerr error) {
 	if ref := resp.Spec.Ref; ref != "" {
 		if r, ok := ctx.lookupWrappedResponse(ref); ok {
 			return r, nil
@@ -212,7 +212,7 @@ func wrapResponseStatusCode(ctx *genctx, name string, resp *ir.StatusResponse) (
 			return nil, err
 		}
 
-		return &ir.StatusResponse{
+		return &ir.Response{
 			Wrapped:   true,
 			NoContent: w,
 			Spec:      resp.Spec,
@@ -229,7 +229,7 @@ func wrapResponseStatusCode(ctx *genctx, name string, resp *ir.StatusResponse) (
 		contents[contentType] = w
 	}
 
-	return &ir.StatusResponse{
+	return &ir.Response{
 		Wrapped:  true,
 		Contents: contents,
 		Spec:     resp.Spec,

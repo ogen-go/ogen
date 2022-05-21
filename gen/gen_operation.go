@@ -42,7 +42,7 @@ func (g *Generator) generateOperation(ctx *genctx, spec *openapi.Operation) (_ *
 		}
 	}
 
-	op.Response, err = g.generateResponses(ctx.appendPath("responses"), op.Name, spec.Responses)
+	op.Responses, err = g.generateResponses(ctx.appendPath("responses"), op.Name, spec.Responses)
 	if err != nil {
 		return nil, errors.Wrap(err, "responses")
 	}

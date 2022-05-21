@@ -43,17 +43,17 @@ import (
 // Referring to the same schema in different content types
 // also can cause a collision and it will be fixed in the same way.
 func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
-	if !op.Response.Type.Is(ir.KindInterface) {
+	if !op.Responses.Type.Is(ir.KindInterface) {
 		return nil
 	}
 
 	// We can modify contents of operation response.
 	// To prevent changes affecting to other operations
 	// (in case of referenced responses), we copy the response.
-	op.Response = cloneResponse(op.Response)
+	op.Responses = cloneResponse(op.Responses)
 
 	var statusCodes []int
-	for code := range op.Response.StatusCode {
+	for code := range op.Responses.StatusCode {
 		statusCodes = append(statusCodes, code)
 	}
 	sort.Ints(statusCodes)
@@ -64,7 +64,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 
 		replaceNoc bool
 		replaceCT  string
-		response   *ir.StatusResponse
+		response   *ir.Response
 	}
 
 	var candidates []candidate
@@ -72,7 +72,7 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 		lcode := statusCodes[i]
 		for j := i; j < len(statusCodes); j++ {
 			rcode := statusCodes[j]
-			lresp, rresp := op.Response.StatusCode[lcode], op.Response.StatusCode[rcode]
+			lresp, rresp := op.Responses.StatusCode[lcode], op.Responses.StatusCode[rcode]
 			if (lresp.NoContent != nil && rresp.NoContent != nil) && lcode != rcode {
 				if reflect.DeepEqual(lresp.NoContent, rresp.NoContent) {
 					lname, err := pascal(op.Name, statusText(lcode))
@@ -145,9 +145,9 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 	}
 
 	for _, candidate := range candidates {
-		candidate.typ.Unimplement(op.Response.Type)
+		candidate.typ.Unimplement(op.Responses.Type)
 		alias := ir.Alias(candidate.renameTo, candidate.typ)
-		alias.Implement(op.Response.Type)
+		alias.Implement(op.Responses.Type)
 
 		// TODO: Fix duplicates.
 		// g.saveType(alias)
@@ -164,14 +164,14 @@ func fixEqualResponses(ctx *genctx, op *ir.Operation) error {
 	return nil
 }
 
-func cloneResponse(r *ir.Response) *ir.Response {
-	newR := &ir.Response{
+func cloneResponse(r *ir.Responses) *ir.Responses {
+	newR := &ir.Responses{
 		Type:       r.Type,
-		StatusCode: map[int]*ir.StatusResponse{},
+		StatusCode: map[int]*ir.Response{},
 		Default:    r.Default,
 	}
 	for code, statResp := range r.StatusCode {
-		newStatResp := &ir.StatusResponse{
+		newStatResp := &ir.Response{
 			NoContent: statResp.NoContent,
 			Contents:  map[ir.ContentType]*ir.Type{},
 		}

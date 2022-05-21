@@ -39,11 +39,11 @@ func (g *genctx) lookupRef(ref string) (*ir.Type, bool) {
 	return nil, false
 }
 
-func (g *genctx) saveResponse(ref string, r *ir.StatusResponse) error {
+func (g *genctx) saveResponse(ref string, r *ir.Response) error {
 	return g.local.saveResponse(ref, r)
 }
 
-func (g *genctx) saveWResponse(ref string, r *ir.StatusResponse) error {
+func (g *genctx) saveWResponse(ref string, r *ir.Response) error {
 	return g.local.saveWResponse(ref, r)
 }
 
@@ -51,7 +51,7 @@ func (g *genctx) saveWType(ref string, t *ir.Type) error {
 	return g.local.saveWType(ref, t)
 }
 
-func (g *genctx) lookupResponse(ref string) (*ir.StatusResponse, bool) {
+func (g *genctx) lookupResponse(ref string) (*ir.Response, bool) {
 	if r, ok := g.global.responses[ref]; ok {
 		return r, true
 	}
@@ -61,7 +61,7 @@ func (g *genctx) lookupResponse(ref string) (*ir.StatusResponse, bool) {
 	return nil, false
 }
 
-func (g *genctx) lookupWrappedResponse(ref string) (*ir.StatusResponse, bool) {
+func (g *genctx) lookupWrappedResponse(ref string) (*ir.Response, bool) {
 	if r, ok := g.global.wresponses[ref]; ok {
 		return r, true
 	}

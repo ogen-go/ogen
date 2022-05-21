@@ -56,7 +56,7 @@ func (e Elem) NextVar() string {
 }
 
 type ResponseElem struct {
-	Response *ir.StatusResponse
+	Response *ir.Response
 	Ptr      bool
 }
 
@@ -146,7 +146,7 @@ func templateFunctions() template.FuncMap {
 				First: true,
 			}
 		},
-		"status_res_elem": func(r *ir.StatusResponse, ptr bool) ResponseElem {
+		"status_res_elem": func(r *ir.Response, ptr bool) ResponseElem {
 			return ResponseElem{
 				Response: r,
 				Ptr:      ptr,

@@ -6,7 +6,7 @@ import (
 	"github.com/ogen-go/ogen/gen/ir"
 )
 
-func walkResponseTypes(r *ir.Response, walkFn func(name string, t *ir.Type) (*ir.Type, error)) error {
+func walkResponseTypes(r *ir.Responses, walkFn func(name string, t *ir.Type) (*ir.Type, error)) error {
 	do := func(prefix string, t *ir.Type, contentType ir.ContentType) (*ir.Type, error) {
 		respName, err := pascal(prefix, string(contentType))
 		if err != nil {

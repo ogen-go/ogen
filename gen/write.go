@@ -19,7 +19,7 @@ type TemplateConfig struct {
 	Operations []*ir.Operation
 	Types      map[string]*ir.Type
 	Interfaces map[string]*ir.Type
-	Error      *ir.StatusResponse
+	Error      *ir.Response
 	ErrorType  *ir.Type
 	Securities map[string]*ir.Security
 	Router     Router

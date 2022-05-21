@@ -14,7 +14,7 @@ type Operation struct {
 	PathParts   []*PathPart
 	Params      []*Parameter
 	Request     *Request
-	Response    *Response
+	Responses   *Responses
 	Security    []*SecurityRequirement
 	Spec        *openapi.Operation
 }
@@ -121,20 +121,20 @@ func (t ContentType) Name() string {
 	}
 }
 
-type Response struct {
+type Responses struct {
 	Type       *Type
-	StatusCode map[int]*StatusResponse
-	Default    *StatusResponse
+	StatusCode map[int]*Response
+	Default    *Response
 }
 
-type StatusResponse struct {
+type Response struct {
 	Wrapped   bool
 	NoContent *Type
 	Contents  map[ContentType]*Type
 	Spec      *openapi.Response
 }
 
-func (s StatusResponse) ResponseInfo() []ResponseInfo {
+func (s Response) ResponseInfo() []ResponseInfo {
 	var result []ResponseInfo
 
 	if noc := s.NoContent; noc != nil {

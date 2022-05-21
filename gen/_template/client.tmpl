@@ -46,7 +46,7 @@ func NewClient(serverURL string, {{- if $.Securities }}sec SecuritySource,{{- en
 //
 {{- template "godoc_def" $op.GoDoc }}
 // {{ $op.Spec.HTTPMethod }} {{ $op.Spec.Path }}
-func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Response.Type.Go }}, err error) {
+func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, request {{ $op.Request.Type.Go }}{{ end }}{{ if $op.Params }}, params {{ $op.Name }}Params {{ end }}) (res {{ $op.Responses.Type.Go }}, err error) {
 	{{- if $op.Request }}{{/* Request validation */}}
 		{{- if $op.Request.Type.IsInterface }}
 			switch request := request.(type) {

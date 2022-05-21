@@ -6,7 +6,7 @@
 
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 
-func encode{{ $op.Name }}Response(response {{ $op.Response.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
+func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
 	{{- $typesCount := len $op.ListResponseTypes }}
 	{{- if eq $typesCount 1 }}
 

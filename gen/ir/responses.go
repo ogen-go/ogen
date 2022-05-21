@@ -15,7 +15,7 @@ type ResponseInfo struct {
 
 func (op *Operation) ListResponseTypes() []ResponseInfo {
 	var result []ResponseInfo
-	for statusCode, resp := range op.Response.StatusCode {
+	for statusCode, resp := range op.Responses.StatusCode {
 		if noc := resp.NoContent; noc != nil {
 			result = append(result, ResponseInfo{
 				Type:       noc,
@@ -35,7 +35,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 		}
 	}
 
-	if def := op.Response.Default; def != nil {
+	if def := op.Responses.Default; def != nil {
 		if noc := def.NoContent; noc != nil {
 			result = append(result, ResponseInfo{
 				Type:      noc,
