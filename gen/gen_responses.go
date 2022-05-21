@@ -145,6 +145,24 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 		}()
 	}
 
+	var headers map[string]*ir.Parameter
+	if len(resp.Headers) > 0 {
+		ctx := ctx.appendPath("headers")
+		headers = make(map[string]*ir.Parameter, len(resp.Headers))
+		for hname, header := range resp.Headers {
+			h, err := g.generateParameter(ctx.appendPath(hname), name, header)
+			if err != nil {
+				if err := g.fail(err); err != nil {
+					return nil, errors.Wrapf(err, "headers: %s", hname)
+				}
+
+				continue
+			}
+
+			headers[hname] = h
+		}
+	}
+
 	if len(resp.Content) == 0 {
 		t := &ir.Type{
 			Kind: ir.KindStruct,
@@ -158,6 +176,7 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 		return &ir.Response{
 			NoContent: t,
 			Spec:      resp,
+			Headers:   headers,
 		}, nil
 	}
 
@@ -186,12 +205,13 @@ func (g *Generator) responseToIR(ctx *genctx, name, doc string, resp *openapi.Re
 	return &ir.Response{
 		Contents: contents,
 		Spec:     resp,
+		Headers:  headers,
 	}, nil
 }
 
 func wrapResponseStatusCode(ctx *genctx, name string, resp *ir.Response) (ret *ir.Response, rerr error) {
 	if ref := resp.Spec.Ref; ref != "" {
-		if r, ok := ctx.lookupWrappedResponse(ref); ok {
+		if r, ok := ctx.lookupWResponse(ref); ok {
 			return r, nil
 		}
 		defer func() {
@@ -286,3 +306,4 @@ func wrapStatusCode(ctx *genctx, name string, t *ir.Type) (ret *ir.Type, rerr er
 		},
 	}, nil
 }
+

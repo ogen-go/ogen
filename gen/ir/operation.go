@@ -152,6 +152,7 @@ type Response struct {
 	NoContent *Type
 	Contents  map[ContentType]*Type
 	Spec      *openapi.Response
+	Headers   map[string]*Parameter
 }
 
 func (s Response) ResponseInfo() []ResponseInfo {

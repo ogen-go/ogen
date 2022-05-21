@@ -61,7 +61,7 @@ func (g *genctx) lookupResponse(ref string) (*ir.Response, bool) {
 	return nil, false
 }
 
-func (g *genctx) lookupWrappedResponse(ref string) (*ir.Response, bool) {
+func (g *genctx) lookupWResponse(ref string) (*ir.Response, bool) {
 	if r, ok := g.global.wresponses[ref]; ok {
 		return r, true
 	}
