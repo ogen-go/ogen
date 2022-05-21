@@ -18,6 +18,15 @@ func (op Operation) HasQueryParams() bool {
 	return false
 }
 
+func (op Operation) HasHeaderParams() bool {
+	for _, p := range op.Params {
+		if p.Spec != nil && p.Spec.In.Header() {
+			return true
+		}
+	}
+	return false
+}
+
 func (op Operation) PathParamsCount() (r int) {
 	for _, p := range op.PathParts {
 		if p.Param != nil {

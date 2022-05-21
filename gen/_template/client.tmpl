@@ -141,15 +141,21 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- end }}
 	{{ end }}
 
-	{{- template "enc_param_path" $op }}
-	{{- template "enc_param_query" $op }}
+	{{- template "encode_path_params" $op }}
+
+	{{- if $op.HasQueryParams }}
+	{{- template "encode_query_params" $op }}
+	{{- end }}
 
 	r := ht.NewRequest(ctx, {{ quote $op.Spec.HTTPMethod }}, u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
 	defer ht.PutRequest(r)
 
 	{{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}
 
+	{{- if $op.HasHeaderParams }}
 	{{- template "encode_header_params" $op }}
+	{{- end }}
+
 	{{- template "encode_cookie_params" $op }}
 	{{- range $s := $op.Security }}
 	if err := c.security{{ $s.Security.Type.Name }}(ctx, {{ quote $op.Name }}, r); err != nil {
@@ -194,23 +200,3 @@ r.AddCookie(&http.Cookie{
 }
 {{- end }}{{/* Range over params */}}
 {{ end }}
-
-
-{{ define "encode_header_params" }}
-{{- range $p := $.HeaderParams }}{{/* Range over params */}}
-{
-	e := uri.NewHeaderEncoder(uri.HeaderEncoderConfig{
-		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
-	})
-	if err := func() error {
-		{{- template "uri/encode" elem $p.Type (printf "params.%s" $p.Name) }}
-	}(); err != nil {
-		return res, errors.Wrap(err, {{ printf "encode header param %s" $p.Spec.Name | quote }})
-	}
-	if v, ok := e.Result(); ok {
-		r.Header.Set({{ quote $p.Spec.Name }}, v)
-	}
-}
-{{- end }}{{/* Range over params */}}
-{{ end }}
-

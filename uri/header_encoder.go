@@ -1,38 +1,38 @@
 package uri
 
-import "strings"
+import "net/http"
 
 type HeaderEncoder struct {
-	explode bool
-	*receiver
+	header http.Header
 }
 
-type HeaderEncoderConfig struct {
+func NewHeaderEncoder(header http.Header) *HeaderEncoder {
+	return &HeaderEncoder{
+		header: header,
+	}
+}
+
+type HeaderParameterEncodingConfig struct {
+	Name    string
 	Explode bool
 }
 
-func NewHeaderEncoder(cfg HeaderEncoderConfig) *HeaderEncoder {
-	return &HeaderEncoder{
-		explode:  cfg.Explode,
-		receiver: newReceiver(),
+func (e *HeaderEncoder) EncodeParam(cfg HeaderParameterEncodingConfig, f func(Encoder) error) error {
+	p := &headerParamEncoder{
+		receiver:  newReceiver(),
+		paramName: cfg.Name,
+		explode:   cfg.Explode,
+		header:    e.header,
 	}
+
+	if err := f(p); err != nil {
+		return err
+	}
+
+	p.serialize()
+	return nil
 }
 
-func (e *HeaderEncoder) Result() (string, bool) {
-	switch e.typ {
-	case typeNotSet:
-		return "", false
-	case typeValue:
-		return e.val, true
-	case typeArray:
-		return strings.Join(e.items, ","), true
-	case typeObject:
-		kvSep, fieldSep := ',', ','
-		if e.explode {
-			kvSep = '='
-		}
-		return encodeObject(kvSep, fieldSep, e.fields), true
-	default:
-		panic("unreachable")
-	}
+func (e *HeaderEncoder) Header() http.Header {
+	return e.header
 }

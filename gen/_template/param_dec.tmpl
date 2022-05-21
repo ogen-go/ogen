@@ -11,6 +11,9 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 	{{- if $op.HasQueryParams }}
 	q := uri.NewQueryDecoder(r.URL.Query())
 	{{- end }}
+	{{- if $op.HasHeaderParams }}
+	h := uri.NewHeaderDecoder(r.Header)
+	{{- end }}
 
 	{{- range $p := $op.Params }}{{/* Range params */}}
     {{- $loc             := printf "%s: %s" $p.Spec.In $p.Spec.Name }}
@@ -83,15 +86,14 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 	{{- end }}
 	{{- else if $p.Spec.In.Header }}
 	{
-		param := r.Header.Get({{ quote $p.Spec.Name }})
-		if len(param) > 0 {
-			d := uri.NewHeaderDecoder(uri.HeaderDecoderConfig{
-				Value:   param,
-				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
-			})
-			if err := func() error {
+		cfg := uri.HeaderParameterDecodingConfig{
+			Name:   {{ quote $p.Spec.Name }},
+			Explode:{{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+		}
+		if err := h.HasParam(cfg); err == nil {
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
 				{{- template "uri/decode" $el }}
-			}(); err != nil {
+			}); err != nil {
 				return params, errors.Wrap(err, {{ quote $errParse }})
 			}
 		} {{ if $p.Spec.Required }} else {

@@ -1,48 +1,39 @@
 package uri
 
-import "strings"
+import (
+	"net/http"
+
+	"github.com/go-faster/errors"
+)
 
 type HeaderDecoder struct {
-	value   string
-	explode bool
+	header http.Header
 }
 
-type HeaderDecoderConfig struct {
-	Value   string
-	Explode bool
-}
-
-func NewHeaderDecoder(cfg HeaderDecoderConfig) *HeaderDecoder {
+func NewHeaderDecoder(header http.Header) *HeaderDecoder {
 	return &HeaderDecoder{
-		value:   cfg.Value,
-		explode: cfg.Explode,
+		header: header,
 	}
 }
 
-func (d *HeaderDecoder) DecodeValue() (string, error) {
-	return d.value, nil
+type HeaderParameterDecodingConfig struct {
+	Name    string
+	Explode bool
 }
 
-func (d *HeaderDecoder) DecodeArray(f func(Decoder) error) error {
-	for _, v := range strings.Split(d.value, ",") {
-		if err := f(constval{v}); err != nil {
-			return err
-		}
+func (d *HeaderDecoder) HasParam(cfg HeaderParameterDecodingConfig) error {
+	if len(d.header.Values(cfg.Name)) == 0 {
+		return errors.Errorf("header parameter %q not set", cfg.Name)
 	}
 	return nil
 }
 
-func (d *HeaderDecoder) DecodeFields(f func(field string, d Decoder) error) error {
-	adapter := func(field, value string) error {
-		return f(field, constval{value})
+func (d *HeaderDecoder) DecodeParam(cfg HeaderParameterDecodingConfig, f func(Decoder) error) error {
+	p := &headerParamDecoder{
+		paramName: cfg.Name,
+		explode:   cfg.Explode,
+		header:    d.header,
 	}
 
-	kvSep, fieldSep := ',', ','
-	if d.explode {
-		kvSep = '='
-	}
-	return decodeObject(
-		(&cursor{src: []rune(d.value)}),
-		kvSep, fieldSep, adapter,
-	)
+	return f(p)
 }
