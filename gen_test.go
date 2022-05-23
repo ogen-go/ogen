@@ -102,9 +102,7 @@ func TestGenerate(t *testing.T) {
 		"sample.json": {
 			"enum format",
 		},
-		"manga.json": {
-			"unsupported content types",
-		},
+		"manga.json":            {},
 		"telegram_bot_api.json": {},
 		"gotd_bot_api.json":     {},
 		"k8s.json": {
