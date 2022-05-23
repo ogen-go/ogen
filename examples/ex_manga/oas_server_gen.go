@@ -16,6 +16,18 @@ type Handler interface {
 	//
 	// GET /api/gallery/{book_id}
 	GetBook(ctx context.Context, params GetBookParams) (GetBookRes, error)
+	// GetPageCoverImage implements getPageCoverImage operation.
+	//
+	// GET /galleries/{media_id}/cover.{format}
+	GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (GetPageCoverImageRes, error)
+	// GetPageImage implements getPageImage operation.
+	//
+	// GET /galleries/{media_id}/{page}.{format}
+	GetPageImage(ctx context.Context, params GetPageImageParams) (GetPageImageRes, error)
+	// GetPageThumbnailImage implements getPageThumbnailImage operation.
+	//
+	// GET /galleries/{media_id}/{page}t.{format}
+	GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (GetPageThumbnailImageRes, error)
 	// Search implements search operation.
 	//
 	// GET /api/galleries/search

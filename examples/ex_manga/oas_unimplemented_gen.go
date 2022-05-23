@@ -20,6 +20,27 @@ func (UnimplementedHandler) GetBook(ctx context.Context, params GetBookParams) (
 	return r, ht.ErrNotImplemented
 }
 
+// GetPageCoverImage implements getPageCoverImage operation.
+//
+// GET /galleries/{media_id}/cover.{format}
+func (UnimplementedHandler) GetPageCoverImage(ctx context.Context, params GetPageCoverImageParams) (r GetPageCoverImageRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// GetPageImage implements getPageImage operation.
+//
+// GET /galleries/{media_id}/{page}.{format}
+func (UnimplementedHandler) GetPageImage(ctx context.Context, params GetPageImageParams) (r GetPageImageRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// GetPageThumbnailImage implements getPageThumbnailImage operation.
+//
+// GET /galleries/{media_id}/{page}t.{format}
+func (UnimplementedHandler) GetPageThumbnailImage(ctx context.Context, params GetPageThumbnailImageParams) (r GetPageThumbnailImageRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // Search implements search operation.
 //
 // GET /api/galleries/search
