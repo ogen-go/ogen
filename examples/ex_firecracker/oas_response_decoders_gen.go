@@ -38,7 +38,6 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -65,7 +64,6 @@ func decodeCreateSnapshotResponse(resp *http.Response, span trace.Span) (res Cre
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -101,7 +99,6 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -128,7 +125,6 @@ func decodeCreateSyncActionResponse(resp *http.Response, span trace.Span) (res C
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -162,7 +158,6 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -189,7 +184,6 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -216,7 +210,6 @@ func decodeDescribeBalloonConfigResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -250,7 +243,6 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -277,7 +269,6 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -304,7 +295,6 @@ func decodeDescribeBalloonStatsResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -338,7 +328,6 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -365,7 +354,6 @@ func decodeDescribeInstanceResponse(resp *http.Response, span trace.Span) (res D
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -399,7 +387,6 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -426,7 +413,6 @@ func decodeGetExportVmConfigResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -460,7 +446,6 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -487,7 +472,6 @@ func decodeGetMachineConfigurationResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -523,7 +507,6 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -550,7 +533,6 @@ func decodeLoadSnapshotResponse(resp *http.Response, span trace.Span) (res LoadS
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -586,7 +568,6 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -613,7 +594,6 @@ func decodeMmdsConfigPutResponse(resp *http.Response, span trace.Span) (res Mmds
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -647,7 +627,6 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -674,7 +653,6 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -701,7 +679,6 @@ func decodeMmdsGetResponse(resp *http.Response, span trace.Span) (res MmdsGetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -737,7 +714,6 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -764,7 +740,6 @@ func decodeMmdsPatchResponse(resp *http.Response, span trace.Span) (res MmdsPatc
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -800,7 +775,6 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -827,7 +801,6 @@ func decodeMmdsPutResponse(resp *http.Response, span trace.Span) (res MmdsPutRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -863,7 +836,6 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -890,7 +862,6 @@ func decodePatchBalloonResponse(resp *http.Response, span trace.Span) (res Patch
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -926,7 +897,6 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -953,7 +923,6 @@ func decodePatchBalloonStatsIntervalResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -989,7 +958,6 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1016,7 +984,6 @@ func decodePatchGuestDriveByIDResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1052,7 +1019,6 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1079,7 +1045,6 @@ func decodePatchGuestNetworkInterfaceByIDResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1115,7 +1080,6 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1142,7 +1106,6 @@ func decodePatchMachineConfigurationResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1178,7 +1141,6 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1205,7 +1167,6 @@ func decodePatchVmResponse(resp *http.Response, span trace.Span) (res PatchVmRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1241,7 +1202,6 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1268,7 +1228,6 @@ func decodePutBalloonResponse(resp *http.Response, span trace.Span) (res PutBall
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1304,7 +1263,6 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1331,7 +1289,6 @@ func decodePutGuestBootSourceResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1367,7 +1324,6 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1394,7 +1350,6 @@ func decodePutGuestDriveByIDResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1430,7 +1385,6 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1457,7 +1411,6 @@ func decodePutGuestNetworkInterfaceByIDResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1493,7 +1446,6 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1520,7 +1472,6 @@ func decodePutGuestVsockResponse(resp *http.Response, span trace.Span) (res PutG
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1556,7 +1507,6 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1583,7 +1533,6 @@ func decodePutLoggerResponse(resp *http.Response, span trace.Span) (res PutLogge
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1619,7 +1568,6 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1646,7 +1594,6 @@ func decodePutMachineConfigurationResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -1682,7 +1629,6 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1709,7 +1655,6 @@ func decodePutMetricsResponse(resp *http.Response, span trace.Span) (res PutMetr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,

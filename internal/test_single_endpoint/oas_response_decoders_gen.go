@@ -39,7 +39,6 @@ func decodeProbeLivenessResponse(resp *http.Response, span trace.Span) (res stri
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -67,7 +66,6 @@ func decodeProbeLivenessResponse(resp *http.Response, span trace.Span) (res stri
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,

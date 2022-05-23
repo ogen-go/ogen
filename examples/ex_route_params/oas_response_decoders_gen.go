@@ -38,7 +38,6 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res string, er
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -73,7 +72,6 @@ func decodeDataGetAnyResponse(resp *http.Response, span trace.Span) (res string,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -108,7 +106,6 @@ func decodeDataGetIDResponse(resp *http.Response, span trace.Span) (res string, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

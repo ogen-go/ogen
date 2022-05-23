@@ -39,7 +39,6 @@ func decodeDataGetFormatResponse(resp *http.Response, span trace.Span) (res stri
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -74,7 +73,6 @@ func decodeDefaultTestResponse(resp *http.Response, span trace.Span) (res int32,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -107,7 +105,6 @@ func decodeErrorGetResponse(resp *http.Response, span trace.Span) (res ErrorStat
 			}(); err != nil {
 				return res, err
 			}
-
 			return ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -141,7 +138,6 @@ func decodeFoobarGetResponse(resp *http.Response, span trace.Span) (res FoobarGe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -176,7 +172,6 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -205,7 +200,6 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -247,7 +241,6 @@ func decodeGetHeaderResponse(resp *http.Response, span trace.Span) (res Hash, er
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -280,7 +273,6 @@ func decodeNoAdditionalPropertiesTestResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -313,7 +305,6 @@ func decodeNullableDefaultResponseResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return NilIntStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -355,7 +346,6 @@ func decodePatternRecursiveMapGetResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -388,7 +378,6 @@ func decodePetCreateResponse(resp *http.Response, span trace.Span) (res Pet, err
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -431,7 +420,6 @@ func decodePetFriendsNamesByIDResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -464,7 +452,6 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -491,7 +478,6 @@ func decodePetGetResponse(resp *http.Response, span trace.Span) (res PetGetRes, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &PetGetDefStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -511,9 +497,8 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 				return res, err
 			}
 
-			return &PetGetAvatarByIDOK{
-				Data: bytes.NewReader(b),
-			}, nil
+			response := PetGetAvatarByIDOK{Data: bytes.NewReader(b)}
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -541,7 +526,6 @@ func decodePetGetAvatarByIDResponse(resp *http.Response, span trace.Span) (res P
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -561,9 +545,8 @@ func decodePetGetAvatarByNameResponse(resp *http.Response, span trace.Span) (res
 				return res, err
 			}
 
-			return &PetGetAvatarByNameOK{
-				Data: bytes.NewReader(b),
-			}, nil
+			response := PetGetAvatarByNameOK{Data: bytes.NewReader(b)}
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -591,7 +574,6 @@ func decodePetGetAvatarByNameResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -625,7 +607,6 @@ func decodePetGetByNameResponse(resp *http.Response, span trace.Span) (res Pet, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -660,7 +641,6 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -713,7 +693,6 @@ func decodePetUploadAvatarByIDResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -747,7 +726,6 @@ func decodeRecursiveArrayGetResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -780,7 +758,6 @@ func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -815,7 +792,6 @@ func decodeSecurityTestResponse(resp *http.Response, span trace.Span) (res strin
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -848,7 +824,6 @@ func decodeStringIntMapGetResponse(resp *http.Response, span trace.Span) (res St
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -897,7 +872,6 @@ func decodeTestObjectQueryParameterResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

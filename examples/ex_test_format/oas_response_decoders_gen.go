@@ -41,7 +41,6 @@ func decodeTestRequestAnyResponse(resp *http.Response, span trace.Span) (res Err
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -74,7 +73,6 @@ func decodeTestRequestBooleanResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -107,7 +105,6 @@ func decodeTestRequestBooleanArrayResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -140,7 +137,6 @@ func decodeTestRequestBooleanArrayArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -173,7 +169,6 @@ func decodeTestRequestBooleanNullableResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -206,7 +201,6 @@ func decodeTestRequestBooleanNullableArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -239,7 +233,6 @@ func decodeTestRequestBooleanNullableArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -272,7 +265,6 @@ func decodeTestRequestEmptyStructResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -305,7 +297,6 @@ func decodeTestRequestFormatTestResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -338,7 +329,6 @@ func decodeTestRequestIntegerResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -371,7 +361,6 @@ func decodeTestRequestIntegerArrayResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -404,7 +393,6 @@ func decodeTestRequestIntegerArrayArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -437,7 +425,6 @@ func decodeTestRequestIntegerInt32Response(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -470,7 +457,6 @@ func decodeTestRequestIntegerInt32ArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -503,7 +489,6 @@ func decodeTestRequestIntegerInt32ArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -536,7 +521,6 @@ func decodeTestRequestIntegerInt32NullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -569,7 +553,6 @@ func decodeTestRequestIntegerInt32NullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -602,7 +585,6 @@ func decodeTestRequestIntegerInt32NullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -635,7 +617,6 @@ func decodeTestRequestIntegerInt64Response(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -668,7 +649,6 @@ func decodeTestRequestIntegerInt64ArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -701,7 +681,6 @@ func decodeTestRequestIntegerInt64ArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -734,7 +713,6 @@ func decodeTestRequestIntegerInt64NullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -767,7 +745,6 @@ func decodeTestRequestIntegerInt64NullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -800,7 +777,6 @@ func decodeTestRequestIntegerInt64NullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -833,7 +809,6 @@ func decodeTestRequestIntegerNullableResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -866,7 +841,6 @@ func decodeTestRequestIntegerNullableArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -899,7 +873,6 @@ func decodeTestRequestIntegerNullableArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -932,7 +905,6 @@ func decodeTestRequestNullResponse(resp *http.Response, span trace.Span) (res Er
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -965,7 +937,6 @@ func decodeTestRequestNullArrayResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -998,7 +969,6 @@ func decodeTestRequestNullArrayArrayResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1031,7 +1001,6 @@ func decodeTestRequestNullNullableResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1064,7 +1033,6 @@ func decodeTestRequestNullNullableArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1097,7 +1065,6 @@ func decodeTestRequestNullNullableArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1130,7 +1097,6 @@ func decodeTestRequestNumberResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1163,7 +1129,6 @@ func decodeTestRequestNumberArrayResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1196,7 +1161,6 @@ func decodeTestRequestNumberArrayArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1229,7 +1193,6 @@ func decodeTestRequestNumberDoubleResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1262,7 +1225,6 @@ func decodeTestRequestNumberDoubleArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1295,7 +1257,6 @@ func decodeTestRequestNumberDoubleArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1328,7 +1289,6 @@ func decodeTestRequestNumberDoubleNullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1361,7 +1321,6 @@ func decodeTestRequestNumberDoubleNullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1394,7 +1353,6 @@ func decodeTestRequestNumberDoubleNullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1427,7 +1385,6 @@ func decodeTestRequestNumberFloatResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1460,7 +1417,6 @@ func decodeTestRequestNumberFloatArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1493,7 +1449,6 @@ func decodeTestRequestNumberFloatArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1526,7 +1481,6 @@ func decodeTestRequestNumberFloatNullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1559,7 +1513,6 @@ func decodeTestRequestNumberFloatNullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1592,7 +1545,6 @@ func decodeTestRequestNumberFloatNullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1625,7 +1577,6 @@ func decodeTestRequestNumberInt32Response(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1658,7 +1609,6 @@ func decodeTestRequestNumberInt32ArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1691,7 +1641,6 @@ func decodeTestRequestNumberInt32ArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1724,7 +1673,6 @@ func decodeTestRequestNumberInt32NullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1757,7 +1705,6 @@ func decodeTestRequestNumberInt32NullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1790,7 +1737,6 @@ func decodeTestRequestNumberInt32NullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1823,7 +1769,6 @@ func decodeTestRequestNumberInt64Response(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1856,7 +1801,6 @@ func decodeTestRequestNumberInt64ArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1889,7 +1833,6 @@ func decodeTestRequestNumberInt64ArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1922,7 +1865,6 @@ func decodeTestRequestNumberInt64NullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1955,7 +1897,6 @@ func decodeTestRequestNumberInt64NullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1988,7 +1929,6 @@ func decodeTestRequestNumberInt64NullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2021,7 +1961,6 @@ func decodeTestRequestNumberNullableResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2054,7 +1993,6 @@ func decodeTestRequestNumberNullableArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2087,7 +2025,6 @@ func decodeTestRequestNumberNullableArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2120,7 +2057,6 @@ func decodeTestRequestRequiredAnyResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2153,7 +2089,6 @@ func decodeTestRequestRequiredBooleanResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2186,7 +2121,6 @@ func decodeTestRequestRequiredBooleanArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2219,7 +2153,6 @@ func decodeTestRequestRequiredBooleanArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2252,7 +2185,6 @@ func decodeTestRequestRequiredBooleanNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2285,7 +2217,6 @@ func decodeTestRequestRequiredBooleanNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2318,7 +2249,6 @@ func decodeTestRequestRequiredBooleanNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2351,7 +2281,6 @@ func decodeTestRequestRequiredEmptyStructResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2384,7 +2313,6 @@ func decodeTestRequestRequiredFormatTestResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2417,7 +2345,6 @@ func decodeTestRequestRequiredIntegerResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2450,7 +2377,6 @@ func decodeTestRequestRequiredIntegerArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2483,7 +2409,6 @@ func decodeTestRequestRequiredIntegerArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2516,7 +2441,6 @@ func decodeTestRequestRequiredIntegerInt32Response(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2549,7 +2473,6 @@ func decodeTestRequestRequiredIntegerInt32ArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2582,7 +2505,6 @@ func decodeTestRequestRequiredIntegerInt32ArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2615,7 +2537,6 @@ func decodeTestRequestRequiredIntegerInt32NullableResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2648,7 +2569,6 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2681,7 +2601,6 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayArrayResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2714,7 +2633,6 @@ func decodeTestRequestRequiredIntegerInt64Response(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2747,7 +2665,6 @@ func decodeTestRequestRequiredIntegerInt64ArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2780,7 +2697,6 @@ func decodeTestRequestRequiredIntegerInt64ArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2813,7 +2729,6 @@ func decodeTestRequestRequiredIntegerInt64NullableResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2846,7 +2761,6 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2879,7 +2793,6 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayArrayResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2912,7 +2825,6 @@ func decodeTestRequestRequiredIntegerNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2945,7 +2857,6 @@ func decodeTestRequestRequiredIntegerNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2978,7 +2889,6 @@ func decodeTestRequestRequiredIntegerNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3011,7 +2921,6 @@ func decodeTestRequestRequiredNullResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3044,7 +2953,6 @@ func decodeTestRequestRequiredNullArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3077,7 +2985,6 @@ func decodeTestRequestRequiredNullArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3110,7 +3017,6 @@ func decodeTestRequestRequiredNullNullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3143,7 +3049,6 @@ func decodeTestRequestRequiredNullNullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3176,7 +3081,6 @@ func decodeTestRequestRequiredNullNullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3209,7 +3113,6 @@ func decodeTestRequestRequiredNumberResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3242,7 +3145,6 @@ func decodeTestRequestRequiredNumberArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3275,7 +3177,6 @@ func decodeTestRequestRequiredNumberArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3308,7 +3209,6 @@ func decodeTestRequestRequiredNumberDoubleResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3341,7 +3241,6 @@ func decodeTestRequestRequiredNumberDoubleArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3374,7 +3273,6 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3407,7 +3305,6 @@ func decodeTestRequestRequiredNumberDoubleNullableResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3440,7 +3337,6 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3473,7 +3369,6 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3506,7 +3401,6 @@ func decodeTestRequestRequiredNumberFloatResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3539,7 +3433,6 @@ func decodeTestRequestRequiredNumberFloatArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3572,7 +3465,6 @@ func decodeTestRequestRequiredNumberFloatArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3605,7 +3497,6 @@ func decodeTestRequestRequiredNumberFloatNullableResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3638,7 +3529,6 @@ func decodeTestRequestRequiredNumberFloatNullableArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3671,7 +3561,6 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3704,7 +3593,6 @@ func decodeTestRequestRequiredNumberInt32Response(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3737,7 +3625,6 @@ func decodeTestRequestRequiredNumberInt32ArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3770,7 +3657,6 @@ func decodeTestRequestRequiredNumberInt32ArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3803,7 +3689,6 @@ func decodeTestRequestRequiredNumberInt32NullableResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3836,7 +3721,6 @@ func decodeTestRequestRequiredNumberInt32NullableArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3869,7 +3753,6 @@ func decodeTestRequestRequiredNumberInt32NullableArrayArrayResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3902,7 +3785,6 @@ func decodeTestRequestRequiredNumberInt64Response(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3935,7 +3817,6 @@ func decodeTestRequestRequiredNumberInt64ArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3968,7 +3849,6 @@ func decodeTestRequestRequiredNumberInt64ArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4001,7 +3881,6 @@ func decodeTestRequestRequiredNumberInt64NullableResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4034,7 +3913,6 @@ func decodeTestRequestRequiredNumberInt64NullableArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4067,7 +3945,6 @@ func decodeTestRequestRequiredNumberInt64NullableArrayArrayResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4100,7 +3977,6 @@ func decodeTestRequestRequiredNumberNullableResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4133,7 +4009,6 @@ func decodeTestRequestRequiredNumberNullableArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4166,7 +4041,6 @@ func decodeTestRequestRequiredNumberNullableArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4199,7 +4073,6 @@ func decodeTestRequestRequiredStringResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4232,7 +4105,6 @@ func decodeTestRequestRequiredStringArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4265,7 +4137,6 @@ func decodeTestRequestRequiredStringArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4298,7 +4169,6 @@ func decodeTestRequestRequiredStringBinaryResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4331,7 +4201,6 @@ func decodeTestRequestRequiredStringBinaryArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4364,7 +4233,6 @@ func decodeTestRequestRequiredStringBinaryArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4397,7 +4265,6 @@ func decodeTestRequestRequiredStringBinaryNullableResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4430,7 +4297,6 @@ func decodeTestRequestRequiredStringBinaryNullableArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4463,7 +4329,6 @@ func decodeTestRequestRequiredStringBinaryNullableArrayArrayResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4496,7 +4361,6 @@ func decodeTestRequestRequiredStringByteResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4529,7 +4393,6 @@ func decodeTestRequestRequiredStringByteArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4562,7 +4425,6 @@ func decodeTestRequestRequiredStringByteArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4595,7 +4457,6 @@ func decodeTestRequestRequiredStringByteNullableResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4628,7 +4489,6 @@ func decodeTestRequestRequiredStringByteNullableArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4661,7 +4521,6 @@ func decodeTestRequestRequiredStringByteNullableArrayArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4694,7 +4553,6 @@ func decodeTestRequestRequiredStringDateResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4727,7 +4585,6 @@ func decodeTestRequestRequiredStringDateArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4760,7 +4617,6 @@ func decodeTestRequestRequiredStringDateArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4793,7 +4649,6 @@ func decodeTestRequestRequiredStringDateNullableResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4826,7 +4681,6 @@ func decodeTestRequestRequiredStringDateNullableArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4859,7 +4713,6 @@ func decodeTestRequestRequiredStringDateNullableArrayArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4892,7 +4745,6 @@ func decodeTestRequestRequiredStringDateTimeResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4925,7 +4777,6 @@ func decodeTestRequestRequiredStringDateTimeArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4958,7 +4809,6 @@ func decodeTestRequestRequiredStringDateTimeArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4991,7 +4841,6 @@ func decodeTestRequestRequiredStringDateTimeNullableResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5024,7 +4873,6 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5057,7 +4905,6 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayArrayResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5090,7 +4937,6 @@ func decodeTestRequestRequiredStringDurationResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5123,7 +4969,6 @@ func decodeTestRequestRequiredStringDurationArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5156,7 +5001,6 @@ func decodeTestRequestRequiredStringDurationArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5189,7 +5033,6 @@ func decodeTestRequestRequiredStringDurationNullableResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5222,7 +5065,6 @@ func decodeTestRequestRequiredStringDurationNullableArrayResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5255,7 +5097,6 @@ func decodeTestRequestRequiredStringDurationNullableArrayArrayResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5288,7 +5129,6 @@ func decodeTestRequestRequiredStringEmailResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5321,7 +5161,6 @@ func decodeTestRequestRequiredStringEmailArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5354,7 +5193,6 @@ func decodeTestRequestRequiredStringEmailArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5387,7 +5225,6 @@ func decodeTestRequestRequiredStringEmailNullableResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5420,7 +5257,6 @@ func decodeTestRequestRequiredStringEmailNullableArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5453,7 +5289,6 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5486,7 +5321,6 @@ func decodeTestRequestRequiredStringHostnameResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5519,7 +5353,6 @@ func decodeTestRequestRequiredStringHostnameArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5552,7 +5385,6 @@ func decodeTestRequestRequiredStringHostnameArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5585,7 +5417,6 @@ func decodeTestRequestRequiredStringHostnameNullableResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5618,7 +5449,6 @@ func decodeTestRequestRequiredStringHostnameNullableArrayResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5651,7 +5481,6 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5684,7 +5513,6 @@ func decodeTestRequestRequiredStringIPResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5717,7 +5545,6 @@ func decodeTestRequestRequiredStringIPArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5750,7 +5577,6 @@ func decodeTestRequestRequiredStringIPArrayArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5783,7 +5609,6 @@ func decodeTestRequestRequiredStringIPNullableResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5816,7 +5641,6 @@ func decodeTestRequestRequiredStringIPNullableArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5849,7 +5673,6 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayResponse(resp *http.Resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5882,7 +5705,6 @@ func decodeTestRequestRequiredStringInt32Response(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5915,7 +5737,6 @@ func decodeTestRequestRequiredStringInt32ArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5948,7 +5769,6 @@ func decodeTestRequestRequiredStringInt32ArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5981,7 +5801,6 @@ func decodeTestRequestRequiredStringInt32NullableResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6014,7 +5833,6 @@ func decodeTestRequestRequiredStringInt32NullableArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6047,7 +5865,6 @@ func decodeTestRequestRequiredStringInt32NullableArrayArrayResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6080,7 +5897,6 @@ func decodeTestRequestRequiredStringInt64Response(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6113,7 +5929,6 @@ func decodeTestRequestRequiredStringInt64ArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6146,7 +5961,6 @@ func decodeTestRequestRequiredStringInt64ArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6179,7 +5993,6 @@ func decodeTestRequestRequiredStringInt64NullableResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6212,7 +6025,6 @@ func decodeTestRequestRequiredStringInt64NullableArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6245,7 +6057,6 @@ func decodeTestRequestRequiredStringInt64NullableArrayArrayResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6278,7 +6089,6 @@ func decodeTestRequestRequiredStringIpv4Response(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6311,7 +6121,6 @@ func decodeTestRequestRequiredStringIpv4ArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6344,7 +6153,6 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6377,7 +6185,6 @@ func decodeTestRequestRequiredStringIpv4NullableResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6410,7 +6217,6 @@ func decodeTestRequestRequiredStringIpv4NullableArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6443,7 +6249,6 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6476,7 +6281,6 @@ func decodeTestRequestRequiredStringIpv6Response(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6509,7 +6313,6 @@ func decodeTestRequestRequiredStringIpv6ArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6542,7 +6345,6 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6575,7 +6377,6 @@ func decodeTestRequestRequiredStringIpv6NullableResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6608,7 +6409,6 @@ func decodeTestRequestRequiredStringIpv6NullableArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6641,7 +6441,6 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6674,7 +6473,6 @@ func decodeTestRequestRequiredStringNullableResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6707,7 +6505,6 @@ func decodeTestRequestRequiredStringNullableArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6740,7 +6537,6 @@ func decodeTestRequestRequiredStringNullableArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6773,7 +6569,6 @@ func decodeTestRequestRequiredStringPasswordResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6806,7 +6601,6 @@ func decodeTestRequestRequiredStringPasswordArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6839,7 +6633,6 @@ func decodeTestRequestRequiredStringPasswordArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6872,7 +6665,6 @@ func decodeTestRequestRequiredStringPasswordNullableResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6905,7 +6697,6 @@ func decodeTestRequestRequiredStringPasswordNullableArrayResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6938,7 +6729,6 @@ func decodeTestRequestRequiredStringPasswordNullableArrayArrayResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6971,7 +6761,6 @@ func decodeTestRequestRequiredStringTimeResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7004,7 +6793,6 @@ func decodeTestRequestRequiredStringTimeArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7037,7 +6825,6 @@ func decodeTestRequestRequiredStringTimeArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7070,7 +6857,6 @@ func decodeTestRequestRequiredStringTimeNullableResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7103,7 +6889,6 @@ func decodeTestRequestRequiredStringTimeNullableArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7136,7 +6921,6 @@ func decodeTestRequestRequiredStringTimeNullableArrayArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7169,7 +6953,6 @@ func decodeTestRequestRequiredStringURIResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7202,7 +6985,6 @@ func decodeTestRequestRequiredStringURIArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7235,7 +7017,6 @@ func decodeTestRequestRequiredStringURIArrayArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7268,7 +7049,6 @@ func decodeTestRequestRequiredStringURINullableResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7301,7 +7081,6 @@ func decodeTestRequestRequiredStringURINullableArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7334,7 +7113,6 @@ func decodeTestRequestRequiredStringURINullableArrayArrayResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7367,7 +7145,6 @@ func decodeTestRequestRequiredStringUUIDResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7400,7 +7177,6 @@ func decodeTestRequestRequiredStringUUIDArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7433,7 +7209,6 @@ func decodeTestRequestRequiredStringUUIDArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7466,7 +7241,6 @@ func decodeTestRequestRequiredStringUUIDNullableResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7499,7 +7273,6 @@ func decodeTestRequestRequiredStringUUIDNullableArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7532,7 +7305,6 @@ func decodeTestRequestRequiredStringUUIDNullableArrayArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7565,7 +7337,6 @@ func decodeTestRequestRequiredStringUnixResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7598,7 +7369,6 @@ func decodeTestRequestRequiredStringUnixArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7631,7 +7401,6 @@ func decodeTestRequestRequiredStringUnixArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7664,7 +7433,6 @@ func decodeTestRequestRequiredStringUnixMicroResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7697,7 +7465,6 @@ func decodeTestRequestRequiredStringUnixMicroArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7730,7 +7497,6 @@ func decodeTestRequestRequiredStringUnixMicroArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7763,7 +7529,6 @@ func decodeTestRequestRequiredStringUnixMicroNullableResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7796,7 +7561,6 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7829,7 +7593,6 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7862,7 +7625,6 @@ func decodeTestRequestRequiredStringUnixMilliResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7895,7 +7657,6 @@ func decodeTestRequestRequiredStringUnixMilliArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7928,7 +7689,6 @@ func decodeTestRequestRequiredStringUnixMilliArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7961,7 +7721,6 @@ func decodeTestRequestRequiredStringUnixMilliNullableResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7994,7 +7753,6 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8027,7 +7785,6 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8060,7 +7817,6 @@ func decodeTestRequestRequiredStringUnixNanoResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8093,7 +7849,6 @@ func decodeTestRequestRequiredStringUnixNanoArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8126,7 +7881,6 @@ func decodeTestRequestRequiredStringUnixNanoArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8159,7 +7913,6 @@ func decodeTestRequestRequiredStringUnixNanoNullableResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8192,7 +7945,6 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8225,7 +7977,6 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8258,7 +8009,6 @@ func decodeTestRequestRequiredStringUnixNullableResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8291,7 +8041,6 @@ func decodeTestRequestRequiredStringUnixNullableArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8324,7 +8073,6 @@ func decodeTestRequestRequiredStringUnixNullableArrayArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8357,7 +8105,6 @@ func decodeTestRequestRequiredStringUnixSecondsResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8390,7 +8137,6 @@ func decodeTestRequestRequiredStringUnixSecondsArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8423,7 +8169,6 @@ func decodeTestRequestRequiredStringUnixSecondsArrayArrayResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8456,7 +8201,6 @@ func decodeTestRequestRequiredStringUnixSecondsNullableResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8489,7 +8233,6 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8522,7 +8265,6 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayResponse(resp *
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8555,7 +8297,6 @@ func decodeTestRequestStringResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8588,7 +8329,6 @@ func decodeTestRequestStringArrayResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8621,7 +8361,6 @@ func decodeTestRequestStringArrayArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8654,7 +8393,6 @@ func decodeTestRequestStringBinaryResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8687,7 +8425,6 @@ func decodeTestRequestStringBinaryArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8720,7 +8457,6 @@ func decodeTestRequestStringBinaryArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8753,7 +8489,6 @@ func decodeTestRequestStringBinaryNullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8786,7 +8521,6 @@ func decodeTestRequestStringBinaryNullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8819,7 +8553,6 @@ func decodeTestRequestStringBinaryNullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8852,7 +8585,6 @@ func decodeTestRequestStringByteResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8885,7 +8617,6 @@ func decodeTestRequestStringByteArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8918,7 +8649,6 @@ func decodeTestRequestStringByteArrayArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8951,7 +8681,6 @@ func decodeTestRequestStringByteNullableResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8984,7 +8713,6 @@ func decodeTestRequestStringByteNullableArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9017,7 +8745,6 @@ func decodeTestRequestStringByteNullableArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9050,7 +8777,6 @@ func decodeTestRequestStringDateResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9083,7 +8809,6 @@ func decodeTestRequestStringDateArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9116,7 +8841,6 @@ func decodeTestRequestStringDateArrayArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9149,7 +8873,6 @@ func decodeTestRequestStringDateNullableResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9182,7 +8905,6 @@ func decodeTestRequestStringDateNullableArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9215,7 +8937,6 @@ func decodeTestRequestStringDateNullableArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9248,7 +8969,6 @@ func decodeTestRequestStringDateTimeResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9281,7 +9001,6 @@ func decodeTestRequestStringDateTimeArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9314,7 +9033,6 @@ func decodeTestRequestStringDateTimeArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9347,7 +9065,6 @@ func decodeTestRequestStringDateTimeNullableResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9380,7 +9097,6 @@ func decodeTestRequestStringDateTimeNullableArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9413,7 +9129,6 @@ func decodeTestRequestStringDateTimeNullableArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9446,7 +9161,6 @@ func decodeTestRequestStringDurationResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9479,7 +9193,6 @@ func decodeTestRequestStringDurationArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9512,7 +9225,6 @@ func decodeTestRequestStringDurationArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9545,7 +9257,6 @@ func decodeTestRequestStringDurationNullableResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9578,7 +9289,6 @@ func decodeTestRequestStringDurationNullableArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9611,7 +9321,6 @@ func decodeTestRequestStringDurationNullableArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9644,7 +9353,6 @@ func decodeTestRequestStringEmailResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9677,7 +9385,6 @@ func decodeTestRequestStringEmailArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9710,7 +9417,6 @@ func decodeTestRequestStringEmailArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9743,7 +9449,6 @@ func decodeTestRequestStringEmailNullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9776,7 +9481,6 @@ func decodeTestRequestStringEmailNullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9809,7 +9513,6 @@ func decodeTestRequestStringEmailNullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9842,7 +9545,6 @@ func decodeTestRequestStringHostnameResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9875,7 +9577,6 @@ func decodeTestRequestStringHostnameArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9908,7 +9609,6 @@ func decodeTestRequestStringHostnameArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9941,7 +9641,6 @@ func decodeTestRequestStringHostnameNullableResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9974,7 +9673,6 @@ func decodeTestRequestStringHostnameNullableArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10007,7 +9705,6 @@ func decodeTestRequestStringHostnameNullableArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10040,7 +9737,6 @@ func decodeTestRequestStringIPResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10073,7 +9769,6 @@ func decodeTestRequestStringIPArrayResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10106,7 +9801,6 @@ func decodeTestRequestStringIPArrayArrayResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10139,7 +9833,6 @@ func decodeTestRequestStringIPNullableResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10172,7 +9865,6 @@ func decodeTestRequestStringIPNullableArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10205,7 +9897,6 @@ func decodeTestRequestStringIPNullableArrayArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10238,7 +9929,6 @@ func decodeTestRequestStringInt32Response(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10271,7 +9961,6 @@ func decodeTestRequestStringInt32ArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10304,7 +9993,6 @@ func decodeTestRequestStringInt32ArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10337,7 +10025,6 @@ func decodeTestRequestStringInt32NullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10370,7 +10057,6 @@ func decodeTestRequestStringInt32NullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10403,7 +10089,6 @@ func decodeTestRequestStringInt32NullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10436,7 +10121,6 @@ func decodeTestRequestStringInt64Response(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10469,7 +10153,6 @@ func decodeTestRequestStringInt64ArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10502,7 +10185,6 @@ func decodeTestRequestStringInt64ArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10535,7 +10217,6 @@ func decodeTestRequestStringInt64NullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10568,7 +10249,6 @@ func decodeTestRequestStringInt64NullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10601,7 +10281,6 @@ func decodeTestRequestStringInt64NullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10634,7 +10313,6 @@ func decodeTestRequestStringIpv4Response(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10667,7 +10345,6 @@ func decodeTestRequestStringIpv4ArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10700,7 +10377,6 @@ func decodeTestRequestStringIpv4ArrayArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10733,7 +10409,6 @@ func decodeTestRequestStringIpv4NullableResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10766,7 +10441,6 @@ func decodeTestRequestStringIpv4NullableArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10799,7 +10473,6 @@ func decodeTestRequestStringIpv4NullableArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10832,7 +10505,6 @@ func decodeTestRequestStringIpv6Response(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10865,7 +10537,6 @@ func decodeTestRequestStringIpv6ArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10898,7 +10569,6 @@ func decodeTestRequestStringIpv6ArrayArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10931,7 +10601,6 @@ func decodeTestRequestStringIpv6NullableResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10964,7 +10633,6 @@ func decodeTestRequestStringIpv6NullableArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10997,7 +10665,6 @@ func decodeTestRequestStringIpv6NullableArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11030,7 +10697,6 @@ func decodeTestRequestStringNullableResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11063,7 +10729,6 @@ func decodeTestRequestStringNullableArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11096,7 +10761,6 @@ func decodeTestRequestStringNullableArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11129,7 +10793,6 @@ func decodeTestRequestStringPasswordResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11162,7 +10825,6 @@ func decodeTestRequestStringPasswordArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11195,7 +10857,6 @@ func decodeTestRequestStringPasswordArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11228,7 +10889,6 @@ func decodeTestRequestStringPasswordNullableResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11261,7 +10921,6 @@ func decodeTestRequestStringPasswordNullableArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11294,7 +10953,6 @@ func decodeTestRequestStringPasswordNullableArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11327,7 +10985,6 @@ func decodeTestRequestStringTimeResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11360,7 +11017,6 @@ func decodeTestRequestStringTimeArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11393,7 +11049,6 @@ func decodeTestRequestStringTimeArrayArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11426,7 +11081,6 @@ func decodeTestRequestStringTimeNullableResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11459,7 +11113,6 @@ func decodeTestRequestStringTimeNullableArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11492,7 +11145,6 @@ func decodeTestRequestStringTimeNullableArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11525,7 +11177,6 @@ func decodeTestRequestStringURIResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11558,7 +11209,6 @@ func decodeTestRequestStringURIArrayResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11591,7 +11241,6 @@ func decodeTestRequestStringURIArrayArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11624,7 +11273,6 @@ func decodeTestRequestStringURINullableResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11657,7 +11305,6 @@ func decodeTestRequestStringURINullableArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11690,7 +11337,6 @@ func decodeTestRequestStringURINullableArrayArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11723,7 +11369,6 @@ func decodeTestRequestStringUUIDResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11756,7 +11401,6 @@ func decodeTestRequestStringUUIDArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11789,7 +11433,6 @@ func decodeTestRequestStringUUIDArrayArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11822,7 +11465,6 @@ func decodeTestRequestStringUUIDNullableResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11855,7 +11497,6 @@ func decodeTestRequestStringUUIDNullableArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11888,7 +11529,6 @@ func decodeTestRequestStringUUIDNullableArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11921,7 +11561,6 @@ func decodeTestRequestStringUnixResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11954,7 +11593,6 @@ func decodeTestRequestStringUnixArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11987,7 +11625,6 @@ func decodeTestRequestStringUnixArrayArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12020,7 +11657,6 @@ func decodeTestRequestStringUnixMicroResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12053,7 +11689,6 @@ func decodeTestRequestStringUnixMicroArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12086,7 +11721,6 @@ func decodeTestRequestStringUnixMicroArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12119,7 +11753,6 @@ func decodeTestRequestStringUnixMicroNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12152,7 +11785,6 @@ func decodeTestRequestStringUnixMicroNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12185,7 +11817,6 @@ func decodeTestRequestStringUnixMicroNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12218,7 +11849,6 @@ func decodeTestRequestStringUnixMilliResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12251,7 +11881,6 @@ func decodeTestRequestStringUnixMilliArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12284,7 +11913,6 @@ func decodeTestRequestStringUnixMilliArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12317,7 +11945,6 @@ func decodeTestRequestStringUnixMilliNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12350,7 +11977,6 @@ func decodeTestRequestStringUnixMilliNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12383,7 +12009,6 @@ func decodeTestRequestStringUnixMilliNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12416,7 +12041,6 @@ func decodeTestRequestStringUnixNanoResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12449,7 +12073,6 @@ func decodeTestRequestStringUnixNanoArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12482,7 +12105,6 @@ func decodeTestRequestStringUnixNanoArrayArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12515,7 +12137,6 @@ func decodeTestRequestStringUnixNanoNullableResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12548,7 +12169,6 @@ func decodeTestRequestStringUnixNanoNullableArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12581,7 +12201,6 @@ func decodeTestRequestStringUnixNanoNullableArrayArrayResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12614,7 +12233,6 @@ func decodeTestRequestStringUnixNullableResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12647,7 +12265,6 @@ func decodeTestRequestStringUnixNullableArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12680,7 +12297,6 @@ func decodeTestRequestStringUnixNullableArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12713,7 +12329,6 @@ func decodeTestRequestStringUnixSecondsResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12746,7 +12361,6 @@ func decodeTestRequestStringUnixSecondsArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12779,7 +12393,6 @@ func decodeTestRequestStringUnixSecondsArrayArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12812,7 +12425,6 @@ func decodeTestRequestStringUnixSecondsNullableResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12845,7 +12457,6 @@ func decodeTestRequestStringUnixSecondsNullableArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12878,7 +12489,6 @@ func decodeTestRequestStringUnixSecondsNullableArrayArrayResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12913,7 +12523,6 @@ func decodeTestResponseAnyResponse(resp *http.Response, span trace.Span) (res jx
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12948,7 +12557,6 @@ func decodeTestResponseBooleanResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12991,7 +12599,6 @@ func decodeTestResponseBooleanArrayResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13042,7 +12649,6 @@ func decodeTestResponseBooleanArrayArrayResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13075,7 +12681,6 @@ func decodeTestResponseBooleanNullableResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13118,7 +12723,6 @@ func decodeTestResponseBooleanNullableArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13169,7 +12773,6 @@ func decodeTestResponseBooleanNullableArrayArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13202,7 +12805,6 @@ func decodeTestResponseEmptyStructResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13235,7 +12837,6 @@ func decodeTestResponseFormatTestResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13270,7 +12871,6 @@ func decodeTestResponseIntegerResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13313,7 +12913,6 @@ func decodeTestResponseIntegerArrayResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13364,7 +12963,6 @@ func decodeTestResponseIntegerArrayArrayResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13399,7 +12997,6 @@ func decodeTestResponseIntegerInt32Response(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13442,7 +13039,6 @@ func decodeTestResponseIntegerInt32ArrayResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13493,7 +13089,6 @@ func decodeTestResponseIntegerInt32ArrayArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13526,7 +13121,6 @@ func decodeTestResponseIntegerInt32NullableResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13569,7 +13163,6 @@ func decodeTestResponseIntegerInt32NullableArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13620,7 +13213,6 @@ func decodeTestResponseIntegerInt32NullableArrayArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13655,7 +13247,6 @@ func decodeTestResponseIntegerInt64Response(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13698,7 +13289,6 @@ func decodeTestResponseIntegerInt64ArrayResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13749,7 +13339,6 @@ func decodeTestResponseIntegerInt64ArrayArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13782,7 +13371,6 @@ func decodeTestResponseIntegerInt64NullableResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13825,7 +13413,6 @@ func decodeTestResponseIntegerInt64NullableArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13876,7 +13463,6 @@ func decodeTestResponseIntegerInt64NullableArrayArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13909,7 +13495,6 @@ func decodeTestResponseIntegerNullableResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13952,7 +13537,6 @@ func decodeTestResponseIntegerNullableArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14003,7 +13587,6 @@ func decodeTestResponseIntegerNullableArrayArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14036,7 +13619,6 @@ func decodeTestResponseNullResponse(resp *http.Response, span trace.Span) (res s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14077,7 +13659,6 @@ func decodeTestResponseNullArrayResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14126,7 +13707,6 @@ func decodeTestResponseNullArrayArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14159,7 +13739,6 @@ func decodeTestResponseNullNullableResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14200,7 +13779,6 @@ func decodeTestResponseNullNullableArrayResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14249,7 +13827,6 @@ func decodeTestResponseNullNullableArrayArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14284,7 +13861,6 @@ func decodeTestResponseNumberResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14327,7 +13903,6 @@ func decodeTestResponseNumberArrayResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14378,7 +13953,6 @@ func decodeTestResponseNumberArrayArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14413,7 +13987,6 @@ func decodeTestResponseNumberDoubleResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14456,7 +14029,6 @@ func decodeTestResponseNumberDoubleArrayResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14507,7 +14079,6 @@ func decodeTestResponseNumberDoubleArrayArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14540,7 +14111,6 @@ func decodeTestResponseNumberDoubleNullableResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14583,7 +14153,6 @@ func decodeTestResponseNumberDoubleNullableArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14634,7 +14203,6 @@ func decodeTestResponseNumberDoubleNullableArrayArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14669,7 +14237,6 @@ func decodeTestResponseNumberFloatResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14712,7 +14279,6 @@ func decodeTestResponseNumberFloatArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14763,7 +14329,6 @@ func decodeTestResponseNumberFloatArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14796,7 +14361,6 @@ func decodeTestResponseNumberFloatNullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14839,7 +14403,6 @@ func decodeTestResponseNumberFloatNullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14890,7 +14453,6 @@ func decodeTestResponseNumberFloatNullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14925,7 +14487,6 @@ func decodeTestResponseNumberInt32Response(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14968,7 +14529,6 @@ func decodeTestResponseNumberInt32ArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15019,7 +14579,6 @@ func decodeTestResponseNumberInt32ArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15052,7 +14611,6 @@ func decodeTestResponseNumberInt32NullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15095,7 +14653,6 @@ func decodeTestResponseNumberInt32NullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15146,7 +14703,6 @@ func decodeTestResponseNumberInt32NullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15181,7 +14737,6 @@ func decodeTestResponseNumberInt64Response(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15224,7 +14779,6 @@ func decodeTestResponseNumberInt64ArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15275,7 +14829,6 @@ func decodeTestResponseNumberInt64ArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15308,7 +14861,6 @@ func decodeTestResponseNumberInt64NullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15351,7 +14903,6 @@ func decodeTestResponseNumberInt64NullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15402,7 +14953,6 @@ func decodeTestResponseNumberInt64NullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15435,7 +14985,6 @@ func decodeTestResponseNumberNullableResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15478,7 +15027,6 @@ func decodeTestResponseNumberNullableArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15529,7 +15077,6 @@ func decodeTestResponseNumberNullableArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15564,7 +15111,6 @@ func decodeTestResponseStringResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15607,7 +15153,6 @@ func decodeTestResponseStringArrayResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15658,7 +15203,6 @@ func decodeTestResponseStringArrayArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15693,7 +15237,6 @@ func decodeTestResponseStringBinaryResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15736,7 +15279,6 @@ func decodeTestResponseStringBinaryArrayResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15787,7 +15329,6 @@ func decodeTestResponseStringBinaryArrayArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15820,7 +15361,6 @@ func decodeTestResponseStringBinaryNullableResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15863,7 +15403,6 @@ func decodeTestResponseStringBinaryNullableArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15914,7 +15453,6 @@ func decodeTestResponseStringBinaryNullableArrayArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15949,7 +15487,6 @@ func decodeTestResponseStringByteResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -15992,7 +15529,6 @@ func decodeTestResponseStringByteArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16043,7 +15579,6 @@ func decodeTestResponseStringByteArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16078,7 +15613,6 @@ func decodeTestResponseStringByteNullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16121,7 +15655,6 @@ func decodeTestResponseStringByteNullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16172,7 +15705,6 @@ func decodeTestResponseStringByteNullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16207,7 +15739,6 @@ func decodeTestResponseStringDateResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16250,7 +15781,6 @@ func decodeTestResponseStringDateArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16301,7 +15831,6 @@ func decodeTestResponseStringDateArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16334,7 +15863,6 @@ func decodeTestResponseStringDateNullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16377,7 +15905,6 @@ func decodeTestResponseStringDateNullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16428,7 +15955,6 @@ func decodeTestResponseStringDateNullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16463,7 +15989,6 @@ func decodeTestResponseStringDateTimeResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16506,7 +16031,6 @@ func decodeTestResponseStringDateTimeArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16557,7 +16081,6 @@ func decodeTestResponseStringDateTimeArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16590,7 +16113,6 @@ func decodeTestResponseStringDateTimeNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16633,7 +16155,6 @@ func decodeTestResponseStringDateTimeNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16684,7 +16205,6 @@ func decodeTestResponseStringDateTimeNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16719,7 +16239,6 @@ func decodeTestResponseStringDurationResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16762,7 +16281,6 @@ func decodeTestResponseStringDurationArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16813,7 +16331,6 @@ func decodeTestResponseStringDurationArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16846,7 +16363,6 @@ func decodeTestResponseStringDurationNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16889,7 +16405,6 @@ func decodeTestResponseStringDurationNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16940,7 +16455,6 @@ func decodeTestResponseStringDurationNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -16975,7 +16489,6 @@ func decodeTestResponseStringEmailResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17018,7 +16531,6 @@ func decodeTestResponseStringEmailArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17069,7 +16581,6 @@ func decodeTestResponseStringEmailArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17102,7 +16613,6 @@ func decodeTestResponseStringEmailNullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17145,7 +16655,6 @@ func decodeTestResponseStringEmailNullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17196,7 +16705,6 @@ func decodeTestResponseStringEmailNullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17231,7 +16739,6 @@ func decodeTestResponseStringHostnameResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17274,7 +16781,6 @@ func decodeTestResponseStringHostnameArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17325,7 +16831,6 @@ func decodeTestResponseStringHostnameArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17358,7 +16863,6 @@ func decodeTestResponseStringHostnameNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17401,7 +16905,6 @@ func decodeTestResponseStringHostnameNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17452,7 +16955,6 @@ func decodeTestResponseStringHostnameNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17487,7 +16989,6 @@ func decodeTestResponseStringIPResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17530,7 +17031,6 @@ func decodeTestResponseStringIPArrayResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17581,7 +17081,6 @@ func decodeTestResponseStringIPArrayArrayResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17614,7 +17113,6 @@ func decodeTestResponseStringIPNullableResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17657,7 +17155,6 @@ func decodeTestResponseStringIPNullableArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17708,7 +17205,6 @@ func decodeTestResponseStringIPNullableArrayArrayResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17743,7 +17239,6 @@ func decodeTestResponseStringInt32Response(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17786,7 +17281,6 @@ func decodeTestResponseStringInt32ArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17837,7 +17331,6 @@ func decodeTestResponseStringInt32ArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17870,7 +17363,6 @@ func decodeTestResponseStringInt32NullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17913,7 +17405,6 @@ func decodeTestResponseStringInt32NullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17964,7 +17455,6 @@ func decodeTestResponseStringInt32NullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -17999,7 +17489,6 @@ func decodeTestResponseStringInt64Response(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18042,7 +17531,6 @@ func decodeTestResponseStringInt64ArrayResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18093,7 +17581,6 @@ func decodeTestResponseStringInt64ArrayArrayResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18126,7 +17613,6 @@ func decodeTestResponseStringInt64NullableResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18169,7 +17655,6 @@ func decodeTestResponseStringInt64NullableArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18220,7 +17705,6 @@ func decodeTestResponseStringInt64NullableArrayArrayResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18255,7 +17739,6 @@ func decodeTestResponseStringIpv4Response(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18298,7 +17781,6 @@ func decodeTestResponseStringIpv4ArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18349,7 +17831,6 @@ func decodeTestResponseStringIpv4ArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18382,7 +17863,6 @@ func decodeTestResponseStringIpv4NullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18425,7 +17905,6 @@ func decodeTestResponseStringIpv4NullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18476,7 +17955,6 @@ func decodeTestResponseStringIpv4NullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18511,7 +17989,6 @@ func decodeTestResponseStringIpv6Response(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18554,7 +18031,6 @@ func decodeTestResponseStringIpv6ArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18605,7 +18081,6 @@ func decodeTestResponseStringIpv6ArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18638,7 +18113,6 @@ func decodeTestResponseStringIpv6NullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18681,7 +18155,6 @@ func decodeTestResponseStringIpv6NullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18732,7 +18205,6 @@ func decodeTestResponseStringIpv6NullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18765,7 +18237,6 @@ func decodeTestResponseStringNullableResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18808,7 +18279,6 @@ func decodeTestResponseStringNullableArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18859,7 +18329,6 @@ func decodeTestResponseStringNullableArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18894,7 +18363,6 @@ func decodeTestResponseStringPasswordResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18937,7 +18405,6 @@ func decodeTestResponseStringPasswordArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -18988,7 +18455,6 @@ func decodeTestResponseStringPasswordArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19021,7 +18487,6 @@ func decodeTestResponseStringPasswordNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19064,7 +18529,6 @@ func decodeTestResponseStringPasswordNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19115,7 +18579,6 @@ func decodeTestResponseStringPasswordNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19150,7 +18613,6 @@ func decodeTestResponseStringTimeResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19193,7 +18655,6 @@ func decodeTestResponseStringTimeArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19244,7 +18705,6 @@ func decodeTestResponseStringTimeArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19277,7 +18737,6 @@ func decodeTestResponseStringTimeNullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19320,7 +18779,6 @@ func decodeTestResponseStringTimeNullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19371,7 +18829,6 @@ func decodeTestResponseStringTimeNullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19406,7 +18863,6 @@ func decodeTestResponseStringURIResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19449,7 +18905,6 @@ func decodeTestResponseStringURIArrayResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19500,7 +18955,6 @@ func decodeTestResponseStringURIArrayArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19533,7 +18987,6 @@ func decodeTestResponseStringURINullableResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19576,7 +19029,6 @@ func decodeTestResponseStringURINullableArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19627,7 +19079,6 @@ func decodeTestResponseStringURINullableArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19662,7 +19113,6 @@ func decodeTestResponseStringUUIDResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19705,7 +19155,6 @@ func decodeTestResponseStringUUIDArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19756,7 +19205,6 @@ func decodeTestResponseStringUUIDArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19789,7 +19237,6 @@ func decodeTestResponseStringUUIDNullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19832,7 +19279,6 @@ func decodeTestResponseStringUUIDNullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19883,7 +19329,6 @@ func decodeTestResponseStringUUIDNullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19918,7 +19363,6 @@ func decodeTestResponseStringUnixResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -19961,7 +19405,6 @@ func decodeTestResponseStringUnixArrayResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20012,7 +19455,6 @@ func decodeTestResponseStringUnixArrayArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20047,7 +19489,6 @@ func decodeTestResponseStringUnixMicroResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20090,7 +19531,6 @@ func decodeTestResponseStringUnixMicroArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20141,7 +19581,6 @@ func decodeTestResponseStringUnixMicroArrayArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20174,7 +19613,6 @@ func decodeTestResponseStringUnixMicroNullableResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20217,7 +19655,6 @@ func decodeTestResponseStringUnixMicroNullableArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20268,7 +19705,6 @@ func decodeTestResponseStringUnixMicroNullableArrayArrayResponse(resp *http.Resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20303,7 +19739,6 @@ func decodeTestResponseStringUnixMilliResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20346,7 +19781,6 @@ func decodeTestResponseStringUnixMilliArrayResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20397,7 +19831,6 @@ func decodeTestResponseStringUnixMilliArrayArrayResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20430,7 +19863,6 @@ func decodeTestResponseStringUnixMilliNullableResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20473,7 +19905,6 @@ func decodeTestResponseStringUnixMilliNullableArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20524,7 +19955,6 @@ func decodeTestResponseStringUnixMilliNullableArrayArrayResponse(resp *http.Resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20559,7 +19989,6 @@ func decodeTestResponseStringUnixNanoResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20602,7 +20031,6 @@ func decodeTestResponseStringUnixNanoArrayResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20653,7 +20081,6 @@ func decodeTestResponseStringUnixNanoArrayArrayResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20686,7 +20113,6 @@ func decodeTestResponseStringUnixNanoNullableResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20729,7 +20155,6 @@ func decodeTestResponseStringUnixNanoNullableArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20780,7 +20205,6 @@ func decodeTestResponseStringUnixNanoNullableArrayArrayResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20813,7 +20237,6 @@ func decodeTestResponseStringUnixNullableResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20856,7 +20279,6 @@ func decodeTestResponseStringUnixNullableArrayResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20907,7 +20329,6 @@ func decodeTestResponseStringUnixNullableArrayArrayResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20942,7 +20363,6 @@ func decodeTestResponseStringUnixSecondsResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -20985,7 +20405,6 @@ func decodeTestResponseStringUnixSecondsArrayResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -21036,7 +20455,6 @@ func decodeTestResponseStringUnixSecondsArrayArrayResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -21069,7 +20487,6 @@ func decodeTestResponseStringUnixSecondsNullableResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -21112,7 +20529,6 @@ func decodeTestResponseStringUnixSecondsNullableArrayResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -21163,7 +20579,6 @@ func decodeTestResponseStringUnixSecondsNullableArrayArrayResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

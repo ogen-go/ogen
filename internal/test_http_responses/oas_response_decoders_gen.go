@@ -23,9 +23,8 @@ func decodeAnyContentTypeBinaryStringSchemaResponse(resp *http.Response, span tr
 				return res, err
 			}
 
-			return AnyContentTypeBinaryStringSchemaOK{
-				Data: bytes.NewReader(b),
-			}, nil
+			response := AnyContentTypeBinaryStringSchemaOK{Data: bytes.NewReader(b)}
+			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -42,11 +41,11 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response, 
 			if err != nil {
 				return res, err
 			}
+
+			response := AnyContentTypeBinaryStringSchemaDefaultDef{Data: bytes.NewReader(b)}
 			return AnyContentTypeBinaryStringSchemaDefaultDefStatusCode{
 				StatusCode: resp.StatusCode,
-				Response: AnyContentTypeBinaryStringSchemaDefaultDef{
-					Data: bytes.NewReader(b),
-				},
+				Response:   response,
 			}, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -77,7 +76,6 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -104,7 +102,6 @@ func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -123,9 +120,8 @@ func decodeOctetStreamBinaryStringSchemaResponse(resp *http.Response, span trace
 				return res, err
 			}
 
-			return OctetStreamBinaryStringSchemaOK{
-				Data: bytes.NewReader(b),
-			}, nil
+			response := OctetStreamBinaryStringSchemaOK{Data: bytes.NewReader(b)}
+			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -143,9 +139,8 @@ func decodeOctetStreamEmptySchemaResponse(resp *http.Response, span trace.Span) 
 				return res, err
 			}
 
-			return OctetStreamEmptySchemaOK{
-				Data: bytes.NewReader(b),
-			}, nil
+			response := OctetStreamEmptySchemaOK{Data: bytes.NewReader(b)}
+			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

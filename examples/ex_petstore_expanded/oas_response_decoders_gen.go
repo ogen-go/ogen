@@ -38,7 +38,6 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,

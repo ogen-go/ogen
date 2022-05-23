@@ -36,7 +36,6 @@ func decodeMarketBondsGetResponse(resp *http.Response, span trace.Span) (res Mar
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -63,7 +62,6 @@ func decodeMarketBondsGetResponse(resp *http.Response, span trace.Span) (res Mar
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -96,7 +94,6 @@ func decodeMarketCandlesGetResponse(resp *http.Response, span trace.Span) (res M
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -123,7 +120,6 @@ func decodeMarketCandlesGetResponse(resp *http.Response, span trace.Span) (res M
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -156,7 +152,6 @@ func decodeMarketCurrenciesGetResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -183,7 +178,6 @@ func decodeMarketCurrenciesGetResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -216,7 +210,6 @@ func decodeMarketEtfsGetResponse(resp *http.Response, span trace.Span) (res Mark
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -243,7 +236,6 @@ func decodeMarketEtfsGetResponse(resp *http.Response, span trace.Span) (res Mark
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -276,7 +268,6 @@ func decodeMarketOrderbookGetResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -303,7 +294,6 @@ func decodeMarketOrderbookGetResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -336,7 +326,6 @@ func decodeMarketSearchByFigiGetResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -363,7 +352,6 @@ func decodeMarketSearchByFigiGetResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -396,7 +384,6 @@ func decodeMarketSearchByTickerGetResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -423,7 +410,6 @@ func decodeMarketSearchByTickerGetResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -456,7 +442,6 @@ func decodeMarketStocksGetResponse(resp *http.Response, span trace.Span) (res Ma
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -483,7 +468,6 @@ func decodeMarketStocksGetResponse(resp *http.Response, span trace.Span) (res Ma
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -516,7 +500,6 @@ func decodeOperationsGetResponse(resp *http.Response, span trace.Span) (res Oper
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -543,7 +526,6 @@ func decodeOperationsGetResponse(resp *http.Response, span trace.Span) (res Oper
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -576,7 +558,6 @@ func decodeOrdersCancelPostResponse(resp *http.Response, span trace.Span) (res O
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -603,7 +584,6 @@ func decodeOrdersCancelPostResponse(resp *http.Response, span trace.Span) (res O
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -636,7 +616,6 @@ func decodeOrdersGetResponse(resp *http.Response, span trace.Span) (res OrdersGe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -663,7 +642,6 @@ func decodeOrdersGetResponse(resp *http.Response, span trace.Span) (res OrdersGe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -696,7 +674,6 @@ func decodeOrdersLimitOrderPostResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -723,7 +700,6 @@ func decodeOrdersLimitOrderPostResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -756,7 +732,6 @@ func decodeOrdersMarketOrderPostResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -783,7 +758,6 @@ func decodeOrdersMarketOrderPostResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -816,7 +790,6 @@ func decodePortfolioCurrenciesGetResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -843,7 +816,6 @@ func decodePortfolioCurrenciesGetResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -876,7 +848,6 @@ func decodePortfolioGetResponse(resp *http.Response, span trace.Span) (res Portf
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -903,7 +874,6 @@ func decodePortfolioGetResponse(resp *http.Response, span trace.Span) (res Portf
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -936,7 +906,6 @@ func decodeSandboxClearPostResponse(resp *http.Response, span trace.Span) (res S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -963,7 +932,6 @@ func decodeSandboxClearPostResponse(resp *http.Response, span trace.Span) (res S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -996,7 +964,6 @@ func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1023,7 +990,6 @@ func decodeSandboxCurrenciesBalancePostResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1056,7 +1022,6 @@ func decodeSandboxPositionsBalancePostResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1083,7 +1048,6 @@ func decodeSandboxPositionsBalancePostResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1116,7 +1080,6 @@ func decodeSandboxRegisterPostResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1143,7 +1106,6 @@ func decodeSandboxRegisterPostResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1176,7 +1138,6 @@ func decodeSandboxRemovePostResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1203,7 +1164,6 @@ func decodeSandboxRemovePostResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1236,7 +1196,6 @@ func decodeUserAccountsGetResponse(resp *http.Response, span trace.Span) (res Us
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1263,7 +1222,6 @@ func decodeUserAccountsGetResponse(resp *http.Response, span trace.Span) (res Us
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

@@ -38,7 +38,6 @@ func decodeCreatePetsResponse(resp *http.Response, span trace.Span) (res CreateP
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -72,7 +71,6 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -99,7 +97,6 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,
@@ -133,7 +130,6 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -160,7 +156,6 @@ func decodeShowPetByIdResponse(resp *http.Response, span trace.Span) (res ShowPe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &ErrorStatusCode{
 				StatusCode: resp.StatusCode,
 				Response:   response,

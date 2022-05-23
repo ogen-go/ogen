@@ -37,7 +37,6 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -65,7 +64,6 @@ func decodeAddStickerToSetResponse(resp *http.Response, span trace.Span) (res Re
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -104,7 +102,6 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -132,7 +129,6 @@ func decodeAnswerCallbackQueryResponse(resp *http.Response, span trace.Span) (re
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -171,7 +167,6 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -199,7 +194,6 @@ func decodeAnswerInlineQueryResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -238,7 +232,6 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -266,7 +259,6 @@ func decodeAnswerPreCheckoutQueryResponse(resp *http.Response, span trace.Span) 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -305,7 +297,6 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -333,7 +324,6 @@ func decodeAnswerShippingQueryResponse(resp *http.Response, span trace.Span) (re
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -372,7 +362,6 @@ func decodeAnswerWebAppQueryResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -400,7 +389,6 @@ func decodeAnswerWebAppQueryResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -439,7 +427,6 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -467,7 +454,6 @@ func decodeApproveChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -506,7 +492,6 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -534,7 +519,6 @@ func decodeBanChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -573,7 +557,6 @@ func decodeBanChatSenderChatResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -601,7 +584,6 @@ func decodeBanChatSenderChatResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -640,7 +622,6 @@ func decodeCloseResponse(resp *http.Response, span trace.Span) (res Result, err 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -668,7 +649,6 @@ func decodeCloseResponse(resp *http.Response, span trace.Span) (res Result, err 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -707,7 +687,6 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -735,7 +714,6 @@ func decodeCopyMessageResponse(resp *http.Response, span trace.Span) (res Result
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -774,7 +752,6 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -802,7 +779,6 @@ func decodeCreateChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -841,7 +817,6 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -869,7 +844,6 @@ func decodeCreateNewStickerSetResponse(resp *http.Response, span trace.Span) (re
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -908,7 +882,6 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -936,7 +909,6 @@ func decodeDeclineChatJoinRequestResponse(resp *http.Response, span trace.Span) 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -975,7 +947,6 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1003,7 +974,6 @@ func decodeDeleteChatPhotoResponse(resp *http.Response, span trace.Span) (res Re
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1042,7 +1012,6 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1070,7 +1039,6 @@ func decodeDeleteChatStickerSetResponse(resp *http.Response, span trace.Span) (r
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1109,7 +1077,6 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1137,7 +1104,6 @@ func decodeDeleteMessageResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1176,7 +1142,6 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1204,7 +1169,6 @@ func decodeDeleteMyCommandsResponse(resp *http.Response, span trace.Span) (res R
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1243,7 +1207,6 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1271,7 +1234,6 @@ func decodeDeleteStickerFromSetResponse(resp *http.Response, span trace.Span) (r
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1310,7 +1272,6 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1338,7 +1299,6 @@ func decodeDeleteWebhookResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1377,7 +1337,6 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1405,7 +1364,6 @@ func decodeEditChatInviteLinkResponse(resp *http.Response, span trace.Span) (res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1444,7 +1402,6 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1472,7 +1429,6 @@ func decodeEditMessageCaptionResponse(resp *http.Response, span trace.Span) (res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1511,7 +1467,6 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1539,7 +1494,6 @@ func decodeEditMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1578,7 +1532,6 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1606,7 +1559,6 @@ func decodeEditMessageMediaResponse(resp *http.Response, span trace.Span) (res R
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1645,7 +1597,6 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1673,7 +1624,6 @@ func decodeEditMessageReplyMarkupResponse(resp *http.Response, span trace.Span) 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1712,7 +1662,6 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1740,7 +1689,6 @@ func decodeEditMessageTextResponse(resp *http.Response, span trace.Span) (res Re
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1779,7 +1727,6 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1807,7 +1754,6 @@ func decodeExportChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1846,7 +1792,6 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1874,7 +1819,6 @@ func decodeForwardMessageResponse(resp *http.Response, span trace.Span) (res Res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1913,7 +1857,6 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res ResultChat
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1941,7 +1884,6 @@ func decodeGetChatResponse(resp *http.Response, span trace.Span) (res ResultChat
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -1980,7 +1922,6 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2008,7 +1949,6 @@ func decodeGetChatAdministratorsResponse(resp *http.Response, span trace.Span) (
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2047,7 +1987,6 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2075,7 +2014,6 @@ func decodeGetChatMemberResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2114,7 +2052,6 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2142,7 +2079,6 @@ func decodeGetChatMemberCountResponse(resp *http.Response, span trace.Span) (res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2181,7 +2117,6 @@ func decodeGetChatMenuButtonResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2209,7 +2144,6 @@ func decodeGetChatMenuButtonResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2248,7 +2182,6 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res ResultFile
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2276,7 +2209,6 @@ func decodeGetFileResponse(resp *http.Response, span trace.Span) (res ResultFile
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2315,7 +2247,6 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2343,7 +2274,6 @@ func decodeGetGameHighScoresResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2382,7 +2312,6 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUser, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2410,7 +2339,6 @@ func decodeGetMeResponse(resp *http.Response, span trace.Span) (res ResultUser, 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2449,7 +2377,6 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2477,7 +2404,6 @@ func decodeGetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2516,7 +2442,6 @@ func decodeGetMyDefaultAdministratorRightsResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2544,7 +2469,6 @@ func decodeGetMyDefaultAdministratorRightsResponse(resp *http.Response, span tra
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2583,7 +2507,6 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2611,7 +2534,6 @@ func decodeGetStickerSetResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2650,7 +2572,6 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res ResultA
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2678,7 +2599,6 @@ func decodeGetUpdatesResponse(resp *http.Response, span trace.Span) (res ResultA
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2717,7 +2637,6 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2745,7 +2664,6 @@ func decodeGetUserProfilePhotosResponse(resp *http.Response, span trace.Span) (r
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2784,7 +2702,6 @@ func decodeGetWebhookInfoResponse(resp *http.Response, span trace.Span) (res Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2812,7 +2729,6 @@ func decodeGetWebhookInfoResponse(resp *http.Response, span trace.Span) (res Res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2851,7 +2767,6 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2879,7 +2794,6 @@ func decodeLeaveChatResponse(resp *http.Response, span trace.Span) (res Result, 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2918,7 +2832,6 @@ func decodeLogOutResponse(resp *http.Response, span trace.Span) (res Result, err
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2946,7 +2859,6 @@ func decodeLogOutResponse(resp *http.Response, span trace.Span) (res Result, err
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -2985,7 +2897,6 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3013,7 +2924,6 @@ func decodePinChatMessageResponse(resp *http.Response, span trace.Span) (res Res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3052,7 +2962,6 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3080,7 +2989,6 @@ func decodePromoteChatMemberResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3119,7 +3027,6 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3147,7 +3054,6 @@ func decodeRestrictChatMemberResponse(resp *http.Response, span trace.Span) (res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3186,7 +3092,6 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3214,7 +3119,6 @@ func decodeRevokeChatInviteLinkResponse(resp *http.Response, span trace.Span) (r
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3253,7 +3157,6 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3281,7 +3184,6 @@ func decodeSendAnimationResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3320,7 +3222,6 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res ResultMe
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3348,7 +3249,6 @@ func decodeSendAudioResponse(resp *http.Response, span trace.Span) (res ResultMe
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3387,7 +3287,6 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3415,7 +3314,6 @@ func decodeSendChatActionResponse(resp *http.Response, span trace.Span) (res Res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3454,7 +3352,6 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3482,7 +3379,6 @@ func decodeSendContactResponse(resp *http.Response, span trace.Span) (res Result
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3521,7 +3417,6 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMes
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3549,7 +3444,6 @@ func decodeSendDiceResponse(resp *http.Response, span trace.Span) (res ResultMes
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3588,7 +3482,6 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3616,7 +3509,6 @@ func decodeSendDocumentResponse(resp *http.Response, span trace.Span) (res Resul
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3655,7 +3547,6 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMes
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3683,7 +3574,6 @@ func decodeSendGameResponse(resp *http.Response, span trace.Span) (res ResultMes
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3722,7 +3612,6 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3750,7 +3639,6 @@ func decodeSendInvoiceResponse(resp *http.Response, span trace.Span) (res Result
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3789,7 +3677,6 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3817,7 +3704,6 @@ func decodeSendLocationResponse(resp *http.Response, span trace.Span) (res Resul
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3856,7 +3742,6 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3884,7 +3769,6 @@ func decodeSendMediaGroupResponse(resp *http.Response, span trace.Span) (res Res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3923,7 +3807,6 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3951,7 +3834,6 @@ func decodeSendMessageResponse(resp *http.Response, span trace.Span) (res Result
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -3990,7 +3872,6 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMe
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4018,7 +3899,6 @@ func decodeSendPhotoResponse(resp *http.Response, span trace.Span) (res ResultMe
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4057,7 +3937,6 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMes
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4085,7 +3964,6 @@ func decodeSendPollResponse(resp *http.Response, span trace.Span) (res ResultMes
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4124,7 +4002,6 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4152,7 +4029,6 @@ func decodeSendStickerResponse(resp *http.Response, span trace.Span) (res Result
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4191,7 +4067,6 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMe
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4219,7 +4094,6 @@ func decodeSendVenueResponse(resp *http.Response, span trace.Span) (res ResultMe
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4258,7 +4132,6 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMe
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4286,7 +4159,6 @@ func decodeSendVideoResponse(resp *http.Response, span trace.Span) (res ResultMe
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4325,7 +4197,6 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4353,7 +4224,6 @@ func decodeSendVideoNoteResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4392,7 +4262,6 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMe
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4420,7 +4289,6 @@ func decodeSendVoiceResponse(resp *http.Response, span trace.Span) (res ResultMe
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4459,7 +4327,6 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4487,7 +4354,6 @@ func decodeSetChatAdministratorCustomTitleResponse(resp *http.Response, span tra
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4526,7 +4392,6 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4554,7 +4419,6 @@ func decodeSetChatDescriptionResponse(resp *http.Response, span trace.Span) (res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4593,7 +4457,6 @@ func decodeSetChatMenuButtonResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4621,7 +4484,6 @@ func decodeSetChatMenuButtonResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4660,7 +4522,6 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4688,7 +4549,6 @@ func decodeSetChatPermissionsResponse(resp *http.Response, span trace.Span) (res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4727,7 +4587,6 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4755,7 +4614,6 @@ func decodeSetChatPhotoResponse(resp *http.Response, span trace.Span) (res Resul
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4794,7 +4652,6 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4822,7 +4679,6 @@ func decodeSetChatStickerSetResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4861,7 +4717,6 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4889,7 +4744,6 @@ func decodeSetChatTitleResponse(resp *http.Response, span trace.Span) (res Resul
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4928,7 +4782,6 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4956,7 +4809,6 @@ func decodeSetGameScoreResponse(resp *http.Response, span trace.Span) (res Resul
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -4995,7 +4847,6 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5023,7 +4874,6 @@ func decodeSetMyCommandsResponse(resp *http.Response, span trace.Span) (res Resu
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5062,7 +4912,6 @@ func decodeSetMyDefaultAdministratorRightsResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5090,7 +4939,6 @@ func decodeSetMyDefaultAdministratorRightsResponse(resp *http.Response, span tra
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5129,7 +4977,6 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5157,7 +5004,6 @@ func decodeSetPassportDataErrorsResponse(resp *http.Response, span trace.Span) (
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5196,7 +5042,6 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5224,7 +5069,6 @@ func decodeSetStickerPositionInSetResponse(resp *http.Response, span trace.Span)
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5263,7 +5107,6 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5291,7 +5134,6 @@ func decodeSetStickerSetThumbResponse(resp *http.Response, span trace.Span) (res
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5330,7 +5172,6 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5358,7 +5199,6 @@ func decodeSetWebhookResponse(resp *http.Response, span trace.Span) (res Result,
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5397,7 +5237,6 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5425,7 +5264,6 @@ func decodeStopMessageLiveLocationResponse(resp *http.Response, span trace.Span)
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5464,7 +5302,6 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res ResultPol
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5492,7 +5329,6 @@ func decodeStopPollResponse(resp *http.Response, span trace.Span) (res ResultPol
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5531,7 +5367,6 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5559,7 +5394,6 @@ func decodeUnbanChatMemberResponse(resp *http.Response, span trace.Span) (res Re
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5598,7 +5432,6 @@ func decodeUnbanChatSenderChatResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5626,7 +5459,6 @@ func decodeUnbanChatSenderChatResponse(resp *http.Response, span trace.Span) (re
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5665,7 +5497,6 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5693,7 +5524,6 @@ func decodeUnpinAllChatMessagesResponse(resp *http.Response, span trace.Span) (r
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5732,7 +5562,6 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5760,7 +5589,6 @@ func decodeUnpinChatMessageResponse(resp *http.Response, span trace.Span) (res R
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -5799,7 +5627,6 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5827,7 +5654,6 @@ func decodeUploadStickerFileResponse(resp *http.Response, span trace.Span) (res 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,

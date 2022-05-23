@@ -36,7 +36,6 @@ func decodeAPICaptcha2chcaptchaIDGetResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -79,7 +78,6 @@ func decodeAPICaptchaAppIDPublicKeyGetResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -112,7 +110,6 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -153,7 +150,6 @@ func decodeAPICaptchaRecaptchaIDGetResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -194,7 +190,6 @@ func decodeAPIDislikeGetResponse(resp *http.Response, span trace.Span) (res Like
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -227,7 +222,6 @@ func decodeAPILikeGetResponse(resp *http.Response, span trace.Span) (res Like, e
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -260,7 +254,6 @@ func decodeAPIMobileV2AfterBoardThreadNumGetResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -293,7 +286,6 @@ func decodeAPIMobileV2BoardsGetResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -326,7 +318,6 @@ func decodeAPIMobileV2InfoBoardThreadGetResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -359,7 +350,6 @@ func decodeAPIMobileV2PostBoardNumGetResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

@@ -36,7 +36,6 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -63,7 +62,6 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -90,7 +88,6 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -117,7 +114,6 @@ func decodeCreatePetResponse(resp *http.Response, span trace.Span) (res CreatePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -150,7 +146,6 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -177,7 +172,6 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -204,7 +198,6 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -231,7 +224,6 @@ func decodeCreatePetCategoriesResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -264,7 +256,6 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -291,7 +282,6 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -318,7 +308,6 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -345,7 +334,6 @@ func decodeCreatePetFriendsResponse(resp *http.Response, span trace.Span) (res C
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -378,7 +366,6 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -405,7 +392,6 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -432,7 +418,6 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -459,7 +444,6 @@ func decodeCreatePetOwnerResponse(resp *http.Response, span trace.Span) (res Cre
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -494,7 +478,6 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -521,7 +504,6 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -548,7 +530,6 @@ func decodeDeletePetResponse(resp *http.Response, span trace.Span) (res DeletePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -583,7 +564,6 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -610,7 +590,6 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -637,7 +616,6 @@ func decodeDeletePetOwnerResponse(resp *http.Response, span trace.Span) (res Del
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -670,7 +648,6 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -697,7 +674,6 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -724,7 +700,6 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -751,7 +726,6 @@ func decodeListPetResponse(resp *http.Response, span trace.Span) (res ListPetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -784,7 +758,6 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -811,7 +784,6 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -838,7 +810,6 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -865,7 +836,6 @@ func decodeListPetCategoriesResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -898,7 +868,6 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -925,7 +894,6 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -952,7 +920,6 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -979,7 +946,6 @@ func decodeListPetFriendsResponse(resp *http.Response, span trace.Span) (res Lis
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1012,7 +978,6 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1039,7 +1004,6 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1066,7 +1030,6 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1093,7 +1056,6 @@ func decodeReadPetResponse(resp *http.Response, span trace.Span) (res ReadPetRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1126,7 +1088,6 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1153,7 +1114,6 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1180,7 +1140,6 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1207,7 +1166,6 @@ func decodeReadPetOwnerResponse(resp *http.Response, span trace.Span) (res ReadP
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1240,7 +1198,6 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1267,7 +1224,6 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1294,7 +1250,6 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1321,7 +1276,6 @@ func decodeUpdatePetResponse(resp *http.Response, span trace.Span) (res UpdatePe
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

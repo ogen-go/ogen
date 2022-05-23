@@ -36,7 +36,6 @@ func decodeGetAPIVersionsResponse(resp *http.Response, span trace.Span) (res Get
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -71,7 +70,6 @@ func decodeGetAdmissionregistrationAPIGroupResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -106,7 +104,6 @@ func decodeGetAdmissionregistrationV1APIResourcesResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -141,7 +138,6 @@ func decodeGetApiextensionsAPIGroupResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -176,7 +172,6 @@ func decodeGetApiextensionsV1APIResourcesResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -211,7 +206,6 @@ func decodeGetApiregistrationAPIGroupResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -246,7 +240,6 @@ func decodeGetApiregistrationV1APIResourcesResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -281,7 +274,6 @@ func decodeGetAppsAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -316,7 +308,6 @@ func decodeGetAppsV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -351,7 +342,6 @@ func decodeGetAuthenticationAPIGroupResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -386,7 +376,6 @@ func decodeGetAuthenticationV1APIResourcesResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -421,7 +410,6 @@ func decodeGetAuthorizationAPIGroupResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -456,7 +444,6 @@ func decodeGetAuthorizationV1APIResourcesResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -491,7 +478,6 @@ func decodeGetAutoscalingAPIGroupResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -526,7 +512,6 @@ func decodeGetAutoscalingV1APIResourcesResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -561,7 +546,6 @@ func decodeGetAutoscalingV2beta1APIResourcesResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -596,7 +580,6 @@ func decodeGetAutoscalingV2beta2APIResourcesResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -631,7 +614,6 @@ func decodeGetBatchAPIGroupResponse(resp *http.Response, span trace.Span) (res G
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -666,7 +648,6 @@ func decodeGetBatchV1APIResourcesResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -701,7 +682,6 @@ func decodeGetBatchV1beta1APIResourcesResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -736,7 +716,6 @@ func decodeGetCertificatesAPIGroupResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -771,7 +750,6 @@ func decodeGetCertificatesV1APIResourcesResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -806,7 +784,6 @@ func decodeGetCodeVersionResponse(resp *http.Response, span trace.Span) (res Get
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -841,7 +818,6 @@ func decodeGetCoordinationAPIGroupResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -876,7 +852,6 @@ func decodeGetCoordinationV1APIResourcesResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -911,7 +886,6 @@ func decodeGetCoreAPIVersionsResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -946,7 +920,6 @@ func decodeGetCoreV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -981,7 +954,6 @@ func decodeGetDiscoveryAPIGroupResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1016,7 +988,6 @@ func decodeGetDiscoveryV1APIResourcesResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1051,7 +1022,6 @@ func decodeGetDiscoveryV1beta1APIResourcesResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1086,7 +1056,6 @@ func decodeGetEventsAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1121,7 +1090,6 @@ func decodeGetEventsV1APIResourcesResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1156,7 +1124,6 @@ func decodeGetEventsV1beta1APIResourcesResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1191,7 +1158,6 @@ func decodeGetFlowcontrolApiserverAPIGroupResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1226,7 +1192,6 @@ func decodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1261,7 +1226,6 @@ func decodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1296,7 +1260,6 @@ func decodeGetInternalApiserverAPIGroupResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1331,7 +1294,6 @@ func decodeGetInternalApiserverV1alpha1APIResourcesResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1366,7 +1328,6 @@ func decodeGetNetworkingAPIGroupResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1401,7 +1362,6 @@ func decodeGetNetworkingV1APIResourcesResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1436,7 +1396,6 @@ func decodeGetNodeAPIGroupResponse(resp *http.Response, span trace.Span) (res Ge
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1471,7 +1430,6 @@ func decodeGetNodeV1APIResourcesResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1506,7 +1464,6 @@ func decodeGetNodeV1alpha1APIResourcesResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1541,7 +1498,6 @@ func decodeGetNodeV1beta1APIResourcesResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1576,7 +1532,6 @@ func decodeGetPolicyAPIGroupResponse(resp *http.Response, span trace.Span) (res 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1611,7 +1566,6 @@ func decodeGetPolicyV1APIResourcesResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1646,7 +1600,6 @@ func decodeGetPolicyV1beta1APIResourcesResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1681,7 +1634,6 @@ func decodeGetRbacAuthorizationAPIGroupResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1716,7 +1668,6 @@ func decodeGetRbacAuthorizationV1APIResourcesResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1751,7 +1702,6 @@ func decodeGetSchedulingAPIGroupResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1786,7 +1736,6 @@ func decodeGetSchedulingV1APIResourcesResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1821,7 +1770,6 @@ func decodeGetServiceAccountIssuerOpenIDConfigurationResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1856,7 +1804,6 @@ func decodeGetStorageAPIGroupResponse(resp *http.Response, span trace.Span) (res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1891,7 +1838,6 @@ func decodeGetStorageV1APIResourcesResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1926,7 +1872,6 @@ func decodeGetStorageV1alpha1APIResourcesResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1961,7 +1906,6 @@ func decodeGetStorageV1beta1APIResourcesResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -1996,7 +1940,6 @@ func decodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2031,7 +1974,6 @@ func decodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2066,7 +2008,6 @@ func decodeListApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2101,7 +2042,6 @@ func decodeListApiregistrationV1APIServiceResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2136,7 +2076,6 @@ func decodeListAppsV1ControllerRevisionForAllNamespacesResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2171,7 +2110,6 @@ func decodeListAppsV1DaemonSetForAllNamespacesResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2206,7 +2144,6 @@ func decodeListAppsV1DeploymentForAllNamespacesResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2241,7 +2178,6 @@ func decodeListAppsV1NamespacedControllerRevisionResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2276,7 +2212,6 @@ func decodeListAppsV1NamespacedDaemonSetResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2311,7 +2246,6 @@ func decodeListAppsV1NamespacedDeploymentResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2346,7 +2280,6 @@ func decodeListAppsV1NamespacedReplicaSetResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2381,7 +2314,6 @@ func decodeListAppsV1NamespacedStatefulSetResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2416,7 +2348,6 @@ func decodeListAppsV1ReplicaSetForAllNamespacesResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2451,7 +2382,6 @@ func decodeListAppsV1StatefulSetForAllNamespacesResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2486,7 +2416,6 @@ func decodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2521,7 +2450,6 @@ func decodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2556,7 +2484,6 @@ func decodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2591,7 +2518,6 @@ func decodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2626,7 +2552,6 @@ func decodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2661,7 +2586,6 @@ func decodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2696,7 +2620,6 @@ func decodeListBatchV1CronJobForAllNamespacesResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2731,7 +2654,6 @@ func decodeListBatchV1JobForAllNamespacesResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2766,7 +2688,6 @@ func decodeListBatchV1NamespacedCronJobResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2801,7 +2722,6 @@ func decodeListBatchV1NamespacedJobResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2836,7 +2756,6 @@ func decodeListBatchV1beta1CronJobForAllNamespacesResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2871,7 +2790,6 @@ func decodeListBatchV1beta1NamespacedCronJobResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2906,7 +2824,6 @@ func decodeListCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2941,7 +2858,6 @@ func decodeListCoordinationV1LeaseForAllNamespacesResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -2976,7 +2892,6 @@ func decodeListCoordinationV1NamespacedLeaseResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3011,7 +2926,6 @@ func decodeListCoreV1ComponentStatusResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3046,7 +2960,6 @@ func decodeListCoreV1ConfigMapForAllNamespacesResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3081,7 +2994,6 @@ func decodeListCoreV1EndpointsForAllNamespacesResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3116,7 +3028,6 @@ func decodeListCoreV1EventForAllNamespacesResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3151,7 +3062,6 @@ func decodeListCoreV1LimitRangeForAllNamespacesResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3186,7 +3096,6 @@ func decodeListCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3221,7 +3130,6 @@ func decodeListCoreV1NamespacedConfigMapResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3256,7 +3164,6 @@ func decodeListCoreV1NamespacedEndpointsResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3291,7 +3198,6 @@ func decodeListCoreV1NamespacedEventResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3326,7 +3232,6 @@ func decodeListCoreV1NamespacedLimitRangeResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3361,7 +3266,6 @@ func decodeListCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3396,7 +3300,6 @@ func decodeListCoreV1NamespacedPodResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3431,7 +3334,6 @@ func decodeListCoreV1NamespacedPodTemplateResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3466,7 +3368,6 @@ func decodeListCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3501,7 +3402,6 @@ func decodeListCoreV1NamespacedResourceQuotaResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3536,7 +3436,6 @@ func decodeListCoreV1NamespacedSecretResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3571,7 +3470,6 @@ func decodeListCoreV1NamespacedServiceResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3606,7 +3504,6 @@ func decodeListCoreV1NamespacedServiceAccountResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3641,7 +3538,6 @@ func decodeListCoreV1NodeResponse(resp *http.Response, span trace.Span) (res Lis
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3676,7 +3572,6 @@ func decodeListCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3711,7 +3606,6 @@ func decodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3746,7 +3640,6 @@ func decodeListCoreV1PodForAllNamespacesResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3781,7 +3674,6 @@ func decodeListCoreV1PodTemplateForAllNamespacesResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3816,7 +3708,6 @@ func decodeListCoreV1ReplicationControllerForAllNamespacesResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3851,7 +3742,6 @@ func decodeListCoreV1ResourceQuotaForAllNamespacesResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3886,7 +3776,6 @@ func decodeListCoreV1SecretForAllNamespacesResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3921,7 +3810,6 @@ func decodeListCoreV1ServiceAccountForAllNamespacesResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3956,7 +3844,6 @@ func decodeListCoreV1ServiceForAllNamespacesResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -3991,7 +3878,6 @@ func decodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4026,7 +3912,6 @@ func decodeListDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4061,7 +3946,6 @@ func decodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4096,7 +3980,6 @@ func decodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4131,7 +4014,6 @@ func decodeListEventsV1EventForAllNamespacesResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4166,7 +4048,6 @@ func decodeListEventsV1NamespacedEventResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4201,7 +4082,6 @@ func decodeListEventsV1beta1EventForAllNamespacesResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4236,7 +4116,6 @@ func decodeListEventsV1beta1NamespacedEventResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4271,7 +4150,6 @@ func decodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4306,7 +4184,6 @@ func decodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4341,7 +4218,6 @@ func decodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4376,7 +4252,6 @@ func decodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4411,7 +4286,6 @@ func decodeListInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4446,7 +4320,6 @@ func decodeListNetworkingV1IngressClassResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4481,7 +4354,6 @@ func decodeListNetworkingV1IngressForAllNamespacesResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4516,7 +4388,6 @@ func decodeListNetworkingV1NamespacedIngressResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4551,7 +4422,6 @@ func decodeListNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4586,7 +4456,6 @@ func decodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(resp *http.Resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4621,7 +4490,6 @@ func decodeListNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4656,7 +4524,6 @@ func decodeListNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4691,7 +4558,6 @@ func decodeListNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4726,7 +4592,6 @@ func decodeListPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4761,7 +4626,6 @@ func decodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4796,7 +4660,6 @@ func decodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4831,7 +4694,6 @@ func decodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4866,7 +4728,6 @@ func decodeListPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4901,7 +4762,6 @@ func decodeListRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4936,7 +4796,6 @@ func decodeListRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -4971,7 +4830,6 @@ func decodeListRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5006,7 +4864,6 @@ func decodeListRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5041,7 +4898,6 @@ func decodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(resp *http
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5076,7 +4932,6 @@ func decodeListRbacAuthorizationV1RoleForAllNamespacesResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5111,7 +4966,6 @@ func decodeListSchedulingV1PriorityClassResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5146,7 +5000,6 @@ func decodeListStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5181,7 +5034,6 @@ func decodeListStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5216,7 +5068,6 @@ func decodeListStorageV1StorageClassResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5251,7 +5102,6 @@ func decodeListStorageV1VolumeAttachmentResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5286,7 +5136,6 @@ func decodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(resp *h
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5321,7 +5170,6 @@ func decodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5356,7 +5204,6 @@ func decodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5391,7 +5238,6 @@ func decodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5442,7 +5288,6 @@ func decodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5477,7 +5322,6 @@ func decodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5512,7 +5356,6 @@ func decodeReadApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5547,7 +5390,6 @@ func decodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5582,7 +5424,6 @@ func decodeReadApiregistrationV1APIServiceResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5617,7 +5458,6 @@ func decodeReadApiregistrationV1APIServiceStatusResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5652,7 +5492,6 @@ func decodeReadAppsV1NamespacedControllerRevisionResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5687,7 +5526,6 @@ func decodeReadAppsV1NamespacedDaemonSetResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5722,7 +5560,6 @@ func decodeReadAppsV1NamespacedDaemonSetStatusResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5757,7 +5594,6 @@ func decodeReadAppsV1NamespacedDeploymentResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5792,7 +5628,6 @@ func decodeReadAppsV1NamespacedDeploymentScaleResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5827,7 +5662,6 @@ func decodeReadAppsV1NamespacedDeploymentStatusResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5862,7 +5696,6 @@ func decodeReadAppsV1NamespacedReplicaSetResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5897,7 +5730,6 @@ func decodeReadAppsV1NamespacedReplicaSetScaleResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5932,7 +5764,6 @@ func decodeReadAppsV1NamespacedReplicaSetStatusResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -5967,7 +5798,6 @@ func decodeReadAppsV1NamespacedStatefulSetResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6002,7 +5832,6 @@ func decodeReadAppsV1NamespacedStatefulSetScaleResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6037,7 +5866,6 @@ func decodeReadAppsV1NamespacedStatefulSetStatusResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6072,7 +5900,6 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *http
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6107,7 +5934,6 @@ func decodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6142,7 +5968,6 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6177,7 +6002,6 @@ func decodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6212,7 +6036,6 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6247,7 +6070,6 @@ func decodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6282,7 +6104,6 @@ func decodeReadBatchV1NamespacedCronJobResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6317,7 +6138,6 @@ func decodeReadBatchV1NamespacedCronJobStatusResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6352,7 +6172,6 @@ func decodeReadBatchV1NamespacedJobResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6387,7 +6206,6 @@ func decodeReadBatchV1NamespacedJobStatusResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6422,7 +6240,6 @@ func decodeReadBatchV1beta1NamespacedCronJobResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6457,7 +6274,6 @@ func decodeReadBatchV1beta1NamespacedCronJobStatusResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6492,7 +6308,6 @@ func decodeReadCertificatesV1CertificateSigningRequestResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6527,7 +6342,6 @@ func decodeReadCertificatesV1CertificateSigningRequestApprovalResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6562,7 +6376,6 @@ func decodeReadCertificatesV1CertificateSigningRequestStatusResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6597,7 +6410,6 @@ func decodeReadCoordinationV1NamespacedLeaseResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6632,7 +6444,6 @@ func decodeReadCoreV1ComponentStatusResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6667,7 +6478,6 @@ func decodeReadCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6702,7 +6512,6 @@ func decodeReadCoreV1NamespaceStatusResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6737,7 +6546,6 @@ func decodeReadCoreV1NamespacedConfigMapResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6772,7 +6580,6 @@ func decodeReadCoreV1NamespacedEndpointsResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6807,7 +6614,6 @@ func decodeReadCoreV1NamespacedEventResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6842,7 +6648,6 @@ func decodeReadCoreV1NamespacedLimitRangeResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6877,7 +6682,6 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6912,7 +6716,6 @@ func decodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6947,7 +6750,6 @@ func decodeReadCoreV1NamespacedPodResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -6982,7 +6784,6 @@ func decodeReadCoreV1NamespacedPodEphemeralcontainersResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7017,7 +6818,6 @@ func decodeReadCoreV1NamespacedPodLogResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7052,7 +6852,6 @@ func decodeReadCoreV1NamespacedPodStatusResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7087,7 +6886,6 @@ func decodeReadCoreV1NamespacedPodTemplateResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7122,7 +6920,6 @@ func decodeReadCoreV1NamespacedReplicationControllerResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7157,7 +6954,6 @@ func decodeReadCoreV1NamespacedReplicationControllerScaleResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7192,7 +6988,6 @@ func decodeReadCoreV1NamespacedReplicationControllerStatusResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7227,7 +7022,6 @@ func decodeReadCoreV1NamespacedResourceQuotaResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7262,7 +7056,6 @@ func decodeReadCoreV1NamespacedResourceQuotaStatusResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7297,7 +7090,6 @@ func decodeReadCoreV1NamespacedSecretResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7332,7 +7124,6 @@ func decodeReadCoreV1NamespacedServiceResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7367,7 +7158,6 @@ func decodeReadCoreV1NamespacedServiceAccountResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7402,7 +7192,6 @@ func decodeReadCoreV1NamespacedServiceStatusResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7437,7 +7226,6 @@ func decodeReadCoreV1NodeResponse(resp *http.Response, span trace.Span) (res Rea
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7472,7 +7260,6 @@ func decodeReadCoreV1NodeStatusResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7507,7 +7294,6 @@ func decodeReadCoreV1PersistentVolumeResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7542,7 +7328,6 @@ func decodeReadCoreV1PersistentVolumeStatusResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7577,7 +7362,6 @@ func decodeReadDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7612,7 +7396,6 @@ func decodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7647,7 +7430,6 @@ func decodeReadEventsV1NamespacedEventResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7682,7 +7464,6 @@ func decodeReadEventsV1beta1NamespacedEventResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7717,7 +7498,6 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7752,7 +7532,6 @@ func decodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7787,7 +7566,6 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7822,7 +7600,6 @@ func decodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7857,7 +7634,6 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7892,7 +7668,6 @@ func decodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7927,7 +7702,6 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7962,7 +7736,6 @@ func decodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -7997,7 +7770,6 @@ func decodeReadInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8032,7 +7804,6 @@ func decodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8067,7 +7838,6 @@ func decodeReadNetworkingV1IngressClassResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8102,7 +7872,6 @@ func decodeReadNetworkingV1NamespacedIngressResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8137,7 +7906,6 @@ func decodeReadNetworkingV1NamespacedIngressStatusResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8172,7 +7940,6 @@ func decodeReadNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8207,7 +7974,6 @@ func decodeReadNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8242,7 +8008,6 @@ func decodeReadNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8277,7 +8042,6 @@ func decodeReadNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8312,7 +8076,6 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8347,7 +8110,6 @@ func decodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8382,7 +8144,6 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8417,7 +8178,6 @@ func decodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8452,7 +8212,6 @@ func decodeReadPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8487,7 +8246,6 @@ func decodeReadRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8522,7 +8280,6 @@ func decodeReadRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8557,7 +8314,6 @@ func decodeReadRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8592,7 +8348,6 @@ func decodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8627,7 +8382,6 @@ func decodeReadSchedulingV1PriorityClassResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8662,7 +8416,6 @@ func decodeReadStorageV1CSIDriverResponse(resp *http.Response, span trace.Span) 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8697,7 +8450,6 @@ func decodeReadStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8732,7 +8484,6 @@ func decodeReadStorageV1StorageClassResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8767,7 +8518,6 @@ func decodeReadStorageV1VolumeAttachmentResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8802,7 +8552,6 @@ func decodeReadStorageV1VolumeAttachmentStatusResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8837,7 +8586,6 @@ func decodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8872,7 +8620,6 @@ func decodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8907,7 +8654,6 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8942,7 +8688,6 @@ func decodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -8977,7 +8722,6 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9012,7 +8756,6 @@ func decodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9047,7 +8790,6 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9082,7 +8824,6 @@ func decodeWatchApiextensionsV1CustomResourceDefinitionListResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9117,7 +8858,6 @@ func decodeWatchApiregistrationV1APIServiceResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9152,7 +8892,6 @@ func decodeWatchApiregistrationV1APIServiceListResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9187,7 +8926,6 @@ func decodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9222,7 +8960,6 @@ func decodeWatchAppsV1DaemonSetListForAllNamespacesResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9257,7 +8994,6 @@ func decodeWatchAppsV1DeploymentListForAllNamespacesResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9292,7 +9028,6 @@ func decodeWatchAppsV1NamespacedControllerRevisionResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9327,7 +9062,6 @@ func decodeWatchAppsV1NamespacedControllerRevisionListResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9362,7 +9096,6 @@ func decodeWatchAppsV1NamespacedDaemonSetResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9397,7 +9130,6 @@ func decodeWatchAppsV1NamespacedDaemonSetListResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9432,7 +9164,6 @@ func decodeWatchAppsV1NamespacedDeploymentResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9467,7 +9198,6 @@ func decodeWatchAppsV1NamespacedDeploymentListResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9502,7 +9232,6 @@ func decodeWatchAppsV1NamespacedReplicaSetResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9537,7 +9266,6 @@ func decodeWatchAppsV1NamespacedReplicaSetListResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9572,7 +9300,6 @@ func decodeWatchAppsV1NamespacedStatefulSetResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9607,7 +9334,6 @@ func decodeWatchAppsV1NamespacedStatefulSetListResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9642,7 +9368,6 @@ func decodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9677,7 +9402,6 @@ func decodeWatchAppsV1StatefulSetListForAllNamespacesResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9712,7 +9436,6 @@ func decodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9747,7 +9470,6 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9782,7 +9504,6 @@ func decodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(resp 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9817,7 +9538,6 @@ func decodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9852,7 +9572,6 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9887,7 +9606,6 @@ func decodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9922,7 +9640,6 @@ func decodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9957,7 +9674,6 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -9992,7 +9708,6 @@ func decodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10027,7 +9742,6 @@ func decodeWatchBatchV1CronJobListForAllNamespacesResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10062,7 +9776,6 @@ func decodeWatchBatchV1JobListForAllNamespacesResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10097,7 +9810,6 @@ func decodeWatchBatchV1NamespacedCronJobResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10132,7 +9844,6 @@ func decodeWatchBatchV1NamespacedCronJobListResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10167,7 +9878,6 @@ func decodeWatchBatchV1NamespacedJobResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10202,7 +9912,6 @@ func decodeWatchBatchV1NamespacedJobListResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10237,7 +9946,6 @@ func decodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10272,7 +9980,6 @@ func decodeWatchBatchV1beta1NamespacedCronJobResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10307,7 +10014,6 @@ func decodeWatchBatchV1beta1NamespacedCronJobListResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10342,7 +10048,6 @@ func decodeWatchCertificatesV1CertificateSigningRequestResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10377,7 +10082,6 @@ func decodeWatchCertificatesV1CertificateSigningRequestListResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10412,7 +10116,6 @@ func decodeWatchCoordinationV1LeaseListForAllNamespacesResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10447,7 +10150,6 @@ func decodeWatchCoordinationV1NamespacedLeaseResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10482,7 +10184,6 @@ func decodeWatchCoordinationV1NamespacedLeaseListResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10517,7 +10218,6 @@ func decodeWatchCoreV1ConfigMapListForAllNamespacesResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10552,7 +10252,6 @@ func decodeWatchCoreV1EndpointsListForAllNamespacesResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10587,7 +10286,6 @@ func decodeWatchCoreV1EventListForAllNamespacesResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10622,7 +10320,6 @@ func decodeWatchCoreV1LimitRangeListForAllNamespacesResponse(resp *http.Response
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10657,7 +10354,6 @@ func decodeWatchCoreV1NamespaceResponse(resp *http.Response, span trace.Span) (r
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10692,7 +10388,6 @@ func decodeWatchCoreV1NamespaceListResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10727,7 +10422,6 @@ func decodeWatchCoreV1NamespacedConfigMapResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10762,7 +10456,6 @@ func decodeWatchCoreV1NamespacedConfigMapListResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10797,7 +10490,6 @@ func decodeWatchCoreV1NamespacedEndpointsResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10832,7 +10524,6 @@ func decodeWatchCoreV1NamespacedEndpointsListResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10867,7 +10558,6 @@ func decodeWatchCoreV1NamespacedEventResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10902,7 +10592,6 @@ func decodeWatchCoreV1NamespacedEventListResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10937,7 +10626,6 @@ func decodeWatchCoreV1NamespacedLimitRangeResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -10972,7 +10660,6 @@ func decodeWatchCoreV1NamespacedLimitRangeListResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11007,7 +10694,6 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11042,7 +10728,6 @@ func decodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11077,7 +10762,6 @@ func decodeWatchCoreV1NamespacedPodResponse(resp *http.Response, span trace.Span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11112,7 +10796,6 @@ func decodeWatchCoreV1NamespacedPodListResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11147,7 +10830,6 @@ func decodeWatchCoreV1NamespacedPodTemplateResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11182,7 +10864,6 @@ func decodeWatchCoreV1NamespacedPodTemplateListResponse(resp *http.Response, spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11217,7 +10898,6 @@ func decodeWatchCoreV1NamespacedReplicationControllerResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11252,7 +10932,6 @@ func decodeWatchCoreV1NamespacedReplicationControllerListResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11287,7 +10966,6 @@ func decodeWatchCoreV1NamespacedResourceQuotaResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11322,7 +11000,6 @@ func decodeWatchCoreV1NamespacedResourceQuotaListResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11357,7 +11034,6 @@ func decodeWatchCoreV1NamespacedSecretResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11392,7 +11068,6 @@ func decodeWatchCoreV1NamespacedSecretListResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11427,7 +11102,6 @@ func decodeWatchCoreV1NamespacedServiceResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11462,7 +11136,6 @@ func decodeWatchCoreV1NamespacedServiceAccountResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11497,7 +11170,6 @@ func decodeWatchCoreV1NamespacedServiceAccountListResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11532,7 +11204,6 @@ func decodeWatchCoreV1NamespacedServiceListResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11567,7 +11238,6 @@ func decodeWatchCoreV1NodeResponse(resp *http.Response, span trace.Span) (res Wa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11602,7 +11272,6 @@ func decodeWatchCoreV1NodeListResponse(resp *http.Response, span trace.Span) (re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11637,7 +11306,6 @@ func decodeWatchCoreV1PersistentVolumeResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11672,7 +11340,6 @@ func decodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11707,7 +11374,6 @@ func decodeWatchCoreV1PersistentVolumeListResponse(resp *http.Response, span tra
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11742,7 +11408,6 @@ func decodeWatchCoreV1PodListForAllNamespacesResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11777,7 +11442,6 @@ func decodeWatchCoreV1PodTemplateListForAllNamespacesResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11812,7 +11476,6 @@ func decodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11847,7 +11510,6 @@ func decodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11882,7 +11544,6 @@ func decodeWatchCoreV1SecretListForAllNamespacesResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11917,7 +11578,6 @@ func decodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(resp *http.Resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11952,7 +11612,6 @@ func decodeWatchCoreV1ServiceListForAllNamespacesResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -11987,7 +11646,6 @@ func decodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12022,7 +11680,6 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12057,7 +11714,6 @@ func decodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12092,7 +11748,6 @@ func decodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(resp *
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12127,7 +11782,6 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12162,7 +11816,6 @@ func decodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12197,7 +11850,6 @@ func decodeWatchEventsV1EventListForAllNamespacesResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12232,7 +11884,6 @@ func decodeWatchEventsV1NamespacedEventResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12267,7 +11918,6 @@ func decodeWatchEventsV1NamespacedEventListResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12302,7 +11952,6 @@ func decodeWatchEventsV1beta1EventListForAllNamespacesResponse(resp *http.Respon
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12337,7 +11986,6 @@ func decodeWatchEventsV1beta1NamespacedEventResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12372,7 +12020,6 @@ func decodeWatchEventsV1beta1NamespacedEventListResponse(resp *http.Response, sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12407,7 +12054,6 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12442,7 +12088,6 @@ func decodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12477,7 +12122,6 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12512,7 +12156,6 @@ func decodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12547,7 +12190,6 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12582,7 +12224,6 @@ func decodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12617,7 +12258,6 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12652,7 +12292,6 @@ func decodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12687,7 +12326,6 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12722,7 +12360,6 @@ func decodeWatchInternalApiserverV1alpha1StorageVersionListResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12757,7 +12394,6 @@ func decodeWatchNetworkingV1IngressClassResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12792,7 +12428,6 @@ func decodeWatchNetworkingV1IngressClassListResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12827,7 +12462,6 @@ func decodeWatchNetworkingV1IngressListForAllNamespacesResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12862,7 +12496,6 @@ func decodeWatchNetworkingV1NamespacedIngressResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12897,7 +12530,6 @@ func decodeWatchNetworkingV1NamespacedIngressListResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12932,7 +12564,6 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyResponse(resp *http.Response,
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -12967,7 +12598,6 @@ func decodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(resp *http.Respo
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13002,7 +12632,6 @@ func decodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(resp *http
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13037,7 +12666,6 @@ func decodeWatchNodeV1RuntimeClassResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13072,7 +12700,6 @@ func decodeWatchNodeV1RuntimeClassListResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13107,7 +12734,6 @@ func decodeWatchNodeV1alpha1RuntimeClassResponse(resp *http.Response, span trace
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13142,7 +12768,6 @@ func decodeWatchNodeV1alpha1RuntimeClassListResponse(resp *http.Response, span t
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13177,7 +12802,6 @@ func decodeWatchNodeV1beta1RuntimeClassResponse(resp *http.Response, span trace.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13212,7 +12836,6 @@ func decodeWatchNodeV1beta1RuntimeClassListResponse(resp *http.Response, span tr
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13247,7 +12870,6 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13282,7 +12904,6 @@ func decodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13317,7 +12938,6 @@ func decodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13352,7 +12972,6 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13387,7 +13006,6 @@ func decodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13422,7 +13040,6 @@ func decodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13457,7 +13074,6 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13492,7 +13108,6 @@ func decodeWatchPolicyV1beta1PodSecurityPolicyListResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13527,7 +13142,6 @@ func decodeWatchRbacAuthorizationV1ClusterRoleResponse(resp *http.Response, span
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13562,7 +13176,6 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13597,7 +13210,6 @@ func decodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(resp *http.Res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13632,7 +13244,6 @@ func decodeWatchRbacAuthorizationV1ClusterRoleListResponse(resp *http.Response, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13667,7 +13278,6 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleResponse(resp *http.Response, s
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13702,7 +13312,6 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(resp *http.Resp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13737,7 +13346,6 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(resp *http.
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13772,7 +13380,6 @@ func decodeWatchRbacAuthorizationV1NamespacedRoleListResponse(resp *http.Respons
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13807,7 +13414,6 @@ func decodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(resp 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13842,7 +13448,6 @@ func decodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13877,7 +13482,6 @@ func decodeWatchSchedulingV1PriorityClassResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13912,7 +13516,6 @@ func decodeWatchSchedulingV1PriorityClassListResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13947,7 +13550,6 @@ func decodeWatchStorageV1CSIDriverResponse(resp *http.Response, span trace.Span)
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -13982,7 +13584,6 @@ func decodeWatchStorageV1CSIDriverListResponse(resp *http.Response, span trace.S
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14017,7 +13618,6 @@ func decodeWatchStorageV1CSINodeResponse(resp *http.Response, span trace.Span) (
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14052,7 +13652,6 @@ func decodeWatchStorageV1CSINodeListResponse(resp *http.Response, span trace.Spa
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14087,7 +13686,6 @@ func decodeWatchStorageV1StorageClassResponse(resp *http.Response, span trace.Sp
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14122,7 +13720,6 @@ func decodeWatchStorageV1StorageClassListResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14157,7 +13754,6 @@ func decodeWatchStorageV1VolumeAttachmentResponse(resp *http.Response, span trac
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14192,7 +13788,6 @@ func decodeWatchStorageV1VolumeAttachmentListResponse(resp *http.Response, span 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14227,7 +13822,6 @@ func decodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14262,7 +13856,6 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(resp *http.R
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14297,7 +13890,6 @@ func decodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(resp *ht
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14332,7 +13924,6 @@ func decodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14367,7 +13958,6 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(resp *http.Re
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -14402,7 +13992,6 @@ func decodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(resp *htt
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

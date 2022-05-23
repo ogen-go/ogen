@@ -36,7 +36,6 @@ func decodeCachingResponse(resp *http.Response, span trace.Span) (res WorldObjec
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -69,7 +68,6 @@ func decodeDBResponse(resp *http.Response, span trace.Span) (res WorldObject, er
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -102,7 +100,6 @@ func decodeJSONResponse(resp *http.Response, span trace.Span) (res HelloWorld, e
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -135,7 +132,6 @@ func decodeQueriesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -168,7 +164,6 @@ func decodeUpdatesResponse(resp *http.Response, span trace.Span) (res WorldObjec
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

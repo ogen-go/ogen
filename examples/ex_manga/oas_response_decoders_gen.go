@@ -36,7 +36,6 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -71,7 +70,6 @@ func decodeSearchResponse(resp *http.Response, span trace.Span) (res SearchRes, 
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -106,7 +104,6 @@ func decodeSearchByTagIDResponse(resp *http.Response, span trace.Span) (res Sear
 			}(); err != nil {
 				return res, err
 			}
-
 			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)

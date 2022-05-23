@@ -37,7 +37,6 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -65,7 +64,6 @@ func decodeDataCreateResponse(resp *http.Response, span trace.Span) (res Data, e
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
@@ -104,7 +102,6 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err 
 			}(); err != nil {
 				return res, err
 			}
-
 			return response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
@@ -132,7 +129,6 @@ func decodeDataGetResponse(resp *http.Response, span trace.Span) (res Data, err 
 				}(); err != nil {
 					return res, err
 				}
-
 				return ErrorStatusCode{
 					StatusCode: resp.StatusCode,
 					Response:   response,
