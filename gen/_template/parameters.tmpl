@@ -1,0 +1,20 @@
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+
+{{ define "parameters" }}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $op := $.Operations }}{{/* Range over operations */}}
+{{ if $op.Params }}{{/* Check parameters existence */}}
+type {{ $op.Name }}Params struct {
+	{{- range $p := $op.Params }}
+	{{- template "godoc" $p.GoDoc }}
+	{{ $p.Name }} {{ $p.Type.Go }}
+	{{- end}}
+}
+
+{{- template "parameter_decoder" $op }}
+
+{{ end }}{{/* Check parameters existence */}}
+{{ end }}{{/* Range over operations */}}
+{{ end }}

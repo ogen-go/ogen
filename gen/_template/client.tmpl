@@ -141,10 +141,10 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{- end }}
 	{{ end }}
 
-	{{- template "encode_path_params" $op }}
+	{{- template "encode_path_parameters" $op }}
 
 	{{- if $op.HasQueryParams }}
-	{{- template "encode_query_params" $op }}
+	{{- template "encode_query_parameters" $op }}
 	{{- end }}
 
 	r := ht.NewRequest(ctx, {{ quote $op.Spec.HTTPMethod }}, u, {{ if $op.Request }}reqBody{{ else }}nil{{ end }})
@@ -153,7 +153,7 @@ func (c *Client) {{ $op.Name }}(ctx context.Context {{ if $op.Request }}, reques
 	{{ if $op.Request }}r.Header.Set("Content-Type", contentType){{ end }}
 
 	{{- if $op.HasHeaderParams }}
-	{{- template "encode_header_params" $op }}
+	{{- template "encode_header_parameters" $op }}
 	{{- end }}
 
 	{{- template "encode_cookie_params" $op }}

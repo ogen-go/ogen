@@ -1,0 +1,64 @@
+{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
+{{ define "encode_path_parameters" }}
+u := uri.Clone(c.serverURL)
+{{- range $part := $.PathParts }}{{/* Range over path parts */}}
+	{{- if $part.Raw }}
+		u.Path += {{ quote $part.Raw }}
+	{{- else }}
+	{
+		{{- $param := $part.Param }}
+		// Encode {{ quote $param.Spec.Name }} parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param: {{ quote $param.Spec.Name }},
+			Style: uri.PathStyle{{ capitalize $param.Spec.Style.String }},
+			Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+		})
+		if err := func() error {
+			{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
+	}
+	{{- end }}
+{{- end }}
+{{- end }}
+
+{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
+{{ define "encode_query_parameters" }}
+q := uri.NewQueryEncoder()
+{{- range $param := $.QueryParams }}
+{
+	// Encode {{ quote $param.Spec.Name }} parameter.
+	cfg := uri.QueryParameterEncodingConfig{
+		Name:    {{ quote $param.Spec.Name }},
+		Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
+		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+	}
+
+	if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+		{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
+	}); err != nil {
+		return res, errors.Wrap(err, "encode query")
+	}
+}
+{{- end }}
+u.RawQuery = q.Values().Encode()
+{{- end }}
+
+{{ define "encode_header_parameters" }}
+h := uri.NewHeaderEncoder(r.Header)
+{{- range $p := $.HeaderParams }}
+{
+	cfg := uri.HeaderParameterEncodingConfig{
+		Name:    {{ quote $p.Spec.Name }},
+		Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+	}
+	if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+		{{- template "uri/encode" elem $p.Type (printf "params.%s" $p.Name) }}
+	}); err != nil {
+		return res, errors.Wrap(err, {{ printf "encode header param %s" $p.Spec.Name | quote }})
+	}
+}
+{{- end }}
+{{ end }}

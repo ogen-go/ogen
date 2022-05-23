@@ -1,0 +1,116 @@
+{{ define "request_decoders" }}
+{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
+{{ $pkg := $.Package }}
+{{ template "header" $ }}
+
+{{- range $op := $.Operations }}
+{{- if $op.Request }}
+func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
+	switch ct := r.Header.Get("Content-Type"); ct {
+{{- range $contentType, $t := $op.Request.Contents }}
+	case {{ quote $contentType }}:
+	{{- if $t.IsStream }}
+		return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
+	{{- else if $contentType.JSON }}
+		if r.ContentLength == 0 {
+		{{- if not $op.Request.Spec.Required }}
+			return req, nil
+		{{- else }}
+			return req, validate.ErrBodyRequired
+		{{- end }}
+		}
+
+		var request {{ $t.Go }}
+		buf := getBuf()
+		defer putBuf(buf)
+		written, err := io.Copy(buf, r.Body)
+		if err != nil {
+			return req, err
+		}
+
+		if written == 0 {
+		{{- if not $op.Request.Spec.Required }}
+			return req, nil
+		{{- else }}
+			return req, validate.ErrBodyRequired
+		{{- end }}
+		}
+
+		d := jx.GetDecoder()
+		defer jx.PutDecoder(d)
+		d.ResetBytes(buf.Bytes())
+		if err := func() error {
+			{{- template "json/dec" req_dec_elem $t }}
+			return nil
+		}(); err != nil {
+			return req, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
+		}
+
+		{{- if $t.NeedValidation }}
+		if err := func() error {
+			{{- template "validate" req_dec_elem $t }}
+		}(); err != nil {
+			return req, errors.Wrap(err, "validate")
+		}
+		{{- end }}
+
+		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
+    {{- else if $contentType.FormURLEncode }}
+		if r.ContentLength == 0 {
+		{{- if not $op.Request.Spec.Required }}
+			return req, nil
+		{{- else }}
+			return req, validate.ErrBodyRequired
+		{{- end }}
+		}
+
+		var request {{ $t.Go }}
+		if err := r.ParseForm(); err != nil {
+			return req, errors.Wrap(err, "parse form")
+		}
+
+		if len(r.PostForm) == 0 {
+		{{- if not $op.Request.Spec.Required }}
+			return req, nil
+		{{- else }}
+			return req, validate.ErrBodyRequired
+		{{- end }}
+		}
+
+		q := uri.NewQueryDecoder(r.PostForm)
+		cfg := uri.QueryParameterDecodingConfig{
+			Name:    "",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+			Fields: {{ paramObjectFields $t }},
+		}
+
+		if err := q.HasParam(cfg); err == nil {
+			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+				{{- template "uri/decode" elem $t "request" }}
+			}); err != nil {
+				return req, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
+			}
+
+			{{- if $t.NeedValidation }}
+			if err := func() error {
+				{{- template "validate" elem $t "request" }}
+			}(); err != nil {
+				return req, errors.Wrap(err, "validate")
+			}
+			{{- end }}
+		} {{- if $op.Request.Spec.Required }} else {
+			return req, validate.ErrBodyRequired
+		} {{- end }}
+		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
+	{{- else }}
+		{{- errorf "%s decoder not implemented" $contentType }}
+	{{- end }}
+{{- end }}
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+{{- end }}
+{{ end }}
+{{ end }}
