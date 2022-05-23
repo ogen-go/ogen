@@ -344,7 +344,9 @@ func (p *Parser) parseSchema(schema *RawSchema, ctx resolveCtx, hook func(*Schem
 		}), nil
 
 	case "":
-		return hook(&Schema{}), nil
+		return hook(&Schema{
+			Format: schema.Format,
+		}), nil
 
 	default:
 		return nil, errors.Errorf("unexpected schema type: %q", schema.Type)
