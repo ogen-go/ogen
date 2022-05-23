@@ -57,9 +57,8 @@ func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res 
 				return res, err
 			}
 
-			return &GetPageCoverImageOK{
-				Data: bytes.NewReader(b),
-			}, nil
+			response := GetPageCoverImageOK{Data: bytes.NewReader(b)}
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -79,9 +78,8 @@ func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPa
 				return res, err
 			}
 
-			return &GetPageImageOK{
-				Data: bytes.NewReader(b),
-			}, nil
+			response := GetPageImageOK{Data: bytes.NewReader(b)}
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
@@ -101,9 +99,8 @@ func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (
 				return res, err
 			}
 
-			return &GetPageThumbnailImageOK{
-				Data: bytes.NewReader(b),
-			}, nil
+			response := GetPageThumbnailImageOK{Data: bytes.NewReader(b)}
+			return &response, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

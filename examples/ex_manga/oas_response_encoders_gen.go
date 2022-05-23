@@ -45,7 +45,6 @@ func encodeGetPageCoverImageResponse(response GetPageCoverImageRes, w http.Respo
 		if _, err := io.Copy(w, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetPageCoverImageForbidden:
@@ -66,7 +65,6 @@ func encodeGetPageImageResponse(response GetPageImageRes, w http.ResponseWriter,
 		if _, err := io.Copy(w, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetPageImageForbidden:
@@ -87,7 +85,6 @@ func encodeGetPageThumbnailImageResponse(response GetPageThumbnailImageRes, w ht
 		if _, err := io.Copy(w, response); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetPageThumbnailImageForbidden:
