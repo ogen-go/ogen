@@ -24,7 +24,6 @@ func encodeGetAPIVersionsResponse(response GetAPIVersionsRes, w http.ResponseWri
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAPIVersionsUnauthorized:
@@ -49,7 +48,6 @@ func encodeGetAdmissionregistrationAPIGroupResponse(response GetAdmissionregistr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAdmissionregistrationAPIGroupUnauthorized:
@@ -74,7 +72,6 @@ func encodeGetAdmissionregistrationV1APIResourcesResponse(response GetAdmissionr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAdmissionregistrationV1APIResourcesUnauthorized:
@@ -99,7 +96,6 @@ func encodeGetApiextensionsAPIGroupResponse(response GetApiextensionsAPIGroupRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetApiextensionsAPIGroupUnauthorized:
@@ -124,7 +120,6 @@ func encodeGetApiextensionsV1APIResourcesResponse(response GetApiextensionsV1API
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetApiextensionsV1APIResourcesUnauthorized:
@@ -149,7 +144,6 @@ func encodeGetApiregistrationAPIGroupResponse(response GetApiregistrationAPIGrou
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetApiregistrationAPIGroupUnauthorized:
@@ -174,7 +168,6 @@ func encodeGetApiregistrationV1APIResourcesResponse(response GetApiregistrationV
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetApiregistrationV1APIResourcesUnauthorized:
@@ -199,7 +192,6 @@ func encodeGetAppsAPIGroupResponse(response GetAppsAPIGroupRes, w http.ResponseW
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAppsAPIGroupUnauthorized:
@@ -224,7 +216,6 @@ func encodeGetAppsV1APIResourcesResponse(response GetAppsV1APIResourcesRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAppsV1APIResourcesUnauthorized:
@@ -249,7 +240,6 @@ func encodeGetAuthenticationAPIGroupResponse(response GetAuthenticationAPIGroupR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAuthenticationAPIGroupUnauthorized:
@@ -274,7 +264,6 @@ func encodeGetAuthenticationV1APIResourcesResponse(response GetAuthenticationV1A
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAuthenticationV1APIResourcesUnauthorized:
@@ -299,7 +288,6 @@ func encodeGetAuthorizationAPIGroupResponse(response GetAuthorizationAPIGroupRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAuthorizationAPIGroupUnauthorized:
@@ -324,7 +312,6 @@ func encodeGetAuthorizationV1APIResourcesResponse(response GetAuthorizationV1API
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAuthorizationV1APIResourcesUnauthorized:
@@ -349,7 +336,6 @@ func encodeGetAutoscalingAPIGroupResponse(response GetAutoscalingAPIGroupRes, w 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAutoscalingAPIGroupUnauthorized:
@@ -374,7 +360,6 @@ func encodeGetAutoscalingV1APIResourcesResponse(response GetAutoscalingV1APIReso
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAutoscalingV1APIResourcesUnauthorized:
@@ -399,7 +384,6 @@ func encodeGetAutoscalingV2beta1APIResourcesResponse(response GetAutoscalingV2be
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAutoscalingV2beta1APIResourcesUnauthorized:
@@ -424,7 +408,6 @@ func encodeGetAutoscalingV2beta2APIResourcesResponse(response GetAutoscalingV2be
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetAutoscalingV2beta2APIResourcesUnauthorized:
@@ -449,7 +432,6 @@ func encodeGetBatchAPIGroupResponse(response GetBatchAPIGroupRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetBatchAPIGroupUnauthorized:
@@ -474,7 +456,6 @@ func encodeGetBatchV1APIResourcesResponse(response GetBatchV1APIResourcesRes, w 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetBatchV1APIResourcesUnauthorized:
@@ -499,7 +480,6 @@ func encodeGetBatchV1beta1APIResourcesResponse(response GetBatchV1beta1APIResour
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetBatchV1beta1APIResourcesUnauthorized:
@@ -524,7 +504,6 @@ func encodeGetCertificatesAPIGroupResponse(response GetCertificatesAPIGroupRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetCertificatesAPIGroupUnauthorized:
@@ -549,7 +528,6 @@ func encodeGetCertificatesV1APIResourcesResponse(response GetCertificatesV1APIRe
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetCertificatesV1APIResourcesUnauthorized:
@@ -574,7 +552,6 @@ func encodeGetCodeVersionResponse(response GetCodeVersionRes, w http.ResponseWri
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetCodeVersionUnauthorized:
@@ -599,7 +576,6 @@ func encodeGetCoordinationAPIGroupResponse(response GetCoordinationAPIGroupRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetCoordinationAPIGroupUnauthorized:
@@ -624,7 +600,6 @@ func encodeGetCoordinationV1APIResourcesResponse(response GetCoordinationV1APIRe
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetCoordinationV1APIResourcesUnauthorized:
@@ -649,7 +624,6 @@ func encodeGetCoreAPIVersionsResponse(response GetCoreAPIVersionsRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetCoreAPIVersionsUnauthorized:
@@ -674,7 +648,6 @@ func encodeGetCoreV1APIResourcesResponse(response GetCoreV1APIResourcesRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetCoreV1APIResourcesUnauthorized:
@@ -699,7 +672,6 @@ func encodeGetDiscoveryAPIGroupResponse(response GetDiscoveryAPIGroupRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetDiscoveryAPIGroupUnauthorized:
@@ -724,7 +696,6 @@ func encodeGetDiscoveryV1APIResourcesResponse(response GetDiscoveryV1APIResource
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetDiscoveryV1APIResourcesUnauthorized:
@@ -749,7 +720,6 @@ func encodeGetDiscoveryV1beta1APIResourcesResponse(response GetDiscoveryV1beta1A
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetDiscoveryV1beta1APIResourcesUnauthorized:
@@ -774,7 +744,6 @@ func encodeGetEventsAPIGroupResponse(response GetEventsAPIGroupRes, w http.Respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetEventsAPIGroupUnauthorized:
@@ -799,7 +768,6 @@ func encodeGetEventsV1APIResourcesResponse(response GetEventsV1APIResourcesRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetEventsV1APIResourcesUnauthorized:
@@ -824,7 +792,6 @@ func encodeGetEventsV1beta1APIResourcesResponse(response GetEventsV1beta1APIReso
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetEventsV1beta1APIResourcesUnauthorized:
@@ -849,7 +816,6 @@ func encodeGetFlowcontrolApiserverAPIGroupResponse(response GetFlowcontrolApiser
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetFlowcontrolApiserverAPIGroupUnauthorized:
@@ -874,7 +840,6 @@ func encodeGetFlowcontrolApiserverV1beta1APIResourcesResponse(response GetFlowco
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetFlowcontrolApiserverV1beta1APIResourcesUnauthorized:
@@ -899,7 +864,6 @@ func encodeGetFlowcontrolApiserverV1beta2APIResourcesResponse(response GetFlowco
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetFlowcontrolApiserverV1beta2APIResourcesUnauthorized:
@@ -924,7 +888,6 @@ func encodeGetInternalApiserverAPIGroupResponse(response GetInternalApiserverAPI
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetInternalApiserverAPIGroupUnauthorized:
@@ -949,7 +912,6 @@ func encodeGetInternalApiserverV1alpha1APIResourcesResponse(response GetInternal
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetInternalApiserverV1alpha1APIResourcesUnauthorized:
@@ -974,7 +936,6 @@ func encodeGetNetworkingAPIGroupResponse(response GetNetworkingAPIGroupRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetNetworkingAPIGroupUnauthorized:
@@ -999,7 +960,6 @@ func encodeGetNetworkingV1APIResourcesResponse(response GetNetworkingV1APIResour
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetNetworkingV1APIResourcesUnauthorized:
@@ -1024,7 +984,6 @@ func encodeGetNodeAPIGroupResponse(response GetNodeAPIGroupRes, w http.ResponseW
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetNodeAPIGroupUnauthorized:
@@ -1049,7 +1008,6 @@ func encodeGetNodeV1APIResourcesResponse(response GetNodeV1APIResourcesRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetNodeV1APIResourcesUnauthorized:
@@ -1074,7 +1032,6 @@ func encodeGetNodeV1alpha1APIResourcesResponse(response GetNodeV1alpha1APIResour
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetNodeV1alpha1APIResourcesUnauthorized:
@@ -1099,7 +1056,6 @@ func encodeGetNodeV1beta1APIResourcesResponse(response GetNodeV1beta1APIResource
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetNodeV1beta1APIResourcesUnauthorized:
@@ -1124,7 +1080,6 @@ func encodeGetPolicyAPIGroupResponse(response GetPolicyAPIGroupRes, w http.Respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetPolicyAPIGroupUnauthorized:
@@ -1149,7 +1104,6 @@ func encodeGetPolicyV1APIResourcesResponse(response GetPolicyV1APIResourcesRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetPolicyV1APIResourcesUnauthorized:
@@ -1174,7 +1128,6 @@ func encodeGetPolicyV1beta1APIResourcesResponse(response GetPolicyV1beta1APIReso
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetPolicyV1beta1APIResourcesUnauthorized:
@@ -1199,7 +1152,6 @@ func encodeGetRbacAuthorizationAPIGroupResponse(response GetRbacAuthorizationAPI
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetRbacAuthorizationAPIGroupUnauthorized:
@@ -1224,7 +1176,6 @@ func encodeGetRbacAuthorizationV1APIResourcesResponse(response GetRbacAuthorizat
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetRbacAuthorizationV1APIResourcesUnauthorized:
@@ -1249,7 +1200,6 @@ func encodeGetSchedulingAPIGroupResponse(response GetSchedulingAPIGroupRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetSchedulingAPIGroupUnauthorized:
@@ -1274,7 +1224,6 @@ func encodeGetSchedulingV1APIResourcesResponse(response GetSchedulingV1APIResour
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetSchedulingV1APIResourcesUnauthorized:
@@ -1299,7 +1248,6 @@ func encodeGetServiceAccountIssuerOpenIDConfigurationResponse(response GetServic
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetServiceAccountIssuerOpenIDConfigurationUnauthorized:
@@ -1324,7 +1272,6 @@ func encodeGetStorageAPIGroupResponse(response GetStorageAPIGroupRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetStorageAPIGroupUnauthorized:
@@ -1349,7 +1296,6 @@ func encodeGetStorageV1APIResourcesResponse(response GetStorageV1APIResourcesRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetStorageV1APIResourcesUnauthorized:
@@ -1374,7 +1320,6 @@ func encodeGetStorageV1alpha1APIResourcesResponse(response GetStorageV1alpha1API
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetStorageV1alpha1APIResourcesUnauthorized:
@@ -1399,7 +1344,6 @@ func encodeGetStorageV1beta1APIResourcesResponse(response GetStorageV1beta1APIRe
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetStorageV1beta1APIResourcesUnauthorized:
@@ -1424,7 +1368,6 @@ func encodeListAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
@@ -1449,7 +1392,6 @@ func encodeListAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
@@ -1474,7 +1416,6 @@ func encodeListApiextensionsV1CustomResourceDefinitionResponse(response ListApie
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListApiextensionsV1CustomResourceDefinitionUnauthorized:
@@ -1499,7 +1440,6 @@ func encodeListApiregistrationV1APIServiceResponse(response ListApiregistrationV
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListApiregistrationV1APIServiceUnauthorized:
@@ -1524,7 +1464,6 @@ func encodeListAppsV1ControllerRevisionForAllNamespacesResponse(response ListApp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1ControllerRevisionForAllNamespacesUnauthorized:
@@ -1549,7 +1488,6 @@ func encodeListAppsV1DaemonSetForAllNamespacesResponse(response ListAppsV1Daemon
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1DaemonSetForAllNamespacesUnauthorized:
@@ -1574,7 +1512,6 @@ func encodeListAppsV1DeploymentForAllNamespacesResponse(response ListAppsV1Deplo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1DeploymentForAllNamespacesUnauthorized:
@@ -1599,7 +1536,6 @@ func encodeListAppsV1NamespacedControllerRevisionResponse(response ListAppsV1Nam
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1NamespacedControllerRevisionUnauthorized:
@@ -1624,7 +1560,6 @@ func encodeListAppsV1NamespacedDaemonSetResponse(response ListAppsV1NamespacedDa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1NamespacedDaemonSetUnauthorized:
@@ -1649,7 +1584,6 @@ func encodeListAppsV1NamespacedDeploymentResponse(response ListAppsV1NamespacedD
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1NamespacedDeploymentUnauthorized:
@@ -1674,7 +1608,6 @@ func encodeListAppsV1NamespacedReplicaSetResponse(response ListAppsV1NamespacedR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1NamespacedReplicaSetUnauthorized:
@@ -1699,7 +1632,6 @@ func encodeListAppsV1NamespacedStatefulSetResponse(response ListAppsV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1NamespacedStatefulSetUnauthorized:
@@ -1724,7 +1656,6 @@ func encodeListAppsV1ReplicaSetForAllNamespacesResponse(response ListAppsV1Repli
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1ReplicaSetForAllNamespacesUnauthorized:
@@ -1749,7 +1680,6 @@ func encodeListAppsV1StatefulSetForAllNamespacesResponse(response ListAppsV1Stat
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAppsV1StatefulSetForAllNamespacesUnauthorized:
@@ -1774,7 +1704,6 @@ func encodeListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesResponse(resp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAutoscalingV1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
@@ -1799,7 +1728,6 @@ func encodeListAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response L
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -1824,7 +1752,6 @@ func encodeListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesResponse
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAutoscalingV2beta1HorizontalPodAutoscalerForAllNamespacesUnauthorized:
@@ -1849,7 +1776,6 @@ func encodeListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -1874,7 +1800,6 @@ func encodeListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesResponse
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAutoscalingV2beta2HorizontalPodAutoscalerForAllNamespacesUnauthorized:
@@ -1899,7 +1824,6 @@ func encodeListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -1924,7 +1848,6 @@ func encodeListBatchV1CronJobForAllNamespacesResponse(response ListBatchV1CronJo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListBatchV1CronJobForAllNamespacesUnauthorized:
@@ -1949,7 +1872,6 @@ func encodeListBatchV1JobForAllNamespacesResponse(response ListBatchV1JobForAllN
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListBatchV1JobForAllNamespacesUnauthorized:
@@ -1974,7 +1896,6 @@ func encodeListBatchV1NamespacedCronJobResponse(response ListBatchV1NamespacedCr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListBatchV1NamespacedCronJobUnauthorized:
@@ -1999,7 +1920,6 @@ func encodeListBatchV1NamespacedJobResponse(response ListBatchV1NamespacedJobRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListBatchV1NamespacedJobUnauthorized:
@@ -2024,7 +1944,6 @@ func encodeListBatchV1beta1CronJobForAllNamespacesResponse(response ListBatchV1b
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListBatchV1beta1CronJobForAllNamespacesUnauthorized:
@@ -2049,7 +1968,6 @@ func encodeListBatchV1beta1NamespacedCronJobResponse(response ListBatchV1beta1Na
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListBatchV1beta1NamespacedCronJobUnauthorized:
@@ -2074,7 +1992,6 @@ func encodeListCertificatesV1CertificateSigningRequestResponse(response ListCert
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCertificatesV1CertificateSigningRequestUnauthorized:
@@ -2099,7 +2016,6 @@ func encodeListCoordinationV1LeaseForAllNamespacesResponse(response ListCoordina
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoordinationV1LeaseForAllNamespacesUnauthorized:
@@ -2124,7 +2040,6 @@ func encodeListCoordinationV1NamespacedLeaseResponse(response ListCoordinationV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoordinationV1NamespacedLeaseUnauthorized:
@@ -2149,7 +2064,6 @@ func encodeListCoreV1ComponentStatusResponse(response ListCoreV1ComponentStatusR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1ComponentStatusUnauthorized:
@@ -2174,7 +2088,6 @@ func encodeListCoreV1ConfigMapForAllNamespacesResponse(response ListCoreV1Config
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1ConfigMapForAllNamespacesUnauthorized:
@@ -2199,7 +2112,6 @@ func encodeListCoreV1EndpointsForAllNamespacesResponse(response ListCoreV1Endpoi
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1EndpointsForAllNamespacesUnauthorized:
@@ -2224,7 +2136,6 @@ func encodeListCoreV1EventForAllNamespacesResponse(response ListCoreV1EventForAl
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1EventForAllNamespacesUnauthorized:
@@ -2249,7 +2160,6 @@ func encodeListCoreV1LimitRangeForAllNamespacesResponse(response ListCoreV1Limit
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1LimitRangeForAllNamespacesUnauthorized:
@@ -2274,7 +2184,6 @@ func encodeListCoreV1NamespaceResponse(response ListCoreV1NamespaceRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespaceUnauthorized:
@@ -2299,7 +2208,6 @@ func encodeListCoreV1NamespacedConfigMapResponse(response ListCoreV1NamespacedCo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedConfigMapUnauthorized:
@@ -2324,7 +2232,6 @@ func encodeListCoreV1NamespacedEndpointsResponse(response ListCoreV1NamespacedEn
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedEndpointsUnauthorized:
@@ -2349,7 +2256,6 @@ func encodeListCoreV1NamespacedEventResponse(response ListCoreV1NamespacedEventR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedEventUnauthorized:
@@ -2374,7 +2280,6 @@ func encodeListCoreV1NamespacedLimitRangeResponse(response ListCoreV1NamespacedL
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedLimitRangeUnauthorized:
@@ -2399,7 +2304,6 @@ func encodeListCoreV1NamespacedPersistentVolumeClaimResponse(response ListCoreV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedPersistentVolumeClaimUnauthorized:
@@ -2424,7 +2328,6 @@ func encodeListCoreV1NamespacedPodResponse(response ListCoreV1NamespacedPodRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedPodUnauthorized:
@@ -2449,7 +2352,6 @@ func encodeListCoreV1NamespacedPodTemplateResponse(response ListCoreV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedPodTemplateUnauthorized:
@@ -2474,7 +2376,6 @@ func encodeListCoreV1NamespacedReplicationControllerResponse(response ListCoreV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedReplicationControllerUnauthorized:
@@ -2499,7 +2400,6 @@ func encodeListCoreV1NamespacedResourceQuotaResponse(response ListCoreV1Namespac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedResourceQuotaUnauthorized:
@@ -2524,7 +2424,6 @@ func encodeListCoreV1NamespacedSecretResponse(response ListCoreV1NamespacedSecre
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedSecretUnauthorized:
@@ -2549,7 +2448,6 @@ func encodeListCoreV1NamespacedServiceResponse(response ListCoreV1NamespacedServ
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedServiceUnauthorized:
@@ -2574,7 +2472,6 @@ func encodeListCoreV1NamespacedServiceAccountResponse(response ListCoreV1Namespa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NamespacedServiceAccountUnauthorized:
@@ -2599,7 +2496,6 @@ func encodeListCoreV1NodeResponse(response ListCoreV1NodeRes, w http.ResponseWri
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1NodeUnauthorized:
@@ -2624,7 +2520,6 @@ func encodeListCoreV1PersistentVolumeResponse(response ListCoreV1PersistentVolum
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1PersistentVolumeUnauthorized:
@@ -2649,7 +2544,6 @@ func encodeListCoreV1PersistentVolumeClaimForAllNamespacesResponse(response List
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1PersistentVolumeClaimForAllNamespacesUnauthorized:
@@ -2674,7 +2568,6 @@ func encodeListCoreV1PodForAllNamespacesResponse(response ListCoreV1PodForAllNam
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1PodForAllNamespacesUnauthorized:
@@ -2699,7 +2592,6 @@ func encodeListCoreV1PodTemplateForAllNamespacesResponse(response ListCoreV1PodT
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1PodTemplateForAllNamespacesUnauthorized:
@@ -2724,7 +2616,6 @@ func encodeListCoreV1ReplicationControllerForAllNamespacesResponse(response List
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1ReplicationControllerForAllNamespacesUnauthorized:
@@ -2749,7 +2640,6 @@ func encodeListCoreV1ResourceQuotaForAllNamespacesResponse(response ListCoreV1Re
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1ResourceQuotaForAllNamespacesUnauthorized:
@@ -2774,7 +2664,6 @@ func encodeListCoreV1SecretForAllNamespacesResponse(response ListCoreV1SecretFor
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1SecretForAllNamespacesUnauthorized:
@@ -2799,7 +2688,6 @@ func encodeListCoreV1ServiceAccountForAllNamespacesResponse(response ListCoreV1S
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1ServiceAccountForAllNamespacesUnauthorized:
@@ -2824,7 +2712,6 @@ func encodeListCoreV1ServiceForAllNamespacesResponse(response ListCoreV1ServiceF
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListCoreV1ServiceForAllNamespacesUnauthorized:
@@ -2849,7 +2736,6 @@ func encodeListDiscoveryV1EndpointSliceForAllNamespacesResponse(response ListDis
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListDiscoveryV1EndpointSliceForAllNamespacesUnauthorized:
@@ -2874,7 +2760,6 @@ func encodeListDiscoveryV1NamespacedEndpointSliceResponse(response ListDiscovery
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListDiscoveryV1NamespacedEndpointSliceUnauthorized:
@@ -2899,7 +2784,6 @@ func encodeListDiscoveryV1beta1EndpointSliceForAllNamespacesResponse(response Li
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListDiscoveryV1beta1EndpointSliceForAllNamespacesUnauthorized:
@@ -2924,7 +2808,6 @@ func encodeListDiscoveryV1beta1NamespacedEndpointSliceResponse(response ListDisc
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListDiscoveryV1beta1NamespacedEndpointSliceUnauthorized:
@@ -2949,7 +2832,6 @@ func encodeListEventsV1EventForAllNamespacesResponse(response ListEventsV1EventF
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListEventsV1EventForAllNamespacesUnauthorized:
@@ -2974,7 +2856,6 @@ func encodeListEventsV1NamespacedEventResponse(response ListEventsV1NamespacedEv
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListEventsV1NamespacedEventUnauthorized:
@@ -2999,7 +2880,6 @@ func encodeListEventsV1beta1EventForAllNamespacesResponse(response ListEventsV1b
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListEventsV1beta1EventForAllNamespacesUnauthorized:
@@ -3024,7 +2904,6 @@ func encodeListEventsV1beta1NamespacedEventResponse(response ListEventsV1beta1Na
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListEventsV1beta1NamespacedEventUnauthorized:
@@ -3049,7 +2928,6 @@ func encodeListFlowcontrolApiserverV1beta1FlowSchemaResponse(response ListFlowco
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
@@ -3074,7 +2952,6 @@ func encodeListFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
@@ -3099,7 +2976,6 @@ func encodeListFlowcontrolApiserverV1beta2FlowSchemaResponse(response ListFlowco
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
@@ -3124,7 +3000,6 @@ func encodeListFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
@@ -3149,7 +3024,6 @@ func encodeListInternalApiserverV1alpha1StorageVersionResponse(response ListInte
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListInternalApiserverV1alpha1StorageVersionUnauthorized:
@@ -3174,7 +3048,6 @@ func encodeListNetworkingV1IngressClassResponse(response ListNetworkingV1Ingress
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListNetworkingV1IngressClassUnauthorized:
@@ -3199,7 +3072,6 @@ func encodeListNetworkingV1IngressForAllNamespacesResponse(response ListNetworki
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListNetworkingV1IngressForAllNamespacesUnauthorized:
@@ -3224,7 +3096,6 @@ func encodeListNetworkingV1NamespacedIngressResponse(response ListNetworkingV1Na
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListNetworkingV1NamespacedIngressUnauthorized:
@@ -3249,7 +3120,6 @@ func encodeListNetworkingV1NamespacedNetworkPolicyResponse(response ListNetworki
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListNetworkingV1NamespacedNetworkPolicyUnauthorized:
@@ -3274,7 +3144,6 @@ func encodeListNetworkingV1NetworkPolicyForAllNamespacesResponse(response ListNe
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListNetworkingV1NetworkPolicyForAllNamespacesUnauthorized:
@@ -3299,7 +3168,6 @@ func encodeListNodeV1RuntimeClassResponse(response ListNodeV1RuntimeClassRes, w 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListNodeV1RuntimeClassUnauthorized:
@@ -3324,7 +3192,6 @@ func encodeListNodeV1alpha1RuntimeClassResponse(response ListNodeV1alpha1Runtime
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListNodeV1alpha1RuntimeClassUnauthorized:
@@ -3349,7 +3216,6 @@ func encodeListNodeV1beta1RuntimeClassResponse(response ListNodeV1beta1RuntimeCl
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListNodeV1beta1RuntimeClassUnauthorized:
@@ -3374,7 +3240,6 @@ func encodeListPolicyV1NamespacedPodDisruptionBudgetResponse(response ListPolicy
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListPolicyV1NamespacedPodDisruptionBudgetUnauthorized:
@@ -3399,7 +3264,6 @@ func encodeListPolicyV1PodDisruptionBudgetForAllNamespacesResponse(response List
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListPolicyV1PodDisruptionBudgetForAllNamespacesUnauthorized:
@@ -3424,7 +3288,6 @@ func encodeListPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ListP
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized:
@@ -3449,7 +3312,6 @@ func encodeListPolicyV1beta1PodDisruptionBudgetForAllNamespacesResponse(response
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListPolicyV1beta1PodDisruptionBudgetForAllNamespacesUnauthorized:
@@ -3474,7 +3336,6 @@ func encodeListPolicyV1beta1PodSecurityPolicyResponse(response ListPolicyV1beta1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListPolicyV1beta1PodSecurityPolicyUnauthorized:
@@ -3499,7 +3360,6 @@ func encodeListRbacAuthorizationV1ClusterRoleResponse(response ListRbacAuthoriza
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListRbacAuthorizationV1ClusterRoleUnauthorized:
@@ -3524,7 +3384,6 @@ func encodeListRbacAuthorizationV1ClusterRoleBindingResponse(response ListRbacAu
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListRbacAuthorizationV1ClusterRoleBindingUnauthorized:
@@ -3549,7 +3408,6 @@ func encodeListRbacAuthorizationV1NamespacedRoleResponse(response ListRbacAuthor
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListRbacAuthorizationV1NamespacedRoleUnauthorized:
@@ -3574,7 +3432,6 @@ func encodeListRbacAuthorizationV1NamespacedRoleBindingResponse(response ListRba
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListRbacAuthorizationV1NamespacedRoleBindingUnauthorized:
@@ -3599,7 +3456,6 @@ func encodeListRbacAuthorizationV1RoleBindingForAllNamespacesResponse(response L
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListRbacAuthorizationV1RoleBindingForAllNamespacesUnauthorized:
@@ -3624,7 +3480,6 @@ func encodeListRbacAuthorizationV1RoleForAllNamespacesResponse(response ListRbac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListRbacAuthorizationV1RoleForAllNamespacesUnauthorized:
@@ -3649,7 +3504,6 @@ func encodeListSchedulingV1PriorityClassResponse(response ListSchedulingV1Priori
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListSchedulingV1PriorityClassUnauthorized:
@@ -3674,7 +3528,6 @@ func encodeListStorageV1CSIDriverResponse(response ListStorageV1CSIDriverRes, w 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListStorageV1CSIDriverUnauthorized:
@@ -3699,7 +3552,6 @@ func encodeListStorageV1CSINodeResponse(response ListStorageV1CSINodeRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListStorageV1CSINodeUnauthorized:
@@ -3724,7 +3576,6 @@ func encodeListStorageV1StorageClassResponse(response ListStorageV1StorageClassR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListStorageV1StorageClassUnauthorized:
@@ -3749,7 +3600,6 @@ func encodeListStorageV1VolumeAttachmentResponse(response ListStorageV1VolumeAtt
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListStorageV1VolumeAttachmentUnauthorized:
@@ -3774,7 +3624,6 @@ func encodeListStorageV1alpha1CSIStorageCapacityForAllNamespacesResponse(respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListStorageV1alpha1CSIStorageCapacityForAllNamespacesUnauthorized:
@@ -3799,7 +3648,6 @@ func encodeListStorageV1alpha1NamespacedCSIStorageCapacityResponse(response List
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized:
@@ -3824,7 +3672,6 @@ func encodeListStorageV1beta1CSIStorageCapacityForAllNamespacesResponse(response
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListStorageV1beta1CSIStorageCapacityForAllNamespacesUnauthorized:
@@ -3849,7 +3696,6 @@ func encodeListStorageV1beta1NamespacedCSIStorageCapacityResponse(response ListS
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ListStorageV1beta1NamespacedCSIStorageCapacityUnauthorized:
@@ -3886,7 +3732,6 @@ func encodeReadAdmissionregistrationV1MutatingWebhookConfigurationResponse(respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
@@ -3911,7 +3756,6 @@ func encodeReadAdmissionregistrationV1ValidatingWebhookConfigurationResponse(res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
@@ -3936,7 +3780,6 @@ func encodeReadApiextensionsV1CustomResourceDefinitionResponse(response ReadApie
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadApiextensionsV1CustomResourceDefinitionUnauthorized:
@@ -3961,7 +3804,6 @@ func encodeReadApiextensionsV1CustomResourceDefinitionStatusResponse(response Re
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadApiextensionsV1CustomResourceDefinitionStatusUnauthorized:
@@ -3986,7 +3828,6 @@ func encodeReadApiregistrationV1APIServiceResponse(response ReadApiregistrationV
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadApiregistrationV1APIServiceUnauthorized:
@@ -4011,7 +3852,6 @@ func encodeReadApiregistrationV1APIServiceStatusResponse(response ReadApiregistr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadApiregistrationV1APIServiceStatusUnauthorized:
@@ -4036,7 +3876,6 @@ func encodeReadAppsV1NamespacedControllerRevisionResponse(response ReadAppsV1Nam
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedControllerRevisionUnauthorized:
@@ -4061,7 +3900,6 @@ func encodeReadAppsV1NamespacedDaemonSetResponse(response ReadAppsV1NamespacedDa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedDaemonSetUnauthorized:
@@ -4086,7 +3924,6 @@ func encodeReadAppsV1NamespacedDaemonSetStatusResponse(response ReadAppsV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedDaemonSetStatusUnauthorized:
@@ -4111,7 +3948,6 @@ func encodeReadAppsV1NamespacedDeploymentResponse(response ReadAppsV1NamespacedD
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedDeploymentUnauthorized:
@@ -4136,7 +3972,6 @@ func encodeReadAppsV1NamespacedDeploymentScaleResponse(response ReadAppsV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedDeploymentScaleUnauthorized:
@@ -4161,7 +3996,6 @@ func encodeReadAppsV1NamespacedDeploymentStatusResponse(response ReadAppsV1Names
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedDeploymentStatusUnauthorized:
@@ -4186,7 +4020,6 @@ func encodeReadAppsV1NamespacedReplicaSetResponse(response ReadAppsV1NamespacedR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedReplicaSetUnauthorized:
@@ -4211,7 +4044,6 @@ func encodeReadAppsV1NamespacedReplicaSetScaleResponse(response ReadAppsV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedReplicaSetScaleUnauthorized:
@@ -4236,7 +4068,6 @@ func encodeReadAppsV1NamespacedReplicaSetStatusResponse(response ReadAppsV1Names
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedReplicaSetStatusUnauthorized:
@@ -4261,7 +4092,6 @@ func encodeReadAppsV1NamespacedStatefulSetResponse(response ReadAppsV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedStatefulSetUnauthorized:
@@ -4286,7 +4116,6 @@ func encodeReadAppsV1NamespacedStatefulSetScaleResponse(response ReadAppsV1Names
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedStatefulSetScaleUnauthorized:
@@ -4311,7 +4140,6 @@ func encodeReadAppsV1NamespacedStatefulSetStatusResponse(response ReadAppsV1Name
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAppsV1NamespacedStatefulSetStatusUnauthorized:
@@ -4336,7 +4164,6 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -4361,7 +4188,6 @@ func encodeReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusResponse(resp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAutoscalingV1NamespacedHorizontalPodAutoscalerStatusUnauthorized:
@@ -4386,7 +4212,6 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -4411,7 +4236,6 @@ func encodeReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusResponse
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAutoscalingV2beta1NamespacedHorizontalPodAutoscalerStatusUnauthorized:
@@ -4436,7 +4260,6 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -4461,7 +4284,6 @@ func encodeReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusResponse
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadAutoscalingV2beta2NamespacedHorizontalPodAutoscalerStatusUnauthorized:
@@ -4486,7 +4308,6 @@ func encodeReadBatchV1NamespacedCronJobResponse(response ReadBatchV1NamespacedCr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadBatchV1NamespacedCronJobUnauthorized:
@@ -4511,7 +4332,6 @@ func encodeReadBatchV1NamespacedCronJobStatusResponse(response ReadBatchV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadBatchV1NamespacedCronJobStatusUnauthorized:
@@ -4536,7 +4356,6 @@ func encodeReadBatchV1NamespacedJobResponse(response ReadBatchV1NamespacedJobRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadBatchV1NamespacedJobUnauthorized:
@@ -4561,7 +4380,6 @@ func encodeReadBatchV1NamespacedJobStatusResponse(response ReadBatchV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadBatchV1NamespacedJobStatusUnauthorized:
@@ -4586,7 +4404,6 @@ func encodeReadBatchV1beta1NamespacedCronJobResponse(response ReadBatchV1beta1Na
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadBatchV1beta1NamespacedCronJobUnauthorized:
@@ -4611,7 +4428,6 @@ func encodeReadBatchV1beta1NamespacedCronJobStatusResponse(response ReadBatchV1b
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadBatchV1beta1NamespacedCronJobStatusUnauthorized:
@@ -4636,7 +4452,6 @@ func encodeReadCertificatesV1CertificateSigningRequestResponse(response ReadCert
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCertificatesV1CertificateSigningRequestUnauthorized:
@@ -4661,7 +4476,6 @@ func encodeReadCertificatesV1CertificateSigningRequestApprovalResponse(response 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCertificatesV1CertificateSigningRequestApprovalUnauthorized:
@@ -4686,7 +4500,6 @@ func encodeReadCertificatesV1CertificateSigningRequestStatusResponse(response Re
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCertificatesV1CertificateSigningRequestStatusUnauthorized:
@@ -4711,7 +4524,6 @@ func encodeReadCoordinationV1NamespacedLeaseResponse(response ReadCoordinationV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoordinationV1NamespacedLeaseUnauthorized:
@@ -4736,7 +4548,6 @@ func encodeReadCoreV1ComponentStatusResponse(response ReadCoreV1ComponentStatusR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1ComponentStatusUnauthorized:
@@ -4761,7 +4572,6 @@ func encodeReadCoreV1NamespaceResponse(response ReadCoreV1NamespaceRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespaceUnauthorized:
@@ -4786,7 +4596,6 @@ func encodeReadCoreV1NamespaceStatusResponse(response ReadCoreV1NamespaceStatusR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespaceStatusUnauthorized:
@@ -4811,7 +4620,6 @@ func encodeReadCoreV1NamespacedConfigMapResponse(response ReadCoreV1NamespacedCo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedConfigMapUnauthorized:
@@ -4836,7 +4644,6 @@ func encodeReadCoreV1NamespacedEndpointsResponse(response ReadCoreV1NamespacedEn
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedEndpointsUnauthorized:
@@ -4861,7 +4668,6 @@ func encodeReadCoreV1NamespacedEventResponse(response ReadCoreV1NamespacedEventR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedEventUnauthorized:
@@ -4886,7 +4692,6 @@ func encodeReadCoreV1NamespacedLimitRangeResponse(response ReadCoreV1NamespacedL
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedLimitRangeUnauthorized:
@@ -4911,7 +4716,6 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimResponse(response ReadCoreV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedPersistentVolumeClaimUnauthorized:
@@ -4936,7 +4740,6 @@ func encodeReadCoreV1NamespacedPersistentVolumeClaimStatusResponse(response Read
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedPersistentVolumeClaimStatusUnauthorized:
@@ -4961,7 +4764,6 @@ func encodeReadCoreV1NamespacedPodResponse(response ReadCoreV1NamespacedPodRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedPodUnauthorized:
@@ -4986,7 +4788,6 @@ func encodeReadCoreV1NamespacedPodEphemeralcontainersResponse(response ReadCoreV
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedPodEphemeralcontainersUnauthorized:
@@ -5011,7 +4812,6 @@ func encodeReadCoreV1NamespacedPodLogResponse(response ReadCoreV1NamespacedPodLo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedPodLogUnauthorized:
@@ -5036,7 +4836,6 @@ func encodeReadCoreV1NamespacedPodStatusResponse(response ReadCoreV1NamespacedPo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedPodStatusUnauthorized:
@@ -5061,7 +4860,6 @@ func encodeReadCoreV1NamespacedPodTemplateResponse(response ReadCoreV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedPodTemplateUnauthorized:
@@ -5086,7 +4884,6 @@ func encodeReadCoreV1NamespacedReplicationControllerResponse(response ReadCoreV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedReplicationControllerUnauthorized:
@@ -5111,7 +4908,6 @@ func encodeReadCoreV1NamespacedReplicationControllerScaleResponse(response ReadC
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedReplicationControllerScaleUnauthorized:
@@ -5136,7 +4932,6 @@ func encodeReadCoreV1NamespacedReplicationControllerStatusResponse(response Read
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedReplicationControllerStatusUnauthorized:
@@ -5161,7 +4956,6 @@ func encodeReadCoreV1NamespacedResourceQuotaResponse(response ReadCoreV1Namespac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedResourceQuotaUnauthorized:
@@ -5186,7 +4980,6 @@ func encodeReadCoreV1NamespacedResourceQuotaStatusResponse(response ReadCoreV1Na
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedResourceQuotaStatusUnauthorized:
@@ -5211,7 +5004,6 @@ func encodeReadCoreV1NamespacedSecretResponse(response ReadCoreV1NamespacedSecre
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedSecretUnauthorized:
@@ -5236,7 +5028,6 @@ func encodeReadCoreV1NamespacedServiceResponse(response ReadCoreV1NamespacedServ
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedServiceUnauthorized:
@@ -5261,7 +5052,6 @@ func encodeReadCoreV1NamespacedServiceAccountResponse(response ReadCoreV1Namespa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedServiceAccountUnauthorized:
@@ -5286,7 +5076,6 @@ func encodeReadCoreV1NamespacedServiceStatusResponse(response ReadCoreV1Namespac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NamespacedServiceStatusUnauthorized:
@@ -5311,7 +5100,6 @@ func encodeReadCoreV1NodeResponse(response ReadCoreV1NodeRes, w http.ResponseWri
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NodeUnauthorized:
@@ -5336,7 +5124,6 @@ func encodeReadCoreV1NodeStatusResponse(response ReadCoreV1NodeStatusRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1NodeStatusUnauthorized:
@@ -5361,7 +5148,6 @@ func encodeReadCoreV1PersistentVolumeResponse(response ReadCoreV1PersistentVolum
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1PersistentVolumeUnauthorized:
@@ -5386,7 +5172,6 @@ func encodeReadCoreV1PersistentVolumeStatusResponse(response ReadCoreV1Persisten
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadCoreV1PersistentVolumeStatusUnauthorized:
@@ -5411,7 +5196,6 @@ func encodeReadDiscoveryV1NamespacedEndpointSliceResponse(response ReadDiscovery
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadDiscoveryV1NamespacedEndpointSliceUnauthorized:
@@ -5436,7 +5220,6 @@ func encodeReadDiscoveryV1beta1NamespacedEndpointSliceResponse(response ReadDisc
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadDiscoveryV1beta1NamespacedEndpointSliceUnauthorized:
@@ -5461,7 +5244,6 @@ func encodeReadEventsV1NamespacedEventResponse(response ReadEventsV1NamespacedEv
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadEventsV1NamespacedEventUnauthorized:
@@ -5486,7 +5268,6 @@ func encodeReadEventsV1beta1NamespacedEventResponse(response ReadEventsV1beta1Na
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadEventsV1beta1NamespacedEventUnauthorized:
@@ -5511,7 +5292,6 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaResponse(response ReadFlowco
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
@@ -5536,7 +5316,6 @@ func encodeReadFlowcontrolApiserverV1beta1FlowSchemaStatusResponse(response Read
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadFlowcontrolApiserverV1beta1FlowSchemaStatusUnauthorized:
@@ -5561,7 +5340,6 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
@@ -5586,7 +5364,6 @@ func encodeReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusRespon
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadFlowcontrolApiserverV1beta1PriorityLevelConfigurationStatusUnauthorized:
@@ -5611,7 +5388,6 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaResponse(response ReadFlowco
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
@@ -5636,7 +5412,6 @@ func encodeReadFlowcontrolApiserverV1beta2FlowSchemaStatusResponse(response Read
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadFlowcontrolApiserverV1beta2FlowSchemaStatusUnauthorized:
@@ -5661,7 +5436,6 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
@@ -5686,7 +5460,6 @@ func encodeReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusRespon
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadFlowcontrolApiserverV1beta2PriorityLevelConfigurationStatusUnauthorized:
@@ -5711,7 +5484,6 @@ func encodeReadInternalApiserverV1alpha1StorageVersionResponse(response ReadInte
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadInternalApiserverV1alpha1StorageVersionUnauthorized:
@@ -5736,7 +5508,6 @@ func encodeReadInternalApiserverV1alpha1StorageVersionStatusResponse(response Re
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadInternalApiserverV1alpha1StorageVersionStatusUnauthorized:
@@ -5761,7 +5532,6 @@ func encodeReadNetworkingV1IngressClassResponse(response ReadNetworkingV1Ingress
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadNetworkingV1IngressClassUnauthorized:
@@ -5786,7 +5556,6 @@ func encodeReadNetworkingV1NamespacedIngressResponse(response ReadNetworkingV1Na
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadNetworkingV1NamespacedIngressUnauthorized:
@@ -5811,7 +5580,6 @@ func encodeReadNetworkingV1NamespacedIngressStatusResponse(response ReadNetworki
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadNetworkingV1NamespacedIngressStatusUnauthorized:
@@ -5836,7 +5604,6 @@ func encodeReadNetworkingV1NamespacedNetworkPolicyResponse(response ReadNetworki
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadNetworkingV1NamespacedNetworkPolicyUnauthorized:
@@ -5861,7 +5628,6 @@ func encodeReadNodeV1RuntimeClassResponse(response ReadNodeV1RuntimeClassRes, w 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadNodeV1RuntimeClassUnauthorized:
@@ -5886,7 +5652,6 @@ func encodeReadNodeV1alpha1RuntimeClassResponse(response ReadNodeV1alpha1Runtime
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadNodeV1alpha1RuntimeClassUnauthorized:
@@ -5911,7 +5676,6 @@ func encodeReadNodeV1beta1RuntimeClassResponse(response ReadNodeV1beta1RuntimeCl
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadNodeV1beta1RuntimeClassUnauthorized:
@@ -5936,7 +5700,6 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetResponse(response ReadPolicy
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadPolicyV1NamespacedPodDisruptionBudgetUnauthorized:
@@ -5961,7 +5724,6 @@ func encodeReadPolicyV1NamespacedPodDisruptionBudgetStatusResponse(response Read
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadPolicyV1NamespacedPodDisruptionBudgetStatusUnauthorized:
@@ -5986,7 +5748,6 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response ReadP
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized:
@@ -6011,7 +5772,6 @@ func encodeReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusResponse(response
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadPolicyV1beta1NamespacedPodDisruptionBudgetStatusUnauthorized:
@@ -6036,7 +5796,6 @@ func encodeReadPolicyV1beta1PodSecurityPolicyResponse(response ReadPolicyV1beta1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadPolicyV1beta1PodSecurityPolicyUnauthorized:
@@ -6061,7 +5820,6 @@ func encodeReadRbacAuthorizationV1ClusterRoleResponse(response ReadRbacAuthoriza
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadRbacAuthorizationV1ClusterRoleUnauthorized:
@@ -6086,7 +5844,6 @@ func encodeReadRbacAuthorizationV1ClusterRoleBindingResponse(response ReadRbacAu
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadRbacAuthorizationV1ClusterRoleBindingUnauthorized:
@@ -6111,7 +5868,6 @@ func encodeReadRbacAuthorizationV1NamespacedRoleResponse(response ReadRbacAuthor
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadRbacAuthorizationV1NamespacedRoleUnauthorized:
@@ -6136,7 +5892,6 @@ func encodeReadRbacAuthorizationV1NamespacedRoleBindingResponse(response ReadRba
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadRbacAuthorizationV1NamespacedRoleBindingUnauthorized:
@@ -6161,7 +5916,6 @@ func encodeReadSchedulingV1PriorityClassResponse(response ReadSchedulingV1Priori
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadSchedulingV1PriorityClassUnauthorized:
@@ -6186,7 +5940,6 @@ func encodeReadStorageV1CSIDriverResponse(response ReadStorageV1CSIDriverRes, w 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadStorageV1CSIDriverUnauthorized:
@@ -6211,7 +5964,6 @@ func encodeReadStorageV1CSINodeResponse(response ReadStorageV1CSINodeRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadStorageV1CSINodeUnauthorized:
@@ -6236,7 +5988,6 @@ func encodeReadStorageV1StorageClassResponse(response ReadStorageV1StorageClassR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadStorageV1StorageClassUnauthorized:
@@ -6261,7 +6012,6 @@ func encodeReadStorageV1VolumeAttachmentResponse(response ReadStorageV1VolumeAtt
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadStorageV1VolumeAttachmentUnauthorized:
@@ -6286,7 +6036,6 @@ func encodeReadStorageV1VolumeAttachmentStatusResponse(response ReadStorageV1Vol
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadStorageV1VolumeAttachmentStatusUnauthorized:
@@ -6311,7 +6060,6 @@ func encodeReadStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Read
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized:
@@ -6336,7 +6084,6 @@ func encodeReadStorageV1beta1NamespacedCSIStorageCapacityResponse(response ReadS
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ReadStorageV1beta1NamespacedCSIStorageCapacityUnauthorized:
@@ -6361,7 +6108,6 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationResponse(resp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationUnauthorized:
@@ -6386,7 +6132,6 @@ func encodeWatchAdmissionregistrationV1MutatingWebhookConfigurationListResponse(
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAdmissionregistrationV1MutatingWebhookConfigurationListUnauthorized:
@@ -6411,7 +6156,6 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationResponse(re
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationUnauthorized:
@@ -6436,7 +6180,6 @@ func encodeWatchAdmissionregistrationV1ValidatingWebhookConfigurationListRespons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAdmissionregistrationV1ValidatingWebhookConfigurationListUnauthorized:
@@ -6461,7 +6204,6 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionResponse(response WatchAp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchApiextensionsV1CustomResourceDefinitionUnauthorized:
@@ -6486,7 +6228,6 @@ func encodeWatchApiextensionsV1CustomResourceDefinitionListResponse(response Wat
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchApiextensionsV1CustomResourceDefinitionListUnauthorized:
@@ -6511,7 +6252,6 @@ func encodeWatchApiregistrationV1APIServiceResponse(response WatchApiregistratio
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchApiregistrationV1APIServiceUnauthorized:
@@ -6536,7 +6276,6 @@ func encodeWatchApiregistrationV1APIServiceListResponse(response WatchApiregistr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchApiregistrationV1APIServiceListUnauthorized:
@@ -6561,7 +6300,6 @@ func encodeWatchAppsV1ControllerRevisionListForAllNamespacesResponse(response Wa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1ControllerRevisionListForAllNamespacesUnauthorized:
@@ -6586,7 +6324,6 @@ func encodeWatchAppsV1DaemonSetListForAllNamespacesResponse(response WatchAppsV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1DaemonSetListForAllNamespacesUnauthorized:
@@ -6611,7 +6348,6 @@ func encodeWatchAppsV1DeploymentListForAllNamespacesResponse(response WatchAppsV
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1DeploymentListForAllNamespacesUnauthorized:
@@ -6636,7 +6372,6 @@ func encodeWatchAppsV1NamespacedControllerRevisionResponse(response WatchAppsV1N
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedControllerRevisionUnauthorized:
@@ -6661,7 +6396,6 @@ func encodeWatchAppsV1NamespacedControllerRevisionListResponse(response WatchApp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedControllerRevisionListUnauthorized:
@@ -6686,7 +6420,6 @@ func encodeWatchAppsV1NamespacedDaemonSetResponse(response WatchAppsV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedDaemonSetUnauthorized:
@@ -6711,7 +6444,6 @@ func encodeWatchAppsV1NamespacedDaemonSetListResponse(response WatchAppsV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedDaemonSetListUnauthorized:
@@ -6736,7 +6468,6 @@ func encodeWatchAppsV1NamespacedDeploymentResponse(response WatchAppsV1Namespace
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedDeploymentUnauthorized:
@@ -6761,7 +6492,6 @@ func encodeWatchAppsV1NamespacedDeploymentListResponse(response WatchAppsV1Names
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedDeploymentListUnauthorized:
@@ -6786,7 +6516,6 @@ func encodeWatchAppsV1NamespacedReplicaSetResponse(response WatchAppsV1Namespace
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedReplicaSetUnauthorized:
@@ -6811,7 +6540,6 @@ func encodeWatchAppsV1NamespacedReplicaSetListResponse(response WatchAppsV1Names
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedReplicaSetListUnauthorized:
@@ -6836,7 +6564,6 @@ func encodeWatchAppsV1NamespacedStatefulSetResponse(response WatchAppsV1Namespac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedStatefulSetUnauthorized:
@@ -6861,7 +6588,6 @@ func encodeWatchAppsV1NamespacedStatefulSetListResponse(response WatchAppsV1Name
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1NamespacedStatefulSetListUnauthorized:
@@ -6886,7 +6612,6 @@ func encodeWatchAppsV1ReplicaSetListForAllNamespacesResponse(response WatchAppsV
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1ReplicaSetListForAllNamespacesUnauthorized:
@@ -6911,7 +6636,6 @@ func encodeWatchAppsV1StatefulSetListForAllNamespacesResponse(response WatchApps
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAppsV1StatefulSetListForAllNamespacesUnauthorized:
@@ -6936,7 +6660,6 @@ func encodeWatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesResponse
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
@@ -6961,7 +6684,6 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerResponse(response 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -6986,7 +6708,6 @@ func encodeWatchAutoscalingV1NamespacedHorizontalPodAutoscalerListResponse(respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV1NamespacedHorizontalPodAutoscalerListUnauthorized:
@@ -7011,7 +6732,6 @@ func encodeWatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV2beta1HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
@@ -7036,7 +6756,6 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerResponse(resp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -7061,7 +6780,6 @@ func encodeWatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListResponse(
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV2beta1NamespacedHorizontalPodAutoscalerListUnauthorized:
@@ -7086,7 +6804,6 @@ func encodeWatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV2beta2HorizontalPodAutoscalerListForAllNamespacesUnauthorized:
@@ -7111,7 +6828,6 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerResponse(resp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerUnauthorized:
@@ -7136,7 +6852,6 @@ func encodeWatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListResponse(
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchAutoscalingV2beta2NamespacedHorizontalPodAutoscalerListUnauthorized:
@@ -7161,7 +6876,6 @@ func encodeWatchBatchV1CronJobListForAllNamespacesResponse(response WatchBatchV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1CronJobListForAllNamespacesUnauthorized:
@@ -7186,7 +6900,6 @@ func encodeWatchBatchV1JobListForAllNamespacesResponse(response WatchBatchV1JobL
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1JobListForAllNamespacesUnauthorized:
@@ -7211,7 +6924,6 @@ func encodeWatchBatchV1NamespacedCronJobResponse(response WatchBatchV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1NamespacedCronJobUnauthorized:
@@ -7236,7 +6948,6 @@ func encodeWatchBatchV1NamespacedCronJobListResponse(response WatchBatchV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1NamespacedCronJobListUnauthorized:
@@ -7261,7 +6972,6 @@ func encodeWatchBatchV1NamespacedJobResponse(response WatchBatchV1NamespacedJobR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1NamespacedJobUnauthorized:
@@ -7286,7 +6996,6 @@ func encodeWatchBatchV1NamespacedJobListResponse(response WatchBatchV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1NamespacedJobListUnauthorized:
@@ -7311,7 +7020,6 @@ func encodeWatchBatchV1beta1CronJobListForAllNamespacesResponse(response WatchBa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1beta1CronJobListForAllNamespacesUnauthorized:
@@ -7336,7 +7044,6 @@ func encodeWatchBatchV1beta1NamespacedCronJobResponse(response WatchBatchV1beta1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1beta1NamespacedCronJobUnauthorized:
@@ -7361,7 +7068,6 @@ func encodeWatchBatchV1beta1NamespacedCronJobListResponse(response WatchBatchV1b
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchBatchV1beta1NamespacedCronJobListUnauthorized:
@@ -7386,7 +7092,6 @@ func encodeWatchCertificatesV1CertificateSigningRequestResponse(response WatchCe
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCertificatesV1CertificateSigningRequestUnauthorized:
@@ -7411,7 +7116,6 @@ func encodeWatchCertificatesV1CertificateSigningRequestListResponse(response Wat
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCertificatesV1CertificateSigningRequestListUnauthorized:
@@ -7436,7 +7140,6 @@ func encodeWatchCoordinationV1LeaseListForAllNamespacesResponse(response WatchCo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoordinationV1LeaseListForAllNamespacesUnauthorized:
@@ -7461,7 +7164,6 @@ func encodeWatchCoordinationV1NamespacedLeaseResponse(response WatchCoordination
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoordinationV1NamespacedLeaseUnauthorized:
@@ -7486,7 +7188,6 @@ func encodeWatchCoordinationV1NamespacedLeaseListResponse(response WatchCoordina
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoordinationV1NamespacedLeaseListUnauthorized:
@@ -7511,7 +7212,6 @@ func encodeWatchCoreV1ConfigMapListForAllNamespacesResponse(response WatchCoreV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1ConfigMapListForAllNamespacesUnauthorized:
@@ -7536,7 +7236,6 @@ func encodeWatchCoreV1EndpointsListForAllNamespacesResponse(response WatchCoreV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1EndpointsListForAllNamespacesUnauthorized:
@@ -7561,7 +7260,6 @@ func encodeWatchCoreV1EventListForAllNamespacesResponse(response WatchCoreV1Even
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1EventListForAllNamespacesUnauthorized:
@@ -7586,7 +7284,6 @@ func encodeWatchCoreV1LimitRangeListForAllNamespacesResponse(response WatchCoreV
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1LimitRangeListForAllNamespacesUnauthorized:
@@ -7611,7 +7308,6 @@ func encodeWatchCoreV1NamespaceResponse(response WatchCoreV1NamespaceRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespaceUnauthorized:
@@ -7636,7 +7332,6 @@ func encodeWatchCoreV1NamespaceListResponse(response WatchCoreV1NamespaceListRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespaceListUnauthorized:
@@ -7661,7 +7356,6 @@ func encodeWatchCoreV1NamespacedConfigMapResponse(response WatchCoreV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedConfigMapUnauthorized:
@@ -7686,7 +7380,6 @@ func encodeWatchCoreV1NamespacedConfigMapListResponse(response WatchCoreV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedConfigMapListUnauthorized:
@@ -7711,7 +7404,6 @@ func encodeWatchCoreV1NamespacedEndpointsResponse(response WatchCoreV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedEndpointsUnauthorized:
@@ -7736,7 +7428,6 @@ func encodeWatchCoreV1NamespacedEndpointsListResponse(response WatchCoreV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedEndpointsListUnauthorized:
@@ -7761,7 +7452,6 @@ func encodeWatchCoreV1NamespacedEventResponse(response WatchCoreV1NamespacedEven
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedEventUnauthorized:
@@ -7786,7 +7476,6 @@ func encodeWatchCoreV1NamespacedEventListResponse(response WatchCoreV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedEventListUnauthorized:
@@ -7811,7 +7500,6 @@ func encodeWatchCoreV1NamespacedLimitRangeResponse(response WatchCoreV1Namespace
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedLimitRangeUnauthorized:
@@ -7836,7 +7524,6 @@ func encodeWatchCoreV1NamespacedLimitRangeListResponse(response WatchCoreV1Names
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedLimitRangeListUnauthorized:
@@ -7861,7 +7548,6 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimResponse(response WatchCore
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedPersistentVolumeClaimUnauthorized:
@@ -7886,7 +7572,6 @@ func encodeWatchCoreV1NamespacedPersistentVolumeClaimListResponse(response Watch
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedPersistentVolumeClaimListUnauthorized:
@@ -7911,7 +7596,6 @@ func encodeWatchCoreV1NamespacedPodResponse(response WatchCoreV1NamespacedPodRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedPodUnauthorized:
@@ -7936,7 +7620,6 @@ func encodeWatchCoreV1NamespacedPodListResponse(response WatchCoreV1NamespacedPo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedPodListUnauthorized:
@@ -7961,7 +7644,6 @@ func encodeWatchCoreV1NamespacedPodTemplateResponse(response WatchCoreV1Namespac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedPodTemplateUnauthorized:
@@ -7986,7 +7668,6 @@ func encodeWatchCoreV1NamespacedPodTemplateListResponse(response WatchCoreV1Name
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedPodTemplateListUnauthorized:
@@ -8011,7 +7692,6 @@ func encodeWatchCoreV1NamespacedReplicationControllerResponse(response WatchCore
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedReplicationControllerUnauthorized:
@@ -8036,7 +7716,6 @@ func encodeWatchCoreV1NamespacedReplicationControllerListResponse(response Watch
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedReplicationControllerListUnauthorized:
@@ -8061,7 +7740,6 @@ func encodeWatchCoreV1NamespacedResourceQuotaResponse(response WatchCoreV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedResourceQuotaUnauthorized:
@@ -8086,7 +7764,6 @@ func encodeWatchCoreV1NamespacedResourceQuotaListResponse(response WatchCoreV1Na
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedResourceQuotaListUnauthorized:
@@ -8111,7 +7788,6 @@ func encodeWatchCoreV1NamespacedSecretResponse(response WatchCoreV1NamespacedSec
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedSecretUnauthorized:
@@ -8136,7 +7812,6 @@ func encodeWatchCoreV1NamespacedSecretListResponse(response WatchCoreV1Namespace
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedSecretListUnauthorized:
@@ -8161,7 +7836,6 @@ func encodeWatchCoreV1NamespacedServiceResponse(response WatchCoreV1NamespacedSe
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedServiceUnauthorized:
@@ -8186,7 +7860,6 @@ func encodeWatchCoreV1NamespacedServiceAccountResponse(response WatchCoreV1Names
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedServiceAccountUnauthorized:
@@ -8211,7 +7884,6 @@ func encodeWatchCoreV1NamespacedServiceAccountListResponse(response WatchCoreV1N
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedServiceAccountListUnauthorized:
@@ -8236,7 +7908,6 @@ func encodeWatchCoreV1NamespacedServiceListResponse(response WatchCoreV1Namespac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NamespacedServiceListUnauthorized:
@@ -8261,7 +7932,6 @@ func encodeWatchCoreV1NodeResponse(response WatchCoreV1NodeRes, w http.ResponseW
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NodeUnauthorized:
@@ -8286,7 +7956,6 @@ func encodeWatchCoreV1NodeListResponse(response WatchCoreV1NodeListRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1NodeListUnauthorized:
@@ -8311,7 +7980,6 @@ func encodeWatchCoreV1PersistentVolumeResponse(response WatchCoreV1PersistentVol
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1PersistentVolumeUnauthorized:
@@ -8336,7 +8004,6 @@ func encodeWatchCoreV1PersistentVolumeClaimListForAllNamespacesResponse(response
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1PersistentVolumeClaimListForAllNamespacesUnauthorized:
@@ -8361,7 +8028,6 @@ func encodeWatchCoreV1PersistentVolumeListResponse(response WatchCoreV1Persisten
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1PersistentVolumeListUnauthorized:
@@ -8386,7 +8052,6 @@ func encodeWatchCoreV1PodListForAllNamespacesResponse(response WatchCoreV1PodLis
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1PodListForAllNamespacesUnauthorized:
@@ -8411,7 +8076,6 @@ func encodeWatchCoreV1PodTemplateListForAllNamespacesResponse(response WatchCore
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1PodTemplateListForAllNamespacesUnauthorized:
@@ -8436,7 +8100,6 @@ func encodeWatchCoreV1ReplicationControllerListForAllNamespacesResponse(response
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1ReplicationControllerListForAllNamespacesUnauthorized:
@@ -8461,7 +8124,6 @@ func encodeWatchCoreV1ResourceQuotaListForAllNamespacesResponse(response WatchCo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1ResourceQuotaListForAllNamespacesUnauthorized:
@@ -8486,7 +8148,6 @@ func encodeWatchCoreV1SecretListForAllNamespacesResponse(response WatchCoreV1Sec
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1SecretListForAllNamespacesUnauthorized:
@@ -8511,7 +8172,6 @@ func encodeWatchCoreV1ServiceAccountListForAllNamespacesResponse(response WatchC
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1ServiceAccountListForAllNamespacesUnauthorized:
@@ -8536,7 +8196,6 @@ func encodeWatchCoreV1ServiceListForAllNamespacesResponse(response WatchCoreV1Se
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchCoreV1ServiceListForAllNamespacesUnauthorized:
@@ -8561,7 +8220,6 @@ func encodeWatchDiscoveryV1EndpointSliceListForAllNamespacesResponse(response Wa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchDiscoveryV1EndpointSliceListForAllNamespacesUnauthorized:
@@ -8586,7 +8244,6 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceResponse(response WatchDiscove
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchDiscoveryV1NamespacedEndpointSliceUnauthorized:
@@ -8611,7 +8268,6 @@ func encodeWatchDiscoveryV1NamespacedEndpointSliceListResponse(response WatchDis
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchDiscoveryV1NamespacedEndpointSliceListUnauthorized:
@@ -8636,7 +8292,6 @@ func encodeWatchDiscoveryV1beta1EndpointSliceListForAllNamespacesResponse(respon
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchDiscoveryV1beta1EndpointSliceListForAllNamespacesUnauthorized:
@@ -8661,7 +8316,6 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceResponse(response WatchDi
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchDiscoveryV1beta1NamespacedEndpointSliceUnauthorized:
@@ -8686,7 +8340,6 @@ func encodeWatchDiscoveryV1beta1NamespacedEndpointSliceListResponse(response Wat
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchDiscoveryV1beta1NamespacedEndpointSliceListUnauthorized:
@@ -8711,7 +8364,6 @@ func encodeWatchEventsV1EventListForAllNamespacesResponse(response WatchEventsV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchEventsV1EventListForAllNamespacesUnauthorized:
@@ -8736,7 +8388,6 @@ func encodeWatchEventsV1NamespacedEventResponse(response WatchEventsV1Namespaced
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchEventsV1NamespacedEventUnauthorized:
@@ -8761,7 +8412,6 @@ func encodeWatchEventsV1NamespacedEventListResponse(response WatchEventsV1Namesp
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchEventsV1NamespacedEventListUnauthorized:
@@ -8786,7 +8436,6 @@ func encodeWatchEventsV1beta1EventListForAllNamespacesResponse(response WatchEve
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchEventsV1beta1EventListForAllNamespacesUnauthorized:
@@ -8811,7 +8460,6 @@ func encodeWatchEventsV1beta1NamespacedEventResponse(response WatchEventsV1beta1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchEventsV1beta1NamespacedEventUnauthorized:
@@ -8836,7 +8484,6 @@ func encodeWatchEventsV1beta1NamespacedEventListResponse(response WatchEventsV1b
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchEventsV1beta1NamespacedEventListUnauthorized:
@@ -8861,7 +8508,6 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaResponse(response WatchFlow
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaUnauthorized:
@@ -8886,7 +8532,6 @@ func encodeWatchFlowcontrolApiserverV1beta1FlowSchemaListResponse(response Watch
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchFlowcontrolApiserverV1beta1FlowSchemaListUnauthorized:
@@ -8911,7 +8556,6 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationResponse(re
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationUnauthorized:
@@ -8936,7 +8580,6 @@ func encodeWatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListRespons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchFlowcontrolApiserverV1beta1PriorityLevelConfigurationListUnauthorized:
@@ -8961,7 +8604,6 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaResponse(response WatchFlow
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaUnauthorized:
@@ -8986,7 +8628,6 @@ func encodeWatchFlowcontrolApiserverV1beta2FlowSchemaListResponse(response Watch
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchFlowcontrolApiserverV1beta2FlowSchemaListUnauthorized:
@@ -9011,7 +8652,6 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationResponse(re
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationUnauthorized:
@@ -9036,7 +8676,6 @@ func encodeWatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListRespons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchFlowcontrolApiserverV1beta2PriorityLevelConfigurationListUnauthorized:
@@ -9061,7 +8700,6 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionResponse(response WatchIn
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchInternalApiserverV1alpha1StorageVersionUnauthorized:
@@ -9086,7 +8724,6 @@ func encodeWatchInternalApiserverV1alpha1StorageVersionListResponse(response Wat
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchInternalApiserverV1alpha1StorageVersionListUnauthorized:
@@ -9111,7 +8748,6 @@ func encodeWatchNetworkingV1IngressClassResponse(response WatchNetworkingV1Ingre
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNetworkingV1IngressClassUnauthorized:
@@ -9136,7 +8772,6 @@ func encodeWatchNetworkingV1IngressClassListResponse(response WatchNetworkingV1I
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNetworkingV1IngressClassListUnauthorized:
@@ -9161,7 +8796,6 @@ func encodeWatchNetworkingV1IngressListForAllNamespacesResponse(response WatchNe
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNetworkingV1IngressListForAllNamespacesUnauthorized:
@@ -9186,7 +8820,6 @@ func encodeWatchNetworkingV1NamespacedIngressResponse(response WatchNetworkingV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNetworkingV1NamespacedIngressUnauthorized:
@@ -9211,7 +8844,6 @@ func encodeWatchNetworkingV1NamespacedIngressListResponse(response WatchNetworki
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNetworkingV1NamespacedIngressListUnauthorized:
@@ -9236,7 +8868,6 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyResponse(response WatchNetwor
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNetworkingV1NamespacedNetworkPolicyUnauthorized:
@@ -9261,7 +8892,6 @@ func encodeWatchNetworkingV1NamespacedNetworkPolicyListResponse(response WatchNe
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNetworkingV1NamespacedNetworkPolicyListUnauthorized:
@@ -9286,7 +8916,6 @@ func encodeWatchNetworkingV1NetworkPolicyListForAllNamespacesResponse(response W
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNetworkingV1NetworkPolicyListForAllNamespacesUnauthorized:
@@ -9311,7 +8940,6 @@ func encodeWatchNodeV1RuntimeClassResponse(response WatchNodeV1RuntimeClassRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNodeV1RuntimeClassUnauthorized:
@@ -9336,7 +8964,6 @@ func encodeWatchNodeV1RuntimeClassListResponse(response WatchNodeV1RuntimeClassL
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNodeV1RuntimeClassListUnauthorized:
@@ -9361,7 +8988,6 @@ func encodeWatchNodeV1alpha1RuntimeClassResponse(response WatchNodeV1alpha1Runti
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNodeV1alpha1RuntimeClassUnauthorized:
@@ -9386,7 +9012,6 @@ func encodeWatchNodeV1alpha1RuntimeClassListResponse(response WatchNodeV1alpha1R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNodeV1alpha1RuntimeClassListUnauthorized:
@@ -9411,7 +9036,6 @@ func encodeWatchNodeV1beta1RuntimeClassResponse(response WatchNodeV1beta1Runtime
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNodeV1beta1RuntimeClassUnauthorized:
@@ -9436,7 +9060,6 @@ func encodeWatchNodeV1beta1RuntimeClassListResponse(response WatchNodeV1beta1Run
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchNodeV1beta1RuntimeClassListUnauthorized:
@@ -9461,7 +9084,6 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetResponse(response WatchPoli
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchPolicyV1NamespacedPodDisruptionBudgetUnauthorized:
@@ -9486,7 +9108,6 @@ func encodeWatchPolicyV1NamespacedPodDisruptionBudgetListResponse(response Watch
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchPolicyV1NamespacedPodDisruptionBudgetListUnauthorized:
@@ -9511,7 +9132,6 @@ func encodeWatchPolicyV1PodDisruptionBudgetListForAllNamespacesResponse(response
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchPolicyV1PodDisruptionBudgetListForAllNamespacesUnauthorized:
@@ -9536,7 +9156,6 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetResponse(response Watc
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchPolicyV1beta1NamespacedPodDisruptionBudgetUnauthorized:
@@ -9561,7 +9180,6 @@ func encodeWatchPolicyV1beta1NamespacedPodDisruptionBudgetListResponse(response 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchPolicyV1beta1NamespacedPodDisruptionBudgetListUnauthorized:
@@ -9586,7 +9204,6 @@ func encodeWatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesResponse(res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchPolicyV1beta1PodDisruptionBudgetListForAllNamespacesUnauthorized:
@@ -9611,7 +9228,6 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyResponse(response WatchPolicyV1bet
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchPolicyV1beta1PodSecurityPolicyUnauthorized:
@@ -9636,7 +9252,6 @@ func encodeWatchPolicyV1beta1PodSecurityPolicyListResponse(response WatchPolicyV
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchPolicyV1beta1PodSecurityPolicyListUnauthorized:
@@ -9661,7 +9276,6 @@ func encodeWatchRbacAuthorizationV1ClusterRoleResponse(response WatchRbacAuthori
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1ClusterRoleUnauthorized:
@@ -9686,7 +9300,6 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingResponse(response WatchRbac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1ClusterRoleBindingUnauthorized:
@@ -9711,7 +9324,6 @@ func encodeWatchRbacAuthorizationV1ClusterRoleBindingListResponse(response Watch
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1ClusterRoleBindingListUnauthorized:
@@ -9736,7 +9348,6 @@ func encodeWatchRbacAuthorizationV1ClusterRoleListResponse(response WatchRbacAut
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1ClusterRoleListUnauthorized:
@@ -9761,7 +9372,6 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleResponse(response WatchRbacAuth
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1NamespacedRoleUnauthorized:
@@ -9786,7 +9396,6 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingResponse(response WatchR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1NamespacedRoleBindingUnauthorized:
@@ -9811,7 +9420,6 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleBindingListResponse(response Wa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1NamespacedRoleBindingListUnauthorized:
@@ -9836,7 +9444,6 @@ func encodeWatchRbacAuthorizationV1NamespacedRoleListResponse(response WatchRbac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1NamespacedRoleListUnauthorized:
@@ -9861,7 +9468,6 @@ func encodeWatchRbacAuthorizationV1RoleBindingListForAllNamespacesResponse(respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1RoleBindingListForAllNamespacesUnauthorized:
@@ -9886,7 +9492,6 @@ func encodeWatchRbacAuthorizationV1RoleListForAllNamespacesResponse(response Wat
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchRbacAuthorizationV1RoleListForAllNamespacesUnauthorized:
@@ -9911,7 +9516,6 @@ func encodeWatchSchedulingV1PriorityClassResponse(response WatchSchedulingV1Prio
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchSchedulingV1PriorityClassUnauthorized:
@@ -9936,7 +9540,6 @@ func encodeWatchSchedulingV1PriorityClassListResponse(response WatchSchedulingV1
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchSchedulingV1PriorityClassListUnauthorized:
@@ -9961,7 +9564,6 @@ func encodeWatchStorageV1CSIDriverResponse(response WatchStorageV1CSIDriverRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1CSIDriverUnauthorized:
@@ -9986,7 +9588,6 @@ func encodeWatchStorageV1CSIDriverListResponse(response WatchStorageV1CSIDriverL
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1CSIDriverListUnauthorized:
@@ -10011,7 +9612,6 @@ func encodeWatchStorageV1CSINodeResponse(response WatchStorageV1CSINodeRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1CSINodeUnauthorized:
@@ -10036,7 +9636,6 @@ func encodeWatchStorageV1CSINodeListResponse(response WatchStorageV1CSINodeListR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1CSINodeListUnauthorized:
@@ -10061,7 +9660,6 @@ func encodeWatchStorageV1StorageClassResponse(response WatchStorageV1StorageClas
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1StorageClassUnauthorized:
@@ -10086,7 +9684,6 @@ func encodeWatchStorageV1StorageClassListResponse(response WatchStorageV1Storage
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1StorageClassListUnauthorized:
@@ -10111,7 +9708,6 @@ func encodeWatchStorageV1VolumeAttachmentResponse(response WatchStorageV1VolumeA
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1VolumeAttachmentUnauthorized:
@@ -10136,7 +9732,6 @@ func encodeWatchStorageV1VolumeAttachmentListResponse(response WatchStorageV1Vol
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1VolumeAttachmentListUnauthorized:
@@ -10161,7 +9756,6 @@ func encodeWatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesResponse(re
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1alpha1CSIStorageCapacityListForAllNamespacesUnauthorized:
@@ -10186,7 +9780,6 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityResponse(response Wat
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1alpha1NamespacedCSIStorageCapacityUnauthorized:
@@ -10211,7 +9804,6 @@ func encodeWatchStorageV1alpha1NamespacedCSIStorageCapacityListResponse(response
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1alpha1NamespacedCSIStorageCapacityListUnauthorized:
@@ -10236,7 +9828,6 @@ func encodeWatchStorageV1beta1CSIStorageCapacityListForAllNamespacesResponse(res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1beta1CSIStorageCapacityListForAllNamespacesUnauthorized:
@@ -10261,7 +9852,6 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityResponse(response Watc
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1beta1NamespacedCSIStorageCapacityUnauthorized:
@@ -10286,7 +9876,6 @@ func encodeWatchStorageV1beta1NamespacedCSIStorageCapacityListResponse(response 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *WatchStorageV1beta1NamespacedCSIStorageCapacityListUnauthorized:

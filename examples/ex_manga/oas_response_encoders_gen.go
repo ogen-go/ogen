@@ -24,7 +24,6 @@ func encodeGetBookResponse(response GetBookRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *GetBookForbidden:
@@ -49,7 +48,6 @@ func encodeSearchResponse(response SearchRes, w http.ResponseWriter, span trace.
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *SearchForbidden:
@@ -74,7 +72,6 @@ func encodeSearchByTagIDResponse(response SearchByTagIDRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *SearchByTagIDForbidden:

@@ -29,7 +29,6 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -48,7 +47,6 @@ func encodeCreateSnapshotResponse(response CreateSnapshotRes, w http.ResponseWri
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -73,7 +71,6 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -92,7 +89,6 @@ func encodeCreateSyncActionResponse(response CreateSyncActionRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -112,7 +108,6 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *Error:
@@ -126,7 +121,6 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -145,7 +139,6 @@ func encodeDescribeBalloonConfigResponse(response DescribeBalloonConfigRes, w ht
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -165,7 +158,6 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *Error:
@@ -179,7 +171,6 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -198,7 +189,6 @@ func encodeDescribeBalloonStatsResponse(response DescribeBalloonStatsRes, w http
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -218,7 +208,6 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -237,7 +226,6 @@ func encodeDescribeInstanceResponse(response DescribeInstanceRes, w http.Respons
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -257,7 +245,6 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -276,7 +263,6 @@ func encodeGetExportVmConfigResponse(response GetExportVmConfigRes, w http.Respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -296,7 +282,6 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -315,7 +300,6 @@ func encodeGetMachineConfigurationResponse(response GetMachineConfigurationRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -340,7 +324,6 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -359,7 +342,6 @@ func encodeLoadSnapshotResponse(response LoadSnapshotRes, w http.ResponseWriter,
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -384,7 +366,6 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -403,7 +384,6 @@ func encodeMmdsConfigPutResponse(response MmdsConfigPutRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -423,7 +403,6 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *Error:
@@ -437,7 +416,6 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -456,7 +434,6 @@ func encodeMmdsGetResponse(response MmdsGetRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -481,7 +458,6 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -500,7 +476,6 @@ func encodeMmdsPatchResponse(response MmdsPatchRes, w http.ResponseWriter, span 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -525,7 +500,6 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -544,7 +518,6 @@ func encodeMmdsPutResponse(response MmdsPutRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -569,7 +542,6 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -588,7 +560,6 @@ func encodePatchBalloonResponse(response PatchBalloonRes, w http.ResponseWriter,
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -613,7 +584,6 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -632,7 +602,6 @@ func encodePatchBalloonStatsIntervalResponse(response PatchBalloonStatsIntervalR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -657,7 +626,6 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -676,7 +644,6 @@ func encodePatchGuestDriveByIDResponse(response PatchGuestDriveByIDRes, w http.R
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -701,7 +668,6 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -720,7 +686,6 @@ func encodePatchGuestNetworkInterfaceByIDResponse(response PatchGuestNetworkInte
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -745,7 +710,6 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -764,7 +728,6 @@ func encodePatchMachineConfigurationResponse(response PatchMachineConfigurationR
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -789,7 +752,6 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -808,7 +770,6 @@ func encodePatchVmResponse(response PatchVmRes, w http.ResponseWriter, span trac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -833,7 +794,6 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -852,7 +812,6 @@ func encodePutBalloonResponse(response PutBalloonRes, w http.ResponseWriter, spa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -877,7 +836,6 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -896,7 +854,6 @@ func encodePutGuestBootSourceResponse(response PutGuestBootSourceRes, w http.Res
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -921,7 +878,6 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -940,7 +896,6 @@ func encodePutGuestDriveByIDResponse(response PutGuestDriveByIDRes, w http.Respo
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -965,7 +920,6 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -984,7 +938,6 @@ func encodePutGuestNetworkInterfaceByIDResponse(response PutGuestNetworkInterfac
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -1009,7 +962,6 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -1028,7 +980,6 @@ func encodePutGuestVsockResponse(response PutGuestVsockRes, w http.ResponseWrite
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -1053,7 +1004,6 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -1072,7 +1022,6 @@ func encodePutLoggerResponse(response PutLoggerRes, w http.ResponseWriter, span 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -1097,7 +1046,6 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -1116,7 +1064,6 @@ func encodePutMachineConfigurationResponse(response PutMachineConfigurationRes, 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -1141,7 +1088,6 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -1160,7 +1106,6 @@ func encodePutMetricsResponse(response PutMetricsRes, w http.ResponseWriter, spa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:

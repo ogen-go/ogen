@@ -22,7 +22,6 @@ func encodeCachingResponse(response WorldObjects, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -37,7 +36,6 @@ func encodeDBResponse(response WorldObject, w http.ResponseWriter, span trace.Sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -52,7 +50,6 @@ func encodeJSONResponse(response HelloWorld, w http.ResponseWriter, span trace.S
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -67,7 +64,6 @@ func encodeQueriesResponse(response WorldObjects, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -82,7 +78,6 @@ func encodeUpdatesResponse(response WorldObjects, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }

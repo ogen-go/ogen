@@ -22,7 +22,6 @@ func encodeDataGetResponse(response string, w http.ResponseWriter, span trace.Sp
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -37,7 +36,6 @@ func encodeDataGetAnyResponse(response string, w http.ResponseWriter, span trace
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -52,7 +50,6 @@ func encodeDataGetIDResponse(response string, w http.ResponseWriter, span trace.
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }

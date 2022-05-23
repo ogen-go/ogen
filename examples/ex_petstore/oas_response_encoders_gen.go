@@ -34,7 +34,6 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -54,7 +53,6 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -73,7 +71,6 @@ func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span tr
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -93,7 +90,6 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *ErrorStatusCode:
@@ -112,7 +108,6 @@ func encodeShowPetByIdResponse(response ShowPetByIdRes, w http.ResponseWriter, s
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:

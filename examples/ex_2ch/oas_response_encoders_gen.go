@@ -22,7 +22,6 @@ func encodeAPICaptcha2chcaptchaIDGetResponse(response Captcha, w http.ResponseWr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -53,7 +52,6 @@ func encodeAPICaptchaAppIDPublicKeyGetResponse(response Captcha, w http.Response
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -68,7 +66,6 @@ func encodeAPICaptchaInvisibleRecaptchaIDGetResponse(response Captcha, w http.Re
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -89,7 +86,6 @@ func encodeAPICaptchaRecaptchaIDGetResponse(response Captcha, w http.ResponseWri
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -110,7 +106,6 @@ func encodeAPIDislikeGetResponse(response Like, w http.ResponseWriter, span trac
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -125,7 +120,6 @@ func encodeAPILikeGetResponse(response Like, w http.ResponseWriter, span trace.S
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -140,7 +134,6 @@ func encodeAPIMobileV2AfterBoardThreadNumGetResponse(response MobileThreadPostsA
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -155,7 +148,6 @@ func encodeAPIMobileV2BoardsGetResponse(response Boards, w http.ResponseWriter, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -170,7 +162,6 @@ func encodeAPIMobileV2InfoBoardThreadGetResponse(response MobileThreadLastInfo, 
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -185,7 +176,6 @@ func encodeAPIMobileV2PostBoardNumGetResponse(response MobilePost, w http.Respon
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }

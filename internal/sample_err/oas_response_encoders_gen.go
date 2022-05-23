@@ -22,7 +22,6 @@ func encodeDataCreateResponse(response Data, w http.ResponseWriter, span trace.S
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -37,7 +36,6 @@ func encodeDataGetResponse(response Data, w http.ResponseWriter, span trace.Span
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -57,7 +55,6 @@ func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }

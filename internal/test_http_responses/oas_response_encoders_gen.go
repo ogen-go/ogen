@@ -19,7 +19,6 @@ func encodeAnyContentTypeBinaryStringSchemaResponse(response AnyContentTypeBinar
 	if _, err := io.Copy(w, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -35,7 +34,6 @@ func encodeAnyContentTypeBinaryStringSchemaDefaultResponse(response AnyContentTy
 	if _, err := io.Copy(w, response.Response); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -52,7 +50,6 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	case *NilString:
@@ -66,7 +63,6 @@ func encodeMultipleGenericResponsesResponse(response MultipleGenericResponsesRes
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
@@ -80,7 +76,6 @@ func encodeOctetStreamBinaryStringSchemaResponse(response OctetStreamBinaryStrin
 	if _, err := io.Copy(w, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -91,7 +86,6 @@ func encodeOctetStreamEmptySchemaResponse(response OctetStreamEmptySchemaOK, w h
 	if _, err := io.Copy(w, response); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }

@@ -22,7 +22,6 @@ func encodeProbeLivenessResponse(response string, w http.ResponseWriter, span tr
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }
@@ -42,7 +41,6 @@ func encodeErrorResponse(response ErrorStatusCode, w http.ResponseWriter, span t
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
 
 }

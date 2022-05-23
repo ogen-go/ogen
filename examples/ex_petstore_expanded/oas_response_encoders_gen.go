@@ -34,7 +34,6 @@ func encodeDeletePetResponse(response DeletePetRes, w http.ResponseWriter, span 
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
-
 		return nil
 
 	default:
