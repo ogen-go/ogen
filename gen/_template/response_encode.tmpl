@@ -68,35 +68,29 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 	{{- end }}
 {{- end }}
 
+{{- $type := $.Type }}
+{{- $var := "response" }}
+{{- if or $.Wrapped $.Default }}
+	{{- $type = ($.Type.MustField "Response").Type }}
+	{{- $var = "response.Response" }}
+{{- end }}
+
 {{- if $.NoContent }}
 	return nil
 {{- else if $.ContentType.JSON }}
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
-	{{ template "json/enc" res_elem $ }}
+	{{ template "json/enc" elem $type $var }}
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
-{{- else if $.Type.IsStream }}
-	if _, err := io.Copy(w, response); err != nil {
+{{- else if $type.IsStream }}
+	if _, err := io.Copy(w, {{ $var }}); err != nil {
 		return errors.Wrap(err, "write")
 	}
-
 	return nil
-{{- else if $.Wrapped }}
-	{{- $subTyp := ($.Type.MustField "Response").Type }}
-	{{- if $subTyp.IsStream }}
-		if _, err := io.Copy(w, response.Response); err != nil {
-			return errors.Wrap(err, "write")
-		}
-
-		return nil
-	{{- else }}
-        {{- errorf "%q: %s encoder not implemented" $.ContentType $.Type  }}
-    {{- end }}
 {{- else }}
-    {{- errorf "%q: %s encoder not implemented" $.ContentType $.Type }}
+    {{- errorf "%q: %s encoder not implemented" $.ContentType $type }}
 {{- end }}
 {{ end }}
