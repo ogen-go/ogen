@@ -6,7 +6,6 @@ package api
 func (s *Drive) setDefaults() {
 	{
 		val := string("Unsafe")
-
 		s.CacheType.SetTo(val)
 	}
 }
@@ -15,17 +14,14 @@ func (s *Drive) setDefaults() {
 func (s *Logger) setDefaults() {
 	{
 		val := LoggerLevel("Warning")
-
 		s.Level.SetTo(val)
 	}
 	{
 		val := bool(false)
-
 		s.ShowLevel.SetTo(val)
 	}
 	{
 		val := bool(false)
-
 		s.ShowLogOrigin.SetTo(val)
 	}
 }
@@ -34,7 +30,6 @@ func (s *Logger) setDefaults() {
 func (s *MmdsConfig) setDefaults() {
 	{
 		val := string("169.254.169.254")
-
 		s.Ipv4Address.SetTo(val)
 	}
 }

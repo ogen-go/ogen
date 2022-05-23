@@ -6,7 +6,6 @@ package techempower
 func (s *HelloWorld) setDefaults() {
 	{
 		val := string("Hello, World!")
-
 		s.Message = val
 	}
 }

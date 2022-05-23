@@ -3579,17 +3579,14 @@ func (s *XMLPattern0) init() XMLPattern0 {
 func (s *Schema) setDefaults() {
 	{
 		val := JsonschemaDraft4PropertiesExclusiveMaximum(false)
-
 		s.ExclusiveMaximum.SetTo(val)
 	}
 	{
 		val := JsonschemaDraft4PropertiesExclusiveMinimum(false)
-
 		s.ExclusiveMinimum.SetTo(val)
 	}
 	{
 		val := JsonschemaDraft4PropertiesUniqueItems(false)
-
 		s.UniqueItems.SetTo(val)
 	}
 }

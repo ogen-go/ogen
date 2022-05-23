@@ -6,7 +6,6 @@ package api
 func (s *CandlesResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -15,7 +14,6 @@ func (s *CandlesResponse) setDefaults() {
 func (s *Empty) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -24,7 +22,6 @@ func (s *Empty) setDefaults() {
 func (s *Error) setDefaults() {
 	{
 		val := string("Error")
-
 		s.Status = val
 	}
 }
@@ -33,7 +30,6 @@ func (s *Error) setDefaults() {
 func (s *LimitOrderResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -42,7 +38,6 @@ func (s *LimitOrderResponse) setDefaults() {
 func (s *MarketInstrumentListResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -51,7 +46,6 @@ func (s *MarketInstrumentListResponse) setDefaults() {
 func (s *MarketOrderResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -60,7 +54,6 @@ func (s *MarketOrderResponse) setDefaults() {
 func (s *OperationsResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -69,7 +62,6 @@ func (s *OperationsResponse) setDefaults() {
 func (s *OrderbookResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -78,7 +70,6 @@ func (s *OrderbookResponse) setDefaults() {
 func (s *OrdersResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -87,7 +78,6 @@ func (s *OrdersResponse) setDefaults() {
 func (s *PortfolioCurrenciesResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -96,7 +86,6 @@ func (s *PortfolioCurrenciesResponse) setDefaults() {
 func (s *PortfolioResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -105,7 +94,6 @@ func (s *PortfolioResponse) setDefaults() {
 func (s *SandboxRegisterResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -114,7 +102,6 @@ func (s *SandboxRegisterResponse) setDefaults() {
 func (s *SearchMarketInstrumentResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }
@@ -123,7 +110,6 @@ func (s *SearchMarketInstrumentResponse) setDefaults() {
 func (s *UserAccountsResponse) setDefaults() {
 	{
 		val := string("Ok")
-
 		s.Status = val
 	}
 }

@@ -3929,7 +3929,6 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (p
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -3969,7 +3968,6 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (p
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -4086,7 +4084,6 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -4126,7 +4123,6 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -4279,7 +4275,6 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	// Set default value for query: filter.
 	{
 		val := ActionsListJobsForWorkflowRunFilter("latest")
-
 		params.Filter.SetTo(val)
 	}
 	// Decode query: filter.
@@ -4334,7 +4329,6 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -4374,7 +4368,6 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -4458,7 +4451,6 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (params 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -4498,7 +4490,6 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (params 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -4615,7 +4606,6 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -4655,7 +4645,6 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -4771,7 +4760,6 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -4811,7 +4799,6 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -4927,7 +4914,6 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (para
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -4967,7 +4953,6 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (para
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -5194,7 +5179,6 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -5234,7 +5218,6 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -5318,7 +5301,6 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -5358,7 +5340,6 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -5442,7 +5423,6 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -5482,7 +5462,6 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -5566,7 +5545,6 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -5606,7 +5584,6 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -5722,7 +5699,6 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -5762,7 +5738,6 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -5879,7 +5854,6 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -5919,7 +5893,6 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -6068,7 +6041,6 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -6108,7 +6080,6 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -6390,7 +6361,6 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -6430,7 +6400,6 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -8053,7 +8022,6 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -8093,7 +8061,6 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -8155,7 +8122,6 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	// Set default value for query: all.
 	{
 		val := bool(false)
-
 		params.All.SetTo(val)
 	}
 	// Decode query: all.
@@ -8195,7 +8161,6 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	// Set default value for query: participating.
 	{
 		val := bool(false)
-
 		params.Participating.SetTo(val)
 	}
 	// Decode query: participating.
@@ -8303,7 +8268,6 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -8343,7 +8307,6 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -8459,7 +8422,6 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -8499,7 +8461,6 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -8551,7 +8512,6 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (para
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -8591,7 +8551,6 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (para
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -8707,7 +8666,6 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -8747,7 +8705,6 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -8831,7 +8788,6 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -8871,7 +8827,6 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -8955,7 +8910,6 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (p
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -8995,7 +8949,6 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (p
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -9079,7 +9032,6 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -9119,7 +9071,6 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -9203,7 +9154,6 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -9243,7 +9193,6 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -9359,7 +9308,6 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -9399,7 +9347,6 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -9525,7 +9472,6 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	// Set default value for query: all.
 	{
 		val := bool(false)
-
 		params.All.SetTo(val)
 	}
 	// Decode query: all.
@@ -9565,7 +9511,6 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	// Set default value for query: participating.
 	{
 		val := bool(false)
-
 		params.Participating.SetTo(val)
 	}
 	// Decode query: participating.
@@ -9673,7 +9618,6 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -9713,7 +9657,6 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -9769,7 +9712,6 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	// Set default value for query: sort.
 	{
 		val := ActivityListReposStarredByAuthenticatedUserSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -9824,7 +9766,6 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	// Set default value for query: direction.
 	{
 		val := ActivityListReposStarredByAuthenticatedUserDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -9879,7 +9820,6 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -9919,7 +9859,6 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -10003,7 +9942,6 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -10043,7 +9981,6 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -10095,7 +10032,6 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -10135,7 +10071,6 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -10251,7 +10186,6 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (p
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -10291,7 +10225,6 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (p
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -11283,7 +11216,6 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (param
 	// Set default value for query: sort.
 	{
 		val := AppsListAccountsForPlanSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -11387,7 +11319,6 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (param
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -11427,7 +11358,6 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (param
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -11517,7 +11447,6 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	// Set default value for query: sort.
 	{
 		val := AppsListAccountsForPlanStubbedSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -11621,7 +11550,6 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -11661,7 +11589,6 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -11746,7 +11673,6 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -11786,7 +11712,6 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -11838,7 +11763,6 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (params AppsList
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -11878,7 +11802,6 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (params AppsList
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -11930,7 +11853,6 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (params A
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -11970,7 +11892,6 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (params A
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -12022,7 +11943,6 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -12062,7 +11982,6 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -12114,7 +12033,6 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -12154,7 +12072,6 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -12206,7 +12123,6 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -12246,7 +12162,6 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -12299,7 +12214,6 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -13386,7 +13300,6 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -13426,7 +13339,6 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -13667,7 +13579,6 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 	// Set default value for query: filter.
 	{
 		val := ChecksListForRefFilter("latest")
-
 		params.Filter.SetTo(val)
 	}
 	// Decode query: filter.
@@ -13722,7 +13633,6 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -13762,7 +13672,6 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -14036,7 +13945,6 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 	// Set default value for query: filter.
 	{
 		val := ChecksListForSuiteFilter("latest")
-
 		params.Filter.SetTo(val)
 	}
 	// Decode query: filter.
@@ -14091,7 +13999,6 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -14131,7 +14038,6 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -14352,7 +14258,6 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -14392,7 +14297,6 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -15196,7 +15100,6 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -15236,7 +15139,6 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -15488,7 +15390,6 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -15528,7 +15429,6 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -15829,7 +15729,6 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -15869,7 +15768,6 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -17290,7 +17188,6 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -17330,7 +17227,6 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -17817,7 +17713,6 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -17857,7 +17752,6 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -18316,7 +18210,6 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -18356,7 +18249,6 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -18441,7 +18333,6 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -18481,7 +18372,6 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -18566,7 +18456,6 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -18606,7 +18495,6 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -18724,7 +18612,6 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -18764,7 +18651,6 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -20194,7 +20080,6 @@ func decodeGistsListParams(args [0]string, r *http.Request) (params GistsListPar
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -20234,7 +20119,6 @@ func decodeGistsListParams(args [0]string, r *http.Request) (params GistsListPar
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -20319,7 +20203,6 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (params Gist
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -20359,7 +20242,6 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (params Gist
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -20444,7 +20326,6 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (params Gists
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -20484,7 +20365,6 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (params Gists
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -20605,7 +20485,6 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (params Gists
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -20645,7 +20524,6 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (params Gists
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -20730,7 +20608,6 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsLi
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -20770,7 +20647,6 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsLi
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -20859,7 +20735,6 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsL
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -20899,7 +20774,6 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsL
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -20988,7 +20862,6 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (params Gists
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -21028,7 +20901,6 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (params Gists
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -22346,7 +22218,6 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -22386,7 +22257,6 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -24177,7 +24047,6 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 	// Set default value for query: filter.
 	{
 		val := IssuesListFilter("assigned")
-
 		params.Filter.SetTo(val)
 	}
 	// Decode query: filter.
@@ -24232,7 +24101,6 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 	// Set default value for query: state.
 	{
 		val := IssuesListState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -24321,7 +24189,6 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 	// Set default value for query: sort.
 	{
 		val := IssuesListSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -24376,7 +24243,6 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 	// Set default value for query: direction.
 	{
 		val := IssuesListDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -24601,7 +24467,6 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -24641,7 +24506,6 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -24757,7 +24621,6 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params Is
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -24797,7 +24660,6 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params Is
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -24983,7 +24845,6 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -25023,7 +24884,6 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -25146,7 +25006,6 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 	// Set default value for query: sort.
 	{
 		val := IssuesListCommentsForRepoSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -25284,7 +25143,6 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -25324,7 +25182,6 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -25440,7 +25297,6 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (param
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -25480,7 +25336,6 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (param
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -25551,7 +25406,6 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	// Set default value for query: filter.
 	{
 		val := IssuesListForAuthenticatedUserFilter("assigned")
-
 		params.Filter.SetTo(val)
 	}
 	// Decode query: filter.
@@ -25606,7 +25460,6 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	// Set default value for query: state.
 	{
 		val := IssuesListForAuthenticatedUserState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -25695,7 +25548,6 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	// Set default value for query: sort.
 	{
 		val := IssuesListForAuthenticatedUserSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -25750,7 +25602,6 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	// Set default value for query: direction.
 	{
 		val := IssuesListForAuthenticatedUserDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -25839,7 +25690,6 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -25879,7 +25729,6 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -25982,7 +25831,6 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 	// Set default value for query: filter.
 	{
 		val := IssuesListForOrgFilter("assigned")
-
 		params.Filter.SetTo(val)
 	}
 	// Decode query: filter.
@@ -26037,7 +25885,6 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 	// Set default value for query: state.
 	{
 		val := IssuesListForOrgState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -26126,7 +25973,6 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 	// Set default value for query: sort.
 	{
 		val := IssuesListForOrgSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -26181,7 +26027,6 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 	// Set default value for query: direction.
 	{
 		val := IssuesListForOrgDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -26270,7 +26115,6 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -26310,7 +26154,6 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -26482,7 +26325,6 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 	// Set default value for query: state.
 	{
 		val := IssuesListForRepoState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -26673,7 +26515,6 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 	// Set default value for query: sort.
 	{
 		val := IssuesListForRepoSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -26728,7 +26569,6 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 	// Set default value for query: direction.
 	{
 		val := IssuesListForRepoDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -26817,7 +26657,6 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -26857,7 +26696,6 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -27006,7 +26844,6 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -27046,7 +26883,6 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -27162,7 +26998,6 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (param
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -27202,7 +27037,6 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (param
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -27351,7 +27185,6 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -27391,7 +27224,6 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -27513,7 +27345,6 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 	// Set default value for query: state.
 	{
 		val := IssuesListMilestonesState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -27568,7 +27399,6 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 	// Set default value for query: sort.
 	{
 		val := IssuesListMilestonesSort("due_on")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -27623,7 +27453,6 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 	// Set default value for query: direction.
 	{
 		val := IssuesListMilestonesDirection("asc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -27678,7 +27507,6 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -27718,7 +27546,6 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -28811,7 +28638,6 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -28851,7 +28677,6 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (pa
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -29730,7 +29555,6 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -29770,7 +29594,6 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -29856,7 +29679,6 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (params M
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -29896,7 +29718,6 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (params M
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -30071,7 +29892,6 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -30111,7 +29931,6 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (par
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -30196,7 +30015,6 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -30236,7 +30054,6 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -31095,7 +30912,6 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -31135,7 +30951,6 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -31223,7 +31038,6 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -31263,7 +31077,6 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -32257,7 +32070,6 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (params OrgsGe
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -32297,7 +32109,6 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (params OrgsGe
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -32738,7 +32549,6 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (params OrgsListParam
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -32861,7 +32671,6 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -32901,7 +32710,6 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (par
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -32953,7 +32761,6 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -32993,7 +32800,6 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -33077,7 +32883,6 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (params OrgsLi
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -33117,7 +32922,6 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (params OrgsLi
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -33234,7 +33038,6 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (param
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -33274,7 +33077,6 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (param
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -33368,7 +33170,6 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsLi
 	// Set default value for query: filter.
 	{
 		val := OrgsListMembersFilter("all")
-
 		params.Filter.SetTo(val)
 	}
 	// Decode query: filter.
@@ -33423,7 +33224,6 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsLi
 	// Set default value for query: role.
 	{
 		val := OrgsListMembersRole("all")
-
 		params.Role.SetTo(val)
 	}
 	// Decode query: role.
@@ -33478,7 +33278,6 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsLi
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -33518,7 +33317,6 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsLi
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -33622,7 +33420,6 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -33662,7 +33459,6 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -33751,7 +33547,6 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	// Set default value for query: filter.
 	{
 		val := OrgsListOutsideCollaboratorsFilter("all")
-
 		params.Filter.SetTo(val)
 	}
 	// Decode query: filter.
@@ -33806,7 +33601,6 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -33846,7 +33640,6 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -33930,7 +33723,6 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -33970,7 +33762,6 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -34054,7 +33845,6 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (params 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -34094,7 +33884,6 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (params 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -34250,7 +34039,6 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -34368,7 +34156,6 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (params OrgsL
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -34408,7 +34195,6 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (params OrgsL
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -36144,7 +35930,6 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -36184,7 +35969,6 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -36224,7 +36008,6 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 	// Set default value for query: state.
 	{
 		val := PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState("active")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -36395,7 +36178,6 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -36435,7 +36217,6 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -36475,7 +36256,6 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	// Set default value for query: state.
 	{
 		val := PackagesGetAllPackageVersionsForPackageOwnedByOrgState("active")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -39084,7 +38864,6 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params Proj
 	// Set default value for query: archived_state.
 	{
 		val := ProjectsListCardsArchivedState("not_archived")
-
 		params.ArchivedState.SetTo(val)
 	}
 	// Decode query: archived_state.
@@ -39139,7 +38918,6 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params Proj
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -39179,7 +38957,6 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params Proj
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -39270,7 +39047,6 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (par
 	// Set default value for query: affiliation.
 	{
 		val := ProjectsListCollaboratorsAffiliation("all")
-
 		params.Affiliation.SetTo(val)
 	}
 	// Decode query: affiliation.
@@ -39325,7 +39101,6 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -39365,7 +39140,6 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (par
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -39449,7 +39223,6 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params Pr
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -39489,7 +39262,6 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params Pr
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -39575,7 +39347,6 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params Pro
 	// Set default value for query: state.
 	{
 		val := ProjectsListForOrgState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -39630,7 +39401,6 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params Pro
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -39670,7 +39440,6 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params Pro
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -39788,7 +39557,6 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 	// Set default value for query: state.
 	{
 		val := ProjectsListForRepoState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -39843,7 +39611,6 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -39883,7 +39650,6 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -39969,7 +39735,6 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params Pr
 	// Set default value for query: state.
 	{
 		val := ProjectsListForUserState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -40024,7 +39789,6 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params Pr
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -40064,7 +39828,6 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params Pr
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -41698,7 +41461,6 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 	// Set default value for query: state.
 	{
 		val := PullsListState("open")
-
 		params.State.SetTo(val)
 	}
 	// Decode query: state.
@@ -41821,7 +41583,6 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 	// Set default value for query: sort.
 	{
 		val := PullsListSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -41925,7 +41686,6 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -41965,7 +41725,6 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -42146,7 +41905,6 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -42186,7 +41944,6 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -42334,7 +42091,6 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -42374,7 +42130,6 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -42522,7 +42277,6 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -42562,7 +42316,6 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -42710,7 +42463,6 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -42750,7 +42502,6 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -42905,7 +42656,6 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 	// Set default value for query: sort.
 	{
 		val := PullsListReviewCommentsSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -43043,7 +42793,6 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -43083,7 +42832,6 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -43337,7 +43085,6 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -43377,7 +43124,6 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -43525,7 +43271,6 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -43565,7 +43310,6 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -46375,7 +46119,6 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -46415,7 +46158,6 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -46616,7 +46358,6 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -46656,7 +46397,6 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -46857,7 +46597,6 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -46897,7 +46636,6 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -47098,7 +46836,6 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -47138,7 +46875,6 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -47371,7 +47107,6 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -47411,7 +47146,6 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -47611,7 +47345,6 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -47651,7 +47384,6 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -47852,7 +47584,6 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -47892,7 +47623,6 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -48060,7 +47790,6 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -48100,7 +47829,6 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -48951,7 +48679,6 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -48991,7 +48718,6 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -53091,7 +52817,6 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params Repo
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -53131,7 +52856,6 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params Repo
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -53661,7 +53385,6 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGe
 	// Set default value for query: per.
 	{
 		val := ReposGetClonesPer("day")
-
 		params.Per.SetTo(val)
 	}
 	// Decode query: per.
@@ -53999,7 +53722,6 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -54039,7 +53761,6 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -54157,7 +53878,6 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -54197,7 +53917,6 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -56755,7 +56474,6 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGet
 	// Set default value for query: per.
 	{
 		val := ReposGetViewsPer("day")
-
 		params.Per.SetTo(val)
 	}
 	// Decode query: per.
@@ -57225,7 +56943,6 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params Rep
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -57378,7 +57095,6 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (params Repo
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -57418,7 +57134,6 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (params Repo
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -57644,7 +57359,6 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params
 	// Set default value for query: affiliation.
 	{
 		val := ReposListCollaboratorsAffiliation("all")
-
 		params.Affiliation.SetTo(val)
 	}
 	// Decode query: affiliation.
@@ -57699,7 +57413,6 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -57739,7 +57452,6 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -57888,7 +57600,6 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -57928,7 +57639,6 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -58044,7 +57754,6 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -58084,7 +57793,6 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -58233,7 +57941,6 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -58273,7 +57980,6 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -58572,7 +58278,6 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -58612,7 +58317,6 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -58764,7 +58468,6 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (params 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -58804,7 +58507,6 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (params 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -58920,7 +58622,6 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params Re
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -58960,7 +58661,6 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params Re
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -59109,7 +58809,6 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -59149,7 +58848,6 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -59273,7 +58971,6 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: sha.
 	{
 		val := string("none")
-
 		params.Sha.SetTo(val)
 	}
 	// Decode query: sha.
@@ -59313,7 +59010,6 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: ref.
 	{
 		val := string("none")
-
 		params.Ref.SetTo(val)
 	}
 	// Decode query: ref.
@@ -59353,7 +59049,6 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: task.
 	{
 		val := string("none")
-
 		params.Task.SetTo(val)
 	}
 	// Decode query: task.
@@ -59393,7 +59088,6 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: environment.
 	{
 		val := string("none")
-
 		params.Environment.SetTo(val)
 	}
 	// Decode query: environment.
@@ -59433,7 +59127,6 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -59473,7 +59166,6 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -59549,7 +59241,6 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	// Set default value for query: visibility.
 	{
 		val := ReposListForAuthenticatedUserVisibility("all")
-
 		params.Visibility.SetTo(val)
 	}
 	// Decode query: visibility.
@@ -59604,7 +59295,6 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	// Set default value for query: affiliation.
 	{
 		val := string("owner,collaborator,organization_member")
-
 		params.Affiliation.SetTo(val)
 	}
 	// Decode query: affiliation.
@@ -59644,7 +59334,6 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	// Set default value for query: type.
 	{
 		val := ReposListForAuthenticatedUserType("all")
-
 		params.Type.SetTo(val)
 	}
 	// Decode query: type.
@@ -59699,7 +59388,6 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	// Set default value for query: sort.
 	{
 		val := ReposListForAuthenticatedUserSort("full_name")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -59803,7 +59491,6 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -59843,7 +59530,6 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -60055,7 +59741,6 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposL
 	// Set default value for query: sort.
 	{
 		val := ReposListForOrgSort("created")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -60159,7 +59844,6 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposL
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -60199,7 +59883,6 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposL
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -60289,7 +59972,6 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (params Repos
 	// Set default value for query: type.
 	{
 		val := ReposListForUserType("owner")
-
 		params.Type.SetTo(val)
 	}
 	// Decode query: type.
@@ -60344,7 +60026,6 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (params Repos
 	// Set default value for query: sort.
 	{
 		val := ReposListForUserSort("full_name")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -60448,7 +60129,6 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (params Repos
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -60488,7 +60168,6 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (params Repos
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -60606,7 +60285,6 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposLi
 	// Set default value for query: sort.
 	{
 		val := ReposListForksSort("newest")
-
 		params.Sort.SetTo(val)
 	}
 	// Decode query: sort.
@@ -60661,7 +60339,6 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposLi
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -60701,7 +60378,6 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposLi
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -60817,7 +60493,6 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -60857,7 +60532,6 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -60909,7 +60583,6 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -60949,7 +60622,6 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -61136,7 +60808,6 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -61176,7 +60847,6 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params R
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -61369,7 +61039,6 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -61409,7 +61078,6 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -61558,7 +61226,6 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -61598,7 +61265,6 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -61714,7 +61380,6 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (params Repo
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -61754,7 +61419,6 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (params Repo
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -61870,7 +61534,6 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposLis
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -61910,7 +61573,6 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposLis
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -62026,7 +61688,6 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposLi
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -62066,7 +61727,6 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposLi
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -62215,7 +61875,6 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -62365,7 +62024,6 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params Repo
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -62405,7 +62063,6 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params Repo
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -65568,7 +65225,6 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (params SearchCodeP
 	// Set default value for query: order.
 	{
 		val := SearchCodeOrder("desc")
-
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -65623,7 +65279,6 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (params SearchCodeP
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -65663,7 +65318,6 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (params SearchCodeP
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -65805,7 +65459,6 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (params SearchCo
 	// Set default value for query: order.
 	{
 		val := SearchCommitsOrder("desc")
-
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -65860,7 +65513,6 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (params SearchCo
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -65900,7 +65552,6 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (params SearchCo
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -66045,7 +65696,6 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (p
 	// Set default value for query: order.
 	{
 		val := SearchIssuesAndPullRequestsOrder("desc")
-
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -66100,7 +65750,6 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (p
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -66140,7 +65789,6 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (p
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -66311,7 +65959,6 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (params SearchLab
 	// Set default value for query: order.
 	{
 		val := SearchLabelsOrder("desc")
-
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -66366,7 +66013,6 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (params SearchLab
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -66406,7 +66052,6 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (params SearchLab
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -66550,7 +66195,6 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (params SearchRepo
 	// Set default value for query: order.
 	{
 		val := SearchReposOrder("desc")
-
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -66605,7 +66249,6 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (params SearchRepo
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -66645,7 +66288,6 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (params SearchRepo
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -66731,7 +66373,6 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (params SearchTop
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -66771,7 +66412,6 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (params SearchTop
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -66914,7 +66554,6 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (params SearchUser
 	// Set default value for query: order.
 	{
 		val := SearchUsersOrder("desc")
-
 		params.Order.SetTo(val)
 	}
 	// Decode query: order.
@@ -66969,7 +66608,6 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (params SearchUser
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -67009,7 +66647,6 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (params SearchUser
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -67293,7 +66930,6 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -67333,7 +66969,6 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -67538,7 +67173,6 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -67578,7 +67212,6 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -70581,7 +70214,6 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (params TeamsListPar
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -70621,7 +70253,6 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (params TeamsListPar
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -70738,7 +70369,6 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params Te
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -70778,7 +70408,6 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params Te
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -70862,7 +70491,6 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (params T
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -70902,7 +70530,6 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (params T
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -71053,7 +70680,6 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	// Set default value for query: direction.
 	{
 		val := TeamsListDiscussionCommentsInOrgDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -71108,7 +70734,6 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -71148,7 +70773,6 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -71266,7 +70890,6 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	// Set default value for query: direction.
 	{
 		val := TeamsListDiscussionCommentsLegacyDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -71321,7 +70944,6 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -71361,7 +70983,6 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -71482,7 +71103,6 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 	// Set default value for query: direction.
 	{
 		val := TeamsListDiscussionsInOrgDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -71537,7 +71157,6 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -71577,7 +71196,6 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -71697,7 +71315,6 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: direction.
 	{
 		val := TeamsListDiscussionsLegacyDirection("desc")
-
 		params.Direction.SetTo(val)
 	}
 	// Decode query: direction.
@@ -71752,7 +71369,6 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -71792,7 +71408,6 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -71844,7 +71459,6 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -71884,7 +71498,6 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -72007,7 +71620,6 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (para
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -72235,7 +71847,6 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params 
 	// Set default value for query: role.
 	{
 		val := TeamsListMembersInOrgRole("all")
-
 		params.Role.SetTo(val)
 	}
 	// Decode query: role.
@@ -72290,7 +71901,6 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params 
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -72330,7 +71940,6 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params 
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -72419,7 +72028,6 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params
 	// Set default value for query: role.
 	{
 		val := TeamsListMembersLegacyRole("all")
-
 		params.Role.SetTo(val)
 	}
 	// Decode query: role.
@@ -72474,7 +72082,6 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -72514,7 +72121,6 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -72631,7 +72237,6 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -72671,7 +72276,6 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -72755,7 +72359,6 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -72795,7 +72398,6 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -72912,7 +72514,6 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -72952,7 +72553,6 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -73036,7 +72636,6 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (param
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -73076,7 +72675,6 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (param
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -73193,7 +72791,6 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params Te
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -73233,7 +72830,6 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params Te
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -73317,7 +72913,6 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (params T
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -73357,7 +72952,6 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (params T
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -75182,7 +74776,6 @@ func decodeUsersListParams(args [0]string, r *http.Request) (params UsersListPar
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -75234,7 +74827,6 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -75274,7 +74866,6 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -75326,7 +74917,6 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -75366,7 +74956,6 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -75418,7 +75007,6 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -75458,7 +75046,6 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -75542,7 +75129,6 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -75582,7 +75168,6 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (par
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -75666,7 +75251,6 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (par
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -75706,7 +75290,6 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (par
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -75758,7 +75341,6 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -75798,7 +75380,6 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -75882,7 +75463,6 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (param
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -75922,7 +75502,6 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (param
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -75974,7 +75553,6 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -76014,7 +75592,6 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -76098,7 +75675,6 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -76138,7 +75714,6 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (pa
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.
@@ -76190,7 +75765,6 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	// Set default value for query: per_page.
 	{
 		val := int(30)
-
 		params.PerPage.SetTo(val)
 	}
 	// Decode query: per_page.
@@ -76230,7 +75804,6 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	// Set default value for query: page.
 	{
 		val := int(1)
-
 		params.Page.SetTo(val)
 	}
 	// Decode query: page.

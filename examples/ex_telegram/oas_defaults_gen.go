@@ -6,7 +6,6 @@ package api
 func (s *Error) setDefaults() {
 	{
 		val := bool(false)
-
 		s.Ok = val
 	}
 }
@@ -15,7 +14,6 @@ func (s *Error) setDefaults() {
 func (s *GetUpdates) setDefaults() {
 	{
 		val := int(0)
-
 		s.Offset.SetTo(val)
 	}
 }
@@ -24,7 +22,6 @@ func (s *GetUpdates) setDefaults() {
 func (s *GetUserProfilePhotos) setDefaults() {
 	{
 		val := int(0)
-
 		s.Offset.SetTo(val)
 	}
 }
@@ -33,7 +30,6 @@ func (s *GetUserProfilePhotos) setDefaults() {
 func (s *InlineQueryResultCachedAudio) setDefaults() {
 	{
 		val := string("audio")
-
 		s.Type = val
 	}
 }
@@ -42,7 +38,6 @@ func (s *InlineQueryResultCachedAudio) setDefaults() {
 func (s *InlineQueryResultCachedDocument) setDefaults() {
 	{
 		val := string("document")
-
 		s.Type = val
 	}
 }
@@ -51,7 +46,6 @@ func (s *InlineQueryResultCachedDocument) setDefaults() {
 func (s *InlineQueryResultCachedGif) setDefaults() {
 	{
 		val := string("gif")
-
 		s.Type = val
 	}
 }
@@ -60,7 +54,6 @@ func (s *InlineQueryResultCachedGif) setDefaults() {
 func (s *InlineQueryResultCachedMpeg4Gif) setDefaults() {
 	{
 		val := string("mpeg4_gif")
-
 		s.Type = val
 	}
 }
@@ -69,7 +62,6 @@ func (s *InlineQueryResultCachedMpeg4Gif) setDefaults() {
 func (s *InlineQueryResultCachedPhoto) setDefaults() {
 	{
 		val := string("photo")
-
 		s.Type = val
 	}
 }
@@ -78,7 +70,6 @@ func (s *InlineQueryResultCachedPhoto) setDefaults() {
 func (s *InlineQueryResultCachedVideo) setDefaults() {
 	{
 		val := string("video")
-
 		s.Type = val
 	}
 }
@@ -87,7 +78,6 @@ func (s *InlineQueryResultCachedVideo) setDefaults() {
 func (s *InlineQueryResultCachedVoice) setDefaults() {
 	{
 		val := string("voice")
-
 		s.Type = val
 	}
 }
@@ -96,7 +86,6 @@ func (s *InlineQueryResultCachedVoice) setDefaults() {
 func (s *MessageEntity) setDefaults() {
 	{
 		val := int(0)
-
 		s.Offset = val
 	}
 }
@@ -105,7 +94,6 @@ func (s *MessageEntity) setDefaults() {
 func (s *PassportElementErrorDataField) setDefaults() {
 	{
 		val := string("data")
-
 		s.Source = val
 	}
 }
@@ -114,7 +102,6 @@ func (s *PassportElementErrorDataField) setDefaults() {
 func (s *PassportElementErrorFile) setDefaults() {
 	{
 		val := string("file")
-
 		s.Source = val
 	}
 }
@@ -123,7 +110,6 @@ func (s *PassportElementErrorFile) setDefaults() {
 func (s *PassportElementErrorFiles) setDefaults() {
 	{
 		val := string("files")
-
 		s.Source = val
 	}
 }
@@ -132,7 +118,6 @@ func (s *PassportElementErrorFiles) setDefaults() {
 func (s *PassportElementErrorFrontSide) setDefaults() {
 	{
 		val := string("front_side")
-
 		s.Source = val
 	}
 }
@@ -141,7 +126,6 @@ func (s *PassportElementErrorFrontSide) setDefaults() {
 func (s *PassportElementErrorReverseSide) setDefaults() {
 	{
 		val := string("reverse_side")
-
 		s.Source = val
 	}
 }
@@ -150,7 +134,6 @@ func (s *PassportElementErrorReverseSide) setDefaults() {
 func (s *PassportElementErrorSelfie) setDefaults() {
 	{
 		val := string("selfie")
-
 		s.Source = val
 	}
 }
@@ -159,7 +142,6 @@ func (s *PassportElementErrorSelfie) setDefaults() {
 func (s *PassportElementErrorTranslationFile) setDefaults() {
 	{
 		val := string("translation_file")
-
 		s.Source = val
 	}
 }
@@ -168,7 +150,6 @@ func (s *PassportElementErrorTranslationFile) setDefaults() {
 func (s *PassportElementErrorTranslationFiles) setDefaults() {
 	{
 		val := string("translation_files")
-
 		s.Source = val
 	}
 }
@@ -177,7 +158,6 @@ func (s *PassportElementErrorTranslationFiles) setDefaults() {
 func (s *PassportElementErrorUnspecified) setDefaults() {
 	{
 		val := string("unspecified")
-
 		s.Source = val
 	}
 }
@@ -186,7 +166,6 @@ func (s *PassportElementErrorUnspecified) setDefaults() {
 func (s *Result) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -195,7 +174,6 @@ func (s *Result) setDefaults() {
 func (s *ResultArrayOfBotCommand) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -204,7 +182,6 @@ func (s *ResultArrayOfBotCommand) setDefaults() {
 func (s *ResultArrayOfChatMember) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -213,7 +190,6 @@ func (s *ResultArrayOfChatMember) setDefaults() {
 func (s *ResultArrayOfGameHighScore) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -222,7 +198,6 @@ func (s *ResultArrayOfGameHighScore) setDefaults() {
 func (s *ResultArrayOfMessage) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -231,7 +206,6 @@ func (s *ResultArrayOfMessage) setDefaults() {
 func (s *ResultArrayOfUpdate) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -240,7 +214,6 @@ func (s *ResultArrayOfUpdate) setDefaults() {
 func (s *ResultChat) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -249,7 +222,6 @@ func (s *ResultChat) setDefaults() {
 func (s *ResultChatInviteLink) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -258,7 +230,6 @@ func (s *ResultChatInviteLink) setDefaults() {
 func (s *ResultChatMember) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -267,7 +238,6 @@ func (s *ResultChatMember) setDefaults() {
 func (s *ResultFile) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -276,7 +246,6 @@ func (s *ResultFile) setDefaults() {
 func (s *ResultInt) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -285,7 +254,6 @@ func (s *ResultInt) setDefaults() {
 func (s *ResultMessage) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -294,7 +262,6 @@ func (s *ResultMessage) setDefaults() {
 func (s *ResultMessageId) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -303,7 +270,6 @@ func (s *ResultMessageId) setDefaults() {
 func (s *ResultPoll) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -312,7 +278,6 @@ func (s *ResultPoll) setDefaults() {
 func (s *ResultString) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -321,7 +286,6 @@ func (s *ResultString) setDefaults() {
 func (s *ResultUser) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -330,7 +294,6 @@ func (s *ResultUser) setDefaults() {
 func (s *ResultUserProfilePhotos) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -339,7 +302,6 @@ func (s *ResultUserProfilePhotos) setDefaults() {
 func (s *ResultWebhookInfo) setDefaults() {
 	{
 		val := bool(true)
-
 		s.Ok = val
 	}
 }
@@ -348,7 +310,6 @@ func (s *ResultWebhookInfo) setDefaults() {
 func (s *UploadStickerFile) setDefaults() {
 	{
 		val := string("up to 512 kilobytes in size, dimensions must not exceed 512px, and either width or height must be exactly 512px. More info on Sending Files »")
-
 		s.PNGSticker = val
 	}
 }

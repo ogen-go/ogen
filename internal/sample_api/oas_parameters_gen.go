@@ -189,7 +189,6 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (params DefaultTes
 	// Set default value for query: default.
 	{
 		val := int32(10)
-
 		params.Default.SetTo(val)
 	}
 	// Decode query: default.
