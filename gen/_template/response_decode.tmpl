@@ -106,7 +106,7 @@ d.ResetBytes(buf.Bytes())
 
 var response {{ $.Go }}
 if err := func() error {
-	{{- template "json/dec" req_elem $ }}
+	{{- template "json/dec" elem $ "response" }}
 	return nil
 }(); err != nil {
 	return res, err

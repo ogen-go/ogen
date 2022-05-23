@@ -10,7 +10,7 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.
 		return req, nil
 	{{- else if $contentType.JSON }}
 		e := jx.GetEncoder()
-		{{ template "json/enc" req_enc_elem $type }}
+		{{ template "json/enc" elem $type "req" }}
 		return e, nil
 	{{- else if $contentType.FormURLEncode }}
 		q := uri.NewQueryEncoder()
