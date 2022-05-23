@@ -11,5 +11,12 @@ type MediaType struct {
 	Schema   *jsonschema.Schema
 	Example  json.RawMessage
 	Examples map[string]*Example
-	// Encoding map[string]*Encoding
+	Encoding map[string]*Encoding
+}
+
+// Encoding is Encoding Type Object.
+type Encoding struct {
+	Style         ParameterStyle
+	Explode       bool
+	AllowReserved bool
 }

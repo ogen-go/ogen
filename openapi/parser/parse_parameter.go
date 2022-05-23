@@ -194,12 +194,12 @@ func validateParamStyle(p *openapi.Parameter) error {
 
 	styles, ok := table[p.In]
 	if !ok {
-		return errors.Errorf("invalid style: %q", p.Style)
+		return errors.Errorf("invalid in: %q", p.In)
 	}
 
 	types, ok := styles[stexp{p.Style, p.Explode}]
 	if !ok {
-		return errors.Errorf("invalid style explode combination")
+		return errors.Errorf("invalid style explode combination %q, explode:%v", p.Style, p.Explode)
 	}
 
 	allowed := func(t byte) bool { return types&t != 0 }
@@ -224,7 +224,7 @@ func validateParamStyle(p *openapi.Parameter) error {
 				case jsonschema.String, jsonschema.Integer, jsonschema.Number, jsonschema.Boolean:
 					// ok
 				default:
-					return errors.Errorf("all oneOf schemas must be simple types")
+					return errors.New("all oneOf schemas must be simple types")
 				}
 			}
 
@@ -234,5 +234,5 @@ func validateParamStyle(p *openapi.Parameter) error {
 		}
 	}
 
-	return errors.Errorf("invalid schema:style:explode combination")
+	return errors.New("invalid schema:style:explode combination")
 }
