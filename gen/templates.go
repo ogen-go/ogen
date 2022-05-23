@@ -123,7 +123,7 @@ func templateFunctions() template.FuncMap {
 				First: true,
 			}
 		},
-		"status_res_elem": func(r *ir.Response, ptr bool) ResponseElem {
+		"response_elem": func(r *ir.Response, ptr bool) ResponseElem {
 			return ResponseElem{
 				Response: r,
 				Ptr:      ptr,
