@@ -11,6 +11,11 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+type GetBookParams struct {
+	// ID of book.
+	BookID int
+}
+
 func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams, _ error) {
 	// Decode path: book_id.
 	{
@@ -44,6 +49,21 @@ func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams,
 		}
 	}
 	return params, nil
+}
+
+type SearchParams struct {
+	// Search query.
+	// * You can search for multiple terms at the same time, and this will return only galleries that
+	// contain both terms. For example, rust cox finds all galleries that contain both rust and cox.
+	// * You can exclude terms by prefixing them with -. For example, rust cox -tokio matches all
+	// galleries matching rust and cox but not tokio.
+	// * Exact searches can be performed by wrapping terms in double quotes. For example, "big dogs" only
+	// matches galleries with "big dogs" somewhere in the title or in tags.
+	// * These can be combined with tag namespaces for finer control over the query: parodies:railgun
+	// -tag:"big dogs".
+	Query string
+	// Number of result page.
+	Page OptInt
 }
 
 func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _ error) {
@@ -112,6 +132,13 @@ func decodeSearchParams(args [0]string, r *http.Request) (params SearchParams, _
 		}
 	}
 	return params, nil
+}
+
+type SearchByTagIDParams struct {
+	// Tag ID.
+	TagID int
+	// Number of result page.
+	Page OptInt
 }
 
 func decodeSearchByTagIDParams(args [0]string, r *http.Request) (params SearchByTagIDParams, _ error) {

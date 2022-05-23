@@ -14,6 +14,13 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+type ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	RepositoryID  int
+}
+
 func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, r *http.Request) (params ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -109,6 +116,13 @@ func decodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string
 		}
 	}
 	return params, nil
+}
+
+type ActionsAddSelectedRepoToOrgSecretParams struct {
+	Org string
+	// Secret_name parameter.
+	SecretName   string
+	RepositoryID int
 }
 
 func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Request) (params ActionsAddSelectedRepoToOrgSecretParams, _ error) {
@@ -208,6 +222,14 @@ func decodeActionsAddSelectedRepoToOrgSecretParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+type ActionsAddSelfHostedRunnerToGroupForOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
+}
+
 func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http.Request) (params ActionsAddSelfHostedRunnerToGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -303,6 +325,13 @@ func decodeActionsAddSelfHostedRunnerToGroupForOrgParams(args [3]string, r *http
 		}
 	}
 	return params, nil
+}
+
+type ActionsApproveWorkflowRunParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
 }
 
 func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (params ActionsApproveWorkflowRunParams, _ error) {
@@ -402,6 +431,13 @@ func decodeActionsApproveWorkflowRunParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+type ActionsCancelWorkflowRunParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+}
+
 func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (params ActionsCancelWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	{
@@ -497,6 +533,14 @@ func decodeActionsCancelWorkflowRunParams(args [3]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ActionsCreateOrUpdateEnvironmentSecretParams struct {
+	RepositoryID int
+	// The name of the environment.
+	EnvironmentName string
+	// Secret_name parameter.
+	SecretName string
 }
 
 func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsCreateOrUpdateEnvironmentSecretParams, _ error) {
@@ -596,6 +640,12 @@ func decodeActionsCreateOrUpdateEnvironmentSecretParams(args [3]string, r *http.
 	return params, nil
 }
 
+type ActionsCreateOrUpdateOrgSecretParams struct {
+	Org string
+	// Secret_name parameter.
+	SecretName string
+}
+
 func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request) (params ActionsCreateOrUpdateOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
@@ -660,6 +710,13 @@ func decodeActionsCreateOrUpdateOrgSecretParams(args [2]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ActionsCreateOrUpdateRepoSecretParams struct {
+	Owner string
+	Repo  string
+	// Secret_name parameter.
+	SecretName string
 }
 
 func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request) (params ActionsCreateOrUpdateRepoSecretParams, _ error) {
@@ -759,6 +816,10 @@ func decodeActionsCreateOrUpdateRepoSecretParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+type ActionsCreateRegistrationTokenForOrgParams struct {
+	Org string
+}
+
 func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, r *http.Request) (params ActionsCreateRegistrationTokenForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -792,6 +853,11 @@ func decodeActionsCreateRegistrationTokenForOrgParams(args [1]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type ActionsCreateRegistrationTokenForRepoParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.Request) (params ActionsCreateRegistrationTokenForRepoParams, _ error) {
@@ -860,6 +926,10 @@ func decodeActionsCreateRegistrationTokenForRepoParams(args [2]string, r *http.R
 	return params, nil
 }
 
+type ActionsCreateRemoveTokenForOrgParams struct {
+	Org string
+}
+
 func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, r *http.Request) (params ActionsCreateRemoveTokenForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -893,6 +963,11 @@ func decodeActionsCreateRemoveTokenForOrgParams(args [1]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ActionsCreateRemoveTokenForRepoParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request) (params ActionsCreateRemoveTokenForRepoParams, _ error) {
@@ -961,6 +1036,10 @@ func decodeActionsCreateRemoveTokenForRepoParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+type ActionsCreateSelfHostedRunnerGroupForOrgParams struct {
+	Org string
+}
+
 func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, r *http.Request) (params ActionsCreateSelfHostedRunnerGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -994,6 +1073,13 @@ func decodeActionsCreateSelfHostedRunnerGroupForOrgParams(args [1]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type ActionsDeleteArtifactParams struct {
+	Owner string
+	Repo  string
+	// Artifact_id parameter.
+	ArtifactID int
 }
 
 func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params ActionsDeleteArtifactParams, _ error) {
@@ -1093,6 +1179,14 @@ func decodeActionsDeleteArtifactParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ActionsDeleteEnvironmentSecretParams struct {
+	RepositoryID int
+	// The name of the environment.
+	EnvironmentName string
+	// Secret_name parameter.
+	SecretName string
+}
+
 func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsDeleteEnvironmentSecretParams, _ error) {
 	// Decode path: repository_id.
 	{
@@ -1190,6 +1284,12 @@ func decodeActionsDeleteEnvironmentSecretParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+type ActionsDeleteOrgSecretParams struct {
+	Org string
+	// Secret_name parameter.
+	SecretName string
+}
+
 func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (params ActionsDeleteOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
@@ -1254,6 +1354,13 @@ func decodeActionsDeleteOrgSecretParams(args [2]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type ActionsDeleteRepoSecretParams struct {
+	Owner string
+	Repo  string
+	// Secret_name parameter.
+	SecretName string
 }
 
 func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (params ActionsDeleteRepoSecretParams, _ error) {
@@ -1353,6 +1460,12 @@ func decodeActionsDeleteRepoSecretParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type ActionsDeleteSelfHostedRunnerFromOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
+}
+
 func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerFromOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -1417,6 +1530,13 @@ func decodeActionsDeleteSelfHostedRunnerFromOrgParams(args [2]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type ActionsDeleteSelfHostedRunnerFromRepoParams struct {
+	Owner string
+	Repo  string
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerFromRepoParams, _ error) {
@@ -1516,6 +1636,12 @@ func decodeActionsDeleteSelfHostedRunnerFromRepoParams(args [3]string, r *http.R
 	return params, nil
 }
 
+type ActionsDeleteSelfHostedRunnerGroupFromOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+}
+
 func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *http.Request) (params ActionsDeleteSelfHostedRunnerGroupFromOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -1580,6 +1706,13 @@ func decodeActionsDeleteSelfHostedRunnerGroupFromOrgParams(args [2]string, r *ht
 		}
 	}
 	return params, nil
+}
+
+type ActionsDeleteWorkflowRunParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
 }
 
 func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (params ActionsDeleteWorkflowRunParams, _ error) {
@@ -1679,6 +1812,13 @@ func decodeActionsDeleteWorkflowRunParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+type ActionsDeleteWorkflowRunLogsParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+}
+
 func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (params ActionsDeleteWorkflowRunLogsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -1776,6 +1916,11 @@ func decodeActionsDeleteWorkflowRunLogsParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+type ActionsDisableSelectedRepositoryGithubActionsOrganizationParams struct {
+	Org          string
+	RepositoryID int
+}
+
 func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, r *http.Request) (params ActionsDisableSelectedRepositoryGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
@@ -1840,6 +1985,14 @@ func decodeActionsDisableSelectedRepositoryGithubActionsOrganizationParams(args 
 		}
 	}
 	return params, nil
+}
+
+type ActionsDownloadArtifactParams struct {
+	Owner string
+	Repo  string
+	// Artifact_id parameter.
+	ArtifactID    int
+	ArchiveFormat string
 }
 
 func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (params ActionsDownloadArtifactParams, _ error) {
@@ -1970,6 +2123,13 @@ func decodeActionsDownloadArtifactParams(args [4]string, r *http.Request) (param
 	return params, nil
 }
 
+type ActionsDownloadJobLogsForWorkflowRunParams struct {
+	Owner string
+	Repo  string
+	// Job_id parameter.
+	JobID int
+}
+
 func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsDownloadJobLogsForWorkflowRunParams, _ error) {
 	// Decode path: owner.
 	{
@@ -2065,6 +2225,13 @@ func decodeActionsDownloadJobLogsForWorkflowRunParams(args [3]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type ActionsDownloadWorkflowRunLogsParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
 }
 
 func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request) (params ActionsDownloadWorkflowRunLogsParams, _ error) {
@@ -2164,6 +2331,11 @@ func decodeActionsDownloadWorkflowRunLogsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+type ActionsEnableSelectedRepositoryGithubActionsOrganizationParams struct {
+	Org          string
+	RepositoryID int
+}
+
 func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [2]string, r *http.Request) (params ActionsEnableSelectedRepositoryGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
@@ -2230,6 +2402,10 @@ func decodeActionsEnableSelectedRepositoryGithubActionsOrganizationParams(args [
 	return params, nil
 }
 
+type ActionsGetAllowedActionsOrganizationParams struct {
+	Org string
+}
+
 func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsGetAllowedActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
@@ -2263,6 +2439,11 @@ func decodeActionsGetAllowedActionsOrganizationParams(args [1]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetAllowedActionsRepositoryParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Request) (params ActionsGetAllowedActionsRepositoryParams, _ error) {
@@ -2329,6 +2510,13 @@ func decodeActionsGetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetArtifactParams struct {
+	Owner string
+	Repo  string
+	// Artifact_id parameter.
+	ArtifactID int
 }
 
 func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params ActionsGetArtifactParams, _ error) {
@@ -2428,6 +2616,12 @@ func decodeActionsGetArtifactParams(args [3]string, r *http.Request) (params Act
 	return params, nil
 }
 
+type ActionsGetEnvironmentPublicKeyParams struct {
+	RepositoryID int
+	// The name of the environment.
+	EnvironmentName string
+}
+
 func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request) (params ActionsGetEnvironmentPublicKeyParams, _ error) {
 	// Decode path: repository_id.
 	{
@@ -2492,6 +2686,14 @@ func decodeActionsGetEnvironmentPublicKeyParams(args [2]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetEnvironmentSecretParams struct {
+	RepositoryID int
+	// The name of the environment.
+	EnvironmentName string
+	// Secret_name parameter.
+	SecretName string
 }
 
 func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (params ActionsGetEnvironmentSecretParams, _ error) {
@@ -2591,6 +2793,10 @@ func decodeActionsGetEnvironmentSecretParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ActionsGetGithubActionsPermissionsOrganizationParams struct {
+	Org string
+}
+
 func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, r *http.Request) (params ActionsGetGithubActionsPermissionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
@@ -2624,6 +2830,11 @@ func decodeActionsGetGithubActionsPermissionsOrganizationParams(args [1]string, 
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetGithubActionsPermissionsRepositoryParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r *http.Request) (params ActionsGetGithubActionsPermissionsRepositoryParams, _ error) {
@@ -2690,6 +2901,13 @@ func decodeActionsGetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetJobForWorkflowRunParams struct {
+	Owner string
+	Repo  string
+	// Job_id parameter.
+	JobID int
 }
 
 func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsGetJobForWorkflowRunParams, _ error) {
@@ -2789,6 +3007,10 @@ func decodeActionsGetJobForWorkflowRunParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ActionsGetOrgPublicKeyParams struct {
+	Org string
+}
+
 func decodeActionsGetOrgPublicKeyParams(args [1]string, r *http.Request) (params ActionsGetOrgPublicKeyParams, _ error) {
 	// Decode path: org.
 	{
@@ -2822,6 +3044,12 @@ func decodeActionsGetOrgPublicKeyParams(args [1]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetOrgSecretParams struct {
+	Org string
+	// Secret_name parameter.
+	SecretName string
 }
 
 func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (params ActionsGetOrgSecretParams, _ error) {
@@ -2890,6 +3118,11 @@ func decodeActionsGetOrgSecretParams(args [2]string, r *http.Request) (params Ac
 	return params, nil
 }
 
+type ActionsGetRepoPublicKeyParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (params ActionsGetRepoPublicKeyParams, _ error) {
 	// Decode path: owner.
 	{
@@ -2954,6 +3187,13 @@ func decodeActionsGetRepoPublicKeyParams(args [2]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetRepoSecretParams struct {
+	Owner string
+	Repo  string
+	// Secret_name parameter.
+	SecretName string
 }
 
 func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params ActionsGetRepoSecretParams, _ error) {
@@ -3053,6 +3293,13 @@ func decodeActionsGetRepoSecretParams(args [3]string, r *http.Request) (params A
 	return params, nil
 }
 
+type ActionsGetReviewsForRunParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+}
+
 func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (params ActionsGetReviewsForRunParams, _ error) {
 	// Decode path: owner.
 	{
@@ -3150,6 +3397,12 @@ func decodeActionsGetReviewsForRunParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type ActionsGetSelfHostedRunnerForOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
+}
+
 func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Request) (params ActionsGetSelfHostedRunnerForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -3214,6 +3467,13 @@ func decodeActionsGetSelfHostedRunnerForOrgParams(args [2]string, r *http.Reques
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetSelfHostedRunnerForRepoParams struct {
+	Owner string
+	Repo  string
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Request) (params ActionsGetSelfHostedRunnerForRepoParams, _ error) {
@@ -3313,6 +3573,12 @@ func decodeActionsGetSelfHostedRunnerForRepoParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+type ActionsGetSelfHostedRunnerGroupForOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+}
+
 func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.Request) (params ActionsGetSelfHostedRunnerGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -3377,6 +3643,13 @@ func decodeActionsGetSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.R
 		}
 	}
 	return params, nil
+}
+
+type ActionsGetWorkflowRunParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
 }
 
 func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params ActionsGetWorkflowRunParams, _ error) {
@@ -3476,6 +3749,13 @@ func decodeActionsGetWorkflowRunParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ActionsGetWorkflowRunUsageParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+}
+
 func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (params ActionsGetWorkflowRunUsageParams, _ error) {
 	// Decode path: owner.
 	{
@@ -3571,6 +3851,15 @@ func decodeActionsGetWorkflowRunUsageParams(args [3]string, r *http.Request) (pa
 		}
 	}
 	return params, nil
+}
+
+type ActionsListArtifactsForRepoParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (params ActionsListArtifactsForRepoParams, _ error) {
@@ -3720,6 +4009,16 @@ func decodeActionsListArtifactsForRepoParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+type ActionsListEnvironmentSecretsParams struct {
+	RepositoryID int
+	// The name of the environment.
+	EnvironmentName string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) (params ActionsListEnvironmentSecretsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: repository_id.
@@ -3865,6 +4164,21 @@ func decodeActionsListEnvironmentSecretsParams(args [2]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type ActionsListJobsForWorkflowRunParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+	// Filters jobs by their `completed_at` timestamp. Can be one of:
+	// \* `latest`: Returns jobs from the most recent execution of the workflow run.
+	// \* `all`: Returns all jobs for a workflow run, including from old executions of the workflow run.
+	Filter OptActionsListJobsForWorkflowRunFilter
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) (params ActionsListJobsForWorkflowRunParams, _ error) {
@@ -4100,6 +4414,14 @@ func decodeActionsListJobsForWorkflowRunParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+type ActionsListOrgSecretsParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (params ActionsListOrgSecretsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -4214,6 +4536,16 @@ func decodeActionsListOrgSecretsParams(args [1]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, r *http.Request) (params ActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
@@ -4363,6 +4695,15 @@ func decodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]strin
 	return params, nil
 }
 
+type ActionsListRepoSecretsParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params ActionsListRepoSecretsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -4508,6 +4849,15 @@ func decodeActionsListRepoSecretsParams(args [2]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type ActionsListRepoWorkflowsParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (params ActionsListRepoWorkflowsParams, _ error) {
@@ -4657,6 +5007,10 @@ func decodeActionsListRepoWorkflowsParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+type ActionsListRunnerApplicationsForOrgParams struct {
+	Org string
+}
+
 func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, r *http.Request) (params ActionsListRunnerApplicationsForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -4690,6 +5044,11 @@ func decodeActionsListRunnerApplicationsForOrgParams(args [1]string, r *http.Req
 		}
 	}
 	return params, nil
+}
+
+type ActionsListRunnerApplicationsForRepoParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Request) (params ActionsListRunnerApplicationsForRepoParams, _ error) {
@@ -4756,6 +5115,16 @@ func decodeActionsListRunnerApplicationsForRepoParams(args [2]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type ActionsListSelectedReposForOrgSecretParams struct {
+	Org string
+	// Secret_name parameter.
+	SecretName string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Request) (params ActionsListSelectedReposForOrgSecretParams, _ error) {
@@ -4905,6 +5274,14 @@ func decodeActionsListSelectedReposForOrgSecretParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+type ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -5019,6 +5396,14 @@ func decodeActionsListSelectedRepositoriesEnabledGithubActionsOrganizationParams
 		}
 	}
 	return params, nil
+}
+
+type ActionsListSelfHostedRunnerGroupsForOrgParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http.Request) (params ActionsListSelfHostedRunnerGroupsForOrgParams, _ error) {
@@ -5137,6 +5522,14 @@ func decodeActionsListSelfHostedRunnerGroupsForOrgParams(args [1]string, r *http
 	return params, nil
 }
 
+type ActionsListSelfHostedRunnersForOrgParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Request) (params ActionsListSelfHostedRunnersForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -5251,6 +5644,15 @@ func decodeActionsListSelfHostedRunnersForOrgParams(args [1]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type ActionsListSelfHostedRunnersForRepoParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Request) (params ActionsListSelfHostedRunnersForRepoParams, _ error) {
@@ -5400,6 +5802,16 @@ func decodeActionsListSelfHostedRunnersForRepoParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+type ActionsListSelfHostedRunnersInGroupForOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *http.Request) (params ActionsListSelfHostedRunnersInGroupForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -5545,6 +5957,17 @@ func decodeActionsListSelfHostedRunnersInGroupForOrgParams(args [2]string, r *ht
 		}
 	}
 	return params, nil
+}
+
+type ActionsListWorkflowRunArtifactsParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request) (params ActionsListWorkflowRunArtifactsParams, _ error) {
@@ -5723,6 +6146,30 @@ func decodeActionsListWorkflowRunArtifactsParams(args [3]string, r *http.Request
 		}
 	}
 	return params, nil
+}
+
+type ActionsListWorkflowRunsForRepoParams struct {
+	Owner string
+	Repo  string
+	// Returns someone's workflow runs. Use the login for the user who created the `push` associated with
+	// the check suite or workflow run.
+	Actor OptString
+	// Returns workflow runs associated with a branch. Use the name of the branch of the `push`.
+	Branch OptString
+	// Returns workflow run triggered by the event you specify. For example, `push`, `pull_request` or
+	// `issue`. For more information, see "[Events that trigger workflows](https://help.github.
+	// com/en/actions/automating-your-workflow-with-github-actions/events-that-trigger-workflows).".
+	Event OptString
+	// Returns workflow runs with the check run `status` or `conclusion` that you specify. For example, a
+	// conclusion can be `success` or a status can be `in_progress`. Only GitHub can set a status of
+	// `waiting` or `requested`. For a list of the possible `status` and `conclusion` options, see
+	// "[Create a check run](https://docs.github.com/rest/reference/checks#create-a-check-run).".
+	Status OptActionsListWorkflowRunsForRepoStatus
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page    OptInt
+	Created OptDateTime
 }
 
 func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request) (params ActionsListWorkflowRunsForRepoParams, _ error) {
@@ -6057,6 +6504,13 @@ func decodeActionsListWorkflowRunsForRepoParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+type ActionsReRunWorkflowParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+}
+
 func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params ActionsReRunWorkflowParams, _ error) {
 	// Decode path: owner.
 	{
@@ -6152,6 +6606,13 @@ func decodeActionsReRunWorkflowParams(args [3]string, r *http.Request) (params A
 		}
 	}
 	return params, nil
+}
+
+type ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	RepositoryID  int
 }
 
 func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]string, r *http.Request) (params ActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
@@ -6251,6 +6712,13 @@ func decodeActionsRemoveRepoAccessToSelfHostedRunnerGroupInOrgParams(args [3]str
 	return params, nil
 }
 
+type ActionsRemoveSelectedRepoFromOrgSecretParams struct {
+	Org string
+	// Secret_name parameter.
+	SecretName   string
+	RepositoryID int
+}
+
 func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.Request) (params ActionsRemoveSelectedRepoFromOrgSecretParams, _ error) {
 	// Decode path: org.
 	{
@@ -6346,6 +6814,14 @@ func decodeActionsRemoveSelectedRepoFromOrgSecretParams(args [3]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type ActionsRemoveSelfHostedRunnerFromGroupForOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r *http.Request) (params ActionsRemoveSelfHostedRunnerFromGroupForOrgParams, _ error) {
@@ -6445,6 +6921,13 @@ func decodeActionsRemoveSelfHostedRunnerFromGroupForOrgParams(args [3]string, r 
 	return params, nil
 }
 
+type ActionsRetryWorkflowParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
+}
+
 func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params ActionsRetryWorkflowParams, _ error) {
 	// Decode path: owner.
 	{
@@ -6540,6 +7023,13 @@ func decodeActionsRetryWorkflowParams(args [3]string, r *http.Request) (params A
 		}
 	}
 	return params, nil
+}
+
+type ActionsReviewPendingDeploymentsForRunParams struct {
+	Owner string
+	Repo  string
+	// The id of the workflow run.
+	RunID int
 }
 
 func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.Request) (params ActionsReviewPendingDeploymentsForRunParams, _ error) {
@@ -6639,6 +7129,10 @@ func decodeActionsReviewPendingDeploymentsForRunParams(args [3]string, r *http.R
 	return params, nil
 }
 
+type ActionsSetAllowedActionsOrganizationParams struct {
+	Org string
+}
+
 func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetAllowedActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
@@ -6672,6 +7166,11 @@ func decodeActionsSetAllowedActionsOrganizationParams(args [1]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type ActionsSetAllowedActionsRepositoryParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Request) (params ActionsSetAllowedActionsRepositoryParams, _ error) {
@@ -6740,6 +7239,10 @@ func decodeActionsSetAllowedActionsRepositoryParams(args [2]string, r *http.Requ
 	return params, nil
 }
 
+type ActionsSetGithubActionsPermissionsOrganizationParams struct {
+	Org string
+}
+
 func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetGithubActionsPermissionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
@@ -6773,6 +7276,11 @@ func decodeActionsSetGithubActionsPermissionsOrganizationParams(args [1]string, 
 		}
 	}
 	return params, nil
+}
+
+type ActionsSetGithubActionsPermissionsRepositoryParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r *http.Request) (params ActionsSetGithubActionsPermissionsRepositoryParams, _ error) {
@@ -6841,6 +7349,12 @@ func decodeActionsSetGithubActionsPermissionsRepositoryParams(args [2]string, r 
 	return params, nil
 }
 
+type ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+}
+
 func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string, r *http.Request) (params ActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -6905,6 +7419,12 @@ func decodeActionsSetRepoAccessToSelfHostedRunnerGroupInOrgParams(args [2]string
 		}
 	}
 	return params, nil
+}
+
+type ActionsSetSelectedReposForOrgSecretParams struct {
+	Org string
+	// Secret_name parameter.
+	SecretName string
 }
 
 func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Request) (params ActionsSetSelectedReposForOrgSecretParams, _ error) {
@@ -6973,6 +7493,10 @@ func decodeActionsSetSelectedReposForOrgSecretParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+type ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams struct {
+	Org string
+}
+
 func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(args [1]string, r *http.Request) (params ActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams, _ error) {
 	// Decode path: org.
 	{
@@ -7006,6 +7530,12 @@ func decodeActionsSetSelectedRepositoriesEnabledGithubActionsOrganizationParams(
 		}
 	}
 	return params, nil
+}
+
+type ActionsSetSelfHostedRunnersInGroupForOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
 }
 
 func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *http.Request) (params ActionsSetSelfHostedRunnersInGroupForOrgParams, _ error) {
@@ -7074,6 +7604,12 @@ func decodeActionsSetSelfHostedRunnersInGroupForOrgParams(args [2]string, r *htt
 	return params, nil
 }
 
+type ActionsUpdateSelfHostedRunnerGroupForOrgParams struct {
+	Org string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+}
+
 func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *http.Request) (params ActionsUpdateSelfHostedRunnerGroupForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -7138,6 +7674,11 @@ func decodeActionsUpdateSelfHostedRunnerGroupForOrgParams(args [2]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type ActivityCheckRepoIsStarredByAuthenticatedUserParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityCheckRepoIsStarredByAuthenticatedUserParams, _ error) {
@@ -7206,6 +7747,11 @@ func decodeActivityCheckRepoIsStarredByAuthenticatedUserParams(args [2]string, r
 	return params, nil
 }
 
+type ActivityDeleteRepoSubscriptionParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivityDeleteRepoSubscriptionParams, _ error) {
 	// Decode path: owner.
 	{
@@ -7272,6 +7818,11 @@ func decodeActivityDeleteRepoSubscriptionParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+type ActivityDeleteThreadSubscriptionParams struct {
+	// Thread_id parameter.
+	ThreadID int
+}
+
 func decodeActivityDeleteThreadSubscriptionParams(args [1]string, r *http.Request) (params ActivityDeleteThreadSubscriptionParams, _ error) {
 	// Decode path: thread_id.
 	{
@@ -7305,6 +7856,11 @@ func decodeActivityDeleteThreadSubscriptionParams(args [1]string, r *http.Reques
 		}
 	}
 	return params, nil
+}
+
+type ActivityGetRepoSubscriptionParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivityGetRepoSubscriptionParams, _ error) {
@@ -7373,6 +7929,11 @@ func decodeActivityGetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+type ActivityGetThreadParams struct {
+	// Thread_id parameter.
+	ThreadID int
+}
+
 func decodeActivityGetThreadParams(args [1]string, r *http.Request) (params ActivityGetThreadParams, _ error) {
 	// Decode path: thread_id.
 	{
@@ -7408,6 +7969,11 @@ func decodeActivityGetThreadParams(args [1]string, r *http.Request) (params Acti
 	return params, nil
 }
 
+type ActivityGetThreadSubscriptionForAuthenticatedUserParams struct {
+	// Thread_id parameter.
+	ThreadID int
+}
+
 func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]string, r *http.Request) (params ActivityGetThreadSubscriptionForAuthenticatedUserParams, _ error) {
 	// Decode path: thread_id.
 	{
@@ -7441,6 +8007,14 @@ func decodeActivityGetThreadSubscriptionForAuthenticatedUserParams(args [1]strin
 		}
 	}
 	return params, nil
+}
+
+type ActivityListEventsForAuthenticatedUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.Request) (params ActivityListEventsForAuthenticatedUserParams, _ error) {
@@ -7557,6 +8131,23 @@ func decodeActivityListEventsForAuthenticatedUserParams(args [1]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type ActivityListNotificationsForAuthenticatedUserParams struct {
+	// If `true`, show notifications marked as read.
+	All OptBool
+	// If `true`, only shows notifications in which the user is directly participating or mentioned.
+	Participating OptBool
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Only show notifications updated before the given time. This is a timestamp in [ISO
+	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Before OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListNotificationsForAuthenticatedUserParams, _ error) {
@@ -7792,6 +8383,15 @@ func decodeActivityListNotificationsForAuthenticatedUserParams(args [0]string, r
 	return params, nil
 }
 
+type ActivityListOrgEventsForAuthenticatedUserParams struct {
+	Username string
+	Org      string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityListOrgEventsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
@@ -7939,6 +8539,13 @@ func decodeActivityListOrgEventsForAuthenticatedUserParams(args [2]string, r *ht
 	return params, nil
 }
 
+type ActivityListPublicEventsParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (params ActivityListPublicEventsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -8022,6 +8629,15 @@ func decodeActivityListPublicEventsParams(args [0]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ActivityListPublicEventsForRepoNetworkParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.Request) (params ActivityListPublicEventsForRepoNetworkParams, _ error) {
@@ -8171,6 +8787,14 @@ func decodeActivityListPublicEventsForRepoNetworkParams(args [2]string, r *http.
 	return params, nil
 }
 
+type ActivityListPublicEventsForUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request) (params ActivityListPublicEventsForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
@@ -8285,6 +8909,14 @@ func decodeActivityListPublicEventsForUserParams(args [1]string, r *http.Request
 		}
 	}
 	return params, nil
+}
+
+type ActivityListPublicOrgEventsParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (params ActivityListPublicOrgEventsParams, _ error) {
@@ -8403,6 +9035,14 @@ func decodeActivityListPublicOrgEventsParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+type ActivityListReceivedEventsForUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Request) (params ActivityListReceivedEventsForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
@@ -8519,6 +9159,14 @@ func decodeActivityListReceivedEventsForUserParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+type ActivityListReceivedPublicEventsForUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http.Request) (params ActivityListReceivedPublicEventsForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
@@ -8633,6 +9281,15 @@ func decodeActivityListReceivedPublicEventsForUserParams(args [1]string, r *http
 		}
 	}
 	return params, nil
+}
+
+type ActivityListRepoEventsParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params ActivityListRepoEventsParams, _ error) {
@@ -8780,6 +9437,25 @@ func decodeActivityListRepoEventsParams(args [2]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type ActivityListRepoNotificationsForAuthenticatedUserParams struct {
+	Owner string
+	Repo  string
+	// If `true`, show notifications marked as read.
+	All OptBool
+	// If `true`, only shows notifications in which the user is directly participating or mentioned.
+	Participating OptBool
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Only show notifications updated before the given time. This is a timestamp in [ISO
+	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Before OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityListRepoNotificationsForAuthenticatedUserParams, _ error) {
@@ -9077,6 +9753,17 @@ func decodeActivityListRepoNotificationsForAuthenticatedUserParams(args [2]strin
 	return params, nil
 }
 
+type ActivityListReposStarredByAuthenticatedUserParams struct {
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptActivityListReposStarredByAuthenticatedUserSort
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptActivityListReposStarredByAuthenticatedUserDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListReposStarredByAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: sort.
@@ -9272,6 +9959,14 @@ func decodeActivityListReposStarredByAuthenticatedUserParams(args [0]string, r *
 	return params, nil
 }
 
+type ActivityListReposWatchedByUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request) (params ActivityListReposWatchedByUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
@@ -9388,6 +10083,13 @@ func decodeActivityListReposWatchedByUserParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+type ActivityListWatchedReposForAuthenticatedUserParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r *http.Request) (params ActivityListWatchedReposForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -9471,6 +10173,15 @@ func decodeActivityListWatchedReposForAuthenticatedUserParams(args [0]string, r 
 		}
 	}
 	return params, nil
+}
+
+type ActivityListWatchersForRepoParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (params ActivityListWatchersForRepoParams, _ error) {
@@ -9620,6 +10331,11 @@ func decodeActivityListWatchersForRepoParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+type ActivityMarkRepoNotificationsAsReadParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Request) (params ActivityMarkRepoNotificationsAsReadParams, _ error) {
 	// Decode path: owner.
 	{
@@ -9686,6 +10402,11 @@ func decodeActivityMarkRepoNotificationsAsReadParams(args [2]string, r *http.Req
 	return params, nil
 }
 
+type ActivityMarkThreadAsReadParams struct {
+	// Thread_id parameter.
+	ThreadID int
+}
+
 func decodeActivityMarkThreadAsReadParams(args [1]string, r *http.Request) (params ActivityMarkThreadAsReadParams, _ error) {
 	// Decode path: thread_id.
 	{
@@ -9719,6 +10440,11 @@ func decodeActivityMarkThreadAsReadParams(args [1]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ActivitySetRepoSubscriptionParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (params ActivitySetRepoSubscriptionParams, _ error) {
@@ -9787,6 +10513,11 @@ func decodeActivitySetRepoSubscriptionParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+type ActivitySetThreadSubscriptionParams struct {
+	// Thread_id parameter.
+	ThreadID int
+}
+
 func decodeActivitySetThreadSubscriptionParams(args [1]string, r *http.Request) (params ActivitySetThreadSubscriptionParams, _ error) {
 	// Decode path: thread_id.
 	{
@@ -9820,6 +10551,11 @@ func decodeActivitySetThreadSubscriptionParams(args [1]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type ActivityStarRepoForAuthenticatedUserParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityStarRepoForAuthenticatedUserParams, _ error) {
@@ -9888,6 +10624,11 @@ func decodeActivityStarRepoForAuthenticatedUserParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+type ActivityUnstarRepoForAuthenticatedUserParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params ActivityUnstarRepoForAuthenticatedUserParams, _ error) {
 	// Decode path: owner.
 	{
@@ -9952,6 +10693,12 @@ func decodeActivityUnstarRepoForAuthenticatedUserParams(args [2]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type AppsAddRepoToInstallationParams struct {
+	// Installation_id parameter.
+	InstallationID int
+	RepositoryID   int
 }
 
 func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (params AppsAddRepoToInstallationParams, _ error) {
@@ -10020,6 +10767,11 @@ func decodeAppsAddRepoToInstallationParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+type AppsCheckTokenParams struct {
+	// The client ID of your GitHub app.
+	ClientID string
+}
+
 func decodeAppsCheckTokenParams(args [1]string, r *http.Request) (params AppsCheckTokenParams, _ error) {
 	// Decode path: client_id.
 	{
@@ -10053,6 +10805,17 @@ func decodeAppsCheckTokenParams(args [1]string, r *http.Request) (params AppsChe
 		}
 	}
 	return params, nil
+}
+
+type AppsCreateContentAttachmentParams struct {
+	// The owner of the repository. Determined from the `repository` `full_name` of the
+	// `content_reference` event.
+	Owner string
+	// The name of the repository. Determined from the `repository` `full_name` of the
+	// `content_reference` event.
+	Repo string
+	// The `id` of the `content_reference` event.
+	ContentReferenceID int
 }
 
 func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (params AppsCreateContentAttachmentParams, _ error) {
@@ -10152,6 +10915,11 @@ func decodeAppsCreateContentAttachmentParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type AppsCreateInstallationAccessTokenParams struct {
+	// Installation_id parameter.
+	InstallationID int
+}
+
 func decodeAppsCreateInstallationAccessTokenParams(args [1]string, r *http.Request) (params AppsCreateInstallationAccessTokenParams, _ error) {
 	// Decode path: installation_id.
 	{
@@ -10185,6 +10953,11 @@ func decodeAppsCreateInstallationAccessTokenParams(args [1]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type AppsDeleteAuthorizationParams struct {
+	// The client ID of your GitHub app.
+	ClientID string
 }
 
 func decodeAppsDeleteAuthorizationParams(args [1]string, r *http.Request) (params AppsDeleteAuthorizationParams, _ error) {
@@ -10222,6 +10995,11 @@ func decodeAppsDeleteAuthorizationParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+type AppsDeleteInstallationParams struct {
+	// Installation_id parameter.
+	InstallationID int
+}
+
 func decodeAppsDeleteInstallationParams(args [1]string, r *http.Request) (params AppsDeleteInstallationParams, _ error) {
 	// Decode path: installation_id.
 	{
@@ -10255,6 +11033,11 @@ func decodeAppsDeleteInstallationParams(args [1]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type AppsDeleteTokenParams struct {
+	// The client ID of your GitHub app.
+	ClientID string
 }
 
 func decodeAppsDeleteTokenParams(args [1]string, r *http.Request) (params AppsDeleteTokenParams, _ error) {
@@ -10292,6 +11075,10 @@ func decodeAppsDeleteTokenParams(args [1]string, r *http.Request) (params AppsDe
 	return params, nil
 }
 
+type AppsGetBySlugParams struct {
+	AppSlug string
+}
+
 func decodeAppsGetBySlugParams(args [1]string, r *http.Request) (params AppsGetBySlugParams, _ error) {
 	// Decode path: app_slug.
 	{
@@ -10325,6 +11112,11 @@ func decodeAppsGetBySlugParams(args [1]string, r *http.Request) (params AppsGetB
 		}
 	}
 	return params, nil
+}
+
+type AppsGetSubscriptionPlanForAccountParams struct {
+	// Account_id parameter.
+	AccountID int
 }
 
 func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, r *http.Request) (params AppsGetSubscriptionPlanForAccountParams, _ error) {
@@ -10362,6 +11154,11 @@ func decodeAppsGetSubscriptionPlanForAccountParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+type AppsGetSubscriptionPlanForAccountStubbedParams struct {
+	// Account_id parameter.
+	AccountID int
+}
+
 func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, r *http.Request) (params AppsGetSubscriptionPlanForAccountStubbedParams, _ error) {
 	// Decode path: account_id.
 	{
@@ -10397,6 +11194,10 @@ func decodeAppsGetSubscriptionPlanForAccountStubbedParams(args [1]string, r *htt
 	return params, nil
 }
 
+type AppsGetWebhookDeliveryParams struct {
+	DeliveryID int
+}
+
 func decodeAppsGetWebhookDeliveryParams(args [1]string, r *http.Request) (params AppsGetWebhookDeliveryParams, _ error) {
 	// Decode path: delivery_id.
 	{
@@ -10430,6 +11231,20 @@ func decodeAppsGetWebhookDeliveryParams(args [1]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type AppsListAccountsForPlanParams struct {
+	// Plan_id parameter.
+	PlanID int
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptAppsListAccountsForPlanSort
+	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
+	// the `sort` parameter.
+	Direction OptAppsListAccountsForPlanDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (params AppsListAccountsForPlanParams, _ error) {
@@ -10652,6 +11467,20 @@ func decodeAppsListAccountsForPlanParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+type AppsListAccountsForPlanStubbedParams struct {
+	// Plan_id parameter.
+	PlanID int
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptAppsListAccountsForPlanStubbedSort
+	// To return the oldest accounts first, set to `asc`. Can be one of `asc` or `desc`. Ignored without
+	// the `sort` parameter.
+	Direction OptAppsListAccountsForPlanStubbedDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request) (params AppsListAccountsForPlanStubbedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: plan_id.
@@ -10872,6 +11701,15 @@ func decodeAppsListAccountsForPlanStubbedParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+type AppsListInstallationReposForAuthenticatedUserParams struct {
+	// Installation_id parameter.
+	InstallationID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r *http.Request) (params AppsListInstallationReposForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: installation_id.
@@ -10988,6 +11826,13 @@ func decodeAppsListInstallationReposForAuthenticatedUserParams(args [1]string, r
 	return params, nil
 }
 
+type AppsListPlansParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeAppsListPlansParams(args [0]string, r *http.Request) (params AppsListPlansParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -11071,6 +11916,13 @@ func decodeAppsListPlansParams(args [0]string, r *http.Request) (params AppsList
 		}
 	}
 	return params, nil
+}
+
+type AppsListPlansStubbedParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (params AppsListPlansStubbedParams, _ error) {
@@ -11158,6 +12010,13 @@ func decodeAppsListPlansStubbedParams(args [0]string, r *http.Request) (params A
 	return params, nil
 }
 
+type AppsListReposAccessibleToInstallationParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.Request) (params AppsListReposAccessibleToInstallationParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -11241,6 +12100,13 @@ func decodeAppsListReposAccessibleToInstallationParams(args [0]string, r *http.R
 		}
 	}
 	return params, nil
+}
+
+type AppsListSubscriptionsForAuthenticatedUserParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *http.Request) (params AppsListSubscriptionsForAuthenticatedUserParams, _ error) {
@@ -11328,6 +12194,13 @@ func decodeAppsListSubscriptionsForAuthenticatedUserParams(args [0]string, r *ht
 	return params, nil
 }
 
+type AppsListSubscriptionsForAuthenticatedUserStubbedParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string, r *http.Request) (params AppsListSubscriptionsForAuthenticatedUserStubbedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -11413,6 +12286,14 @@ func decodeAppsListSubscriptionsForAuthenticatedUserStubbedParams(args [0]string
 	return params, nil
 }
 
+type AppsListWebhookDeliveriesParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
+	// the `link` header for the next and previous page cursors.
+	Cursor OptString
+}
+
 func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (params AppsListWebhookDeliveriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -11492,6 +12373,10 @@ func decodeAppsListWebhookDeliveriesParams(args [0]string, r *http.Request) (par
 	return params, nil
 }
 
+type AppsRedeliverWebhookDeliveryParams struct {
+	DeliveryID int
+}
+
 func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, r *http.Request) (params AppsRedeliverWebhookDeliveryParams, _ error) {
 	// Decode path: delivery_id.
 	{
@@ -11525,6 +12410,12 @@ func decodeAppsRedeliverWebhookDeliveryParams(args [1]string, r *http.Request) (
 		}
 	}
 	return params, nil
+}
+
+type AppsRemoveRepoFromInstallationParams struct {
+	// Installation_id parameter.
+	InstallationID int
+	RepositoryID   int
 }
 
 func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request) (params AppsRemoveRepoFromInstallationParams, _ error) {
@@ -11593,6 +12484,11 @@ func decodeAppsRemoveRepoFromInstallationParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+type AppsResetTokenParams struct {
+	// The client ID of your GitHub app.
+	ClientID string
+}
+
 func decodeAppsResetTokenParams(args [1]string, r *http.Request) (params AppsResetTokenParams, _ error) {
 	// Decode path: client_id.
 	{
@@ -11626,6 +12522,11 @@ func decodeAppsResetTokenParams(args [1]string, r *http.Request) (params AppsRes
 		}
 	}
 	return params, nil
+}
+
+type AppsScopeTokenParams struct {
+	// The client ID of your GitHub app.
+	ClientID string
 }
 
 func decodeAppsScopeTokenParams(args [1]string, r *http.Request) (params AppsScopeTokenParams, _ error) {
@@ -11663,6 +12564,11 @@ func decodeAppsScopeTokenParams(args [1]string, r *http.Request) (params AppsSco
 	return params, nil
 }
 
+type AppsSuspendInstallationParams struct {
+	// Installation_id parameter.
+	InstallationID int
+}
+
 func decodeAppsSuspendInstallationParams(args [1]string, r *http.Request) (params AppsSuspendInstallationParams, _ error) {
 	// Decode path: installation_id.
 	{
@@ -11696,6 +12602,11 @@ func decodeAppsSuspendInstallationParams(args [1]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type AppsUnsuspendInstallationParams struct {
+	// Installation_id parameter.
+	InstallationID int
 }
 
 func decodeAppsUnsuspendInstallationParams(args [1]string, r *http.Request) (params AppsUnsuspendInstallationParams, _ error) {
@@ -11733,6 +12644,11 @@ func decodeAppsUnsuspendInstallationParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+type BillingGetGithubActionsBillingGheParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeBillingGetGithubActionsBillingGheParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingGheParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -11766,6 +12682,10 @@ func decodeBillingGetGithubActionsBillingGheParams(args [1]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type BillingGetGithubActionsBillingOrgParams struct {
+	Org string
 }
 
 func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingOrgParams, _ error) {
@@ -11803,6 +12723,10 @@ func decodeBillingGetGithubActionsBillingOrgParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+type BillingGetGithubActionsBillingUserParams struct {
+	Username string
+}
+
 func decodeBillingGetGithubActionsBillingUserParams(args [1]string, r *http.Request) (params BillingGetGithubActionsBillingUserParams, _ error) {
 	// Decode path: username.
 	{
@@ -11836,6 +12760,11 @@ func decodeBillingGetGithubActionsBillingUserParams(args [1]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type BillingGetGithubPackagesBillingGheParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
 }
 
 func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingGheParams, _ error) {
@@ -11873,6 +12802,10 @@ func decodeBillingGetGithubPackagesBillingGheParams(args [1]string, r *http.Requ
 	return params, nil
 }
 
+type BillingGetGithubPackagesBillingOrgParams struct {
+	Org string
+}
+
 func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -11906,6 +12839,10 @@ func decodeBillingGetGithubPackagesBillingOrgParams(args [1]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type BillingGetGithubPackagesBillingUserParams struct {
+	Username string
 }
 
 func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, r *http.Request) (params BillingGetGithubPackagesBillingUserParams, _ error) {
@@ -11943,6 +12880,11 @@ func decodeBillingGetGithubPackagesBillingUserParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+type BillingGetSharedStorageBillingGheParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeBillingGetSharedStorageBillingGheParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingGheParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -11976,6 +12918,10 @@ func decodeBillingGetSharedStorageBillingGheParams(args [1]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type BillingGetSharedStorageBillingOrgParams struct {
+	Org string
 }
 
 func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingOrgParams, _ error) {
@@ -12013,6 +12959,10 @@ func decodeBillingGetSharedStorageBillingOrgParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+type BillingGetSharedStorageBillingUserParams struct {
+	Username string
+}
+
 func decodeBillingGetSharedStorageBillingUserParams(args [1]string, r *http.Request) (params BillingGetSharedStorageBillingUserParams, _ error) {
 	// Decode path: username.
 	{
@@ -12046,6 +12996,11 @@ func decodeBillingGetSharedStorageBillingUserParams(args [1]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type ChecksCreateSuiteParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (params ChecksCreateSuiteParams, _ error) {
@@ -12112,6 +13067,13 @@ func decodeChecksCreateSuiteParams(args [2]string, r *http.Request) (params Chec
 		}
 	}
 	return params, nil
+}
+
+type ChecksGetParams struct {
+	Owner string
+	Repo  string
+	// Check_run_id parameter.
+	CheckRunID int
 }
 
 func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetParams, _ error) {
@@ -12211,6 +13173,13 @@ func decodeChecksGetParams(args [3]string, r *http.Request) (params ChecksGetPar
 	return params, nil
 }
 
+type ChecksGetSuiteParams struct {
+	Owner string
+	Repo  string
+	// Check_suite_id parameter.
+	CheckSuiteID int
+}
+
 func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksGetSuiteParams, _ error) {
 	// Decode path: owner.
 	{
@@ -12306,6 +13275,17 @@ func decodeChecksGetSuiteParams(args [3]string, r *http.Request) (params ChecksG
 		}
 	}
 	return params, nil
+}
+
+type ChecksListAnnotationsParams struct {
+	Owner string
+	Repo  string
+	// Check_run_id parameter.
+	CheckRunID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params ChecksListAnnotationsParams, _ error) {
@@ -12484,6 +13464,26 @@ func decodeChecksListAnnotationsParams(args [3]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type ChecksListForRefParams struct {
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Returns check runs with the specified `name`.
+	CheckName OptString
+	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
+	// `completed`.
+	Status OptChecksListForRefStatus
+	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
+	// recent check runs) or `all`.
+	Filter OptChecksListForRefFilter
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page  OptInt
+	AppID OptInt
 }
 
 func decodeChecksListForRefParams(args [3]string, r *http.Request) (params ChecksListForRefParams, _ error) {
@@ -12836,6 +13836,25 @@ func decodeChecksListForRefParams(args [3]string, r *http.Request) (params Check
 	return params, nil
 }
 
+type ChecksListForSuiteParams struct {
+	Owner string
+	Repo  string
+	// Check_suite_id parameter.
+	CheckSuiteID int
+	// Returns check runs with the specified `name`.
+	CheckName OptString
+	// Returns check runs with the specified `status`. Can be one of `queued`, `in_progress`, or
+	// `completed`.
+	Status OptChecksListForSuiteStatus
+	// Filters check runs by their `completed_at` timestamp. Can be one of `latest` (returning the most
+	// recent check runs) or `all`.
+	Filter OptChecksListForSuiteFilter
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params ChecksListForSuiteParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -13152,6 +14171,21 @@ func decodeChecksListForSuiteParams(args [3]string, r *http.Request) (params Che
 	return params, nil
 }
 
+type ChecksListSuitesForRefParams struct {
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Filters check suites by GitHub App `id`.
+	AppID OptInt
+	// Returns check runs with the specified `name`.
+	CheckName OptString
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params ChecksListSuitesForRefParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -13398,6 +14432,13 @@ func decodeChecksListSuitesForRefParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+type ChecksRerequestSuiteParams struct {
+	Owner string
+	Repo  string
+	// Check_suite_id parameter.
+	CheckSuiteID int
+}
+
 func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params ChecksRerequestSuiteParams, _ error) {
 	// Decode path: owner.
 	{
@@ -13495,6 +14536,11 @@ func decodeChecksRerequestSuiteParams(args [3]string, r *http.Request) (params C
 	return params, nil
 }
 
+type ChecksSetSuitesPreferencesParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (params ChecksSetSuitesPreferencesParams, _ error) {
 	// Decode path: owner.
 	{
@@ -13559,6 +14605,19 @@ func decodeChecksSetSuitesPreferencesParams(args [2]string, r *http.Request) (pa
 		}
 	}
 	return params, nil
+}
+
+type CodeScanningDeleteAnalysisParams struct {
+	Owner string
+	Repo  string
+	// The ID of the analysis, as returned from the `GET /repos/{owner}/{repo}/code-scanning/analyses`
+	// operation.
+	AnalysisID int
+	// Allow deletion if the specified analysis is the last in a set. If you attempt to delete the final
+	// analysis in a set without setting this parameter to `true`, you'll get a 400 response with the
+	// message: `Analysis is last of its type and deletion may result in the loss of historical alert
+	// data. Please specify confirm_delete.`.
+	ConfirmDelete OptNilString
 }
 
 func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (params CodeScanningDeleteAnalysisParams, _ error) {
@@ -13693,6 +14752,15 @@ func decodeCodeScanningDeleteAnalysisParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+type CodeScanningGetAlertParams struct {
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	AlertNumber AlertNumber
+}
+
 func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params CodeScanningGetAlertParams, _ error) {
 	// Decode path: owner.
 	{
@@ -13797,6 +14865,14 @@ func decodeCodeScanningGetAlertParams(args [3]string, r *http.Request) (params C
 	return params, nil
 }
 
+type CodeScanningGetAnalysisParams struct {
+	Owner string
+	Repo  string
+	// The ID of the analysis, as returned from the `GET /repos/{owner}/{repo}/code-scanning/analyses`
+	// operation.
+	AnalysisID int
+}
+
 func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (params CodeScanningGetAnalysisParams, _ error) {
 	// Decode path: owner.
 	{
@@ -13894,6 +14970,13 @@ func decodeCodeScanningGetAnalysisParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type CodeScanningGetSarifParams struct {
+	Owner string
+	Repo  string
+	// The SARIF ID obtained after uploading.
+	SarifID string
+}
+
 func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params CodeScanningGetSarifParams, _ error) {
 	// Decode path: owner.
 	{
@@ -13989,6 +15072,23 @@ func decodeCodeScanningGetSarifParams(args [3]string, r *http.Request) (params C
 		}
 	}
 	return params, nil
+}
+
+type CodeScanningListAlertInstancesParams struct {
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	AlertNumber AlertNumber
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The Git reference for the results you want to list. The `ref` for a branch can be formatted either
+	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
+	// `refs/pull/<number>/merge`.
+	Ref OptCodeScanningRef
 }
 
 func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request) (params CodeScanningListAlertInstancesParams, _ error) {
@@ -14215,6 +15315,28 @@ func decodeCodeScanningListAlertInstancesParams(args [3]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type CodeScanningListAlertsForRepoParams struct {
+	Owner string
+	Repo  string
+	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
+	// tool by using either `tool_name` or `tool_guid`, but not both.
+	ToolName OptCodeScanningAnalysisToolName
+	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
+	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
+	// either `tool_guid` or `tool_name`, but not both.
+	ToolGUID OptNilCodeScanningAnalysisToolGUID
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The Git reference for the results you want to list. The `ref` for a branch can be formatted either
+	// as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
+	// `refs/pull/<number>/merge`.
+	Ref OptCodeScanningRef
+	// Set to `open`, `fixed`, or `dismissed` to list code scanning alerts in a specific state.
+	State OptCodeScanningAlertState
 }
 
 func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) (params CodeScanningListAlertsForRepoParams, _ error) {
@@ -14536,6 +15658,28 @@ func decodeCodeScanningListAlertsForRepoParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+type CodeScanningListRecentAnalysesParams struct {
+	Owner string
+	Repo  string
+	// The name of a code scanning tool. Only results by this tool will be listed. You can specify the
+	// tool by using either `tool_name` or `tool_guid`, but not both.
+	ToolName OptCodeScanningAnalysisToolName
+	// The GUID of a code scanning tool. Only results by this tool will be listed. Note that some code
+	// scanning tools may not include a GUID in their analysis data. You can specify the tool by using
+	// either `tool_guid` or `tool_name`, but not both.
+	ToolGUID OptNilCodeScanningAnalysisToolGUID
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The Git reference for the analyses you want to list. The `ref` for a branch can be formatted
+	// either as `refs/heads/<branch name>` or simply `<branch name>`. To reference a pull request use
+	// `refs/pull/<number>/merge`.
+	Ref OptCodeScanningRef
+	// Filter analyses belonging to the same SARIF upload.
+	SarifID OptCodeScanningAnalysisSarifID
+}
+
 func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request) (params CodeScanningListRecentAnalysesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -14847,6 +15991,15 @@ func decodeCodeScanningListRecentAnalysesParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+type CodeScanningUpdateAlertParams struct {
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	AlertNumber AlertNumber
+}
+
 func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (params CodeScanningUpdateAlertParams, _ error) {
 	// Decode path: owner.
 	{
@@ -14951,6 +16104,11 @@ func decodeCodeScanningUpdateAlertParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type CodeScanningUploadSarifParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (params CodeScanningUploadSarifParams, _ error) {
 	// Decode path: owner.
 	{
@@ -15017,6 +16175,10 @@ func decodeCodeScanningUploadSarifParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+type CodesOfConductGetConductCodeParams struct {
+	Key string
+}
+
 func decodeCodesOfConductGetConductCodeParams(args [1]string, r *http.Request) (params CodesOfConductGetConductCodeParams, _ error) {
 	// Decode path: key.
 	{
@@ -15050,6 +16212,15 @@ func decodeCodesOfConductGetConductCodeParams(args [1]string, r *http.Request) (
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Unique identifier of an organization.
+	OrgID int
 }
 
 func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
@@ -15149,6 +16320,15 @@ func decodeEnterpriseAdminAddOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params, nil
 }
 
+type EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
+}
+
 func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -15246,6 +16426,11 @@ func decodeEnterpriseAdminAddSelfHostedRunnerToGroupForEnterpriseParams(args [3]
 	return params, nil
 }
 
+type EnterpriseAdminCreateRegistrationTokenForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateRegistrationTokenForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -15279,6 +16464,11 @@ func decodeEnterpriseAdminCreateRegistrationTokenForEnterpriseParams(args [1]str
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminCreateRemoveTokenForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
 }
 
 func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateRemoveTokenForEnterpriseParams, _ error) {
@@ -15316,6 +16506,11 @@ func decodeEnterpriseAdminCreateRemoveTokenForEnterpriseParams(args [1]string, r
 	return params, nil
 }
 
+type EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -15349,6 +16544,13 @@ func decodeEnterpriseAdminCreateSelfHostedRunnerGroupForEnterpriseParams(args [1
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminDeleteScimGroupFromEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Identifier generated by the GitHub SCIM endpoint.
+	ScimGroupID string
 }
 
 func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteScimGroupFromEnterpriseParams, _ error) {
@@ -15417,6 +16619,13 @@ func decodeEnterpriseAdminDeleteScimGroupFromEnterpriseParams(args [2]string, r 
 	return params, nil
 }
 
+type EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
+}
+
 func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -15481,6 +16690,13 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerFromEnterpriseParams(args [2]str
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
 }
 
 func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams, _ error) {
@@ -15549,6 +16765,13 @@ func decodeEnterpriseAdminDeleteSelfHostedRunnerGroupFromEnterpriseParams(args [
 	return params, nil
 }
 
+type EnterpriseAdminDeleteUserFromEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Scim_user_id parameter.
+	ScimUserID string
+}
+
 func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDeleteUserFromEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -15613,6 +16836,13 @@ func decodeEnterpriseAdminDeleteUserFromEnterpriseParams(args [2]string, r *http
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of an organization.
+	OrgID int
 }
 
 func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminDisableSelectedOrganizationGithubActionsEnterpriseParams, _ error) {
@@ -15681,6 +16911,13 @@ func decodeEnterpriseAdminDisableSelectedOrganizationGithubActionsEnterprisePara
 	return params, nil
 }
 
+type EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of an organization.
+	OrgID int
+}
+
 func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -15747,6 +16984,11 @@ func decodeEnterpriseAdminEnableSelectedOrganizationGithubActionsEnterpriseParam
 	return params, nil
 }
 
+type EnterpriseAdminGetAllowedActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminGetAllowedActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -15780,6 +17022,36 @@ func decodeEnterpriseAdminGetAllowedActionsEnterpriseParams(args [1]string, r *h
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminGetAuditLogParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
+	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
+	Phrase OptString
+	// The event types to include:
+	// - `web` - returns web (non-Git) events
+	// - `git` - returns Git events
+	// - `all` - returns both web and Git events
+	// The default is `web`.
+	Include OptEnterpriseAdminGetAuditLogInclude
+	// A cursor, as given in the [Link header](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
+	// for events after this cursor.
+	After OptString
+	// A cursor, as given in the [Link header](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
+	// for events before this cursor.
+	Before OptString
+	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
+	// first, specify `asc`.
+	// The default is `desc`.
+	Order OptEnterpriseAdminGetAuditLogOrder
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (params EnterpriseAdminGetAuditLogParams, _ error) {
@@ -16098,6 +17370,11 @@ func decodeEnterpriseAdminGetAuditLogParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+type EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminGetGithubActionsPermissionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -16131,6 +17408,15 @@ func decodeEnterpriseAdminGetGithubActionsPermissionsEnterpriseParams(args [1]st
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Identifier generated by the GitHub SCIM endpoint.
+	ScimGroupID string
+	// Attributes to exclude.
+	ExcludedAttributes OptString
 }
 
 func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams, _ error) {
@@ -16234,6 +17520,13 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseGroupParams(arg
 	return params, nil
 }
 
+type EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Scim_user_id parameter.
+	ScimUserID string
+}
+
 func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminGetProvisioningInformationForEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -16298,6 +17591,13 @@ func decodeEnterpriseAdminGetProvisioningInformationForEnterpriseUserParams(args
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
 }
 
 func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminGetSelfHostedRunnerForEnterpriseParams, _ error) {
@@ -16366,6 +17666,13 @@ func decodeEnterpriseAdminGetSelfHostedRunnerForEnterpriseParams(args [2]string,
 	return params, nil
 }
 
+type EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+}
+
 func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -16430,6 +17737,17 @@ func decodeEnterpriseAdminGetSelfHostedRunnerGroupForEnterpriseParams(args [2]st
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
@@ -16577,6 +17895,19 @@ func decodeEnterpriseAdminListOrgAccessToSelfHostedRunnerGroupInEnterpriseParams
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminListProvisionedGroupsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Used for pagination: the index of the first result to return.
+	StartIndex OptInt
+	// Used for pagination: the number of results to return.
+	Count OptInt
+	// Filter results.
+	Filter OptString
+	// Attributes to exclude.
+	ExcludedAttributes OptString
 }
 
 func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListProvisionedGroupsEnterpriseParams, _ error) {
@@ -16751,6 +18082,17 @@ func decodeEnterpriseAdminListProvisionedGroupsEnterpriseParams(args [1]string, 
 	return params, nil
 }
 
+type EnterpriseAdminListProvisionedIdentitiesEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Used for pagination: the index of the first result to return.
+	StartIndex OptInt
+	// Used for pagination: the number of results to return.
+	Count OptInt
+	// Filter results.
+	Filter OptString
+}
+
 func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListProvisionedIdentitiesEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
@@ -16889,6 +18231,11 @@ func decodeEnterpriseAdminListProvisionedIdentitiesEnterpriseParams(args [1]stri
 	return params, nil
 }
 
+type EnterpriseAdminListRunnerApplicationsForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListRunnerApplicationsForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -16922,6 +18269,15 @@ func decodeEnterpriseAdminListRunnerApplicationsForEnterpriseParams(args [1]stri
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpriseParams, _ error) {
@@ -17040,6 +18396,15 @@ func decodeEnterpriseAdminListSelectedOrganizationsEnabledGithubActionsEnterpris
 	return params, nil
 }
 
+type EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
@@ -17156,6 +18521,15 @@ func decodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseParams(args [1]
 	return params, nil
 }
 
+type EnterpriseAdminListSelfHostedRunnersForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: enterprise.
@@ -17270,6 +18644,17 @@ func decodeEnterpriseAdminListSelfHostedRunnersForEnterpriseParams(args [1]strin
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams, _ error) {
@@ -17419,6 +18804,11 @@ func decodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams(args [
 	return params, nil
 }
 
+type EnterpriseAdminProvisionAndInviteEnterpriseGroupParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string, r *http.Request) (params EnterpriseAdminProvisionAndInviteEnterpriseGroupParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -17454,6 +18844,11 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseGroupParams(args [1]string
 	return params, nil
 }
 
+type EnterpriseAdminProvisionAndInviteEnterpriseUserParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string, r *http.Request) (params EnterpriseAdminProvisionAndInviteEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -17487,6 +18882,15 @@ func decodeEnterpriseAdminProvisionAndInviteEnterpriseUserParams(args [1]string,
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Unique identifier of an organization.
+	OrgID int
 }
 
 func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
@@ -17586,6 +18990,15 @@ func decodeEnterpriseAdminRemoveOrgAccessToSelfHostedRunnerGroupInEnterprisePara
 	return params, nil
 }
 
+type EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+	// Unique identifier of the self-hosted runner.
+	RunnerID int
+}
+
 func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(args [3]string, r *http.Request) (params EnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -17683,6 +19096,11 @@ func decodeEnterpriseAdminRemoveSelfHostedRunnerFromGroupForEnterpriseParams(arg
 	return params, nil
 }
 
+type EnterpriseAdminSetAllowedActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetAllowedActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -17718,6 +19136,11 @@ func decodeEnterpriseAdminSetAllowedActionsEnterpriseParams(args [1]string, r *h
 	return params, nil
 }
 
+type EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetGithubActionsPermissionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -17751,6 +19174,13 @@ func decodeEnterpriseAdminSetGithubActionsPermissionsEnterpriseParams(args [1]st
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Identifier generated by the GitHub SCIM endpoint.
+	ScimGroupID string
 }
 
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams, _ error) {
@@ -17819,6 +19249,13 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseGroupParams(args
 	return params, nil
 }
 
+type EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Scim_user_id parameter.
+	ScimUserID string
+}
+
 func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminSetInformationForProvisionedEnterpriseUserParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -17883,6 +19320,13 @@ func decodeEnterpriseAdminSetInformationForProvisionedEnterpriseUserParams(args 
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
 }
 
 func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams, _ error) {
@@ -17951,6 +19395,11 @@ func decodeEnterpriseAdminSetOrgAccessToSelfHostedRunnerGroupInEnterpriseParams(
 	return params, nil
 }
 
+type EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+}
+
 func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams(args [1]string, r *http.Request) (params EnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -17984,6 +19433,13 @@ func decodeEnterpriseAdminSetSelectedOrganizationsEnabledGithubActionsEnterprise
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
 }
 
 func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams, _ error) {
@@ -18052,6 +19508,13 @@ func decodeEnterpriseAdminSetSelfHostedRunnersInGroupForEnterpriseParams(args [2
 	return params, nil
 }
 
+type EnterpriseAdminUpdateAttributeForEnterpriseGroupParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Identifier generated by the GitHub SCIM endpoint.
+	ScimGroupID string
+}
+
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateAttributeForEnterpriseGroupParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -18116,6 +19579,13 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseGroupParams(args [2]string
 		}
 	}
 	return params, nil
+}
+
+type EnterpriseAdminUpdateAttributeForEnterpriseUserParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Scim_user_id parameter.
+	ScimUserID string
 }
 
 func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateAttributeForEnterpriseUserParams, _ error) {
@@ -18184,6 +19654,13 @@ func decodeEnterpriseAdminUpdateAttributeForEnterpriseUserParams(args [2]string,
 	return params, nil
 }
 
+type EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams struct {
+	// The slug version of the enterprise name. You can also substitute this value with the enterprise id.
+	Enterprise string
+	// Unique identifier of the self-hosted runner group.
+	RunnerGroupID int
+}
+
 func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2]string, r *http.Request) (params EnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams, _ error) {
 	// Decode path: enterprise.
 	{
@@ -18250,6 +19727,11 @@ func decodeEnterpriseAdminUpdateSelfHostedRunnerGroupForEnterpriseParams(args [2
 	return params, nil
 }
 
+type GistsCheckIsStarredParams struct {
+	// Gist_id parameter.
+	GistID string
+}
+
 func decodeGistsCheckIsStarredParams(args [1]string, r *http.Request) (params GistsCheckIsStarredParams, _ error) {
 	// Decode path: gist_id.
 	{
@@ -18283,6 +19765,11 @@ func decodeGistsCheckIsStarredParams(args [1]string, r *http.Request) (params Gi
 		}
 	}
 	return params, nil
+}
+
+type GistsCreateCommentParams struct {
+	// Gist_id parameter.
+	GistID string
 }
 
 func decodeGistsCreateCommentParams(args [1]string, r *http.Request) (params GistsCreateCommentParams, _ error) {
@@ -18320,6 +19807,11 @@ func decodeGistsCreateCommentParams(args [1]string, r *http.Request) (params Gis
 	return params, nil
 }
 
+type GistsDeleteParams struct {
+	// Gist_id parameter.
+	GistID string
+}
+
 func decodeGistsDeleteParams(args [1]string, r *http.Request) (params GistsDeleteParams, _ error) {
 	// Decode path: gist_id.
 	{
@@ -18353,6 +19845,13 @@ func decodeGistsDeleteParams(args [1]string, r *http.Request) (params GistsDelet
 		}
 	}
 	return params, nil
+}
+
+type GistsDeleteCommentParams struct {
+	// Gist_id parameter.
+	GistID string
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (params GistsDeleteCommentParams, _ error) {
@@ -18421,6 +19920,11 @@ func decodeGistsDeleteCommentParams(args [2]string, r *http.Request) (params Gis
 	return params, nil
 }
 
+type GistsForkParams struct {
+	// Gist_id parameter.
+	GistID string
+}
+
 func decodeGistsForkParams(args [1]string, r *http.Request) (params GistsForkParams, _ error) {
 	// Decode path: gist_id.
 	{
@@ -18456,6 +19960,11 @@ func decodeGistsForkParams(args [1]string, r *http.Request) (params GistsForkPar
 	return params, nil
 }
 
+type GistsGetParams struct {
+	// Gist_id parameter.
+	GistID string
+}
+
 func decodeGistsGetParams(args [1]string, r *http.Request) (params GistsGetParams, _ error) {
 	// Decode path: gist_id.
 	{
@@ -18489,6 +19998,13 @@ func decodeGistsGetParams(args [1]string, r *http.Request) (params GistsGetParam
 		}
 	}
 	return params, nil
+}
+
+type GistsGetCommentParams struct {
+	// Gist_id parameter.
+	GistID string
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodeGistsGetCommentParams(args [2]string, r *http.Request) (params GistsGetCommentParams, _ error) {
@@ -18557,6 +20073,12 @@ func decodeGistsGetCommentParams(args [2]string, r *http.Request) (params GistsG
 	return params, nil
 }
 
+type GistsGetRevisionParams struct {
+	// Gist_id parameter.
+	GistID string
+	Sha    string
+}
+
 func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params GistsGetRevisionParams, _ error) {
 	// Decode path: gist_id.
 	{
@@ -18621,6 +20143,16 @@ func decodeGistsGetRevisionParams(args [2]string, r *http.Request) (params Gists
 		}
 	}
 	return params, nil
+}
+
+type GistsListParams struct {
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeGistsListParams(args [0]string, r *http.Request) (params GistsListParams, _ error) {
@@ -18742,6 +20274,15 @@ func decodeGistsListParams(args [0]string, r *http.Request) (params GistsListPar
 	return params, nil
 }
 
+type GistsListCommentsParams struct {
+	// Gist_id parameter.
+	GistID string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeGistsListCommentsParams(args [1]string, r *http.Request) (params GistsListCommentsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
@@ -18858,6 +20399,15 @@ func decodeGistsListCommentsParams(args [1]string, r *http.Request) (params Gist
 	return params, nil
 }
 
+type GistsListCommitsParams struct {
+	// Gist_id parameter.
+	GistID string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeGistsListCommitsParams(args [1]string, r *http.Request) (params GistsListCommitsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
@@ -18972,6 +20522,17 @@ func decodeGistsListCommitsParams(args [1]string, r *http.Request) (params Gists
 		}
 	}
 	return params, nil
+}
+
+type GistsListForUserParams struct {
+	Username string
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeGistsListForUserParams(args [1]string, r *http.Request) (params GistsListForUserParams, _ error) {
@@ -19124,6 +20685,15 @@ func decodeGistsListForUserParams(args [1]string, r *http.Request) (params Gists
 	return params, nil
 }
 
+type GistsListForksParams struct {
+	// Gist_id parameter.
+	GistID string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsListForksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: gist_id.
@@ -19238,6 +20808,16 @@ func decodeGistsListForksParams(args [1]string, r *http.Request) (params GistsLi
 		}
 	}
 	return params, nil
+}
+
+type GistsListPublicParams struct {
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsListPublicParams, _ error) {
@@ -19359,6 +20939,16 @@ func decodeGistsListPublicParams(args [0]string, r *http.Request) (params GistsL
 	return params, nil
 }
 
+type GistsListStarredParams struct {
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeGistsListStarredParams(args [0]string, r *http.Request) (params GistsListStarredParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
@@ -19478,6 +21068,11 @@ func decodeGistsListStarredParams(args [0]string, r *http.Request) (params Gists
 	return params, nil
 }
 
+type GistsStarParams struct {
+	// Gist_id parameter.
+	GistID string
+}
+
 func decodeGistsStarParams(args [1]string, r *http.Request) (params GistsStarParams, _ error) {
 	// Decode path: gist_id.
 	{
@@ -19513,6 +21108,11 @@ func decodeGistsStarParams(args [1]string, r *http.Request) (params GistsStarPar
 	return params, nil
 }
 
+type GistsUnstarParams struct {
+	// Gist_id parameter.
+	GistID string
+}
+
 func decodeGistsUnstarParams(args [1]string, r *http.Request) (params GistsUnstarParams, _ error) {
 	// Decode path: gist_id.
 	{
@@ -19546,6 +21146,13 @@ func decodeGistsUnstarParams(args [1]string, r *http.Request) (params GistsUnsta
 		}
 	}
 	return params, nil
+}
+
+type GistsUpdateCommentParams struct {
+	// Gist_id parameter.
+	GistID string
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (params GistsUpdateCommentParams, _ error) {
@@ -19614,6 +21221,11 @@ func decodeGistsUpdateCommentParams(args [2]string, r *http.Request) (params Gis
 	return params, nil
 }
 
+type GitCreateBlobParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeGitCreateBlobParams(args [2]string, r *http.Request) (params GitCreateBlobParams, _ error) {
 	// Decode path: owner.
 	{
@@ -19678,6 +21290,11 @@ func decodeGitCreateBlobParams(args [2]string, r *http.Request) (params GitCreat
 		}
 	}
 	return params, nil
+}
+
+type GitCreateCommitParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeGitCreateCommitParams(args [2]string, r *http.Request) (params GitCreateCommitParams, _ error) {
@@ -19746,6 +21363,11 @@ func decodeGitCreateCommitParams(args [2]string, r *http.Request) (params GitCre
 	return params, nil
 }
 
+type GitCreateRefParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeGitCreateRefParams(args [2]string, r *http.Request) (params GitCreateRefParams, _ error) {
 	// Decode path: owner.
 	{
@@ -19810,6 +21432,11 @@ func decodeGitCreateRefParams(args [2]string, r *http.Request) (params GitCreate
 		}
 	}
 	return params, nil
+}
+
+type GitCreateTagParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeGitCreateTagParams(args [2]string, r *http.Request) (params GitCreateTagParams, _ error) {
@@ -19878,6 +21505,11 @@ func decodeGitCreateTagParams(args [2]string, r *http.Request) (params GitCreate
 	return params, nil
 }
 
+type GitCreateTreeParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeGitCreateTreeParams(args [2]string, r *http.Request) (params GitCreateTreeParams, _ error) {
 	// Decode path: owner.
 	{
@@ -19942,6 +21574,13 @@ func decodeGitCreateTreeParams(args [2]string, r *http.Request) (params GitCreat
 		}
 	}
 	return params, nil
+}
+
+type GitDeleteRefParams struct {
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
 }
 
 func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDeleteRefParams, _ error) {
@@ -20041,6 +21680,12 @@ func decodeGitDeleteRefParams(args [3]string, r *http.Request) (params GitDelete
 	return params, nil
 }
 
+type GitGetBlobParams struct {
+	Owner   string
+	Repo    string
+	FileSha string
+}
+
 func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobParams, _ error) {
 	// Decode path: owner.
 	{
@@ -20136,6 +21781,13 @@ func decodeGitGetBlobParams(args [3]string, r *http.Request) (params GitGetBlobP
 		}
 	}
 	return params, nil
+}
+
+type GitGetCommitParams struct {
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
+	CommitSha string
 }
 
 func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCommitParams, _ error) {
@@ -20235,6 +21887,13 @@ func decodeGitGetCommitParams(args [3]string, r *http.Request) (params GitGetCom
 	return params, nil
 }
 
+type GitGetRefParams struct {
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+}
+
 func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefParams, _ error) {
 	// Decode path: owner.
 	{
@@ -20332,6 +21991,12 @@ func decodeGitGetRefParams(args [3]string, r *http.Request) (params GitGetRefPar
 	return params, nil
 }
 
+type GitGetTagParams struct {
+	Owner  string
+	Repo   string
+	TagSha string
+}
+
 func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagParams, _ error) {
 	// Decode path: owner.
 	{
@@ -20427,6 +22092,17 @@ func decodeGitGetTagParams(args [3]string, r *http.Request) (params GitGetTagPar
 		}
 	}
 	return params, nil
+}
+
+type GitGetTreeParams struct {
+	Owner   string
+	Repo    string
+	TreeSha string
+	// Setting this parameter to any value returns the objects or subtrees referenced by the tree
+	// specified in `:tree_sha`. For example, setting `recursive` to any of the following will enable
+	// returning objects or subtrees: `0`, `1`, `"true"`, and `"false"`. Omit this parameter to prevent
+	// recursively returning objects or subtrees.
+	Recursive OptString
 }
 
 func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeParams, _ error) {
@@ -20559,6 +22235,17 @@ func decodeGitGetTreeParams(args [3]string, r *http.Request) (params GitGetTreeP
 		}
 	}
 	return params, nil
+}
+
+type GitListMatchingRefsParams struct {
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params GitListMatchingRefsParams, _ error) {
@@ -20739,6 +22426,13 @@ func decodeGitListMatchingRefsParams(args [3]string, r *http.Request) (params Gi
 	return params, nil
 }
 
+type GitUpdateRefParams struct {
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+}
+
 func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdateRefParams, _ error) {
 	// Decode path: owner.
 	{
@@ -20836,6 +22530,10 @@ func decodeGitUpdateRefParams(args [3]string, r *http.Request) (params GitUpdate
 	return params, nil
 }
 
+type GitignoreGetTemplateParams struct {
+	Name string
+}
+
 func decodeGitignoreGetTemplateParams(args [1]string, r *http.Request) (params GitignoreGetTemplateParams, _ error) {
 	// Decode path: name.
 	{
@@ -20871,6 +22569,10 @@ func decodeGitignoreGetTemplateParams(args [1]string, r *http.Request) (params G
 	return params, nil
 }
 
+type InteractionsRemoveRestrictionsForOrgParams struct {
+	Org string
+}
+
 func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, r *http.Request) (params InteractionsRemoveRestrictionsForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -20904,6 +22606,11 @@ func decodeInteractionsRemoveRestrictionsForOrgParams(args [1]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type InteractionsRemoveRestrictionsForRepoParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.Request) (params InteractionsRemoveRestrictionsForRepoParams, _ error) {
@@ -20972,6 +22679,10 @@ func decodeInteractionsRemoveRestrictionsForRepoParams(args [2]string, r *http.R
 	return params, nil
 }
 
+type InteractionsSetRestrictionsForOrgParams struct {
+	Org string
+}
+
 func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, r *http.Request) (params InteractionsSetRestrictionsForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -21005,6 +22716,11 @@ func decodeInteractionsSetRestrictionsForOrgParams(args [1]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type InteractionsSetRestrictionsForRepoParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Request) (params InteractionsSetRestrictionsForRepoParams, _ error) {
@@ -21071,6 +22787,13 @@ func decodeInteractionsSetRestrictionsForRepoParams(args [2]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type IssuesAddAssigneesParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
 }
 
 func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params IssuesAddAssigneesParams, _ error) {
@@ -21170,6 +22893,12 @@ func decodeIssuesAddAssigneesParams(args [3]string, r *http.Request) (params Iss
 	return params, nil
 }
 
+type IssuesCheckUserCanBeAssignedParams struct {
+	Owner    string
+	Repo     string
+	Assignee string
+}
+
 func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (params IssuesCheckUserCanBeAssignedParams, _ error) {
 	// Decode path: owner.
 	{
@@ -21267,6 +22996,11 @@ func decodeIssuesCheckUserCanBeAssignedParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+type IssuesCreateParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeIssuesCreateParams(args [2]string, r *http.Request) (params IssuesCreateParams, _ error) {
 	// Decode path: owner.
 	{
@@ -21331,6 +23065,13 @@ func decodeIssuesCreateParams(args [2]string, r *http.Request) (params IssuesCre
 		}
 	}
 	return params, nil
+}
+
+type IssuesCreateCommentParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
 }
 
 func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params IssuesCreateCommentParams, _ error) {
@@ -21430,6 +23171,11 @@ func decodeIssuesCreateCommentParams(args [3]string, r *http.Request) (params Is
 	return params, nil
 }
 
+type IssuesCreateLabelParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (params IssuesCreateLabelParams, _ error) {
 	// Decode path: owner.
 	{
@@ -21496,6 +23242,11 @@ func decodeIssuesCreateLabelParams(args [2]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+type IssuesCreateMilestoneParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (params IssuesCreateMilestoneParams, _ error) {
 	// Decode path: owner.
 	{
@@ -21560,6 +23311,13 @@ func decodeIssuesCreateMilestoneParams(args [2]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type IssuesDeleteCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params IssuesDeleteCommentParams, _ error) {
@@ -21659,6 +23417,12 @@ func decodeIssuesDeleteCommentParams(args [3]string, r *http.Request) (params Is
 	return params, nil
 }
 
+type IssuesDeleteLabelParams struct {
+	Owner string
+	Repo  string
+	Name  string
+}
+
 func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params IssuesDeleteLabelParams, _ error) {
 	// Decode path: owner.
 	{
@@ -21754,6 +23518,13 @@ func decodeIssuesDeleteLabelParams(args [3]string, r *http.Request) (params Issu
 		}
 	}
 	return params, nil
+}
+
+type IssuesDeleteMilestoneParams struct {
+	Owner string
+	Repo  string
+	// Milestone_number parameter.
+	MilestoneNumber int
 }
 
 func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params IssuesDeleteMilestoneParams, _ error) {
@@ -21853,6 +23624,13 @@ func decodeIssuesDeleteMilestoneParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type IssuesGetParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+}
+
 func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetParams, _ error) {
 	// Decode path: owner.
 	{
@@ -21948,6 +23726,13 @@ func decodeIssuesGetParams(args [3]string, r *http.Request) (params IssuesGetPar
 		}
 	}
 	return params, nil
+}
+
+type IssuesGetCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params IssuesGetCommentParams, _ error) {
@@ -22047,6 +23832,12 @@ func decodeIssuesGetCommentParams(args [3]string, r *http.Request) (params Issue
 	return params, nil
 }
 
+type IssuesGetEventParams struct {
+	Owner   string
+	Repo    string
+	EventID int
+}
+
 func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesGetEventParams, _ error) {
 	// Decode path: owner.
 	{
@@ -22142,6 +23933,12 @@ func decodeIssuesGetEventParams(args [3]string, r *http.Request) (params IssuesG
 		}
 	}
 	return params, nil
+}
+
+type IssuesGetLabelParams struct {
+	Owner string
+	Repo  string
+	Name  string
 }
 
 func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesGetLabelParams, _ error) {
@@ -22241,6 +24038,13 @@ func decodeIssuesGetLabelParams(args [3]string, r *http.Request) (params IssuesG
 	return params, nil
 }
 
+type IssuesGetMilestoneParams struct {
+	Owner string
+	Repo  string
+	// Milestone_number parameter.
+	MilestoneNumber int
+}
+
 func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params IssuesGetMilestoneParams, _ error) {
 	// Decode path: owner.
 	{
@@ -22336,6 +24140,36 @@ func decodeIssuesGetMilestoneParams(args [3]string, r *http.Request) (params Iss
 		}
 	}
 	return params, nil
+}
+
+type IssuesListParams struct {
+	// Indicates which sorts of issues to return. Can be one of:
+	// \* `assigned`: Issues assigned to you
+	// \* `created`: Issues created by you
+	// \* `mentioned`: Issues mentioning you
+	// \* `subscribed`: Issues you're subscribed to updates for
+	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
+	// creation.
+	Filter OptIssuesListFilter
+	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+	State OptIssuesListState
+	// A list of comma separated label names. Example: `bug,ui,@high`.
+	Labels OptString
+	// What to sort results by. Can be either `created`, `updated`, `comments`.
+	Sort OptIssuesListSort
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptIssuesListDirection
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since  OptDateTime
+	Collab OptBool
+	Orgs   OptBool
+	Owned  OptBool
+	Pulls  OptBool
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListParams, _ error) {
@@ -22847,6 +24681,15 @@ func decodeIssuesListParams(args [0]string, r *http.Request) (params IssuesListP
 	return params, nil
 }
 
+type IssuesListAssigneesParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params IssuesListAssigneesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -22992,6 +24835,20 @@ func decodeIssuesListAssigneesParams(args [2]string, r *http.Request) (params Is
 		}
 	}
 	return params, nil
+}
+
+type IssuesListCommentsParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params IssuesListCommentsParams, _ error) {
@@ -23204,6 +25061,22 @@ func decodeIssuesListCommentsParams(args [3]string, r *http.Request) (params Iss
 		}
 	}
 	return params, nil
+}
+
+type IssuesListCommentsForRepoParams struct {
+	Owner string
+	Repo  string
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptIssuesListCommentsForRepoSort
+	// Either `asc` or `desc`. Ignored without the `sort` parameter.
+	Direction OptIssuesListCommentsForRepoDirection
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (params IssuesListCommentsForRepoParams, _ error) {
@@ -23491,6 +25364,15 @@ func decodeIssuesListCommentsForRepoParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+type IssuesListEventsForRepoParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (params IssuesListEventsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -23636,6 +25518,32 @@ func decodeIssuesListEventsForRepoParams(args [2]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type IssuesListForAuthenticatedUserParams struct {
+	// Indicates which sorts of issues to return. Can be one of:
+	// \* `assigned`: Issues assigned to you
+	// \* `created`: Issues created by you
+	// \* `mentioned`: Issues mentioning you
+	// \* `subscribed`: Issues you're subscribed to updates for
+	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
+	// creation.
+	Filter OptIssuesListForAuthenticatedUserFilter
+	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+	State OptIssuesListForAuthenticatedUserState
+	// A list of comma separated label names. Example: `bug,ui,@high`.
+	Labels OptString
+	// What to sort results by. Can be either `created`, `updated`, `comments`.
+	Sort OptIssuesListForAuthenticatedUserSort
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptIssuesListForAuthenticatedUserDirection
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request) (params IssuesListForAuthenticatedUserParams, _ error) {
@@ -24009,6 +25917,33 @@ func decodeIssuesListForAuthenticatedUserParams(args [0]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type IssuesListForOrgParams struct {
+	Org string
+	// Indicates which sorts of issues to return. Can be one of:
+	// \* `assigned`: Issues assigned to you
+	// \* `created`: Issues created by you
+	// \* `mentioned`: Issues mentioning you
+	// \* `subscribed`: Issues you're subscribed to updates for
+	// \* `all` or `repos`: All issues the authenticated user can see, regardless of participation or
+	// creation.
+	Filter OptIssuesListForOrgFilter
+	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+	State OptIssuesListForOrgState
+	// A list of comma separated label names. Example: `bug,ui,@high`.
+	Labels OptString
+	// What to sort results by. Can be either `created`, `updated`, `comments`.
+	Sort OptIssuesListForOrgSort
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptIssuesListForOrgDirection
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params IssuesListForOrgParams, _ error) {
@@ -24413,6 +26348,37 @@ func decodeIssuesListForOrgParams(args [1]string, r *http.Request) (params Issue
 		}
 	}
 	return params, nil
+}
+
+type IssuesListForRepoParams struct {
+	Owner string
+	Repo  string
+	// If an `integer` is passed, it should refer to a milestone by its `number` field. If the string `*`
+	// is passed, issues with any milestone are accepted. If the string `none` is passed, issues without
+	// milestones are returned.
+	Milestone OptString
+	// Indicates the state of the issues to return. Can be either `open`, `closed`, or `all`.
+	State OptIssuesListForRepoState
+	// Can be the name of a user. Pass in `none` for issues with no assigned user, and `*` for issues
+	// assigned to any user.
+	Assignee OptString
+	// The user that created the issue.
+	Creator OptString
+	// A user that's mentioned in the issue.
+	Mentioned OptString
+	// A list of comma separated label names. Example: `bug,ui,@high`.
+	Labels OptString
+	// What to sort results by. Can be either `created`, `updated`, `comments`.
+	Sort OptIssuesListForRepoSort
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptIssuesListForRepoDirection
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params IssuesListForRepoParams, _ error) {
@@ -24931,6 +26897,17 @@ func decodeIssuesListForRepoParams(args [2]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+type IssuesListLabelsForMilestoneParams struct {
+	Owner string
+	Repo  string
+	// Milestone_number parameter.
+	MilestoneNumber int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (params IssuesListLabelsForMilestoneParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -25109,6 +27086,15 @@ func decodeIssuesListLabelsForMilestoneParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+type IssuesListLabelsForRepoParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (params IssuesListLabelsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -25254,6 +27240,17 @@ func decodeIssuesListLabelsForRepoParams(args [2]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type IssuesListLabelsOnIssueParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (params IssuesListLabelsOnIssueParams, _ error) {
@@ -25432,6 +27429,21 @@ func decodeIssuesListLabelsOnIssueParams(args [3]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type IssuesListMilestonesParams struct {
+	Owner string
+	Repo  string
+	// The state of the milestone. Either `open`, `closed`, or `all`.
+	State OptIssuesListMilestonesState
+	// What to sort results by. Either `due_on` or `completeness`.
+	Sort OptIssuesListMilestonesSort
+	// The direction of the sort. Either `asc` or `desc`.
+	Direction OptIssuesListMilestonesDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params IssuesListMilestonesParams, _ error) {
@@ -25746,6 +27758,13 @@ func decodeIssuesListMilestonesParams(args [2]string, r *http.Request) (params I
 	return params, nil
 }
 
+type IssuesLockParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+}
+
 func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockParams, _ error) {
 	// Decode path: owner.
 	{
@@ -25841,6 +27860,13 @@ func decodeIssuesLockParams(args [3]string, r *http.Request) (params IssuesLockP
 		}
 	}
 	return params, nil
+}
+
+type IssuesRemoveAllLabelsParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
 }
 
 func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params IssuesRemoveAllLabelsParams, _ error) {
@@ -25940,6 +27966,13 @@ func decodeIssuesRemoveAllLabelsParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type IssuesRemoveAssigneesParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+}
+
 func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params IssuesRemoveAssigneesParams, _ error) {
 	// Decode path: owner.
 	{
@@ -26035,6 +28068,14 @@ func decodeIssuesRemoveAssigneesParams(args [3]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type IssuesRemoveLabelParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+	Name        string
 }
 
 func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params IssuesRemoveLabelParams, _ error) {
@@ -26165,6 +28206,13 @@ func decodeIssuesRemoveLabelParams(args [4]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+type IssuesUnlockParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+}
+
 func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnlockParams, _ error) {
 	// Decode path: owner.
 	{
@@ -26260,6 +28308,13 @@ func decodeIssuesUnlockParams(args [3]string, r *http.Request) (params IssuesUnl
 		}
 	}
 	return params, nil
+}
+
+type IssuesUpdateParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
 }
 
 func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpdateParams, _ error) {
@@ -26359,6 +28414,13 @@ func decodeIssuesUpdateParams(args [3]string, r *http.Request) (params IssuesUpd
 	return params, nil
 }
 
+type IssuesUpdateCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+}
+
 func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params IssuesUpdateCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -26454,6 +28516,12 @@ func decodeIssuesUpdateCommentParams(args [3]string, r *http.Request) (params Is
 		}
 	}
 	return params, nil
+}
+
+type IssuesUpdateLabelParams struct {
+	Owner string
+	Repo  string
+	Name  string
 }
 
 func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params IssuesUpdateLabelParams, _ error) {
@@ -26553,6 +28621,13 @@ func decodeIssuesUpdateLabelParams(args [3]string, r *http.Request) (params Issu
 	return params, nil
 }
 
+type IssuesUpdateMilestoneParams struct {
+	Owner string
+	Repo  string
+	// Milestone_number parameter.
+	MilestoneNumber int
+}
+
 func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params IssuesUpdateMilestoneParams, _ error) {
 	// Decode path: owner.
 	{
@@ -26650,6 +28725,10 @@ func decodeIssuesUpdateMilestoneParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type LicensesGetParams struct {
+	License string
+}
+
 func decodeLicensesGetParams(args [1]string, r *http.Request) (params LicensesGetParams, _ error) {
 	// Decode path: license.
 	{
@@ -26683,6 +28762,14 @@ func decodeLicensesGetParams(args [1]string, r *http.Request) (params LicensesGe
 		}
 	}
 	return params, nil
+}
+
+type LicensesGetAllCommonlyUsedParams struct {
+	Featured OptBool
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (params LicensesGetAllCommonlyUsedParams, _ error) {
@@ -26804,6 +28891,11 @@ func decodeLicensesGetAllCommonlyUsedParams(args [0]string, r *http.Request) (pa
 	return params, nil
 }
 
+type LicensesGetForRepoParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params LicensesGetForRepoParams, _ error) {
 	// Decode path: owner.
 	{
@@ -26868,6 +28960,11 @@ func decodeLicensesGetForRepoParams(args [2]string, r *http.Request) (params Lic
 		}
 	}
 	return params, nil
+}
+
+type MigrationsCancelImportParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (params MigrationsCancelImportParams, _ error) {
@@ -26936,6 +29033,11 @@ func decodeMigrationsCancelImportParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+type MigrationsDeleteArchiveForAuthenticatedUserParams struct {
+	// Migration_id parameter.
+	MigrationID int
+}
+
 func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsDeleteArchiveForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	{
@@ -26969,6 +29071,12 @@ func decodeMigrationsDeleteArchiveForAuthenticatedUserParams(args [1]string, r *
 		}
 	}
 	return params, nil
+}
+
+type MigrationsDeleteArchiveForOrgParams struct {
+	Org string
+	// Migration_id parameter.
+	MigrationID int
 }
 
 func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) (params MigrationsDeleteArchiveForOrgParams, _ error) {
@@ -27037,6 +29145,12 @@ func decodeMigrationsDeleteArchiveForOrgParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+type MigrationsDownloadArchiveForOrgParams struct {
+	Org string
+	// Migration_id parameter.
+	MigrationID int
+}
+
 func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request) (params MigrationsDownloadArchiveForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -27103,6 +29217,11 @@ func decodeMigrationsDownloadArchiveForOrgParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+type MigrationsGetArchiveForAuthenticatedUserParams struct {
+	// Migration_id parameter.
+	MigrationID int
+}
+
 func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsGetArchiveForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	{
@@ -27136,6 +29255,13 @@ func decodeMigrationsGetArchiveForAuthenticatedUserParams(args [1]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type MigrationsGetCommitAuthorsParams struct {
+	Owner string
+	Repo  string
+	// A user ID. Only return users with an ID greater than this ID.
+	Since OptInt
 }
 
 func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (params MigrationsGetCommitAuthorsParams, _ error) {
@@ -27239,6 +29365,11 @@ func decodeMigrationsGetCommitAuthorsParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+type MigrationsGetImportStatusParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (params MigrationsGetImportStatusParams, _ error) {
 	// Decode path: owner.
 	{
@@ -27305,6 +29436,11 @@ func decodeMigrationsGetImportStatusParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+type MigrationsGetLargeFilesParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (params MigrationsGetLargeFilesParams, _ error) {
 	// Decode path: owner.
 	{
@@ -27369,6 +29505,12 @@ func decodeMigrationsGetLargeFilesParams(args [2]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type MigrationsGetStatusForAuthenticatedUserParams struct {
+	// Migration_id parameter.
+	MigrationID int
+	Exclude     []string
 }
 
 func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http.Request) (params MigrationsGetStatusForAuthenticatedUserParams, _ error) {
@@ -27441,6 +29583,14 @@ func decodeMigrationsGetStatusForAuthenticatedUserParams(args [1]string, r *http
 		}
 	}
 	return params, nil
+}
+
+type MigrationsGetStatusForOrgParams struct {
+	Org string
+	// Migration_id parameter.
+	MigrationID int
+	// Exclude attributes from the API response to improve performance.
+	Exclude []MigrationsGetStatusForOrgExcludeItem
 }
 
 func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (params MigrationsGetStatusForOrgParams, _ error) {
@@ -27568,6 +29718,13 @@ func decodeMigrationsGetStatusForOrgParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+type MigrationsListForAuthenticatedUserParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params MigrationsListForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -27651,6 +29808,16 @@ func decodeMigrationsListForAuthenticatedUserParams(args [0]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type MigrationsListForOrgParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Exclude attributes from the API response to improve performance.
+	Exclude []MigrationsListForOrgExcludeItem
 }
 
 func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (params MigrationsListForOrgParams, _ error) {
@@ -27827,6 +29994,16 @@ func decodeMigrationsListForOrgParams(args [1]string, r *http.Request) (params M
 	return params, nil
 }
 
+type MigrationsListReposForOrgParams struct {
+	Org string
+	// Migration_id parameter.
+	MigrationID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (params MigrationsListReposForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -27974,6 +30151,15 @@ func decodeMigrationsListReposForOrgParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+type MigrationsListReposForUserParams struct {
+	// Migration_id parameter.
+	MigrationID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (params MigrationsListReposForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: migration_id.
@@ -28090,6 +30276,12 @@ func decodeMigrationsListReposForUserParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+type MigrationsMapCommitAuthorParams struct {
+	Owner    string
+	Repo     string
+	AuthorID int
+}
+
 func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (params MigrationsMapCommitAuthorParams, _ error) {
 	// Decode path: owner.
 	{
@@ -28187,6 +30379,11 @@ func decodeMigrationsMapCommitAuthorParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+type MigrationsSetLfsPreferenceParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (params MigrationsSetLfsPreferenceParams, _ error) {
 	// Decode path: owner.
 	{
@@ -28253,6 +30450,10 @@ func decodeMigrationsSetLfsPreferenceParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+type MigrationsStartForOrgParams struct {
+	Org string
+}
+
 func decodeMigrationsStartForOrgParams(args [1]string, r *http.Request) (params MigrationsStartForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -28286,6 +30487,11 @@ func decodeMigrationsStartForOrgParams(args [1]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type MigrationsStartImportParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (params MigrationsStartImportParams, _ error) {
@@ -28354,6 +30560,13 @@ func decodeMigrationsStartImportParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+type MigrationsUnlockRepoForAuthenticatedUserParams struct {
+	// Migration_id parameter.
+	MigrationID int
+	// Repo_name parameter.
+	RepoName string
+}
+
 func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *http.Request) (params MigrationsUnlockRepoForAuthenticatedUserParams, _ error) {
 	// Decode path: migration_id.
 	{
@@ -28418,6 +30631,14 @@ func decodeMigrationsUnlockRepoForAuthenticatedUserParams(args [2]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type MigrationsUnlockRepoForOrgParams struct {
+	Org string
+	// Migration_id parameter.
+	MigrationID int
+	// Repo_name parameter.
+	RepoName string
 }
 
 func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (params MigrationsUnlockRepoForOrgParams, _ error) {
@@ -28517,6 +30738,11 @@ func decodeMigrationsUnlockRepoForOrgParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+type MigrationsUpdateImportParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (params MigrationsUpdateImportParams, _ error) {
 	// Decode path: owner.
 	{
@@ -28583,6 +30809,11 @@ func decodeMigrationsUpdateImportParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+type OAuthAuthorizationsDeleteAuthorizationParams struct {
+	// Authorization_id parameter.
+	AuthorizationID int
+}
+
 func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsDeleteAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	{
@@ -28616,6 +30847,11 @@ func decodeOAuthAuthorizationsDeleteAuthorizationParams(args [1]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type OAuthAuthorizationsDeleteGrantParams struct {
+	// Grant_id parameter.
+	GrantID int
 }
 
 func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, r *http.Request) (params OAuthAuthorizationsDeleteGrantParams, _ error) {
@@ -28653,6 +30889,11 @@ func decodeOAuthAuthorizationsDeleteGrantParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+type OAuthAuthorizationsGetAuthorizationParams struct {
+	// Authorization_id parameter.
+	AuthorizationID int
+}
+
 func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	{
@@ -28686,6 +30927,11 @@ func decodeOAuthAuthorizationsGetAuthorizationParams(args [1]string, r *http.Req
 		}
 	}
 	return params, nil
+}
+
+type OAuthAuthorizationsGetGrantParams struct {
+	// Grant_id parameter.
+	GrantID int
 }
 
 func decodeOAuthAuthorizationsGetGrantParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetGrantParams, _ error) {
@@ -28723,6 +30969,11 @@ func decodeOAuthAuthorizationsGetGrantParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppParams struct {
+	// The client ID of your GitHub app.
+	ClientID string
+}
+
 func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]string, r *http.Request) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppParams, _ error) {
 	// Decode path: client_id.
 	{
@@ -28756,6 +31007,12 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppParams(args [1]strin
 		}
 	}
 	return params, nil
+}
+
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams struct {
+	// The client ID of your GitHub app.
+	ClientID    string
+	Fingerprint string
 }
 
 func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams(args [2]string, r *http.Request) (params OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams, _ error) {
@@ -28822,6 +31079,15 @@ func decodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintParams
 		}
 	}
 	return params, nil
+}
+
+type OAuthAuthorizationsListAuthorizationsParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// The client ID of your GitHub app.
+	ClientID OptString
 }
 
 func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.Request) (params OAuthAuthorizationsListAuthorizationsParams, _ error) {
@@ -28943,6 +31209,15 @@ func decodeOAuthAuthorizationsListAuthorizationsParams(args [0]string, r *http.R
 	return params, nil
 }
 
+type OAuthAuthorizationsListGrantsParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// The client ID of your GitHub app.
+	ClientID OptString
+}
+
 func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) (params OAuthAuthorizationsListGrantsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -29062,6 +31337,11 @@ func decodeOAuthAuthorizationsListGrantsParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+type OAuthAuthorizationsUpdateAuthorizationParams struct {
+	// Authorization_id parameter.
+	AuthorizationID int
+}
+
 func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, r *http.Request) (params OAuthAuthorizationsUpdateAuthorizationParams, _ error) {
 	// Decode path: authorization_id.
 	{
@@ -29095,6 +31375,11 @@ func decodeOAuthAuthorizationsUpdateAuthorizationParams(args [1]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type OrgsBlockUserParams struct {
+	Org      string
+	Username string
 }
 
 func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (params OrgsBlockUserParams, _ error) {
@@ -29163,6 +31448,12 @@ func decodeOrgsBlockUserParams(args [2]string, r *http.Request) (params OrgsBloc
 	return params, nil
 }
 
+type OrgsCancelInvitationParams struct {
+	Org string
+	// Invitation_id parameter.
+	InvitationID int
+}
+
 func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (params OrgsCancelInvitationParams, _ error) {
 	// Decode path: org.
 	{
@@ -29227,6 +31518,11 @@ func decodeOrgsCancelInvitationParams(args [2]string, r *http.Request) (params O
 		}
 	}
 	return params, nil
+}
+
+type OrgsCheckBlockedUserParams struct {
+	Org      string
+	Username string
 }
 
 func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (params OrgsCheckBlockedUserParams, _ error) {
@@ -29295,6 +31591,11 @@ func decodeOrgsCheckBlockedUserParams(args [2]string, r *http.Request) (params O
 	return params, nil
 }
 
+type OrgsCheckMembershipForUserParams struct {
+	Org      string
+	Username string
+}
+
 func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (params OrgsCheckMembershipForUserParams, _ error) {
 	// Decode path: org.
 	{
@@ -29359,6 +31660,11 @@ func decodeOrgsCheckMembershipForUserParams(args [2]string, r *http.Request) (pa
 		}
 	}
 	return params, nil
+}
+
+type OrgsCheckPublicMembershipForUserParams struct {
+	Org      string
+	Username string
 }
 
 func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Request) (params OrgsCheckPublicMembershipForUserParams, _ error) {
@@ -29427,6 +31733,11 @@ func decodeOrgsCheckPublicMembershipForUserParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
+type OrgsConvertMemberToOutsideCollaboratorParams struct {
+	Org      string
+	Username string
+}
+
 func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.Request) (params OrgsConvertMemberToOutsideCollaboratorParams, _ error) {
 	// Decode path: org.
 	{
@@ -29493,6 +31804,10 @@ func decodeOrgsConvertMemberToOutsideCollaboratorParams(args [2]string, r *http.
 	return params, nil
 }
 
+type OrgsCreateInvitationParams struct {
+	Org string
+}
+
 func decodeOrgsCreateInvitationParams(args [1]string, r *http.Request) (params OrgsCreateInvitationParams, _ error) {
 	// Decode path: org.
 	{
@@ -29528,6 +31843,10 @@ func decodeOrgsCreateInvitationParams(args [1]string, r *http.Request) (params O
 	return params, nil
 }
 
+type OrgsCreateWebhookParams struct {
+	Org string
+}
+
 func decodeOrgsCreateWebhookParams(args [1]string, r *http.Request) (params OrgsCreateWebhookParams, _ error) {
 	// Decode path: org.
 	{
@@ -29561,6 +31880,11 @@ func decodeOrgsCreateWebhookParams(args [1]string, r *http.Request) (params Orgs
 		}
 	}
 	return params, nil
+}
+
+type OrgsDeleteWebhookParams struct {
+	Org    string
+	HookID int
 }
 
 func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (params OrgsDeleteWebhookParams, _ error) {
@@ -29629,6 +31953,10 @@ func decodeOrgsDeleteWebhookParams(args [2]string, r *http.Request) (params Orgs
 	return params, nil
 }
 
+type OrgsGetParams struct {
+	Org string
+}
+
 func decodeOrgsGetParams(args [1]string, r *http.Request) (params OrgsGetParams, _ error) {
 	// Decode path: org.
 	{
@@ -29662,6 +31990,35 @@ func decodeOrgsGetParams(args [1]string, r *http.Request) (params OrgsGetParams,
 		}
 	}
 	return params, nil
+}
+
+type OrgsGetAuditLogParams struct {
+	Org string
+	// A search phrase. For more information, see [Searching the audit log](https://docs.github.
+	// com/github/setting-up-and-managing-organizations-and-teams/reviewing-the-audit-log-for-your-organization#searching-the-audit-log).
+	Phrase OptString
+	// The event types to include:
+	// - `web` - returns web (non-Git) events
+	// - `git` - returns Git events
+	// - `all` - returns both web and Git events
+	// The default is `web`.
+	Include OptOrgsGetAuditLogInclude
+	// A cursor, as given in the [Link header](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
+	// for events after this cursor.
+	After OptString
+	// A cursor, as given in the [Link header](https://docs.github.
+	// com/rest/overview/resources-in-the-rest-api#link-header). If specified, the query only searches
+	// for events before this cursor.
+	Before OptString
+	// The order of audit log events. To list newest events first, specify `desc`. To list oldest events
+	// first, specify `asc`.
+	// The default is `desc`.
+	Order OptOrgsGetAuditLogOrder
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (params OrgsGetAuditLogParams, _ error) {
@@ -29980,6 +32337,10 @@ func decodeOrgsGetAuditLogParams(args [1]string, r *http.Request) (params OrgsGe
 	return params, nil
 }
 
+type OrgsGetMembershipForAuthenticatedUserParams struct {
+	Org string
+}
+
 func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, r *http.Request) (params OrgsGetMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	{
@@ -30013,6 +32374,11 @@ func decodeOrgsGetMembershipForAuthenticatedUserParams(args [1]string, r *http.R
 		}
 	}
 	return params, nil
+}
+
+type OrgsGetMembershipForUserParams struct {
+	Org      string
+	Username string
 }
 
 func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (params OrgsGetMembershipForUserParams, _ error) {
@@ -30081,6 +32447,11 @@ func decodeOrgsGetMembershipForUserParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+type OrgsGetWebhookParams struct {
+	Org    string
+	HookID int
+}
+
 func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (params OrgsGetWebhookParams, _ error) {
 	// Decode path: org.
 	{
@@ -30147,6 +32518,11 @@ func decodeOrgsGetWebhookParams(args [2]string, r *http.Request) (params OrgsGet
 	return params, nil
 }
 
+type OrgsGetWebhookConfigForOrgParams struct {
+	Org    string
+	HookID int
+}
+
 func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (params OrgsGetWebhookConfigForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -30211,6 +32587,12 @@ func decodeOrgsGetWebhookConfigForOrgParams(args [2]string, r *http.Request) (pa
 		}
 	}
 	return params, nil
+}
+
+type OrgsGetWebhookDeliveryParams struct {
+	Org        string
+	HookID     int
+	DeliveryID int
 }
 
 func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params OrgsGetWebhookDeliveryParams, _ error) {
@@ -30310,6 +32692,13 @@ func decodeOrgsGetWebhookDeliveryParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+type OrgsListParams struct {
+	// An organization ID. Only return organizations with an ID greater than this ID.
+	Since OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+}
+
 func decodeOrgsListParams(args [0]string, r *http.Request) (params OrgsListParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
@@ -30389,6 +32778,10 @@ func decodeOrgsListParams(args [0]string, r *http.Request) (params OrgsListParam
 	return params, nil
 }
 
+type OrgsListBlockedUsersParams struct {
+	Org string
+}
+
 func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (params OrgsListBlockedUsersParams, _ error) {
 	// Decode path: org.
 	{
@@ -30422,6 +32815,14 @@ func decodeOrgsListBlockedUsersParams(args [1]string, r *http.Request) (params O
 		}
 	}
 	return params, nil
+}
+
+type OrgsListFailedInvitationsParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (params OrgsListFailedInvitationsParams, _ error) {
@@ -30540,6 +32941,13 @@ func decodeOrgsListFailedInvitationsParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+type OrgsListForAuthenticatedUserParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params OrgsListForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -30623,6 +33031,14 @@ func decodeOrgsListForAuthenticatedUserParams(args [0]string, r *http.Request) (
 		}
 	}
 	return params, nil
+}
+
+type OrgsListForUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeOrgsListForUserParams(args [1]string, r *http.Request) (params OrgsListForUserParams, _ error) {
@@ -30739,6 +33155,16 @@ func decodeOrgsListForUserParams(args [1]string, r *http.Request) (params OrgsLi
 		}
 	}
 	return params, nil
+}
+
+type OrgsListInvitationTeamsParams struct {
+	Org string
+	// Invitation_id parameter.
+	InvitationID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (params OrgsListInvitationTeamsParams, _ error) {
@@ -30886,6 +33312,24 @@ func decodeOrgsListInvitationTeamsParams(args [2]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type OrgsListMembersParams struct {
+	Org string
+	// Filter members returned in the list. Can be one of:
+	// \* `2fa_disabled` - Members without [two-factor authentication](https://github.
+	// com/blog/1614-two-factor-authentication) enabled. Available for organization owners.
+	// \* `all` - All members the authenticated user can see.
+	Filter OptOrgsListMembersFilter
+	// Filter members returned by their role. Can be one of:
+	// \* `all` - All members of the organization, regardless of role.
+	// \* `admin` - Organization owners.
+	// \* `member` - Non-owner organization members.
+	Role OptOrgsListMembersRole
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsListMembersParams, _ error) {
@@ -31114,6 +33558,16 @@ func decodeOrgsListMembersParams(args [1]string, r *http.Request) (params OrgsLi
 	return params, nil
 }
 
+type OrgsListMembershipsForAuthenticatedUserParams struct {
+	// Indicates the state of the memberships to return. Can be either `active` or `pending`. If not
+	// specified, the API returns both active and pending memberships.
+	State OptOrgsListMembershipsForAuthenticatedUserState
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http.Request) (params OrgsListMembershipsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: state.
@@ -31246,6 +33700,19 @@ func decodeOrgsListMembershipsForAuthenticatedUserParams(args [0]string, r *http
 		}
 	}
 	return params, nil
+}
+
+type OrgsListOutsideCollaboratorsParams struct {
+	Org string
+	// Filter the list of outside collaborators. Can be one of:
+	// \* `2fa_disabled`: Outside collaborators without [two-factor authentication](https://github.
+	// com/blog/1614-two-factor-authentication) enabled.
+	// \* `all`: All outside collaborators.
+	Filter OptOrgsListOutsideCollaboratorsFilter
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (params OrgsListOutsideCollaboratorsParams, _ error) {
@@ -31419,6 +33886,14 @@ func decodeOrgsListOutsideCollaboratorsParams(args [1]string, r *http.Request) (
 	return params, nil
 }
 
+type OrgsListPendingInvitationsParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (params OrgsListPendingInvitationsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -31533,6 +34008,14 @@ func decodeOrgsListPendingInvitationsParams(args [1]string, r *http.Request) (pa
 		}
 	}
 	return params, nil
+}
+
+type OrgsListPublicMembersParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (params OrgsListPublicMembersParams, _ error) {
@@ -31651,6 +34134,10 @@ func decodeOrgsListPublicMembersParams(args [1]string, r *http.Request) (params 
 	return params, nil
 }
 
+type OrgsListSamlSSOAuthorizationsParams struct {
+	Org string
+}
+
 func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, r *http.Request) (params OrgsListSamlSSOAuthorizationsParams, _ error) {
 	// Decode path: org.
 	{
@@ -31684,6 +34171,16 @@ func decodeOrgsListSamlSSOAuthorizationsParams(args [1]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type OrgsListWebhookDeliveriesParams struct {
+	Org    string
+	HookID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
+	// the `link` header for the next and previous page cursors.
+	Cursor OptString
 }
 
 func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (params OrgsListWebhookDeliveriesParams, _ error) {
@@ -31827,6 +34324,14 @@ func decodeOrgsListWebhookDeliveriesParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+type OrgsListWebhooksParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (params OrgsListWebhooksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -31943,6 +34448,11 @@ func decodeOrgsListWebhooksParams(args [1]string, r *http.Request) (params OrgsL
 	return params, nil
 }
 
+type OrgsPingWebhookParams struct {
+	Org    string
+	HookID int
+}
+
 func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (params OrgsPingWebhookParams, _ error) {
 	// Decode path: org.
 	{
@@ -32007,6 +34517,12 @@ func decodeOrgsPingWebhookParams(args [2]string, r *http.Request) (params OrgsPi
 		}
 	}
 	return params, nil
+}
+
+type OrgsRedeliverWebhookDeliveryParams struct {
+	Org        string
+	HookID     int
+	DeliveryID int
 }
 
 func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (params OrgsRedeliverWebhookDeliveryParams, _ error) {
@@ -32106,6 +34622,11 @@ func decodeOrgsRedeliverWebhookDeliveryParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+type OrgsRemoveMemberParams struct {
+	Org      string
+	Username string
+}
+
 func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (params OrgsRemoveMemberParams, _ error) {
 	// Decode path: org.
 	{
@@ -32170,6 +34691,11 @@ func decodeOrgsRemoveMemberParams(args [2]string, r *http.Request) (params OrgsR
 		}
 	}
 	return params, nil
+}
+
+type OrgsRemoveMembershipForUserParams struct {
+	Org      string
+	Username string
 }
 
 func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (params OrgsRemoveMembershipForUserParams, _ error) {
@@ -32238,6 +34764,11 @@ func decodeOrgsRemoveMembershipForUserParams(args [2]string, r *http.Request) (p
 	return params, nil
 }
 
+type OrgsRemoveOutsideCollaboratorParams struct {
+	Org      string
+	Username string
+}
+
 func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) (params OrgsRemoveOutsideCollaboratorParams, _ error) {
 	// Decode path: org.
 	{
@@ -32302,6 +34833,11 @@ func decodeOrgsRemoveOutsideCollaboratorParams(args [2]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type OrgsRemovePublicMembershipForAuthenticatedUserParams struct {
+	Org      string
+	Username string
 }
 
 func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, r *http.Request) (params OrgsRemovePublicMembershipForAuthenticatedUserParams, _ error) {
@@ -32370,6 +34906,11 @@ func decodeOrgsRemovePublicMembershipForAuthenticatedUserParams(args [2]string, 
 	return params, nil
 }
 
+type OrgsRemoveSamlSSOAuthorizationParams struct {
+	Org          string
+	CredentialID int
+}
+
 func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request) (params OrgsRemoveSamlSSOAuthorizationParams, _ error) {
 	// Decode path: org.
 	{
@@ -32434,6 +34975,11 @@ func decodeOrgsRemoveSamlSSOAuthorizationParams(args [2]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type OrgsSetMembershipForUserParams struct {
+	Org      string
+	Username string
 }
 
 func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (params OrgsSetMembershipForUserParams, _ error) {
@@ -32502,6 +35048,11 @@ func decodeOrgsSetMembershipForUserParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+type OrgsSetPublicMembershipForAuthenticatedUserParams struct {
+	Org      string
+	Username string
+}
+
 func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *http.Request) (params OrgsSetPublicMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	{
@@ -32566,6 +35117,11 @@ func decodeOrgsSetPublicMembershipForAuthenticatedUserParams(args [2]string, r *
 		}
 	}
 	return params, nil
+}
+
+type OrgsUnblockUserParams struct {
+	Org      string
+	Username string
 }
 
 func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (params OrgsUnblockUserParams, _ error) {
@@ -32634,6 +35190,10 @@ func decodeOrgsUnblockUserParams(args [2]string, r *http.Request) (params OrgsUn
 	return params, nil
 }
 
+type OrgsUpdateMembershipForAuthenticatedUserParams struct {
+	Org string
+}
+
 func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, r *http.Request) (params OrgsUpdateMembershipForAuthenticatedUserParams, _ error) {
 	// Decode path: org.
 	{
@@ -32667,6 +35227,11 @@ func decodeOrgsUpdateMembershipForAuthenticatedUserParams(args [1]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type OrgsUpdateWebhookParams struct {
+	Org    string
+	HookID int
 }
 
 func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (params OrgsUpdateWebhookParams, _ error) {
@@ -32735,6 +35300,11 @@ func decodeOrgsUpdateWebhookParams(args [2]string, r *http.Request) (params Orgs
 	return params, nil
 }
 
+type OrgsUpdateWebhookConfigForOrgParams struct {
+	Org    string
+	HookID int
+}
+
 func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) (params OrgsUpdateWebhookConfigForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -32801,6 +35371,17 @@ func decodeOrgsUpdateWebhookConfigForOrgParams(args [2]string, r *http.Request) 
 	return params, nil
 }
 
+type PackagesDeletePackageForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+}
+
 func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesDeletePackageForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -32865,6 +35446,18 @@ func decodePackagesDeletePackageForAuthenticatedUserParams(args [2]string, r *ht
 		}
 	}
 	return params, nil
+}
+
+type PackagesDeletePackageForOrgParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageForOrgPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
 }
 
 func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (params PackagesDeletePackageForOrgParams, _ error) {
@@ -32964,6 +35557,18 @@ func decodePackagesDeletePackageForOrgParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type PackagesDeletePackageForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageForUserPackageType
+	// The name of the package.
+	PackageName string
+	Username    string
+}
+
 func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (params PackagesDeletePackageForUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -33061,6 +35666,19 @@ func decodePackagesDeletePackageForUserParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+type PackagesDeletePackageVersionForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageVersionForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+	// Unique identifier of the package version.
+	PackageVersionID int
+}
+
 func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesDeletePackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -33156,6 +35774,20 @@ func decodePackagesDeletePackageVersionForAuthenticatedUserParams(args [3]string
 		}
 	}
 	return params, nil
+}
+
+type PackagesDeletePackageVersionForOrgParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageVersionForOrgPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
+	// Unique identifier of the package version.
+	PackageVersionID int
 }
 
 func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Request) (params PackagesDeletePackageVersionForOrgParams, _ error) {
@@ -33286,6 +35918,20 @@ func decodePackagesDeletePackageVersionForOrgParams(args [4]string, r *http.Requ
 	return params, nil
 }
 
+type PackagesDeletePackageVersionForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesDeletePackageVersionForUserPackageType
+	// The name of the package.
+	PackageName string
+	Username    string
+	// Unique identifier of the package version.
+	PackageVersionID int
+}
+
 func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesDeletePackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -33412,6 +36058,23 @@ func decodePackagesDeletePackageVersionForUserParams(args [4]string, r *http.Req
 		}
 	}
 	return params, nil
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The state of the package, either active or deleted.
+	State OptPackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserState
 }
 
 func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams, _ error) {
@@ -33614,6 +36277,24 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByAuthenticatedUserParams
 		}
 	}
 	return params, nil
+}
+
+type PackagesGetAllPackageVersionsForPackageOwnedByOrgParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetAllPackageVersionsForPackageOwnedByOrgPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The state of the package, either active or deleted.
+	State OptPackagesGetAllPackageVersionsForPackageOwnedByOrgState
 }
 
 func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByOrgParams, _ error) {
@@ -33849,6 +36530,18 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByOrgParams(args [3]strin
 	return params, nil
 }
 
+type PackagesGetAllPackageVersionsForPackageOwnedByUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetAllPackageVersionsForPackageOwnedByUserPackageType
+	// The name of the package.
+	PackageName string
+	Username    string
+}
+
 func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]string, r *http.Request) (params PackagesGetAllPackageVersionsForPackageOwnedByUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -33946,6 +36639,17 @@ func decodePackagesGetAllPackageVersionsForPackageOwnedByUserParams(args [3]stri
 	return params, nil
 }
 
+type PackagesGetPackageForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+}
+
 func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesGetPackageForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -34010,6 +36714,18 @@ func decodePackagesGetPackageForAuthenticatedUserParams(args [2]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type PackagesGetPackageForOrganizationParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageForOrganizationPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
 }
 
 func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Request) (params PackagesGetPackageForOrganizationParams, _ error) {
@@ -34109,6 +36825,18 @@ func decodePackagesGetPackageForOrganizationParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+type PackagesGetPackageForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageForUserPackageType
+	// The name of the package.
+	PackageName string
+	Username    string
+}
+
 func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (params PackagesGetPackageForUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -34206,6 +36934,19 @@ func decodePackagesGetPackageForUserParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+type PackagesGetPackageVersionForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageVersionForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+	// Unique identifier of the package version.
+	PackageVersionID int
+}
+
 func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesGetPackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -34301,6 +37042,20 @@ func decodePackagesGetPackageVersionForAuthenticatedUserParams(args [3]string, r
 		}
 	}
 	return params, nil
+}
+
+type PackagesGetPackageVersionForOrganizationParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageVersionForOrganizationPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
+	// Unique identifier of the package version.
+	PackageVersionID int
 }
 
 func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *http.Request) (params PackagesGetPackageVersionForOrganizationParams, _ error) {
@@ -34431,6 +37186,20 @@ func decodePackagesGetPackageVersionForOrganizationParams(args [4]string, r *htt
 	return params, nil
 }
 
+type PackagesGetPackageVersionForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesGetPackageVersionForUserPackageType
+	// The name of the package.
+	PackageName string
+	// Unique identifier of the package version.
+	PackageVersionID int
+	Username         string
+}
+
 func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesGetPackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -34559,6 +37328,20 @@ func decodePackagesGetPackageVersionForUserParams(args [4]string, r *http.Reques
 	return params, nil
 }
 
+type PackagesListPackagesForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesListPackagesForAuthenticatedUserPackageType
+	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
+	// `container` package_types currently support `internal` visibility properly. For other ecosystems
+	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
+	// result set.
+	Visibility OptPackagesListPackagesForAuthenticatedUserVisibility
+}
+
 func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *http.Request) (params PackagesListPackagesForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: package_type.
@@ -34648,6 +37431,21 @@ func decodePackagesListPackagesForAuthenticatedUserParams(args [0]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type PackagesListPackagesForOrganizationParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesListPackagesForOrganizationPackageType
+	Org         string
+	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
+	// `container` package_types currently support `internal` visibility properly. For other ecosystems
+	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
+	// result set.
+	Visibility OptPackagesListPackagesForOrganizationVisibility
 }
 
 func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Request) (params PackagesListPackagesForOrganizationParams, _ error) {
@@ -34772,6 +37570,21 @@ func decodePackagesListPackagesForOrganizationParams(args [1]string, r *http.Req
 	return params, nil
 }
 
+type PackagesListPackagesForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesListPackagesForUserPackageType
+	// The selected visibility of the packages. Can be one of `public`, `private`, or `internal`. Only
+	// `container` package_types currently support `internal` visibility properly. For other ecosystems
+	// `internal` is synonymous with `private`. This parameter is optional and only filters an existing
+	// result set.
+	Visibility OptPackagesListPackagesForUserVisibility
+	Username   string
+}
+
 func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (params PackagesListPackagesForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: package_type.
@@ -34894,6 +37707,19 @@ func decodePackagesListPackagesForUserParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+type PackagesRestorePackageForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+	// Package token.
+	Token OptString
+}
+
 func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *http.Request) (params PackagesRestorePackageForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
@@ -34993,6 +37819,20 @@ func decodePackagesRestorePackageForAuthenticatedUserParams(args [2]string, r *h
 		}
 	}
 	return params, nil
+}
+
+type PackagesRestorePackageForOrgParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageForOrgPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
+	// Package token.
+	Token OptString
 }
 
 func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (params PackagesRestorePackageForOrgParams, _ error) {
@@ -35127,6 +37967,20 @@ func decodePackagesRestorePackageForOrgParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+type PackagesRestorePackageForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageForUserPackageType
+	// The name of the package.
+	PackageName string
+	Username    string
+	// Package token.
+	Token OptString
+}
+
 func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) (params PackagesRestorePackageForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: package_type.
@@ -35259,6 +38113,19 @@ func decodePackagesRestorePackageForUserParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+type PackagesRestorePackageVersionForAuthenticatedUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageVersionForAuthenticatedUserPackageType
+	// The name of the package.
+	PackageName string
+	// Unique identifier of the package version.
+	PackageVersionID int
+}
+
 func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]string, r *http.Request) (params PackagesRestorePackageVersionForAuthenticatedUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -35354,6 +38221,20 @@ func decodePackagesRestorePackageVersionForAuthenticatedUserParams(args [3]strin
 		}
 	}
 	return params, nil
+}
+
+type PackagesRestorePackageVersionForOrgParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageVersionForOrgPackageType
+	// The name of the package.
+	PackageName string
+	Org         string
+	// Unique identifier of the package version.
+	PackageVersionID int
 }
 
 func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Request) (params PackagesRestorePackageVersionForOrgParams, _ error) {
@@ -35484,6 +38365,20 @@ func decodePackagesRestorePackageVersionForOrgParams(args [4]string, r *http.Req
 	return params, nil
 }
 
+type PackagesRestorePackageVersionForUserParams struct {
+	// The type of supported package. Can be one of `npm`, `maven`, `rubygems`, `nuget`, `docker`, or
+	// `container`. Packages in GitHub's Gradle registry have the type `maven`. Docker images pushed to
+	// GitHub's Container registry (`ghcr.io`) have the type `container`. You can use the type `docker`
+	// to find images that were pushed to GitHub's Docker registry (`docker.pkg.github.com`), even if
+	// these have now been migrated to the Container registry.
+	PackageType PackagesRestorePackageVersionForUserPackageType
+	// The name of the package.
+	PackageName string
+	Username    string
+	// Unique identifier of the package version.
+	PackageVersionID int
+}
+
 func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Request) (params PackagesRestorePackageVersionForUserParams, _ error) {
 	// Decode path: package_type.
 	{
@@ -35612,6 +38507,11 @@ func decodePackagesRestorePackageVersionForUserParams(args [4]string, r *http.Re
 	return params, nil
 }
 
+type ProjectsAddCollaboratorParams struct {
+	ProjectID int
+	Username  string
+}
+
 func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (params ProjectsAddCollaboratorParams, _ error) {
 	// Decode path: project_id.
 	{
@@ -35678,6 +38578,10 @@ func decodeProjectsAddCollaboratorParams(args [2]string, r *http.Request) (param
 	return params, nil
 }
 
+type ProjectsCreateColumnParams struct {
+	ProjectID int
+}
+
 func decodeProjectsCreateColumnParams(args [1]string, r *http.Request) (params ProjectsCreateColumnParams, _ error) {
 	// Decode path: project_id.
 	{
@@ -35713,6 +38617,10 @@ func decodeProjectsCreateColumnParams(args [1]string, r *http.Request) (params P
 	return params, nil
 }
 
+type ProjectsCreateForOrgParams struct {
+	Org string
+}
+
 func decodeProjectsCreateForOrgParams(args [1]string, r *http.Request) (params ProjectsCreateForOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -35746,6 +38654,11 @@ func decodeProjectsCreateForOrgParams(args [1]string, r *http.Request) (params P
 		}
 	}
 	return params, nil
+}
+
+type ProjectsCreateForRepoParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (params ProjectsCreateForRepoParams, _ error) {
@@ -35814,6 +38727,10 @@ func decodeProjectsCreateForRepoParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ProjectsDeleteParams struct {
+	ProjectID int
+}
+
 func decodeProjectsDeleteParams(args [1]string, r *http.Request) (params ProjectsDeleteParams, _ error) {
 	// Decode path: project_id.
 	{
@@ -35847,6 +38764,11 @@ func decodeProjectsDeleteParams(args [1]string, r *http.Request) (params Project
 		}
 	}
 	return params, nil
+}
+
+type ProjectsDeleteCardParams struct {
+	// Card_id parameter.
+	CardID int
 }
 
 func decodeProjectsDeleteCardParams(args [1]string, r *http.Request) (params ProjectsDeleteCardParams, _ error) {
@@ -35884,6 +38806,11 @@ func decodeProjectsDeleteCardParams(args [1]string, r *http.Request) (params Pro
 	return params, nil
 }
 
+type ProjectsDeleteColumnParams struct {
+	// Column_id parameter.
+	ColumnID int
+}
+
 func decodeProjectsDeleteColumnParams(args [1]string, r *http.Request) (params ProjectsDeleteColumnParams, _ error) {
 	// Decode path: column_id.
 	{
@@ -35917,6 +38844,10 @@ func decodeProjectsDeleteColumnParams(args [1]string, r *http.Request) (params P
 		}
 	}
 	return params, nil
+}
+
+type ProjectsGetParams struct {
+	ProjectID int
 }
 
 func decodeProjectsGetParams(args [1]string, r *http.Request) (params ProjectsGetParams, _ error) {
@@ -35954,6 +38885,11 @@ func decodeProjectsGetParams(args [1]string, r *http.Request) (params ProjectsGe
 	return params, nil
 }
 
+type ProjectsGetCardParams struct {
+	// Card_id parameter.
+	CardID int
+}
+
 func decodeProjectsGetCardParams(args [1]string, r *http.Request) (params ProjectsGetCardParams, _ error) {
 	// Decode path: card_id.
 	{
@@ -35989,6 +38925,11 @@ func decodeProjectsGetCardParams(args [1]string, r *http.Request) (params Projec
 	return params, nil
 }
 
+type ProjectsGetColumnParams struct {
+	// Column_id parameter.
+	ColumnID int
+}
+
 func decodeProjectsGetColumnParams(args [1]string, r *http.Request) (params ProjectsGetColumnParams, _ error) {
 	// Decode path: column_id.
 	{
@@ -36022,6 +38963,11 @@ func decodeProjectsGetColumnParams(args [1]string, r *http.Request) (params Proj
 		}
 	}
 	return params, nil
+}
+
+type ProjectsGetPermissionForUserParams struct {
+	ProjectID int
+	Username  string
 }
 
 func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (params ProjectsGetPermissionForUserParams, _ error) {
@@ -36088,6 +39034,18 @@ func decodeProjectsGetPermissionForUserParams(args [2]string, r *http.Request) (
 		}
 	}
 	return params, nil
+}
+
+type ProjectsListCardsParams struct {
+	// Column_id parameter.
+	ColumnID int
+	// Filters the project cards that are returned by the card's state. Can be one of `all`,`archived`,
+	// or `not_archived`.
+	ArchivedState OptProjectsListCardsArchivedState
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params ProjectsListCardsParams, _ error) {
@@ -36261,6 +39219,21 @@ func decodeProjectsListCardsParams(args [1]string, r *http.Request) (params Proj
 	return params, nil
 }
 
+type ProjectsListCollaboratorsParams struct {
+	ProjectID int
+	// Filters the collaborators by their affiliation. Can be one of:
+	// \* `outside`: Outside collaborators of a project that are not a member of the project's
+	// organization.
+	// \* `direct`: Collaborators with permissions to a project, regardless of organization membership
+	// status.
+	// \* `all`: All collaborators the authenticated user can see.
+	Affiliation OptProjectsListCollaboratorsAffiliation
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (params ProjectsListCollaboratorsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: project_id.
@@ -36432,6 +39405,14 @@ func decodeProjectsListCollaboratorsParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+type ProjectsListColumnsParams struct {
+	ProjectID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params ProjectsListColumnsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: project_id.
@@ -36546,6 +39527,16 @@ func decodeProjectsListColumnsParams(args [1]string, r *http.Request) (params Pr
 		}
 	}
 	return params, nil
+}
+
+type ProjectsListForOrgParams struct {
+	Org string
+	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+	State OptProjectsListForOrgState
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params ProjectsListForOrgParams, _ error) {
@@ -36717,6 +39708,17 @@ func decodeProjectsListForOrgParams(args [1]string, r *http.Request) (params Pro
 		}
 	}
 	return params, nil
+}
+
+type ProjectsListForRepoParams struct {
+	Owner string
+	Repo  string
+	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+	State OptProjectsListForRepoState
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params ProjectsListForRepoParams, _ error) {
@@ -36921,6 +39923,16 @@ func decodeProjectsListForRepoParams(args [2]string, r *http.Request) (params Pr
 	return params, nil
 }
 
+type ProjectsListForUserParams struct {
+	Username string
+	// Indicates the state of the projects to return. Can be either `open`, `closed`, or `all`.
+	State OptProjectsListForUserState
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params ProjectsListForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
@@ -37092,6 +40104,11 @@ func decodeProjectsListForUserParams(args [1]string, r *http.Request) (params Pr
 	return params, nil
 }
 
+type ProjectsMoveCardParams struct {
+	// Card_id parameter.
+	CardID int
+}
+
 func decodeProjectsMoveCardParams(args [1]string, r *http.Request) (params ProjectsMoveCardParams, _ error) {
 	// Decode path: card_id.
 	{
@@ -37127,6 +40144,11 @@ func decodeProjectsMoveCardParams(args [1]string, r *http.Request) (params Proje
 	return params, nil
 }
 
+type ProjectsMoveColumnParams struct {
+	// Column_id parameter.
+	ColumnID int
+}
+
 func decodeProjectsMoveColumnParams(args [1]string, r *http.Request) (params ProjectsMoveColumnParams, _ error) {
 	// Decode path: column_id.
 	{
@@ -37160,6 +40182,11 @@ func decodeProjectsMoveColumnParams(args [1]string, r *http.Request) (params Pro
 		}
 	}
 	return params, nil
+}
+
+type ProjectsRemoveCollaboratorParams struct {
+	ProjectID int
+	Username  string
 }
 
 func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (params ProjectsRemoveCollaboratorParams, _ error) {
@@ -37228,6 +40255,10 @@ func decodeProjectsRemoveCollaboratorParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+type ProjectsUpdateParams struct {
+	ProjectID int
+}
+
 func decodeProjectsUpdateParams(args [1]string, r *http.Request) (params ProjectsUpdateParams, _ error) {
 	// Decode path: project_id.
 	{
@@ -37261,6 +40292,11 @@ func decodeProjectsUpdateParams(args [1]string, r *http.Request) (params Project
 		}
 	}
 	return params, nil
+}
+
+type ProjectsUpdateCardParams struct {
+	// Card_id parameter.
+	CardID int
 }
 
 func decodeProjectsUpdateCardParams(args [1]string, r *http.Request) (params ProjectsUpdateCardParams, _ error) {
@@ -37298,6 +40334,11 @@ func decodeProjectsUpdateCardParams(args [1]string, r *http.Request) (params Pro
 	return params, nil
 }
 
+type ProjectsUpdateColumnParams struct {
+	// Column_id parameter.
+	ColumnID int
+}
+
 func decodeProjectsUpdateColumnParams(args [1]string, r *http.Request) (params ProjectsUpdateColumnParams, _ error) {
 	// Decode path: column_id.
 	{
@@ -37331,6 +40372,12 @@ func decodeProjectsUpdateColumnParams(args [1]string, r *http.Request) (params P
 		}
 	}
 	return params, nil
+}
+
+type PullsCheckIfMergedParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
 }
 
 func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params PullsCheckIfMergedParams, _ error) {
@@ -37430,6 +40477,11 @@ func decodePullsCheckIfMergedParams(args [3]string, r *http.Request) (params Pul
 	return params, nil
 }
 
+type PullsCreateParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodePullsCreateParams(args [2]string, r *http.Request) (params PullsCreateParams, _ error) {
 	// Decode path: owner.
 	{
@@ -37494,6 +40546,14 @@ func decodePullsCreateParams(args [2]string, r *http.Request) (params PullsCreat
 		}
 	}
 	return params, nil
+}
+
+type PullsCreateReplyForReviewCommentParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Request) (params PullsCreateReplyForReviewCommentParams, _ error) {
@@ -37624,6 +40684,12 @@ func decodePullsCreateReplyForReviewCommentParams(args [4]string, r *http.Reques
 	return params, nil
 }
 
+type PullsCreateReviewParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+}
+
 func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params PullsCreateReviewParams, _ error) {
 	// Decode path: owner.
 	{
@@ -37721,6 +40787,12 @@ func decodePullsCreateReviewParams(args [3]string, r *http.Request) (params Pull
 	return params, nil
 }
 
+type PullsCreateReviewCommentParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+}
+
 func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (params PullsCreateReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -37816,6 +40888,14 @@ func decodePullsCreateReviewCommentParams(args [3]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type PullsDeletePendingReviewParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Review_id parameter.
+	ReviewID int
 }
 
 func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (params PullsDeletePendingReviewParams, _ error) {
@@ -37946,6 +41026,13 @@ func decodePullsDeletePendingReviewParams(args [4]string, r *http.Request) (para
 	return params, nil
 }
 
+type PullsDeleteReviewCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+}
+
 func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (params PullsDeleteReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -38041,6 +41128,14 @@ func decodePullsDeleteReviewCommentParams(args [3]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type PullsDismissReviewParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Review_id parameter.
+	ReviewID int
 }
 
 func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params PullsDismissReviewParams, _ error) {
@@ -38171,6 +41266,12 @@ func decodePullsDismissReviewParams(args [4]string, r *http.Request) (params Pul
 	return params, nil
 }
 
+type PullsGetParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+}
+
 func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParams, _ error) {
 	// Decode path: owner.
 	{
@@ -38266,6 +41367,14 @@ func decodePullsGetParams(args [3]string, r *http.Request) (params PullsGetParam
 		}
 	}
 	return params, nil
+}
+
+type PullsGetReviewParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Review_id parameter.
+	ReviewID int
 }
 
 func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGetReviewParams, _ error) {
@@ -38396,6 +41505,13 @@ func decodePullsGetReviewParams(args [4]string, r *http.Request) (params PullsGe
 	return params, nil
 }
 
+type PullsGetReviewCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+}
+
 func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params PullsGetReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -38491,6 +41607,28 @@ func decodePullsGetReviewCommentParams(args [3]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type PullsListParams struct {
+	Owner string
+	Repo  string
+	// Either `open`, `closed`, or `all` to filter by state.
+	State OptPullsListState
+	// Filter pulls by head user or head organization and branch name in the format of `user:ref-name` or
+	// `organization:ref-name`. For example: `github:new-script-format` or `octocat:test-branch`.
+	Head OptString
+	// Filter pulls by base branch name. Example: `gh-pages`.
+	Base OptString
+	// What to sort results by. Can be either `created`, `updated`, `popularity` (comment count) or
+	// `long-running` (age, filtering by pulls updated in the last month).
+	Sort OptPullsListSort
+	// The direction of the sort. Can be either `asc` or `desc`. Default: `desc` when sort is `created`
+	// or sort is not specified, otherwise `asc`.
+	Direction OptPullsListDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodePullsListParams(args [2]string, r *http.Request) (params PullsListParams, _ error) {
@@ -38867,6 +42005,18 @@ func decodePullsListParams(args [2]string, r *http.Request) (params PullsListPar
 	return params, nil
 }
 
+type PullsListCommentsForReviewParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Review_id parameter.
+	ReviewID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (params PullsListCommentsForReviewParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -39076,6 +42226,16 @@ func decodePullsListCommentsForReviewParams(args [4]string, r *http.Request) (pa
 	return params, nil
 }
 
+type PullsListCommitsParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodePullsListCommitsParams(args [3]string, r *http.Request) (params PullsListCommitsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -39252,6 +42412,16 @@ func decodePullsListCommitsParams(args [3]string, r *http.Request) (params Pulls
 		}
 	}
 	return params, nil
+}
+
+type PullsListFilesParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsListFilesParams, _ error) {
@@ -39432,6 +42602,16 @@ func decodePullsListFilesParams(args [3]string, r *http.Request) (params PullsLi
 	return params, nil
 }
 
+type PullsListRequestedReviewersParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (params PullsListRequestedReviewersParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -39608,6 +42788,23 @@ func decodePullsListRequestedReviewersParams(args [3]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type PullsListReviewCommentsParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// One of `created` (when the repository was starred) or `updated` (when it was last pushed to).
+	Sort OptPullsListReviewCommentsSort
+	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
+	Direction OptPullsListReviewCommentsDirection
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (params PullsListReviewCommentsParams, _ error) {
@@ -39926,6 +43123,21 @@ func decodePullsListReviewCommentsParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type PullsListReviewCommentsForRepoParams struct {
+	Owner string
+	Repo  string
+	Sort  OptPullsListReviewCommentsForRepoSort
+	// Can be either `asc` or `desc`. Ignored without `sort` parameter.
+	Direction OptPullsListReviewCommentsForRepoDirection
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request) (params PullsListReviewCommentsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -40205,6 +43417,16 @@ func decodePullsListReviewCommentsForRepoParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+type PullsListReviewsParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodePullsListReviewsParams(args [3]string, r *http.Request) (params PullsListReviewsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -40383,6 +43605,12 @@ func decodePullsListReviewsParams(args [3]string, r *http.Request) (params Pulls
 	return params, nil
 }
 
+type PullsMergeParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+}
+
 func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeParams, _ error) {
 	// Decode path: owner.
 	{
@@ -40480,6 +43708,12 @@ func decodePullsMergeParams(args [3]string, r *http.Request) (params PullsMergeP
 	return params, nil
 }
 
+type PullsRemoveRequestedReviewersParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+}
+
 func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) (params PullsRemoveRequestedReviewersParams, _ error) {
 	// Decode path: owner.
 	{
@@ -40575,6 +43809,14 @@ func decodePullsRemoveRequestedReviewersParams(args [3]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type PullsSubmitReviewParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Review_id parameter.
+	ReviewID int
 }
 
 func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params PullsSubmitReviewParams, _ error) {
@@ -40705,6 +43947,12 @@ func decodePullsSubmitReviewParams(args [4]string, r *http.Request) (params Pull
 	return params, nil
 }
 
+type PullsUpdateParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+}
+
 func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdateParams, _ error) {
 	// Decode path: owner.
 	{
@@ -40802,6 +44050,12 @@ func decodePullsUpdateParams(args [3]string, r *http.Request) (params PullsUpdat
 	return params, nil
 }
 
+type PullsUpdateBranchParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+}
+
 func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params PullsUpdateBranchParams, _ error) {
 	// Decode path: owner.
 	{
@@ -40897,6 +44151,14 @@ func decodePullsUpdateBranchParams(args [3]string, r *http.Request) (params Pull
 		}
 	}
 	return params, nil
+}
+
+type PullsUpdateReviewParams struct {
+	Owner      string
+	Repo       string
+	PullNumber int
+	// Review_id parameter.
+	ReviewID int
 }
 
 func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params PullsUpdateReviewParams, _ error) {
@@ -41027,6 +44289,13 @@ func decodePullsUpdateReviewParams(args [4]string, r *http.Request) (params Pull
 	return params, nil
 }
 
+type PullsUpdateReviewCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+}
+
 func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (params PullsUpdateReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -41122,6 +44391,13 @@ func decodePullsUpdateReviewCommentParams(args [3]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ReactionsCreateForCommitCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForCommitCommentParams, _ error) {
@@ -41221,6 +44497,13 @@ func decodeReactionsCreateForCommitCommentParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+type ReactionsCreateForIssueParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+}
+
 func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (params ReactionsCreateForIssueParams, _ error) {
 	// Decode path: owner.
 	{
@@ -41316,6 +44599,13 @@ func decodeReactionsCreateForIssueParams(args [3]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type ReactionsCreateForIssueCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForIssueCommentParams, _ error) {
@@ -41415,6 +44705,13 @@ func decodeReactionsCreateForIssueCommentParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+type ReactionsCreateForPullRequestReviewCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+}
+
 func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *http.Request) (params ReactionsCreateForPullRequestReviewCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -41512,6 +44809,13 @@ func decodeReactionsCreateForPullRequestReviewCommentParams(args [3]string, r *h
 	return params, nil
 }
 
+type ReactionsCreateForReleaseParams struct {
+	Owner string
+	Repo  string
+	// Release_id parameter.
+	ReleaseID int
+}
+
 func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (params ReactionsCreateForReleaseParams, _ error) {
 	// Decode path: owner.
 	{
@@ -41607,6 +44911,14 @@ func decodeReactionsCreateForReleaseParams(args [3]string, r *http.Request) (par
 		}
 	}
 	return params, nil
+}
+
+type ReactionsCreateForTeamDiscussionCommentInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	CommentNumber    int
 }
 
 func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params ReactionsCreateForTeamDiscussionCommentInOrgParams, _ error) {
@@ -41737,6 +45049,12 @@ func decodeReactionsCreateForTeamDiscussionCommentInOrgParams(args [4]string, r 
 	return params, nil
 }
 
+type ReactionsCreateForTeamDiscussionCommentLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+	CommentNumber    int
+}
+
 func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params ReactionsCreateForTeamDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -41832,6 +45150,13 @@ func decodeReactionsCreateForTeamDiscussionCommentLegacyParams(args [3]string, r
 		}
 	}
 	return params, nil
+}
+
+type ReactionsCreateForTeamDiscussionInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
 }
 
 func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.Request) (params ReactionsCreateForTeamDiscussionInOrgParams, _ error) {
@@ -41931,6 +45256,11 @@ func decodeReactionsCreateForTeamDiscussionInOrgParams(args [3]string, r *http.R
 	return params, nil
 }
 
+type ReactionsCreateForTeamDiscussionLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+}
+
 func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.Request) (params ReactionsCreateForTeamDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -41995,6 +45325,14 @@ func decodeReactionsCreateForTeamDiscussionLegacyParams(args [2]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type ReactionsDeleteForCommitCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID  int
+	ReactionID int
 }
 
 func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForCommitCommentParams, _ error) {
@@ -42125,6 +45463,14 @@ func decodeReactionsDeleteForCommitCommentParams(args [4]string, r *http.Request
 	return params, nil
 }
 
+type ReactionsDeleteForIssueParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+	ReactionID  int
+}
+
 func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (params ReactionsDeleteForIssueParams, _ error) {
 	// Decode path: owner.
 	{
@@ -42251,6 +45597,14 @@ func decodeReactionsDeleteForIssueParams(args [4]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type ReactionsDeleteForIssueCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID  int
+	ReactionID int
 }
 
 func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForIssueCommentParams, _ error) {
@@ -42381,6 +45735,14 @@ func decodeReactionsDeleteForIssueCommentParams(args [4]string, r *http.Request)
 	return params, nil
 }
 
+type ReactionsDeleteForPullRequestCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID  int
+	ReactionID int
+}
+
 func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Request) (params ReactionsDeleteForPullRequestCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -42509,6 +45871,14 @@ func decodeReactionsDeleteForPullRequestCommentParams(args [4]string, r *http.Re
 	return params, nil
 }
 
+type ReactionsDeleteForTeamDiscussionParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	ReactionID       int
+}
+
 func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Request) (params ReactionsDeleteForTeamDiscussionParams, _ error) {
 	// Decode path: org.
 	{
@@ -42635,6 +46005,15 @@ func decodeReactionsDeleteForTeamDiscussionParams(args [4]string, r *http.Reques
 		}
 	}
 	return params, nil
+}
+
+type ReactionsDeleteForTeamDiscussionCommentParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	CommentNumber    int
+	ReactionID       int
 }
 
 func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http.Request) (params ReactionsDeleteForTeamDiscussionCommentParams, _ error) {
@@ -42796,6 +46175,10 @@ func decodeReactionsDeleteForTeamDiscussionCommentParams(args [5]string, r *http
 	return params, nil
 }
 
+type ReactionsDeleteLegacyParams struct {
+	ReactionID int
+}
+
 func decodeReactionsDeleteLegacyParams(args [1]string, r *http.Request) (params ReactionsDeleteLegacyParams, _ error) {
 	// Decode path: reaction_id.
 	{
@@ -42829,6 +46212,20 @@ func decodeReactionsDeleteLegacyParams(args [1]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type ReactionsListForCommitCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a commit comment.
+	Content OptReactionsListForCommitCommentContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) (params ReactionsListForCommitCommentParams, _ error) {
@@ -43058,6 +46455,20 @@ func decodeReactionsListForCommitCommentParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+type ReactionsListForIssueParams struct {
+	Owner string
+	Repo  string
+	// Issue_number parameter.
+	IssueNumber int
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to an issue.
+	Content OptReactionsListForIssueContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params ReactionsListForIssueParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -43283,6 +46694,20 @@ func decodeReactionsListForIssueParams(args [3]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type ReactionsListForIssueCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to an issue comment.
+	Content OptReactionsListForIssueCommentContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (params ReactionsListForIssueCommentParams, _ error) {
@@ -43512,6 +46937,20 @@ func decodeReactionsListForIssueCommentParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+type ReactionsListForPullRequestReviewCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a pull request review comment.
+	Content OptReactionsListForPullRequestReviewCommentContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *http.Request) (params ReactionsListForPullRequestReviewCommentParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -43737,6 +47176,21 @@ func decodeReactionsListForPullRequestReviewCommentParams(args [3]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type ReactionsListForTeamDiscussionCommentInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	CommentNumber    int
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a team discussion comment.
+	Content OptReactionsListForTeamDiscussionCommentInOrgContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params ReactionsListForTeamDiscussionCommentInOrgParams, _ error) {
@@ -43997,6 +47451,19 @@ func decodeReactionsListForTeamDiscussionCommentInOrgParams(args [4]string, r *h
 	return params, nil
 }
 
+type ReactionsListForTeamDiscussionCommentLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+	CommentNumber    int
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a team discussion comment.
+	Content OptReactionsListForTeamDiscussionCommentLegacyContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params ReactionsListForTeamDiscussionCommentLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -44222,6 +47689,20 @@ func decodeReactionsListForTeamDiscussionCommentLegacyParams(args [3]string, r *
 		}
 	}
 	return params, nil
+}
+
+type ReactionsListForTeamDiscussionInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a team discussion.
+	Content OptReactionsListForTeamDiscussionInOrgContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Request) (params ReactionsListForTeamDiscussionInOrgParams, _ error) {
@@ -44451,6 +47932,18 @@ func decodeReactionsListForTeamDiscussionInOrgParams(args [3]string, r *http.Req
 	return params, nil
 }
 
+type ReactionsListForTeamDiscussionLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+	// Returns a single [reaction type](https://docs.github.com/rest/reference/reactions#reaction-types).
+	// Omit this parameter to list all reactions to a team discussion.
+	Content OptReactionsListForTeamDiscussionLegacyContent
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Request) (params ReactionsListForTeamDiscussionLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -44647,6 +48140,11 @@ func decodeReactionsListForTeamDiscussionLegacyParams(args [2]string, r *http.Re
 	return params, nil
 }
 
+type ReposAcceptInvitationParams struct {
+	// Invitation_id parameter.
+	InvitationID int
+}
+
 func decodeReposAcceptInvitationParams(args [1]string, r *http.Request) (params ReposAcceptInvitationParams, _ error) {
 	// Decode path: invitation_id.
 	{
@@ -44680,6 +48178,13 @@ func decodeReposAcceptInvitationParams(args [1]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type ReposAddAppAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddAppAccessRestrictionsParams, _ error) {
@@ -44779,6 +48284,12 @@ func decodeReposAddAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+type ReposAddCollaboratorParams struct {
+	Owner    string
+	Repo     string
+	Username string
+}
+
 func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params ReposAddCollaboratorParams, _ error) {
 	// Decode path: owner.
 	{
@@ -44874,6 +48385,13 @@ func decodeReposAddCollaboratorParams(args [3]string, r *http.Request) (params R
 		}
 	}
 	return params, nil
+}
+
+type ReposAddStatusCheckContextsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposAddStatusCheckContextsParams, _ error) {
@@ -44973,6 +48491,13 @@ func decodeReposAddStatusCheckContextsParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ReposAddTeamAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -45068,6 +48593,13 @@ func decodeReposAddTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ReposAddUserAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposAddUserAccessRestrictionsParams, _ error) {
@@ -45167,6 +48699,12 @@ func decodeReposAddUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+type ReposCheckCollaboratorParams struct {
+	Owner    string
+	Repo     string
+	Username string
+}
+
 func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params ReposCheckCollaboratorParams, _ error) {
 	// Decode path: owner.
 	{
@@ -45264,6 +48802,11 @@ func decodeReposCheckCollaboratorParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+type ReposCheckVulnerabilityAlertsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposCheckVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -45328,6 +48871,17 @@ func decodeReposCheckVulnerabilityAlertsParams(args [2]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type ReposCompareCommitsParams struct {
+	Owner string
+	Repo  string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// The base branch and head branch to compare. This parameter expects the format `{base}...{head}`.
+	Basehead string
 }
 
 func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params ReposCompareCommitsParams, _ error) {
@@ -45508,6 +49062,11 @@ func decodeReposCompareCommitsParams(args [3]string, r *http.Request) (params Re
 	return params, nil
 }
 
+type ReposCreateAutolinkParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (params ReposCreateAutolinkParams, _ error) {
 	// Decode path: owner.
 	{
@@ -45572,6 +49131,13 @@ func decodeReposCreateAutolinkParams(args [2]string, r *http.Request) (params Re
 		}
 	}
 	return params, nil
+}
+
+type ReposCreateCommitCommentParams struct {
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
+	CommitSha string
 }
 
 func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (params ReposCreateCommitCommentParams, _ error) {
@@ -45671,6 +49237,13 @@ func decodeReposCreateCommitCommentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+type ReposCreateCommitSignatureProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposCreateCommitSignatureProtectionParams, _ error) {
 	// Decode path: owner.
 	{
@@ -45766,6 +49339,12 @@ func decodeReposCreateCommitSignatureProtectionParams(args [3]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type ReposCreateCommitStatusParams struct {
+	Owner string
+	Repo  string
+	Sha   string
 }
 
 func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (params ReposCreateCommitStatusParams, _ error) {
@@ -45865,6 +49444,11 @@ func decodeReposCreateCommitStatusParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type ReposCreateDeployKeyParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (params ReposCreateDeployKeyParams, _ error) {
 	// Decode path: owner.
 	{
@@ -45931,6 +49515,11 @@ func decodeReposCreateDeployKeyParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+type ReposCreateDeploymentParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (params ReposCreateDeploymentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -45995,6 +49584,13 @@ func decodeReposCreateDeploymentParams(args [2]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type ReposCreateDeploymentStatusParams struct {
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
+	DeploymentID int
 }
 
 func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (params ReposCreateDeploymentStatusParams, _ error) {
@@ -46094,6 +49690,11 @@ func decodeReposCreateDeploymentStatusParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ReposCreateDispatchEventParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (params ReposCreateDispatchEventParams, _ error) {
 	// Decode path: owner.
 	{
@@ -46158,6 +49759,11 @@ func decodeReposCreateDispatchEventParams(args [2]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ReposCreateForkParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeReposCreateForkParams(args [2]string, r *http.Request) (params ReposCreateForkParams, _ error) {
@@ -46226,6 +49832,10 @@ func decodeReposCreateForkParams(args [2]string, r *http.Request) (params ReposC
 	return params, nil
 }
 
+type ReposCreateInOrgParams struct {
+	Org string
+}
+
 func decodeReposCreateInOrgParams(args [1]string, r *http.Request) (params ReposCreateInOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -46259,6 +49869,13 @@ func decodeReposCreateInOrgParams(args [1]string, r *http.Request) (params Repos
 		}
 	}
 	return params, nil
+}
+
+type ReposCreateOrUpdateFileContentsParams struct {
+	Owner string
+	Repo  string
+	// Path parameter.
+	Path string
 }
 
 func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request) (params ReposCreateOrUpdateFileContentsParams, _ error) {
@@ -46358,6 +49975,11 @@ func decodeReposCreateOrUpdateFileContentsParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+type ReposCreatePagesSiteParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (params ReposCreatePagesSiteParams, _ error) {
 	// Decode path: owner.
 	{
@@ -46422,6 +50044,11 @@ func decodeReposCreatePagesSiteParams(args [2]string, r *http.Request) (params R
 		}
 	}
 	return params, nil
+}
+
+type ReposCreateReleaseParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (params ReposCreateReleaseParams, _ error) {
@@ -46490,6 +50117,11 @@ func decodeReposCreateReleaseParams(args [2]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+type ReposCreateUsingTemplateParams struct {
+	TemplateOwner string
+	TemplateRepo  string
+}
+
 func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (params ReposCreateUsingTemplateParams, _ error) {
 	// Decode path: template_owner.
 	{
@@ -46554,6 +50186,11 @@ func decodeReposCreateUsingTemplateParams(args [2]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ReposCreateWebhookParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (params ReposCreateWebhookParams, _ error) {
@@ -46622,6 +50259,11 @@ func decodeReposCreateWebhookParams(args [2]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+type ReposDeclineInvitationParams struct {
+	// Invitation_id parameter.
+	InvitationID int
+}
+
 func decodeReposDeclineInvitationParams(args [1]string, r *http.Request) (params ReposDeclineInvitationParams, _ error) {
 	// Decode path: invitation_id.
 	{
@@ -46655,6 +50297,11 @@ func decodeReposDeclineInvitationParams(args [1]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type ReposDeleteParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeReposDeleteParams(args [2]string, r *http.Request) (params ReposDeleteParams, _ error) {
@@ -46721,6 +50368,13 @@ func decodeReposDeleteParams(args [2]string, r *http.Request) (params ReposDelet
 		}
 	}
 	return params, nil
+}
+
+type ReposDeleteAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposDeleteAccessRestrictionsParams, _ error) {
@@ -46820,6 +50474,13 @@ func decodeReposDeleteAccessRestrictionsParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+type ReposDeleteAdminBranchProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposDeleteAdminBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	{
@@ -46915,6 +50576,13 @@ func decodeReposDeleteAdminBranchProtectionParams(args [3]string, r *http.Reques
 		}
 	}
 	return params, nil
+}
+
+type ReposDeleteAnEnvironmentParams struct {
+	Owner string
+	Repo  string
+	// The name of the environment.
+	EnvironmentName string
 }
 
 func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (params ReposDeleteAnEnvironmentParams, _ error) {
@@ -47014,6 +50682,13 @@ func decodeReposDeleteAnEnvironmentParams(args [3]string, r *http.Request) (para
 	return params, nil
 }
 
+type ReposDeleteAutolinkParams struct {
+	Owner string
+	Repo  string
+	// Autolink_id parameter.
+	AutolinkID int
+}
+
 func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params ReposDeleteAutolinkParams, _ error) {
 	// Decode path: owner.
 	{
@@ -47109,6 +50784,13 @@ func decodeReposDeleteAutolinkParams(args [3]string, r *http.Request) (params Re
 		}
 	}
 	return params, nil
+}
+
+type ReposDeleteBranchProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (params ReposDeleteBranchProtectionParams, _ error) {
@@ -47208,6 +50890,13 @@ func decodeReposDeleteBranchProtectionParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ReposDeleteCommitCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+}
+
 func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (params ReposDeleteCommitCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -47303,6 +50992,13 @@ func decodeReposDeleteCommitCommentParams(args [3]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ReposDeleteCommitSignatureProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposDeleteCommitSignatureProtectionParams, _ error) {
@@ -47402,6 +51098,13 @@ func decodeReposDeleteCommitSignatureProtectionParams(args [3]string, r *http.Re
 	return params, nil
 }
 
+type ReposDeleteDeployKeyParams struct {
+	Owner string
+	Repo  string
+	// Key_id parameter.
+	KeyID int
+}
+
 func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params ReposDeleteDeployKeyParams, _ error) {
 	// Decode path: owner.
 	{
@@ -47497,6 +51200,13 @@ func decodeReposDeleteDeployKeyParams(args [3]string, r *http.Request) (params R
 		}
 	}
 	return params, nil
+}
+
+type ReposDeleteDeploymentParams struct {
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
+	DeploymentID int
 }
 
 func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params ReposDeleteDeploymentParams, _ error) {
@@ -47596,6 +51306,13 @@ func decodeReposDeleteDeploymentParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ReposDeleteFileParams struct {
+	Owner string
+	Repo  string
+	// Path parameter.
+	Path string
+}
+
 func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposDeleteFileParams, _ error) {
 	// Decode path: owner.
 	{
@@ -47691,6 +51408,13 @@ func decodeReposDeleteFileParams(args [3]string, r *http.Request) (params ReposD
 		}
 	}
 	return params, nil
+}
+
+type ReposDeleteInvitationParams struct {
+	Owner string
+	Repo  string
+	// Invitation_id parameter.
+	InvitationID int
 }
 
 func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params ReposDeleteInvitationParams, _ error) {
@@ -47790,6 +51514,11 @@ func decodeReposDeleteInvitationParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ReposDeletePagesSiteParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (params ReposDeletePagesSiteParams, _ error) {
 	// Decode path: owner.
 	{
@@ -47854,6 +51583,13 @@ func decodeReposDeletePagesSiteParams(args [2]string, r *http.Request) (params R
 		}
 	}
 	return params, nil
+}
+
+type ReposDeletePullRequestReviewProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposDeletePullRequestReviewProtectionParams, _ error) {
@@ -47953,6 +51689,13 @@ func decodeReposDeletePullRequestReviewProtectionParams(args [3]string, r *http.
 	return params, nil
 }
 
+type ReposDeleteReleaseParams struct {
+	Owner string
+	Repo  string
+	// Release_id parameter.
+	ReleaseID int
+}
+
 func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params ReposDeleteReleaseParams, _ error) {
 	// Decode path: owner.
 	{
@@ -48048,6 +51791,13 @@ func decodeReposDeleteReleaseParams(args [3]string, r *http.Request) (params Rep
 		}
 	}
 	return params, nil
+}
+
+type ReposDeleteReleaseAssetParams struct {
+	Owner string
+	Repo  string
+	// Asset_id parameter.
+	AssetID int
 }
 
 func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (params ReposDeleteReleaseAssetParams, _ error) {
@@ -48147,6 +51897,12 @@ func decodeReposDeleteReleaseAssetParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type ReposDeleteWebhookParams struct {
+	Owner  string
+	Repo   string
+	HookID int
+}
+
 func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params ReposDeleteWebhookParams, _ error) {
 	// Decode path: owner.
 	{
@@ -48244,6 +52000,11 @@ func decodeReposDeleteWebhookParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+type ReposDisableAutomatedSecurityFixesParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Request) (params ReposDisableAutomatedSecurityFixesParams, _ error) {
 	// Decode path: owner.
 	{
@@ -48308,6 +52069,11 @@ func decodeReposDisableAutomatedSecurityFixesParams(args [2]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type ReposDisableLfsForRepoParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (params ReposDisableLfsForRepoParams, _ error) {
@@ -48376,6 +52142,11 @@ func decodeReposDisableLfsForRepoParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+type ReposDisableVulnerabilityAlertsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposDisableVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -48440,6 +52211,12 @@ func decodeReposDisableVulnerabilityAlertsParams(args [2]string, r *http.Request
 		}
 	}
 	return params, nil
+}
+
+type ReposDownloadTarballArchiveParams struct {
+	Owner string
+	Repo  string
+	Ref   string
 }
 
 func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (params ReposDownloadTarballArchiveParams, _ error) {
@@ -48539,6 +52316,12 @@ func decodeReposDownloadTarballArchiveParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ReposDownloadZipballArchiveParams struct {
+	Owner string
+	Repo  string
+	Ref   string
+}
+
 func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (params ReposDownloadZipballArchiveParams, _ error) {
 	// Decode path: owner.
 	{
@@ -48636,6 +52419,11 @@ func decodeReposDownloadZipballArchiveParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ReposEnableAutomatedSecurityFixesParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Request) (params ReposEnableAutomatedSecurityFixesParams, _ error) {
 	// Decode path: owner.
 	{
@@ -48700,6 +52488,11 @@ func decodeReposEnableAutomatedSecurityFixesParams(args [2]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type ReposEnableLfsForRepoParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (params ReposEnableLfsForRepoParams, _ error) {
@@ -48768,6 +52561,11 @@ func decodeReposEnableLfsForRepoParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ReposEnableVulnerabilityAlertsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request) (params ReposEnableVulnerabilityAlertsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -48834,6 +52632,11 @@ func decodeReposEnableVulnerabilityAlertsParams(args [2]string, r *http.Request)
 	return params, nil
 }
 
+type ReposGetParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetParams(args [2]string, r *http.Request) (params ReposGetParams, _ error) {
 	// Decode path: owner.
 	{
@@ -48898,6 +52701,13 @@ func decodeReposGetParams(args [2]string, r *http.Request) (params ReposGetParam
 		}
 	}
 	return params, nil
+}
+
+type ReposGetAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposGetAccessRestrictionsParams, _ error) {
@@ -48997,6 +52807,13 @@ func decodeReposGetAccessRestrictionsParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+type ReposGetAdminBranchProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposGetAdminBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	{
@@ -49094,6 +52911,13 @@ func decodeReposGetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+type ReposGetAllStatusCheckContextsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposGetAllStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -49189,6 +53013,15 @@ func decodeReposGetAllStatusCheckContextsParams(args [3]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ReposGetAllTopicsParams struct {
+	Owner string
+	Repo  string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params ReposGetAllTopicsParams, _ error) {
@@ -49338,6 +53171,13 @@ func decodeReposGetAllTopicsParams(args [2]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+type ReposGetAppsWithAccessToProtectedBranchParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetAppsWithAccessToProtectedBranchParams, _ error) {
 	// Decode path: owner.
 	{
@@ -49433,6 +53273,13 @@ func decodeReposGetAppsWithAccessToProtectedBranchParams(args [3]string, r *http
 		}
 	}
 	return params, nil
+}
+
+type ReposGetAutolinkParams struct {
+	Owner string
+	Repo  string
+	// Autolink_id parameter.
+	AutolinkID int
 }
 
 func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params ReposGetAutolinkParams, _ error) {
@@ -49532,6 +53379,13 @@ func decodeReposGetAutolinkParams(args [3]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+type ReposGetBranchParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGetBranchParams, _ error) {
 	// Decode path: owner.
 	{
@@ -49629,6 +53483,13 @@ func decodeReposGetBranchParams(args [3]string, r *http.Request) (params ReposGe
 	return params, nil
 }
 
+type ReposGetBranchProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (params ReposGetBranchProtectionParams, _ error) {
 	// Decode path: owner.
 	{
@@ -49724,6 +53585,13 @@ func decodeReposGetBranchProtectionParams(args [3]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ReposGetClonesParams struct {
+	Owner string
+	Repo  string
+	// Must be one of: `day`, `week`.
+	Per OptReposGetClonesPer
 }
 
 func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGetClonesParams, _ error) {
@@ -49848,6 +53716,11 @@ func decodeReposGetClonesParams(args [2]string, r *http.Request) (params ReposGe
 	return params, nil
 }
 
+type ReposGetCodeFrequencyStatsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (params ReposGetCodeFrequencyStatsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -49912,6 +53785,12 @@ func decodeReposGetCodeFrequencyStatsParams(args [2]string, r *http.Request) (pa
 		}
 	}
 	return params, nil
+}
+
+type ReposGetCollaboratorPermissionLevelParams struct {
+	Owner    string
+	Repo     string
+	Username string
 }
 
 func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Request) (params ReposGetCollaboratorPermissionLevelParams, _ error) {
@@ -50009,6 +53888,17 @@ func decodeReposGetCollaboratorPermissionLevelParams(args [3]string, r *http.Req
 		}
 	}
 	return params, nil
+}
+
+type ReposGetCombinedStatusForRefParams struct {
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (params ReposGetCombinedStatusForRefParams, _ error) {
@@ -50189,6 +54079,17 @@ func decodeReposGetCombinedStatusForRefParams(args [3]string, r *http.Request) (
 	return params, nil
 }
 
+type ReposGetCommitParams struct {
+	Owner string
+	Repo  string
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
+	// Ref parameter.
+	Ref string
+}
+
 func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGetCommitParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -50367,6 +54268,11 @@ func decodeReposGetCommitParams(args [3]string, r *http.Request) (params ReposGe
 	return params, nil
 }
 
+type ReposGetCommitActivityStatsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (params ReposGetCommitActivityStatsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -50431,6 +54337,13 @@ func decodeReposGetCommitActivityStatsParams(args [2]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type ReposGetCommitCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
 }
 
 func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params ReposGetCommitCommentParams, _ error) {
@@ -50530,6 +54443,13 @@ func decodeReposGetCommitCommentParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ReposGetCommitSignatureProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Request) (params ReposGetCommitSignatureProtectionParams, _ error) {
 	// Decode path: owner.
 	{
@@ -50627,6 +54547,11 @@ func decodeReposGetCommitSignatureProtectionParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+type ReposGetCommunityProfileMetricsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request) (params ReposGetCommunityProfileMetricsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -50693,6 +54618,11 @@ func decodeReposGetCommunityProfileMetricsParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+type ReposGetContributorsStatsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (params ReposGetContributorsStatsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -50757,6 +54687,13 @@ func decodeReposGetContributorsStatsParams(args [2]string, r *http.Request) (par
 		}
 	}
 	return params, nil
+}
+
+type ReposGetDeployKeyParams struct {
+	Owner string
+	Repo  string
+	// Key_id parameter.
+	KeyID int
 }
 
 func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params ReposGetDeployKeyParams, _ error) {
@@ -50856,6 +54793,13 @@ func decodeReposGetDeployKeyParams(args [3]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+type ReposGetDeploymentParams struct {
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
+	DeploymentID int
+}
+
 func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params ReposGetDeploymentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -50951,6 +54895,14 @@ func decodeReposGetDeploymentParams(args [3]string, r *http.Request) (params Rep
 		}
 	}
 	return params, nil
+}
+
+type ReposGetDeploymentStatusParams struct {
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
+	DeploymentID int
+	StatusID     int
 }
 
 func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (params ReposGetDeploymentStatusParams, _ error) {
@@ -51081,6 +55033,11 @@ func decodeReposGetDeploymentStatusParams(args [4]string, r *http.Request) (para
 	return params, nil
 }
 
+type ReposGetLatestPagesBuildParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (params ReposGetLatestPagesBuildParams, _ error) {
 	// Decode path: owner.
 	{
@@ -51145,6 +55102,11 @@ func decodeReposGetLatestPagesBuildParams(args [2]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ReposGetLatestReleaseParams struct {
+	Owner string
+	Repo  string
 }
 
 func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (params ReposGetLatestReleaseParams, _ error) {
@@ -51213,6 +55175,11 @@ func decodeReposGetLatestReleaseParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ReposGetPagesParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetPagesParams(args [2]string, r *http.Request) (params ReposGetPagesParams, _ error) {
 	// Decode path: owner.
 	{
@@ -51277,6 +55244,12 @@ func decodeReposGetPagesParams(args [2]string, r *http.Request) (params ReposGet
 		}
 	}
 	return params, nil
+}
+
+type ReposGetPagesBuildParams struct {
+	Owner   string
+	Repo    string
+	BuildID int
 }
 
 func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params ReposGetPagesBuildParams, _ error) {
@@ -51376,6 +55349,11 @@ func decodeReposGetPagesBuildParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+type ReposGetPagesHealthCheckParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (params ReposGetPagesHealthCheckParams, _ error) {
 	// Decode path: owner.
 	{
@@ -51442,6 +55420,11 @@ func decodeReposGetPagesHealthCheckParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+type ReposGetParticipationStatsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (params ReposGetParticipationStatsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -51506,6 +55489,13 @@ func decodeReposGetParticipationStatsParams(args [2]string, r *http.Request) (pa
 		}
 	}
 	return params, nil
+}
+
+type ReposGetPullRequestReviewProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposGetPullRequestReviewProtectionParams, _ error) {
@@ -51605,6 +55595,11 @@ func decodeReposGetPullRequestReviewProtectionParams(args [3]string, r *http.Req
 	return params, nil
 }
 
+type ReposGetPunchCardStatsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (params ReposGetPunchCardStatsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -51669,6 +55664,13 @@ func decodeReposGetPunchCardStatsParams(args [2]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type ReposGetReadmeParams struct {
+	Owner string
+	Repo  string
+	// The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`).
+	Ref OptString
 }
 
 func decodeReposGetReadmeParams(args [2]string, r *http.Request) (params ReposGetReadmeParams, _ error) {
@@ -51770,6 +55772,15 @@ func decodeReposGetReadmeParams(args [2]string, r *http.Request) (params ReposGe
 		}
 	}
 	return params, nil
+}
+
+type ReposGetReadmeInDirectoryParams struct {
+	Owner string
+	Repo  string
+	// The alternate path to look for a README file.
+	Dir string
+	// The name of the commit/branch/tag. Default: the repository’s default branch (usually `master`).
+	Ref OptString
 }
 
 func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (params ReposGetReadmeInDirectoryParams, _ error) {
@@ -51904,6 +55915,13 @@ func decodeReposGetReadmeInDirectoryParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+type ReposGetReleaseParams struct {
+	Owner string
+	Repo  string
+	// Release_id parameter.
+	ReleaseID int
+}
+
 func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposGetReleaseParams, _ error) {
 	// Decode path: owner.
 	{
@@ -51999,6 +56017,13 @@ func decodeReposGetReleaseParams(args [3]string, r *http.Request) (params ReposG
 		}
 	}
 	return params, nil
+}
+
+type ReposGetReleaseAssetParams struct {
+	Owner string
+	Repo  string
+	// Asset_id parameter.
+	AssetID int
 }
 
 func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params ReposGetReleaseAssetParams, _ error) {
@@ -52098,6 +56123,13 @@ func decodeReposGetReleaseAssetParams(args [3]string, r *http.Request) (params R
 	return params, nil
 }
 
+type ReposGetReleaseByTagParams struct {
+	Owner string
+	Repo  string
+	// Tag parameter.
+	Tag string
+}
+
 func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params ReposGetReleaseByTagParams, _ error) {
 	// Decode path: owner.
 	{
@@ -52193,6 +56225,13 @@ func decodeReposGetReleaseByTagParams(args [3]string, r *http.Request) (params R
 		}
 	}
 	return params, nil
+}
+
+type ReposGetStatusChecksProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request) (params ReposGetStatusChecksProtectionParams, _ error) {
@@ -52292,6 +56331,13 @@ func decodeReposGetStatusChecksProtectionParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+type ReposGetTeamsWithAccessToProtectedBranchParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetTeamsWithAccessToProtectedBranchParams, _ error) {
 	// Decode path: owner.
 	{
@@ -52389,6 +56435,11 @@ func decodeReposGetTeamsWithAccessToProtectedBranchParams(args [3]string, r *htt
 	return params, nil
 }
 
+type ReposGetTopPathsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (params ReposGetTopPathsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -52455,6 +56506,11 @@ func decodeReposGetTopPathsParams(args [2]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+type ReposGetTopReferrersParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (params ReposGetTopReferrersParams, _ error) {
 	// Decode path: owner.
 	{
@@ -52519,6 +56575,13 @@ func decodeReposGetTopReferrersParams(args [2]string, r *http.Request) (params R
 		}
 	}
 	return params, nil
+}
+
+type ReposGetUsersWithAccessToProtectedBranchParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *http.Request) (params ReposGetUsersWithAccessToProtectedBranchParams, _ error) {
@@ -52616,6 +56679,13 @@ func decodeReposGetUsersWithAccessToProtectedBranchParams(args [3]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type ReposGetViewsParams struct {
+	Owner string
+	Repo  string
+	// Must be one of: `day`, `week`.
+	Per OptReposGetViewsPer
 }
 
 func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGetViewsParams, _ error) {
@@ -52740,6 +56810,12 @@ func decodeReposGetViewsParams(args [2]string, r *http.Request) (params ReposGet
 	return params, nil
 }
 
+type ReposGetWebhookParams struct {
+	Owner  string
+	Repo   string
+	HookID int
+}
+
 func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposGetWebhookParams, _ error) {
 	// Decode path: owner.
 	{
@@ -52837,6 +56913,12 @@ func decodeReposGetWebhookParams(args [3]string, r *http.Request) (params ReposG
 	return params, nil
 }
 
+type ReposGetWebhookConfigForRepoParams struct {
+	Owner  string
+	Repo   string
+	HookID int
+}
+
 func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (params ReposGetWebhookConfigForRepoParams, _ error) {
 	// Decode path: owner.
 	{
@@ -52932,6 +57014,13 @@ func decodeReposGetWebhookConfigForRepoParams(args [3]string, r *http.Request) (
 		}
 	}
 	return params, nil
+}
+
+type ReposGetWebhookDeliveryParams struct {
+	Owner      string
+	Repo       string
+	HookID     int
+	DeliveryID int
 }
 
 func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (params ReposGetWebhookDeliveryParams, _ error) {
@@ -53062,6 +57151,13 @@ func decodeReposGetWebhookDeliveryParams(args [4]string, r *http.Request) (param
 	return params, nil
 }
 
+type ReposListAutolinksParams struct {
+	Owner string
+	Repo  string
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params ReposListAutolinksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -53167,6 +57263,18 @@ func decodeReposListAutolinksParams(args [2]string, r *http.Request) (params Rep
 		}
 	}
 	return params, nil
+}
+
+type ReposListBranchesParams struct {
+	Owner string
+	Repo  string
+	// Setting to `true` returns only protected branches. When set to `false`, only unprotected branches
+	// are returned. Omitting this parameter returns all branches.
+	Protected OptBool
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListBranchesParams(args [2]string, r *http.Request) (params ReposListBranchesParams, _ error) {
@@ -53350,6 +57458,13 @@ func decodeReposListBranchesParams(args [2]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+type ReposListBranchesForHeadCommitParams struct {
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
+	CommitSha string
+}
+
 func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request) (params ReposListBranchesForHeadCommitParams, _ error) {
 	// Decode path: owner.
 	{
@@ -53445,6 +57560,21 @@ func decodeReposListBranchesForHeadCommitParams(args [3]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ReposListCollaboratorsParams struct {
+	Owner string
+	Repo  string
+	// Filter collaborators returned by their affiliation. Can be one of:
+	// \* `outside`: All outside collaborators of an organization-owned repository.
+	// \* `direct`: All collaborators with permissions to an organization-owned repository, regardless of
+	// organization membership status.
+	// \* `all`: All collaborators the authenticated user can see.
+	Affiliation OptReposListCollaboratorsAffiliation
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params ReposListCollaboratorsParams, _ error) {
@@ -53649,6 +57779,17 @@ func decodeReposListCollaboratorsParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+type ReposListCommentsForCommitParams struct {
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
+	CommitSha string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (params ReposListCommentsForCommitParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -53827,6 +57968,15 @@ func decodeReposListCommentsForCommitParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+type ReposListCommitCommentsForRepoParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request) (params ReposListCommitCommentsForRepoParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -53972,6 +58122,17 @@ func decodeReposListCommitCommentsForRepoParams(args [2]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ReposListCommitStatusesForRefParams struct {
+	Owner string
+	Repo  string
+	// Ref parameter.
+	Ref string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) (params ReposListCommitStatusesForRefParams, _ error) {
@@ -54150,6 +58311,28 @@ func decodeReposListCommitStatusesForRefParams(args [3]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type ReposListCommitsParams struct {
+	Owner string
+	Repo  string
+	// SHA or branch to start listing commits from. Default: the repository’s default branch (usually
+	// `master`).
+	Sha OptString
+	// Only commits containing this file path will be returned.
+	Path OptString
+	// GitHub login or email address by which to filter by commit author.
+	Author OptString
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Only commits before this date will be returned. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Until OptDateTime
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListCommitsParams(args [2]string, r *http.Request) (params ReposListCommitsParams, _ error) {
@@ -54469,6 +58652,17 @@ func decodeReposListCommitsParams(args [2]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+type ReposListContributorsParams struct {
+	Owner string
+	Repo  string
+	// Set to `1` or `true` to include anonymous contributors in results.
+	Anon OptString
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListContributorsParams(args [2]string, r *http.Request) (params ReposListContributorsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -54650,6 +58844,15 @@ func decodeReposListContributorsParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ReposListDeployKeysParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params ReposListDeployKeysParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -54795,6 +58998,17 @@ func decodeReposListDeployKeysParams(args [2]string, r *http.Request) (params Re
 		}
 	}
 	return params, nil
+}
+
+type ReposListDeploymentStatusesParams struct {
+	Owner string
+	Repo  string
+	// Deployment_id parameter.
+	DeploymentID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (params ReposListDeploymentStatusesParams, _ error) {
@@ -54973,6 +59187,23 @@ func decodeReposListDeploymentStatusesParams(args [3]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type ReposListDeploymentsParams struct {
+	Owner string
+	Repo  string
+	// The SHA recorded at creation time.
+	Sha OptString
+	// The name of the ref. This can be a branch, tag, or SHA.
+	Ref OptString
+	// The name of the task for the deployment (e.g., `deploy` or `deploy:migrations`).
+	Task OptString
+	// The name of the environment that was deployed to (e.g., `staging` or `production`).
+	Environment OptNilString
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params ReposListDeploymentsParams, _ error) {
@@ -55280,6 +59511,37 @@ func decodeReposListDeploymentsParams(args [2]string, r *http.Request) (params R
 		}
 	}
 	return params, nil
+}
+
+type ReposListForAuthenticatedUserParams struct {
+	// Can be one of `all`, `public`, or `private`. Note: For GitHub AE, can be one of `all`, `internal`,
+	// or `private`.
+	Visibility OptReposListForAuthenticatedUserVisibility
+	// Comma-separated list of values. Can include:
+	// \* `owner`: Repositories that are owned by the authenticated user.
+	// \* `collaborator`: Repositories that the user has been added to as a collaborator.
+	// \* `organization_member`: Repositories that the user has access to through being a member of an
+	// organization. This includes every repository on every team that the user is on.
+	Affiliation OptString
+	// Can be one of `all`, `owner`, `public`, `private`, `member`. Note: For GitHub AE, can be one of
+	// `all`, `owner`, `internal`, `private`, `member`. Default: `all`
+	// Will cause a `422` error if used in the same request as **visibility** or **affiliation**. Will
+	// cause a `422` error if used in the same request as **visibility** or **affiliation**.
+	Type OptReposListForAuthenticatedUserType
+	// Can be one of `created`, `updated`, `pushed`, `full_name`.
+	Sort OptReposListForAuthenticatedUserSort
+	// Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`.
+	Direction OptReposListForAuthenticatedUserDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Only show notifications updated after the given time. This is a timestamp in [ISO 8601](https://en.
+	// wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Since OptDateTime
+	// Only show notifications updated before the given time. This is a timestamp in [ISO
+	// 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DDTHH:MM:SSZ`.
+	Before OptDateTime
 }
 
 func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) (params ReposListForAuthenticatedUserParams, _ error) {
@@ -55689,6 +59951,25 @@ func decodeReposListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+type ReposListForOrgParams struct {
+	Org string
+	// Specifies the types of repositories you want returned. Can be one of `all`, `public`, `private`,
+	// `forks`, `sources`, `member`, `internal`. Note: For GitHub AE, can be one of `all`, `private`,
+	// `forks`, `sources`, `member`, `internal`. Default: `all`. If your organization is associated with
+	// an enterprise account using GitHub Enterprise Cloud or GitHub Enterprise Server 2.20+, `type` can
+	// also be `internal`. However, the `internal` value is not yet supported when a GitHub App calls
+	// this API with an installation access token.
+	Type OptReposListForOrgType
+	// Can be one of `created`, `updated`, `pushed`, `full_name`.
+	Sort OptReposListForOrgSort
+	// Can be one of `asc` or `desc`. Default: when using `full_name`: `asc`, otherwise `desc`.
+	Direction OptReposListForOrgDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposListForOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -55956,6 +60237,20 @@ func decodeReposListForOrgParams(args [1]string, r *http.Request) (params ReposL
 		}
 	}
 	return params, nil
+}
+
+type ReposListForUserParams struct {
+	Username string
+	// Can be one of `all`, `owner`, `member`.
+	Type OptReposListForUserType
+	// Can be one of `created`, `updated`, `pushed`, `full_name`.
+	Sort OptReposListForUserSort
+	// Can be one of `asc` or `desc`. Default: `asc` when using `full_name`, otherwise `desc`.
+	Direction OptReposListForUserDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListForUserParams(args [1]string, r *http.Request) (params ReposListForUserParams, _ error) {
@@ -56233,6 +60528,17 @@ func decodeReposListForUserParams(args [1]string, r *http.Request) (params Repos
 	return params, nil
 }
 
+type ReposListForksParams struct {
+	Owner string
+	Repo  string
+	// The sort order. Can be either `newest`, `oldest`, or `stargazers`.
+	Sort OptReposListForksSort
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposListForksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -56435,6 +60741,15 @@ func decodeReposListForksParams(args [2]string, r *http.Request) (params ReposLi
 	return params, nil
 }
 
+type ReposListInvitationsParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params ReposListInvitationsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -56582,6 +60897,13 @@ func decodeReposListInvitationsParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+type ReposListInvitationsForAuthenticatedUserParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *http.Request) (params ReposListInvitationsForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -56667,6 +60989,11 @@ func decodeReposListInvitationsForAuthenticatedUserParams(args [0]string, r *htt
 	return params, nil
 }
 
+type ReposListLanguagesParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposListLanguagesParams(args [2]string, r *http.Request) (params ReposListLanguagesParams, _ error) {
 	// Decode path: owner.
 	{
@@ -56731,6 +61058,15 @@ func decodeReposListLanguagesParams(args [2]string, r *http.Request) (params Rep
 		}
 	}
 	return params, nil
+}
+
+type ReposListPagesBuildsParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params ReposListPagesBuildsParams, _ error) {
@@ -56880,6 +61216,11 @@ func decodeReposListPagesBuildsParams(args [2]string, r *http.Request) (params R
 	return params, nil
 }
 
+type ReposListPublicParams struct {
+	// A repository ID. Only return repositories with an ID greater than this ID.
+	Since OptInt
+}
+
 func decodeReposListPublicParams(args [0]string, r *http.Request) (params ReposListPublicParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: since.
@@ -56917,6 +61258,17 @@ func decodeReposListPublicParams(args [0]string, r *http.Request) (params ReposL
 		}
 	}
 	return params, nil
+}
+
+type ReposListPullRequestsAssociatedWithCommitParams struct {
+	Owner string
+	Repo  string
+	// Commit_sha parameter.
+	CommitSha string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *http.Request) (params ReposListPullRequestsAssociatedWithCommitParams, _ error) {
@@ -57097,6 +61449,17 @@ func decodeReposListPullRequestsAssociatedWithCommitParams(args [3]string, r *ht
 	return params, nil
 }
 
+type ReposListReleaseAssetsParams struct {
+	Owner string
+	Repo  string
+	// Release_id parameter.
+	ReleaseID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params ReposListReleaseAssetsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -57275,6 +61638,15 @@ func decodeReposListReleaseAssetsParams(args [3]string, r *http.Request) (params
 	return params, nil
 }
 
+type ReposListReleasesParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListReleasesParams(args [2]string, r *http.Request) (params ReposListReleasesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -57420,6 +61792,15 @@ func decodeReposListReleasesParams(args [2]string, r *http.Request) (params Repo
 		}
 	}
 	return params, nil
+}
+
+type ReposListTagsParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposListTagsParams, _ error) {
@@ -57569,6 +61950,15 @@ func decodeReposListTagsParams(args [2]string, r *http.Request) (params ReposLis
 	return params, nil
 }
 
+type ReposListTeamsParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposListTeamsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -57714,6 +62104,17 @@ func decodeReposListTeamsParams(args [2]string, r *http.Request) (params ReposLi
 		}
 	}
 	return params, nil
+}
+
+type ReposListWebhookDeliveriesParams struct {
+	Owner  string
+	Repo   string
+	HookID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Used for pagination: the starting delivery from which the page of deliveries is fetched. Refer to
+	// the `link` header for the next and previous page cursors.
+	Cursor OptString
 }
 
 func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (params ReposListWebhookDeliveriesParams, _ error) {
@@ -57888,6 +62289,15 @@ func decodeReposListWebhookDeliveriesParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+type ReposListWebhooksParams struct {
+	Owner string
+	Repo  string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params ReposListWebhooksParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: owner.
@@ -58035,6 +62445,11 @@ func decodeReposListWebhooksParams(args [2]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+type ReposMergeParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposMergeParams(args [2]string, r *http.Request) (params ReposMergeParams, _ error) {
 	// Decode path: owner.
 	{
@@ -58101,6 +62516,11 @@ func decodeReposMergeParams(args [2]string, r *http.Request) (params ReposMergeP
 	return params, nil
 }
 
+type ReposMergeUpstreamParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (params ReposMergeUpstreamParams, _ error) {
 	// Decode path: owner.
 	{
@@ -58165,6 +62585,12 @@ func decodeReposMergeUpstreamParams(args [2]string, r *http.Request) (params Rep
 		}
 	}
 	return params, nil
+}
+
+type ReposPingWebhookParams struct {
+	Owner  string
+	Repo   string
+	HookID int
 }
 
 func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params ReposPingWebhookParams, _ error) {
@@ -58262,6 +62688,13 @@ func decodeReposPingWebhookParams(args [3]string, r *http.Request) (params Repos
 		}
 	}
 	return params, nil
+}
+
+type ReposRedeliverWebhookDeliveryParams struct {
+	Owner      string
+	Repo       string
+	HookID     int
+	DeliveryID int
 }
 
 func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) (params ReposRedeliverWebhookDeliveryParams, _ error) {
@@ -58392,6 +62825,13 @@ func decodeReposRedeliverWebhookDeliveryParams(args [4]string, r *http.Request) 
 	return params, nil
 }
 
+type ReposRemoveAppAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveAppAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -58487,6 +62927,12 @@ func decodeReposRemoveAppAccessRestrictionsParams(args [3]string, r *http.Reques
 		}
 	}
 	return params, nil
+}
+
+type ReposRemoveCollaboratorParams struct {
+	Owner    string
+	Repo     string
+	Username string
 }
 
 func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (params ReposRemoveCollaboratorParams, _ error) {
@@ -58586,6 +63032,13 @@ func decodeReposRemoveCollaboratorParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type ReposRemoveStatusCheckContextsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposRemoveStatusCheckContextsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -58681,6 +63134,13 @@ func decodeReposRemoveStatusCheckContextsParams(args [3]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ReposRemoveStatusCheckProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Request) (params ReposRemoveStatusCheckProtectionParams, _ error) {
@@ -58780,6 +63240,13 @@ func decodeReposRemoveStatusCheckProtectionParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
+type ReposRemoveTeamAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -58875,6 +63342,13 @@ func decodeReposRemoveTeamAccessRestrictionsParams(args [3]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type ReposRemoveUserAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposRemoveUserAccessRestrictionsParams, _ error) {
@@ -58974,6 +63448,13 @@ func decodeReposRemoveUserAccessRestrictionsParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+type ReposRenameBranchParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params ReposRenameBranchParams, _ error) {
 	// Decode path: owner.
 	{
@@ -59071,6 +63552,11 @@ func decodeReposRenameBranchParams(args [3]string, r *http.Request) (params Repo
 	return params, nil
 }
 
+type ReposReplaceAllTopicsParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (params ReposReplaceAllTopicsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -59137,6 +63623,11 @@ func decodeReposReplaceAllTopicsParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ReposRequestPagesBuildParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (params ReposRequestPagesBuildParams, _ error) {
 	// Decode path: owner.
 	{
@@ -59201,6 +63692,13 @@ func decodeReposRequestPagesBuildParams(args [2]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type ReposSetAdminBranchProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) (params ReposSetAdminBranchProtectionParams, _ error) {
@@ -59300,6 +63798,13 @@ func decodeReposSetAdminBranchProtectionParams(args [3]string, r *http.Request) 
 	return params, nil
 }
 
+type ReposSetAppAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetAppAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -59395,6 +63900,13 @@ func decodeReposSetAppAccessRestrictionsParams(args [3]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type ReposSetStatusCheckContextsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (params ReposSetStatusCheckContextsParams, _ error) {
@@ -59494,6 +64006,13 @@ func decodeReposSetStatusCheckContextsParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ReposSetTeamAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetTeamAccessRestrictionsParams, _ error) {
 	// Decode path: owner.
 	{
@@ -59589,6 +64108,13 @@ func decodeReposSetTeamAccessRestrictionsParams(args [3]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type ReposSetUserAccessRestrictionsParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request) (params ReposSetUserAccessRestrictionsParams, _ error) {
@@ -59688,6 +64214,12 @@ func decodeReposSetUserAccessRestrictionsParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+type ReposTestPushWebhookParams struct {
+	Owner  string
+	Repo   string
+	HookID int
+}
+
 func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params ReposTestPushWebhookParams, _ error) {
 	// Decode path: owner.
 	{
@@ -59785,6 +64317,11 @@ func decodeReposTestPushWebhookParams(args [3]string, r *http.Request) (params R
 	return params, nil
 }
 
+type ReposTransferParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposTransferParams(args [2]string, r *http.Request) (params ReposTransferParams, _ error) {
 	// Decode path: owner.
 	{
@@ -59851,6 +64388,11 @@ func decodeReposTransferParams(args [2]string, r *http.Request) (params ReposTra
 	return params, nil
 }
 
+type ReposUpdateParams struct {
+	Owner string
+	Repo  string
+}
+
 func decodeReposUpdateParams(args [2]string, r *http.Request) (params ReposUpdateParams, _ error) {
 	// Decode path: owner.
 	{
@@ -59915,6 +64457,13 @@ func decodeReposUpdateParams(args [2]string, r *http.Request) (params ReposUpdat
 		}
 	}
 	return params, nil
+}
+
+type ReposUpdateBranchProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (params ReposUpdateBranchProtectionParams, _ error) {
@@ -60014,6 +64563,13 @@ func decodeReposUpdateBranchProtectionParams(args [3]string, r *http.Request) (p
 	return params, nil
 }
 
+type ReposUpdateCommitCommentParams struct {
+	Owner string
+	Repo  string
+	// Comment_id parameter.
+	CommentID int
+}
+
 func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (params ReposUpdateCommitCommentParams, _ error) {
 	// Decode path: owner.
 	{
@@ -60109,6 +64665,13 @@ func decodeReposUpdateCommitCommentParams(args [3]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type ReposUpdateInvitationParams struct {
+	Owner string
+	Repo  string
+	// Invitation_id parameter.
+	InvitationID int
 }
 
 func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params ReposUpdateInvitationParams, _ error) {
@@ -60208,6 +64771,13 @@ func decodeReposUpdateInvitationParams(args [3]string, r *http.Request) (params 
 	return params, nil
 }
 
+type ReposUpdatePullRequestReviewProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
+}
+
 func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.Request) (params ReposUpdatePullRequestReviewProtectionParams, _ error) {
 	// Decode path: owner.
 	{
@@ -60303,6 +64873,13 @@ func decodeReposUpdatePullRequestReviewProtectionParams(args [3]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type ReposUpdateReleaseParams struct {
+	Owner string
+	Repo  string
+	// Release_id parameter.
+	ReleaseID int
 }
 
 func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params ReposUpdateReleaseParams, _ error) {
@@ -60402,6 +64979,13 @@ func decodeReposUpdateReleaseParams(args [3]string, r *http.Request) (params Rep
 	return params, nil
 }
 
+type ReposUpdateReleaseAssetParams struct {
+	Owner string
+	Repo  string
+	// Asset_id parameter.
+	AssetID int
+}
+
 func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (params ReposUpdateReleaseAssetParams, _ error) {
 	// Decode path: owner.
 	{
@@ -60497,6 +65081,13 @@ func decodeReposUpdateReleaseAssetParams(args [3]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type ReposUpdateStatusCheckProtectionParams struct {
+	Owner string
+	Repo  string
+	// The name of the branch.
+	Branch string
 }
 
 func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Request) (params ReposUpdateStatusCheckProtectionParams, _ error) {
@@ -60596,6 +65187,12 @@ func decodeReposUpdateStatusCheckProtectionParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
+type ReposUpdateWebhookParams struct {
+	Owner  string
+	Repo   string
+	HookID int
+}
+
 func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params ReposUpdateWebhookParams, _ error) {
 	// Decode path: owner.
 	{
@@ -60691,6 +65288,12 @@ func decodeReposUpdateWebhookParams(args [3]string, r *http.Request) (params Rep
 		}
 	}
 	return params, nil
+}
+
+type ReposUpdateWebhookConfigForRepoParams struct {
+	Owner  string
+	Repo   string
+	HookID int
 }
 
 func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request) (params ReposUpdateWebhookConfigForRepoParams, _ error) {
@@ -60790,6 +65393,12 @@ func decodeReposUpdateWebhookConfigForRepoParams(args [3]string, r *http.Request
 	return params, nil
 }
 
+type ScimDeleteUserFromOrgParams struct {
+	Org string
+	// Scim_user_id parameter.
+	ScimUserID string
+}
+
 func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (params ScimDeleteUserFromOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -60854,6 +65463,26 @@ func decodeScimDeleteUserFromOrgParams(args [2]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type SearchCodeParams struct {
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching code](https://help.github.
+	// com/articles/searching-code/)" for a detailed list of qualifiers.
+	Q string
+	// Sorts the results of your query. Can only be `indexed`, which indicates how recently a file has
+	// been indexed by the GitHub search infrastructure. Default: [best match](https://docs.github.
+	// com/rest/reference/search#ranking-search-results).
+	Sort OptSearchCodeSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchCodeOrder
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeSearchCodeParams(args [0]string, r *http.Request) (params SearchCodeParams, _ error) {
@@ -61074,6 +65703,25 @@ func decodeSearchCodeParams(args [0]string, r *http.Request) (params SearchCodeP
 	return params, nil
 }
 
+type SearchCommitsParams struct {
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching commits](https://help.
+	// github.com/articles/searching-commits/)" for a detailed list of qualifiers.
+	Q string
+	// Sorts the results of your query by `author-date` or `committer-date`. Default: [best
+	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	Sort OptSearchCommitsSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchCommitsOrder
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeSearchCommitsParams(args [0]string, r *http.Request) (params SearchCommitsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
@@ -61292,6 +65940,28 @@ func decodeSearchCommitsParams(args [0]string, r *http.Request) (params SearchCo
 	return params, nil
 }
 
+type SearchIssuesAndPullRequestsParams struct {
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching issues and pull
+	// requests](https://help.github.com/articles/searching-issues-and-pull-requests/)" for a detailed
+	// list of qualifiers.
+	Q string
+	// Sorts the results of your query by the number of `comments`, `reactions`, `reactions-+1`,
+	// `reactions--1`, `reactions-smile`, `reactions-thinking_face`, `reactions-heart`, `reactions-tada`,
+	// or `interactions`. You can also sort results by how recently the items were `created` or `updated`,
+	//  Default: [best match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	Sort OptSearchIssuesAndPullRequestsSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchIssuesAndPullRequestsOrder
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (params SearchIssuesAndPullRequestsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
@@ -61508,6 +66178,25 @@ func decodeSearchIssuesAndPullRequestsParams(args [0]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type SearchLabelsParams struct {
+	// The id of the repository.
+	RepositoryID int
+	// The search keywords. This endpoint does not accept qualifiers in the query. To learn more about
+	// the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query).
+	Q string
+	// Sorts the results of your query by when the label was `created` or `updated`. Default: [best
+	// match](https://docs.github.com/rest/reference/search#ranking-search-results).
+	Sort OptSearchLabelsSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchLabelsOrder
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeSearchLabelsParams(args [0]string, r *http.Request) (params SearchLabelsParams, _ error) {
@@ -61757,6 +66446,27 @@ func decodeSearchLabelsParams(args [0]string, r *http.Request) (params SearchLab
 	return params, nil
 }
 
+type SearchReposParams struct {
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching for
+	// repositories](https://help.github.com/articles/searching-for-repositories/)" for a detailed list
+	// of qualifiers.
+	Q string
+	// Sorts the results of your query by number of `stars`, `forks`, or `help-wanted-issues` or how
+	// recently the items were `updated`. Default: [best match](https://docs.github.
+	// com/rest/reference/search#ranking-search-results).
+	Sort OptSearchReposSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchReposOrder
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeSearchReposParams(args [0]string, r *http.Request) (params SearchReposParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
@@ -61975,6 +66685,18 @@ func decodeSearchReposParams(args [0]string, r *http.Request) (params SearchRepo
 	return params, nil
 }
 
+type SearchTopicsParams struct {
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query).
+	Q string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeSearchTopicsParams(args [0]string, r *http.Request) (params SearchTopicsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: q.
@@ -62087,6 +66809,26 @@ func decodeSearchTopicsParams(args [0]string, r *http.Request) (params SearchTop
 		}
 	}
 	return params, nil
+}
+
+type SearchUsersParams struct {
+	// The query contains one or more search keywords and qualifiers. Qualifiers allow you to limit your
+	// search to specific areas of GitHub. The REST API supports the same qualifiers as GitHub.com. To
+	// learn more about the format of the query, see [Constructing a search query](https://docs.github.
+	// com/rest/reference/search#constructing-a-search-query). See "[Searching users](https://help.github.
+	// com/articles/searching-users/)" for a detailed list of qualifiers.
+	Q string
+	// Sorts the results of your query by number of `followers` or `repositories`, or when the person
+	// `joined` GitHub. Default: [best match](https://docs.github.
+	// com/rest/reference/search#ranking-search-results).
+	Sort OptSearchUsersSort
+	// Determines whether the first search result returned is the highest number of matches (`desc`) or
+	// lowest number of matches (`asc`). This parameter is ignored unless you provide `sort`.
+	Order OptSearchUsersOrder
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeSearchUsersParams(args [0]string, r *http.Request) (params SearchUsersParams, _ error) {
@@ -62307,6 +67049,15 @@ func decodeSearchUsersParams(args [0]string, r *http.Request) (params SearchUser
 	return params, nil
 }
 
+type SecretScanningGetAlertParams struct {
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	AlertNumber AlertNumber
+}
+
 func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params SecretScanningGetAlertParams, _ error) {
 	// Decode path: owner.
 	{
@@ -62409,6 +67160,18 @@ func decodeSecretScanningGetAlertParams(args [3]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type SecretScanningListAlertsForOrgParams struct {
+	Org string
+	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
+	State OptSecretScanningListAlertsForOrgState
+	// A comma separated list of secret types to return. By default all secret types are returned.
+	SecretType OptString
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request) (params SecretScanningListAlertsForOrgParams, _ error) {
@@ -62608,6 +67371,21 @@ func decodeSecretScanningListAlertsForOrgParams(args [1]string, r *http.Request)
 		}
 	}
 	return params, nil
+}
+
+type SecretScanningListAlertsForRepoParams struct {
+	Owner string
+	Repo  string
+	// Set to `open` or `resolved` to only list secret scanning alerts in a specific state.
+	State OptSecretScanningListAlertsForRepoState
+	// A comma separated list of secret types to return. By default all secret types are returned. See
+	// "[About secret scanning for private repositories](https://docs.github.
+	// com/code-security/secret-security/about-secret-scanning#about-secret-scanning-for-private-repositories)" for a complete list of secret types (API slug).
+	SecretType OptString
+	// Page number of the results to fetch.
+	Page OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request) (params SecretScanningListAlertsForRepoParams, _ error) {
@@ -62840,6 +67618,15 @@ func decodeSecretScanningListAlertsForRepoParams(args [2]string, r *http.Request
 	return params, nil
 }
 
+type SecretScanningUpdateAlertParams struct {
+	Owner string
+	Repo  string
+	// The number that identifies an alert. You can find this at the end of the URL for a code scanning
+	// alert within GitHub, and in the `number` field in the response from the `GET
+	// /repos/{owner}/{repo}/code-scanning/alerts` operation.
+	AlertNumber AlertNumber
+}
+
 func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (params SecretScanningUpdateAlertParams, _ error) {
 	// Decode path: owner.
 	{
@@ -62944,6 +67731,11 @@ func decodeSecretScanningUpdateAlertParams(args [3]string, r *http.Request) (par
 	return params, nil
 }
 
+type TeamsAddMemberLegacyParams struct {
+	TeamID   int
+	Username string
+}
+
 func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (params TeamsAddMemberLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -63008,6 +67800,13 @@ func decodeTeamsAddMemberLegacyParams(args [2]string, r *http.Request) (params T
 		}
 	}
 	return params, nil
+}
+
+type TeamsAddOrUpdateMembershipForUserInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	Username string
 }
 
 func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateMembershipForUserInOrgParams, _ error) {
@@ -63107,6 +67906,11 @@ func decodeTeamsAddOrUpdateMembershipForUserInOrgParams(args [3]string, r *http.
 	return params, nil
 }
 
+type TeamsAddOrUpdateMembershipForUserLegacyParams struct {
+	TeamID   int
+	Username string
+}
+
 func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsAddOrUpdateMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -63171,6 +67975,13 @@ func decodeTeamsAddOrUpdateMembershipForUserLegacyParams(args [2]string, r *http
 		}
 	}
 	return params, nil
+}
+
+type TeamsAddOrUpdateProjectPermissionsInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug  string
+	ProjectID int
 }
 
 func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateProjectPermissionsInOrgParams, _ error) {
@@ -63270,6 +68081,11 @@ func decodeTeamsAddOrUpdateProjectPermissionsInOrgParams(args [3]string, r *http
 	return params, nil
 }
 
+type TeamsAddOrUpdateProjectPermissionsLegacyParams struct {
+	TeamID    int
+	ProjectID int
+}
+
 func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *http.Request) (params TeamsAddOrUpdateProjectPermissionsLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -63334,6 +68150,14 @@ func decodeTeamsAddOrUpdateProjectPermissionsLegacyParams(args [2]string, r *htt
 		}
 	}
 	return params, nil
+}
+
+type TeamsAddOrUpdateRepoPermissionsInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	Owner    string
+	Repo     string
 }
 
 func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Request) (params TeamsAddOrUpdateRepoPermissionsInOrgParams, _ error) {
@@ -63464,6 +68288,12 @@ func decodeTeamsAddOrUpdateRepoPermissionsInOrgParams(args [4]string, r *http.Re
 	return params, nil
 }
 
+type TeamsAddOrUpdateRepoPermissionsLegacyParams struct {
+	TeamID int
+	Owner  string
+	Repo   string
+}
+
 func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.Request) (params TeamsAddOrUpdateRepoPermissionsLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -63559,6 +68389,13 @@ func decodeTeamsAddOrUpdateRepoPermissionsLegacyParams(args [3]string, r *http.R
 		}
 	}
 	return params, nil
+}
+
+type TeamsCheckPermissionsForProjectInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug  string
+	ProjectID int
 }
 
 func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Request) (params TeamsCheckPermissionsForProjectInOrgParams, _ error) {
@@ -63658,6 +68495,11 @@ func decodeTeamsCheckPermissionsForProjectInOrgParams(args [3]string, r *http.Re
 	return params, nil
 }
 
+type TeamsCheckPermissionsForProjectLegacyParams struct {
+	TeamID    int
+	ProjectID int
+}
+
 func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.Request) (params TeamsCheckPermissionsForProjectLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -63722,6 +68564,14 @@ func decodeTeamsCheckPermissionsForProjectLegacyParams(args [2]string, r *http.R
 		}
 	}
 	return params, nil
+}
+
+type TeamsCheckPermissionsForRepoInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	Owner    string
+	Repo     string
 }
 
 func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Request) (params TeamsCheckPermissionsForRepoInOrgParams, _ error) {
@@ -63852,6 +68702,12 @@ func decodeTeamsCheckPermissionsForRepoInOrgParams(args [4]string, r *http.Reque
 	return params, nil
 }
 
+type TeamsCheckPermissionsForRepoLegacyParams struct {
+	TeamID int
+	Owner  string
+	Repo   string
+}
+
 func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Request) (params TeamsCheckPermissionsForRepoLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -63949,6 +68805,10 @@ func decodeTeamsCheckPermissionsForRepoLegacyParams(args [3]string, r *http.Requ
 	return params, nil
 }
 
+type TeamsCreateParams struct {
+	Org string
+}
+
 func decodeTeamsCreateParams(args [1]string, r *http.Request) (params TeamsCreateParams, _ error) {
 	// Decode path: org.
 	{
@@ -63982,6 +68842,13 @@ func decodeTeamsCreateParams(args [1]string, r *http.Request) (params TeamsCreat
 		}
 	}
 	return params, nil
+}
+
+type TeamsCreateDiscussionCommentInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
 }
 
 func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Request) (params TeamsCreateDiscussionCommentInOrgParams, _ error) {
@@ -64081,6 +68948,11 @@ func decodeTeamsCreateDiscussionCommentInOrgParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+type TeamsCreateDiscussionCommentLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+}
+
 func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Request) (params TeamsCreateDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -64145,6 +69017,12 @@ func decodeTeamsCreateDiscussionCommentLegacyParams(args [2]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type TeamsCreateDiscussionInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
 }
 
 func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (params TeamsCreateDiscussionInOrgParams, _ error) {
@@ -64213,6 +69091,10 @@ func decodeTeamsCreateDiscussionInOrgParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+type TeamsCreateDiscussionLegacyParams struct {
+	TeamID int
+}
+
 func decodeTeamsCreateDiscussionLegacyParams(args [1]string, r *http.Request) (params TeamsCreateDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -64246,6 +69128,12 @@ func decodeTeamsCreateDiscussionLegacyParams(args [1]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
 }
 
 func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *http.Request) (params TeamsCreateOrUpdateIdpGroupConnectionsInOrgParams, _ error) {
@@ -64314,6 +69202,10 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsInOrgParams(args [2]string, r *
 	return params, nil
 }
 
+type TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams struct {
+	TeamID int
+}
+
 func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, r *http.Request) (params TeamsCreateOrUpdateIdpGroupConnectionsLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -64347,6 +69239,14 @@ func decodeTeamsCreateOrUpdateIdpGroupConnectionsLegacyParams(args [1]string, r 
 		}
 	}
 	return params, nil
+}
+
+type TeamsDeleteDiscussionCommentInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	CommentNumber    int
 }
 
 func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsDeleteDiscussionCommentInOrgParams, _ error) {
@@ -64477,6 +69377,12 @@ func decodeTeamsDeleteDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	return params, nil
 }
 
+type TeamsDeleteDiscussionCommentLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+	CommentNumber    int
+}
+
 func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsDeleteDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -64572,6 +69478,13 @@ func decodeTeamsDeleteDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type TeamsDeleteDiscussionInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
 }
 
 func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsDeleteDiscussionInOrgParams, _ error) {
@@ -64671,6 +69584,11 @@ func decodeTeamsDeleteDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+type TeamsDeleteDiscussionLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+}
+
 func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsDeleteDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -64735,6 +69653,12 @@ func decodeTeamsDeleteDiscussionLegacyParams(args [2]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type TeamsDeleteInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
 }
 
 func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (params TeamsDeleteInOrgParams, _ error) {
@@ -64803,6 +69727,10 @@ func decodeTeamsDeleteInOrgParams(args [2]string, r *http.Request) (params Teams
 	return params, nil
 }
 
+type TeamsDeleteLegacyParams struct {
+	TeamID int
+}
+
 func decodeTeamsDeleteLegacyParams(args [1]string, r *http.Request) (params TeamsDeleteLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -64836,6 +69764,12 @@ func decodeTeamsDeleteLegacyParams(args [1]string, r *http.Request) (params Team
 		}
 	}
 	return params, nil
+}
+
+type TeamsGetByNameParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
 }
 
 func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (params TeamsGetByNameParams, _ error) {
@@ -64902,6 +69836,14 @@ func decodeTeamsGetByNameParams(args [2]string, r *http.Request) (params TeamsGe
 		}
 	}
 	return params, nil
+}
+
+type TeamsGetDiscussionCommentInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	CommentNumber    int
 }
 
 func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsGetDiscussionCommentInOrgParams, _ error) {
@@ -65032,6 +69974,12 @@ func decodeTeamsGetDiscussionCommentInOrgParams(args [4]string, r *http.Request)
 	return params, nil
 }
 
+type TeamsGetDiscussionCommentLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+	CommentNumber    int
+}
+
 func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsGetDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -65127,6 +70075,13 @@ func decodeTeamsGetDiscussionCommentLegacyParams(args [3]string, r *http.Request
 		}
 	}
 	return params, nil
+}
+
+type TeamsGetDiscussionInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
 }
 
 func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsGetDiscussionInOrgParams, _ error) {
@@ -65226,6 +70181,11 @@ func decodeTeamsGetDiscussionInOrgParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type TeamsGetDiscussionLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+}
+
 func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsGetDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -65292,6 +70252,10 @@ func decodeTeamsGetDiscussionLegacyParams(args [2]string, r *http.Request) (para
 	return params, nil
 }
 
+type TeamsGetLegacyParams struct {
+	TeamID int
+}
+
 func decodeTeamsGetLegacyParams(args [1]string, r *http.Request) (params TeamsGetLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -65325,6 +70289,11 @@ func decodeTeamsGetLegacyParams(args [1]string, r *http.Request) (params TeamsGe
 		}
 	}
 	return params, nil
+}
+
+type TeamsGetMemberLegacyParams struct {
+	TeamID   int
+	Username string
 }
 
 func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (params TeamsGetMemberLegacyParams, _ error) {
@@ -65391,6 +70360,13 @@ func decodeTeamsGetMemberLegacyParams(args [2]string, r *http.Request) (params T
 		}
 	}
 	return params, nil
+}
+
+type TeamsGetMembershipForUserInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	Username string
 }
 
 func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsGetMembershipForUserInOrgParams, _ error) {
@@ -65490,6 +70466,11 @@ func decodeTeamsGetMembershipForUserInOrgParams(args [3]string, r *http.Request)
 	return params, nil
 }
 
+type TeamsGetMembershipForUserLegacyParams struct {
+	TeamID   int
+	Username string
+}
+
 func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsGetMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -65554,6 +70535,14 @@ func decodeTeamsGetMembershipForUserLegacyParams(args [2]string, r *http.Request
 		}
 	}
 	return params, nil
+}
+
+type TeamsListParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeTeamsListParams(args [1]string, r *http.Request) (params TeamsListParams, _ error) {
@@ -65670,6 +70659,16 @@ func decodeTeamsListParams(args [1]string, r *http.Request) (params TeamsListPar
 		}
 	}
 	return params, nil
+}
+
+type TeamsListChildInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params TeamsListChildInOrgParams, _ error) {
@@ -65819,6 +70818,14 @@ func decodeTeamsListChildInOrgParams(args [2]string, r *http.Request) (params Te
 	return params, nil
 }
 
+type TeamsListChildLegacyParams struct {
+	TeamID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (params TeamsListChildLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -65933,6 +70940,19 @@ func decodeTeamsListChildLegacyParams(args [1]string, r *http.Request) (params T
 		}
 	}
 	return params, nil
+}
+
+type TeamsListDiscussionCommentsInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptTeamsListDiscussionCommentsInOrgDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Request) (params TeamsListDiscussionCommentsInOrgParams, _ error) {
@@ -66168,6 +71188,17 @@ func decodeTeamsListDiscussionCommentsInOrgParams(args [3]string, r *http.Reques
 	return params, nil
 }
 
+type TeamsListDiscussionCommentsLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptTeamsListDiscussionCommentsLegacyDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Request) (params TeamsListDiscussionCommentsLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -66368,6 +71399,20 @@ func decodeTeamsListDiscussionCommentsLegacyParams(args [2]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type TeamsListDiscussionsInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptTeamsListDiscussionsInOrgDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+	// Pinned discussions only filter.
+	Pinned OptString
 }
 
 func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (params TeamsListDiscussionsInOrgParams, _ error) {
@@ -66606,6 +71651,16 @@ func decodeTeamsListDiscussionsInOrgParams(args [2]string, r *http.Request) (par
 	return params, nil
 }
 
+type TeamsListDiscussionsLegacyParams struct {
+	TeamID int
+	// One of `asc` (ascending) or `desc` (descending).
+	Direction OptTeamsListDiscussionsLegacyDirection
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (params TeamsListDiscussionsLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -66777,6 +71832,13 @@ func decodeTeamsListDiscussionsLegacyParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+type TeamsListForAuthenticatedUserParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) (params TeamsListForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -66862,6 +71924,10 @@ func decodeTeamsListForAuthenticatedUserParams(args [0]string, r *http.Request) 
 	return params, nil
 }
 
+type TeamsListIdpGroupsForLegacyParams struct {
+	TeamID int
+}
+
 func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (params TeamsListIdpGroupsForLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -66895,6 +71961,14 @@ func decodeTeamsListIdpGroupsForLegacyParams(args [1]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type TeamsListIdpGroupsForOrgParams struct {
+	Org string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page token.
+	Page OptString
 }
 
 func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (params TeamsListIdpGroupsForOrgParams, _ error) {
@@ -67007,6 +72081,12 @@ func decodeTeamsListIdpGroupsForOrgParams(args [1]string, r *http.Request) (para
 	return params, nil
 }
 
+type TeamsListIdpGroupsInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+}
+
 func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (params TeamsListIdpGroupsInOrgParams, _ error) {
 	// Decode path: org.
 	{
@@ -67071,6 +72151,21 @@ func decodeTeamsListIdpGroupsInOrgParams(args [2]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type TeamsListMembersInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	// Filters members returned by their role in the team. Can be one of:
+	// \* `member` - normal members of the team.
+	// \* `maintainer` - team maintainers.
+	// \* `all` - all members of the team.
+	Role OptTeamsListMembersInOrgRole
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params TeamsListMembersInOrgParams, _ error) {
@@ -67275,6 +72370,19 @@ func decodeTeamsListMembersInOrgParams(args [2]string, r *http.Request) (params 
 	return params, nil
 }
 
+type TeamsListMembersLegacyParams struct {
+	TeamID int
+	// Filters members returned by their role in the team. Can be one of:
+	// \* `member` - normal members of the team.
+	// \* `maintainer` - team maintainers.
+	// \* `all` - all members of the team.
+	Role OptTeamsListMembersLegacyRole
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params TeamsListMembersLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -67446,6 +72554,16 @@ func decodeTeamsListMembersLegacyParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+type TeamsListPendingInvitationsInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Request) (params TeamsListPendingInvitationsInOrgParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: org.
@@ -67593,6 +72711,14 @@ func decodeTeamsListPendingInvitationsInOrgParams(args [2]string, r *http.Reques
 	return params, nil
 }
 
+type TeamsListPendingInvitationsLegacyParams struct {
+	TeamID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Request) (params TeamsListPendingInvitationsLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -67707,6 +72833,16 @@ func decodeTeamsListPendingInvitationsLegacyParams(args [1]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type TeamsListProjectsInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params TeamsListProjectsInOrgParams, _ error) {
@@ -67856,6 +72992,14 @@ func decodeTeamsListProjectsInOrgParams(args [2]string, r *http.Request) (params
 	return params, nil
 }
 
+type TeamsListProjectsLegacyParams struct {
+	TeamID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (params TeamsListProjectsLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -67970,6 +73114,16 @@ func decodeTeamsListProjectsLegacyParams(args [1]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type TeamsListReposInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params TeamsListReposInOrgParams, _ error) {
@@ -68119,6 +73273,14 @@ func decodeTeamsListReposInOrgParams(args [2]string, r *http.Request) (params Te
 	return params, nil
 }
 
+type TeamsListReposLegacyParams struct {
+	TeamID int
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (params TeamsListReposLegacyParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: team_id.
@@ -68235,6 +73397,11 @@ func decodeTeamsListReposLegacyParams(args [1]string, r *http.Request) (params T
 	return params, nil
 }
 
+type TeamsRemoveMemberLegacyParams struct {
+	TeamID   int
+	Username string
+}
+
 func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveMemberLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -68299,6 +73466,13 @@ func decodeTeamsRemoveMemberLegacyParams(args [2]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type TeamsRemoveMembershipForUserInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	Username string
 }
 
 func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Request) (params TeamsRemoveMembershipForUserInOrgParams, _ error) {
@@ -68398,6 +73572,11 @@ func decodeTeamsRemoveMembershipForUserInOrgParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+type TeamsRemoveMembershipForUserLegacyParams struct {
+	TeamID   int
+	Username string
+}
+
 func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveMembershipForUserLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -68462,6 +73641,13 @@ func decodeTeamsRemoveMembershipForUserLegacyParams(args [2]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type TeamsRemoveProjectInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug  string
+	ProjectID int
 }
 
 func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (params TeamsRemoveProjectInOrgParams, _ error) {
@@ -68561,6 +73747,11 @@ func decodeTeamsRemoveProjectInOrgParams(args [3]string, r *http.Request) (param
 	return params, nil
 }
 
+type TeamsRemoveProjectLegacyParams struct {
+	TeamID    int
+	ProjectID int
+}
+
 func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (params TeamsRemoveProjectLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -68625,6 +73816,14 @@ func decodeTeamsRemoveProjectLegacyParams(args [2]string, r *http.Request) (para
 		}
 	}
 	return params, nil
+}
+
+type TeamsRemoveRepoInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
+	Owner    string
+	Repo     string
 }
 
 func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params TeamsRemoveRepoInOrgParams, _ error) {
@@ -68755,6 +73954,12 @@ func decodeTeamsRemoveRepoInOrgParams(args [4]string, r *http.Request) (params T
 	return params, nil
 }
 
+type TeamsRemoveRepoLegacyParams struct {
+	TeamID int
+	Owner  string
+	Repo   string
+}
+
 func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params TeamsRemoveRepoLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -68850,6 +74055,14 @@ func decodeTeamsRemoveRepoLegacyParams(args [3]string, r *http.Request) (params 
 		}
 	}
 	return params, nil
+}
+
+type TeamsUpdateDiscussionCommentInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
+	CommentNumber    int
 }
 
 func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Request) (params TeamsUpdateDiscussionCommentInOrgParams, _ error) {
@@ -68980,6 +74193,12 @@ func decodeTeamsUpdateDiscussionCommentInOrgParams(args [4]string, r *http.Reque
 	return params, nil
 }
 
+type TeamsUpdateDiscussionCommentLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+	CommentNumber    int
+}
+
 func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Request) (params TeamsUpdateDiscussionCommentLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -69075,6 +74294,13 @@ func decodeTeamsUpdateDiscussionCommentLegacyParams(args [3]string, r *http.Requ
 		}
 	}
 	return params, nil
+}
+
+type TeamsUpdateDiscussionInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug         string
+	DiscussionNumber int
 }
 
 func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (params TeamsUpdateDiscussionInOrgParams, _ error) {
@@ -69174,6 +74400,11 @@ func decodeTeamsUpdateDiscussionInOrgParams(args [3]string, r *http.Request) (pa
 	return params, nil
 }
 
+type TeamsUpdateDiscussionLegacyParams struct {
+	TeamID           int
+	DiscussionNumber int
+}
+
 func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (params TeamsUpdateDiscussionLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -69238,6 +74469,12 @@ func decodeTeamsUpdateDiscussionLegacyParams(args [2]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type TeamsUpdateInOrgParams struct {
+	Org string
+	// Team_slug parameter.
+	TeamSlug string
 }
 
 func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (params TeamsUpdateInOrgParams, _ error) {
@@ -69306,6 +74543,10 @@ func decodeTeamsUpdateInOrgParams(args [2]string, r *http.Request) (params Teams
 	return params, nil
 }
 
+type TeamsUpdateLegacyParams struct {
+	TeamID int
+}
+
 func decodeTeamsUpdateLegacyParams(args [1]string, r *http.Request) (params TeamsUpdateLegacyParams, _ error) {
 	// Decode path: team_id.
 	{
@@ -69339,6 +74580,10 @@ func decodeTeamsUpdateLegacyParams(args [1]string, r *http.Request) (params Team
 		}
 	}
 	return params, nil
+}
+
+type UsersBlockParams struct {
+	Username string
 }
 
 func decodeUsersBlockParams(args [1]string, r *http.Request) (params UsersBlockParams, _ error) {
@@ -69376,6 +74621,10 @@ func decodeUsersBlockParams(args [1]string, r *http.Request) (params UsersBlockP
 	return params, nil
 }
 
+type UsersCheckBlockedParams struct {
+	Username string
+}
+
 func decodeUsersCheckBlockedParams(args [1]string, r *http.Request) (params UsersCheckBlockedParams, _ error) {
 	// Decode path: username.
 	{
@@ -69409,6 +74658,11 @@ func decodeUsersCheckBlockedParams(args [1]string, r *http.Request) (params User
 		}
 	}
 	return params, nil
+}
+
+type UsersCheckFollowingForUserParams struct {
+	Username   string
+	TargetUser string
 }
 
 func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (params UsersCheckFollowingForUserParams, _ error) {
@@ -69477,6 +74731,10 @@ func decodeUsersCheckFollowingForUserParams(args [2]string, r *http.Request) (pa
 	return params, nil
 }
 
+type UsersCheckPersonIsFollowedByAuthenticatedParams struct {
+	Username string
+}
+
 func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, r *http.Request) (params UsersCheckPersonIsFollowedByAuthenticatedParams, _ error) {
 	// Decode path: username.
 	{
@@ -69510,6 +74768,11 @@ func decodeUsersCheckPersonIsFollowedByAuthenticatedParams(args [1]string, r *ht
 		}
 	}
 	return params, nil
+}
+
+type UsersDeleteGpgKeyForAuthenticatedParams struct {
+	// Gpg_key_id parameter.
+	GpgKeyID int
 }
 
 func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersDeleteGpgKeyForAuthenticatedParams, _ error) {
@@ -69547,6 +74810,11 @@ func decodeUsersDeleteGpgKeyForAuthenticatedParams(args [1]string, r *http.Reque
 	return params, nil
 }
 
+type UsersDeletePublicSSHKeyForAuthenticatedParams struct {
+	// Key_id parameter.
+	KeyID int
+}
+
 func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersDeletePublicSSHKeyForAuthenticatedParams, _ error) {
 	// Decode path: key_id.
 	{
@@ -69580,6 +74848,10 @@ func decodeUsersDeletePublicSSHKeyForAuthenticatedParams(args [1]string, r *http
 		}
 	}
 	return params, nil
+}
+
+type UsersFollowParams struct {
+	Username string
 }
 
 func decodeUsersFollowParams(args [1]string, r *http.Request) (params UsersFollowParams, _ error) {
@@ -69617,6 +74889,10 @@ func decodeUsersFollowParams(args [1]string, r *http.Request) (params UsersFollo
 	return params, nil
 }
 
+type UsersGetByUsernameParams struct {
+	Username string
+}
+
 func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (params UsersGetByUsernameParams, _ error) {
 	// Decode path: username.
 	{
@@ -69650,6 +74926,15 @@ func decodeUsersGetByUsernameParams(args [1]string, r *http.Request) (params Use
 		}
 	}
 	return params, nil
+}
+
+type UsersGetContextForUserParams struct {
+	Username string
+	// Identifies which additional information you'd like to receive about the person's hovercard. Can be
+	// `organization`, `repository`, `issue`, `pull_request`. **Required** when using `subject_id`.
+	SubjectType OptUsersGetContextForUserSubjectType
+	// Uses the ID for the `subject_type` you specified. **Required** when using `subject_type`.
+	SubjectID OptString
 }
 
 func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (params UsersGetContextForUserParams, _ error) {
@@ -69771,6 +75056,11 @@ func decodeUsersGetContextForUserParams(args [1]string, r *http.Request) (params
 	return params, nil
 }
 
+type UsersGetGpgKeyForAuthenticatedParams struct {
+	// Gpg_key_id parameter.
+	GpgKeyID int
+}
+
 func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersGetGpgKeyForAuthenticatedParams, _ error) {
 	// Decode path: gpg_key_id.
 	{
@@ -69806,6 +75096,11 @@ func decodeUsersGetGpgKeyForAuthenticatedParams(args [1]string, r *http.Request)
 	return params, nil
 }
 
+type UsersGetPublicSSHKeyForAuthenticatedParams struct {
+	// Key_id parameter.
+	KeyID int
+}
+
 func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Request) (params UsersGetPublicSSHKeyForAuthenticatedParams, _ error) {
 	// Decode path: key_id.
 	{
@@ -69839,6 +75134,13 @@ func decodeUsersGetPublicSSHKeyForAuthenticatedParams(args [1]string, r *http.Re
 		}
 	}
 	return params, nil
+}
+
+type UsersListParams struct {
+	// A user ID. Only return users with an ID greater than this ID.
+	Since OptInt
+	// Results per page (max 100).
+	PerPage OptInt
 }
 
 func decodeUsersListParams(args [0]string, r *http.Request) (params UsersListParams, _ error) {
@@ -69918,6 +75220,13 @@ func decodeUsersListParams(args [0]string, r *http.Request) (params UsersListPar
 		}
 	}
 	return params, nil
+}
+
+type UsersListEmailsForAuthenticatedParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListEmailsForAuthenticatedParams, _ error) {
@@ -70005,6 +75314,13 @@ func decodeUsersListEmailsForAuthenticatedParams(args [0]string, r *http.Request
 	return params, nil
 }
 
+type UsersListFollowedByAuthenticatedParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Request) (params UsersListFollowedByAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -70090,6 +75406,13 @@ func decodeUsersListFollowedByAuthenticatedParams(args [0]string, r *http.Reques
 	return params, nil
 }
 
+type UsersListFollowersForAuthenticatedUserParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.Request) (params UsersListFollowersForAuthenticatedUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -70173,6 +75496,14 @@ func decodeUsersListFollowersForAuthenticatedUserParams(args [0]string, r *http.
 		}
 	}
 	return params, nil
+}
+
+type UsersListFollowersForUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (params UsersListFollowersForUserParams, _ error) {
@@ -70291,6 +75622,14 @@ func decodeUsersListFollowersForUserParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+type UsersListFollowingForUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (params UsersListFollowingForUserParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: username.
@@ -70407,6 +75746,13 @@ func decodeUsersListFollowingForUserParams(args [1]string, r *http.Request) (par
 	return params, nil
 }
 
+type UsersListGpgKeysForAuthenticatedParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListGpgKeysForAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -70490,6 +75836,14 @@ func decodeUsersListGpgKeysForAuthenticatedParams(args [0]string, r *http.Reques
 		}
 	}
 	return params, nil
+}
+
+type UsersListGpgKeysForUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (params UsersListGpgKeysForUserParams, _ error) {
@@ -70608,6 +75962,13 @@ func decodeUsersListGpgKeysForUserParams(args [1]string, r *http.Request) (param
 	return params, nil
 }
 
+type UsersListPublicEmailsForAuthenticatedParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListPublicEmailsForAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -70691,6 +76052,14 @@ func decodeUsersListPublicEmailsForAuthenticatedParams(args [0]string, r *http.R
 		}
 	}
 	return params, nil
+}
+
+type UsersListPublicKeysForUserParams struct {
+	Username string
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
 }
 
 func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (params UsersListPublicKeysForUserParams, _ error) {
@@ -70809,6 +76178,13 @@ func decodeUsersListPublicKeysForUserParams(args [1]string, r *http.Request) (pa
 	return params, nil
 }
 
+type UsersListPublicSSHKeysForAuthenticatedParams struct {
+	// Results per page (max 100).
+	PerPage OptInt
+	// Page number of the results to fetch.
+	Page OptInt
+}
+
 func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.Request) (params UsersListPublicSSHKeysForAuthenticatedParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: per_page.
@@ -70894,6 +76270,10 @@ func decodeUsersListPublicSSHKeysForAuthenticatedParams(args [0]string, r *http.
 	return params, nil
 }
 
+type UsersUnblockParams struct {
+	Username string
+}
+
 func decodeUsersUnblockParams(args [1]string, r *http.Request) (params UsersUnblockParams, _ error) {
 	// Decode path: username.
 	{
@@ -70927,6 +76307,10 @@ func decodeUsersUnblockParams(args [1]string, r *http.Request) (params UsersUnbl
 		}
 	}
 	return params, nil
+}
+
+type UsersUnfollowParams struct {
+	Username string
 }
 
 func decodeUsersUnfollowParams(args [1]string, r *http.Request) (params UsersUnfollowParams, _ error) {

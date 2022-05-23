@@ -11,6 +11,11 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+type CreatePetCategoriesParams struct {
+	// ID of the Pet.
+	ID int
+}
+
 func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params CreatePetCategoriesParams, _ error) {
 	// Decode path: id.
 	{
@@ -44,6 +49,11 @@ func decodeCreatePetCategoriesParams(args [1]string, r *http.Request) (params Cr
 		}
 	}
 	return params, nil
+}
+
+type CreatePetFriendsParams struct {
+	// ID of the Pet.
+	ID int
 }
 
 func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (params CreatePetFriendsParams, _ error) {
@@ -81,6 +91,11 @@ func decodeCreatePetFriendsParams(args [1]string, r *http.Request) (params Creat
 	return params, nil
 }
 
+type CreatePetOwnerParams struct {
+	// ID of the Pet.
+	ID int
+}
+
 func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreatePetOwnerParams, _ error) {
 	// Decode path: id.
 	{
@@ -114,6 +129,11 @@ func decodeCreatePetOwnerParams(args [1]string, r *http.Request) (params CreateP
 		}
 	}
 	return params, nil
+}
+
+type DeletePetParams struct {
+	// ID of the Pet.
+	ID int
 }
 
 func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
@@ -151,6 +171,11 @@ func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetPar
 	return params, nil
 }
 
+type DeletePetOwnerParams struct {
+	// ID of the Pet.
+	ID int
+}
+
 func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeletePetOwnerParams, _ error) {
 	// Decode path: id.
 	{
@@ -184,6 +209,13 @@ func decodeDeletePetOwnerParams(args [1]string, r *http.Request) (params DeleteP
 		}
 	}
 	return params, nil
+}
+
+type ListPetParams struct {
+	// What page to render.
+	Page OptInt32
+	// Item count to render per page.
+	ItemsPerPage OptInt32
 }
 
 func decodeListPetParams(args [0]string, r *http.Request) (params ListPetParams, _ error) {
@@ -257,6 +289,15 @@ func decodeListPetParams(args [0]string, r *http.Request) (params ListPetParams,
 		}
 	}
 	return params, nil
+}
+
+type ListPetCategoriesParams struct {
+	// ID of the Pet.
+	ID int
+	// What page to render.
+	Page OptInt32
+	// Item count to render per page.
+	ItemsPerPage OptInt32
 }
 
 func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params ListPetCategoriesParams, _ error) {
@@ -363,6 +404,15 @@ func decodeListPetCategoriesParams(args [1]string, r *http.Request) (params List
 	return params, nil
 }
 
+type ListPetFriendsParams struct {
+	// ID of the Pet.
+	ID int
+	// What page to render.
+	Page OptInt32
+	// Item count to render per page.
+	ItemsPerPage OptInt32
+}
+
 func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPetFriendsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode path: id.
@@ -467,6 +517,11 @@ func decodeListPetFriendsParams(args [1]string, r *http.Request) (params ListPet
 	return params, nil
 }
 
+type ReadPetParams struct {
+	// ID of the Pet.
+	ID int
+}
+
 func decodeReadPetParams(args [1]string, r *http.Request) (params ReadPetParams, _ error) {
 	// Decode path: id.
 	{
@@ -502,6 +557,11 @@ func decodeReadPetParams(args [1]string, r *http.Request) (params ReadPetParams,
 	return params, nil
 }
 
+type ReadPetOwnerParams struct {
+	// ID of the Pet.
+	ID int
+}
+
 func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOwnerParams, _ error) {
 	// Decode path: id.
 	{
@@ -535,6 +595,11 @@ func decodeReadPetOwnerParams(args [1]string, r *http.Request) (params ReadPetOw
 		}
 	}
 	return params, nil
+}
+
+type UpdatePetParams struct {
+	// ID of the Pet.
+	ID int
 }
 
 func decodeUpdatePetParams(args [1]string, r *http.Request) (params UpdatePetParams, _ error) {

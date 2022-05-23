@@ -11,6 +11,11 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+type DataGetParams struct {
+	ID  int
+	Key string
+}
+
 func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams, _ error) {
 	// Decode path: id.
 	{
@@ -75,6 +80,10 @@ func decodeDataGetParams(args [2]string, r *http.Request) (params DataGetParams,
 		}
 	}
 	return params, nil
+}
+
+type DataGetIDParams struct {
+	ID int
 }
 
 func decodeDataGetIDParams(args [1]string, r *http.Request) (params DataGetIDParams, _ error) {

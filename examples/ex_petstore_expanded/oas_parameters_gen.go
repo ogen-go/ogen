@@ -11,6 +11,11 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+type DeletePetParams struct {
+	// ID of pet to delete.
+	ID int64
+}
+
 func decodeDeletePetParams(args [1]string, r *http.Request) (params DeletePetParams, _ error) {
 	// Decode path: id.
 	{

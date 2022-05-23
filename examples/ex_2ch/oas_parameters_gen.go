@@ -12,6 +12,13 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+type APICaptcha2chcaptchaIDGetParams struct {
+	// ID доски, например, b.
+	Board OptString
+	// Номер треда.
+	Thread OptInt
+}
+
 func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
@@ -109,6 +116,11 @@ func decodeAPICaptcha2chcaptchaIDGetParams(args [0]string, r *http.Request) (par
 	return params, nil
 }
 
+type APICaptcha2chcaptchaShowGetParams struct {
+	// ID капчи.
+	ID string
+}
+
 func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (params APICaptcha2chcaptchaShowGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: id.
@@ -141,6 +153,17 @@ func decodeAPICaptcha2chcaptchaShowGetParams(args [0]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type APICaptchaAppIDPublicKeyGetParams struct {
+	// Публичный ключ, для получения напишите admin@2ch.hk с темой
+	// письма "Получение ключа для приложения" и ссылкой на
+	// ваш клиент.
+	PublicKey string
+	// ID доски, например, b.
+	Board OptString
+	// Номер треда.
+	Thread OptInt
 }
 
 func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (params APICaptchaAppIDPublicKeyGetParams, _ error) {
@@ -271,6 +294,13 @@ func decodeAPICaptchaAppIDPublicKeyGetParams(args [1]string, r *http.Request) (p
 	return params, nil
 }
 
+type APICaptchaInvisibleRecaptchaIDGetParams struct {
+	// ID доски, например, b.
+	Board OptString
+	// Номер треда.
+	Thread OptInt
+}
+
 func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaInvisibleRecaptchaIDGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
@@ -366,6 +396,13 @@ func decodeAPICaptchaInvisibleRecaptchaIDGetParams(args [0]string, r *http.Reque
 		}
 	}
 	return params, nil
+}
+
+type APICaptchaRecaptchaIDGetParams struct {
+	// ID доски, например, b.
+	Board OptString
+	// Номер треда.
+	Thread OptInt
 }
 
 func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (params APICaptchaRecaptchaIDGetParams, _ error) {
@@ -465,6 +502,13 @@ func decodeAPICaptchaRecaptchaIDGetParams(args [0]string, r *http.Request) (para
 	return params, nil
 }
 
+type APIDislikeGetParams struct {
+	// ID доски, например, b.
+	Board string
+	// Номер поста.
+	Num int
+}
+
 func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDislikeGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
@@ -545,6 +589,13 @@ func decodeAPIDislikeGetParams(args [0]string, r *http.Request) (params APIDisli
 	return params, nil
 }
 
+type APILikeGetParams struct {
+	// ID доски, например, b.
+	Board string
+	// Номер поста.
+	Num int
+}
+
 func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: board.
@@ -623,6 +674,15 @@ func decodeAPILikeGetParams(args [0]string, r *http.Request) (params APILikeGetP
 		}
 	}
 	return params, nil
+}
+
+type APIMobileV2AfterBoardThreadNumGetParams struct {
+	// ID доски, например, b.
+	Board string
+	// Номер треда.
+	Thread int
+	// Номер поста.
+	Num int
 }
 
 func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Request) (params APIMobileV2AfterBoardThreadNumGetParams, _ error) {
@@ -722,6 +782,13 @@ func decodeAPIMobileV2AfterBoardThreadNumGetParams(args [3]string, r *http.Reque
 	return params, nil
 }
 
+type APIMobileV2InfoBoardThreadGetParams struct {
+	// ID доски, например, b.
+	Board string
+	// Номер треда.
+	Thread int
+}
+
 func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) (params APIMobileV2InfoBoardThreadGetParams, _ error) {
 	// Decode path: board.
 	{
@@ -786,6 +853,13 @@ func decodeAPIMobileV2InfoBoardThreadGetParams(args [2]string, r *http.Request) 
 		}
 	}
 	return params, nil
+}
+
+type APIMobileV2PostBoardNumGetParams struct {
+	// ID доски, например, b.
+	Board string
+	// Номер поста.
+	Num int
 }
 
 func decodeAPIMobileV2PostBoardNumGetParams(args [2]string, r *http.Request) (params APIMobileV2PostBoardNumGetParams, _ error) {

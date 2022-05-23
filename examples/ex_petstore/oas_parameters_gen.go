@@ -11,6 +11,11 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+type ListPetsParams struct {
+	// How many items to return at one time (max 100).
+	Limit OptInt32
+}
+
 func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: limit.
@@ -48,6 +53,11 @@ func decodeListPetsParams(args [0]string, r *http.Request) (params ListPetsParam
 		}
 	}
 	return params, nil
+}
+
+type ShowPetByIdParams struct {
+	// The id of the pet to retrieve.
+	PetId string
 }
 
 func decodeShowPetByIdParams(args [1]string, r *http.Request) (params ShowPetByIdParams, _ error) {

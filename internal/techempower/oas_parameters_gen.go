@@ -11,6 +11,10 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
+type CachingParams struct {
+	Count int64
+}
+
 func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: count.
@@ -45,6 +49,10 @@ func decodeCachingParams(args [0]string, r *http.Request) (params CachingParams,
 	return params, nil
 }
 
+type QueriesParams struct {
+	Queries int64
+}
+
 func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: queries.
@@ -77,6 +85,10 @@ func decodeQueriesParams(args [0]string, r *http.Request) (params QueriesParams,
 		}
 	}
 	return params, nil
+}
+
+type UpdatesParams struct {
+	Queries int64
 }
 
 func decodeUpdatesParams(args [0]string, r *http.Request) (params UpdatesParams, _ error) {

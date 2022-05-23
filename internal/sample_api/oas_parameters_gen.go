@@ -13,6 +13,14 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
+type DataGetFormatParams struct {
+	ID  int
+	Foo string
+	Bar string
+	Baz string
+	Kek string
+}
+
 func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetFormatParams, _ error) {
 	// Decode path: id.
 	{
@@ -172,6 +180,10 @@ func decodeDataGetFormatParams(args [5]string, r *http.Request) (params DataGetF
 	return params, nil
 }
 
+type DefaultTestParams struct {
+	Default OptInt32
+}
+
 func decodeDefaultTestParams(args [0]string, r *http.Request) (params DefaultTestParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Set default value for query: default.
@@ -215,6 +227,13 @@ func decodeDefaultTestParams(args [0]string, r *http.Request) (params DefaultTes
 		}
 	}
 	return params, nil
+}
+
+type FoobarGetParams struct {
+	// InlinedParam.
+	InlinedParam int64
+	// Number of items to skip.
+	Skip int32
 }
 
 func decodeFoobarGetParams(args [0]string, r *http.Request) (params FoobarGetParams, _ error) {
@@ -280,6 +299,10 @@ func decodeFoobarGetParams(args [0]string, r *http.Request) (params FoobarGetPar
 	return params, nil
 }
 
+type GetHeaderParams struct {
+	XAuthToken string
+}
+
 func decodeGetHeaderParams(args [0]string, r *http.Request) (params GetHeaderParams, _ error) {
 	h := uri.NewHeaderDecoder(r.Header)
 	// Decode header: x-auth-token.
@@ -310,6 +333,11 @@ func decodeGetHeaderParams(args [0]string, r *http.Request) (params GetHeaderPar
 		}
 	}
 	return params, nil
+}
+
+type PetFriendsNamesByIDParams struct {
+	// Pet ID.
+	ID int
 }
 
 func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params PetFriendsNamesByIDParams, _ error) {
@@ -345,6 +373,17 @@ func decodePetFriendsNamesByIDParams(args [1]string, r *http.Request) (params Pe
 		}
 	}
 	return params, nil
+}
+
+type PetGetParams struct {
+	// ID of pet.
+	PetID int64
+	// Tags of pets.
+	XTags []uuid.UUID
+	// Pet scopes.
+	XScope []string
+	// Token.
+	Token string
 }
 
 func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _ error) {
@@ -500,6 +539,11 @@ func decodePetGetParams(args [0]string, r *http.Request) (params PetGetParams, _
 	return params, nil
 }
 
+type PetGetAvatarByIDParams struct {
+	// ID of pet.
+	PetID int64
+}
+
 func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (params PetGetAvatarByIDParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
@@ -532,6 +576,11 @@ func decodePetGetAvatarByIDParams(args [0]string, r *http.Request) (params PetGe
 		}
 	}
 	return params, nil
+}
+
+type PetGetAvatarByNameParams struct {
+	// Name of pet.
+	Name string
 }
 
 func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (params PetGetAvatarByNameParams, _ error) {
@@ -569,6 +618,11 @@ func decodePetGetAvatarByNameParams(args [1]string, r *http.Request) (params Pet
 	return params, nil
 }
 
+type PetGetByNameParams struct {
+	// Name of pet.
+	Name string
+}
+
 func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByNameParams, _ error) {
 	// Decode path: name.
 	{
@@ -602,6 +656,11 @@ func decodePetGetByNameParams(args [1]string, r *http.Request) (params PetGetByN
 		}
 	}
 	return params, nil
+}
+
+type PetNameByIDParams struct {
+	// Pet ID.
+	ID int
 }
 
 func decodePetNameByIDParams(args [1]string, r *http.Request) (params PetNameByIDParams, _ error) {
@@ -639,6 +698,11 @@ func decodePetNameByIDParams(args [1]string, r *http.Request) (params PetNameByI
 	return params, nil
 }
 
+type PetUploadAvatarByIDParams struct {
+	// ID of pet.
+	PetID int64
+}
+
 func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params PetUploadAvatarByIDParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: petID.
@@ -671,6 +735,11 @@ func decodePetUploadAvatarByIDParams(args [0]string, r *http.Request) (params Pe
 		}
 	}
 	return params, nil
+}
+
+type TestObjectQueryParameterParams struct {
+	FormObject OptTestObjectQueryParameterFormObject
+	DeepObject OptTestObjectQueryParameterDeepObject
 }
 
 func decodeTestObjectQueryParameterParams(args [0]string, r *http.Request) (params TestObjectQueryParameterParams, _ error) {

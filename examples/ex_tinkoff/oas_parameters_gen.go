@@ -4,12 +4,24 @@ package api
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
 )
+
+type MarketCandlesGetParams struct {
+	// FIGI.
+	Figi string
+	// Начало временного промежутка.
+	From time.Time
+	// Конец временного промежутка.
+	To time.Time
+	// Интервал свечи.
+	Interval CandleResolution
+}
 
 func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params MarketCandlesGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
@@ -140,6 +152,13 @@ func decodeMarketCandlesGetParams(args [0]string, r *http.Request) (params Marke
 	return params, nil
 }
 
+type MarketOrderbookGetParams struct {
+	// FIGI.
+	Figi string
+	// Глубина стакана [1..20].
+	Depth int32
+}
+
 func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params MarketOrderbookGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
@@ -203,6 +222,11 @@ func decodeMarketOrderbookGetParams(args [0]string, r *http.Request) (params Mar
 	return params, nil
 }
 
+type MarketSearchByFigiGetParams struct {
+	// FIGI.
+	Figi string
+}
+
 func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params MarketSearchByFigiGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
@@ -237,6 +261,11 @@ func decodeMarketSearchByFigiGetParams(args [0]string, r *http.Request) (params 
 	return params, nil
 }
 
+type MarketSearchByTickerGetParams struct {
+	// Тикер инструмента.
+	Ticker string
+}
+
 func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (params MarketSearchByTickerGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: ticker.
@@ -269,6 +298,17 @@ func decodeMarketSearchByTickerGetParams(args [0]string, r *http.Request) (param
 		}
 	}
 	return params, nil
+}
+
+type OperationsGetParams struct {
+	// Начало временного промежутка.
+	From time.Time
+	// Конец временного промежутка.
+	To time.Time
+	// Figi инструмента для фильтрации.
+	Figi OptString
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
 }
 
 func decodeOperationsGetParams(args [0]string, r *http.Request) (params OperationsGetParams, _ error) {
@@ -402,6 +442,13 @@ func decodeOperationsGetParams(args [0]string, r *http.Request) (params Operatio
 	return params, nil
 }
 
+type OrdersCancelPostParams struct {
+	// ID заявки.
+	OrderId string
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
+}
+
 func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params OrdersCancelPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: orderId.
@@ -470,6 +517,11 @@ func decodeOrdersCancelPostParams(args [0]string, r *http.Request) (params Order
 	return params, nil
 }
 
+type OrdersGetParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
+}
+
 func decodeOrdersGetParams(args [0]string, r *http.Request) (params OrdersGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
@@ -507,6 +559,13 @@ func decodeOrdersGetParams(args [0]string, r *http.Request) (params OrdersGetPar
 		}
 	}
 	return params, nil
+}
+
+type OrdersLimitOrderPostParams struct {
+	// FIGI инструмента.
+	Figi string
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
 }
 
 func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params OrdersLimitOrderPostParams, _ error) {
@@ -577,6 +636,14 @@ func decodeOrdersLimitOrderPostParams(args [0]string, r *http.Request) (params O
 	return params, nil
 }
 
+type OrdersMarketOrderPostParams struct {
+	// FIGI инструмента.
+	Figi string
+	// Уникальный идентификатор счета (по умолчанию -
+	// Тинькофф).
+	BrokerAccountId OptString
+}
+
 func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params OrdersMarketOrderPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: figi.
@@ -645,6 +712,11 @@ func decodeOrdersMarketOrderPostParams(args [0]string, r *http.Request) (params 
 	return params, nil
 }
 
+type PortfolioCurrenciesGetParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
+}
+
 func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params PortfolioCurrenciesGetParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
@@ -682,6 +754,11 @@ func decodePortfolioCurrenciesGetParams(args [0]string, r *http.Request) (params
 		}
 	}
 	return params, nil
+}
+
+type PortfolioGetParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
 }
 
 func decodePortfolioGetParams(args [0]string, r *http.Request) (params PortfolioGetParams, _ error) {
@@ -723,6 +800,11 @@ func decodePortfolioGetParams(args [0]string, r *http.Request) (params Portfolio
 	return params, nil
 }
 
+type SandboxClearPostParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
+}
+
 func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params SandboxClearPostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
@@ -760,6 +842,11 @@ func decodeSandboxClearPostParams(args [0]string, r *http.Request) (params Sandb
 		}
 	}
 	return params, nil
+}
+
+type SandboxCurrenciesBalancePostParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
 }
 
 func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (params SandboxCurrenciesBalancePostParams, _ error) {
@@ -801,6 +888,11 @@ func decodeSandboxCurrenciesBalancePostParams(args [0]string, r *http.Request) (
 	return params, nil
 }
 
+type SandboxPositionsBalancePostParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
+}
+
 func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (params SandboxPositionsBalancePostParams, _ error) {
 	q := uri.NewQueryDecoder(r.URL.Query())
 	// Decode query: brokerAccountId.
@@ -838,6 +930,11 @@ func decodeSandboxPositionsBalancePostParams(args [0]string, r *http.Request) (p
 		}
 	}
 	return params, nil
+}
+
+type SandboxRemovePostParams struct {
+	// Номер счета (по умолчанию - Тинькофф).
+	BrokerAccountId OptString
 }
 
 func decodeSandboxRemovePostParams(args [0]string, r *http.Request) (params SandboxRemovePostParams, _ error) {
