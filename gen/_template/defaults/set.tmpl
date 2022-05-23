@@ -1,43 +1,41 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.DefaultElem*/ -}}
-
 {{- define "defaults/set" -}}
-	{{ $t := $.Type }}
-    {{- if or ($t.IsPrimitive) ($t.IsEnum) ($t.IsAlias) -}}
-    	{{- template "defaults/val" default_elem $t $.Var $.Default }}
 
-        {{ $.Var }} = val
-    {{- else if $t.IsGeneric -}}{{ $val := $.Default }}
-		{{- if $val.IsNil }}
+{{ $t := $.Type }}
+{{- if or ($t.IsPrimitive) ($t.IsEnum) ($t.IsAlias) -}}
+	{{- template "defaults/val" default_elem $t $.Var $.Default }}
+	{{ $.Var }} = val
+{{- else if $t.IsGeneric -}}{{ $val := $.Default }}
+	{{- if $val.IsNil }}
 		{{- if $t.GenericVariant.Nullable }}
 		{{ $.Var }}.Null = true
-		{{- end }}
-		{{- else }}
+	{{- end }}
+	{{- else }}
 		{{- template "defaults/val" default_elem $t.GenericOf $.Var $.Default }}
-
 		{{ $.Var }}.SetTo(val)
-		{{- end }}
-    {{- else if $t.IsArray -}}
-        {{ $.Var }} = make({{ $t.Go }}, {{ len $.Default.Value }})
-		{{- range $i, $d := $.Default.Value }}
-		{
-			{{- template "defaults/val" sub_default_elem $t.Item $.Var $d }}
-
-			{{ $.Var }}[{{ $i }}] = val
-		}
-		{{- end }}
-    {{- else -}}
-        {{ errorf "unsupported %#v: %s" $.Default.Value $t }}
-    {{- end }}
+	{{- end }}
+{{- else if $t.IsArray -}}
+	{{ $.Var }} = make({{ $t.Go }}, {{ len $.Default.Value }})
+	{{- range $i, $d := $.Default.Value }}
+	{
+		{{- template "defaults/val" sub_default_elem $t.Item $.Var $d }}
+		{{ $.Var }}[{{ $i }}] = val
+	}
+	{{- end }}
+{{- else -}}
+	{{ errorf "unsupported %#v: %s" $.Default.Value $t }}
+{{- end }}
 {{- end -}}
 
 {{- define "defaults/val" -}}
+
 {{ $t := $.Type }}{{ $j := $t.JSON }}{{- $val := print_go $.Default.Value }}
 {{- if $j.Format }}
-val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ quote $val }}))
+	val, _ := json.Decode{{ $j.Format }}(jx.DecodeStr({{ quote $val }}))
 {{- else if $j.IsBase64 }}
-val, _ := jx.DecodeStr({{ quote $val }}).Base64()
+	val, _ := jx.DecodeStr({{ quote $val }}).Base64()
 {{- else }}
-val := {{ $t.Go }}({{ $val }})
+	val := {{ $t.Go }}({{ $val }})
 {{- end }}
 
 {{- end }}

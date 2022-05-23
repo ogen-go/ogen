@@ -1,46 +1,51 @@
 {{- define "validate" }}
-	{{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
-	{{- $t := $.Type }}
-	{{- $va := $t.Validators }}
-	{{- $validated := false }}
-	{{- if $t.NilSemantic.Invalid }}
-        {{- $validated = true }}
-		if {{ $.Var }} == nil {
-			return errors.New("nil is invalid value")
+{{- /*gotype: github.com/ogen-go/ogen/gen.Elem*/ -}}
+
+{{- $t := $.Type }}
+{{- $va := $t.Validators }}
+{{- $validated := false }}
+
+{{- if $t.NilSemantic.Invalid }}
+	{{- $validated = true }}
+	if {{ $.Var }} == nil {
+		return errors.New("nil is invalid value")
+	}
+{{- end }}
+
+{{- if and ($t.IsGeneric) ($t.GenericOf.NeedValidation) }}
+	{{- $validated = true }}
+	{{- if $t.GenericVariant.Optional }}
+		if {{ $.Var }}.Set {
+			if err := func() error {
+				{{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
+			}(); err != nil {
+				return err
+			}
 		}
+		return nil
+	{{- else }}
+		{{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
 	{{- end }}
-	{{- if and ($t.IsGeneric) ($t.GenericOf.NeedValidation) }}
-        {{- $validated = true }}
-        {{- if $t.GenericVariant.Optional }}	
-      if {{ $.Var }}.Set {			
-        if err := func() error {
-            		{{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
-				}(); err != nil {
-					return err
-				}
-			}      
-			return nil
-        {{- else }}
-            {{- template "validate" elem $t.GenericOf (printf "%s.Value" $.Var) }}
-        {{- end }}
-	{{- end }}
-	{{- if and ($t.IsPointer) ($t.PointerTo.NeedValidation) -}}
-        {{- $validated = true }}
-		if {{ $.Var }} == nil {
-			return nil // {{ $t.NilSemantic }}
-		}
-		if err := func() error {
-        	{{- template "validate" elem $t.PointerTo $.Var }}
-		}(); err != nil {
-			return errors.Wrap(err, "pointer")
-		}
-	{{- end -}}
-	{{- if or ($t.IsStruct) ($t.IsMap) ($t.IsAlias) ($t.IsEnum) ($t.IsSum) }}
+{{- end }}
+
+{{- if and ($t.IsPointer) ($t.PointerTo.NeedValidation) -}}
+	{{- $validated = true }}
+	if {{ $.Var }} == nil {
+		return nil // {{ $t.NilSemantic }}
+	}
+	if err := func() error {
+		{{- template "validate" elem $t.PointerTo $.Var }}
+	}(); err != nil {
+		return errors.Wrap(err, "pointer")
+	}
+{{- end -}}
+
+{{- if or ($t.IsStruct) ($t.IsMap) ($t.IsAlias) ($t.IsEnum) ($t.IsSum) }}
 	{{- $validated = true }}
 	if err := {{ $.Var }}.Validate(); err != nil {
 		return err
 	}
-	{{- else if $t.IsArray }}
+{{- else if $t.IsArray }}
 	{{- if $va.Array.Set }}
 	{{- $validated = true }}
 		{{- $v := $va.Array }}
@@ -53,26 +58,27 @@
 			return errors.Wrap(err, "array")
 		}
 	{{- end }}
+
 	{{- if $t.Item.NeedValidation }}
-	var failures []validate.FieldError
-	{{- $validated = true }}
-	for i, elem := range {{ $.Var }} {
-		if err := func() error {
-			{{- template "validate" array_elem $.Type.Item }}
-		}(); err != nil {
-			failures = append(failures, validate.FieldError{
-				Name:  fmt.Sprintf("[%d]", i),
-				Error: err,
-			})
+		var failures []validate.FieldError
+		{{- $validated = true }}
+		for i, elem := range {{ $.Var }} {
+			if err := func() error {
+				{{- template "validate" array_elem $.Type.Item }}
+			}(); err != nil {
+				failures = append(failures, validate.FieldError{
+					Name:  fmt.Sprintf("[%d]", i),
+					Error: err,
+				})
+			}
 		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
+		if len(failures) > 0 {
+			return &validate.Error{Fields: failures}
+		}
 	{{- end }}
-	{{- else }}
+{{- else }}
 	{{- if $va.String.Set }}
-	{{- $validated = true }}
+		{{- $validated = true }}
 		{{- $v := $va.String }}
 		if err := (validate.String{
 			MinLength:      {{ $v.MinLength }},
@@ -90,8 +96,9 @@
 			return errors.Wrap(err, "string")
 		}
 	{{- end }}
+
 	{{- if $va.Int.Set }}
-	{{- $validated = true }}
+		{{- $validated = true }}
 		{{- $v := $va.Int }}
 		if err := (validate.Int{
 			MinSet:       {{ $v.MinSet }},
@@ -106,8 +113,9 @@
 			return errors.Wrap(err, "int")
 		}
 	{{- end }}
+
     {{- if $t.IsFloat }}
-    {{- $validated = true }}
+    	{{- $validated = true }}
 		{{- $v := $va.Float }}
 		if err := (validate.Float{ {{ if $v.Set }}
 			MinSet:       {{ $v.MinSet }},
@@ -126,13 +134,15 @@
 			return errors.Wrap(err, "float")
 		}
     {{- end }}
-    {{- end }}
-	{{- if not $validated }}
+{{- end }}
+
+{{- if not $validated }}
 	{{ errorf "validation expected %s" $t }}
-	{{- end }}
-  {{- if not (and ($t.IsGeneric) ($t.GenericOf.NeedValidation)) }}
+{{- end }}
+
+{{- if not (and ($t.IsGeneric) ($t.GenericOf.NeedValidation)) }}
 	return nil
-  {{- end }}
+{{- end }}
 {{- end }}
 
 {{ define "validators/body" }}
