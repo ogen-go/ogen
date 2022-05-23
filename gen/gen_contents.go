@@ -99,12 +99,23 @@ func (g *Generator) generateContents(
 				return nil
 
 			case "application/x-www-form-urlencoded":
+				if s := media.Schema; s != nil && (s.AdditionalProperties != nil || len(s.PatternProperties) > 0) {
+					return &ErrNotImplemented{"complex urlencoded schema"}
+				}
+				if len(media.Encoding) > 0 {
+					return &ErrNotImplemented{"urlencoded encoding"}
+				}
+
 				t, err := g.generateSchema(ctx, typeName, media.Schema)
 				if err != nil {
 					return errors.Wrap(err, "generate schema")
 				}
+
 				if !t.IsStruct() {
 					return errors.Wrapf(&ErrNotImplemented{"urlencoded schema type"}, "%s", t.Kind)
+				}
+				if err := isParamAllowed(t, true, map[*ir.Type]struct{}{}); err != nil {
+					return err
 				}
 
 				t.AddFeature("urlencoded")
