@@ -47,8 +47,8 @@ type PathPart struct {
 type RequestBody struct {
 	Ref         string
 	Description string
-	Content     map[string]*MediaType
 	Required    bool
+	Content     map[string]*MediaType
 }
 
 // Header is an OpenAPI Header definition.

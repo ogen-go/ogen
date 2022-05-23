@@ -4,6 +4,7 @@ import (
 	"github.com/go-faster/errors"
 
 	"github.com/ogen-go/ogen"
+	"github.com/ogen-go/ogen/jsonschema"
 	"github.com/ogen-go/ogen/openapi"
 )
 
@@ -27,6 +28,40 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 	s, err := p.schemaParser.Parse(m.Schema.ToJSONSchema())
 	if err != nil {
 		return nil, errors.Wrap(err, "schema")
+	}
+
+	encodings := make(map[string]*openapi.Encoding, len(m.Encoding))
+	if s != nil && len(m.Encoding) > 0 {
+		names := make(map[string]jsonschema.Property, len(s.Properties))
+		for _, prop := range s.Properties {
+			names[prop.Name] = prop
+		}
+
+		for name, e := range m.Encoding {
+			prop, ok := names[name]
+			if !ok {
+				return nil, errors.Errorf("unknown encoding prop %q", name)
+			}
+
+			encoding := &openapi.Encoding{
+				Style:         inferParamStyle(openapi.LocationQuery, e.Style),
+				Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
+				AllowReserved: e.AllowReserved,
+			}
+			encodings[name] = encoding
+
+			if err := validateParamStyle(&openapi.Parameter{
+				Name:     name,
+				Schema:   prop.Schema,
+				Content:  nil,
+				In:       openapi.LocationQuery,
+				Style:    encoding.Style,
+				Explode:  encoding.Explode,
+				Required: prop.Required,
+			}); err != nil {
+				return nil, err
+			}
+		}
 	}
 
 	examples := make(map[string]*openapi.Example, len(m.Examples))
@@ -53,5 +88,6 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 		Schema:   s,
 		Example:  m.Example,
 		Examples: examples,
+		Encoding: encodings,
 	}, nil
 }

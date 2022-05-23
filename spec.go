@@ -279,6 +279,30 @@ type Media struct {
 	Schema   *Schema             `json:"schema,omitempty"`
 	Example  json.RawMessage     `json:"example,omitempty"`
 	Examples map[string]*Example `json:"examples,omitempty"`
+
+	// A map between a property name and its encoding information. The key, being the property name, MUST exist in
+	// the schema as a property. The encoding object SHALL only apply to requestBody objects when the media
+	// type is multipart or application/x-www-form-urlencoded.
+	Encoding map[string]Encoding `json:"encoding,omitempty"`
+}
+
+// Encoding describes single encoding definition applied to a single schema property.
+type Encoding struct {
+	// Describes how the parameter value will be serialized
+	// depending on the type of the parameter value.
+	Style string `json:"style,omitempty"`
+
+	// When this is true, parameter values of type array or object
+	// generate separate parameters for each value of the array
+	// or key-value pair of the map.
+	// For other types of parameters this property has no effect.
+	Explode *bool `json:"explode,omitempty"`
+
+	// Determines whether the parameter value SHOULD allow reserved characters, as defined by
+	// RFC3986 :/?#[]@!$&'()*+,;= to be included without percent-encoding.
+	// The default value is false. This property SHALL be ignored if the request body media type
+	// is not application/x-www-form-urlencoded.
+	AllowReserved bool `json:"allowReserved,omitempty"`
 }
 
 // Discriminator discriminates types for OneOf, AllOf, AnyOf.
