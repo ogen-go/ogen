@@ -1,21 +1,15 @@
-{{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
-
-{{ define "param_dec" }}
-{{ $pkg := $.Package }}
-{{ template "header" $ }}
-
-{{- range $op := $.Operations }}{{/* Range over methods */}}
-{{ if $op.Params }}{{/* Check parameters existence */}}
-
-func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.Request) (params {{ $op.Name }}Params, _ error) {
-	{{- if $op.HasQueryParams }}
-	q := uri.NewQueryDecoder(r.URL.Query())
+{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/ -}}
+{{ define "parameter_decoder" }}
+{{ if $.Params }}
+func decode{{ $.Name }}Params(args [{{ $.PathParamsCount }}]string, r *http.Request) (params {{ $.Name }}Params, _ error) {
+	{{- if $.HasQueryParams }}
+		q := uri.NewQueryDecoder(r.URL.Query())
 	{{- end }}
-	{{- if $op.HasHeaderParams }}
-	h := uri.NewHeaderDecoder(r.Header)
+	{{- if $.HasHeaderParams }}
+		h := uri.NewHeaderDecoder(r.Header)
 	{{- end }}
 
-	{{- range $p := $op.Params }}{{/* Range params */}}
+	{{- range $p := $.Params }}{{/* Range params */}}
     {{- $loc             := printf "%s: %s" $p.Spec.In $p.Spec.Name }}
     {{- $errParse        := printf "%s: parse"         $loc }}
     {{- $errInvalid      := printf "%s: invalid"       $loc }}
@@ -25,7 +19,7 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 	{{- if $default.Set }}
 	// Set default value for {{ $loc }}.
 	{
-    {{- template "defaults/set" default_elem $p.Type (printf "params.%s" $p.Name) $default }}
+    	{{- template "defaults/set" default_elem $p.Type (printf "params.%s" $p.Name) $default }}
 	}
 	{{- end }}
 	// Decode {{ $loc }}.
@@ -60,7 +54,7 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 	}
 	{{- else if $p.Spec.In.Path }}
 	{{- /* If we cannot find such path parameter, defined path parameter is not used */ -}}
-	{{- $idx := $op.PathParamIndex $p.Spec.Name }}
+	{{- $idx := $.PathParamIndex $p.Spec.Name }}
 	{{- if ge $idx 0 }}
 	{
 		param := args[{{ $idx }}]
@@ -120,12 +114,10 @@ func decode{{ $op.Name }}Params(args [{{ $op.PathParamsCount }}]string, r *http.
 		} {{ end }}
 	}
 	{{- else }}
-	{{ errorf "unsupported location %s" $p.Spec.In }}
+		{{ errorf "unsupported location %s" $p.Spec.In }}
 	{{- end }}{{/* Switch location */}}
 	{{- end }}{{/* Range params */}}
 	return params, nil
 }
-
-{{- end }}{{/* Check parameters existence */}}
-{{- end }}{{/* Range over methods */}}
+{{ end }}
 {{ end }}

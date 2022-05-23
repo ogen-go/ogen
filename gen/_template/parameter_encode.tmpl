@@ -1,32 +1,33 @@
-{{ define "encode_path_params" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
+{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
+{{ define "encode_path_parameters" }}
 u := uri.Clone(c.serverURL)
 {{- range $part := $.PathParts }}{{/* Range over path parts */}}
-{{- if $part.Raw }}
-u.Path += {{ quote $part.Raw }}
-
-{{- else }}
-{
-	{{- $param := $part.Param }}
-	// Encode {{ quote $param.Spec.Name }} parameter.
-	e := uri.NewPathEncoder(uri.PathEncoderConfig{
-		Param: {{ quote $param.Spec.Name }},
-		Style: uri.PathStyle{{ capitalize $param.Spec.Style.String }},
-		Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
-	})
-	if err := func() error {
-		{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
-	}(); err != nil {
-		return res, errors.Wrap(err, "encode path")
+	{{- if $part.Raw }}
+		u.Path += {{ quote $part.Raw }}
+	{{- else }}
+	{
+		{{- $param := $part.Param }}
+		// Encode {{ quote $param.Spec.Name }} parameter.
+		e := uri.NewPathEncoder(uri.PathEncoderConfig{
+			Param: {{ quote $param.Spec.Name }},
+			Style: uri.PathStyle{{ capitalize $param.Spec.Style.String }},
+			Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+		})
+		if err := func() error {
+			{{- template "uri/encode" elem $param.Type (printf "params.%s" $param.Name) }}
+		}(); err != nil {
+			return res, errors.Wrap(err, "encode path")
+		}
+		u.Path += e.Result()
 	}
-	u.Path += e.Result()
-}
-{{- end }}
+	{{- end }}
 {{- end }}
 {{- end }}
 
-{{ define "encode_query_params" }}{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
+{{/*gotype: github.com/ogen-go/ogen/gen/ir.Operation*/}}
+{{ define "encode_query_parameters" }}
 q := uri.NewQueryEncoder()
-{{- range $param := $.QueryParams }}{{/* Range over params */}}
+{{- range $param := $.QueryParams }}
 {
 	// Encode {{ quote $param.Spec.Name }} parameter.
 	cfg := uri.QueryParameterEncodingConfig{
@@ -41,13 +42,13 @@ q := uri.NewQueryEncoder()
 		return res, errors.Wrap(err, "encode query")
 	}
 }
-{{- end }}{{/* Range over params */}}
+{{- end }}
 u.RawQuery = q.Values().Encode()
 {{- end }}
 
-{{ define "encode_header_params" }}
+{{ define "encode_header_parameters" }}
 h := uri.NewHeaderEncoder(r.Header)
-{{- range $p := $.HeaderParams }}{{/* Range over params */}}
+{{- range $p := $.HeaderParams }}
 {
 	cfg := uri.HeaderParameterEncodingConfig{
 		Name:    {{ quote $p.Spec.Name }},
@@ -59,5 +60,5 @@ h := uri.NewHeaderEncoder(r.Header)
 		return res, errors.Wrap(err, {{ printf "encode header param %s" $p.Spec.Name | quote }})
 	}
 }
-{{- end }}{{/* Range over params */}}
+{{- end }}
 {{ end }}
