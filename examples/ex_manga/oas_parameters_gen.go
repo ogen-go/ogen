@@ -51,6 +51,306 @@ func decodeGetBookParams(args [1]string, r *http.Request) (params GetBookParams,
 	return params, nil
 }
 
+type GetPageCoverImageParams struct {
+	// ID of book.
+	MediaID int
+	// Image format.
+	Format string
+}
+
+func decodeGetPageCoverImageParams(args [2]string, r *http.Request) (params GetPageCoverImageParams, _ error) {
+	// Decode path: media_id.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "media_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: media_id: not specified")
+		}
+	}
+	// Set default value for path: format.
+	{
+		val := string("jpg")
+		params.Format = val
+	}
+	// Decode path: format.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "format",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: format: not specified")
+		}
+	}
+	return params, nil
+}
+
+type GetPageImageParams struct {
+	// ID of book.
+	MediaID int
+	// Number of page.
+	Page int
+	// Image format.
+	Format string
+}
+
+func decodeGetPageImageParams(args [3]string, r *http.Request) (params GetPageImageParams, _ error) {
+	// Decode path: media_id.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "media_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: media_id: not specified")
+		}
+	}
+	// Decode path: page.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "page",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.Page = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: page: not specified")
+		}
+	}
+	// Set default value for path: format.
+	{
+		val := string("jpg")
+		params.Format = val
+	}
+	// Decode path: format.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "format",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: format: not specified")
+		}
+	}
+	return params, nil
+}
+
+type GetPageThumbnailImageParams struct {
+	// ID of book.
+	MediaID int
+	// Number of page.
+	Page int
+	// Image format.
+	Format string
+}
+
+func decodeGetPageThumbnailImageParams(args [3]string, r *http.Request) (params GetPageThumbnailImageParams, _ error) {
+	// Decode path: media_id.
+	{
+		param := args[0]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "media_id",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.MediaID = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: media_id: not specified")
+		}
+	}
+	// Decode path: page.
+	{
+		param := args[1]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "page",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				params.Page = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: page: not specified")
+		}
+	}
+	// Set default value for path: format.
+	{
+		val := string("jpg")
+		params.Format = val
+	}
+	// Decode path: format.
+	{
+		param := args[2]
+		if len(param) > 0 {
+			d := uri.NewPathDecoder(uri.PathDecoderConfig{
+				Param:   "format",
+				Value:   param,
+				Style:   uri.PathStyleSimple,
+				Explode: false,
+			})
+
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				params.Format = c
+				return nil
+			}(); err != nil {
+				return params, err
+			}
+		} else {
+			return params, errors.New("path: format: not specified")
+		}
+	}
+	return params, nil
+}
+
 type SearchParams struct {
 	// Search query.
 	// * You can search for multiple terms at the same time, and this will return only galleries that

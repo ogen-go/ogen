@@ -3,6 +3,7 @@
 package api
 
 import (
+	"bytes"
 	"io"
 	"net/http"
 
@@ -42,6 +43,72 @@ func decodeGetBookResponse(resp *http.Response, span trace.Span) (res GetBookRes
 		}
 	case 403:
 		return &GetBookForbidden{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+func decodeGetPageCoverImageResponse(resp *http.Response, span trace.Span) (res GetPageCoverImageRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "image/*":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
+			return &GetPageCoverImageOK{
+				Data: bytes.NewReader(b),
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	case 403:
+		return &GetPageCoverImageForbidden{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+func decodeGetPageImageResponse(resp *http.Response, span trace.Span) (res GetPageImageRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "image/*":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
+			return &GetPageImageOK{
+				Data: bytes.NewReader(b),
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	case 403:
+		return &GetPageImageForbidden{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+func decodeGetPageThumbnailImageResponse(resp *http.Response, span trace.Span) (res GetPageThumbnailImageRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		switch ct := resp.Header.Get("Content-Type"); ct {
+		case "image/*":
+			b, err := io.ReadAll(resp.Body)
+			if err != nil {
+				return res, err
+			}
+
+			return &GetPageThumbnailImageOK{
+				Data: bytes.NewReader(b),
+			}, nil
+		default:
+			return res, validate.InvalidContentType(ct)
+		}
+	case 403:
+		return &GetPageThumbnailImageForbidden{}, nil
 	default:
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
