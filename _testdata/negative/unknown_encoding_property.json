@@ -6,17 +6,25 @@
   },
   "paths": {
     "/healthz": {
-      "get": {
-        "parameters": [
-          {
-            "name": "foo",
-            "in": "header",
-            "style": "matrix",
-            "schema": {
-              "type": "string"
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "encoding": {
+                "bar": {
+                }
+              },
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "foo": {
+                    "type": "string"
+                  }
+                }
+              }
             }
           }
-        ],
+        },
         "responses": {
           "200": {
             "description": "User info",

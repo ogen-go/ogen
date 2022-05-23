@@ -9,7 +9,12 @@
       "get": {
         "parameters": [
           {
-            "$ref": "#/components/parameters/Parameter"
+            "name": "foo",
+            "in": "query1",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -24,13 +29,6 @@
             }
           }
         }
-      }
-    }
-  },
-  "components": {
-    "parameters": {
-      "Parameter": {
-        "in": "foo"
       }
     }
   }
