@@ -1,32 +1,27 @@
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 
-{{ define "res_enc" }}
+{{ define "response_encoders" }}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
-
 func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
-	{{- $typesCount := len $op.ListResponseTypes }}
-	{{- if eq $typesCount 1 }}
-
+{{- $typesCount := len $op.ListResponseTypes }}
+{{- if eq $typesCount 1 }}
 	{{- range $info := $op.ListResponseTypes }}
 		{{- template "respond" $info }}
 	{{- end }}
-
-	{{- else }}
+{{- else }}
 	switch response := response.(type) {
 	{{- range $info := $op.ListResponseTypes }}
-	case *{{ $info.Type.Name }}:
+		case *{{ $info.Type.Name }}:
 		{{- template "respond" $info }}
 	{{- end }}
 	default:
-		return errors.Errorf({{ quote $op.Spec.Path }}+`: unexpected response type: %T`, response)
+	return errors.Errorf({{ quote $op.Spec.Path }}+`: unexpected response type: %T`, response)
 	}
-	{{- end }}
+{{- end }}
 }
-
-
 {{- end }}{{/* Range over all methods */}}
 
 {{- if $.Error }}
@@ -53,56 +48,57 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 
 {{ define "respond" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen/ir.ResponseInfo*/ -}}
-{{- if not $.NoContent }}{{- /* Set content-type */}}
-w.Header().Set("Content-Type", {{ quote $.ContentType }})
-{{- end }}{{- /* Set content-type */}}
 
-{{- if $.Default }}{{- /* Set status code */}}
-w.WriteHeader(response.StatusCode)
-st := http.StatusText(response.StatusCode)
-if response.StatusCode >= http.StatusBadRequest {
-	span.SetStatus(codes.Error, st)
-} else {
-	span.SetStatus(codes.Ok, st)
-}
-{{- else }}
-w.WriteHeader({{ $.StatusCode }})
-{{- if ge .StatusCode 400 }}
-span.SetStatus(codes.Error, http.StatusText({{ $.StatusCode }}))
-{{- else }}
-span.SetStatus(codes.Ok, http.StatusText({{ $.StatusCode }}))
+{{- if not $.NoContent }}
+	w.Header().Set("Content-Type", {{ quote $.ContentType }})
 {{- end }}
-{{- end }}{{- /* Set status code */}}
 
-{{- if $.NoContent }}{{- /* Encode content */}}
-return nil
+{{- if $.Default }}
+	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
+{{- else }}
+	w.WriteHeader({{ $.StatusCode }})
+	{{- if ge .StatusCode 400 }}
+		span.SetStatus(codes.Error, http.StatusText({{ $.StatusCode }}))
+	{{- else }}
+		span.SetStatus(codes.Ok, http.StatusText({{ $.StatusCode }}))
+	{{- end }}
+{{- end }}
+
+{{- if $.NoContent }}
+	return nil
 {{- else if $.ContentType.JSON }}
-e := jx.GetEncoder()
-defer jx.PutEncoder(e)
-{{ template "json/enc" res_elem $ }}
-if _, err := e.WriteTo(w); err != nil {
-	return errors.Wrap(err, "write")
-}
-
-return nil
-{{- else if $.Type.IsStream }}
-if _, err := io.Copy(w, response); err != nil {
-	return errors.Wrap(err, "write")
-}
-
-return nil
-{{- else if $.Wrapped }}
-	{{- $subTyp := ($.Type.MustField "Response").Type }}
-	{{- if $subTyp.IsStream }}
-	if _, err := io.Copy(w, response.Response); err != nil {
+	e := jx.GetEncoder()
+	defer jx.PutEncoder(e)
+	{{ template "json/enc" res_elem $ }}
+	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 
 	return nil
-    {{- else }}
+{{- else if $.Type.IsStream }}
+	if _, err := io.Copy(w, response); err != nil {
+		return errors.Wrap(err, "write")
+	}
+
+	return nil
+{{- else if $.Wrapped }}
+	{{- $subTyp := ($.Type.MustField "Response").Type }}
+	{{- if $subTyp.IsStream }}
+		if _, err := io.Copy(w, response.Response); err != nil {
+			return errors.Wrap(err, "write")
+		}
+
+		return nil
+	{{- else }}
         {{- errorf "%q: %s encoder not implemented" $.ContentType $.Type  }}
     {{- end }}
 {{- else }}
     {{- errorf "%q: %s encoder not implemented" $.ContentType $.Type }}
-{{- end }}{{- /* Encode content */ -}}
+{{- end }}
 {{ end }}

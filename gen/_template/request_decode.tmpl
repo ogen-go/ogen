@@ -1,22 +1,19 @@
-{{ define "req_dec" }}
+{{ define "request_decoders" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{/* Range over all methods */}}
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
 func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
-{{- /* Range over all request types */ -}}
 {{- range $contentType, $t := $op.Request.Contents }}
 	case {{ quote $contentType }}:
 	{{- if $t.IsStream }}
 		return {{ $op.Request.Type.Go }}{Data: r.Body}, nil
-		{{- /* Decode json */ -}}
-	{{- else if $contentType.JSON }}{{ $reqBodyOptional := not $op.Request.Spec.Required }}
+	{{- else if $contentType.JSON }}
 		if r.ContentLength == 0 {
-		{{- if $reqBodyOptional }}
+		{{- if not $op.Request.Spec.Required }}
 			return req, nil
 		{{- else }}
 			return req, validate.ErrBodyRequired
@@ -32,7 +29,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		}
 
 		if written == 0 {
-		{{- if $reqBodyOptional }}
+		{{- if not $op.Request.Spec.Required }}
 			return req, nil
 		{{- else }}
 			return req, validate.ErrBodyRequired
@@ -48,6 +45,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		}(); err != nil {
 			return req, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
 		}
+
 		{{- if $t.NeedValidation }}
 		if err := func() error {
 			{{- template "validate" req_dec_elem $t }}
@@ -55,10 +53,11 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 			return req, errors.Wrap(err, "validate")
 		}
 		{{- end }}
+
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
-    {{- else if $contentType.FormURLEncode }}{{ $reqBodyOptional := not $op.Request.Spec.Required }}
+    {{- else if $contentType.FormURLEncode }}
 		if r.ContentLength == 0 {
-		{{- if $reqBodyOptional }}
+		{{- if not $op.Request.Spec.Required }}
 			return req, nil
 		{{- else }}
 			return req, validate.ErrBodyRequired
@@ -71,7 +70,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		}
 
 		if len(r.PostForm) == 0 {
-		{{- if $reqBodyOptional }}
+		{{- if not $op.Request.Spec.Required }}
 			return req, nil
 		{{- else }}
 			return req, validate.ErrBodyRequired
@@ -100,7 +99,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 				return req, errors.Wrap(err, "validate")
 			}
 			{{- end }}
-		} {{- if not $reqBodyOptional }} else {
+		} {{- if $op.Request.Spec.Required }} else {
 			return req, validate.ErrBodyRequired
 		} {{- end }}
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
@@ -108,13 +107,10 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- errorf "%s decoder not implemented" $contentType }}
 	{{- end }}
 {{- end }}
-{{- /* Range over all request types */}}
 	default:
 		return req, validate.InvalidContentType(ct)
 	}
 }
 {{- end }}
 {{ end }}
-{{/* Range over all methods */}}
-
 {{ end }}

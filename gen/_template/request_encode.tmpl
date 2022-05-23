@@ -1,51 +1,36 @@
-{{ define "req_json/enc" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
-e := jx.GetEncoder()
-{{ template "json/enc" req_enc_elem $ }}
-{{ end }}
-
-{{ define "req_uri/enc" }}
-{{- /*gotype: github.com/ogen-go/ogen/gen/ir.Type*/ -}}
-q := uri.NewQueryEncoder()
-cfg := uri.QueryParameterEncodingConfig{
-	Name:    "",
-	Style:   uri.QueryStyleForm,
-	Explode: true,
-}
-
-if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-	{{- template "uri/encode" elem $ "req" }}
-}); err != nil {
-	return data, errors.Wrap(err, "encode query")
-}
-e := strings.NewReader(q.Values().Encode())
-{{ end }}
-
-{{ define "req_enc" }}
+{{ define "request_encoders" }}
 {{- /*gotype: github.com/ogen-go/ogen/gen.TemplateConfig*/ -}}
 {{ $pkg := $.Package }}
 {{ template "header" $ }}
 
-{{/* Range over all methods */}}
-{{- range $op := $.Operations }}
-{{- if $op.Request }}
+{{- range $op := $.Operations }}{{ if $op.Request }}
 {{- range $contentType, $type := $op.Request.Contents }}
 func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.Go }}, span trace.Span) (data {{ $contentType.EncodedDataTypeGo }}, err error) {
 	{{- if $type.IsStream }}
-	return req, nil
+		return req, nil
 	{{- else if $contentType.JSON }}
-	{{- template "req_json/enc" $type }}
-	return e, nil
+		e := jx.GetEncoder()
+		{{ template "json/enc" req_enc_elem $type }}
+		return e, nil
 	{{- else if $contentType.FormURLEncode }}
-	{{- template "req_uri/enc" $type }}
-	return e, nil
+		q := uri.NewQueryEncoder()
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			{{- template "uri/encode" elem $type "req" }}
+		}); err != nil {
+			return data, errors.Wrap(err, "encode query")
+		}
+		e := strings.NewReader(q.Values().Encode())
+		return e, nil
 	{{- else }}
-	{{- errorf "%s encoder not implemented" $contentType }}
+		{{- errorf "%s encoder not implemented" $contentType }}
 	{{- end }}
 }
 {{- end }}
-{{- end }}
-{{ end }}
-{{/* Range over all methods */}}
-
+{{- end }}{{ end }}
 {{ end }}
