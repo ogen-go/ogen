@@ -308,7 +308,14 @@ func injectHeaderFields(headers map[string]*ir.Parameter, t *ir.Type) {
 		panic(fmt.Sprintf("expected struct, got %q", t.Kind))
 	}
 
-	for _, h := range headers {
+	keys := make([]string, 0, len(headers))
+	for k := range headers {
+		keys = append(keys, k)
+	}
+
+	sort.Strings(keys)
+	for _, key := range keys {
+		h := headers[key]
 		t.Fields = append(t.Fields, &ir.Field{
 			Name: h.Name,
 			Type: h.Type,
