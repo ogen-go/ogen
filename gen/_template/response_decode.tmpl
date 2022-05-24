@@ -34,9 +34,14 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 {{- $response := $.Response }}
 {{- $ptr := $.Ptr }}
 {{- if $response.NoContent }}{{/* Decode NoContent response */}}
-	{{- if $response.Wrapped }}
+	{{- if or $response.WithStatusCode $response.WithHeaders }}
 		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{
+		{{- if $response.WithStatusCode }}
 			StatusCode: resp.StatusCode,
+		{{- end }}
+		{{- if $response.WithHeaders }}
+			// TODO: Parse headers.
+		{{- end }}
 		}, nil
 	{{- else }}
 		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{}, nil
@@ -47,7 +52,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		case {{ quote $contentType }}:
 
 		{{- $type := $originalType }}
-		{{- if $response.Wrapped }}
+		{{- if or $response.WithStatusCode $response.WithHeaders }}
 			{{- $type = ($type.MustField "Response").Type }}
 		{{- end }}
 
@@ -80,9 +85,14 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 			{{- errorf "%q: %s decoder not implemented" $contentType $type }}
 		{{- end }}
 
-		{{- if $response.Wrapped }}
+		{{- if or $response.WithStatusCode $response.WithHeaders }}
 			return {{ if $ptr }}&{{ end }}{{ $originalType.Go }}{
+				{{- if $response.WithHeaders }}
+				// TODO: Set headers.
+				{{- end }}
+				{{- if $response.WithStatusCode }}
 				StatusCode: resp.StatusCode,
+				{{- end }}
 				Response:   response,
 			}, nil
 		{{- else }}

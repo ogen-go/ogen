@@ -148,11 +148,13 @@ type Responses struct {
 }
 
 type Response struct {
-	Wrapped   bool
 	NoContent *Type
 	Contents  map[ContentType]*Type
 	Spec      *openapi.Response
 	Headers   map[string]*Parameter
+
+	WithStatusCode bool
+	WithHeaders    bool
 }
 
 func (s Response) ResponseInfo() []ResponseInfo {
@@ -160,26 +162,28 @@ func (s Response) ResponseInfo() []ResponseInfo {
 
 	if noc := s.NoContent; noc != nil {
 		result = append(result, ResponseInfo{
-			Type:      noc,
-			Default:   true,
-			NoContent: true,
+			Type:           noc,
+			NoContent:      true,
+			WithStatusCode: s.WithStatusCode,
+			WithHeaders:    s.WithHeaders,
 		})
 	}
 	for contentType, typ := range s.Contents {
 		result = append(result, ResponseInfo{
-			Type:        typ,
-			Default:     true,
-			ContentType: contentType,
+			Type:           typ,
+			ContentType:    contentType,
+			WithStatusCode: s.WithStatusCode,
+			WithHeaders:    s.WithHeaders,
 		})
 	}
 
 	sort.SliceStable(result, func(i, j int) bool {
 		l, r := result[i], result[j]
 		// Default responses has zero status code.
-		if l.Default {
+		if l.WithStatusCode {
 			l.StatusCode = 999
 		}
-		if r.Default {
+		if r.WithStatusCode {
 			r.StatusCode = 999
 		}
 		if l.StatusCode != r.StatusCode {

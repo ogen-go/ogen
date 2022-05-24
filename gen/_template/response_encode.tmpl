@@ -51,7 +51,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 	w.Header().Set("Content-Type", {{ quote $.ContentType }})
 {{- end }}
 
-{{- if $.Default }}
+{{- if $.WithStatusCode }}
 	w.WriteHeader(response.StatusCode)
 	st := http.StatusText(response.StatusCode)
 	if response.StatusCode >= http.StatusBadRequest {
@@ -68,29 +68,35 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 	{{- end }}
 {{- end }}
 
-{{- $type := $.Type }}
-{{- $var := "response" }}
-{{- if or $.Wrapped $.Default }}
-	{{- $type = ($.Type.MustField "Response").Type }}
-	{{- $var = "response.Response" }}
+{{- if $.WithHeaders }}
+	// TODO: Set response headers.
 {{- end }}
 
 {{- if $.NoContent }}
 	return nil
-{{- else if $.ContentType.JSON }}
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
-	{{ template "json/enc" elem $type $var }}
-	if _, err := e.WriteTo(w); err != nil {
-		return errors.Wrap(err, "write")
-	}
-	return nil
-{{- else if $type.IsStream }}
-	if _, err := io.Copy(w, {{ $var }}); err != nil {
-		return errors.Wrap(err, "write")
-	}
-	return nil
 {{- else }}
-    {{- errorf "%q: %s encoder not implemented" $.ContentType $type }}
+	{{- $type := $.Type }}
+	{{- $var := "response" }}
+	{{- if or $.WithStatusCode $.WithHeaders }}
+		{{- $type = ($.Type.MustField "Response").Type }}
+		{{- $var = "response.Response" }}
+	{{- end }}
+
+	{{- if $.ContentType.JSON }}
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		{{ template "json/enc" elem $type $var }}
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+	{{- else if $type.IsStream }}
+		if _, err := io.Copy(w, {{ $var }}); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+	{{- else }}
+		{{- errorf "%q: %s encoder not implemented" $.ContentType $type }}
+	{{- end }}
 {{- end }}
 {{ end }}

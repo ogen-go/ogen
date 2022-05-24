@@ -103,6 +103,10 @@ func (t *Type) needsPointerReceiverType() bool {
 }
 
 func (t *Type) MustField(name string) *Field {
+	if t.IsAlias() {
+		return t.AliasTo.MustField(name)
+	}
+
 	if !t.Is(KindStruct) {
 		panic(unreachable(t))
 	}

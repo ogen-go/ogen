@@ -172,8 +172,11 @@ func cloneResponse(r *ir.Responses) *ir.Responses {
 	}
 	for code, statResp := range r.StatusCode {
 		newStatResp := &ir.Response{
-			NoContent: statResp.NoContent,
-			Contents:  map[ir.ContentType]*ir.Type{},
+			NoContent:      statResp.NoContent,
+			Contents:       map[ir.ContentType]*ir.Type{},
+			Headers:        statResp.Headers,
+			WithStatusCode: statResp.WithStatusCode,
+			WithHeaders:    statResp.WithHeaders,
 		}
 		for contentType, t := range statResp.Contents {
 			newStatResp.Contents[contentType] = t
