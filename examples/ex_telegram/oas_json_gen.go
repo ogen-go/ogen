@@ -1880,8 +1880,8 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode BotCommandScope to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -3689,8 +3689,8 @@ func (s *ChatMember) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ChatMember to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -6090,35 +6090,62 @@ func (s *CopyMessageReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode CopyMessageReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupCopyMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupCopyMessageReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupCopyMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupCopyMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupCopyMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupCopyMessageReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveCopyMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveCopyMessageReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplyCopyMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplyCopyMessageReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -11857,8 +11884,8 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResult to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -18124,8 +18151,8 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InputMedia to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -19282,125 +19309,302 @@ func (s *InputMessageContent) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InputMessageContent to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "message_text":
+				match := InputTextMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputTextMessageContentInputMessageContent
+				s.Type = match
 			case "parse_mode":
+				match := InputTextMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputTextMessageContentInputMessageContent
+				s.Type = match
 			case "entities":
+				match := InputTextMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputTextMessageContentInputMessageContent
+				s.Type = match
 			case "disable_web_page_preview":
+				match := InputTextMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputTextMessageContentInputMessageContent
+				s.Type = match
 			case "horizontal_accuracy":
+				match := InputLocationMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputLocationMessageContentInputMessageContent
+				s.Type = match
 			case "live_period":
+				match := InputLocationMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputLocationMessageContentInputMessageContent
+				s.Type = match
 			case "heading":
+				match := InputLocationMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputLocationMessageContentInputMessageContent
+				s.Type = match
 			case "proximity_alert_radius":
+				match := InputLocationMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputLocationMessageContentInputMessageContent
+				s.Type = match
 			case "address":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "foursquare_id":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "foursquare_type":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "google_place_id":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "google_place_type":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "phone_number":
+				match := InputContactMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputContactMessageContentInputMessageContent
+				s.Type = match
 			case "first_name":
+				match := InputContactMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputContactMessageContentInputMessageContent
+				s.Type = match
 			case "last_name":
+				match := InputContactMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputContactMessageContentInputMessageContent
+				s.Type = match
 			case "vcard":
+				match := InputContactMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputContactMessageContentInputMessageContent
+				s.Type = match
 			case "description":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "payload":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "provider_token":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "currency":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "prices":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "max_tip_amount":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "suggested_tip_amounts":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "provider_data":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "photo_url":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "photo_size":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "photo_width":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "photo_height":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "need_name":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "need_phone_number":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "need_email":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "need_shipping_address":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "send_phone_number_to_provider":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "send_email_to_provider":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "is_flexible":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -25447,8 +25651,8 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode PassportElementError to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -31611,35 +31815,62 @@ func (s *SendAnimationReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendAnimationReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendAnimationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendAnimationReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendAnimationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendAnimationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendAnimationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendAnimationReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendAnimationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendAnimationReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendAnimationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendAnimationReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -32017,35 +32248,62 @@ func (s *SendAudioReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendAudioReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendAudioReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendAudioReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendAudioReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendAudioReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendAudioReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendAudioReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendAudioReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendAudioReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendAudioReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendAudioReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -32458,35 +32716,62 @@ func (s *SendContactReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendContactReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendContactReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendContactReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendContactReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendContactReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendContactReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendContactReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendContactReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendContactReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendContactReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendContactReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -32732,35 +33017,62 @@ func (s *SendDiceReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendDiceReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendDiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendDiceReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendDiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendDiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendDiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendDiceReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendDiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendDiceReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendDiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendDiceReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -33104,35 +33416,62 @@ func (s *SendDocumentReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendDocumentReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendDocumentReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendDocumentReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendDocumentReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendDocumentReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendDocumentReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendDocumentReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendDocumentReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendDocumentReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendDocumentReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendDocumentReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -34201,35 +34540,62 @@ func (s *SendLocationReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendLocationReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendLocationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendLocationReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendLocationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendLocationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendLocationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendLocationReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendLocationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendLocationReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendLocationReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendLocationReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -34485,8 +34851,8 @@ func (s *SendMediaGroupMediaItem) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendMediaGroupMediaItem to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -34827,35 +35193,62 @@ func (s *SendMessageReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendMessageReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendMessageReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendMessageReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendMessageReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendMessageReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendMessageReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -35165,35 +35558,62 @@ func (s *SendPhotoReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendPhotoReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendPhotoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendPhotoReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendPhotoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendPhotoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendPhotoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendPhotoReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendPhotoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendPhotoReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendPhotoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendPhotoReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -35653,35 +36073,62 @@ func (s *SendPollReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendPollReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendPollReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendPollReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendPollReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendPollReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendPollReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendPollReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendPollReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendPollReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendPollReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendPollReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -35928,35 +36375,62 @@ func (s *SendStickerReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendStickerReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendStickerReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendStickerReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendStickerReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendStickerReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendStickerReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendStickerReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendStickerReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendStickerReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendStickerReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendStickerReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -36326,35 +36800,62 @@ func (s *SendVenueReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendVenueReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendVenueReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendVenueReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendVenueReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendVenueReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendVenueReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVenueReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendVenueReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendVenueReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendVenueReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendVenueReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -36982,35 +37483,62 @@ func (s *SendVideoNoteReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendVideoNoteReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendVideoNoteReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendVideoNoteReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendVideoNoteReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendVideoNoteReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendVideoNoteReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVideoNoteReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendVideoNoteReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendVideoNoteReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendVideoNoteReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendVideoNoteReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -37076,35 +37604,62 @@ func (s *SendVideoReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendVideoReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendVideoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendVideoReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendVideoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendVideoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendVideoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVideoReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendVideoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendVideoReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendVideoReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendVideoReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -37431,35 +37986,62 @@ func (s *SendVoiceReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendVoiceReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendVoiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendVoiceReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendVoiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendVoiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendVoiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendVoiceReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendVoiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendVoiceReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendVoiceReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendVoiceReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})

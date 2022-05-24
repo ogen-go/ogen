@@ -761,29 +761,46 @@ func (s *DataDescription) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode DataDescription to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "name":
+				match := DescriptionDetailedDataDescription
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = DescriptionDetailedDataDescription
+				s.Type = match
 			case "count":
+				match := DescriptionDetailedDataDescription
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = DescriptionDetailedDataDescription
+				s.Type = match
 			case "id":
+				match := DescriptionDetailedDataDescription
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = DescriptionDetailedDataDescription
+				s.Type = match
 			case "description":
+				match := DescriptionSimpleDataDescription
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = DescriptionSimpleDataDescription
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -1727,29 +1744,46 @@ func (s *Issue143) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode Issue143 to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "unique-1":
+				match := Issue1430Issue143
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = Issue1430Issue143
+				s.Type = match
 			case "unique-2":
+				match := Issue1431Issue143
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = Issue1431Issue143
+				s.Type = match
 			case "unique-3":
+				match := Issue1432Issue143
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = Issue1432Issue143
+				s.Type = match
 			case "unique-4":
+				match := Issue1433Issue143
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = Issue1433Issue143
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -3567,8 +3601,8 @@ func (s *OneOfMappingReference) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OneOfMappingReference to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -4031,20 +4065,22 @@ func (s *OneVariantHasNoUniqueFields) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode OneVariantHasNoUniqueFields to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "d":
+				match := OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = OneVariantHasNoUniqueFields1OneVariantHasNoUniqueFields
+				s.Type = match
 			}
 			return d.Skip()
 		})

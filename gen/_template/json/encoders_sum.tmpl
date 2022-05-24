@@ -44,16 +44,18 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 		return errors.Errorf("unexpected json type %q", t)
 	}
 	{{- else if or ($d.Fields) ($d.Discriminator) }}
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
+    		{{- if $d.Discriminator -}}
 			if found {
 				return d.Skip()
 			}
+			{{- end }}
 			switch string(key) {
 			{{- if $d.Discriminator -}}
 			case {{ quote $.SumSpec.Discriminator }}:
@@ -75,8 +77,13 @@ func (s *{{ $.Name }}) Decode(d *jx.Decoder) error {
 			{{- range $s := $.SumOf }}
 			{{- range $f := $s.SumSpec.Unique }}
 			case {{ quote $f.Tag.JSON }}:
+				match := {{ $s.Name }}{{ $.Name }}
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = {{ $s.Name }}{{ $.Name }}
+				s.Type = match
 			{{- end }}
 			{{- end }}
 			{{- end }}

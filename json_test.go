@@ -787,6 +787,10 @@ func TestJSONSum(t *testing.T) {
 			{`{"common-1": "abc", "common-2": 1, "unique-2": "unique"}`, api.Issue1431Issue143, false},
 			{`{"common-1": "abc", "common-2": 1, "unique-3": "unique"}`, api.Issue1432Issue143, false},
 			{`{"common-1": "abc", "common-2": 1, "unique-4": "unique"}`, api.Issue1433Issue143, false},
+			// Check that decoder ensures exact one match.
+			{`{"common-1": "abc", "common-2": 1, "unique-1": "unique", "unique-4": "unique"}`, "", true},
+			{`{"common-1": "abc", "common-2": 1, "unique-2": "unique", "unique-4": "unique"}`, "", true},
+			{`{"common-1": "abc", "common-2": 1, "unique-3": "unique", "unique-4": "unique"}`, "", true},
 		} {
 			// Make range value copy to prevent data races.
 			tc := tc

@@ -2009,8 +2009,8 @@ func (s *BotCommandScope) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode BotCommandScope to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -4110,8 +4110,8 @@ func (s *ChatMember) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode ChatMember to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -12380,8 +12380,8 @@ func (s *InlineQueryResult) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InlineQueryResult to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -18647,8 +18647,8 @@ func (s *InputMedia) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InputMedia to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -19805,125 +19805,302 @@ func (s *InputMessageContent) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode InputMessageContent to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "message_text":
+				match := InputTextMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputTextMessageContentInputMessageContent
+				s.Type = match
 			case "parse_mode":
+				match := InputTextMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputTextMessageContentInputMessageContent
+				s.Type = match
 			case "entities":
+				match := InputTextMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputTextMessageContentInputMessageContent
+				s.Type = match
 			case "disable_web_page_preview":
+				match := InputTextMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputTextMessageContentInputMessageContent
+				s.Type = match
 			case "horizontal_accuracy":
+				match := InputLocationMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputLocationMessageContentInputMessageContent
+				s.Type = match
 			case "live_period":
+				match := InputLocationMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputLocationMessageContentInputMessageContent
+				s.Type = match
 			case "heading":
+				match := InputLocationMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputLocationMessageContentInputMessageContent
+				s.Type = match
 			case "proximity_alert_radius":
+				match := InputLocationMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputLocationMessageContentInputMessageContent
+				s.Type = match
 			case "address":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "foursquare_id":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "foursquare_type":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "google_place_id":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "google_place_type":
+				match := InputVenueMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputVenueMessageContentInputMessageContent
+				s.Type = match
 			case "phone_number":
+				match := InputContactMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputContactMessageContentInputMessageContent
+				s.Type = match
 			case "first_name":
+				match := InputContactMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputContactMessageContentInputMessageContent
+				s.Type = match
 			case "last_name":
+				match := InputContactMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputContactMessageContentInputMessageContent
+				s.Type = match
 			case "vcard":
+				match := InputContactMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputContactMessageContentInputMessageContent
+				s.Type = match
 			case "description":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "payload":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "provider_token":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "currency":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "prices":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "max_tip_amount":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "suggested_tip_amounts":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "provider_data":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "photo_url":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "photo_size":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "photo_width":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "photo_height":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "need_name":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "need_phone_number":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "need_email":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "need_shipping_address":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "send_phone_number_to_provider":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "send_email_to_provider":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			case "is_flexible":
+				match := InputInvoiceMessageContentInputMessageContent
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InputInvoiceMessageContentInputMessageContent
+				s.Type = match
 			}
 			return d.Skip()
 		})
@@ -21518,8 +21695,8 @@ func (s *MenuButton) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode MenuButton to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -26194,8 +26371,8 @@ func (s *PassportElementError) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode PassportElementError to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -35099,8 +35276,8 @@ func (s *SendMediaGroupMediaItem) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendMediaGroupMediaItem to nil")
 	}
 	// Sum type discriminator.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
@@ -36130,35 +36307,62 @@ func (s *SendReplyMarkup) Decode(d *jx.Decoder) error {
 		return errors.New("invalid: unable to decode SendReplyMarkup to nil")
 	}
 	// Sum type fields.
-	if d.Next() != jx.Object {
-		return errors.Errorf("unexpected json type %q", d.Next())
+	if typ := d.Next(); typ != jx.Object {
+		return errors.Errorf("unexpected json type %q", typ)
 	}
 
 	var found bool
 	if err := d.Capture(func(d *jx.Decoder) error {
 		return d.ObjBytes(func(d *jx.Decoder, key []byte) error {
-			if found {
-				return d.Skip()
-			}
 			switch string(key) {
 			case "inline_keyboard":
+				match := InlineKeyboardMarkupSendReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = InlineKeyboardMarkupSendReplyMarkup
+				s.Type = match
 			case "keyboard":
+				match := ReplyKeyboardMarkupSendReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendReplyMarkup
+				s.Type = match
 			case "resize_keyboard":
+				match := ReplyKeyboardMarkupSendReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendReplyMarkup
+				s.Type = match
 			case "one_time_keyboard":
+				match := ReplyKeyboardMarkupSendReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardMarkupSendReplyMarkup
+				s.Type = match
 			case "remove_keyboard":
+				match := ReplyKeyboardRemoveSendReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ReplyKeyboardRemoveSendReplyMarkup
+				s.Type = match
 			case "force_reply":
+				match := ForceReplySendReplyMarkup
+				if found && s.Type != match {
+					s.Type = ""
+					return errors.Errorf("multiple oneOf matches: (%v, %v)", s.Type, match)
+				}
 				found = true
-				s.Type = ForceReplySendReplyMarkup
+				s.Type = match
 			}
 			return d.Skip()
 		})
