@@ -153,8 +153,19 @@ type Response struct {
 	Spec      *openapi.Response
 	Headers   map[string]*Parameter
 
+	// Indicates that all response types
+	// are wrappers with StatusCode field.
 	WithStatusCode bool
-	WithHeaders    bool
+
+	// Indicates that all response types
+	// are wrappers with response header fields.
+	WithHeaders bool
+
+	// Note that if NoContent is false
+	// (i.e. response has specified contents)
+	// and (WithStatusCode || WithHeaders) == true
+	// all wrapper types will also have a Response field
+	// which will contain the actual response body.
 }
 
 func (s Response) ResponseInfo() []ResponseInfo {
