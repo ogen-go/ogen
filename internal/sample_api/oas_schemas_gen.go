@@ -2562,6 +2562,98 @@ func (o OptStringStringMap) Or(d StringStringMap) StringStringMap {
 	return d
 }
 
+// NewOptTestFormDeepObject returns new OptTestFormDeepObject with value set to v.
+func NewOptTestFormDeepObject(v TestFormDeepObject) OptTestFormDeepObject {
+	return OptTestFormDeepObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTestFormDeepObject is optional TestFormDeepObject.
+type OptTestFormDeepObject struct {
+	Value TestFormDeepObject
+	Set   bool
+}
+
+// IsSet returns true if OptTestFormDeepObject was set.
+func (o OptTestFormDeepObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTestFormDeepObject) Reset() {
+	var v TestFormDeepObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTestFormDeepObject) SetTo(v TestFormDeepObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTestFormDeepObject) Get() (v TestFormDeepObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTestFormDeepObject) Or(d TestFormDeepObject) TestFormDeepObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
+// NewOptTestFormObject returns new OptTestFormObject with value set to v.
+func NewOptTestFormObject(v TestFormObject) OptTestFormObject {
+	return OptTestFormObject{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptTestFormObject is optional TestFormObject.
+type OptTestFormObject struct {
+	Value TestFormObject
+	Set   bool
+}
+
+// IsSet returns true if OptTestFormObject was set.
+func (o OptTestFormObject) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptTestFormObject) Reset() {
+	var v TestFormObject
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptTestFormObject) SetTo(v TestFormObject) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptTestFormObject) Get() (v TestFormObject, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptTestFormObject) Or(d TestFormObject) TestFormObject {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptTestObjectQueryParameterDeepObject returns new OptTestObjectQueryParameterDeepObject with value set to v.
 func NewOptTestObjectQueryParameterDeepObject(v TestObjectQueryParameterDeepObject) OptTestObjectQueryParameterDeepObject {
 	return OptTestObjectQueryParameterDeepObject{
@@ -3050,6 +3142,26 @@ type TestFloatValidation struct {
 // TestFloatValidationOK is response for TestFloatValidation operation.
 type TestFloatValidationOK struct{}
 
+// Ref: #/components/schemas/TestForm
+type TestForm struct {
+	ID          OptInt
+	UUID        OptUUID
+	Description string
+	Array       []string
+	Object      OptTestFormObject
+	DeepObject  OptTestFormDeepObject
+}
+
+type TestFormDeepObject struct {
+	Min OptInt "json:\"min\""
+	Max int    "json:\"max\""
+}
+
+type TestFormObject struct {
+	Min OptInt "json:\"min\""
+	Max int    "json:\"max\""
+}
+
 // TestFormURLEncodedOK is response for TestFormURLEncoded operation.
 type TestFormURLEncodedOK struct{}
 
@@ -3070,13 +3182,6 @@ type TestObjectQueryParameterOK struct {
 	Min    int    "json:\"min\""
 	Max    int    "json:\"max\""
 	Filter string "json:\"filter\""
-}
-
-// Ref: #/components/schemas/URIStruct
-type URIStruct struct {
-	ID          OptInt  "json:\"id\""
-	UUID        OptUUID "json:\"uuid\""
-	Description string  "json:\"description\""
 }
 
 // Ref: #/components/schemas/ValidationStringMap

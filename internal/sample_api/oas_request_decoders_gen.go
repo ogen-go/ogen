@@ -8,8 +8,10 @@ import (
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
+	"github.com/google/uuid"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
@@ -378,14 +380,14 @@ func decodeTestFloatValidationRequest(r *http.Request, span trace.Span) (req Tes
 	}
 }
 
-func decodeTestFormURLEncodedRequest(r *http.Request, span trace.Span) (req URIStruct, err error) {
+func decodeTestFormURLEncodedRequest(r *http.Request, span trace.Span) (req TestForm, err error) {
 	switch ct := r.Header.Get("Content-Type"); ct {
 	case "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		var request URIStruct
+		var request TestForm
 		if err := r.ParseForm(); err != nil {
 			return req, errors.Wrap(err, "parse form")
 		}
@@ -395,22 +397,182 @@ func decodeTestFormURLEncodedRequest(r *http.Request, span trace.Span) (req URIS
 		}
 
 		q := uri.NewQueryDecoder(r.PostForm)
-		cfg := uri.QueryParameterDecodingConfig{
-			Name:    "",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-			Fields:  []uri.QueryParameterObjectField{{"id", false}, {"uuid", false}, {"description", true}},
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "id",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var reqDotIDVal int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						reqDotIDVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					req.ID.SetTo(reqDotIDVal)
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"id\"")
+				}
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "uuid",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var reqDotUUIDVal uuid.UUID
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUUID(val)
+						if err != nil {
+							return err
+						}
+
+						reqDotUUIDVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					req.UUID.SetTo(reqDotUUIDVal)
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"uuid\"")
+				}
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "description",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					req.Description = c
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"description\"")
+				}
+			} else {
+				return req, errors.Wrap(err, "query")
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "array",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					return d.DecodeArray(func(d uri.Decoder) error {
+						var reqDotArrayVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							reqDotArrayVal = c
+							return nil
+						}(); err != nil {
+							return err
+						}
+						req.Array = append(req.Array, reqDotArrayVal)
+						return nil
+					})
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"array\"")
+				}
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "object",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var reqDotObjectVal TestFormObject
+					if err := func() error {
+						return reqDotObjectVal.DecodeURI(d)
+					}(); err != nil {
+						return err
+					}
+					req.Object.SetTo(reqDotObjectVal)
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"object\"")
+				}
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "deepObject",
+				Style:   uri.QueryStyleDeepObject,
+				Explode: true,
+				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var reqDotDeepObjectVal TestFormDeepObject
+					if err := func() error {
+						return reqDotDeepObjectVal.DecodeURI(d)
+					}(); err != nil {
+						return err
+					}
+					req.DeepObject.SetTo(reqDotDeepObjectVal)
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"deepObject\"")
+				}
+			}
 		}
 
-		if err := q.HasParam(cfg); err == nil {
-			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				return request.DecodeURI(d)
-			}); err != nil {
-				return req, errors.Wrap(err, "decode \"application/x-www-form-urlencoded\"")
-			}
-		} else {
-			return req, validate.ErrBodyRequired
-		}
 		return request, nil
 	default:
 		return req, validate.InvalidContentType(ct)

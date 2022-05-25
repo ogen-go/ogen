@@ -145,7 +145,7 @@ type Handler interface {
 	// TestFormURLEncoded implements testFormURLEncoded operation.
 	//
 	// POST /testFormURLEncoded
-	TestFormURLEncoded(ctx context.Context, req URIStruct) (TestFormURLEncodedOK, error)
+	TestFormURLEncoded(ctx context.Context, req TestForm) (TestFormURLEncodedOK, error)
 	// TestObjectQueryParameter implements testObjectQueryParameter operation.
 	//
 	// GET /testObjectQueryParameter
