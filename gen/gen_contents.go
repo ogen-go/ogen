@@ -102,29 +102,52 @@ func (g *Generator) generateContents(
 				if s := media.Schema; s != nil && (s.AdditionalProperties != nil || len(s.PatternProperties) > 0) {
 					return &ErrNotImplemented{"complex urlencoded schema"}
 				}
-				if len(media.Encoding) > 0 {
-					return &ErrNotImplemented{"urlencoded encoding"}
-				}
 
 				t, err := g.generateSchema(ctx, typeName, media.Schema)
 				if err != nil {
 					return errors.Wrap(err, "generate schema")
 				}
-
 				if !t.IsStruct() {
 					return errors.Wrapf(&ErrNotImplemented{"urlencoded schema type"}, "%s", t.Kind)
 				}
-				if err := isParamAllowed(t, true, map[*ir.Type]struct{}{}); err != nil {
-					return err
-				}
 
-				t.AddFeature("urlencoded")
-				t, err = boxType(ctx, ir.GenericVariant{
-					Nullable: t.Schema != nil && t.Schema.Nullable,
-					Optional: optional,
-				}, t)
-				if err != nil {
-					return errors.Wrap(err, "box schema")
+				for _, f := range t.Fields {
+					tag := f.Tag.JSON
+					f.Tag.JSON = ""
+
+					var (
+						style   = openapi.QueryStyleForm
+						explode = true
+					)
+					if e, ok := media.Encoding[tag]; ok {
+						style = e.Style
+						explode = e.Explode
+					}
+					spec := &openapi.Parameter{
+						Name:     tag,
+						Schema:   f.Spec.Schema,
+						In:       openapi.LocationQuery,
+						Style:    style,
+						Explode:  explode,
+						Required: f.Spec.Required,
+					}
+
+					f.Type.AddFeature("uri")
+					if err := func() error {
+						if err := isSupportedParamStyle(spec); err != nil {
+							return err
+						}
+
+						if err := isParamAllowed(f.Type, true, map[*ir.Type]struct{}{}); err != nil {
+							return err
+						}
+
+						return nil
+					}(); err != nil {
+						return errors.Wrapf(err, "form parameter %q", tag)
+					}
+
+					f.Tag.Form = spec
 				}
 
 				result[ir.ContentTypeFormURLEncoded] = t

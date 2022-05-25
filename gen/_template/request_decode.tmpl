@@ -78,30 +78,38 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		}
 
 		q := uri.NewQueryDecoder(r.PostForm)
-		cfg := uri.QueryParameterDecodingConfig{
-			Name:    "",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-			Fields: {{ paramObjectFields $t }},
+		{{- range $p := $op.Request.FormParameters }}
+		{
+        	{{- $el := elem $p.Type (printf "req.%s" $p.Name) }}
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    {{ quote $p.Spec.Name }},
+				Style:   uri.QueryStyle{{ capitalize $p.Spec.Style.String }},
+				Explode: {{ if $p.Spec.Explode }}true{{ else }}false{{ end }},
+				{{- if isObjectParam $p }}
+				Fields: {{ paramObjectFields $p.Type }},
+				{{- end }}
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					{{- template "uri/decode" $el }}
+				}); err != nil {
+					return req, errors.Wrap(err, {{ printf "decode %q" $p.Spec.Name | quote }})
+				}
+
+				{{- if $p.Type.NeedValidation }}
+				if err := func() error {
+					{{- template "validate" $el }}
+				}(); err != nil {
+					return req, errors.Wrap(err, "validate")
+				}
+				{{- end }}
+			} {{- if $p.Spec.Required }} else {
+				return req, errors.Wrap(err, "query")
+			} {{- end }}
 		}
+		{{- end }}
 
-		if err := q.HasParam(cfg); err == nil {
-			if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
-				{{- template "uri/decode" elem $t "request" }}
-			}); err != nil {
-				return req, errors.Wrap(err, {{ printf "decode %q" $contentType | quote }})
-			}
-
-			{{- if $t.NeedValidation }}
-			if err := func() error {
-				{{- template "validate" elem $t "request" }}
-			}(); err != nil {
-				return req, errors.Wrap(err, "validate")
-			}
-			{{- end }}
-		} {{- if $op.Request.Spec.Required }} else {
-			return req, validate.ErrBodyRequired
-		} {{- end }}
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
 	{{- else }}
 		{{- errorf "%s decoder not implemented" $contentType }}

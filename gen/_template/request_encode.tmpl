@@ -14,17 +14,22 @@ func encode{{ $op.Name }}Request{{ $contentType.Name }}(req {{ $op.Request.Type.
 		return e, nil
 	{{- else if $contentType.FormURLEncode }}
 		q := uri.NewQueryEncoder()
-		cfg := uri.QueryParameterEncodingConfig{
-			Name:    "",
-			Style:   uri.QueryStyleForm,
-			Explode: true,
-		}
+		{{- range $param := $op.Request.FormParameters }}
+		{
+			// Encode {{ quote $param.Spec.Name }} form field.
+			cfg := uri.QueryParameterEncodingConfig{
+				Name:    {{ quote $param.Spec.Name }},
+				Style:   uri.QueryStyle{{ capitalize $param.Spec.Style.String }},
+				Explode: {{ if $param.Spec.Explode }}true{{ else }}false{{ end }},
+			}
 
-		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-			{{- template "uri/encode" elem $type "req" }}
-		}); err != nil {
-			return data, errors.Wrap(err, "encode query")
+			if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+				{{- template "uri/encode" elem $param.Type (printf "req.%s" $param.Name) }}
+			}); err != nil {
+				return data, errors.Wrap(err, "encode query")
+			}
 		}
+		{{- end }}
 		e := strings.NewReader(q.Values().Encode())
 		return e, nil
 	{{- else }}

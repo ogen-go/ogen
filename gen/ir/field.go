@@ -5,11 +5,13 @@ import (
 	"strconv"
 
 	"github.com/ogen-go/ogen/jsonschema"
+	"github.com/ogen-go/ogen/openapi"
 )
 
 // Tag of Field.
 type Tag struct {
-	JSON string // json tag, empty for none
+	JSON string             // json tag, empty for none
+	Form *openapi.Parameter // query form parameter
 }
 
 // EscapedJSON returns quoted and escaped JSON tag.

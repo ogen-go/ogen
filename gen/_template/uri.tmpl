@@ -3,7 +3,7 @@
 {{- template "header" $ }}
 
 {{- range $_, $t := $.Types }}
-	{{- if and (or ($t.HasFeature "uri") ($t.HasFeature "urlencoded")) $t.IsStruct }}
+	{{- if and ($t.HasFeature "uri") $t.IsStruct }}
 	{{- template "uri/encoders" $t }}
 	{{- end }}
 {{- end }}
