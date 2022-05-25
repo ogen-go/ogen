@@ -11,6 +11,7 @@ type ResponseInfo struct {
 	NoContent      bool
 	WithStatusCode bool
 	WithHeaders    bool
+	Headers        map[string]*Parameter
 }
 
 func (op *Operation) ListResponseTypes() []ResponseInfo {
@@ -23,6 +24,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				NoContent:      true,
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
+				Headers:        resp.Headers,
 			})
 			continue
 		}
@@ -33,6 +35,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				ContentType:    contentType,
 				WithStatusCode: resp.WithStatusCode,
 				WithHeaders:    resp.WithHeaders,
+				Headers:        resp.Headers,
 			})
 		}
 	}
@@ -44,6 +47,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				NoContent:      true,
 				WithStatusCode: def.WithStatusCode,
 				WithHeaders:    def.WithHeaders,
+				Headers:        def.Headers,
 			})
 		}
 		for contentType, typ := range def.Contents {
@@ -52,6 +56,7 @@ func (op *Operation) ListResponseTypes() []ResponseInfo {
 				ContentType:    contentType,
 				WithStatusCode: def.WithStatusCode,
 				WithHeaders:    def.WithHeaders,
+				Headers:        def.Headers,
 			})
 		}
 	}

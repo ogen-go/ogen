@@ -69,7 +69,24 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 {{- end }}
 
 {{- if $.WithHeaders }}
-	// TODO: Set response headers.
+// Encoding response headers.
+{
+	h := uri.NewHeaderEncoder(w.Header())
+	{{- range $_, $header := $.Headers }}
+	// Encode '{{ $header.Name }}' header.
+	{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    {{ quote $header.Spec.Name }},
+			Explode: {{ if $header.Spec.Explode}}true{{ else }}false{{ end }},
+		}
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error{
+			{{- template "uri/encode" elem $header.Type (printf "response.%s" $header.Name) }}
+		}); err != nil {
+			return errors.Wrap(err, "encode {{ $header.Spec.Name }} header")
+		}
+	}
+	{{- end }}
+}
 {{- end }}
 
 {{- if $.NoContent }}
