@@ -1692,7 +1692,7 @@ func (c *Client) TestFloatValidation(ctx context.Context, request TestFloatValid
 // TestFormURLEncoded invokes testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
-func (c *Client) TestFormURLEncoded(ctx context.Context, request URIStruct) (res TestFormURLEncodedOK, err error) {
+func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res TestFormURLEncodedOK, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{
 		otelogen.OperationID("testFormURLEncoded"),

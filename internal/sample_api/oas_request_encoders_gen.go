@@ -10,6 +10,7 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
 )
 
@@ -62,18 +63,112 @@ func encodeTestFloatValidationRequestJSON(req TestFloatValidation, span trace.Sp
 	req.Encode(e)
 	return e, nil
 }
-func encodeTestFormURLEncodedRequestFormURLEncoded(req URIStruct, span trace.Span) (data io.Reader, err error) {
+func encodeTestFormURLEncodedRequestFormURLEncoded(req TestForm, span trace.Span) (data io.Reader, err error) {
 	q := uri.NewQueryEncoder()
-	cfg := uri.QueryParameterEncodingConfig{
-		Name:    "",
-		Style:   uri.QueryStyleForm,
-		Explode: true,
-	}
+	{
+		// Encode "id" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
 
-	if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
-		return req.EncodeURI(e)
-	}); err != nil {
-		return data, errors.Wrap(err, "encode query")
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.ID.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return data, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "uuid" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "uuid",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.UUID.Get(); ok {
+				return e.EncodeValue(conv.UUIDToString(val))
+			}
+			return nil
+		}); err != nil {
+			return data, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "description" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "description",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringToString(req.Description))
+		}); err != nil {
+			return data, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "array" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range req.Array {
+					if err := func() error {
+						return e.EncodeValue(conv.StringToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return data, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "object" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "object",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.Object.Get(); ok {
+				return val.EncodeURI(e)
+			}
+			return nil
+		}); err != nil {
+			return data, errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "deepObject" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "deepObject",
+			Style:   uri.QueryStyleDeepObject,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.DeepObject.Get(); ok {
+				return val.EncodeURI(e)
+			}
+			return nil
+		}); err != nil {
+			return data, errors.Wrap(err, "encode query")
+		}
 	}
 	e := strings.NewReader(q.Values().Encode())
 	return e, nil

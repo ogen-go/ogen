@@ -72,6 +72,23 @@ type Request struct {
 	Spec     *openapi.RequestBody
 }
 
+func (r Request) FormParameters() (params []Parameter) {
+	ct := ContentTypeFormURLEncoded
+	t, ok := r.Contents[ct]
+	if !ok {
+		panic(ct)
+	}
+
+	for _, f := range t.Fields {
+		params = append(params, Parameter{
+			Name: f.Name,
+			Type: f.Type,
+			Spec: f.Tag.Form,
+		})
+	}
+	return params
+}
+
 type Content struct {
 	ContentType ContentType
 	Type        *Type

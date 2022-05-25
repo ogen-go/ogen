@@ -7,12 +7,245 @@ import (
 	"strconv"
 
 	"github.com/go-faster/errors"
-	"github.com/google/uuid"
 
 	"github.com/ogen-go/ogen/conv"
 	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
+
+// EncodeURI encodes TestFormDeepObject as URI form.
+func (s TestFormDeepObject) EncodeURI(e uri.Encoder) error {
+	if err := e.EncodeField("min", func(e uri.Encoder) error {
+		if val, ok := s.Min.Get(); ok {
+			return e.EncodeValue(conv.IntToString(val))
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "encode field \"min\"")
+	}
+	if err := e.EncodeField("max", func(e uri.Encoder) error {
+		return e.EncodeValue(conv.IntToString(s.Max))
+	}); err != nil {
+		return errors.Wrap(err, "encode field \"max\"")
+	}
+	return nil
+}
+
+var uriFieldsNameOfTestFormDeepObject = [2]string{
+	0: "min",
+	1: "max",
+}
+
+// DecodeURI decodes TestFormDeepObject from URI form.
+func (s *TestFormDeepObject) DecodeURI(d uri.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TestFormDeepObject to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
+		switch k {
+		case "min":
+			if err := func() error {
+				var sDotMinVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					sDotMinVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				s.Min.SetTo(sDotMinVal)
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"min\"")
+			}
+		case "max":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				s.Max = c
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"max\"")
+			}
+		default:
+			return nil
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode TestFormDeepObject")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000010,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(uriFieldsNameOfTestFormDeepObject) {
+					name = uriFieldsNameOfTestFormDeepObject[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
+
+// EncodeURI encodes TestFormObject as URI form.
+func (s TestFormObject) EncodeURI(e uri.Encoder) error {
+	if err := e.EncodeField("min", func(e uri.Encoder) error {
+		if val, ok := s.Min.Get(); ok {
+			return e.EncodeValue(conv.IntToString(val))
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "encode field \"min\"")
+	}
+	if err := e.EncodeField("max", func(e uri.Encoder) error {
+		return e.EncodeValue(conv.IntToString(s.Max))
+	}); err != nil {
+		return errors.Wrap(err, "encode field \"max\"")
+	}
+	return nil
+}
+
+var uriFieldsNameOfTestFormObject = [2]string{
+	0: "min",
+	1: "max",
+}
+
+// DecodeURI decodes TestFormObject from URI form.
+func (s *TestFormObject) DecodeURI(d uri.Decoder) error {
+	if s == nil {
+		return errors.New("invalid: unable to decode TestFormObject to nil")
+	}
+	var requiredBitSet [1]uint8
+
+	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
+		switch k {
+		case "min":
+			if err := func() error {
+				var sDotMinVal int
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToInt(val)
+					if err != nil {
+						return err
+					}
+
+					sDotMinVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				s.Min.SetTo(sDotMinVal)
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"min\"")
+			}
+		case "max":
+			requiredBitSet[0] |= 1 << 1
+			if err := func() error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToInt(val)
+				if err != nil {
+					return err
+				}
+
+				s.Max = c
+				return nil
+			}(); err != nil {
+				return errors.Wrap(err, "decode field \"max\"")
+			}
+		default:
+			return nil
+		}
+		return nil
+	}); err != nil {
+		return errors.Wrap(err, "decode TestFormObject")
+	}
+	// Validate required fields.
+	var failures []validate.FieldError
+	for i, mask := range [1]uint8{
+		0b00000010,
+	} {
+		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
+			// Mask only required fields and check equality to mask using XOR.
+			//
+			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
+			// Bits of fields which would be set are actually bits of missed fields.
+			missed := bits.OnesCount8(result)
+			for bitN := 0; bitN < missed; bitN++ {
+				bitIdx := bits.TrailingZeros8(result)
+				fieldIdx := i*8 + bitIdx
+				var name string
+				if fieldIdx < len(uriFieldsNameOfTestFormObject) {
+					name = uriFieldsNameOfTestFormObject[fieldIdx]
+				} else {
+					name = strconv.Itoa(fieldIdx)
+				}
+				failures = append(failures, validate.FieldError{
+					Name:  name,
+					Error: validate.ErrFieldRequired,
+				})
+				// Reset bit.
+				result &^= 1 << bitIdx
+			}
+		}
+	}
+	if len(failures) > 0 {
+		return &validate.Error{Fields: failures}
+	}
+
+	return nil
+}
 
 // EncodeURI encodes TestObjectQueryParameterDeepObject as URI form.
 func (s TestObjectQueryParameterDeepObject) EncodeURI(e uri.Encoder) error {
@@ -259,156 +492,6 @@ func (s *TestObjectQueryParameterFormObject) DecodeURI(d uri.Decoder) error {
 				var name string
 				if fieldIdx < len(uriFieldsNameOfTestObjectQueryParameterFormObject) {
 					name = uriFieldsNameOfTestObjectQueryParameterFormObject[fieldIdx]
-				} else {
-					name = strconv.Itoa(fieldIdx)
-				}
-				failures = append(failures, validate.FieldError{
-					Name:  name,
-					Error: validate.ErrFieldRequired,
-				})
-				// Reset bit.
-				result &^= 1 << bitIdx
-			}
-		}
-	}
-	if len(failures) > 0 {
-		return &validate.Error{Fields: failures}
-	}
-
-	return nil
-}
-
-// EncodeURI encodes URIStruct as URI form.
-func (s URIStruct) EncodeURI(e uri.Encoder) error {
-	if err := e.EncodeField("id", func(e uri.Encoder) error {
-		if val, ok := s.ID.Get(); ok {
-			return e.EncodeValue(conv.IntToString(val))
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "encode field \"id\"")
-	}
-	if err := e.EncodeField("uuid", func(e uri.Encoder) error {
-		if val, ok := s.UUID.Get(); ok {
-			return e.EncodeValue(conv.UUIDToString(val))
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "encode field \"uuid\"")
-	}
-	if err := e.EncodeField("description", func(e uri.Encoder) error {
-		return e.EncodeValue(conv.StringToString(s.Description))
-	}); err != nil {
-		return errors.Wrap(err, "encode field \"description\"")
-	}
-	return nil
-}
-
-var uriFieldsNameOfURIStruct = [3]string{
-	0: "id",
-	1: "uuid",
-	2: "description",
-}
-
-// DecodeURI decodes URIStruct from URI form.
-func (s *URIStruct) DecodeURI(d uri.Decoder) error {
-	if s == nil {
-		return errors.New("invalid: unable to decode URIStruct to nil")
-	}
-	var requiredBitSet [1]uint8
-
-	if err := d.DecodeFields(func(k string, d uri.Decoder) error {
-		switch k {
-		case "id":
-			if err := func() error {
-				var sDotIDVal int
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToInt(val)
-					if err != nil {
-						return err
-					}
-
-					sDotIDVal = c
-					return nil
-				}(); err != nil {
-					return err
-				}
-				s.ID.SetTo(sDotIDVal)
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"id\"")
-			}
-		case "uuid":
-			if err := func() error {
-				var sDotUUIDVal uuid.UUID
-				if err := func() error {
-					val, err := d.DecodeValue()
-					if err != nil {
-						return err
-					}
-
-					c, err := conv.ToUUID(val)
-					if err != nil {
-						return err
-					}
-
-					sDotUUIDVal = c
-					return nil
-				}(); err != nil {
-					return err
-				}
-				s.UUID.SetTo(sDotUUIDVal)
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"uuid\"")
-			}
-		case "description":
-			requiredBitSet[0] |= 1 << 2
-			if err := func() error {
-				val, err := d.DecodeValue()
-				if err != nil {
-					return err
-				}
-
-				c, err := conv.ToString(val)
-				if err != nil {
-					return err
-				}
-
-				s.Description = c
-				return nil
-			}(); err != nil {
-				return errors.Wrap(err, "decode field \"description\"")
-			}
-		default:
-			return nil
-		}
-		return nil
-	}); err != nil {
-		return errors.Wrap(err, "decode URIStruct")
-	}
-	// Validate required fields.
-	var failures []validate.FieldError
-	for i, mask := range [1]uint8{
-		0b00000100,
-	} {
-		if result := (requiredBitSet[i] & mask) ^ mask; result != 0 {
-			// Mask only required fields and check equality to mask using XOR.
-			//
-			// If XOR result is not zero, result is not equal to expected, so some fields are missed.
-			// Bits of fields which would be set are actually bits of missed fields.
-			missed := bits.OnesCount8(result)
-			for bitN := 0; bitN < missed; bitN++ {
-				bitIdx := bits.TrailingZeros8(result)
-				fieldIdx := i*8 + bitIdx
-				var name string
-				if fieldIdx < len(uriFieldsNameOfURIStruct) {
-					name = uriFieldsNameOfURIStruct[fieldIdx]
 				} else {
 					name = strconv.Itoa(fieldIdx)
 				}

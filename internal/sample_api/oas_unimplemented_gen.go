@@ -224,7 +224,7 @@ func (UnimplementedHandler) TestFloatValidation(ctx context.Context, req TestFlo
 // TestFormURLEncoded implements testFormURLEncoded operation.
 //
 // POST /testFormURLEncoded
-func (UnimplementedHandler) TestFormURLEncoded(ctx context.Context, req URIStruct) (r TestFormURLEncodedOK, _ error) {
+func (UnimplementedHandler) TestFormURLEncoded(ctx context.Context, req TestForm) (r TestFormURLEncodedOK, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
