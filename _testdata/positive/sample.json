@@ -626,8 +626,13 @@
           "required": true,
           "content": {
             "application/x-www-form-urlencoded": {
+              "encoding": {
+                "deepObject": {
+                  "style": "deepObject"
+                }
+              },
               "schema": {
-                "$ref": "#/components/schemas/URIStruct"
+                "$ref": "#/components/schemas/TestForm"
               }
             }
           }
@@ -871,7 +876,7 @@
           }
         }
       },
-      "URIStruct": {
+      "TestForm": {
         "type": "object",
         "required": [
           "description"
@@ -886,6 +891,40 @@
           },
           "description": {
             "type": "string"
+          },
+          "array": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "object": {
+            "type": "object",
+            "required": [
+              "max"
+            ],
+            "properties": {
+              "min": {
+                "type": "integer"
+              },
+              "max": {
+                "type": "integer"
+              }
+            }
+          },
+          "deepObject": {
+            "type": "object",
+            "required": [
+              "max"
+            ],
+            "properties": {
+              "min": {
+                "type": "integer"
+              },
+              "max": {
+                "type": "integer"
+              }
+            }
           }
         }
       },
