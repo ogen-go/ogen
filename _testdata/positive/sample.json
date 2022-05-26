@@ -858,23 +858,6 @@
           }
         }
       }
-    },
-    "/responseWithHeadersTest": {
-      "get": {
-        "operationId": "responseWithHeadersTest",
-        "responses": {
-          "302": {
-            "description": "Redirect",
-            "headers": {
-              "Location": {
-                "schema": {
-                  "type": "string"
-                }
-              }
-            }
-          }
-        }
-      }
     }
   },
   "components": {
