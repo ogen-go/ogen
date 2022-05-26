@@ -16,6 +16,8 @@ type MediaType struct {
 
 // Encoding is Encoding Type Object.
 type Encoding struct {
+	ContentType   string
+	Headers       map[string]*Header
 	Style         ParameterStyle
 	Explode       bool
 	AllowReserved bool
