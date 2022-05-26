@@ -56,7 +56,7 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 {
 	h := uri.NewHeaderEncoder(w.Header())
 	{{- range $_, $header := $.Headers }}
-	// Encode '{{ $header.Name }}' header.
+	// Encode '{{ $header.Spec.Name }}' header.
 	{
 		cfg := uri.HeaderParameterEncodingConfig{
 			Name:    {{ quote $header.Spec.Name }},
