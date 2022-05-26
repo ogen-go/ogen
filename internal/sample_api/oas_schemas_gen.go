@@ -248,12 +248,8 @@ func (*ErrorStatusCode) petGetAvatarByNameRes()  {}
 func (*ErrorStatusCode) petUploadAvatarByIDRes() {}
 
 // FoobarPutDef is default response for FoobarPut operation.
-type FoobarPutDef struct{}
-
-// FoobarPutDefStatusCode wraps FoobarPutDef with StatusCode.
-type FoobarPutDefStatusCode struct {
+type FoobarPutDef struct {
 	StatusCode int
-	Response   FoobarPutDef
 }
 
 // Ref: #/components/schemas/Hash
@@ -3031,21 +3027,13 @@ const (
 )
 
 // PetUpdateNameAliasPostDef is default response for PetUpdateNameAliasPost operation.
-type PetUpdateNameAliasPostDef struct{}
-
-// PetUpdateNameAliasPostDefStatusCode wraps PetUpdateNameAliasPostDef with StatusCode.
-type PetUpdateNameAliasPostDefStatusCode struct {
+type PetUpdateNameAliasPostDef struct {
 	StatusCode int
-	Response   PetUpdateNameAliasPostDef
 }
 
 // PetUpdateNamePostDef is default response for PetUpdateNamePost operation.
-type PetUpdateNamePostDef struct{}
-
-// PetUpdateNamePostDefStatusCode wraps PetUpdateNamePostDef with StatusCode.
-type PetUpdateNamePostDefStatusCode struct {
+type PetUpdateNamePostDef struct {
 	StatusCode int
-	Response   PetUpdateNamePostDef
 }
 
 // PetUploadAvatarByIDOK is response for PetUploadAvatarByID operation.
@@ -3078,6 +3066,11 @@ func (s *RecursiveMapAdditional) init() RecursiveMapAdditional {
 		*s = m
 	}
 	return m
+}
+
+// ResponseWithHeadersTestFound is response for ResponseWithHeadersTest operation.
+type ResponseWithHeadersTestFound struct {
+	Location OptString
 }
 
 // Ref: #/components/schemas/StringIntMap

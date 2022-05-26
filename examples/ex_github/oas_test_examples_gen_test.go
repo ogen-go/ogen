@@ -1744,18 +1744,6 @@ func TestActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorize
 	var typ2 ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestActivityListNotificationsForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ActivityListNotificationsForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ActivityListNotificationsForAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestActivityListPublicEventsForRepoNetworkApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden
 	typ.SetFake()
@@ -1840,18 +1828,6 @@ func TestActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized_
 	var typ2 ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestActivityListReposStarredByAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ActivityListReposStarredByAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ActivityListReposStarredByAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden
 	typ.SetFake()
@@ -1874,18 +1850,6 @@ func TestActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestActivityListWatchedReposForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestActivityMarkNotificationsAsReadAccepted_EncodeDecode(t *testing.T) {
@@ -2920,30 +2884,6 @@ func TestAppsListAccountsForPlanApplicationJSONUnauthorized_EncodeDecode(t *test
 	var typ2 AppsListAccountsForPlanApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestAppsListAccountsForPlanOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ AppsListAccountsForPlanOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 AppsListAccountsForPlanOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestAppsListAccountsForPlanStubbedOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ AppsListAccountsForPlanStubbedOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 AppsListAccountsForPlanStubbedOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestAppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden
 	typ.SetFake()
@@ -3034,30 +2974,6 @@ func TestAppsListPlansApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
 	var typ2 AppsListPlansApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestAppsListPlansOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ AppsListPlansOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 AppsListPlansOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestAppsListPlansStubbedOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ AppsListPlansStubbedOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 AppsListPlansStubbedOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestAppsListReposAccessibleToInstallationApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ AppsListReposAccessibleToInstallationApplicationJSONForbidden
 	typ.SetFake()
@@ -3146,30 +3062,6 @@ func TestAppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized_En
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestAppsListSubscriptionsForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestAppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestAppsListWebhookDeliveriesOKApplicationJSON_EncodeDecode(t *testing.T) {
@@ -8472,18 +8364,6 @@ func TestGistsListCommentsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
 	var typ2 GistsListCommentsApplicationJSONNotFound
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestGistsListCommentsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ GistsListCommentsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 GistsListCommentsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestGistsListCommitsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ GistsListCommitsApplicationJSONForbidden
 	typ.SetFake()
@@ -8506,30 +8386,6 @@ func TestGistsListCommitsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 GistsListCommitsApplicationJSONNotFound
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestGistsListCommitsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ GistsListCommitsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 GistsListCommitsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestGistsListForUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ GistsListForUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 GistsListForUserOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestGistsListForksApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -8556,42 +8412,6 @@ func TestGistsListForksApplicationJSONNotFound_EncodeDecode(t *testing.T) {
 	var typ2 GistsListForksApplicationJSONNotFound
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestGistsListForksOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ GistsListForksOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 GistsListForksOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestGistsListOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ GistsListOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 GistsListOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestGistsListPublicOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ GistsListPublicOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 GistsListPublicOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestGistsListStarredApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ GistsListStarredApplicationJSONForbidden
 	typ.SetFake()
@@ -8614,18 +8434,6 @@ func TestGistsListStarredApplicationJSONUnauthorized_EncodeDecode(t *testing.T) 
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 GistsListStarredApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestGistsListStarredOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ GistsListStarredOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 GistsListStarredOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestGistsStarApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -10889,18 +10697,6 @@ func TestIssuesGetEventApplicationJSONNotFound_EncodeDecode(t *testing.T) {
 	var typ2 IssuesGetEventApplicationJSONNotFound
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestIssuesListAssigneesOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListAssigneesOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListAssigneesOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestIssuesListCommentsApplicationJSONGone_EncodeDecode(t *testing.T) {
 	var typ IssuesListCommentsApplicationJSONGone
 	typ.SetFake()
@@ -10925,66 +10721,6 @@ func TestIssuesListCommentsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
 	var typ2 IssuesListCommentsApplicationJSONNotFound
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestIssuesListCommentsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListCommentsForRepoOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListCommentsForRepoOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListCommentsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListCommentsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListCommentsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListEventsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListEventsForRepoOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListEventsForRepoOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListForAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListForOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListForOrgOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListForOrgOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestIssuesListForRepoApplicationJSONMovedPermanently_EncodeDecode(t *testing.T) {
 	var typ IssuesListForRepoApplicationJSONMovedPermanently
 	typ.SetFake()
@@ -11007,66 +10743,6 @@ func TestIssuesListForRepoApplicationJSONNotFound_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 IssuesListForRepoApplicationJSONNotFound
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListForRepoOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListForRepoOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListLabelsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListLabelsForRepoOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListLabelsForRepoOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListLabelsOnIssueOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListLabelsOnIssueOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListLabelsOnIssueOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListMilestonesOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListMilestonesOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListMilestonesOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestIssuesListOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ IssuesListOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 IssuesListOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestIssuesLockApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -12313,42 +11989,6 @@ func TestMigrationsListForAuthenticatedUserApplicationJSONUnauthorized_EncodeDec
 	var typ2 MigrationsListForAuthenticatedUserApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestMigrationsListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ MigrationsListForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 MigrationsListForAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestMigrationsListReposForOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ MigrationsListReposForOrgOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 MigrationsListReposForOrgOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestMigrationsListReposForUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ MigrationsListReposForUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 MigrationsListReposForUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestMigrationsMapCommitAuthorReq_EncodeDecode(t *testing.T) {
 	var typ MigrationsMapCommitAuthorReq
 	typ.SetFake()
@@ -13353,30 +12993,6 @@ func TestOAuthAuthorizationsGetGrantApplicationJSONUnauthorized_EncodeDecode(t *
 	var typ2 OAuthAuthorizationsGetGrantApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated_EncodeDecode(t *testing.T) {
-	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK_EncodeDecode(t *testing.T) {
-	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq_EncodeDecode(t *testing.T) {
 	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
 	typ.SetFake()
@@ -13389,18 +13005,6 @@ func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq_Enco
 	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated_EncodeDecode(t *testing.T) {
-	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden
 	typ.SetFake()
@@ -13411,18 +13015,6 @@ func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidd
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK_EncodeDecode(t *testing.T) {
-	var typ OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONUnauthorized_EncodeDecode(t *testing.T) {
@@ -13485,18 +13077,6 @@ func TestOAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized_Encode
 	var typ2 OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestOAuthAuthorizationsListAuthorizationsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OAuthAuthorizationsListAuthorizationsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OAuthAuthorizationsListAuthorizationsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestOAuthAuthorizationsListGrantsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ OAuthAuthorizationsListGrantsApplicationJSONForbidden
 	typ.SetFake()
@@ -13531,18 +13111,6 @@ func TestOAuthAuthorizationsListGrantsApplicationJSONUnauthorized_EncodeDecode(t
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 OAuthAuthorizationsListGrantsApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOAuthAuthorizationsListGrantsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OAuthAuthorizationsListGrantsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OAuthAuthorizationsListGrantsOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOAuthAuthorizationsUpdateAuthorizationReq_EncodeDecode(t *testing.T) {
@@ -14106,18 +13674,6 @@ func TestOrgsListBlockedUsersOKApplicationJSON_EncodeDecode(t *testing.T) {
 	var typ2 OrgsListBlockedUsersOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestOrgsListFailedInvitationsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OrgsListFailedInvitationsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsListFailedInvitationsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestOrgsListForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ OrgsListForAuthenticatedUserApplicationJSONForbidden
 	typ.SetFake()
@@ -14140,42 +13696,6 @@ func TestOrgsListForAuthenticatedUserApplicationJSONUnauthorized_EncodeDecode(t 
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 OrgsListForAuthenticatedUserApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOrgsListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OrgsListForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsListForAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOrgsListInvitationTeamsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OrgsListInvitationTeamsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsListInvitationTeamsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOrgsListMembersOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OrgsListMembersOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsListMembersOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOrgsListMembershipsForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -14202,42 +13722,6 @@ func TestOrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized_Enco
 	var typ2 OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestOrgsListMembershipsForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OrgsListMembershipsForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsListMembershipsForAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOrgsListOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OrgsListOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsListOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOrgsListPendingInvitationsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OrgsListPendingInvitationsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsListPendingInvitationsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestOrgsListWebhookDeliveriesOKApplicationJSON_EncodeDecode(t *testing.T) {
 	var typ OrgsListWebhookDeliveriesOKApplicationJSON
 	typ.SetFake()
@@ -14248,18 +13732,6 @@ func TestOrgsListWebhookDeliveriesOKApplicationJSON_EncodeDecode(t *testing.T) {
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 OrgsListWebhookDeliveriesOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestOrgsListWebhooksOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ OrgsListWebhooksOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 OrgsListWebhooksOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestOrgsRemoveMembershipForUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -16728,18 +16200,6 @@ func TestProjectsListCardsApplicationJSONUnauthorized_EncodeDecode(t *testing.T)
 	var typ2 ProjectsListCardsApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestProjectsListCardsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ProjectsListCardsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProjectsListCardsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestProjectsListCollaboratorsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ProjectsListCollaboratorsApplicationJSONForbidden
 	typ.SetFake()
@@ -16776,18 +16236,6 @@ func TestProjectsListCollaboratorsApplicationJSONUnauthorized_EncodeDecode(t *te
 	var typ2 ProjectsListCollaboratorsApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestProjectsListCollaboratorsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ProjectsListCollaboratorsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProjectsListCollaboratorsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestProjectsListColumnsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ProjectsListColumnsApplicationJSONForbidden
 	typ.SetFake()
@@ -16810,30 +16258,6 @@ func TestProjectsListColumnsApplicationJSONUnauthorized_EncodeDecode(t *testing.
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ProjectsListColumnsApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestProjectsListColumnsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ProjectsListColumnsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProjectsListColumnsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestProjectsListForOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ProjectsListForOrgOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProjectsListForOrgOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestProjectsListForRepoApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -16882,30 +16306,6 @@ func TestProjectsListForRepoApplicationJSONUnauthorized_EncodeDecode(t *testing.
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ProjectsListForRepoApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestProjectsListForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ProjectsListForRepoOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProjectsListForRepoOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestProjectsListForUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ProjectsListForUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ProjectsListForUserOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestProjectsMoveCardCreated_EncodeDecode(t *testing.T) {
@@ -18360,42 +17760,6 @@ func TestPullsGetApplicationJSONNotFound_EncodeDecode(t *testing.T) {
 	var typ2 PullsGetApplicationJSONNotFound
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestPullsListCommentsForReviewOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ PullsListCommentsForReviewOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 PullsListCommentsForReviewOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestPullsListFilesOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ PullsListFilesOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 PullsListFilesOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestPullsListOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ PullsListOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 PullsListOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestPullsMergeApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ PullsMergeApplicationJSONForbidden
 	typ.SetFake()
@@ -19692,18 +19056,6 @@ func TestReactionsDeleteLegacyApplicationJSONUnauthorized_EncodeDecode(t *testin
 	var typ2 ReactionsDeleteLegacyApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestReactionsListForCommitCommentOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReactionsListForCommitCommentOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReactionsListForCommitCommentOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestReactionsListForIssueApplicationJSONGone_EncodeDecode(t *testing.T) {
 	var typ ReactionsListForIssueApplicationJSONGone
 	typ.SetFake()
@@ -19726,42 +19078,6 @@ func TestReactionsListForIssueApplicationJSONNotFound_EncodeDecode(t *testing.T)
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ReactionsListForIssueApplicationJSONNotFound
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReactionsListForIssueCommentOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReactionsListForIssueCommentOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReactionsListForIssueCommentOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReactionsListForIssueOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReactionsListForIssueOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReactionsListForIssueOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReactionsListForPullRequestReviewCommentOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReactionsListForPullRequestReviewCommentOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReactionsListForPullRequestReviewCommentOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestReferrerTraffic_EncodeDecode(t *testing.T) {
@@ -21594,42 +20910,6 @@ func TestReposListBranchesForHeadCommitOKApplicationJSON_EncodeDecode(t *testing
 	var typ2 ReposListBranchesForHeadCommitOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestReposListBranchesOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListBranchesOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListBranchesOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReposListCollaboratorsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListCollaboratorsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListCollaboratorsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReposListCommitStatusesForRefOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListCommitStatusesForRefOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListCommitStatusesForRefOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestReposListCommitsApplicationJSONBadRequest_EncodeDecode(t *testing.T) {
 	var typ ReposListCommitsApplicationJSONBadRequest
 	typ.SetFake()
@@ -21678,18 +20958,6 @@ func TestReposListCommitsApplicationJSONNotFound_EncodeDecode(t *testing.T) {
 	var typ2 ReposListCommitsApplicationJSONNotFound
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestReposListCommitsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListCommitsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListCommitsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestReposListContributorsApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ReposListContributorsApplicationJSONForbidden
 	typ.SetFake()
@@ -21712,30 +20980,6 @@ func TestReposListContributorsApplicationJSONNotFound_EncodeDecode(t *testing.T)
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ReposListContributorsApplicationJSONNotFound
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReposListContributorsOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListContributorsOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListContributorsOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReposListDeploymentStatusesOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListDeploymentStatusesOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListDeploymentStatusesOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestReposListForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -21774,18 +21018,6 @@ func TestReposListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.
 	var typ2 ReposListForAuthenticatedUserOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestReposListForksOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListForksOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListForksOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestReposListInvitationsForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden
 	typ.SetFake()
@@ -21822,42 +21054,6 @@ func TestReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized_Enc
 	var typ2 ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestReposListInvitationsForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListInvitationsForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListInvitationsForAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReposListPublicOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListPublicOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListPublicOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReposListReleasesOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListReleasesOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListReleasesOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestReposListWebhookDeliveriesOKApplicationJSON_EncodeDecode(t *testing.T) {
 	var typ ReposListWebhookDeliveriesOKApplicationJSON
 	typ.SetFake()
@@ -21868,18 +21064,6 @@ func TestReposListWebhookDeliveriesOKApplicationJSON_EncodeDecode(t *testing.T) 
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 ReposListWebhookDeliveriesOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestReposListWebhooksOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ ReposListWebhooksOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 ReposListWebhooksOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestReposMergeReq_EncodeDecode(t *testing.T) {
@@ -24493,18 +23677,6 @@ func TestSecretScanningAlertState_EncodeDecode(t *testing.T) {
 	var typ2 SecretScanningAlertState
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestSecretScanningListAlertsForOrgOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ SecretScanningListAlertsForOrgOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 SecretScanningListAlertsForOrgOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestSecretScanningListAlertsForRepoOKApplicationJSON_EncodeDecode(t *testing.T) {
 	var typ SecretScanningListAlertsForRepoOKApplicationJSON
 	typ.SetFake()
@@ -25864,18 +25036,6 @@ func TestTeamsListChildLegacyApplicationJSONNotFound_EncodeDecode(t *testing.T) 
 	var typ2 TeamsListChildLegacyApplicationJSONNotFound
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestTeamsListChildLegacyOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ TeamsListChildLegacyOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TeamsListChildLegacyOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestTeamsListForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ TeamsListForAuthenticatedUserApplicationJSONForbidden
 	typ.SetFake()
@@ -25900,18 +25060,6 @@ func TestTeamsListForAuthenticatedUserApplicationJSONNotFound_EncodeDecode(t *te
 	var typ2 TeamsListForAuthenticatedUserApplicationJSONNotFound
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestTeamsListForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ TeamsListForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TeamsListForAuthenticatedUserOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestTeamsListIdpGroupsForLegacyApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ TeamsListIdpGroupsForLegacyApplicationJSONForbidden
 	typ.SetFake()
@@ -25934,54 +25082,6 @@ func TestTeamsListIdpGroupsForLegacyApplicationJSONNotFound_EncodeDecode(t *test
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 TeamsListIdpGroupsForLegacyApplicationJSONNotFound
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestTeamsListMembersLegacyOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ TeamsListMembersLegacyOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TeamsListMembersLegacyOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestTeamsListOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ TeamsListOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TeamsListOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestTeamsListProjectsLegacyOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ TeamsListProjectsLegacyOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TeamsListProjectsLegacyOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestTeamsListReposLegacyOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ TeamsListReposLegacyOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 TeamsListReposLegacyOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestTeamsUpdateDiscussionCommentInOrgReq_EncodeDecode(t *testing.T) {
@@ -27336,18 +26436,6 @@ func TestUsersListEmailsForAuthenticatedApplicationJSONUnauthorized_EncodeDecode
 	var typ2 UsersListEmailsForAuthenticatedApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestUsersListEmailsForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ UsersListEmailsForAuthenticatedOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 UsersListEmailsForAuthenticatedOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestUsersListFollowedByAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ UsersListFollowedByAuthenticatedApplicationJSONForbidden
 	typ.SetFake()
@@ -27372,18 +26460,6 @@ func TestUsersListFollowedByAuthenticatedApplicationJSONUnauthorized_EncodeDecod
 	var typ2 UsersListFollowedByAuthenticatedApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestUsersListFollowedByAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ UsersListFollowedByAuthenticatedOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 UsersListFollowedByAuthenticatedOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestUsersListFollowersForAuthenticatedUserApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ UsersListFollowersForAuthenticatedUserApplicationJSONForbidden
 	typ.SetFake()
@@ -27406,18 +26482,6 @@ func TestUsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized_Encod
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestUsersListFollowersForAuthenticatedUserOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ UsersListFollowersForAuthenticatedUserOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 UsersListFollowersForAuthenticatedUserOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestUsersListGpgKeysForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
@@ -27456,30 +26520,6 @@ func TestUsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized_EncodeDecod
 	var typ2 UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestUsersListGpgKeysForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ UsersListGpgKeysForAuthenticatedOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 UsersListGpgKeysForAuthenticatedOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestUsersListOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ UsersListOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 UsersListOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestUsersListPublicEmailsForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden
 	typ.SetFake()
@@ -27516,18 +26556,6 @@ func TestUsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized_Encode
 	var typ2 UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
-func TestUsersListPublicEmailsForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ UsersListPublicEmailsForAuthenticatedOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 UsersListPublicEmailsForAuthenticatedOKApplicationJSON
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
 func TestUsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {
 	var typ UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden
 	typ.SetFake()
@@ -27562,18 +26590,6 @@ func TestUsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized_Encod
 	require.True(t, std.Valid(data), "Encoded: %s", data)
 
 	var typ2 UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized
-	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
-}
-func TestUsersListPublicSSHKeysForAuthenticatedOKApplicationJSON_EncodeDecode(t *testing.T) {
-	var typ UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON
-	typ.SetFake()
-
-	e := jx.Encoder{}
-	typ.Encode(&e)
-	data := e.Bytes()
-	require.True(t, std.Valid(data), "Encoded: %s", data)
-
-	var typ2 UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON
 	require.NoError(t, typ2.Decode(jx.DecodeBytes(data)))
 }
 func TestUsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden_EncodeDecode(t *testing.T) {

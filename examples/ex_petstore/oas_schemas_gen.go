@@ -126,4 +126,10 @@ func (*Pet) showPetByIdRes() {}
 
 type Pets []Pet
 
-func (Pets) listPetsRes() {}
+// PetsHeaders wraps Pets with response headers.
+type PetsHeaders struct {
+	XNext    OptString
+	Response Pets
+}
+
+func (*PetsHeaders) listPetsRes() {}

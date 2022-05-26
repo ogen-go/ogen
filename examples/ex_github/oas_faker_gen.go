@@ -1030,22 +1030,6 @@ func (s *ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorize
 }
 
 // SetFake set fake values.
-func (s *ActivityListNotificationsForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []Thread
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Thread
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ActivityListNotificationsForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -1123,22 +1107,6 @@ func (s *ActivityListReposStarredByAuthenticatedUserApplicationJSONUnauthorized)
 }
 
 // SetFake set fake values.
-func (s *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []Repository
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Repository
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ActivityListReposStarredByAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -1154,22 +1122,6 @@ func (s *ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized
 		unwrapped.SetFake()
 	}
 	*s = ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []MinimalRepository
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MinimalRepository
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -1995,38 +1947,6 @@ func (s *AppsListAccountsForPlanApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsListAccountsForPlanOKApplicationJSON) SetFake() {
-	var unwrapped []MarketplacePurchase
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MarketplacePurchase
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = AppsListAccountsForPlanOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsListAccountsForPlanStubbedOKApplicationJSON) SetFake() {
-	var unwrapped []MarketplacePurchase
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MarketplacePurchase
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = AppsListAccountsForPlanStubbedOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *AppsListInstallationReposForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -2089,38 +2009,6 @@ func (s *AppsListPlansApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *AppsListPlansOKApplicationJSON) SetFake() {
-	var unwrapped []MarketplaceListingPlan
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MarketplaceListingPlan
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = AppsListPlansOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsListPlansStubbedOKApplicationJSON) SetFake() {
-	var unwrapped []MarketplaceListingPlan
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MarketplaceListingPlan
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = AppsListPlansStubbedOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *AppsListReposAccessibleToInstallationApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -2180,38 +2068,6 @@ func (s *AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) S
 		unwrapped.SetFake()
 	}
 	*s = AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []UserMarketplacePurchase
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem UserMarketplacePurchase
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) SetFake() {
-	var unwrapped []UserMarketplacePurchase
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem UserMarketplacePurchase
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -9346,22 +9202,6 @@ func (s *GistsListCommentsApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GistsListCommentsOKApplicationJSON) SetFake() {
-	var unwrapped []GistComment
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem GistComment
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = GistsListCommentsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *GistsListCommitsApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -9377,38 +9217,6 @@ func (s *GistsListCommitsApplicationJSONNotFound) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = GistsListCommitsApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GistsListCommitsOKApplicationJSON) SetFake() {
-	var unwrapped []GistCommit
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem GistCommit
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = GistsListCommitsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GistsListForUserOKApplicationJSON) SetFake() {
-	var unwrapped []BaseGist
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem BaseGist
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = GistsListForUserOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -9430,54 +9238,6 @@ func (s *GistsListForksApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *GistsListForksOKApplicationJSON) SetFake() {
-	var unwrapped []GistSimple
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem GistSimple
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = GistsListForksOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GistsListOKApplicationJSON) SetFake() {
-	var unwrapped []BaseGist
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem BaseGist
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = GistsListOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GistsListPublicOKApplicationJSON) SetFake() {
-	var unwrapped []BaseGist
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem BaseGist
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = GistsListPublicOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *GistsListStarredApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -9493,22 +9253,6 @@ func (s *GistsListStarredApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = GistsListStarredApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *GistsListStarredOKApplicationJSON) SetFake() {
-	var unwrapped []BaseGist
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem BaseGist
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = GistsListStarredOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -12479,22 +12223,6 @@ func (s *IssuesGetEventApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesListAssigneesOKApplicationJSON) SetFake() {
-	var unwrapped []SimpleUser
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem SimpleUser
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListAssigneesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *IssuesListCommentsApplicationJSONGone) SetFake() {
 	var unwrapped BasicError
 	{
@@ -12513,86 +12241,6 @@ func (s *IssuesListCommentsApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *IssuesListCommentsForRepoOKApplicationJSON) SetFake() {
-	var unwrapped []IssueComment
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem IssueComment
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListCommentsForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListCommentsOKApplicationJSON) SetFake() {
-	var unwrapped []IssueComment
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem IssueComment
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListCommentsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListEventsForRepoOKApplicationJSON) SetFake() {
-	var unwrapped []IssueEvent
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem IssueEvent
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListEventsForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []Issue
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Issue
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListForOrgOKApplicationJSON) SetFake() {
-	var unwrapped []Issue
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Issue
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListForOrgOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *IssuesListForRepoApplicationJSONMovedPermanently) SetFake() {
 	var unwrapped BasicError
 	{
@@ -12608,86 +12256,6 @@ func (s *IssuesListForRepoApplicationJSONNotFound) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = IssuesListForRepoApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListForRepoOKApplicationJSON) SetFake() {
-	var unwrapped []IssueSimple
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem IssueSimple
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListLabelsForRepoOKApplicationJSON) SetFake() {
-	var unwrapped []Label
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Label
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListLabelsForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListLabelsOnIssueOKApplicationJSON) SetFake() {
-	var unwrapped []Label
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Label
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListLabelsOnIssueOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListMilestonesOKApplicationJSON) SetFake() {
-	var unwrapped []Milestone
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Milestone
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListMilestonesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *IssuesListOKApplicationJSON) SetFake() {
-	var unwrapped []Issue
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Issue
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = IssuesListOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -14182,54 +13750,6 @@ func (s *MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) SetFake(
 		unwrapped.SetFake()
 	}
 	*s = MigrationsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *MigrationsListForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []Migration
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Migration
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = MigrationsListForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *MigrationsListReposForOrgOKApplicationJSON) SetFake() {
-	var unwrapped []MinimalRepository
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MinimalRepository
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = MigrationsListReposForOrgOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *MigrationsListReposForUserOKApplicationJSON) SetFake() {
-	var unwrapped []MinimalRepository
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MinimalRepository
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = MigrationsListReposForUserOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -17486,24 +17006,6 @@ func (s *OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated) SetFake() {
-	var unwrapped Authorization
-	{
-		unwrapped.SetFake()
-	}
-	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK) SetFake() {
-	var unwrapped Authorization
-	{
-		unwrapped.SetFake()
-	}
-	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) SetFake() {
 	{
 		{
@@ -17528,30 +17030,12 @@ func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq) Set
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated) SetFake() {
-	var unwrapped Authorization
-	{
-		unwrapped.SetFake()
-	}
-	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
 		unwrapped.SetFake()
 	}
 	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK) SetFake() {
-	var unwrapped Authorization
-	{
-		unwrapped.SetFake()
-	}
-	*s = OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK(unwrapped)
 }
 
 // SetFake set fake values.
@@ -17620,22 +17104,6 @@ func (s *OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) SetFa
 }
 
 // SetFake set fake values.
-func (s *OAuthAuthorizationsListAuthorizationsOKApplicationJSON) SetFake() {
-	var unwrapped []Authorization
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Authorization
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OAuthAuthorizationsListAuthorizationsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *OAuthAuthorizationsListGrantsApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -17660,22 +17128,6 @@ func (s *OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = OAuthAuthorizationsListGrantsApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OAuthAuthorizationsListGrantsOKApplicationJSON) SetFake() {
-	var unwrapped []ApplicationGrant
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem ApplicationGrant
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OAuthAuthorizationsListGrantsOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21357,22 +20809,6 @@ func (s *OrgsListBlockedUsersOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *OrgsListFailedInvitationsOKApplicationJSON) SetFake() {
-	var unwrapped []OrganizationInvitation
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem OrganizationInvitation
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OrgsListFailedInvitationsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *OrgsListForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -21388,54 +20824,6 @@ func (s *OrgsListForAuthenticatedUserApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = OrgsListForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []OrganizationSimple
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem OrganizationSimple
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OrgsListForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListInvitationTeamsOKApplicationJSON) SetFake() {
-	var unwrapped []Team
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Team
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OrgsListInvitationTeamsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListMembersOKApplicationJSON) SetFake() {
-	var unwrapped []SimpleUser
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem SimpleUser
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OrgsListMembersOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -21457,54 +20845,6 @@ func (s *OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) Set
 }
 
 // SetFake set fake values.
-func (s *OrgsListMembershipsForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []OrgMembership
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem OrgMembership
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OrgsListMembershipsForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListOKApplicationJSON) SetFake() {
-	var unwrapped []OrganizationSimple
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem OrganizationSimple
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OrgsListOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListPendingInvitationsOKApplicationJSON) SetFake() {
-	var unwrapped []OrganizationInvitation
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem OrganizationInvitation
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OrgsListPendingInvitationsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *OrgsListWebhookDeliveriesOKApplicationJSON) SetFake() {
 	var unwrapped []HookDeliveryItem
 	{
@@ -21518,22 +20858,6 @@ func (s *OrgsListWebhookDeliveriesOKApplicationJSON) SetFake() {
 		}
 	}
 	*s = OrgsListWebhookDeliveriesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *OrgsListWebhooksOKApplicationJSON) SetFake() {
-	var unwrapped []OrgHook
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem OrgHook
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = OrgsListWebhooksOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -23878,22 +23202,6 @@ func (s *ProjectsListCardsApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsListCardsOKApplicationJSON) SetFake() {
-	var unwrapped []ProjectCard
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem ProjectCard
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ProjectsListCardsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ProjectsListCollaboratorsApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -23921,22 +23229,6 @@ func (s *ProjectsListCollaboratorsApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ProjectsListCollaboratorsOKApplicationJSON) SetFake() {
-	var unwrapped []SimpleUser
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem SimpleUser
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ProjectsListCollaboratorsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ProjectsListColumnsApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -23952,38 +23244,6 @@ func (s *ProjectsListColumnsApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = ProjectsListColumnsApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsListColumnsOKApplicationJSON) SetFake() {
-	var unwrapped []ProjectColumn
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem ProjectColumn
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ProjectsListColumnsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsListForOrgOKApplicationJSON) SetFake() {
-	var unwrapped []Project
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Project
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ProjectsListForOrgOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -24020,38 +23280,6 @@ func (s *ProjectsListForRepoApplicationJSONUnauthorized) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = ProjectsListForRepoApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsListForRepoOKApplicationJSON) SetFake() {
-	var unwrapped []Project
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Project
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ProjectsListForRepoOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ProjectsListForUserOKApplicationJSON) SetFake() {
-	var unwrapped []Project
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Project
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ProjectsListForUserOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -27562,54 +26790,6 @@ func (s *PullsGetApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *PullsListCommentsForReviewOKApplicationJSON) SetFake() {
-	var unwrapped []ReviewComment
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem ReviewComment
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = PullsListCommentsForReviewOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PullsListFilesOKApplicationJSON) SetFake() {
-	var unwrapped []DiffEntry
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem DiffEntry
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = PullsListFilesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *PullsListOKApplicationJSON) SetFake() {
-	var unwrapped []PullRequestSimple
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem PullRequestSimple
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = PullsListOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *PullsMergeApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -28269,22 +27449,6 @@ func (s *ReactionsDeleteLegacyApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReactionsListForCommitCommentOKApplicationJSON) SetFake() {
-	var unwrapped []Reaction
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Reaction
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReactionsListForCommitCommentOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ReactionsListForIssueApplicationJSONGone) SetFake() {
 	var unwrapped BasicError
 	{
@@ -28300,54 +27464,6 @@ func (s *ReactionsListForIssueApplicationJSONNotFound) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = ReactionsListForIssueApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForIssueCommentOKApplicationJSON) SetFake() {
-	var unwrapped []Reaction
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Reaction
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReactionsListForIssueCommentOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForIssueOKApplicationJSON) SetFake() {
-	var unwrapped []Reaction
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Reaction
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReactionsListForIssueOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReactionsListForPullRequestReviewCommentOKApplicationJSON) SetFake() {
-	var unwrapped []Reaction
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Reaction
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReactionsListForPullRequestReviewCommentOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -30456,54 +29572,6 @@ func (s *ReposListBranchesForHeadCommitOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposListBranchesOKApplicationJSON) SetFake() {
-	var unwrapped []ShortBranch
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem ShortBranch
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListBranchesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListCollaboratorsOKApplicationJSON) SetFake() {
-	var unwrapped []Collaborator
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Collaborator
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListCollaboratorsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListCommitStatusesForRefOKApplicationJSON) SetFake() {
-	var unwrapped []Status
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Status
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListCommitStatusesForRefOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ReposListCommitsApplicationJSONBadRequest) SetFake() {
 	var unwrapped BasicError
 	{
@@ -30540,22 +29608,6 @@ func (s *ReposListCommitsApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposListCommitsOKApplicationJSON) SetFake() {
-	var unwrapped []Commit
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Commit
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListCommitsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ReposListContributorsApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -30571,38 +29623,6 @@ func (s *ReposListContributorsApplicationJSONNotFound) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = ReposListContributorsApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListContributorsOKApplicationJSON) SetFake() {
-	var unwrapped []Contributor
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Contributor
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListContributorsOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListDeploymentStatusesOKApplicationJSON) SetFake() {
-	var unwrapped []DeploymentStatus
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem DeploymentStatus
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListDeploymentStatusesOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -30640,22 +29660,6 @@ func (s *ReposListForAuthenticatedUserOKApplicationJSON) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *ReposListForksOKApplicationJSON) SetFake() {
-	var unwrapped []MinimalRepository
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MinimalRepository
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListForksOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -30683,54 +29687,6 @@ func (s *ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) Se
 }
 
 // SetFake set fake values.
-func (s *ReposListInvitationsForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []RepositoryInvitation
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem RepositoryInvitation
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListInvitationsForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListPublicOKApplicationJSON) SetFake() {
-	var unwrapped []MinimalRepository
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MinimalRepository
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListPublicOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListReleasesOKApplicationJSON) SetFake() {
-	var unwrapped []Release
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Release
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListReleasesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *ReposListWebhookDeliveriesOKApplicationJSON) SetFake() {
 	var unwrapped []HookDeliveryItem
 	{
@@ -30744,22 +29700,6 @@ func (s *ReposListWebhookDeliveriesOKApplicationJSON) SetFake() {
 		}
 	}
 	*s = ReposListWebhookDeliveriesOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *ReposListWebhooksOKApplicationJSON) SetFake() {
-	var unwrapped []Hook
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Hook
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = ReposListWebhooksOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -34223,22 +33163,6 @@ func (s *SecretScanningAlertState) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *SecretScanningListAlertsForOrgOKApplicationJSON) SetFake() {
-	var unwrapped []OrganizationSecretScanningAlert
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem OrganizationSecretScanningAlert
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = SecretScanningListAlertsForOrgOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *SecretScanningListAlertsForRepoOKApplicationJSON) SetFake() {
 	var unwrapped []SecretScanningAlert
 	{
@@ -36118,22 +35042,6 @@ func (s *TeamsListChildLegacyApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsListChildLegacyOKApplicationJSON) SetFake() {
-	var unwrapped []Team
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Team
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = TeamsListChildLegacyOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *TeamsListForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -36152,22 +35060,6 @@ func (s *TeamsListForAuthenticatedUserApplicationJSONNotFound) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *TeamsListForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []TeamFull
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem TeamFull
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = TeamsListForAuthenticatedUserOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *TeamsListIdpGroupsForLegacyApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -36183,70 +35075,6 @@ func (s *TeamsListIdpGroupsForLegacyApplicationJSONNotFound) SetFake() {
 		unwrapped.SetFake()
 	}
 	*s = TeamsListIdpGroupsForLegacyApplicationJSONNotFound(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *TeamsListMembersLegacyOKApplicationJSON) SetFake() {
-	var unwrapped []SimpleUser
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem SimpleUser
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = TeamsListMembersLegacyOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *TeamsListOKApplicationJSON) SetFake() {
-	var unwrapped []Team
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Team
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = TeamsListOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *TeamsListProjectsLegacyOKApplicationJSON) SetFake() {
-	var unwrapped []TeamProject
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem TeamProject
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = TeamsListProjectsLegacyOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *TeamsListReposLegacyOKApplicationJSON) SetFake() {
-	var unwrapped []MinimalRepository
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem MinimalRepository
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = TeamsListReposLegacyOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -37448,22 +36276,6 @@ func (s *UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) SetFake() {
 }
 
 // SetFake set fake values.
-func (s *UsersListEmailsForAuthenticatedOKApplicationJSON) SetFake() {
-	var unwrapped []Email
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Email
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = UsersListEmailsForAuthenticatedOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *UsersListFollowedByAuthenticatedApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -37482,22 +36294,6 @@ func (s *UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) SetFake() 
 }
 
 // SetFake set fake values.
-func (s *UsersListFollowedByAuthenticatedOKApplicationJSON) SetFake() {
-	var unwrapped []SimpleUser
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem SimpleUser
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = UsersListFollowedByAuthenticatedOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *UsersListFollowersForAuthenticatedUserApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -37513,22 +36309,6 @@ func (s *UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) SetF
 		unwrapped.SetFake()
 	}
 	*s = UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersListFollowersForAuthenticatedUserOKApplicationJSON) SetFake() {
-	var unwrapped []SimpleUser
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem SimpleUser
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = UsersListFollowersForAuthenticatedUserOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.
@@ -37559,38 +36339,6 @@ func (s *UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) SetFake() 
 }
 
 // SetFake set fake values.
-func (s *UsersListGpgKeysForAuthenticatedOKApplicationJSON) SetFake() {
-	var unwrapped []GpgKey
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem GpgKey
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = UsersListGpgKeysForAuthenticatedOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersListOKApplicationJSON) SetFake() {
-	var unwrapped []SimpleUser
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem SimpleUser
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = UsersListOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -37618,22 +36366,6 @@ func (s *UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) SetFa
 }
 
 // SetFake set fake values.
-func (s *UsersListPublicEmailsForAuthenticatedOKApplicationJSON) SetFake() {
-	var unwrapped []Email
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Email
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = UsersListPublicEmailsForAuthenticatedOKApplicationJSON(unwrapped)
-}
-
-// SetFake set fake values.
 func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden) SetFake() {
 	var unwrapped BasicError
 	{
@@ -37658,22 +36390,6 @@ func (s *UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) SetF
 		unwrapped.SetFake()
 	}
 	*s = UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized(unwrapped)
-}
-
-// SetFake set fake values.
-func (s *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) SetFake() {
-	var unwrapped []Key
-	{
-		unwrapped = nil
-		for i := 0; i < 0; i++ {
-			var elem Key
-			{
-				elem.SetFake()
-			}
-			unwrapped = append(unwrapped, elem)
-		}
-	}
-	*s = UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON(unwrapped)
 }
 
 // SetFake set fake values.

@@ -748,7 +748,7 @@ func (UnimplementedHandler) ActionsGetWorkflowRunUsage(ctx context.Context, para
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/artifacts
-func (UnimplementedHandler) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (r ActionsListArtifactsForRepoOK, _ error) {
+func (UnimplementedHandler) ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (r ActionsListArtifactsForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -759,7 +759,7 @@ func (UnimplementedHandler) ActionsListArtifactsForRepo(ctx context.Context, par
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repositories/{repository_id}/environments/{environment_name}/secrets
-func (UnimplementedHandler) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (r ActionsListEnvironmentSecretsOK, _ error) {
+func (UnimplementedHandler) ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (r ActionsListEnvironmentSecretsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -772,7 +772,7 @@ func (UnimplementedHandler) ActionsListEnvironmentSecrets(ctx context.Context, p
 // com/rest/overview/resources-in-the-rest-api#parameters).
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
-func (UnimplementedHandler) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (r ActionsListJobsForWorkflowRunOK, _ error) {
+func (UnimplementedHandler) ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (r ActionsListJobsForWorkflowRunOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -783,7 +783,7 @@ func (UnimplementedHandler) ActionsListJobsForWorkflowRun(ctx context.Context, p
 // must have the `secrets` organization permission to use this endpoint.
 //
 // GET /orgs/{org}/actions/secrets
-func (UnimplementedHandler) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (r ActionsListOrgSecretsOK, _ error) {
+func (UnimplementedHandler) ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (r ActionsListOrgSecretsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -807,7 +807,7 @@ func (UnimplementedHandler) ActionsListRepoAccessToSelfHostedRunnerGroupInOrg(ct
 // have the `secrets` repository permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/secrets
-func (UnimplementedHandler) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (r ActionsListRepoSecretsOK, _ error) {
+func (UnimplementedHandler) ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (r ActionsListRepoSecretsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -818,7 +818,7 @@ func (UnimplementedHandler) ActionsListRepoSecrets(ctx context.Context, params A
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/workflows
-func (UnimplementedHandler) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (r ActionsListRepoWorkflowsOK, _ error) {
+func (UnimplementedHandler) ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (r ActionsListRepoWorkflowsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -887,7 +887,7 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnerGroupsForOrg(ctx context.
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runners
-func (UnimplementedHandler) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (r ActionsListSelfHostedRunnersForOrgOK, _ error) {
+func (UnimplementedHandler) ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (r ActionsListSelfHostedRunnersForOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -897,7 +897,7 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnersForOrg(ctx context.Conte
 // token with the `repo` scope to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runners
-func (UnimplementedHandler) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (r ActionsListSelfHostedRunnersForRepoOK, _ error) {
+func (UnimplementedHandler) ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (r ActionsListSelfHostedRunnersForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -910,7 +910,7 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnersForRepo(ctx context.Cont
 // You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 //
 // GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-func (UnimplementedHandler) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (r ActionsListSelfHostedRunnersInGroupForOrgOK, _ error) {
+func (UnimplementedHandler) ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (r ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -921,7 +921,7 @@ func (UnimplementedHandler) ActionsListSelfHostedRunnersInGroupForOrg(ctx contex
 // Apps must have the `actions:read` permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
-func (UnimplementedHandler) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (r ActionsListWorkflowRunArtifactsOK, _ error) {
+func (UnimplementedHandler) ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (r ActionsListWorkflowRunArtifactsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -935,7 +935,7 @@ func (UnimplementedHandler) ActionsListWorkflowRunArtifacts(ctx context.Context,
 // permission to use this endpoint.
 //
 // GET /repos/{owner}/{repo}/actions/runs
-func (UnimplementedHandler) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (r ActionsListWorkflowRunsForRepoOK, _ error) {
+func (UnimplementedHandler) ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (r ActionsListWorkflowRunsForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1319,7 +1319,7 @@ func (UnimplementedHandler) ActivityListRepoEvents(ctx context.Context, params A
 // List all notifications for the current user.
 //
 // GET /repos/{owner}/{repo}/notifications
-func (UnimplementedHandler) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (r []Thread, _ error) {
+func (UnimplementedHandler) ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (r ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1339,7 +1339,7 @@ func (UnimplementedHandler) ActivityListReposStarredByAuthenticatedUser(ctx cont
 // Lists repositories a user is watching.
 //
 // GET /users/{username}/subscriptions
-func (UnimplementedHandler) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (r []MinimalRepository, _ error) {
+func (UnimplementedHandler) ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (r ActivityListReposWatchedByUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -1357,7 +1357,7 @@ func (UnimplementedHandler) ActivityListWatchedReposForAuthenticatedUser(ctx con
 // Lists the people watching the specified repository.
 //
 // GET /repos/{owner}/{repo}/subscribers
-func (UnimplementedHandler) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (r []SimpleUser, _ error) {
+func (UnimplementedHandler) ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (r ActivityListWatchersForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2054,7 +2054,7 @@ func (UnimplementedHandler) ChecksGetSuite(ctx context.Context, params ChecksGet
 // annotations for a check run in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
-func (UnimplementedHandler) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (r []CheckAnnotation, _ error) {
+func (UnimplementedHandler) ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (r ChecksListAnnotationsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2069,7 +2069,7 @@ func (UnimplementedHandler) ChecksListAnnotations(ctx context.Context, params Ch
 // check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-runs
-func (UnimplementedHandler) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (r ChecksListForRefOK, _ error) {
+func (UnimplementedHandler) ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (r ChecksListForRefOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2083,7 +2083,7 @@ func (UnimplementedHandler) ChecksListForRef(ctx context.Context, params ChecksL
 // Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
 //
 // GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
-func (UnimplementedHandler) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (r ChecksListForSuiteOK, _ error) {
+func (UnimplementedHandler) ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (r ChecksListForSuiteOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2098,7 +2098,7 @@ func (UnimplementedHandler) ChecksListForSuite(ctx context.Context, params Check
 // get check suites in a private repository.
 //
 // GET /repos/{owner}/{repo}/commits/{ref}/check-suites
-func (UnimplementedHandler) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (r ChecksListSuitesForRefOK, _ error) {
+func (UnimplementedHandler) ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (r ChecksListSuitesForRefOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2671,7 +2671,7 @@ func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnerGroupsForEnterpri
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runners
-func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (r EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (r EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -2681,7 +2681,7 @@ func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersForEnterprise(ct
 // You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 //
 // GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (r EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, _ error) {
+func (UnimplementedHandler) EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (r EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3301,7 +3301,7 @@ func (UnimplementedHandler) GitGetTree(ctx context.Context, params GitGetTreePar
 // such as `featureA` and `featureB`.
 //
 // GET /repos/{owner}/{repo}/git/matching-refs/{ref}
-func (UnimplementedHandler) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (r []GitRef, _ error) {
+func (UnimplementedHandler) GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (r GitListMatchingRefsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -3653,7 +3653,7 @@ func (UnimplementedHandler) IssuesListForRepo(ctx context.Context, params Issues
 // IssuesListLabelsForMilestone implements issues/list-labels-for-milestone operation.
 //
 // GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
-func (UnimplementedHandler) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (r []Label, _ error) {
+func (UnimplementedHandler) IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (r IssuesListLabelsForMilestoneOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4004,7 +4004,7 @@ func (UnimplementedHandler) MigrationsListForAuthenticatedUser(ctx context.Conte
 // Lists the most recent migrations.
 //
 // GET /orgs/{org}/migrations
-func (UnimplementedHandler) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (r []Migration, _ error) {
+func (UnimplementedHandler) MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (r MigrationsListForOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4564,7 +4564,7 @@ func (UnimplementedHandler) OrgsListForAuthenticatedUser(ctx context.Context, pa
 // com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
 //
 // GET /users/{username}/orgs
-func (UnimplementedHandler) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (r []OrganizationSimple, _ error) {
+func (UnimplementedHandler) OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (r OrgsListForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4600,7 +4600,7 @@ func (UnimplementedHandler) OrgsListMembershipsForAuthenticatedUser(ctx context.
 // List all users who are outside collaborators of an organization.
 //
 // GET /orgs/{org}/outside_collaborators
-func (UnimplementedHandler) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (r []SimpleUser, _ error) {
+func (UnimplementedHandler) OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (r OrgsListOutsideCollaboratorsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -4621,7 +4621,7 @@ func (UnimplementedHandler) OrgsListPendingInvitations(ctx context.Context, para
 // Members of an organization can choose to have their membership publicized or not.
 //
 // GET /orgs/{org}/public_members
-func (UnimplementedHandler) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (r []SimpleUser, _ error) {
+func (UnimplementedHandler) OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (r OrgsListPublicMembersOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5573,7 +5573,7 @@ func (UnimplementedHandler) PullsListCommentsForReview(ctx context.Context, para
 // com/rest/reference/repos#list-commits) endpoint.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
-func (UnimplementedHandler) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (r []Commit, _ error) {
+func (UnimplementedHandler) PullsListCommits(ctx context.Context, params PullsListCommitsParams) (r PullsListCommitsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5590,7 +5590,7 @@ func (UnimplementedHandler) PullsListFiles(ctx context.Context, params PullsList
 // PullsListRequestedReviewers implements pulls/list-requested-reviewers operation.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-func (UnimplementedHandler) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (r PullRequestReviewRequest, _ error) {
+func (UnimplementedHandler) PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (r PullRequestReviewRequestHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5600,7 +5600,7 @@ func (UnimplementedHandler) PullsListRequestedReviewers(ctx context.Context, par
 // by ID.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
-func (UnimplementedHandler) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (r []PullRequestReviewComment, _ error) {
+func (UnimplementedHandler) PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (r PullsListReviewCommentsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5610,7 +5610,7 @@ func (UnimplementedHandler) PullsListReviewComments(ctx context.Context, params 
 // ascending order by ID.
 //
 // GET /repos/{owner}/{repo}/pulls/comments
-func (UnimplementedHandler) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (r []PullRequestReviewComment, _ error) {
+func (UnimplementedHandler) PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (r PullsListReviewCommentsForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5619,7 +5619,7 @@ func (UnimplementedHandler) PullsListReviewCommentsForRepo(ctx context.Context, 
 // The list of reviews returns in chronological order.
 //
 // GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-func (UnimplementedHandler) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (r []PullRequestReview, _ error) {
+func (UnimplementedHandler) PullsListReviews(ctx context.Context, params PullsListReviewsParams) (r PullsListReviewsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5958,7 +5958,7 @@ func (UnimplementedHandler) ReactionsListForPullRequestReviewComment(ctx context
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (r []Reaction, _ error) {
+func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (r ReactionsListForTeamDiscussionCommentInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5973,7 +5973,7 @@ func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentInOrg(ctx conte
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (r []Reaction, _ error) {
+func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (r ReactionsListForTeamDiscussionCommentLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -5986,7 +5986,7 @@ func (UnimplementedHandler) ReactionsListForTeamDiscussionCommentLegacy(ctx cont
 // /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-func (UnimplementedHandler) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (r []Reaction, _ error) {
+func (UnimplementedHandler) ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (r ReactionsListForTeamDiscussionInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6001,7 +6001,7 @@ func (UnimplementedHandler) ReactionsListForTeamDiscussionInOrg(ctx context.Cont
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/reactions
-func (UnimplementedHandler) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (r []Reaction, _ error) {
+func (UnimplementedHandler) ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (r ReactionsListForTeamDiscussionLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6248,7 +6248,7 @@ func (UnimplementedHandler) ReposCreateCommitSignatureProtection(ctx context.Con
 // create more than 1000 statuses will result in a validation error.
 //
 // POST /repos/{owner}/{repo}/statuses/{sha}
-func (UnimplementedHandler) ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (r Status, _ error) {
+func (UnimplementedHandler) ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (r StatusHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -6452,7 +6452,7 @@ func (UnimplementedHandler) ReposCreateRelease(ctx context.Context, req ReposCre
 // *   `repo` scope to create a private repository.
 //
 // POST /repos/{template_owner}/{template_repo}/generate
-func (UnimplementedHandler) ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (r Repository, _ error) {
+func (UnimplementedHandler) ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (r RepositoryHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7341,7 +7341,7 @@ func (UnimplementedHandler) ReposListCollaborators(ctx context.Context, params R
 // Use the `:commit_sha` to specify the commit that will have its comments listed.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
-func (UnimplementedHandler) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (r []CommitComment, _ error) {
+func (UnimplementedHandler) ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (r ReposListCommentsForCommitOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7353,7 +7353,7 @@ func (UnimplementedHandler) ReposListCommentsForCommit(ctx context.Context, para
 // Comments are ordered by ascending ID.
 //
 // GET /repos/{owner}/{repo}/comments
-func (UnimplementedHandler) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (r []CommitComment, _ error) {
+func (UnimplementedHandler) ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (r ReposListCommitCommentsForRepoOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7427,7 +7427,7 @@ func (UnimplementedHandler) ReposListContributors(ctx context.Context, params Re
 // ReposListDeployKeys implements repos/list-deploy-keys operation.
 //
 // GET /repos/{owner}/{repo}/keys
-func (UnimplementedHandler) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (r []DeployKey, _ error) {
+func (UnimplementedHandler) ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (r ReposListDeployKeysOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7445,7 +7445,7 @@ func (UnimplementedHandler) ReposListDeploymentStatuses(ctx context.Context, par
 // Simple filtering of deployments is available via query parameters:.
 //
 // GET /repos/{owner}/{repo}/deployments
-func (UnimplementedHandler) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (r []Deployment, _ error) {
+func (UnimplementedHandler) ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (r ReposListDeploymentsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7466,7 +7466,7 @@ func (UnimplementedHandler) ReposListForAuthenticatedUser(ctx context.Context, p
 // Lists repositories for the specified organization.
 //
 // GET /orgs/{org}/repos
-func (UnimplementedHandler) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (r []MinimalRepository, _ error) {
+func (UnimplementedHandler) ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (r ReposListForOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7476,7 +7476,7 @@ func (UnimplementedHandler) ReposListForOrg(ctx context.Context, params ReposLis
 // internal repositories for the specified user.
 //
 // GET /users/{username}/repos
-func (UnimplementedHandler) ReposListForUser(ctx context.Context, params ReposListForUserParams) (r []MinimalRepository, _ error) {
+func (UnimplementedHandler) ReposListForUser(ctx context.Context, params ReposListForUserParams) (r ReposListForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7493,7 +7493,7 @@ func (UnimplementedHandler) ReposListForks(ctx context.Context, params ReposList
 // currently open repository invitations.
 //
 // GET /repos/{owner}/{repo}/invitations
-func (UnimplementedHandler) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (r []RepositoryInvitation, _ error) {
+func (UnimplementedHandler) ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (r ReposListInvitationsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7520,7 +7520,7 @@ func (UnimplementedHandler) ReposListLanguages(ctx context.Context, params Repos
 // ReposListPagesBuilds implements repos/list-pages-builds operation.
 //
 // GET /repos/{owner}/{repo}/pages/builds
-func (UnimplementedHandler) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (r []PageBuild, _ error) {
+func (UnimplementedHandler) ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (r ReposListPagesBuildsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7549,14 +7549,14 @@ func (UnimplementedHandler) ReposListPublic(ctx context.Context, params ReposLis
 // requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
 //
 // GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
-func (UnimplementedHandler) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (r []PullRequestSimple, _ error) {
+func (UnimplementedHandler) ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (r ReposListPullRequestsAssociatedWithCommitOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // ReposListReleaseAssets implements repos/list-release-assets operation.
 //
 // GET /repos/{owner}/{repo}/releases/{release_id}/assets
-func (UnimplementedHandler) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (r []ReleaseAsset, _ error) {
+func (UnimplementedHandler) ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (r ReposListReleaseAssetsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -7576,14 +7576,14 @@ func (UnimplementedHandler) ReposListReleases(ctx context.Context, params ReposL
 // ReposListTags implements repos/list-tags operation.
 //
 // GET /repos/{owner}/{repo}/tags
-func (UnimplementedHandler) ReposListTags(ctx context.Context, params ReposListTagsParams) (r []Tag, _ error) {
+func (UnimplementedHandler) ReposListTags(ctx context.Context, params ReposListTagsParams) (r ReposListTagsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
 // ReposListTeams implements repos/list-teams operation.
 //
 // GET /repos/{owner}/{repo}/teams
-func (UnimplementedHandler) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (r []Team, _ error) {
+func (UnimplementedHandler) ReposListTeams(ctx context.Context, params ReposListTeamsParams) (r ReposListTeamsOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8782,7 +8782,7 @@ func (UnimplementedHandler) TeamsList(ctx context.Context, params TeamsListParam
 // /organizations/{org_id}/team/{team_id}/teams`.
 //
 // GET /orgs/{org}/teams/{team_slug}/teams
-func (UnimplementedHandler) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (r []Team, _ error) {
+func (UnimplementedHandler) TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (r TeamsListChildInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8805,7 +8805,7 @@ func (UnimplementedHandler) TeamsListChildLegacy(ctx context.Context, params Tea
 // /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-func (UnimplementedHandler) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (r []TeamDiscussionComment, _ error) {
+func (UnimplementedHandler) TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (r TeamsListDiscussionCommentsInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8818,7 +8818,7 @@ func (UnimplementedHandler) TeamsListDiscussionCommentsInOrg(ctx context.Context
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /teams/{team_id}/discussions/{discussion_number}/comments
-func (UnimplementedHandler) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (r []TeamDiscussionComment, _ error) {
+func (UnimplementedHandler) TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (r TeamsListDiscussionCommentsLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8830,7 +8830,7 @@ func (UnimplementedHandler) TeamsListDiscussionCommentsLegacy(ctx context.Contex
 // /organizations/{org_id}/team/{team_id}/discussions`.
 //
 // GET /orgs/{org}/teams/{team_slug}/discussions
-func (UnimplementedHandler) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (r []TeamDiscussion, _ error) {
+func (UnimplementedHandler) TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (r TeamsListDiscussionsInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8843,7 +8843,7 @@ func (UnimplementedHandler) TeamsListDiscussionsInOrg(ctx context.Context, param
 // [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 //
 // GET /teams/{team_id}/discussions
-func (UnimplementedHandler) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (r []TeamDiscussion, _ error) {
+func (UnimplementedHandler) TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (r TeamsListDiscussionsLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8885,7 +8885,7 @@ func (UnimplementedHandler) TeamsListIdpGroupsForLegacy(ctx context.Context, par
 // explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89).".
 //
 // GET /orgs/{org}/team-sync/groups
-func (UnimplementedHandler) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (r GroupMapping, _ error) {
+func (UnimplementedHandler) TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (r GroupMappingHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8909,7 +8909,7 @@ func (UnimplementedHandler) TeamsListIdpGroupsInOrg(ctx context.Context, params 
 // To list members in a team, the team must be visible to the authenticated user.
 //
 // GET /orgs/{org}/teams/{team_slug}/members
-func (UnimplementedHandler) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (r []SimpleUser, _ error) {
+func (UnimplementedHandler) TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (r TeamsListMembersInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8935,7 +8935,7 @@ func (UnimplementedHandler) TeamsListMembersLegacy(ctx context.Context, params T
 // /organizations/{org_id}/team/{team_id}/invitations`.
 //
 // GET /orgs/{org}/teams/{team_slug}/invitations
-func (UnimplementedHandler) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (r []OrganizationInvitation, _ error) {
+func (UnimplementedHandler) TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (r TeamsListPendingInvitationsInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8950,7 +8950,7 @@ func (UnimplementedHandler) TeamsListPendingInvitationsInOrg(ctx context.Context
 // `null`.
 //
 // GET /teams/{team_id}/invitations
-func (UnimplementedHandler) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (r []OrganizationInvitation, _ error) {
+func (UnimplementedHandler) TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (r TeamsListPendingInvitationsLegacyOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8961,7 +8961,7 @@ func (UnimplementedHandler) TeamsListPendingInvitationsLegacy(ctx context.Contex
 // /organizations/{org_id}/team/{team_id}/projects`.
 //
 // GET /orgs/{org}/teams/{team_slug}/projects
-func (UnimplementedHandler) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (r []TeamProject, _ error) {
+func (UnimplementedHandler) TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (r TeamsListProjectsInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -8984,7 +8984,7 @@ func (UnimplementedHandler) TeamsListProjectsLegacy(ctx context.Context, params 
 // /organizations/{org_id}/team/{team_id}/repos`.
 //
 // GET /orgs/{org}/teams/{team_slug}/repos
-func (UnimplementedHandler) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (r []MinimalRepository, _ error) {
+func (UnimplementedHandler) TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (r TeamsListReposInOrgOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9438,7 +9438,7 @@ func (UnimplementedHandler) UsersListFollowersForAuthenticatedUser(ctx context.C
 // Lists the people following the specified user.
 //
 // GET /users/{username}/followers
-func (UnimplementedHandler) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (r []SimpleUser, _ error) {
+func (UnimplementedHandler) UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (r UsersListFollowersForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9447,7 +9447,7 @@ func (UnimplementedHandler) UsersListFollowersForUser(ctx context.Context, param
 // Lists the people who the specified user follows.
 //
 // GET /users/{username}/following
-func (UnimplementedHandler) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (r []SimpleUser, _ error) {
+func (UnimplementedHandler) UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (r UsersListFollowingForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9467,7 +9467,7 @@ func (UnimplementedHandler) UsersListGpgKeysForAuthenticated(ctx context.Context
 // Lists the GPG keys for a user. This information is accessible by anyone.
 //
 // GET /users/{username}/gpg_keys
-func (UnimplementedHandler) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (r []GpgKey, _ error) {
+func (UnimplementedHandler) UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (r UsersListGpgKeysForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 
@@ -9488,7 +9488,7 @@ func (UnimplementedHandler) UsersListPublicEmailsForAuthenticated(ctx context.Co
 // Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
 //
 // GET /users/{username}/keys
-func (UnimplementedHandler) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (r []KeySimple, _ error) {
+func (UnimplementedHandler) UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (r UsersListPublicKeysForUserOKHeaders, _ error) {
 	return r, ht.ErrNotImplemented
 }
 

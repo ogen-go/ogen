@@ -7,9 +7,12 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -209,10 +212,10 @@ func decodeFoobarPostResponse(resp *http.Response, span trace.Span) (res FoobarP
 		}
 	}
 }
-func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDefStatusCode, err error) {
+func decodeFoobarPutResponse(resp *http.Response, span trace.Span) (res FoobarPutDef, err error) {
 	switch resp.StatusCode {
 	default:
-		return FoobarPutDefStatusCode{
+		return FoobarPutDef{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}
@@ -649,18 +652,18 @@ func decodePetNameByIDResponse(resp *http.Response, span trace.Span) (res string
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
-func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+func decodePetUpdateNameAliasPostResponse(resp *http.Response, span trace.Span) (res PetUpdateNameAliasPostDef, err error) {
 	switch resp.StatusCode {
 	default:
-		return PetUpdateNameAliasPostDefStatusCode{
+		return PetUpdateNameAliasPostDef{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}
 }
-func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDefStatusCode, err error) {
+func decodePetUpdateNamePostResponse(resp *http.Response, span trace.Span) (res PetUpdateNamePostDef, err error) {
 	switch resp.StatusCode {
 	default:
-		return PetUpdateNamePostDefStatusCode{
+		return PetUpdateNamePostDef{
 			StatusCode: resp.StatusCode,
 		}, nil
 	}
@@ -762,6 +765,46 @@ func decodeRecursiveMapGetResponse(resp *http.Response, span trace.Span) (res Re
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+func decodeResponseWithHeadersTestResponse(resp *http.Response, span trace.Span) (res ResponseWithHeadersTestFound, err error) {
+	switch resp.StatusCode {
+	case 302:
+		var wrapper ResponseWithHeadersTestFound
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse 'Location' header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "Location",
+				Explode: false,
+			}
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				var wrapperDotLocationVal string
+				if err := func() error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					wrapperDotLocationVal = c
+					return nil
+				}(); err != nil {
+					return err
+				}
+				wrapper.Location.SetTo(wrapperDotLocationVal)
+				return nil
+			}); err != nil {
+				return res, errors.Wrap(err, "parse Location header")
+			}
+		}
+		return wrapper, nil
 	default:
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}

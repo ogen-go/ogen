@@ -993,6 +993,42 @@ func (s *Server) handleRecursiveMapGetRequest(args [0]string, w http.ResponseWri
 	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
 }
 
+// HandleResponseWithHeadersTestRequest handles responseWithHeadersTest operation.
+//
+// GET /responseWithHeadersTest
+func (s *Server) handleResponseWithHeadersTestRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("responseWithHeadersTest"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "ResponseWithHeadersTest",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+
+	response, err := s.h.ResponseWithHeadersTest(ctx)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeResponseWithHeadersTestResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
 // HandleSecurityTestRequest handles securityTest operation.
 //
 // GET /securityTest

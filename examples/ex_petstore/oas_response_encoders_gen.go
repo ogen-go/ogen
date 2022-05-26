@@ -9,6 +9,9 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/uri"
 )
 
 func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, span trace.Span) error {
@@ -42,14 +45,33 @@ func encodeCreatePetsResponse(response CreatePetsRes, w http.ResponseWriter, spa
 }
 func encodeListPetsResponse(response ListPetsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Pets:
+	case *PetsHeaders:
 		w.Header().Set("Content-Type", "application/json")
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'XNext' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "x-next",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.XNext.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode x-next header")
+				}
+			}
+		}
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}

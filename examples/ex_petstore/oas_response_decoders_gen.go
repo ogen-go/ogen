@@ -6,9 +6,12 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -71,7 +74,40 @@ func decodeListPetsResponse(resp *http.Response, span trace.Span) (res ListPetsR
 			}(); err != nil {
 				return res, err
 			}
-			return &response, nil
+			var wrapper PetsHeaders
+			wrapper.Response = response
+			h := uri.NewHeaderDecoder(resp.Header)
+			// Parse 'x-next' header.
+			{
+				cfg := uri.HeaderParameterDecodingConfig{
+					Name:    "x-next",
+					Explode: false,
+				}
+				if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+					var wrapperDotXNextVal string
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToString(val)
+						if err != nil {
+							return err
+						}
+
+						wrapperDotXNextVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					wrapper.XNext.SetTo(wrapperDotXNextVal)
+					return nil
+				}); err != nil {
+					return res, errors.Wrap(err, "parse x-next header")
+				}
+			}
+			return &wrapper, nil
 		default:
 			return res, validate.InvalidContentType(ct)
 		}

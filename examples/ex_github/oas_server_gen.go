@@ -612,7 +612,7 @@ type Handler interface {
 	// Apps must have the `actions:read` permission to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/artifacts
-	ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (ActionsListArtifactsForRepoOK, error)
+	ActionsListArtifactsForRepo(ctx context.Context, params ActionsListArtifactsForRepoParams) (ActionsListArtifactsForRepoOKHeaders, error)
 	// ActionsListEnvironmentSecrets implements actions/list-environment-secrets operation.
 	//
 	// Lists all secrets available in an environment without revealing their encrypted values. You must
@@ -620,7 +620,7 @@ type Handler interface {
 	// have the `secrets` repository permission to use this endpoint.
 	//
 	// GET /repositories/{repository_id}/environments/{environment_name}/secrets
-	ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (ActionsListEnvironmentSecretsOK, error)
+	ActionsListEnvironmentSecrets(ctx context.Context, params ActionsListEnvironmentSecretsParams) (ActionsListEnvironmentSecretsOKHeaders, error)
 	// ActionsListJobsForWorkflowRun implements actions/list-jobs-for-workflow-run operation.
 	//
 	// Lists jobs for a workflow run. Anyone with read access to the repository can use this endpoint. If
@@ -630,7 +630,7 @@ type Handler interface {
 	// com/rest/overview/resources-in-the-rest-api#parameters).
 	//
 	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs
-	ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (ActionsListJobsForWorkflowRunOK, error)
+	ActionsListJobsForWorkflowRun(ctx context.Context, params ActionsListJobsForWorkflowRunParams) (ActionsListJobsForWorkflowRunOKHeaders, error)
 	// ActionsListOrgSecrets implements actions/list-org-secrets operation.
 	//
 	// Lists all secrets available in an organization without revealing their encrypted values. You must
@@ -638,7 +638,7 @@ type Handler interface {
 	// must have the `secrets` organization permission to use this endpoint.
 	//
 	// GET /orgs/{org}/actions/secrets
-	ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (ActionsListOrgSecretsOK, error)
+	ActionsListOrgSecrets(ctx context.Context, params ActionsListOrgSecretsParams) (ActionsListOrgSecretsOKHeaders, error)
 	// ActionsListRepoAccessToSelfHostedRunnerGroupInOrg implements actions/list-repo-access-to-self-hosted-runner-group-in-org operation.
 	//
 	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud and GitHub
@@ -656,7 +656,7 @@ type Handler interface {
 	// have the `secrets` repository permission to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/secrets
-	ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (ActionsListRepoSecretsOK, error)
+	ActionsListRepoSecrets(ctx context.Context, params ActionsListRepoSecretsParams) (ActionsListRepoSecretsOKHeaders, error)
 	// ActionsListRepoWorkflows implements actions/list-repo-workflows operation.
 	//
 	// Lists the workflows in a repository. Anyone with read access to the repository can use this
@@ -664,7 +664,7 @@ type Handler interface {
 	// Apps must have the `actions:read` permission to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/workflows
-	ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (ActionsListRepoWorkflowsOK, error)
+	ActionsListRepoWorkflows(ctx context.Context, params ActionsListRepoWorkflowsParams) (ActionsListRepoWorkflowsOKHeaders, error)
 	// ActionsListRunnerApplicationsForOrg implements actions/list-runner-applications-for-org operation.
 	//
 	// Lists binaries for the runner application that you can download and run.
@@ -715,14 +715,14 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 	//
 	// GET /orgs/{org}/actions/runners
-	ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (ActionsListSelfHostedRunnersForOrgOK, error)
+	ActionsListSelfHostedRunnersForOrg(ctx context.Context, params ActionsListSelfHostedRunnersForOrgParams) (ActionsListSelfHostedRunnersForOrgOKHeaders, error)
 	// ActionsListSelfHostedRunnersForRepo implements actions/list-self-hosted-runners-for-repo operation.
 	//
 	// Lists all self-hosted runners configured in a repository. You must authenticate using an access
 	// token with the `repo` scope to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/runners
-	ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (ActionsListSelfHostedRunnersForRepoOK, error)
+	ActionsListSelfHostedRunnersForRepo(ctx context.Context, params ActionsListSelfHostedRunnersForRepoParams) (ActionsListSelfHostedRunnersForRepoOKHeaders, error)
 	// ActionsListSelfHostedRunnersInGroupForOrg implements actions/list-self-hosted-runners-in-group-for-org operation.
 	//
 	// The self-hosted runner groups REST API is available with GitHub Enterprise Cloud. For more
@@ -732,7 +732,7 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:org` scope to use this endpoint.
 	//
 	// GET /orgs/{org}/actions/runner-groups/{runner_group_id}/runners
-	ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (ActionsListSelfHostedRunnersInGroupForOrgOK, error)
+	ActionsListSelfHostedRunnersInGroupForOrg(ctx context.Context, params ActionsListSelfHostedRunnersInGroupForOrgParams) (ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, error)
 	// ActionsListWorkflowRunArtifacts implements actions/list-workflow-run-artifacts operation.
 	//
 	// Lists artifacts for a workflow run. Anyone with read access to the repository can use this
@@ -740,7 +740,7 @@ type Handler interface {
 	// Apps must have the `actions:read` permission to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/runs/{run_id}/artifacts
-	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (ActionsListWorkflowRunArtifactsOK, error)
+	ActionsListWorkflowRunArtifacts(ctx context.Context, params ActionsListWorkflowRunArtifactsParams) (ActionsListWorkflowRunArtifactsOKHeaders, error)
 	// ActionsListWorkflowRunsForRepo implements actions/list-workflow-runs-for-repo operation.
 	//
 	// Lists all workflow runs for a repository. You can use parameters to narrow the list of results.
@@ -751,7 +751,7 @@ type Handler interface {
 	// permission to use this endpoint.
 	//
 	// GET /repos/{owner}/{repo}/actions/runs
-	ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (ActionsListWorkflowRunsForRepoOK, error)
+	ActionsListWorkflowRunsForRepo(ctx context.Context, params ActionsListWorkflowRunsForRepoParams) (ActionsListWorkflowRunsForRepoOKHeaders, error)
 	// ActionsReRunWorkflow implements actions/re-run-workflow operation.
 	//
 	// **Deprecation Notice:** This endpoint is deprecated.
@@ -1036,7 +1036,7 @@ type Handler interface {
 	// List all notifications for the current user.
 	//
 	// GET /repos/{owner}/{repo}/notifications
-	ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) ([]Thread, error)
+	ActivityListRepoNotificationsForAuthenticatedUser(ctx context.Context, params ActivityListRepoNotificationsForAuthenticatedUserParams) (ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, error)
 	// ActivityListReposStarredByAuthenticatedUser implements activity/list-repos-starred-by-authenticated-user operation.
 	//
 	// Lists repositories the authenticated user has starred.
@@ -1050,7 +1050,7 @@ type Handler interface {
 	// Lists repositories a user is watching.
 	//
 	// GET /users/{username}/subscriptions
-	ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) ([]MinimalRepository, error)
+	ActivityListReposWatchedByUser(ctx context.Context, params ActivityListReposWatchedByUserParams) (ActivityListReposWatchedByUserOKHeaders, error)
 	// ActivityListWatchedReposForAuthenticatedUser implements activity/list-watched-repos-for-authenticated-user operation.
 	//
 	// Lists repositories the authenticated user is watching.
@@ -1062,7 +1062,7 @@ type Handler interface {
 	// Lists the people watching the specified repository.
 	//
 	// GET /repos/{owner}/{repo}/subscribers
-	ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) ([]SimpleUser, error)
+	ActivityListWatchersForRepo(ctx context.Context, params ActivityListWatchersForRepoParams) (ActivityListWatchersForRepoOKHeaders, error)
 	// ActivityMarkNotificationsAsRead implements activity/mark-notifications-as-read operation.
 	//
 	// Marks all notifications as "read" removes it from the [default view on GitHub](https://github.
@@ -1609,7 +1609,7 @@ type Handler interface {
 	// annotations for a check run in a private repository.
 	//
 	// GET /repos/{owner}/{repo}/check-runs/{check_run_id}/annotations
-	ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) ([]CheckAnnotation, error)
+	ChecksListAnnotations(ctx context.Context, params ChecksListAnnotationsParams) (ChecksListAnnotationsOKHeaders, error)
 	// ChecksListForRef implements checks/list-for-ref operation.
 	//
 	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
@@ -1621,7 +1621,7 @@ type Handler interface {
 	// check runs in a private repository.
 	//
 	// GET /repos/{owner}/{repo}/commits/{ref}/check-runs
-	ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (ChecksListForRefOK, error)
+	ChecksListForRef(ctx context.Context, params ChecksListForRefParams) (ChecksListForRefOKHeaders, error)
 	// ChecksListForSuite implements checks/list-for-suite operation.
 	//
 	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
@@ -1632,7 +1632,7 @@ type Handler interface {
 	// Apps and authenticated users must have the `repo` scope to get check runs in a private repository.
 	//
 	// GET /repos/{owner}/{repo}/check-suites/{check_suite_id}/check-runs
-	ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (ChecksListForSuiteOK, error)
+	ChecksListForSuite(ctx context.Context, params ChecksListForSuiteParams) (ChecksListForSuiteOKHeaders, error)
 	// ChecksListSuitesForRef implements checks/list-suites-for-ref operation.
 	//
 	// **Note:** The Checks API only looks for pushes in the repository where the check suite or check
@@ -1644,7 +1644,7 @@ type Handler interface {
 	// get check suites in a private repository.
 	//
 	// GET /repos/{owner}/{repo}/commits/{ref}/check-suites
-	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (ChecksListSuitesForRefOK, error)
+	ChecksListSuitesForRef(ctx context.Context, params ChecksListSuitesForRefParams) (ChecksListSuitesForRefOKHeaders, error)
 	// ChecksRerequestSuite implements checks/rerequest-suite operation.
 	//
 	// Triggers GitHub to rerequest an existing check suite, without pushing new code to a repository.
@@ -2100,14 +2100,14 @@ type Handler interface {
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// GET /enterprises/{enterprise}/actions/runners
-	EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, error)
+	EnterpriseAdminListSelfHostedRunnersForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, error)
 	// EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise implements enterprise-admin/list-self-hosted-runners-in-group-for-enterprise operation.
 	//
 	// Lists the self-hosted runners that are in a specific enterprise group.
 	// You must authenticate using an access token with the `admin:enterprise` scope to use this endpoint.
 	//
 	// GET /enterprises/{enterprise}/actions/runner-groups/{runner_group_id}/runners
-	EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, error)
+	EnterpriseAdminListSelfHostedRunnersInGroupForEnterprise(ctx context.Context, params EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseParams) (EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, error)
 	// EnterpriseAdminProvisionAndInviteEnterpriseGroup implements enterprise-admin/provision-and-invite-enterprise-group operation.
 	//
 	// **Note:** The SCIM API endpoints for enterprise accounts are currently in beta and are subject to
@@ -2592,7 +2592,7 @@ type Handler interface {
 	// such as `featureA` and `featureB`.
 	//
 	// GET /repos/{owner}/{repo}/git/matching-refs/{ref}
-	GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) ([]GitRef, error)
+	GitListMatchingRefs(ctx context.Context, params GitListMatchingRefsParams) (GitListMatchingRefsOKHeaders, error)
 	// GitUpdateRef implements git/update-ref operation.
 	//
 	// PATCH /repos/{owner}/{repo}/git/refs/{ref}
@@ -2848,7 +2848,7 @@ type Handler interface {
 	// IssuesListLabelsForMilestone implements issues/list-labels-for-milestone operation.
 	//
 	// GET /repos/{owner}/{repo}/milestones/{milestone_number}/labels
-	IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) ([]Label, error)
+	IssuesListLabelsForMilestone(ctx context.Context, params IssuesListLabelsForMilestoneParams) (IssuesListLabelsForMilestoneOKHeaders, error)
 	// IssuesListLabelsForRepo implements issues/list-labels-for-repo operation.
 	//
 	// GET /repos/{owner}/{repo}/labels
@@ -3112,7 +3112,7 @@ type Handler interface {
 	// Lists the most recent migrations.
 	//
 	// GET /orgs/{org}/migrations
-	MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) ([]Migration, error)
+	MigrationsListForOrg(ctx context.Context, params MigrationsListForOrgParams) (MigrationsListForOrgOKHeaders, error)
 	// MigrationsListReposForOrg implements migrations/list-repos-for-org operation.
 	//
 	// List all the repositories for this organization migration.
@@ -3549,7 +3549,7 @@ type Handler interface {
 	// com/rest/reference/orgs#list-organizations-for-the-authenticated-user) API instead.
 	//
 	// GET /users/{username}/orgs
-	OrgsListForUser(ctx context.Context, params OrgsListForUserParams) ([]OrganizationSimple, error)
+	OrgsListForUser(ctx context.Context, params OrgsListForUserParams) (OrgsListForUserOKHeaders, error)
 	// OrgsListInvitationTeams implements orgs/list-invitation-teams operation.
 	//
 	// List all teams associated with an invitation. In order to see invitations in an organization, the
@@ -3573,7 +3573,7 @@ type Handler interface {
 	// List all users who are outside collaborators of an organization.
 	//
 	// GET /orgs/{org}/outside_collaborators
-	OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) ([]SimpleUser, error)
+	OrgsListOutsideCollaborators(ctx context.Context, params OrgsListOutsideCollaboratorsParams) (OrgsListOutsideCollaboratorsOKHeaders, error)
 	// OrgsListPendingInvitations implements orgs/list-pending-invitations operation.
 	//
 	// The return hash contains a `role` field which refers to the Organization Invitation role and will
@@ -3588,7 +3588,7 @@ type Handler interface {
 	// Members of an organization can choose to have their membership publicized or not.
 	//
 	// GET /orgs/{org}/public_members
-	OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) ([]SimpleUser, error)
+	OrgsListPublicMembers(ctx context.Context, params OrgsListPublicMembersParams) (OrgsListPublicMembersOKHeaders, error)
 	// OrgsListSamlSSOAuthorizations implements orgs/list-saml-sso-authorizations operation.
 	//
 	// Listing and deleting credential authorizations is available to organizations with GitHub
@@ -4306,7 +4306,7 @@ type Handler interface {
 	// com/rest/reference/repos#list-commits) endpoint.
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/commits
-	PullsListCommits(ctx context.Context, params PullsListCommitsParams) ([]Commit, error)
+	PullsListCommits(ctx context.Context, params PullsListCommitsParams) (PullsListCommitsOKHeaders, error)
 	// PullsListFiles implements pulls/list-files operation.
 	//
 	// **Note:** Responses include a maximum of 3000 files. The paginated response returns 30 files per
@@ -4317,27 +4317,27 @@ type Handler interface {
 	// PullsListRequestedReviewers implements pulls/list-requested-reviewers operation.
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/requested_reviewers
-	PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (PullRequestReviewRequest, error)
+	PullsListRequestedReviewers(ctx context.Context, params PullsListRequestedReviewersParams) (PullRequestReviewRequestHeaders, error)
 	// PullsListReviewComments implements pulls/list-review-comments operation.
 	//
 	// Lists all review comments for a pull request. By default, review comments are in ascending order
 	// by ID.
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/comments
-	PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) ([]PullRequestReviewComment, error)
+	PullsListReviewComments(ctx context.Context, params PullsListReviewCommentsParams) (PullsListReviewCommentsOKHeaders, error)
 	// PullsListReviewCommentsForRepo implements pulls/list-review-comments-for-repo operation.
 	//
 	// Lists review comments for all pull requests in a repository. By default, review comments are in
 	// ascending order by ID.
 	//
 	// GET /repos/{owner}/{repo}/pulls/comments
-	PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) ([]PullRequestReviewComment, error)
+	PullsListReviewCommentsForRepo(ctx context.Context, params PullsListReviewCommentsForRepoParams) (PullsListReviewCommentsForRepoOKHeaders, error)
 	// PullsListReviews implements pulls/list-reviews operation.
 	//
 	// The list of reviews returns in chronological order.
 	//
 	// GET /repos/{owner}/{repo}/pulls/{pull_number}/reviews
-	PullsListReviews(ctx context.Context, params PullsListReviewsParams) ([]PullRequestReview, error)
+	PullsListReviews(ctx context.Context, params PullsListReviewsParams) (PullsListReviewsOKHeaders, error)
 	// PullsMerge implements pulls/merge operation.
 	//
 	// This endpoint triggers [notifications](https://docs.github.
@@ -4589,7 +4589,7 @@ type Handler interface {
 	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/comments/:comment_number/reactions`.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments/{comment_number}/reactions
-	ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) ([]Reaction, error)
+	ReactionsListForTeamDiscussionCommentInOrg(ctx context.Context, params ReactionsListForTeamDiscussionCommentInOrgParams) (ReactionsListForTeamDiscussionCommentInOrgOKHeaders, error)
 	// ReactionsListForTeamDiscussionCommentLegacy implements reactions/list-for-team-discussion-comment-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -4601,7 +4601,7 @@ type Handler interface {
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
 	// GET /teams/{team_id}/discussions/{discussion_number}/comments/{comment_number}/reactions
-	ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) ([]Reaction, error)
+	ReactionsListForTeamDiscussionCommentLegacy(ctx context.Context, params ReactionsListForTeamDiscussionCommentLegacyParams) (ReactionsListForTeamDiscussionCommentLegacyOKHeaders, error)
 	// ReactionsListForTeamDiscussionInOrg implements reactions/list-for-team-discussion-in-org operation.
 	//
 	// List the reactions to a [team discussion](https://docs.github.
@@ -4611,7 +4611,7 @@ type Handler interface {
 	// /organizations/:org_id/team/:team_id/discussions/:discussion_number/reactions`.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/reactions
-	ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) ([]Reaction, error)
+	ReactionsListForTeamDiscussionInOrg(ctx context.Context, params ReactionsListForTeamDiscussionInOrgParams) (ReactionsListForTeamDiscussionInOrgOKHeaders, error)
 	// ReactionsListForTeamDiscussionLegacy implements reactions/list-for-team-discussion-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -4623,7 +4623,7 @@ type Handler interface {
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
 	// GET /teams/{team_id}/discussions/{discussion_number}/reactions
-	ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) ([]Reaction, error)
+	ReactionsListForTeamDiscussionLegacy(ctx context.Context, params ReactionsListForTeamDiscussionLegacyParams) (ReactionsListForTeamDiscussionLegacyOKHeaders, error)
 	// ReposAcceptInvitation implements repos/accept-invitation operation.
 	//
 	// PATCH /user/repository_invitations/{invitation_id}
@@ -4831,7 +4831,7 @@ type Handler interface {
 	// create more than 1000 statuses will result in a validation error.
 	//
 	// POST /repos/{owner}/{repo}/statuses/{sha}
-	ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (Status, error)
+	ReposCreateCommitStatus(ctx context.Context, req ReposCreateCommitStatusReq, params ReposCreateCommitStatusParams) (StatusHeaders, error)
 	// ReposCreateDeployKey implements repos/create-deploy-key operation.
 	//
 	// You can create a read-only deploy key.
@@ -5002,7 +5002,7 @@ type Handler interface {
 	// *   `repo` scope to create a private repository.
 	//
 	// POST /repos/{template_owner}/{template_repo}/generate
-	ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (Repository, error)
+	ReposCreateUsingTemplate(ctx context.Context, req ReposCreateUsingTemplateReq, params ReposCreateUsingTemplateParams) (RepositoryHeaders, error)
 	// ReposCreateWebhook implements repos/create-webhook operation.
 	//
 	// Repositories can have multiple webhooks installed. Each webhook should have a unique `config`.
@@ -5663,7 +5663,7 @@ type Handler interface {
 	// Use the `:commit_sha` to specify the commit that will have its comments listed.
 	//
 	// GET /repos/{owner}/{repo}/commits/{commit_sha}/comments
-	ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) ([]CommitComment, error)
+	ReposListCommentsForCommit(ctx context.Context, params ReposListCommentsForCommitParams) (ReposListCommentsForCommitOKHeaders, error)
 	// ReposListCommitCommentsForRepo implements repos/list-commit-comments-for-repo operation.
 	//
 	// Commit Comments use [these custom media types](https://docs.github.
@@ -5672,7 +5672,7 @@ type Handler interface {
 	// Comments are ordered by ascending ID.
 	//
 	// GET /repos/{owner}/{repo}/comments
-	ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) ([]CommitComment, error)
+	ReposListCommitCommentsForRepo(ctx context.Context, params ReposListCommitCommentsForRepoParams) (ReposListCommitCommentsForRepoOKHeaders, error)
 	// ReposListCommitStatusesForRef implements repos/list-commit-statuses-for-ref operation.
 	//
 	// Users with pull access in a repository can view commit statuses for a given ref. The ref can be a
@@ -5734,7 +5734,7 @@ type Handler interface {
 	// ReposListDeployKeys implements repos/list-deploy-keys operation.
 	//
 	// GET /repos/{owner}/{repo}/keys
-	ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) ([]DeployKey, error)
+	ReposListDeployKeys(ctx context.Context, params ReposListDeployKeysParams) (ReposListDeployKeysOKHeaders, error)
 	// ReposListDeploymentStatuses implements repos/list-deployment-statuses operation.
 	//
 	// Users with pull access can view deployment statuses for a deployment:.
@@ -5746,7 +5746,7 @@ type Handler interface {
 	// Simple filtering of deployments is available via query parameters:.
 	//
 	// GET /repos/{owner}/{repo}/deployments
-	ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) ([]Deployment, error)
+	ReposListDeployments(ctx context.Context, params ReposListDeploymentsParams) (ReposListDeploymentsOKHeaders, error)
 	// ReposListForAuthenticatedUser implements repos/list-for-authenticated-user operation.
 	//
 	// Lists repositories that the authenticated user has explicit permission (`:read`, `:write`, or
@@ -5761,14 +5761,14 @@ type Handler interface {
 	// Lists repositories for the specified organization.
 	//
 	// GET /orgs/{org}/repos
-	ReposListForOrg(ctx context.Context, params ReposListForOrgParams) ([]MinimalRepository, error)
+	ReposListForOrg(ctx context.Context, params ReposListForOrgParams) (ReposListForOrgOKHeaders, error)
 	// ReposListForUser implements repos/list-for-user operation.
 	//
 	// Lists public repositories for the specified user. Note: For GitHub AE, this endpoint will list
 	// internal repositories for the specified user.
 	//
 	// GET /users/{username}/repos
-	ReposListForUser(ctx context.Context, params ReposListForUserParams) ([]MinimalRepository, error)
+	ReposListForUser(ctx context.Context, params ReposListForUserParams) (ReposListForUserOKHeaders, error)
 	// ReposListForks implements repos/list-forks operation.
 	//
 	// GET /repos/{owner}/{repo}/forks
@@ -5779,7 +5779,7 @@ type Handler interface {
 	// currently open repository invitations.
 	//
 	// GET /repos/{owner}/{repo}/invitations
-	ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) ([]RepositoryInvitation, error)
+	ReposListInvitations(ctx context.Context, params ReposListInvitationsParams) (ReposListInvitationsOKHeaders, error)
 	// ReposListInvitationsForAuthenticatedUser implements repos/list-invitations-for-authenticated-user operation.
 	//
 	// When authenticating as a user, this endpoint will list all currently open repository invitations
@@ -5797,7 +5797,7 @@ type Handler interface {
 	// ReposListPagesBuilds implements repos/list-pages-builds operation.
 	//
 	// GET /repos/{owner}/{repo}/pages/builds
-	ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) ([]PageBuild, error)
+	ReposListPagesBuilds(ctx context.Context, params ReposListPagesBuildsParams) (ReposListPagesBuildsOKHeaders, error)
 	// ReposListPublic implements repos/list-public operation.
 	//
 	// Lists all public repositories in the order that they were created.
@@ -5820,11 +5820,11 @@ type Handler interface {
 	// requests](https://docs.github.com/rest/reference/pulls#list-pull-requests) endpoint.
 	//
 	// GET /repos/{owner}/{repo}/commits/{commit_sha}/pulls
-	ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) ([]PullRequestSimple, error)
+	ReposListPullRequestsAssociatedWithCommit(ctx context.Context, params ReposListPullRequestsAssociatedWithCommitParams) (ReposListPullRequestsAssociatedWithCommitOKHeaders, error)
 	// ReposListReleaseAssets implements repos/list-release-assets operation.
 	//
 	// GET /repos/{owner}/{repo}/releases/{release_id}/assets
-	ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) ([]ReleaseAsset, error)
+	ReposListReleaseAssets(ctx context.Context, params ReposListReleaseAssetsParams) (ReposListReleaseAssetsOKHeaders, error)
 	// ReposListReleases implements repos/list-releases operation.
 	//
 	// This returns a list of releases, which does not include regular Git tags that have not been
@@ -5838,11 +5838,11 @@ type Handler interface {
 	// ReposListTags implements repos/list-tags operation.
 	//
 	// GET /repos/{owner}/{repo}/tags
-	ReposListTags(ctx context.Context, params ReposListTagsParams) ([]Tag, error)
+	ReposListTags(ctx context.Context, params ReposListTagsParams) (ReposListTagsOKHeaders, error)
 	// ReposListTeams implements repos/list-teams operation.
 	//
 	// GET /repos/{owner}/{repo}/teams
-	ReposListTeams(ctx context.Context, params ReposListTeamsParams) ([]Team, error)
+	ReposListTeams(ctx context.Context, params ReposListTeamsParams) (ReposListTeamsOKHeaders, error)
 	// ReposListWebhookDeliveries implements repos/list-webhook-deliveries operation.
 	//
 	// Returns a list of webhook deliveries for a webhook configured in a repository.
@@ -6804,7 +6804,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/teams`.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/teams
-	TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) ([]Team, error)
+	TeamsListChildInOrg(ctx context.Context, params TeamsListChildInOrgParams) (TeamsListChildInOrgOKHeaders, error)
 	// TeamsListChildLegacy implements teams/list-child-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6821,7 +6821,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/discussions/{discussion_number}/comments`.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/discussions/{discussion_number}/comments
-	TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) ([]TeamDiscussionComment, error)
+	TeamsListDiscussionCommentsInOrg(ctx context.Context, params TeamsListDiscussionCommentsInOrgParams) (TeamsListDiscussionCommentsInOrgOKHeaders, error)
 	// TeamsListDiscussionCommentsLegacy implements teams/list-discussion-comments-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6831,7 +6831,7 @@ type Handler interface {
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
 	// GET /teams/{team_id}/discussions/{discussion_number}/comments
-	TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) ([]TeamDiscussionComment, error)
+	TeamsListDiscussionCommentsLegacy(ctx context.Context, params TeamsListDiscussionCommentsLegacyParams) (TeamsListDiscussionCommentsLegacyOKHeaders, error)
 	// TeamsListDiscussionsInOrg implements teams/list-discussions-in-org operation.
 	//
 	// List all discussions on a team's page. OAuth access tokens require the `read:discussion`
@@ -6840,7 +6840,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/discussions`.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/discussions
-	TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) ([]TeamDiscussion, error)
+	TeamsListDiscussionsInOrg(ctx context.Context, params TeamsListDiscussionsInOrgParams) (TeamsListDiscussionsInOrgOKHeaders, error)
 	// TeamsListDiscussionsLegacy implements teams/list-discussions-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6850,7 +6850,7 @@ type Handler interface {
 	// [scope](https://docs.github.com/apps/building-oauth-apps/understanding-scopes-for-oauth-apps/).
 	//
 	// GET /teams/{team_id}/discussions
-	TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) ([]TeamDiscussion, error)
+	TeamsListDiscussionsLegacy(ctx context.Context, params TeamsListDiscussionsLegacyParams) (TeamsListDiscussionsLegacyOKHeaders, error)
 	// TeamsListForAuthenticatedUser implements teams/list-for-authenticated-user operation.
 	//
 	// List all of the teams across all of the organizations to which the authenticated user belongs.
@@ -6883,7 +6883,7 @@ type Handler interface {
 	// explained](https://dev.to/jackmarchant/offset-and-cursor-pagination-explained-b89).".
 	//
 	// GET /orgs/{org}/team-sync/groups
-	TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (GroupMapping, error)
+	TeamsListIdpGroupsForOrg(ctx context.Context, params TeamsListIdpGroupsForOrgParams) (GroupMappingHeaders, error)
 	// TeamsListIdpGroupsInOrg implements teams/list-idp-groups-in-org operation.
 	//
 	// Team synchronization is available for organizations using GitHub Enterprise Cloud. For more
@@ -6901,7 +6901,7 @@ type Handler interface {
 	// To list members in a team, the team must be visible to the authenticated user.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/members
-	TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) ([]SimpleUser, error)
+	TeamsListMembersInOrg(ctx context.Context, params TeamsListMembersInOrgParams) (TeamsListMembersInOrgOKHeaders, error)
 	// TeamsListMembersLegacy implements teams/list-members-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6921,7 +6921,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/invitations`.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/invitations
-	TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) ([]OrganizationInvitation, error)
+	TeamsListPendingInvitationsInOrg(ctx context.Context, params TeamsListPendingInvitationsInOrgParams) (TeamsListPendingInvitationsInOrgOKHeaders, error)
 	// TeamsListPendingInvitationsLegacy implements teams/list-pending-invitations-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6933,7 +6933,7 @@ type Handler interface {
 	// `null`.
 	//
 	// GET /teams/{team_id}/invitations
-	TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) ([]OrganizationInvitation, error)
+	TeamsListPendingInvitationsLegacy(ctx context.Context, params TeamsListPendingInvitationsLegacyParams) (TeamsListPendingInvitationsLegacyOKHeaders, error)
 	// TeamsListProjectsInOrg implements teams/list-projects-in-org operation.
 	//
 	// Lists the organization projects for a team.
@@ -6941,7 +6941,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/projects`.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/projects
-	TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) ([]TeamProject, error)
+	TeamsListProjectsInOrg(ctx context.Context, params TeamsListProjectsInOrgParams) (TeamsListProjectsInOrgOKHeaders, error)
 	// TeamsListProjectsLegacy implements teams/list-projects-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -6958,7 +6958,7 @@ type Handler interface {
 	// /organizations/{org_id}/team/{team_id}/repos`.
 	//
 	// GET /orgs/{org}/teams/{team_slug}/repos
-	TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) ([]MinimalRepository, error)
+	TeamsListReposInOrg(ctx context.Context, params TeamsListReposInOrgParams) (TeamsListReposInOrgOKHeaders, error)
 	// TeamsListReposLegacy implements teams/list-repos-legacy operation.
 	//
 	// **Deprecation Notice:** This endpoint route is deprecated and will be removed from the Teams API.
@@ -7304,13 +7304,13 @@ type Handler interface {
 	// Lists the people following the specified user.
 	//
 	// GET /users/{username}/followers
-	UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) ([]SimpleUser, error)
+	UsersListFollowersForUser(ctx context.Context, params UsersListFollowersForUserParams) (UsersListFollowersForUserOKHeaders, error)
 	// UsersListFollowingForUser implements users/list-following-for-user operation.
 	//
 	// Lists the people who the specified user follows.
 	//
 	// GET /users/{username}/following
-	UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) ([]SimpleUser, error)
+	UsersListFollowingForUser(ctx context.Context, params UsersListFollowingForUserParams) (UsersListFollowingForUserOKHeaders, error)
 	// UsersListGpgKeysForAuthenticated implements users/list-gpg-keys-for-authenticated operation.
 	//
 	// Lists the current user's GPG keys. Requires that you are authenticated via Basic Auth or via OAuth
@@ -7324,7 +7324,7 @@ type Handler interface {
 	// Lists the GPG keys for a user. This information is accessible by anyone.
 	//
 	// GET /users/{username}/gpg_keys
-	UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) ([]GpgKey, error)
+	UsersListGpgKeysForUser(ctx context.Context, params UsersListGpgKeysForUserParams) (UsersListGpgKeysForUserOKHeaders, error)
 	// UsersListPublicEmailsForAuthenticated implements users/list-public-emails-for-authenticated operation.
 	//
 	// Lists your publicly visible email address, which you can set with the [Set primary email
@@ -7339,7 +7339,7 @@ type Handler interface {
 	// Lists the _verified_ public SSH keys for a user. This is accessible by anyone.
 	//
 	// GET /users/{username}/keys
-	UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) ([]KeySimple, error)
+	UsersListPublicKeysForUser(ctx context.Context, params UsersListPublicKeysForUserParams) (UsersListPublicKeysForUserOKHeaders, error)
 	// UsersListPublicSSHKeysForAuthenticated implements users/list-public-ssh-keys-for-authenticated operation.
 	//
 	// Lists the public SSH keys for the authenticated user's GitHub account. Requires that you are

@@ -455,7 +455,7 @@ func (c *Client) FoobarPost(ctx context.Context, request OptPet) (res FoobarPost
 // FoobarPut invokes  operation.
 //
 // PUT /foobar
-func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDefStatusCode, err error) {
+func (c *Client) FoobarPut(ctx context.Context) (res FoobarPutDef, err error) {
 	startTime := time.Now()
 	otelAttrs := []attribute.KeyValue{}
 	ctx, span := c.cfg.Tracer.Start(ctx, "FoobarPut",
@@ -1235,7 +1235,7 @@ func (c *Client) PetNameByID(ctx context.Context, params PetNameByIDParams) (res
 // PetUpdateNameAliasPost invokes  operation.
 //
 // POST /pet/updateNameAlias
-func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostDefStatusCode, err error) {
+func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName) (res PetUpdateNameAliasPostDef, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1305,7 +1305,7 @@ func (c *Client) PetUpdateNameAliasPost(ctx context.Context, request OptPetName)
 // PetUpdateNamePost invokes  operation.
 //
 // POST /pet/updateName
-func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostDefStatusCode, err error) {
+func (c *Client) PetUpdateNamePost(ctx context.Context, request OptString) (res PetUpdateNamePostDef, err error) {
 	if err := func() error {
 		if request.Set {
 			if err := func() error {
@@ -1529,6 +1529,49 @@ func (c *Client) RecursiveMapGet(ctx context.Context) (res RecursiveMap, err err
 	defer resp.Body.Close()
 
 	result, err := decodeRecursiveMapGetResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
+// ResponseWithHeadersTest invokes responseWithHeadersTest operation.
+//
+// GET /responseWithHeadersTest
+func (c *Client) ResponseWithHeadersTest(ctx context.Context) (res ResponseWithHeadersTestFound, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("responseWithHeadersTest"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "ResponseWithHeadersTest",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	u := uri.Clone(c.serverURL)
+	u.Path += "/responseWithHeadersTest"
+
+	r := ht.NewRequest(ctx, "GET", u, nil)
+	defer ht.PutRequest(r)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeResponseWithHeadersTestResponse(resp, span)
 	if err != nil {
 		return res, errors.Wrap(err, "decode response")
 	}
