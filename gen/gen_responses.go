@@ -143,22 +143,9 @@ func (g *Generator) responseToIR(
 		}()
 	}
 
-	var headers map[string]*ir.Parameter
-	if len(resp.Headers) > 0 {
-		ctx := ctx.appendPath("headers")
-		headers = make(map[string]*ir.Parameter, len(resp.Headers))
-		for hname, header := range resp.Headers {
-			h, err := g.generateParameter(ctx.appendPath(hname), name, header)
-			if err != nil {
-				if err := g.fail(err); err != nil {
-					return nil, errors.Wrapf(err, "headers: %s", hname)
-				}
-
-				continue
-			}
-
-			headers[hname] = h
-		}
+	headers, err := g.generateHeaders(ctx.appendPath("headers"), name, resp.Headers)
+	if err != nil {
+		return nil, errors.Wrap(err, "headers")
 	}
 
 	if len(resp.Content) == 0 {
