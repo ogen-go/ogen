@@ -49,26 +49,26 @@ func (t testHTTPResponses) OctetStreamEmptySchema(ctx context.Context) (api.Octe
 	}, nil
 }
 
-func (t testHTTPResponses) Headers200(ctx context.Context) (api.Headers200OKHeaders, error) {
-	return api.Headers200OKHeaders{
+func (t testHTTPResponses) Headers200(ctx context.Context) (api.Headers200OK, error) {
+	return api.Headers200OK{
 		TestHeader: "foo",
 	}, nil
 }
 
 func (t testHTTPResponses) HeadersCombined(ctx context.Context, params api.HeadersCombinedParams) (api.HeadersCombinedRes, error) {
 	if params.Default {
-		return &api.HeadersCombinedDefStatusCodeWithHeaders{
+		return &api.HeadersCombinedDef{
 			StatusCode: 202,
 			TestHeader: "default=true",
 		}, nil
 	}
-	return &api.HeadersCombinedOKHeaders{
+	return &api.HeadersCombinedOK{
 		TestHeader: "default=false",
 	}, nil
 }
 
-func (t testHTTPResponses) HeadersDefault(ctx context.Context) (api.HeadersDefaultDefStatusCodeWithHeaders, error) {
-	return api.HeadersDefaultDefStatusCodeWithHeaders{
+func (t testHTTPResponses) HeadersDefault(ctx context.Context) (api.HeadersDefaultDef, error) {
+	return api.HeadersDefaultDef{
 		StatusCode: 202,
 		TestHeader: "202",
 	}, nil
@@ -141,15 +141,15 @@ func TestResponses(t *testing.T) {
 				Default: false,
 			})
 			a.NoError(err)
-			a.IsType(r, &api.HeadersCombinedOKHeaders{})
-			a.Equal(r.(*api.HeadersCombinedOKHeaders).TestHeader, "default=false")
+			a.IsType(r, &api.HeadersCombinedOK{})
+			a.Equal(r.(*api.HeadersCombinedOK).TestHeader, "default=false")
 
 			r, err = client.HeadersCombined(ctx, api.HeadersCombinedParams{
 				Default: true,
 			})
 			a.NoError(err)
-			a.IsType(r, &api.HeadersCombinedDefStatusCodeWithHeaders{})
-			a.Equal(r.(*api.HeadersCombinedDefStatusCodeWithHeaders).TestHeader, "default=true")
+			a.IsType(r, &api.HeadersCombinedDef{})
+			a.Equal(r.(*api.HeadersCombinedDef).TestHeader, "default=true")
 		}
 	}
 }
