@@ -228,6 +228,13 @@ func (UnimplementedHandler) TestFormURLEncoded(ctx context.Context, req TestForm
 	return r, ht.ErrNotImplemented
 }
 
+// TestMultipart implements testMultipart operation.
+//
+// POST /testMultipart
+func (UnimplementedHandler) TestMultipart(ctx context.Context, req TestForm) (r TestMultipartOK, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // TestObjectQueryParameter implements testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter

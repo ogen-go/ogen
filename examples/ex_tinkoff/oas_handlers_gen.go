@@ -594,7 +594,7 @@ func (s *Server) handleOrdersLimitOrderPostRequest(args [0]string, w http.Respon
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodeOrdersLimitOrderPostRequest(r, span)
+	request, err := s.decodeOrdersLimitOrderPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "OrdersLimitOrderPost",
@@ -656,7 +656,7 @@ func (s *Server) handleOrdersMarketOrderPostRequest(args [0]string, w http.Respo
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodeOrdersMarketOrderPostRequest(r, span)
+	request, err := s.decodeOrdersMarketOrderPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "OrdersMarketOrderPost",
@@ -877,7 +877,7 @@ func (s *Server) handleSandboxCurrenciesBalancePostRequest(args [0]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodeSandboxCurrenciesBalancePostRequest(r, span)
+	request, err := s.decodeSandboxCurrenciesBalancePostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "SandboxCurrenciesBalancePost",
@@ -939,7 +939,7 @@ func (s *Server) handleSandboxPositionsBalancePostRequest(args [0]string, w http
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodeSandboxPositionsBalancePostRequest(r, span)
+	request, err := s.decodeSandboxPositionsBalancePostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "SandboxPositionsBalancePost",
@@ -992,7 +992,7 @@ func (s *Server) handleSandboxRegisterPostRequest(args [0]string, w http.Respons
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodeSandboxRegisterPostRequest(r, span)
+	request, err := s.decodeSandboxRegisterPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "SandboxRegisterPost",

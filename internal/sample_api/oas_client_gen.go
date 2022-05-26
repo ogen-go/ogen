@@ -1745,6 +1745,63 @@ func (c *Client) TestFormURLEncoded(ctx context.Context, request TestForm) (res 
 	return result, nil
 }
 
+// TestMultipart invokes testMultipart operation.
+//
+// POST /testMultipart
+func (c *Client) TestMultipart(ctx context.Context, request TestForm) (res TestMultipartOK, err error) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testMultipart"),
+	}
+	ctx, span := c.cfg.Tracer.Start(ctx, "TestMultipart",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindClient),
+	)
+	defer func() {
+		if err != nil {
+			span.RecordError(err)
+			c.errors.Add(ctx, 1, otelAttrs...)
+		} else {
+			elapsedDuration := time.Since(startTime)
+			c.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+		}
+		span.End()
+	}()
+	c.requests.Add(ctx, 1, otelAttrs...)
+	var (
+		contentType string
+		reqBody     io.Reader
+	)
+	contentType = "multipart/form-data"
+	buf, ct, err := encodeTestMultipartRequest(request, span)
+	if err != nil {
+		return res, err
+	}
+	contentType = ct
+	reqBody = buf
+
+	u := uri.Clone(c.serverURL)
+	u.Path += "/testMultipart"
+
+	r := ht.NewRequest(ctx, "POST", u, reqBody)
+	defer ht.PutRequest(r)
+
+	r.Header.Set("Content-Type", contentType)
+
+	resp, err := c.cfg.Client.Do(r)
+	if err != nil {
+		return res, errors.Wrap(err, "do request")
+	}
+	defer resp.Body.Close()
+
+	result, err := decodeTestMultipartResponse(resp, span)
+	if err != nil {
+		return res, errors.Wrap(err, "decode response")
+	}
+
+	return result, nil
+}
+
 // TestObjectQueryParameter invokes testObjectQueryParameter operation.
 //
 // GET /testObjectQueryParameter

@@ -33,7 +33,7 @@ func (s *Server) handleDataCreateRequest(args [0]string, w http.ResponseWriter, 
 	defer span.End()
 
 	var err error
-	request, err := decodeDataCreateRequest(r, span)
+	request, err := s.decodeDataCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "DataCreate",

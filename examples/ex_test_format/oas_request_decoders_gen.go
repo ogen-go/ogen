@@ -5,6 +5,7 @@ package api
 import (
 	"fmt"
 	"io"
+	"mime"
 	"net/http"
 	"net/netip"
 	"net/url"
@@ -19,8 +20,12 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -58,8 +63,12 @@ func decodeTestRequestAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, 
 	}
 }
 
-func decodeTestRequestBooleanRequest(r *http.Request, span trace.Span) (req OptBool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestBooleanRequest(r *http.Request, span trace.Span) (req OptBool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -96,8 +105,12 @@ func decodeTestRequestBooleanRequest(r *http.Request, span trace.Span) (req OptB
 	}
 }
 
-func decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -143,8 +156,12 @@ func decodeTestRequestBooleanArrayRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -220,8 +237,12 @@ func decodeTestRequestBooleanArrayArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestBooleanNullableRequest(r *http.Request, span trace.Span) (req OptNilBool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestBooleanNullableRequest(r *http.Request, span trace.Span) (req OptNilBool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -258,8 +279,12 @@ func decodeTestRequestBooleanNullableRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -305,8 +330,12 @@ func decodeTestRequestBooleanNullableArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -382,8 +411,12 @@ func decodeTestRequestBooleanNullableArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestEmptyStructRequest(r *http.Request, span trace.Span) (req *TestRequestEmptyStructReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestEmptyStructRequest(r *http.Request, span trace.Span) (req *TestRequestEmptyStructReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -422,8 +455,12 @@ func decodeTestRequestEmptyStructRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestFormatTestRequest(r *http.Request, span trace.Span) (req OptTestRequestFormatTestReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestFormatTestRequest(r *http.Request, span trace.Span) (req OptTestRequestFormatTestReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -475,8 +512,12 @@ func decodeTestRequestFormatTestRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestIntegerRequest(r *http.Request, span trace.Span) (req OptInt, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerRequest(r *http.Request, span trace.Span) (req OptInt, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -513,8 +554,12 @@ func decodeTestRequestIntegerRequest(r *http.Request, span trace.Span) (req OptI
 	}
 }
 
-func decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -560,8 +605,12 @@ func decodeTestRequestIntegerArrayRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -637,8 +686,12 @@ func decodeTestRequestIntegerArrayArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestIntegerInt32Request(r *http.Request, span trace.Span) (req OptInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt32Request(r *http.Request, span trace.Span) (req OptInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -675,8 +728,12 @@ func decodeTestRequestIntegerInt32Request(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -722,8 +779,12 @@ func decodeTestRequestIntegerInt32ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -799,8 +860,12 @@ func decodeTestRequestIntegerInt32ArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req OptNilInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req OptNilInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -837,8 +902,12 @@ func decodeTestRequestIntegerInt32NullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -884,8 +953,12 @@ func decodeTestRequestIntegerInt32NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -961,8 +1034,12 @@ func decodeTestRequestIntegerInt32NullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestIntegerInt64Request(r *http.Request, span trace.Span) (req OptInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt64Request(r *http.Request, span trace.Span) (req OptInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -999,8 +1076,12 @@ func decodeTestRequestIntegerInt64Request(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1046,8 +1127,12 @@ func decodeTestRequestIntegerInt64ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1123,8 +1208,12 @@ func decodeTestRequestIntegerInt64ArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req OptNilInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req OptNilInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1161,8 +1250,12 @@ func decodeTestRequestIntegerInt64NullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1208,8 +1301,12 @@ func decodeTestRequestIntegerInt64NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1285,8 +1382,12 @@ func decodeTestRequestIntegerInt64NullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestIntegerNullableRequest(r *http.Request, span trace.Span) (req OptNilInt, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerNullableRequest(r *http.Request, span trace.Span) (req OptNilInt, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1323,8 +1424,12 @@ func decodeTestRequestIntegerNullableRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1370,8 +1475,12 @@ func decodeTestRequestIntegerNullableArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1447,8 +1556,12 @@ func decodeTestRequestIntegerNullableArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestNullRequest(r *http.Request, span trace.Span) (req OptNull, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNullRequest(r *http.Request, span trace.Span) (req OptNull, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1485,8 +1598,12 @@ func decodeTestRequestNullRequest(r *http.Request, span trace.Span) (req OptNull
 	}
 }
 
-func decodeTestRequestNullArrayRequest(r *http.Request, span trace.Span) (req []struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNullArrayRequest(r *http.Request, span trace.Span) (req []struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1530,8 +1647,12 @@ func decodeTestRequestNullArrayRequest(r *http.Request, span trace.Span) (req []
 	}
 }
 
-func decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (req [][]struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (req [][]struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1605,8 +1726,12 @@ func decodeTestRequestNullArrayArrayRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestNullNullableRequest(r *http.Request, span trace.Span) (req OptNull, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNullNullableRequest(r *http.Request, span trace.Span) (req OptNull, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1643,8 +1768,12 @@ func decodeTestRequestNullNullableRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestNullNullableArrayRequest(r *http.Request, span trace.Span) (req []struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNullNullableArrayRequest(r *http.Request, span trace.Span) (req []struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1688,8 +1817,12 @@ func decodeTestRequestNullNullableArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1763,8 +1896,12 @@ func decodeTestRequestNullNullableArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFloat64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFloat64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1816,8 +1953,12 @@ func decodeTestRequestNumberRequest(r *http.Request, span trace.Span) (req OptFl
 	}
 }
 
-func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1885,8 +2026,12 @@ func decodeTestRequestNumberArrayRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1979,8 +2124,12 @@ func decodeTestRequestNumberArrayArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req OptFloat64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req OptFloat64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2032,8 +2181,12 @@ func decodeTestRequestNumberDoubleRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2101,8 +2254,12 @@ func decodeTestRequestNumberDoubleArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2195,8 +2352,12 @@ func decodeTestRequestNumberDoubleArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2248,8 +2409,12 @@ func decodeTestRequestNumberDoubleNullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2317,8 +2482,12 @@ func decodeTestRequestNumberDoubleNullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2411,8 +2580,12 @@ func decodeTestRequestNumberDoubleNullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req OptFloat32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req OptFloat32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2464,8 +2637,12 @@ func decodeTestRequestNumberFloatRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2533,8 +2710,12 @@ func decodeTestRequestNumberFloatArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2627,8 +2808,12 @@ func decodeTestRequestNumberFloatArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2680,8 +2865,12 @@ func decodeTestRequestNumberFloatNullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2749,8 +2938,12 @@ func decodeTestRequestNumberFloatNullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2843,8 +3036,12 @@ func decodeTestRequestNumberFloatNullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestNumberInt32Request(r *http.Request, span trace.Span) (req OptInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt32Request(r *http.Request, span trace.Span) (req OptInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2881,8 +3078,12 @@ func decodeTestRequestNumberInt32Request(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2928,8 +3129,12 @@ func decodeTestRequestNumberInt32ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3005,8 +3210,12 @@ func decodeTestRequestNumberInt32ArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestNumberInt32NullableRequest(r *http.Request, span trace.Span) (req OptNilInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt32NullableRequest(r *http.Request, span trace.Span) (req OptNilInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3043,8 +3252,12 @@ func decodeTestRequestNumberInt32NullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3090,8 +3303,12 @@ func decodeTestRequestNumberInt32NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3167,8 +3384,12 @@ func decodeTestRequestNumberInt32NullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestNumberInt64Request(r *http.Request, span trace.Span) (req OptInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt64Request(r *http.Request, span trace.Span) (req OptInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3205,8 +3426,12 @@ func decodeTestRequestNumberInt64Request(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3252,8 +3477,12 @@ func decodeTestRequestNumberInt64ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3329,8 +3558,12 @@ func decodeTestRequestNumberInt64ArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestNumberInt64NullableRequest(r *http.Request, span trace.Span) (req OptNilInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt64NullableRequest(r *http.Request, span trace.Span) (req OptNilInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3367,8 +3600,12 @@ func decodeTestRequestNumberInt64NullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3414,8 +3651,12 @@ func decodeTestRequestNumberInt64NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3491,8 +3732,12 @@ func decodeTestRequestNumberInt64NullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (req OptNilFloat64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3544,8 +3789,12 @@ func decodeTestRequestNumberNullableRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3613,8 +3862,12 @@ func decodeTestRequestNumberNullableArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -3707,8 +3960,12 @@ func decodeTestRequestNumberNullableArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredAnyRequest(r *http.Request, span trace.Span) (req jx.Raw, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3746,8 +4003,12 @@ func decodeTestRequestRequiredAnyRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestRequiredBooleanRequest(r *http.Request, span trace.Span) (req bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredBooleanRequest(r *http.Request, span trace.Span) (req bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3785,8 +4046,12 @@ func decodeTestRequestRequiredBooleanRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3840,8 +4105,12 @@ func decodeTestRequestRequiredBooleanArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3920,8 +4189,12 @@ func decodeTestRequestRequiredBooleanArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredBooleanNullableRequest(r *http.Request, span trace.Span) (req NilBool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredBooleanNullableRequest(r *http.Request, span trace.Span) (req NilBool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3957,8 +4230,12 @@ func decodeTestRequestRequiredBooleanNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req []bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4012,8 +4289,12 @@ func decodeTestRequestRequiredBooleanNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]bool, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4092,8 +4373,12 @@ func decodeTestRequestRequiredBooleanNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredEmptyStructRequest(r *http.Request, span trace.Span) (req TestRequestRequiredEmptyStructReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredEmptyStructRequest(r *http.Request, span trace.Span) (req TestRequestRequiredEmptyStructReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4129,8 +4414,12 @@ func decodeTestRequestRequiredEmptyStructRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredFormatTestRequest(r *http.Request, span trace.Span) (req TestRequestRequiredFormatTestReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredFormatTestRequest(r *http.Request, span trace.Span) (req TestRequestRequiredFormatTestReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4174,8 +4463,12 @@ func decodeTestRequestRequiredFormatTestRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredIntegerRequest(r *http.Request, span trace.Span) (req int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerRequest(r *http.Request, span trace.Span) (req int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4213,8 +4506,12 @@ func decodeTestRequestRequiredIntegerRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4268,8 +4565,12 @@ func decodeTestRequestRequiredIntegerArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4348,8 +4649,12 @@ func decodeTestRequestRequiredIntegerArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt32Request(r *http.Request, span trace.Span) (req int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt32Request(r *http.Request, span trace.Span) (req int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4387,8 +4692,12 @@ func decodeTestRequestRequiredIntegerInt32Request(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4442,8 +4751,12 @@ func decodeTestRequestRequiredIntegerInt32ArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4522,8 +4835,12 @@ func decodeTestRequestRequiredIntegerInt32ArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req NilInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req NilInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4559,8 +4876,12 @@ func decodeTestRequestRequiredIntegerInt32NullableRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4614,8 +4935,12 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4694,8 +5019,12 @@ func decodeTestRequestRequiredIntegerInt32NullableArrayArrayRequest(r *http.Requ
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt64Request(r *http.Request, span trace.Span) (req int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt64Request(r *http.Request, span trace.Span) (req int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4733,8 +5062,12 @@ func decodeTestRequestRequiredIntegerInt64Request(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4788,8 +5121,12 @@ func decodeTestRequestRequiredIntegerInt64ArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4868,8 +5205,12 @@ func decodeTestRequestRequiredIntegerInt64ArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req NilInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req NilInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4905,8 +5246,12 @@ func decodeTestRequestRequiredIntegerInt64NullableRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -4960,8 +5305,12 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5040,8 +5389,12 @@ func decodeTestRequestRequiredIntegerInt64NullableArrayArrayRequest(r *http.Requ
 	}
 }
 
-func decodeTestRequestRequiredIntegerNullableRequest(r *http.Request, span trace.Span) (req NilInt, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerNullableRequest(r *http.Request, span trace.Span) (req NilInt, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5077,8 +5430,12 @@ func decodeTestRequestRequiredIntegerNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req []int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5132,8 +5489,12 @@ func decodeTestRequestRequiredIntegerNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5212,8 +5573,12 @@ func decodeTestRequestRequiredIntegerNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredNullRequest(r *http.Request, span trace.Span) (req struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNullRequest(r *http.Request, span trace.Span) (req struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5249,8 +5614,12 @@ func decodeTestRequestRequiredNullRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestRequiredNullArrayRequest(r *http.Request, span trace.Span) (req []struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNullArrayRequest(r *http.Request, span trace.Span) (req []struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5302,8 +5671,12 @@ func decodeTestRequestRequiredNullArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request, span trace.Span) (req [][]struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request, span trace.Span) (req [][]struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5380,8 +5753,12 @@ func decodeTestRequestRequiredNullArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredNullNullableRequest(r *http.Request, span trace.Span) (req struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNullNullableRequest(r *http.Request, span trace.Span) (req struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5417,8 +5794,12 @@ func decodeTestRequestRequiredNullNullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestRequiredNullNullableArrayRequest(r *http.Request, span trace.Span) (req []struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNullNullableArrayRequest(r *http.Request, span trace.Span) (req []struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5470,8 +5851,12 @@ func decodeTestRequestRequiredNullNullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]struct{}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]struct{}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5548,8 +5933,12 @@ func decodeTestRequestRequiredNullNullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (req float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (req float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5595,8 +5984,12 @@ func decodeTestRequestRequiredNumberRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5667,8 +6060,12 @@ func decodeTestRequestRequiredNumberArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5764,8 +6161,12 @@ func decodeTestRequestRequiredNumberArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Span) (req float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Span) (req float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5811,8 +6212,12 @@ func decodeTestRequestRequiredNumberDoubleRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5883,8 +6288,12 @@ func decodeTestRequestRequiredNumberDoubleArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -5980,8 +6389,12 @@ func decodeTestRequestRequiredNumberDoubleArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req NilFloat64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req NilFloat64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6025,8 +6438,12 @@ func decodeTestRequestRequiredNumberDoubleNullableRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6097,8 +6514,12 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6194,8 +6615,12 @@ func decodeTestRequestRequiredNumberDoubleNullableArrayArrayRequest(r *http.Requ
 	}
 }
 
-func decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Span) (req float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Span) (req float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6241,8 +6666,12 @@ func decodeTestRequestRequiredNumberFloatRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6313,8 +6742,12 @@ func decodeTestRequestRequiredNumberFloatArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6410,8 +6843,12 @@ func decodeTestRequestRequiredNumberFloatArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span trace.Span) (req NilFloat32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span trace.Span) (req NilFloat32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6455,8 +6892,12 @@ func decodeTestRequestRequiredNumberFloatNullableRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req []float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6527,8 +6968,12 @@ func decodeTestRequestRequiredNumberFloatNullableArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6624,8 +7069,12 @@ func decodeTestRequestRequiredNumberFloatNullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func decodeTestRequestRequiredNumberInt32Request(r *http.Request, span trace.Span) (req int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt32Request(r *http.Request, span trace.Span) (req int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6663,8 +7112,12 @@ func decodeTestRequestRequiredNumberInt32Request(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6718,8 +7171,12 @@ func decodeTestRequestRequiredNumberInt32ArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6798,8 +7255,12 @@ func decodeTestRequestRequiredNumberInt32ArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Request, span trace.Span) (req NilInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Request, span trace.Span) (req NilInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6835,8 +7296,12 @@ func decodeTestRequestRequiredNumberInt32NullableRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6890,8 +7355,12 @@ func decodeTestRequestRequiredNumberInt32NullableArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -6970,8 +7439,12 @@ func decodeTestRequestRequiredNumberInt32NullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func decodeTestRequestRequiredNumberInt64Request(r *http.Request, span trace.Span) (req int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt64Request(r *http.Request, span trace.Span) (req int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7009,8 +7482,12 @@ func decodeTestRequestRequiredNumberInt64Request(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7064,8 +7541,12 @@ func decodeTestRequestRequiredNumberInt64ArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7144,8 +7625,12 @@ func decodeTestRequestRequiredNumberInt64ArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Request, span trace.Span) (req NilInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Request, span trace.Span) (req NilInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7181,8 +7666,12 @@ func decodeTestRequestRequiredNumberInt64NullableRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7236,8 +7725,12 @@ func decodeTestRequestRequiredNumberInt64NullableArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7316,8 +7809,12 @@ func decodeTestRequestRequiredNumberInt64NullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.Span) (req NilFloat64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.Span) (req NilFloat64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7361,8 +7858,12 @@ func decodeTestRequestRequiredNumberNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span trace.Span) (req []float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7433,8 +7934,12 @@ func decodeTestRequestRequiredNumberNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]float64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7530,8 +8035,12 @@ func decodeTestRequestRequiredNumberNullableArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7569,8 +8078,12 @@ func decodeTestRequestRequiredStringRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestRequiredStringArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7624,8 +8137,12 @@ func decodeTestRequestRequiredStringArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7704,8 +8221,12 @@ func decodeTestRequestRequiredStringArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredStringBinaryRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringBinaryRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7743,8 +8264,12 @@ func decodeTestRequestRequiredStringBinaryRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7798,8 +8323,12 @@ func decodeTestRequestRequiredStringBinaryArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7878,8 +8407,12 @@ func decodeTestRequestRequiredStringBinaryArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7915,8 +8448,12 @@ func decodeTestRequestRequiredStringBinaryNullableRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -7970,8 +8507,12 @@ func decodeTestRequestRequiredStringBinaryNullableArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8050,8 +8591,12 @@ func decodeTestRequestRequiredStringBinaryNullableArrayArrayRequest(r *http.Requ
 	}
 }
 
-func decodeTestRequestRequiredStringByteRequest(r *http.Request, span trace.Span) (req []byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringByteRequest(r *http.Request, span trace.Span) (req []byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8089,8 +8634,12 @@ func decodeTestRequestRequiredStringByteRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringByteArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringByteArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8144,8 +8693,12 @@ func decodeTestRequestRequiredStringByteArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8224,8 +8777,12 @@ func decodeTestRequestRequiredStringByteArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringByteNullableRequest(r *http.Request, span trace.Span) (req []byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringByteNullableRequest(r *http.Request, span trace.Span) (req []byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8263,8 +8820,12 @@ func decodeTestRequestRequiredStringByteNullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8318,8 +8879,12 @@ func decodeTestRequestRequiredStringByteNullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8398,8 +8963,12 @@ func decodeTestRequestRequiredStringByteNullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringDateRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8437,8 +9006,12 @@ func decodeTestRequestRequiredStringDateRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringDateArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8492,8 +9065,12 @@ func decodeTestRequestRequiredStringDateArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8572,8 +9149,12 @@ func decodeTestRequestRequiredStringDateArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringDateNullableRequest(r *http.Request, span trace.Span) (req NilDate, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateNullableRequest(r *http.Request, span trace.Span) (req NilDate, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8609,8 +9190,12 @@ func decodeTestRequestRequiredStringDateNullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8664,8 +9249,12 @@ func decodeTestRequestRequiredStringDateNullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8744,8 +9333,12 @@ func decodeTestRequestRequiredStringDateNullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringDateTimeRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateTimeRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8783,8 +9376,12 @@ func decodeTestRequestRequiredStringDateTimeRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8838,8 +9435,12 @@ func decodeTestRequestRequiredStringDateTimeArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8918,8 +9519,12 @@ func decodeTestRequestRequiredStringDateTimeArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req NilDateTime, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req NilDateTime, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -8955,8 +9560,12 @@ func decodeTestRequestRequiredStringDateTimeNullableRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9010,8 +9619,12 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayRequest(r *http.Request
 	}
 }
 
-func decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9090,8 +9703,12 @@ func decodeTestRequestRequiredStringDateTimeNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func decodeTestRequestRequiredStringDurationRequest(r *http.Request, span trace.Span) (req time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDurationRequest(r *http.Request, span trace.Span) (req time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9129,8 +9746,12 @@ func decodeTestRequestRequiredStringDurationRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9184,8 +9805,12 @@ func decodeTestRequestRequiredStringDurationArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9264,8 +9889,12 @@ func decodeTestRequestRequiredStringDurationArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringDurationNullableRequest(r *http.Request, span trace.Span) (req NilDuration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDurationNullableRequest(r *http.Request, span trace.Span) (req NilDuration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9301,8 +9930,12 @@ func decodeTestRequestRequiredStringDurationNullableRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9356,8 +9989,12 @@ func decodeTestRequestRequiredStringDurationNullableArrayRequest(r *http.Request
 	}
 }
 
-func decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9436,8 +10073,12 @@ func decodeTestRequestRequiredStringDurationNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func decodeTestRequestRequiredStringEmailRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringEmailRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9491,8 +10132,12 @@ func decodeTestRequestRequiredStringEmailRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9571,8 +10216,12 @@ func decodeTestRequestRequiredStringEmailArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9676,8 +10325,12 @@ func decodeTestRequestRequiredStringEmailArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9729,8 +10382,12 @@ func decodeTestRequestRequiredStringEmailNullableRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9809,8 +10466,12 @@ func decodeTestRequestRequiredStringEmailNullableArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9914,8 +10575,12 @@ func decodeTestRequestRequiredStringEmailNullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func decodeTestRequestRequiredStringHostnameRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringHostnameRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -9969,8 +10634,12 @@ func decodeTestRequestRequiredStringHostnameRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10049,8 +10718,12 @@ func decodeTestRequestRequiredStringHostnameArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10154,8 +10827,12 @@ func decodeTestRequestRequiredStringHostnameArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10207,8 +10884,12 @@ func decodeTestRequestRequiredStringHostnameNullableRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10287,8 +10968,12 @@ func decodeTestRequestRequiredStringHostnameNullableArrayRequest(r *http.Request
 	}
 }
 
-func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10392,8 +11077,12 @@ func decodeTestRequestRequiredStringHostnameNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) (req netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) (req netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10431,8 +11120,12 @@ func decodeTestRequestRequiredStringIPRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10486,8 +11179,12 @@ func decodeTestRequestRequiredStringIPArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10566,8 +11263,12 @@ func decodeTestRequestRequiredStringIPArrayArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringIPNullableRequest(r *http.Request, span trace.Span) (req NilIP, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIPNullableRequest(r *http.Request, span trace.Span) (req NilIP, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10603,8 +11304,12 @@ func decodeTestRequestRequiredStringIPNullableRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10658,8 +11363,12 @@ func decodeTestRequestRequiredStringIPNullableArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10738,8 +11447,12 @@ func decodeTestRequestRequiredStringIPNullableArrayArrayRequest(r *http.Request,
 	}
 }
 
-func decodeTestRequestRequiredStringInt32Request(r *http.Request, span trace.Span) (req int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt32Request(r *http.Request, span trace.Span) (req int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10777,8 +11490,12 @@ func decodeTestRequestRequiredStringInt32Request(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10832,8 +11549,12 @@ func decodeTestRequestRequiredStringInt32ArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10912,8 +11633,12 @@ func decodeTestRequestRequiredStringInt32ArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestRequiredStringInt32NullableRequest(r *http.Request, span trace.Span) (req NilStringInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt32NullableRequest(r *http.Request, span trace.Span) (req NilStringInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -10949,8 +11674,12 @@ func decodeTestRequestRequiredStringInt32NullableRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11004,8 +11733,12 @@ func decodeTestRequestRequiredStringInt32NullableArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11084,8 +11817,12 @@ func decodeTestRequestRequiredStringInt32NullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func decodeTestRequestRequiredStringInt64Request(r *http.Request, span trace.Span) (req int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt64Request(r *http.Request, span trace.Span) (req int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11123,8 +11860,12 @@ func decodeTestRequestRequiredStringInt64Request(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11178,8 +11919,12 @@ func decodeTestRequestRequiredStringInt64ArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11258,8 +12003,12 @@ func decodeTestRequestRequiredStringInt64ArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestRequiredStringInt64NullableRequest(r *http.Request, span trace.Span) (req NilStringInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt64NullableRequest(r *http.Request, span trace.Span) (req NilStringInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11295,8 +12044,12 @@ func decodeTestRequestRequiredStringInt64NullableRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11350,8 +12103,12 @@ func decodeTestRequestRequiredStringInt64NullableArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11430,8 +12187,12 @@ func decodeTestRequestRequiredStringInt64NullableArrayArrayRequest(r *http.Reque
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span) (req netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span) (req netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11469,8 +12230,12 @@ func decodeTestRequestRequiredStringIpv4Request(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11524,8 +12289,12 @@ func decodeTestRequestRequiredStringIpv4ArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11604,8 +12373,12 @@ func decodeTestRequestRequiredStringIpv4ArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Request, span trace.Span) (req NilIPv4, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Request, span trace.Span) (req NilIPv4, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11641,8 +12414,12 @@ func decodeTestRequestRequiredStringIpv4NullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11696,8 +12473,12 @@ func decodeTestRequestRequiredStringIpv4NullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11776,8 +12557,12 @@ func decodeTestRequestRequiredStringIpv4NullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span) (req netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span) (req netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11815,8 +12600,12 @@ func decodeTestRequestRequiredStringIpv6Request(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11870,8 +12659,12 @@ func decodeTestRequestRequiredStringIpv6ArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11950,8 +12743,12 @@ func decodeTestRequestRequiredStringIpv6ArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Request, span trace.Span) (req NilIPv6, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Request, span trace.Span) (req NilIPv6, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -11987,8 +12784,12 @@ func decodeTestRequestRequiredStringIpv6NullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12042,8 +12843,12 @@ func decodeTestRequestRequiredStringIpv6NullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12122,8 +12927,12 @@ func decodeTestRequestRequiredStringIpv6NullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12159,8 +12968,12 @@ func decodeTestRequestRequiredStringNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12214,8 +13027,12 @@ func decodeTestRequestRequiredStringNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12294,8 +13111,12 @@ func decodeTestRequestRequiredStringNullableArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringPasswordRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringPasswordRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12333,8 +13154,12 @@ func decodeTestRequestRequiredStringPasswordRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12388,8 +13213,12 @@ func decodeTestRequestRequiredStringPasswordArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12468,8 +13297,12 @@ func decodeTestRequestRequiredStringPasswordArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringPasswordNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringPasswordNullableRequest(r *http.Request, span trace.Span) (req NilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12505,8 +13338,12 @@ func decodeTestRequestRequiredStringPasswordNullableRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12560,8 +13397,12 @@ func decodeTestRequestRequiredStringPasswordNullableArrayRequest(r *http.Request
 	}
 }
 
-func decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12640,8 +13481,12 @@ func decodeTestRequestRequiredStringPasswordNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func decodeTestRequestRequiredStringTimeRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringTimeRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12679,8 +13524,12 @@ func decodeTestRequestRequiredStringTimeRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12734,8 +13583,12 @@ func decodeTestRequestRequiredStringTimeArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12814,8 +13667,12 @@ func decodeTestRequestRequiredStringTimeArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringTimeNullableRequest(r *http.Request, span trace.Span) (req NilTime, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringTimeNullableRequest(r *http.Request, span trace.Span) (req NilTime, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12851,8 +13708,12 @@ func decodeTestRequestRequiredStringTimeNullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12906,8 +13767,12 @@ func decodeTestRequestRequiredStringTimeNullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -12986,8 +13851,12 @@ func decodeTestRequestRequiredStringTimeNullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringURIRequest(r *http.Request, span trace.Span) (req url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringURIRequest(r *http.Request, span trace.Span) (req url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13025,8 +13894,12 @@ func decodeTestRequestRequiredStringURIRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestRequiredStringURIArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringURIArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13080,8 +13953,12 @@ func decodeTestRequestRequiredStringURIArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13160,8 +14037,12 @@ func decodeTestRequestRequiredStringURIArrayArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringURINullableRequest(r *http.Request, span trace.Span) (req NilURI, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringURINullableRequest(r *http.Request, span trace.Span) (req NilURI, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13197,8 +14078,12 @@ func decodeTestRequestRequiredStringURINullableRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13252,8 +14137,12 @@ func decodeTestRequestRequiredStringURINullableArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13332,8 +14221,12 @@ func decodeTestRequestRequiredStringURINullableArrayArrayRequest(r *http.Request
 	}
 }
 
-func decodeTestRequestRequiredStringUUIDRequest(r *http.Request, span trace.Span) (req uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUUIDRequest(r *http.Request, span trace.Span) (req uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13371,8 +14264,12 @@ func decodeTestRequestRequiredStringUUIDRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13426,8 +14323,12 @@ func decodeTestRequestRequiredStringUUIDArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13506,8 +14407,12 @@ func decodeTestRequestRequiredStringUUIDArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Request, span trace.Span) (req NilUUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Request, span trace.Span) (req NilUUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13543,8 +14448,12 @@ func decodeTestRequestRequiredStringUUIDNullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13598,8 +14507,12 @@ func decodeTestRequestRequiredStringUUIDNullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13678,8 +14591,12 @@ func decodeTestRequestRequiredStringUUIDNullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringUnixRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13717,8 +14634,12 @@ func decodeTestRequestRequiredStringUnixRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13772,8 +14693,12 @@ func decodeTestRequestRequiredStringUnixArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13852,8 +14777,12 @@ func decodeTestRequestRequiredStringUnixArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13891,8 +14820,12 @@ func decodeTestRequestRequiredStringUnixMicroRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -13946,8 +14879,12 @@ func decodeTestRequestRequiredStringUnixMicroArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14026,8 +14963,12 @@ func decodeTestRequestRequiredStringUnixMicroArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (req NilUnixMicro, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (req NilUnixMicro, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14063,8 +15004,12 @@ func decodeTestRequestRequiredStringUnixMicroNullableRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14118,8 +15063,12 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14198,8 +15147,12 @@ func decodeTestRequestRequiredStringUnixMicroNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14237,8 +15190,12 @@ func decodeTestRequestRequiredStringUnixMilliRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14292,8 +15249,12 @@ func decodeTestRequestRequiredStringUnixMilliArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14372,8 +15333,12 @@ func decodeTestRequestRequiredStringUnixMilliArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (req NilUnixMilli, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (req NilUnixMilli, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14409,8 +15374,12 @@ func decodeTestRequestRequiredStringUnixMilliNullableRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14464,8 +15433,12 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14544,8 +15517,12 @@ func decodeTestRequestRequiredStringUnixMilliNullableArrayArrayRequest(r *http.R
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14583,8 +15560,12 @@ func decodeTestRequestRequiredStringUnixNanoRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14638,8 +15619,12 @@ func decodeTestRequestRequiredStringUnixNanoArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14718,8 +15703,12 @@ func decodeTestRequestRequiredStringUnixNanoArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (req NilUnixNano, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (req NilUnixNano, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14755,8 +15744,12 @@ func decodeTestRequestRequiredStringUnixNanoNullableRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14810,8 +15803,12 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayRequest(r *http.Request
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14890,8 +15887,12 @@ func decodeTestRequestRequiredStringUnixNanoNullableArrayArrayRequest(r *http.Re
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNullableRequest(r *http.Request, span trace.Span) (req NilUnixSeconds, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNullableRequest(r *http.Request, span trace.Span) (req NilUnixSeconds, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14927,8 +15928,12 @@ func decodeTestRequestRequiredStringUnixNullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -14982,8 +15987,12 @@ func decodeTestRequestRequiredStringUnixNullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -15062,8 +16071,12 @@ func decodeTestRequestRequiredStringUnixNullableArrayArrayRequest(r *http.Reques
 	}
 }
 
-func decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Request, span trace.Span) (req time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -15101,8 +16114,12 @@ func decodeTestRequestRequiredStringUnixSecondsRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -15156,8 +16173,12 @@ func decodeTestRequestRequiredStringUnixSecondsArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -15236,8 +16257,12 @@ func decodeTestRequestRequiredStringUnixSecondsArrayArrayRequest(r *http.Request
 	}
 }
 
-func decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (req NilUnixSeconds, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (req NilUnixSeconds, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -15273,8 +16298,12 @@ func decodeTestRequestRequiredStringUnixSecondsNullableRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -15328,8 +16357,12 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayRequest(r *http.Requ
 	}
 }
 
-func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -15408,8 +16441,12 @@ func decodeTestRequestRequiredStringUnixSecondsNullableArrayArrayRequest(r *http
 	}
 }
 
-func decodeTestRequestStringRequest(r *http.Request, span trace.Span) (req OptString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15446,8 +16483,12 @@ func decodeTestRequestStringRequest(r *http.Request, span trace.Span) (req OptSt
 	}
 }
 
-func decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15493,8 +16534,12 @@ func decodeTestRequestStringArrayRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15570,8 +16615,12 @@ func decodeTestRequestStringArrayArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestStringBinaryRequest(r *http.Request, span trace.Span) (req OptString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringBinaryRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15608,8 +16657,12 @@ func decodeTestRequestStringBinaryRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestRequestStringBinaryArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringBinaryArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15655,8 +16708,12 @@ func decodeTestRequestStringBinaryArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15732,8 +16789,12 @@ func decodeTestRequestStringBinaryArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringBinaryNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringBinaryNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15770,8 +16831,12 @@ func decodeTestRequestStringBinaryNullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15817,8 +16882,12 @@ func decodeTestRequestStringBinaryNullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15894,8 +16963,12 @@ func decodeTestRequestStringBinaryNullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (req []byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (req []byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15933,8 +17006,12 @@ func decodeTestRequestStringByteRequest(r *http.Request, span trace.Span) (req [
 	}
 }
 
-func decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -15980,8 +17057,12 @@ func decodeTestRequestStringByteArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16057,8 +17138,12 @@ func decodeTestRequestStringByteArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringByteNullableRequest(r *http.Request, span trace.Span) (req OptNilByte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringByteNullableRequest(r *http.Request, span trace.Span) (req OptNilByte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16095,8 +17180,12 @@ func decodeTestRequestStringByteNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req [][]byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16142,8 +17231,12 @@ func decodeTestRequestStringByteNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][][]byte, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16219,8 +17312,12 @@ func decodeTestRequestStringByteNullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (req OptDate, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (req OptDate, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16257,8 +17354,12 @@ func decodeTestRequestStringDateRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16304,8 +17405,12 @@ func decodeTestRequestStringDateArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16381,8 +17486,12 @@ func decodeTestRequestStringDateArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span) (req OptNilDate, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span) (req OptNilDate, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16419,8 +17528,12 @@ func decodeTestRequestStringDateNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16466,8 +17579,12 @@ func decodeTestRequestStringDateNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16543,8 +17660,12 @@ func decodeTestRequestStringDateNullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (req OptDateTime, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (req OptDateTime, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16581,8 +17702,12 @@ func decodeTestRequestStringDateTimeRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16628,8 +17753,12 @@ func decodeTestRequestStringDateTimeArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16705,8 +17834,12 @@ func decodeTestRequestStringDateTimeArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req OptNilDateTime, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req OptNilDateTime, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16743,8 +17876,12 @@ func decodeTestRequestStringDateTimeNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16790,8 +17927,12 @@ func decodeTestRequestStringDateTimeNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16867,8 +18008,12 @@ func decodeTestRequestStringDateTimeNullableArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestStringDurationRequest(r *http.Request, span trace.Span) (req OptDuration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDurationRequest(r *http.Request, span trace.Span) (req OptDuration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16905,8 +18050,12 @@ func decodeTestRequestStringDurationRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -16952,8 +18101,12 @@ func decodeTestRequestStringDurationArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17029,8 +18182,12 @@ func decodeTestRequestStringDurationArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringDurationNullableRequest(r *http.Request, span trace.Span) (req OptNilDuration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDurationNullableRequest(r *http.Request, span trace.Span) (req OptNilDuration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17067,8 +18224,12 @@ func decodeTestRequestStringDurationNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17114,8 +18275,12 @@ func decodeTestRequestStringDurationNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Duration, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17191,8 +18356,12 @@ func decodeTestRequestStringDurationNullableArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (req OptString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17252,8 +18421,12 @@ func decodeTestRequestStringEmailRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17329,8 +18502,12 @@ func decodeTestRequestStringEmailArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17431,8 +18608,12 @@ func decodeTestRequestStringEmailArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17492,8 +18673,12 @@ func decodeTestRequestStringEmailNullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17569,8 +18754,12 @@ func decodeTestRequestStringEmailNullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17671,8 +18860,12 @@ func decodeTestRequestStringEmailNullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (req OptString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17732,8 +18925,12 @@ func decodeTestRequestStringHostnameRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17809,8 +19006,12 @@ func decodeTestRequestStringHostnameArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17911,8 +19112,12 @@ func decodeTestRequestStringHostnameArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -17972,8 +19177,12 @@ func decodeTestRequestStringHostnameNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18049,8 +19258,12 @@ func decodeTestRequestStringHostnameNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18151,8 +19364,12 @@ func decodeTestRequestStringHostnameNullableArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestStringIPRequest(r *http.Request, span trace.Span) (req OptIP, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIPRequest(r *http.Request, span trace.Span) (req OptIP, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18189,8 +19406,12 @@ func decodeTestRequestStringIPRequest(r *http.Request, span trace.Span) (req Opt
 	}
 }
 
-func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18236,8 +19457,12 @@ func decodeTestRequestStringIPArrayRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18313,8 +19538,12 @@ func decodeTestRequestStringIPArrayArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) (req OptNilIP, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) (req OptNilIP, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18351,8 +19580,12 @@ func decodeTestRequestStringIPNullableRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18398,8 +19631,12 @@ func decodeTestRequestStringIPNullableArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18475,8 +19712,12 @@ func decodeTestRequestStringIPNullableArrayArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestRequestStringInt32Request(r *http.Request, span trace.Span) (req OptStringInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt32Request(r *http.Request, span trace.Span) (req OptStringInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18513,8 +19754,12 @@ func decodeTestRequestStringInt32Request(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestStringInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt32ArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18560,8 +19805,12 @@ func decodeTestRequestStringInt32ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18637,8 +19886,12 @@ func decodeTestRequestStringInt32ArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestStringInt32NullableRequest(r *http.Request, span trace.Span) (req OptNilStringInt32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt32NullableRequest(r *http.Request, span trace.Span) (req OptNilStringInt32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18675,8 +19928,12 @@ func decodeTestRequestStringInt32NullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (req []int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18722,8 +19979,12 @@ func decodeTestRequestStringInt32NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int32, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18799,8 +20060,12 @@ func decodeTestRequestStringInt32NullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestStringInt64Request(r *http.Request, span trace.Span) (req OptStringInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt64Request(r *http.Request, span trace.Span) (req OptStringInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18837,8 +20102,12 @@ func decodeTestRequestStringInt64Request(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestRequestStringInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt64ArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18884,8 +20153,12 @@ func decodeTestRequestStringInt64ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18961,8 +20234,12 @@ func decodeTestRequestStringInt64ArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestRequestStringInt64NullableRequest(r *http.Request, span trace.Span) (req OptNilStringInt64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt64NullableRequest(r *http.Request, span trace.Span) (req OptNilStringInt64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -18999,8 +20276,12 @@ func decodeTestRequestStringInt64NullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (req []int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19046,8 +20327,12 @@ func decodeTestRequestStringInt64NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]int64, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19123,8 +20408,12 @@ func decodeTestRequestStringInt64NullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req OptIPv4, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req OptIPv4, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19161,8 +20450,12 @@ func decodeTestRequestStringIpv4Request(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19208,8 +20501,12 @@ func decodeTestRequestStringIpv4ArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19285,8 +20582,12 @@ func decodeTestRequestStringIpv4ArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span) (req OptNilIPv4, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span) (req OptNilIPv4, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19323,8 +20624,12 @@ func decodeTestRequestStringIpv4NullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19370,8 +20675,12 @@ func decodeTestRequestStringIpv4NullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19447,8 +20756,12 @@ func decodeTestRequestStringIpv4NullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req OptIPv6, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req OptIPv6, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19485,8 +20798,12 @@ func decodeTestRequestStringIpv6Request(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19532,8 +20849,12 @@ func decodeTestRequestStringIpv6ArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19609,8 +20930,12 @@ func decodeTestRequestStringIpv6ArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span) (req OptNilIPv6, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span) (req OptNilIPv6, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19647,8 +20972,12 @@ func decodeTestRequestStringIpv6NullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req []netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19694,8 +21023,12 @@ func decodeTestRequestStringIpv6NullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]netip.Addr, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19771,8 +21104,12 @@ func decodeTestRequestStringIpv6NullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19809,8 +21146,12 @@ func decodeTestRequestStringNullableRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19856,8 +21197,12 @@ func decodeTestRequestStringNullableArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19933,8 +21278,12 @@ func decodeTestRequestStringNullableArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringPasswordRequest(r *http.Request, span trace.Span) (req OptString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringPasswordRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -19971,8 +21320,12 @@ func decodeTestRequestStringPasswordRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20018,8 +21371,12 @@ func decodeTestRequestStringPasswordArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20095,8 +21452,12 @@ func decodeTestRequestStringPasswordArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringPasswordNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringPasswordNullableRequest(r *http.Request, span trace.Span) (req OptNilString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20133,8 +21494,12 @@ func decodeTestRequestStringPasswordNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req []string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20180,8 +21545,12 @@ func decodeTestRequestStringPasswordNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20257,8 +21626,12 @@ func decodeTestRequestStringPasswordNullableArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestStringTimeRequest(r *http.Request, span trace.Span) (req OptTime, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringTimeRequest(r *http.Request, span trace.Span) (req OptTime, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20295,8 +21668,12 @@ func decodeTestRequestStringTimeRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20342,8 +21719,12 @@ func decodeTestRequestStringTimeArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20419,8 +21800,12 @@ func decodeTestRequestStringTimeArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringTimeNullableRequest(r *http.Request, span trace.Span) (req OptNilTime, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringTimeNullableRequest(r *http.Request, span trace.Span) (req OptNilTime, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20457,8 +21842,12 @@ func decodeTestRequestStringTimeNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20504,8 +21893,12 @@ func decodeTestRequestStringTimeNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20581,8 +21974,12 @@ func decodeTestRequestStringTimeNullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (req OptURI, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (req OptURI, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20619,8 +22016,12 @@ func decodeTestRequestStringURIRequest(r *http.Request, span trace.Span) (req Op
 	}
 }
 
-func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20666,8 +22067,12 @@ func decodeTestRequestStringURIArrayRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20743,8 +22148,12 @@ func decodeTestRequestStringURIArrayArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span) (req OptNilURI, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span) (req OptNilURI, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20781,8 +22190,12 @@ func decodeTestRequestStringURINullableRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.Span) (req []url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20828,8 +22241,12 @@ func decodeTestRequestStringURINullableArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]url.URL, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20905,8 +22322,12 @@ func decodeTestRequestStringURINullableArrayArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringUUIDRequest(r *http.Request, span trace.Span) (req OptUUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUUIDRequest(r *http.Request, span trace.Span) (req OptUUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20943,8 +22364,12 @@ func decodeTestRequestStringUUIDRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -20990,8 +22415,12 @@ func decodeTestRequestStringUUIDArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21067,8 +22496,12 @@ func decodeTestRequestStringUUIDArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringUUIDNullableRequest(r *http.Request, span trace.Span) (req OptNilUUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUUIDNullableRequest(r *http.Request, span trace.Span) (req OptNilUUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21105,8 +22538,12 @@ func decodeTestRequestStringUUIDNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req []uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21152,8 +22589,12 @@ func decodeTestRequestStringUUIDNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]uuid.UUID, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21229,8 +22670,12 @@ func decodeTestRequestStringUUIDNullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringUnixRequest(r *http.Request, span trace.Span) (req OptUnixSeconds, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixRequest(r *http.Request, span trace.Span) (req OptUnixSeconds, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21267,8 +22712,12 @@ func decodeTestRequestStringUnixRequest(r *http.Request, span trace.Span) (req O
 	}
 }
 
-func decodeTestRequestStringUnixArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21314,8 +22763,12 @@ func decodeTestRequestStringUnixArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21391,8 +22844,12 @@ func decodeTestRequestStringUnixArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringUnixMicroRequest(r *http.Request, span trace.Span) (req OptUnixMicro, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMicroRequest(r *http.Request, span trace.Span) (req OptUnixMicro, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21429,8 +22886,12 @@ func decodeTestRequestStringUnixMicroRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21476,8 +22937,12 @@ func decodeTestRequestStringUnixMicroArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21553,8 +23018,12 @@ func decodeTestRequestStringUnixMicroArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixMicro, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixMicro, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21591,8 +23060,12 @@ func decodeTestRequestStringUnixMicroNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21638,8 +23111,12 @@ func decodeTestRequestStringUnixMicroNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21715,8 +23192,12 @@ func decodeTestRequestStringUnixMicroNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestStringUnixMilliRequest(r *http.Request, span trace.Span) (req OptUnixMilli, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMilliRequest(r *http.Request, span trace.Span) (req OptUnixMilli, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21753,8 +23234,12 @@ func decodeTestRequestStringUnixMilliRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21800,8 +23285,12 @@ func decodeTestRequestStringUnixMilliArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21877,8 +23366,12 @@ func decodeTestRequestStringUnixMilliArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixMilli, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixMilli, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21915,8 +23408,12 @@ func decodeTestRequestStringUnixMilliNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -21962,8 +23459,12 @@ func decodeTestRequestStringUnixMilliNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22039,8 +23540,12 @@ func decodeTestRequestStringUnixMilliNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestRequestStringUnixNanoRequest(r *http.Request, span trace.Span) (req OptUnixNano, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNanoRequest(r *http.Request, span trace.Span) (req OptUnixNano, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22077,8 +23582,12 @@ func decodeTestRequestStringUnixNanoRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22124,8 +23633,12 @@ func decodeTestRequestStringUnixNanoArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22201,8 +23714,12 @@ func decodeTestRequestStringUnixNanoArrayArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestRequestStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixNano, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixNano, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22239,8 +23756,12 @@ func decodeTestRequestStringUnixNanoNullableRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22286,8 +23807,12 @@ func decodeTestRequestStringUnixNanoNullableArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22363,8 +23888,12 @@ func decodeTestRequestStringUnixNanoNullableArrayArrayRequest(r *http.Request, s
 	}
 }
 
-func decodeTestRequestStringUnixNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixSeconds, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixSeconds, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22401,8 +23930,12 @@ func decodeTestRequestStringUnixNullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestRequestStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22448,8 +23981,12 @@ func decodeTestRequestStringUnixNullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22525,8 +24062,12 @@ func decodeTestRequestStringUnixNullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestRequestStringUnixSecondsRequest(r *http.Request, span trace.Span) (req OptUnixSeconds, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixSecondsRequest(r *http.Request, span trace.Span) (req OptUnixSeconds, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22563,8 +24104,12 @@ func decodeTestRequestStringUnixSecondsRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22610,8 +24155,12 @@ func decodeTestRequestStringUnixSecondsArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22687,8 +24236,12 @@ func decodeTestRequestStringUnixSecondsArrayArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestRequestStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixSeconds, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (req OptNilUnixSeconds, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22725,8 +24278,12 @@ func decodeTestRequestStringUnixSecondsNullableRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (req []time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22772,8 +24329,12 @@ func decodeTestRequestStringUnixSecondsNullableArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (req [][]time.Time, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -22849,8 +24410,12 @@ func decodeTestRequestStringUnixSecondsNullableArrayArrayRequest(r *http.Request
 	}
 }
 
-func decodeTestResponseAnyRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseAnyRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -22888,8 +24453,12 @@ func decodeTestResponseAnyRequest(r *http.Request, span trace.Span) (req string,
 	}
 }
 
-func decodeTestResponseBooleanRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseBooleanRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -22927,8 +24496,12 @@ func decodeTestResponseBooleanRequest(r *http.Request, span trace.Span) (req str
 	}
 }
 
-func decodeTestResponseBooleanArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseBooleanArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -22966,8 +24539,12 @@ func decodeTestResponseBooleanArrayRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestResponseBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseBooleanArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23005,8 +24582,12 @@ func decodeTestResponseBooleanArrayArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseBooleanNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseBooleanNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23044,8 +24625,12 @@ func decodeTestResponseBooleanNullableRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseBooleanNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23083,8 +24668,12 @@ func decodeTestResponseBooleanNullableArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23122,8 +24711,12 @@ func decodeTestResponseBooleanNullableArrayArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseEmptyStructRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseEmptyStructRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23161,8 +24754,12 @@ func decodeTestResponseEmptyStructRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseFormatTestRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseFormatTestRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23200,8 +24797,12 @@ func decodeTestResponseFormatTestRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestResponseIntegerRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23239,8 +24840,12 @@ func decodeTestResponseIntegerRequest(r *http.Request, span trace.Span) (req str
 	}
 }
 
-func decodeTestResponseIntegerArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23278,8 +24883,12 @@ func decodeTestResponseIntegerArrayRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestResponseIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23317,8 +24926,12 @@ func decodeTestResponseIntegerArrayArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseIntegerInt32Request(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt32Request(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23356,8 +24969,12 @@ func decodeTestResponseIntegerInt32Request(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestResponseIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt32ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23395,8 +25012,12 @@ func decodeTestResponseIntegerInt32ArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23434,8 +25055,12 @@ func decodeTestResponseIntegerInt32ArrayArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt32NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23473,8 +25098,12 @@ func decodeTestResponseIntegerInt32NullableRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23512,8 +25141,12 @@ func decodeTestResponseIntegerInt32NullableArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23551,8 +25184,12 @@ func decodeTestResponseIntegerInt32NullableArrayArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestResponseIntegerInt64Request(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt64Request(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23590,8 +25227,12 @@ func decodeTestResponseIntegerInt64Request(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestResponseIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt64ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23629,8 +25270,12 @@ func decodeTestResponseIntegerInt64ArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23668,8 +25313,12 @@ func decodeTestResponseIntegerInt64ArrayArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt64NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23707,8 +25356,12 @@ func decodeTestResponseIntegerInt64NullableRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23746,8 +25399,12 @@ func decodeTestResponseIntegerInt64NullableArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23785,8 +25442,12 @@ func decodeTestResponseIntegerInt64NullableArrayArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestResponseIntegerNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23824,8 +25485,12 @@ func decodeTestResponseIntegerNullableRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23863,8 +25528,12 @@ func decodeTestResponseIntegerNullableArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23902,8 +25571,12 @@ func decodeTestResponseIntegerNullableArrayArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseNullRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNullRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23941,8 +25614,12 @@ func decodeTestResponseNullRequest(r *http.Request, span trace.Span) (req string
 	}
 }
 
-func decodeTestResponseNullArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNullArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -23980,8 +25657,12 @@ func decodeTestResponseNullArrayRequest(r *http.Request, span trace.Span) (req s
 	}
 }
 
-func decodeTestResponseNullArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNullArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24019,8 +25700,12 @@ func decodeTestResponseNullArrayArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseNullNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNullNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24058,8 +25743,12 @@ func decodeTestResponseNullNullableRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestResponseNullNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNullNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24097,8 +25786,12 @@ func decodeTestResponseNullNullableArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNullNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24136,8 +25829,12 @@ func decodeTestResponseNullNullableArrayArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseNumberRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24175,8 +25872,12 @@ func decodeTestResponseNumberRequest(r *http.Request, span trace.Span) (req stri
 	}
 }
 
-func decodeTestResponseNumberArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24214,8 +25915,12 @@ func decodeTestResponseNumberArrayRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseNumberArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24253,8 +25958,12 @@ func decodeTestResponseNumberArrayArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseNumberDoubleRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberDoubleRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24292,8 +26001,12 @@ func decodeTestResponseNumberDoubleRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestResponseNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberDoubleArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24331,8 +26044,12 @@ func decodeTestResponseNumberDoubleArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24370,8 +26087,12 @@ func decodeTestResponseNumberDoubleArrayArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberDoubleNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24409,8 +26130,12 @@ func decodeTestResponseNumberDoubleNullableRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24448,8 +26173,12 @@ func decodeTestResponseNumberDoubleNullableArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24487,8 +26216,12 @@ func decodeTestResponseNumberDoubleNullableArrayArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestResponseNumberFloatRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberFloatRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24526,8 +26259,12 @@ func decodeTestResponseNumberFloatRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseNumberFloatArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberFloatArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24565,8 +26302,12 @@ func decodeTestResponseNumberFloatArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24604,8 +26345,12 @@ func decodeTestResponseNumberFloatArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestResponseNumberFloatNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberFloatNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24643,8 +26388,12 @@ func decodeTestResponseNumberFloatNullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberFloatNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24682,8 +26431,12 @@ func decodeTestResponseNumberFloatNullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24721,8 +26474,12 @@ func decodeTestResponseNumberFloatNullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestResponseNumberInt32Request(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt32Request(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24760,8 +26517,12 @@ func decodeTestResponseNumberInt32Request(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt32ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24799,8 +26560,12 @@ func decodeTestResponseNumberInt32ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24838,8 +26603,12 @@ func decodeTestResponseNumberInt32ArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestResponseNumberInt32NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt32NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24877,8 +26646,12 @@ func decodeTestResponseNumberInt32NullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt32NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24916,8 +26689,12 @@ func decodeTestResponseNumberInt32NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24955,8 +26732,12 @@ func decodeTestResponseNumberInt32NullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestResponseNumberInt64Request(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt64Request(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -24994,8 +26775,12 @@ func decodeTestResponseNumberInt64Request(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt64ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25033,8 +26818,12 @@ func decodeTestResponseNumberInt64ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25072,8 +26861,12 @@ func decodeTestResponseNumberInt64ArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestResponseNumberInt64NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt64NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25111,8 +26904,12 @@ func decodeTestResponseNumberInt64NullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt64NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25150,8 +26947,12 @@ func decodeTestResponseNumberInt64NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25189,8 +26990,12 @@ func decodeTestResponseNumberInt64NullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestResponseNumberNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25228,8 +27033,12 @@ func decodeTestResponseNumberNullableRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseNumberNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25267,8 +27076,12 @@ func decodeTestResponseNumberNullableArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseNumberNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25306,8 +27119,12 @@ func decodeTestResponseNumberNullableArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25345,8 +27162,12 @@ func decodeTestResponseStringRequest(r *http.Request, span trace.Span) (req stri
 	}
 }
 
-func decodeTestResponseStringArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25384,8 +27205,12 @@ func decodeTestResponseStringArrayRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseStringArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25423,8 +27248,12 @@ func decodeTestResponseStringArrayArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseStringBinaryRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringBinaryRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25462,8 +27291,12 @@ func decodeTestResponseStringBinaryRequest(r *http.Request, span trace.Span) (re
 	}
 }
 
-func decodeTestResponseStringBinaryArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringBinaryArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25501,8 +27334,12 @@ func decodeTestResponseStringBinaryArrayRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25540,8 +27377,12 @@ func decodeTestResponseStringBinaryArrayArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseStringBinaryNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringBinaryNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25579,8 +27420,12 @@ func decodeTestResponseStringBinaryNullableRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringBinaryNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25618,8 +27463,12 @@ func decodeTestResponseStringBinaryNullableArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25657,8 +27506,12 @@ func decodeTestResponseStringBinaryNullableArrayArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestResponseStringByteRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringByteRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25696,8 +27549,12 @@ func decodeTestResponseStringByteRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestResponseStringByteArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringByteArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25735,8 +27592,12 @@ func decodeTestResponseStringByteArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringByteArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25774,8 +27635,12 @@ func decodeTestResponseStringByteArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringByteNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringByteNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25813,8 +27678,12 @@ func decodeTestResponseStringByteNullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringByteNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25852,8 +27721,12 @@ func decodeTestResponseStringByteNullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringByteNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25891,8 +27764,12 @@ func decodeTestResponseStringByteNullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringDateRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25930,8 +27807,12 @@ func decodeTestResponseStringDateRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestResponseStringDateArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -25969,8 +27850,12 @@ func decodeTestResponseStringDateArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26008,8 +27893,12 @@ func decodeTestResponseStringDateArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringDateNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26047,8 +27936,12 @@ func decodeTestResponseStringDateNullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26086,8 +27979,12 @@ func decodeTestResponseStringDateNullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26125,8 +28022,12 @@ func decodeTestResponseStringDateNullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringDateTimeRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateTimeRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26164,8 +28065,12 @@ func decodeTestResponseStringDateTimeRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateTimeArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26203,8 +28108,12 @@ func decodeTestResponseStringDateTimeArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26242,8 +28151,12 @@ func decodeTestResponseStringDateTimeArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateTimeNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26281,8 +28194,12 @@ func decodeTestResponseStringDateTimeNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26320,8 +28237,12 @@ func decodeTestResponseStringDateTimeNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26359,8 +28280,12 @@ func decodeTestResponseStringDateTimeNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestResponseStringDurationRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDurationRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26398,8 +28323,12 @@ func decodeTestResponseStringDurationRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseStringDurationArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDurationArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26437,8 +28366,12 @@ func decodeTestResponseStringDurationArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDurationArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26476,8 +28409,12 @@ func decodeTestResponseStringDurationArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringDurationNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDurationNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26515,8 +28452,12 @@ func decodeTestResponseStringDurationNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDurationNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26554,8 +28495,12 @@ func decodeTestResponseStringDurationNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestResponseStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringDurationNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26593,8 +28538,12 @@ func decodeTestResponseStringDurationNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestResponseStringEmailRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringEmailRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26632,8 +28581,12 @@ func decodeTestResponseStringEmailRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseStringEmailArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringEmailArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26671,8 +28624,12 @@ func decodeTestResponseStringEmailArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringEmailArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26710,8 +28667,12 @@ func decodeTestResponseStringEmailArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestResponseStringEmailNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringEmailNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26749,8 +28710,12 @@ func decodeTestResponseStringEmailNullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringEmailNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26788,8 +28753,12 @@ func decodeTestResponseStringEmailNullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26827,8 +28796,12 @@ func decodeTestResponseStringEmailNullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestResponseStringHostnameRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringHostnameRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26866,8 +28839,12 @@ func decodeTestResponseStringHostnameRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseStringHostnameArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringHostnameArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26905,8 +28882,12 @@ func decodeTestResponseStringHostnameArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringHostnameArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26944,8 +28925,12 @@ func decodeTestResponseStringHostnameArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringHostnameNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringHostnameNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -26983,8 +28968,12 @@ func decodeTestResponseStringHostnameNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringHostnameNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27022,8 +29011,12 @@ func decodeTestResponseStringHostnameNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestResponseStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringHostnameNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27061,8 +29054,12 @@ func decodeTestResponseStringHostnameNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestResponseStringIPRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIPRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27100,8 +29097,12 @@ func decodeTestResponseStringIPRequest(r *http.Request, span trace.Span) (req st
 	}
 }
 
-func decodeTestResponseStringIPArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIPArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27139,8 +29140,12 @@ func decodeTestResponseStringIPArrayRequest(r *http.Request, span trace.Span) (r
 	}
 }
 
-func decodeTestResponseStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIPArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27178,8 +29183,12 @@ func decodeTestResponseStringIPArrayArrayRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringIPNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIPNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27217,8 +29226,12 @@ func decodeTestResponseStringIPNullableRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIPNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27256,8 +29269,12 @@ func decodeTestResponseStringIPNullableArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27295,8 +29312,12 @@ func decodeTestResponseStringIPNullableArrayArrayRequest(r *http.Request, span t
 	}
 }
 
-func decodeTestResponseStringInt32Request(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt32Request(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27334,8 +29355,12 @@ func decodeTestResponseStringInt32Request(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseStringInt32ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt32ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27373,8 +29398,12 @@ func decodeTestResponseStringInt32ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27412,8 +29441,12 @@ func decodeTestResponseStringInt32ArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestResponseStringInt32NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt32NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27451,8 +29484,12 @@ func decodeTestResponseStringInt32NullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt32NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27490,8 +29527,12 @@ func decodeTestResponseStringInt32NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27529,8 +29570,12 @@ func decodeTestResponseStringInt32NullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestResponseStringInt64Request(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt64Request(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27568,8 +29613,12 @@ func decodeTestResponseStringInt64Request(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeTestResponseStringInt64ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt64ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27607,8 +29656,12 @@ func decodeTestResponseStringInt64ArrayRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27646,8 +29699,12 @@ func decodeTestResponseStringInt64ArrayArrayRequest(r *http.Request, span trace.
 	}
 }
 
-func decodeTestResponseStringInt64NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt64NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27685,8 +29742,12 @@ func decodeTestResponseStringInt64NullableRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt64NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27724,8 +29785,12 @@ func decodeTestResponseStringInt64NullableArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27763,8 +29828,12 @@ func decodeTestResponseStringInt64NullableArrayArrayRequest(r *http.Request, spa
 	}
 }
 
-func decodeTestResponseStringIpv4Request(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv4Request(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27802,8 +29871,12 @@ func decodeTestResponseStringIpv4Request(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestResponseStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv4ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27841,8 +29914,12 @@ func decodeTestResponseStringIpv4ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27880,8 +29957,12 @@ func decodeTestResponseStringIpv4ArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringIpv4NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv4NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27919,8 +30000,12 @@ func decodeTestResponseStringIpv4NullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv4NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27958,8 +30043,12 @@ func decodeTestResponseStringIpv4NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -27997,8 +30086,12 @@ func decodeTestResponseStringIpv4NullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringIpv6Request(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv6Request(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28036,8 +30129,12 @@ func decodeTestResponseStringIpv6Request(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestResponseStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv6ArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28075,8 +30172,12 @@ func decodeTestResponseStringIpv6ArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28114,8 +30215,12 @@ func decodeTestResponseStringIpv6ArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringIpv6NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv6NullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28153,8 +30258,12 @@ func decodeTestResponseStringIpv6NullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv6NullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28192,8 +30301,12 @@ func decodeTestResponseStringIpv6NullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28231,8 +30344,12 @@ func decodeTestResponseStringIpv6NullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28270,8 +30387,12 @@ func decodeTestResponseStringNullableRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseStringNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28309,8 +30430,12 @@ func decodeTestResponseStringNullableArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28348,8 +30473,12 @@ func decodeTestResponseStringNullableArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringPasswordRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringPasswordRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28387,8 +30516,12 @@ func decodeTestResponseStringPasswordRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseStringPasswordArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringPasswordArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28426,8 +30559,12 @@ func decodeTestResponseStringPasswordArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringPasswordArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28465,8 +30602,12 @@ func decodeTestResponseStringPasswordArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringPasswordNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringPasswordNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28504,8 +30645,12 @@ func decodeTestResponseStringPasswordNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringPasswordNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28543,8 +30688,12 @@ func decodeTestResponseStringPasswordNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestResponseStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringPasswordNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28582,8 +30731,12 @@ func decodeTestResponseStringPasswordNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestResponseStringTimeRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringTimeRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28621,8 +30774,12 @@ func decodeTestResponseStringTimeRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestResponseStringTimeArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringTimeArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28660,8 +30817,12 @@ func decodeTestResponseStringTimeArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringTimeArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28699,8 +30860,12 @@ func decodeTestResponseStringTimeArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringTimeNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringTimeNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28738,8 +30903,12 @@ func decodeTestResponseStringTimeNullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringTimeNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28777,8 +30946,12 @@ func decodeTestResponseStringTimeNullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28816,8 +30989,12 @@ func decodeTestResponseStringTimeNullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringURIRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringURIRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28855,8 +31032,12 @@ func decodeTestResponseStringURIRequest(r *http.Request, span trace.Span) (req s
 	}
 }
 
-func decodeTestResponseStringURIArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringURIArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28894,8 +31075,12 @@ func decodeTestResponseStringURIArrayRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringURIArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28933,8 +31118,12 @@ func decodeTestResponseStringURIArrayArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringURINullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringURINullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -28972,8 +31161,12 @@ func decodeTestResponseStringURINullableRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseStringURINullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringURINullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29011,8 +31204,12 @@ func decodeTestResponseStringURINullableArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringURINullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29050,8 +31247,12 @@ func decodeTestResponseStringURINullableArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestResponseStringUUIDRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUUIDRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29089,8 +31290,12 @@ func decodeTestResponseStringUUIDRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestResponseStringUUIDArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUUIDArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29128,8 +31333,12 @@ func decodeTestResponseStringUUIDArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29167,8 +31376,12 @@ func decodeTestResponseStringUUIDArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringUUIDNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUUIDNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29206,8 +31419,12 @@ func decodeTestResponseStringUUIDNullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUUIDNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29245,8 +31462,12 @@ func decodeTestResponseStringUUIDNullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29284,8 +31505,12 @@ func decodeTestResponseStringUUIDNullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringUnixRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29323,8 +31548,12 @@ func decodeTestResponseStringUnixRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeTestResponseStringUnixArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29362,8 +31591,12 @@ func decodeTestResponseStringUnixArrayRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29401,8 +31634,12 @@ func decodeTestResponseStringUnixArrayArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringUnixMicroRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMicroRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29440,8 +31677,12 @@ func decodeTestResponseStringUnixMicroRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMicroArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29479,8 +31720,12 @@ func decodeTestResponseStringUnixMicroArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29518,8 +31763,12 @@ func decodeTestResponseStringUnixMicroArrayArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMicroNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29557,8 +31806,12 @@ func decodeTestResponseStringUnixMicroNullableRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29596,8 +31849,12 @@ func decodeTestResponseStringUnixMicroNullableArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29635,8 +31892,12 @@ func decodeTestResponseStringUnixMicroNullableArrayArrayRequest(r *http.Request,
 	}
 }
 
-func decodeTestResponseStringUnixMilliRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMilliRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29674,8 +31935,12 @@ func decodeTestResponseStringUnixMilliRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeTestResponseStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMilliArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29713,8 +31978,12 @@ func decodeTestResponseStringUnixMilliArrayRequest(r *http.Request, span trace.S
 	}
 }
 
-func decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29752,8 +32021,12 @@ func decodeTestResponseStringUnixMilliArrayArrayRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMilliNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29791,8 +32064,12 @@ func decodeTestResponseStringUnixMilliNullableRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29830,8 +32107,12 @@ func decodeTestResponseStringUnixMilliNullableArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29869,8 +32150,12 @@ func decodeTestResponseStringUnixMilliNullableArrayArrayRequest(r *http.Request,
 	}
 }
 
-func decodeTestResponseStringUnixNanoRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNanoRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29908,8 +32193,12 @@ func decodeTestResponseStringUnixNanoRequest(r *http.Request, span trace.Span) (
 	}
 }
 
-func decodeTestResponseStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNanoArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29947,8 +32236,12 @@ func decodeTestResponseStringUnixNanoArrayRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -29986,8 +32279,12 @@ func decodeTestResponseStringUnixNanoArrayArrayRequest(r *http.Request, span tra
 	}
 }
 
-func decodeTestResponseStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNanoNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30025,8 +32322,12 @@ func decodeTestResponseStringUnixNanoNullableRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30064,8 +32365,12 @@ func decodeTestResponseStringUnixNanoNullableArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30103,8 +32408,12 @@ func decodeTestResponseStringUnixNanoNullableArrayArrayRequest(r *http.Request, 
 	}
 }
 
-func decodeTestResponseStringUnixNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30142,8 +32451,12 @@ func decodeTestResponseStringUnixNullableRequest(r *http.Request, span trace.Spa
 	}
 }
 
-func decodeTestResponseStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30181,8 +32494,12 @@ func decodeTestResponseStringUnixNullableArrayRequest(r *http.Request, span trac
 	}
 }
 
-func decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30220,8 +32537,12 @@ func decodeTestResponseStringUnixNullableArrayArrayRequest(r *http.Request, span
 	}
 }
 
-func decodeTestResponseStringUnixSecondsRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixSecondsRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30259,8 +32580,12 @@ func decodeTestResponseStringUnixSecondsRequest(r *http.Request, span trace.Span
 	}
 }
 
-func decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30298,8 +32623,12 @@ func decodeTestResponseStringUnixSecondsArrayRequest(r *http.Request, span trace
 	}
 }
 
-func decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30337,8 +32666,12 @@ func decodeTestResponseStringUnixSecondsArrayArrayRequest(r *http.Request, span 
 	}
 }
 
-func decodeTestResponseStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixSecondsNullableRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30376,8 +32709,12 @@ func decodeTestResponseStringUnixSecondsNullableRequest(r *http.Request, span tr
 	}
 }
 
-func decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -30415,8 +32752,12 @@ func decodeTestResponseStringUnixSecondsNullableArrayRequest(r *http.Request, sp
 	}
 }
 
-func decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestResponseStringUnixSecondsNullableArrayArrayRequest(r *http.Request, span trace.Span) (req string, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired

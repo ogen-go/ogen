@@ -848,6 +848,14 @@ func decodeTestFormURLEncodedResponse(resp *http.Response, span trace.Span) (res
 		return res, validate.UnexpectedStatusCode(resp.StatusCode)
 	}
 }
+func decodeTestMultipartResponse(resp *http.Response, span trace.Span) (res TestMultipartOK, err error) {
+	switch resp.StatusCode {
+	case 200:
+		return TestMultipartOK{}, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
 func decodeTestObjectQueryParameterResponse(resp *http.Response, span trace.Span) (res TestObjectQueryParameterOK, err error) {
 	switch resp.StatusCode {
 	case 200:

@@ -7,125 +7,265 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodeCreateSnapshotRequestJSON(req SnapshotCreateParams, span trace.Span) (data *jx.Encoder, err error) {
+func encodeCreateSnapshotRequestJSON(
+	req SnapshotCreateParams,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeCreateSyncActionRequestJSON(req InstanceActionInfo, span trace.Span) (data *jx.Encoder, err error) {
+func encodeCreateSyncActionRequestJSON(
+	req InstanceActionInfo,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeLoadSnapshotRequestJSON(req SnapshotLoadParams, span trace.Span) (data *jx.Encoder, err error) {
+func encodeLoadSnapshotRequestJSON(
+	req SnapshotLoadParams,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeMmdsConfigPutRequestJSON(req MmdsConfig, span trace.Span) (data *jx.Encoder, err error) {
+func encodeMmdsConfigPutRequestJSON(
+	req MmdsConfig,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeMmdsPatchRequestJSON(req *MmdsPatchReq, span trace.Span) (data *jx.Encoder, err error) {
+func encodeMmdsPatchRequestJSON(
+	req *MmdsPatchReq,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req != nil {
 		req.Encode(e)
 	}
 	return e, nil
 }
-func encodeMmdsPutRequestJSON(req *MmdsPutReq, span trace.Span) (data *jx.Encoder, err error) {
+func encodeMmdsPutRequestJSON(
+	req *MmdsPutReq,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req != nil {
 		req.Encode(e)
 	}
 	return e, nil
 }
-func encodePatchBalloonRequestJSON(req BalloonUpdate, span trace.Span) (data *jx.Encoder, err error) {
+func encodePatchBalloonRequestJSON(
+	req BalloonUpdate,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePatchBalloonStatsIntervalRequestJSON(req BalloonStatsUpdate, span trace.Span) (data *jx.Encoder, err error) {
+func encodePatchBalloonStatsIntervalRequestJSON(
+	req BalloonStatsUpdate,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePatchGuestDriveByIDRequestJSON(req PartialDrive, span trace.Span) (data *jx.Encoder, err error) {
+func encodePatchGuestDriveByIDRequestJSON(
+	req PartialDrive,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePatchGuestNetworkInterfaceByIDRequestJSON(req PartialNetworkInterface, span trace.Span) (data *jx.Encoder, err error) {
+func encodePatchGuestNetworkInterfaceByIDRequestJSON(
+	req PartialNetworkInterface,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePatchMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *jx.Encoder, err error) {
+func encodePatchMachineConfigurationRequestJSON(
+	req OptMachineConfiguration,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	return e, nil
 }
-func encodePatchVmRequestJSON(req VM, span trace.Span) (data *jx.Encoder, err error) {
+func encodePatchVmRequestJSON(
+	req VM,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePutBalloonRequestJSON(req Balloon, span trace.Span) (data *jx.Encoder, err error) {
+func encodePutBalloonRequestJSON(
+	req Balloon,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePutGuestBootSourceRequestJSON(req BootSource, span trace.Span) (data *jx.Encoder, err error) {
+func encodePutGuestBootSourceRequestJSON(
+	req BootSource,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePutGuestDriveByIDRequestJSON(req Drive, span trace.Span) (data *jx.Encoder, err error) {
+func encodePutGuestDriveByIDRequestJSON(
+	req Drive,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePutGuestNetworkInterfaceByIDRequestJSON(req NetworkInterface, span trace.Span) (data *jx.Encoder, err error) {
+func encodePutGuestNetworkInterfaceByIDRequestJSON(
+	req NetworkInterface,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePutGuestVsockRequestJSON(req Vsock, span trace.Span) (data *jx.Encoder, err error) {
+func encodePutGuestVsockRequestJSON(
+	req Vsock,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePutLoggerRequestJSON(req Logger, span trace.Span) (data *jx.Encoder, err error) {
+func encodePutLoggerRequestJSON(
+	req Logger,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePutMachineConfigurationRequestJSON(req OptMachineConfiguration, span trace.Span) (data *jx.Encoder, err error) {
+func encodePutMachineConfigurationRequestJSON(
+	req OptMachineConfiguration,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	return e, nil
 }
-func encodePutMetricsRequestJSON(req Metrics, span trace.Span) (data *jx.Encoder, err error) {
+func encodePutMetricsRequestJSON(
+	req Metrics,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)

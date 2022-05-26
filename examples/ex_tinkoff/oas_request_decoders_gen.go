@@ -4,6 +4,7 @@ package api
 
 import (
 	"io"
+	"mime"
 	"net/http"
 
 	"github.com/go-faster/errors"
@@ -13,8 +14,12 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req LimitOrderRequest, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req LimitOrderRequest, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -58,8 +63,12 @@ func decodeOrdersLimitOrderPostRequest(r *http.Request, span trace.Span) (req Li
 	}
 }
 
-func decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req MarketOrderRequest, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req MarketOrderRequest, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -103,8 +112,12 @@ func decodeOrdersMarketOrderPostRequest(r *http.Request, span trace.Span) (req M
 	}
 }
 
-func decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span) (req SandboxSetCurrencyBalanceRequest, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span) (req SandboxSetCurrencyBalanceRequest, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -148,8 +161,12 @@ func decodeSandboxCurrenciesBalancePostRequest(r *http.Request, span trace.Span)
 	}
 }
 
-func decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) (req SandboxSetPositionBalanceRequest, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) (req SandboxSetPositionBalanceRequest, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -193,8 +210,12 @@ func decodeSandboxPositionsBalancePostRequest(r *http.Request, span trace.Span) 
 	}
 }
 
-func decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req OptSandboxRegisterRequest, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSandboxRegisterPostRequest(r *http.Request, span trace.Span) (req OptSandboxRegisterRequest, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil

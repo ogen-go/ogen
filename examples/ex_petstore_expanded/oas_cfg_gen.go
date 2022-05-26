@@ -65,22 +65,24 @@ func respondError(ctx context.Context, w http.ResponseWriter, r *http.Request, e
 }
 
 type config struct {
-	TracerProvider trace.TracerProvider
-	Tracer         trace.Tracer
-	MeterProvider  metric.MeterProvider
-	Meter          metric.Meter
-	Client         ht.Client
-	NotFound       http.HandlerFunc
-	ErrorHandler   ErrorHandler
+	TracerProvider     trace.TracerProvider
+	Tracer             trace.Tracer
+	MeterProvider      metric.MeterProvider
+	Meter              metric.Meter
+	Client             ht.Client
+	NotFound           http.HandlerFunc
+	ErrorHandler       ErrorHandler
+	MaxMultipartMemory int64
 }
 
 func newConfig(opts ...Option) config {
 	cfg := config{
-		TracerProvider: otel.GetTracerProvider(),
-		MeterProvider:  nonrecording.NewNoopMeterProvider(),
-		Client:         http.DefaultClient,
-		NotFound:       http.NotFound,
-		ErrorHandler:   respondError,
+		TracerProvider:     otel.GetTracerProvider(),
+		MeterProvider:      nonrecording.NewNoopMeterProvider(),
+		Client:             http.DefaultClient,
+		NotFound:           http.NotFound,
+		ErrorHandler:       respondError,
+		MaxMultipartMemory: 32 << 20, // 32 MB
 	}
 	for _, opt := range opts {
 		opt.apply(&cfg)
@@ -147,6 +149,16 @@ func WithErrorHandler(h ErrorHandler) Option {
 	return optionFunc(func(cfg *config) {
 		if h != nil {
 			cfg.ErrorHandler = h
+		}
+	})
+}
+
+// WithMaxMultipartMemory specifies limit of memory for storing file parts.
+// File parts which can't be stored in memory will be stored on disk in temporary files.
+func WithMaxMultipartMemory(max int64) Option {
+	return optionFunc(func(cfg *config) {
+		if max > 0 {
+			cfg.MaxMultipartMemory = max
 		}
 	})
 }

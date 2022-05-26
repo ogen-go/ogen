@@ -85,7 +85,7 @@ func (s *Server) handleDefaultTestRequest(args [0]string, w http.ResponseWriter,
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodeDefaultTestRequest(r, span)
+	request, err := s.decodeDefaultTestRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "DefaultTest",
@@ -211,7 +211,7 @@ func (s *Server) handleFoobarPostRequest(args [0]string, w http.ResponseWriter, 
 	defer span.End()
 
 	var err error
-	request, err := decodeFoobarPostRequest(r, span)
+	request, err := s.decodeFoobarPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "FoobarPost",
@@ -407,7 +407,7 @@ func (s *Server) handleOneofBugRequest(args [0]string, w http.ResponseWriter, r 
 	defer span.End()
 
 	var err error
-	request, err := decodeOneofBugRequest(r, span)
+	request, err := s.decodeOneofBugRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "OneofBug",
@@ -486,7 +486,7 @@ func (s *Server) handlePetCreateRequest(args [0]string, w http.ResponseWriter, r
 	defer span.End()
 
 	var err error
-	request, err := decodePetCreateRequest(r, span)
+	request, err := s.decodePetCreateRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PetCreate",
@@ -799,7 +799,7 @@ func (s *Server) handlePetUpdateNameAliasPostRequest(args [0]string, w http.Resp
 	defer span.End()
 
 	var err error
-	request, err := decodePetUpdateNameAliasPostRequest(r, span)
+	request, err := s.decodePetUpdateNameAliasPostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PetUpdateNameAliasPost",
@@ -842,7 +842,7 @@ func (s *Server) handlePetUpdateNamePostRequest(args [0]string, w http.ResponseW
 	defer span.End()
 
 	var err error
-	request, err := decodePetUpdateNamePostRequest(r, span)
+	request, err := s.decodePetUpdateNamePostRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PetUpdateNamePost",
@@ -896,7 +896,7 @@ func (s *Server) handlePetUploadAvatarByIDRequest(args [0]string, w http.Respons
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodePetUploadAvatarByIDRequest(r, span)
+	request, err := s.decodePetUploadAvatarByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PetUploadAvatarByID",
@@ -1089,7 +1089,7 @@ func (s *Server) handleTestFloatValidationRequest(args [0]string, w http.Respons
 	defer span.End()
 
 	var err error
-	request, err := decodeTestFloatValidationRequest(r, span)
+	request, err := s.decodeTestFloatValidationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestFloatValidation",
@@ -1134,7 +1134,7 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 	defer span.End()
 
 	var err error
-	request, err := decodeTestFormURLEncodedRequest(r, span)
+	request, err := s.decodeTestFormURLEncodedRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "TestFormURLEncoded",
@@ -1154,6 +1154,51 @@ func (s *Server) handleTestFormURLEncodedRequest(args [0]string, w http.Response
 	}
 
 	if err := encodeTestFormURLEncodedResponse(response, w, span); err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Response")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		return
+	}
+	elapsedDuration := time.Since(startTime)
+	s.duration.Record(ctx, elapsedDuration.Microseconds(), otelAttrs...)
+}
+
+// HandleTestMultipartRequest handles testMultipart operation.
+//
+// POST /testMultipart
+func (s *Server) handleTestMultipartRequest(args [0]string, w http.ResponseWriter, r *http.Request) {
+	startTime := time.Now()
+	otelAttrs := []attribute.KeyValue{
+		otelogen.OperationID("testMultipart"),
+	}
+	ctx, span := s.cfg.Tracer.Start(r.Context(), "TestMultipart",
+		trace.WithAttributes(otelAttrs...),
+		trace.WithSpanKind(trace.SpanKindServer),
+	)
+	s.requests.Add(ctx, 1, otelAttrs...)
+	defer span.End()
+
+	var err error
+	request, err := s.decodeTestMultipartRequest(r, span)
+	if err != nil {
+		err = &ogenerrors.DecodeRequestError{
+			Operation: "TestMultipart",
+			Err:       err,
+		}
+		s.badRequest(ctx, w, r, span, otelAttrs, err)
+		return
+	}
+
+	response, err := s.h.TestMultipart(ctx, request)
+	if err != nil {
+		span.RecordError(err)
+		span.SetStatus(codes.Error, "Internal")
+		s.errors.Add(ctx, 1, otelAttrs...)
+		s.cfg.ErrorHandler(ctx, w, r, err)
+		return
+	}
+
+	if err := encodeTestMultipartResponse(response, w, span); err != nil {
 		span.RecordError(err)
 		span.SetStatus(codes.Error, "Response")
 		s.errors.Add(ctx, 1, otelAttrs...)

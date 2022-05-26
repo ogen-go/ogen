@@ -146,6 +146,10 @@ type Handler interface {
 	//
 	// POST /testFormURLEncoded
 	TestFormURLEncoded(ctx context.Context, req TestForm) (TestFormURLEncodedOK, error)
+	// TestMultipart implements testMultipart operation.
+	//
+	// POST /testMultipart
+	TestMultipart(ctx context.Context, req TestForm) (TestMultipartOK, error)
 	// TestObjectQueryParameter implements testObjectQueryParameter operation.
 	//
 	// GET /testObjectQueryParameter

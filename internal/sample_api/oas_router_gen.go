@@ -584,8 +584,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						}
 					}
 				}
-			case 't': // Prefix: "testF"
-				if l := len("testF"); len(elem) >= l && elem[0:l] == "testF" {
+			case 't': // Prefix: "test"
+				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
 					elem = elem[l:]
 				} else {
 					break
@@ -595,29 +595,54 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 					break
 				}
 				switch elem[0] {
-				case 'l': // Prefix: "loatValidation"
-					if l := len("loatValidation"); len(elem) >= l && elem[0:l] == "loatValidation" {
+				case 'F': // Prefix: "F"
+					if l := len("F"); len(elem) >= l && elem[0:l] == "F" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestFloatValidation
-						s.handleTestFloatValidationRequest([0]string{}, w, r)
-
-						return
+						break
 					}
-				case 'o': // Prefix: "ormURLEncoded"
-					if l := len("ormURLEncoded"); len(elem) >= l && elem[0:l] == "ormURLEncoded" {
+					switch elem[0] {
+					case 'l': // Prefix: "loatValidation"
+						if l := len("loatValidation"); len(elem) >= l && elem[0:l] == "loatValidation" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: TestFloatValidation
+							s.handleTestFloatValidationRequest([0]string{}, w, r)
+
+							return
+						}
+					case 'o': // Prefix: "ormURLEncoded"
+						if l := len("ormURLEncoded"); len(elem) >= l && elem[0:l] == "ormURLEncoded" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: TestFormURLEncoded
+							s.handleTestFormURLEncodedRequest([0]string{}, w, r)
+
+							return
+						}
+					}
+				case 'M': // Prefix: "Multipart"
+					if l := len("Multipart"); len(elem) >= l && elem[0:l] == "Multipart" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestFormURLEncoded
-						s.handleTestFormURLEncodedRequest([0]string{}, w, r)
+						// Leaf: TestMultipart
+						s.handleTestMultipartRequest([0]string{}, w, r)
 
 						return
 					}
@@ -1250,8 +1275,8 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 						}
 					}
 				}
-			case 't': // Prefix: "testF"
-				if l := len("testF"); len(elem) >= l && elem[0:l] == "testF" {
+			case 't': // Prefix: "test"
+				if l := len("test"); len(elem) >= l && elem[0:l] == "test" {
 					elem = elem[l:]
 				} else {
 					break
@@ -1261,30 +1286,56 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					break
 				}
 				switch elem[0] {
-				case 'l': // Prefix: "loatValidation"
-					if l := len("loatValidation"); len(elem) >= l && elem[0:l] == "loatValidation" {
+				case 'F': // Prefix: "F"
+					if l := len("F"); len(elem) >= l && elem[0:l] == "F" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestFloatValidation
-						r.name = "TestFloatValidation"
-						r.args = args
-						r.count = 0
-						return r, true
+						break
 					}
-				case 'o': // Prefix: "ormURLEncoded"
-					if l := len("ormURLEncoded"); len(elem) >= l && elem[0:l] == "ormURLEncoded" {
+					switch elem[0] {
+					case 'l': // Prefix: "loatValidation"
+						if l := len("loatValidation"); len(elem) >= l && elem[0:l] == "loatValidation" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: TestFloatValidation
+							r.name = "TestFloatValidation"
+							r.args = args
+							r.count = 0
+							return r, true
+						}
+					case 'o': // Prefix: "ormURLEncoded"
+						if l := len("ormURLEncoded"); len(elem) >= l && elem[0:l] == "ormURLEncoded" {
+							elem = elem[l:]
+						} else {
+							break
+						}
+
+						if len(elem) == 0 {
+							// Leaf: TestFormURLEncoded
+							r.name = "TestFormURLEncoded"
+							r.args = args
+							r.count = 0
+							return r, true
+						}
+					}
+				case 'M': // Prefix: "Multipart"
+					if l := len("Multipart"); len(elem) >= l && elem[0:l] == "Multipart" {
 						elem = elem[l:]
 					} else {
 						break
 					}
 
 					if len(elem) == 0 {
-						// Leaf: TestFormURLEncoded
-						r.name = "TestFormURLEncoded"
+						// Leaf: TestMultipart
+						r.name = "TestMultipart"
 						r.args = args
 						r.count = 0
 						return r, true

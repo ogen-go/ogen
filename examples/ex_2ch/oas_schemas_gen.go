@@ -489,6 +489,52 @@ func (o OptMobileThreadLastInfoThread) Or(d MobileThreadLastInfoThread) MobileTh
 	return d
 }
 
+// NewOptPasscodePasscode returns new OptPasscodePasscode with value set to v.
+func NewOptPasscodePasscode(v PasscodePasscode) OptPasscodePasscode {
+	return OptPasscodePasscode{
+		Value: v,
+		Set:   true,
+	}
+}
+
+// OptPasscodePasscode is optional PasscodePasscode.
+type OptPasscodePasscode struct {
+	Value PasscodePasscode
+	Set   bool
+}
+
+// IsSet returns true if OptPasscodePasscode was set.
+func (o OptPasscodePasscode) IsSet() bool { return o.Set }
+
+// Reset unsets value.
+func (o *OptPasscodePasscode) Reset() {
+	var v PasscodePasscode
+	o.Value = v
+	o.Set = false
+}
+
+// SetTo sets value to v.
+func (o *OptPasscodePasscode) SetTo(v PasscodePasscode) {
+	o.Set = true
+	o.Value = v
+}
+
+// Get returns value and boolean that denotes whether value was set.
+func (o OptPasscodePasscode) Get() (v PasscodePasscode, ok bool) {
+	if !o.Set {
+		return v, false
+	}
+	return o.Value, true
+}
+
+// Or returns value if set, or given parameter if does not.
+func (o OptPasscodePasscode) Or(d PasscodePasscode) PasscodePasscode {
+	if v, ok := o.Get(); ok {
+		return v
+	}
+	return d
+}
+
 // NewOptPost returns new OptPost with value set to v.
 func NewOptPost(v Post) OptPost {
 	return OptPost{
@@ -581,6 +627,18 @@ func (o OptString) Or(d string) string {
 	return d
 }
 
+// Ref: #/components/schemas/Passcode
+type Passcode struct {
+	Error    OptError            "json:\"error\""
+	Passcode OptPasscodePasscode "json:\"passcode\""
+	Result   OptInt              "json:\"result\""
+}
+
+type PasscodePasscode struct {
+	Expires OptInt    "json:\"expires\""
+	Type    OptString "json:\"type\""
+}
+
 // Модель поста.
 // Ref: #/components/schemas/Post
 type Post struct {
@@ -607,4 +665,128 @@ type Post struct {
 	Trip      OptString "json:\"trip\""
 	TripStyle OptString "json:\"trip_style\""
 	Views     int       "json:\"views\""
+}
+
+// Ref: #/components/schemas/PostingNewPost
+type PostingNewPost struct {
+	Error OptError "json:\"error\""
+	// Номер нового поста.
+	Num    OptInt "json:\"num\""
+	Result OptInt "json:\"result\""
+}
+
+// Ref: #/components/schemas/PostingNewThread
+type PostingNewThread struct {
+	Error  OptError "json:\"error\""
+	Result OptInt   "json:\"result\""
+	// Номер нового треда.
+	Thread OptInt "json:\"thread\""
+}
+
+// Ref: #/components/schemas/Report
+type Report struct {
+	Error  OptError "json:\"error\""
+	Result OptInt   "json:\"result\""
+}
+
+type UserPassloginPostReq struct {
+	Passcode string "json:\"passcode\""
+}
+
+// UserPostingPostOK represents sum type.
+type UserPostingPostOK struct {
+	Type             UserPostingPostOKType // switch on this field
+	PostingNewThread PostingNewThread
+	PostingNewPost   PostingNewPost
+}
+
+// UserPostingPostOKType is oneOf type of UserPostingPostOK.
+type UserPostingPostOKType string
+
+// Possible values for UserPostingPostOKType.
+const (
+	PostingNewThreadUserPostingPostOK UserPostingPostOKType = "PostingNewThread"
+	PostingNewPostUserPostingPostOK   UserPostingPostOKType = "PostingNewPost"
+)
+
+// IsPostingNewThread reports whether UserPostingPostOK is PostingNewThread.
+func (s UserPostingPostOK) IsPostingNewThread() bool {
+	return s.Type == PostingNewThreadUserPostingPostOK
+}
+
+// IsPostingNewPost reports whether UserPostingPostOK is PostingNewPost.
+func (s UserPostingPostOK) IsPostingNewPost() bool { return s.Type == PostingNewPostUserPostingPostOK }
+
+// SetPostingNewThread sets UserPostingPostOK to PostingNewThread.
+func (s *UserPostingPostOK) SetPostingNewThread(v PostingNewThread) {
+	s.Type = PostingNewThreadUserPostingPostOK
+	s.PostingNewThread = v
+}
+
+// GetPostingNewThread returns PostingNewThread and true boolean if UserPostingPostOK is PostingNewThread.
+func (s UserPostingPostOK) GetPostingNewThread() (v PostingNewThread, ok bool) {
+	if !s.IsPostingNewThread() {
+		return v, false
+	}
+	return s.PostingNewThread, true
+}
+
+// NewPostingNewThreadUserPostingPostOK returns new UserPostingPostOK from PostingNewThread.
+func NewPostingNewThreadUserPostingPostOK(v PostingNewThread) UserPostingPostOK {
+	var s UserPostingPostOK
+	s.SetPostingNewThread(v)
+	return s
+}
+
+// SetPostingNewPost sets UserPostingPostOK to PostingNewPost.
+func (s *UserPostingPostOK) SetPostingNewPost(v PostingNewPost) {
+	s.Type = PostingNewPostUserPostingPostOK
+	s.PostingNewPost = v
+}
+
+// GetPostingNewPost returns PostingNewPost and true boolean if UserPostingPostOK is PostingNewPost.
+func (s UserPostingPostOK) GetPostingNewPost() (v PostingNewPost, ok bool) {
+	if !s.IsPostingNewPost() {
+		return v, false
+	}
+	return s.PostingNewPost, true
+}
+
+// NewPostingNewPostUserPostingPostOK returns new UserPostingPostOK from PostingNewPost.
+func NewPostingNewPostUserPostingPostOK(v PostingNewPost) UserPostingPostOK {
+	var s UserPostingPostOK
+	s.SetPostingNewPost(v)
+	return s
+}
+
+type UserPostingPostReq struct {
+	Board       string      "json:\"board\""
+	CaptchaType CaptchaType "json:\"captcha_type\""
+	Comment     OptString   "json:\"comment\""
+	// Если не включено в настройках доски - поле будет
+	// проигнорировано.
+	Email OptString "json:\"email\""
+	File  []string  "json:\"file[]\""
+	Icon  OptInt    "json:\"icon\""
+	// Если не включено в настройках доски - поле будет
+	// проигнорировано.
+	Name OptString "json:\"name\""
+	// Если не включено в настройках доски - поле будет
+	// проигнорировано.
+	OpMark OptInt "json:\"op_mark\""
+	// Если не включено в настройках доски - поле будет
+	// проигнорировано.
+	Subject OptString "json:\"subject\""
+	// Если не включено в настройках доски - поле будет
+	// проигнорировано.
+	Tags OptString "json:\"tags\""
+	// Если не указано, будет создан тред.
+	Thread OptInt "json:\"thread\""
+}
+
+type UserReportPostReq struct {
+	Board   string "json:\"board\""
+	Comment string "json:\"comment\""
+	Post    []int  "json:\"post\""
+	Thread  int    "json:\"thread\""
 }
