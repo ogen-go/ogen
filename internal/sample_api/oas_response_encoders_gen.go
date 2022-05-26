@@ -125,7 +125,7 @@ func encodeFoobarPostResponse(response FoobarPostRes, w http.ResponseWriter, spa
 		return errors.Errorf("/foobar"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeFoobarPutResponse(response FoobarPutDefStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodeFoobarPutResponse(response FoobarPutDef, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
 	st := http.StatusText(response.StatusCode)
 	if response.StatusCode >= http.StatusBadRequest {
@@ -376,7 +376,7 @@ func encodePetNameByIDResponse(response string, w http.ResponseWriter, span trac
 	return nil
 
 }
-func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDef, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
 	st := http.StatusText(response.StatusCode)
 	if response.StatusCode >= http.StatusBadRequest {
@@ -387,7 +387,7 @@ func encodePetUpdateNameAliasPostResponse(response PetUpdateNameAliasPostDefStat
 	return nil
 
 }
-func encodePetUpdateNamePostResponse(response PetUpdateNamePostDefStatusCode, w http.ResponseWriter, span trace.Span) error {
+func encodePetUpdateNamePostResponse(response PetUpdateNamePostDef, w http.ResponseWriter, span trace.Span) error {
 	w.WriteHeader(response.StatusCode)
 	st := http.StatusText(response.StatusCode)
 	if response.StatusCode >= http.StatusBadRequest {

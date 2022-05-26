@@ -217,30 +217,18 @@ type ActionsDeleteWorkflowRunNoContent struct{}
 type ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
 
 // ActionsDownloadArtifactFound is response for ActionsDownloadArtifact operation.
-type ActionsDownloadArtifactFound struct{}
-
-// ActionsDownloadArtifactFoundHeaders wraps ActionsDownloadArtifactFound with response headers.
-type ActionsDownloadArtifactFoundHeaders struct {
+type ActionsDownloadArtifactFound struct {
 	Location OptString
-	Response ActionsDownloadArtifactFound
 }
 
 // ActionsDownloadJobLogsForWorkflowRunFound is response for ActionsDownloadJobLogsForWorkflowRun operation.
-type ActionsDownloadJobLogsForWorkflowRunFound struct{}
-
-// ActionsDownloadJobLogsForWorkflowRunFoundHeaders wraps ActionsDownloadJobLogsForWorkflowRunFound with response headers.
-type ActionsDownloadJobLogsForWorkflowRunFoundHeaders struct {
+type ActionsDownloadJobLogsForWorkflowRunFound struct {
 	Location OptString
-	Response ActionsDownloadJobLogsForWorkflowRunFound
 }
 
 // ActionsDownloadWorkflowRunLogsFound is response for ActionsDownloadWorkflowRunLogs operation.
-type ActionsDownloadWorkflowRunLogsFound struct{}
-
-// ActionsDownloadWorkflowRunLogsFoundHeaders wraps ActionsDownloadWorkflowRunLogsFound with response headers.
-type ActionsDownloadWorkflowRunLogsFoundHeaders struct {
+type ActionsDownloadWorkflowRunLogsFound struct {
 	Location OptString
-	Response ActionsDownloadWorkflowRunLogsFound
 }
 
 // ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent is response for ActionsEnableSelectedRepositoryGithubActionsOrganization operation.
@@ -30476,15 +30464,11 @@ type OrgsCheckBlockedUserNoContent struct{}
 func (*OrgsCheckBlockedUserNoContent) orgsCheckBlockedUserRes() {}
 
 // OrgsCheckMembershipForUserFound is response for OrgsCheckMembershipForUser operation.
-type OrgsCheckMembershipForUserFound struct{}
-
-// OrgsCheckMembershipForUserFoundHeaders wraps OrgsCheckMembershipForUserFound with response headers.
-type OrgsCheckMembershipForUserFoundHeaders struct {
+type OrgsCheckMembershipForUserFound struct {
 	Location OptString
-	Response OrgsCheckMembershipForUserFound
 }
 
-func (*OrgsCheckMembershipForUserFoundHeaders) orgsCheckMembershipForUserRes() {}
+func (*OrgsCheckMembershipForUserFound) orgsCheckMembershipForUserRes() {}
 
 // OrgsCheckMembershipForUserNoContent is response for OrgsCheckMembershipForUser operation.
 type OrgsCheckMembershipForUserNoContent struct{}
@@ -30666,15 +30650,11 @@ const (
 )
 
 // OrgsListMembersFound is response for OrgsListMembers operation.
-type OrgsListMembersFound struct{}
-
-// OrgsListMembersFoundHeaders wraps OrgsListMembersFound with response headers.
-type OrgsListMembersFoundHeaders struct {
+type OrgsListMembersFound struct {
 	Location OptString
-	Response OrgsListMembersFound
 }
 
-func (*OrgsListMembersFoundHeaders) orgsListMembersRes() {}
+func (*OrgsListMembersFound) orgsListMembersRes() {}
 
 // OrgsListMembersOKHeaders wraps []SimpleUser with response headers.
 type OrgsListMembersOKHeaders struct {
@@ -35521,21 +35501,13 @@ type ReposDisableLfsForRepoNoContent struct{}
 type ReposDisableVulnerabilityAlertsNoContent struct{}
 
 // ReposDownloadTarballArchiveFound is response for ReposDownloadTarballArchive operation.
-type ReposDownloadTarballArchiveFound struct{}
-
-// ReposDownloadTarballArchiveFoundHeaders wraps ReposDownloadTarballArchiveFound with response headers.
-type ReposDownloadTarballArchiveFoundHeaders struct {
+type ReposDownloadTarballArchiveFound struct {
 	Location OptString
-	Response ReposDownloadTarballArchiveFound
 }
 
 // ReposDownloadZipballArchiveFound is response for ReposDownloadZipballArchive operation.
-type ReposDownloadZipballArchiveFound struct{}
-
-// ReposDownloadZipballArchiveFoundHeaders wraps ReposDownloadZipballArchiveFound with response headers.
-type ReposDownloadZipballArchiveFoundHeaders struct {
+type ReposDownloadZipballArchiveFound struct {
 	Location OptString
-	Response ReposDownloadZipballArchiveFound
 }
 
 // ReposEnableAutomatedSecurityFixesNoContent is response for ReposEnableAutomatedSecurityFixes operation.
