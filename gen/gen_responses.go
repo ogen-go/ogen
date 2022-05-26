@@ -226,7 +226,13 @@ func (g *Generator) responseToIR(
 	}, nil
 }
 
-func wrapResponseType(ctx *genctx, name string, t *ir.Type, headers map[string]*ir.Parameter, withStatusCode bool) (ret *ir.Type, rerr error) {
+func wrapResponseType(
+	ctx *genctx,
+	name string,
+	t *ir.Type,
+	headers map[string]*ir.Parameter,
+	withStatusCode bool,
+) (ret *ir.Type, rerr error) {
 	if len(headers) == 0 && !withStatusCode {
 		return t, nil
 	}
