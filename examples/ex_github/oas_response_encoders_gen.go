@@ -15869,7 +15869,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 		// Encoding response headers.
 		{
 			h := uri.NewHeaderEncoder(w.Header())
-			// Encode 'XRateLimitLimit' header.
+			// Encode 'X-RateLimit-Limit' header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "X-RateLimit-Limit",
@@ -15884,7 +15884,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 					return errors.Wrap(err, "encode X-RateLimit-Limit header")
 				}
 			}
-			// Encode 'XRateLimitRemaining' header.
+			// Encode 'X-RateLimit-Remaining' header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "X-RateLimit-Remaining",
@@ -15899,7 +15899,7 @@ func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter,
 					return errors.Wrap(err, "encode X-RateLimit-Remaining header")
 				}
 			}
-			// Encode 'XRateLimitReset' header.
+			// Encode 'X-RateLimit-Reset' header.
 			{
 				cfg := uri.HeaderParameterEncodingConfig{
 					Name:    "X-RateLimit-Reset",
