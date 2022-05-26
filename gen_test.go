@@ -88,9 +88,7 @@ func TestGenerate(t *testing.T) {
 		"autorest/xms-error-responses.json": {
 			"allOf",
 		},
-		"2ch.yml": {
-			"unsupported content types",
-		},
+		"2ch.yml": {},
 		"api.github.com.json": {
 			"complex anyOf",
 			"allOf",
