@@ -87,11 +87,11 @@ func (s sampleAPIServer) GetHeader(ctx context.Context, params api.GetHeaderPara
 	}, nil
 }
 
-func (s sampleAPIServer) PetUpdateNameAliasPost(ctx context.Context, req api.OptPetName) (api.PetUpdateNameAliasPostDefStatusCode, error) {
+func (s sampleAPIServer) PetUpdateNameAliasPost(ctx context.Context, req api.OptPetName) (api.PetUpdateNameAliasPostDef, error) {
 	panic("implement me")
 }
 
-func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req api.OptString) (api.PetUpdateNamePostDefStatusCode, error) {
+func (s sampleAPIServer) PetUpdateNamePost(ctx context.Context, req api.OptString) (api.PetUpdateNamePostDef, error) {
 	panic("implement me")
 }
 
@@ -114,7 +114,7 @@ func (s sampleAPIServer) FoobarGet(ctx context.Context, params api.FoobarGetPara
 	panic("implement me")
 }
 
-func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDefStatusCode, error) {
+func (s sampleAPIServer) FoobarPut(ctx context.Context) (api.FoobarPutDef, error) {
 	panic("implement me")
 }
 
