@@ -5,8 +5,7 @@
 
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
-	{{- $typesCount := len $op.ListResponseTypes }}
-	{{- if eq $typesCount 1 }}
+	{{- if eq (len $op.ListResponseTypes) 1 }}
 		{{- range $info := $op.ListResponseTypes }}
 			{{- template "respond" $info }}
 		{{- end }}
@@ -25,8 +24,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.R
 
 {{- if $.Error }}
 func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, span trace.Span) error {
-	{{- $typesCount := len $.Error.ResponseInfo }}
-	{{- if eq $typesCount 1 }}
+	{{- if eq (len $.Error.ResponseInfo) 1 }}
 		{{- range $info := $.Error.ResponseInfo }}
 			{{- template "respond" $info }}
 		{{- end }}

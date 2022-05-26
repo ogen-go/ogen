@@ -87,7 +87,6 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 			{{- errorf "%q: %s decoder not implemented" $contentType $type }}
 		{{- end }}
 
-
 		{{- if $response.WithHeaders }}
 			var wrapper {{ $originalType.Name }}
 			wrapper.Response = response
