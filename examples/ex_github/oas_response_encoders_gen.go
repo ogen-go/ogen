@@ -9,6 +9,9 @@ import (
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/codes"
 	"go.opentelemetry.io/otel/trace"
+
+	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/uri"
 )
 
 func encodeActionsAddRepoAccessToSelfHostedRunnerGroupInOrgResponse(response ActionsAddRepoAccessToSelfHostedRunnerGroupInOrgNoContent, w http.ResponseWriter, span trace.Span) error {
@@ -300,19 +303,76 @@ func encodeActionsDisableSelectedRepositoryGithubActionsOrganizationResponse(res
 	return nil
 
 }
-func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadArtifactResponse(response ActionsDownloadArtifactFoundHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Location' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Location",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Location.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Location header")
+			}
+		}
+	}
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
-func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadJobLogsForWorkflowRunResponse(response ActionsDownloadJobLogsForWorkflowRunFoundHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Location' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Location",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Location.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Location header")
+			}
+		}
+	}
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
-func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFound, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsDownloadWorkflowRunLogsResponse(response ActionsDownloadWorkflowRunLogsFoundHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Location' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Location",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Location.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Location header")
+			}
+		}
+	}
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
@@ -580,56 +640,132 @@ func encodeActionsGetWorkflowRunUsageResponse(response WorkflowRunUsage, w http.
 	return nil
 
 }
-func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListArtifactsForRepoResponse(response ActionsListArtifactsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListEnvironmentSecretsResponse(response ActionsListEnvironmentSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListJobsForWorkflowRunResponse(response ActionsListJobsForWorkflowRunOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListOrgSecretsResponse(response ActionsListOrgSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -650,28 +786,66 @@ func encodeActionsListRepoAccessToSelfHostedRunnerGroupInOrgResponse(response Ac
 	return nil
 
 }
-func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListRepoSecretsResponse(response ActionsListRepoSecretsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListRepoWorkflowsResponse(response ActionsListRepoWorkflowsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -756,70 +930,165 @@ func encodeActionsListSelfHostedRunnerGroupsForOrgResponse(response ActionsListS
 	return nil
 
 }
-func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersForOrgResponse(response ActionsListSelfHostedRunnersForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersForRepoResponse(response ActionsListSelfHostedRunnersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListSelfHostedRunnersInGroupForOrgResponse(response ActionsListSelfHostedRunnersInGroupForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListWorkflowRunArtifactsResponse(response ActionsListWorkflowRunArtifactsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOK, w http.ResponseWriter, span trace.Span) error {
+func encodeActionsListWorkflowRunsForRepoResponse(response ActionsListWorkflowRunsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -1236,14 +1505,37 @@ func encodeActivityListEventsForAuthenticatedUserResponse(response []Event, w ht
 }
 func encodeActivityListNotificationsForAuthenticatedUserResponse(response ActivityListNotificationsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityListNotificationsForAuthenticatedUserOKApplicationJSON:
+	case *ActivityListNotificationsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1518,15 +1810,34 @@ func encodeActivityListRepoEventsResponse(response []Event, w http.ResponseWrite
 	return nil
 
 }
-func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []Thread, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response ActivityListRepoNotificationsForAuthenticatedUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -1538,14 +1849,37 @@ func encodeActivityListRepoNotificationsForAuthenticatedUserResponse(response []
 }
 func encodeActivityListReposStarredByAuthenticatedUserResponse(response ActivityListReposStarredByAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityListReposStarredByAuthenticatedUserOKApplicationJSON:
+	case *ActivityListReposStarredByAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1586,15 +1920,34 @@ func encodeActivityListReposStarredByAuthenticatedUserResponse(response Activity
 		return errors.Errorf("/user/starred"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListReposWatchedByUserResponse(response ActivityListReposWatchedByUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -1606,14 +1959,37 @@ func encodeActivityListReposWatchedByUserResponse(response []MinimalRepository, 
 }
 func encodeActivityListWatchedReposForAuthenticatedUserResponse(response ActivityListWatchedReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON:
+	case *ActivityListWatchedReposForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -1654,15 +2030,34 @@ func encodeActivityListWatchedReposForAuthenticatedUserResponse(response Activit
 		return errors.Errorf("/user/subscriptions"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeActivityListWatchersForRepoResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
+func encodeActivityListWatchersForRepoResponse(response ActivityListWatchersForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -2501,14 +2896,37 @@ func encodeAppsGetWebhookDeliveryResponse(response AppsGetWebhookDeliveryRes, w 
 }
 func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListAccountsForPlanOKApplicationJSON:
+	case *AppsListAccountsForPlanOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2559,14 +2977,37 @@ func encodeAppsListAccountsForPlanResponse(response AppsListAccountsForPlanRes, 
 }
 func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPlanStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListAccountsForPlanStubbedOKApplicationJSON:
+	case *AppsListAccountsForPlanStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2591,14 +3032,33 @@ func encodeAppsListAccountsForPlanStubbedResponse(response AppsListAccountsForPl
 }
 func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsListInstallationReposForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListInstallationReposForAuthenticatedUserOK:
+	case *AppsListInstallationReposForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2641,14 +3101,37 @@ func encodeAppsListInstallationReposForAuthenticatedUserResponse(response AppsLi
 }
 func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListPlansOKApplicationJSON:
+	case *AppsListPlansOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2686,14 +3169,37 @@ func encodeAppsListPlansResponse(response AppsListPlansRes, w http.ResponseWrite
 }
 func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListPlansStubbedOKApplicationJSON:
+	case *AppsListPlansStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2718,14 +3224,33 @@ func encodeAppsListPlansStubbedResponse(response AppsListPlansStubbedRes, w http
 }
 func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposAccessibleToInstallationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListReposAccessibleToInstallationOK:
+	case *AppsListReposAccessibleToInstallationOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2768,14 +3293,37 @@ func encodeAppsListReposAccessibleToInstallationResponse(response AppsListReposA
 }
 func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSubscriptionsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON:
+	case *AppsListSubscriptionsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -2818,14 +3366,37 @@ func encodeAppsListSubscriptionsForAuthenticatedUserResponse(response AppsListSu
 }
 func encodeAppsListSubscriptionsForAuthenticatedUserStubbedResponse(response AppsListSubscriptionsForAuthenticatedUserStubbedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON:
+	case *AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -3342,15 +3913,34 @@ func encodeChecksGetSuiteResponse(response CheckSuite, w http.ResponseWriter, sp
 	return nil
 
 }
-func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListAnnotationsResponse(response ChecksListAnnotationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -3360,42 +3950,99 @@ func encodeChecksListAnnotationsResponse(response []CheckAnnotation, w http.Resp
 	return nil
 
 }
-func encodeChecksListForRefResponse(response ChecksListForRefOK, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListForRefResponse(response ChecksListForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeChecksListForSuiteResponse(response ChecksListForSuiteOK, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListForSuiteResponse(response ChecksListForSuiteOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOK, w http.ResponseWriter, span trace.Span) error {
+func encodeChecksListSuitesForRefResponse(response ChecksListSuitesForRefOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -4332,28 +4979,66 @@ func encodeEnterpriseAdminListSelfHostedRunnerGroupsForEnterpriseResponse(respon
 	return nil
 
 }
-func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnersForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK, w http.ResponseWriter, span trace.Span) error {
+func encodeEnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseResponse(response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -4544,14 +5229,33 @@ func encodeGistsCheckIsStarredResponse(response GistsCheckIsStarredRes, w http.R
 }
 func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistSimple:
+	case *GistSimpleHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4607,14 +5311,33 @@ func encodeGistsCreateResponse(response GistsCreateRes, w http.ResponseWriter, s
 }
 func encodeGistsCreateCommentResponse(response GistsCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistComment:
+	case *GistCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4741,14 +5464,33 @@ func encodeGistsDeleteCommentResponse(response GistsDeleteCommentRes, w http.Res
 }
 func encodeGistsForkResponse(response GistsForkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *BaseGist:
+	case *BaseGistHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4962,14 +5704,37 @@ func encodeGistsGetRevisionResponse(response GistsGetRevisionRes, w http.Respons
 }
 func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsListOKApplicationJSON:
+	case *GistsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -4999,14 +5764,37 @@ func encodeGistsListResponse(response GistsListRes, w http.ResponseWriter, span 
 }
 func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsListCommentsOKApplicationJSON:
+	case *GistsListCommentsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5049,14 +5837,37 @@ func encodeGistsListCommentsResponse(response GistsListCommentsRes, w http.Respo
 }
 func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsListCommitsOKApplicationJSON:
+	case *GistsListCommitsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5099,14 +5910,37 @@ func encodeGistsListCommitsResponse(response GistsListCommitsRes, w http.Respons
 }
 func encodeGistsListForUserResponse(response GistsListForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsListForUserOKApplicationJSON:
+	case *GistsListForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5131,14 +5965,37 @@ func encodeGistsListForUserResponse(response GistsListForUserRes, w http.Respons
 }
 func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsListForksOKApplicationJSON:
+	case *GistsListForksOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5181,14 +6038,37 @@ func encodeGistsListForksResponse(response GistsListForksRes, w http.ResponseWri
 }
 func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsListPublicOKApplicationJSON:
+	case *GistsListPublicOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5231,14 +6111,37 @@ func encodeGistsListPublicResponse(response GistsListPublicRes, w http.ResponseW
 }
 func encodeGistsListStarredResponse(response GistsListStarredRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GistsListStarredOKApplicationJSON:
+	case *GistsListStarredOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5397,14 +6300,33 @@ func encodeGistsUpdateCommentResponse(response GistsUpdateCommentRes, w http.Res
 }
 func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ShortBlob:
+	case *ShortBlobHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5468,14 +6390,33 @@ func encodeGitCreateBlobResponse(response GitCreateBlobRes, w http.ResponseWrite
 }
 func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GitCommit:
+	case *GitCommitHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5513,14 +6454,33 @@ func encodeGitCreateCommitResponse(response GitCreateCommitRes, w http.ResponseW
 }
 func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GitRef:
+	case *GitRefHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5545,14 +6505,33 @@ func encodeGitCreateRefResponse(response GitCreateRefRes, w http.ResponseWriter,
 }
 func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GitTag:
+	case *GitTagHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5577,14 +6556,33 @@ func encodeGitCreateTagResponse(response GitCreateTagRes, w http.ResponseWriter,
 }
 func encodeGitCreateTreeResponse(response GitCreateTreeRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *GitTree:
+	case *GitTreeHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -5856,15 +6854,34 @@ func encodeGitGetTreeResponse(response GitGetTreeRes, w http.ResponseWriter, spa
 		return errors.Errorf("/repos/{owner}/{repo}/git/trees/{tree_sha}"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeGitListMatchingRefsResponse(response []GitRef, w http.ResponseWriter, span trace.Span) error {
+func encodeGitListMatchingRefsResponse(response GitListMatchingRefsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -6110,14 +7127,33 @@ func encodeIssuesCheckUserCanBeAssignedResponse(response IssuesCheckUserCanBeAss
 }
 func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Issue:
+	case *IssueHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6194,14 +7230,33 @@ func encodeIssuesCreateResponse(response IssuesCreateRes, w http.ResponseWriter,
 }
 func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssueComment:
+	case *IssueCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6265,14 +7320,33 @@ func encodeIssuesCreateCommentResponse(response IssuesCreateCommentRes, w http.R
 }
 func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Label:
+	case *LabelHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6310,14 +7384,33 @@ func encodeIssuesCreateLabelResponse(response IssuesCreateLabelRes, w http.Respo
 }
 func encodeIssuesCreateMilestoneResponse(response IssuesCreateMilestoneRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Milestone:
+	case *MilestoneHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6608,14 +7701,37 @@ func encodeIssuesGetMilestoneResponse(response IssuesGetMilestoneRes, w http.Res
 }
 func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListOKApplicationJSON:
+	case *IssuesListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6658,14 +7774,37 @@ func encodeIssuesListResponse(response IssuesListRes, w http.ResponseWriter, spa
 }
 func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListAssigneesOKApplicationJSON:
+	case *IssuesListAssigneesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6690,14 +7829,37 @@ func encodeIssuesListAssigneesResponse(response IssuesListAssigneesRes, w http.R
 }
 func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListCommentsOKApplicationJSON:
+	case *IssuesListCommentsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6735,14 +7897,37 @@ func encodeIssuesListCommentsResponse(response IssuesListCommentsRes, w http.Res
 }
 func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListCommentsForRepoOKApplicationJSON:
+	case *IssuesListCommentsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6780,14 +7965,37 @@ func encodeIssuesListCommentsForRepoResponse(response IssuesListCommentsForRepoR
 }
 func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListEventsForRepoOKApplicationJSON:
+	case *IssuesListEventsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6812,14 +8020,37 @@ func encodeIssuesListEventsForRepoResponse(response IssuesListEventsForRepoRes, 
 }
 func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListForAuthenticatedUserOKApplicationJSON:
+	case *IssuesListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6849,14 +8080,37 @@ func encodeIssuesListForAuthenticatedUserResponse(response IssuesListForAuthenti
 }
 func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListForOrgOKApplicationJSON:
+	case *IssuesListForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6881,14 +8135,37 @@ func encodeIssuesListForOrgResponse(response IssuesListForOrgRes, w http.Respons
 }
 func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListForRepoOKApplicationJSON:
+	case *IssuesListForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6937,15 +8214,34 @@ func encodeIssuesListForRepoResponse(response IssuesListForRepoRes, w http.Respo
 		return errors.Errorf("/repos/{owner}/{repo}/issues"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.ResponseWriter, span trace.Span) error {
+func encodeIssuesListLabelsForMilestoneResponse(response IssuesListLabelsForMilestoneOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -6957,14 +8253,37 @@ func encodeIssuesListLabelsForMilestoneResponse(response []Label, w http.Respons
 }
 func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListLabelsForRepoOKApplicationJSON:
+	case *IssuesListLabelsForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -6989,14 +8308,37 @@ func encodeIssuesListLabelsForRepoResponse(response IssuesListLabelsForRepoRes, 
 }
 func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListLabelsOnIssueOKApplicationJSON:
+	case *IssuesListLabelsOnIssueOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7021,14 +8363,37 @@ func encodeIssuesListLabelsOnIssueResponse(response IssuesListLabelsOnIssueRes, 
 }
 func encodeIssuesListMilestonesResponse(response IssuesListMilestonesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *IssuesListMilestonesOKApplicationJSON:
+	case *IssuesListMilestonesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7847,14 +9212,37 @@ func encodeMigrationsGetStatusForOrgResponse(response MigrationsGetStatusForOrgR
 }
 func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsListForAuthenticatedUserOKApplicationJSON:
+	case *MigrationsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7895,15 +9283,34 @@ func encodeMigrationsListForAuthenticatedUserResponse(response MigrationsListFor
 		return errors.Errorf("/user/migrations"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeMigrationsListForOrgResponse(response []Migration, w http.ResponseWriter, span trace.Span) error {
+func encodeMigrationsListForOrgResponse(response MigrationsListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -7915,14 +9322,37 @@ func encodeMigrationsListForOrgResponse(response []Migration, w http.ResponseWri
 }
 func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsListReposForOrgOKApplicationJSON:
+	case *MigrationsListReposForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -7947,14 +9377,37 @@ func encodeMigrationsListReposForOrgResponse(response MigrationsListReposForOrgR
 }
 func encodeMigrationsListReposForUserResponse(response MigrationsListReposForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *MigrationsListReposForUserOKApplicationJSON:
+	case *MigrationsListReposForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8164,14 +9617,33 @@ func encodeMigrationsStartForOrgResponse(response MigrationsStartForOrgRes, w ht
 }
 func encodeMigrationsStartImportResponse(response MigrationsStartImportRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Import:
+	case *ImportHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8302,14 +9774,33 @@ func encodeMigrationsUpdateImportResponse(response Import, w http.ResponseWriter
 }
 func encodeOAuthAuthorizationsCreateAuthorizationResponse(response OAuthAuthorizationsCreateAuthorizationRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Authorization:
+	case *AuthorizationHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8564,12 +10055,31 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8577,12 +10087,31 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppResponse(response OA
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8640,12 +10169,31 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 	switch response := response.(type) {
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8653,12 +10201,31 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 
 	case *OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8683,14 +10250,37 @@ func encodeOAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRespon
 }
 func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthorizationsListAuthorizationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OAuthAuthorizationsListAuthorizationsOKApplicationJSON:
+	case *OAuthAuthorizationsListAuthorizationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8746,14 +10336,37 @@ func encodeOAuthAuthorizationsListAuthorizationsResponse(response OAuthAuthoriza
 }
 func encodeOAuthAuthorizationsListGrantsResponse(response OAuthAuthorizationsListGrantsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OAuthAuthorizationsListGrantsOKApplicationJSON:
+	case *OAuthAuthorizationsListGrantsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -8931,7 +10544,26 @@ func encodeOrgsCheckMembershipForUserResponse(response OrgsCheckMembershipForUse
 		span.SetStatus(codes.Ok, http.StatusText(204))
 		return nil
 
-	case *OrgsCheckMembershipForUserFound:
+	case *OrgsCheckMembershipForUserFoundHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(302)
 		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
@@ -9050,14 +10682,33 @@ func encodeOrgsCreateInvitationResponse(response OrgsCreateInvitationRes, w http
 }
 func encodeOrgsCreateWebhookResponse(response OrgsCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgHook:
+	case *OrgHookHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9350,14 +11001,37 @@ func encodeOrgsGetWebhookDeliveryResponse(response OrgsGetWebhookDeliveryRes, w 
 }
 func encodeOrgsListResponse(response OrgsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsListOKApplicationJSON:
+	case *OrgsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9406,14 +11080,37 @@ func encodeOrgsListBlockedUsersResponse(response OrgsListBlockedUsersRes, w http
 }
 func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsListFailedInvitationsOKApplicationJSON:
+	case *OrgsListFailedInvitationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9438,14 +11135,37 @@ func encodeOrgsListFailedInvitationsResponse(response OrgsListFailedInvitationsR
 }
 func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsListForAuthenticatedUserOKApplicationJSON:
+	case *OrgsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9486,15 +11206,34 @@ func encodeOrgsListForAuthenticatedUserResponse(response OrgsListForAuthenticate
 		return errors.Errorf("/user/orgs"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListForUserResponse(response OrgsListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -9506,14 +11245,37 @@ func encodeOrgsListForUserResponse(response []OrganizationSimple, w http.Respons
 }
 func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsListInvitationTeamsOKApplicationJSON:
+	case *OrgsListInvitationTeamsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9538,20 +11300,62 @@ func encodeOrgsListInvitationTeamsResponse(response OrgsListInvitationTeamsRes, 
 }
 func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsListMembersOKApplicationJSON:
+	case *OrgsListMembersOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
 		return nil
 
-	case *OrgsListMembersFound:
+	case *OrgsListMembersFoundHeaders:
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(302)
 		span.SetStatus(codes.Ok, http.StatusText(302))
 		return nil
@@ -9575,14 +11379,37 @@ func encodeOrgsListMembersResponse(response OrgsListMembersRes, w http.ResponseW
 }
 func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMembershipsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsListMembershipsForAuthenticatedUserOKApplicationJSON:
+	case *OrgsListMembershipsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9636,15 +11463,34 @@ func encodeOrgsListMembershipsForAuthenticatedUserResponse(response OrgsListMemb
 		return errors.Errorf("/user/memberships/orgs"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListOutsideCollaboratorsResponse(response OrgsListOutsideCollaboratorsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -9656,14 +11502,37 @@ func encodeOrgsListOutsideCollaboratorsResponse(response []SimpleUser, w http.Re
 }
 func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitationsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsListPendingInvitationsOKApplicationJSON:
+	case *OrgsListPendingInvitationsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -9686,15 +11555,34 @@ func encodeOrgsListPendingInvitationsResponse(response OrgsListPendingInvitation
 		return errors.Errorf("/orgs/{org}/invitations"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeOrgsListPublicMembersResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
+func encodeOrgsListPublicMembersResponse(response OrgsListPublicMembersOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -9769,14 +11657,37 @@ func encodeOrgsListWebhookDeliveriesResponse(response OrgsListWebhookDeliveriesR
 }
 func encodeOrgsListWebhooksResponse(response OrgsListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *OrgsListWebhooksOKApplicationJSON:
+	case *OrgsListWebhooksOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11935,14 +13846,37 @@ func encodeProjectsGetPermissionForUserResponse(response ProjectsGetPermissionFo
 }
 func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsListCardsOKApplicationJSON:
+	case *ProjectsListCardsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -11985,14 +13919,37 @@ func encodeProjectsListCardsResponse(response ProjectsListCardsRes, w http.Respo
 }
 func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsListCollaboratorsOKApplicationJSON:
+	case *ProjectsListCollaboratorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12061,14 +14018,37 @@ func encodeProjectsListCollaboratorsResponse(response ProjectsListCollaboratorsR
 }
 func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsListColumnsOKApplicationJSON:
+	case *ProjectsListColumnsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12111,14 +14091,37 @@ func encodeProjectsListColumnsResponse(response ProjectsListColumnsRes, w http.R
 }
 func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsListForOrgOKApplicationJSON:
+	case *ProjectsListForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12143,14 +14146,37 @@ func encodeProjectsListForOrgResponse(response ProjectsListForOrgRes, w http.Res
 }
 func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsListForRepoOKApplicationJSON:
+	case *ProjectsListForRepoOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12227,14 +14253,37 @@ func encodeProjectsListForRepoResponse(response ProjectsListForRepoRes, w http.R
 }
 func encodeProjectsListForUserResponse(response ProjectsListForUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ProjectsListForUserOKApplicationJSON:
+	case *ProjectsListForUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12689,14 +14738,33 @@ func encodePullsCheckIfMergedResponse(response PullsCheckIfMergedRes, w http.Res
 }
 func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PullRequest:
+	case *PullRequestHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12734,14 +14802,33 @@ func encodePullsCreateResponse(response PullsCreateRes, w http.ResponseWriter, s
 }
 func encodePullsCreateReplyForReviewCommentResponse(response PullsCreateReplyForReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PullRequestReviewComment:
+	case *PullRequestReviewCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -12811,14 +14898,33 @@ func encodePullsCreateReviewResponse(response PullsCreateReviewRes, w http.Respo
 }
 func encodePullsCreateReviewCommentResponse(response PullsCreateReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PullRequestReviewComment:
+	case *PullRequestReviewCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13084,14 +15190,37 @@ func encodePullsGetReviewCommentResponse(response PullsGetReviewCommentRes, w ht
 }
 func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PullsListOKApplicationJSON:
+	case *PullsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13121,14 +15250,37 @@ func encodePullsListResponse(response PullsListRes, w http.ResponseWriter, span 
 }
 func encodePullsListCommentsForReviewResponse(response PullsListCommentsForReviewRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PullsListCommentsForReviewOKApplicationJSON:
+	case *PullsListCommentsForReviewOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13151,15 +15303,34 @@ func encodePullsListCommentsForReviewResponse(response PullsListCommentsForRevie
 		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/reviews/{review_id}/comments"+`: unexpected response type: %T`, response)
 	}
 }
-func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListCommitsResponse(response PullsListCommitsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -13171,14 +15342,37 @@ func encodePullsListCommitsResponse(response []Commit, w http.ResponseWriter, sp
 }
 func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *PullsListFilesOKApplicationJSON:
+	case *PullsListFilesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -13214,29 +15408,67 @@ func encodePullsListFilesResponse(response PullsListFilesRes, w http.ResponseWri
 		return errors.Errorf("/repos/{owner}/{repo}/pulls/{pull_number}/files"+`: unexpected response type: %T`, response)
 	}
 }
-func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequest, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListRequestedReviewersResponse(response PullRequestReviewRequestHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
 	return nil
 
 }
-func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListReviewCommentsResponse(response PullsListReviewCommentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -13246,15 +15478,34 @@ func encodePullsListReviewCommentsResponse(response []PullRequestReviewComment, 
 	return nil
 
 }
-func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewComment, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListReviewCommentsForRepoResponse(response PullsListReviewCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -13264,15 +15515,34 @@ func encodePullsListReviewCommentsForRepoResponse(response []PullRequestReviewCo
 	return nil
 
 }
-func encodePullsListReviewsResponse(response []PullRequestReview, w http.ResponseWriter, span trace.Span) error {
+func encodePullsListReviewsResponse(response PullsListReviewsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -13594,14 +15864,63 @@ func encodePullsUpdateReviewCommentResponse(response PullRequestReviewComment, w
 }
 func encodeRateLimitGetResponse(response RateLimitGetRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *RateLimitOverview:
+	case *RateLimitOverviewHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'X-RateLimit-Limit' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "X-RateLimit-Limit",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.XRateLimitLimit.Get(); ok {
+						return e.EncodeValue(conv.IntToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode X-RateLimit-Limit header")
+				}
+			}
+			// Encode 'X-RateLimit-Remaining' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "X-RateLimit-Remaining",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.XRateLimitRemaining.Get(); ok {
+						return e.EncodeValue(conv.IntToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode X-RateLimit-Remaining header")
+				}
+			}
+			// Encode 'X-RateLimit-Reset' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "X-RateLimit-Reset",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.XRateLimitReset.Get(); ok {
+						return e.EncodeValue(conv.IntToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode X-RateLimit-Reset header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14117,14 +16436,37 @@ func encodeReactionsDeleteLegacyResponse(response ReactionsDeleteLegacyRes, w ht
 }
 func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsListForCommitCommentOKApplicationJSON:
+	case *ReactionsListForCommitCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14162,14 +16504,37 @@ func encodeReactionsListForCommitCommentResponse(response ReactionsListForCommit
 }
 func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsListForIssueOKApplicationJSON:
+	case *ReactionsListForIssueOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14220,14 +16585,37 @@ func encodeReactionsListForIssueResponse(response ReactionsListForIssueRes, w ht
 }
 func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsListForIssueCommentOKApplicationJSON:
+	case *ReactionsListForIssueCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14265,14 +16653,37 @@ func encodeReactionsListForIssueCommentResponse(response ReactionsListForIssueCo
 }
 func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsListForPullRequestReviewCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReactionsListForPullRequestReviewCommentOKApplicationJSON:
+	case *ReactionsListForPullRequestReviewCommentOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14308,15 +16719,34 @@ func encodeReactionsListForPullRequestReviewCommentResponse(response ReactionsLi
 		return errors.Errorf("/repos/{owner}/{repo}/pulls/comments/{comment_id}/reactions"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response ReactionsListForTeamDiscussionCommentInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -14326,15 +16756,34 @@ func encodeReactionsListForTeamDiscussionCommentInOrgResponse(response []Reactio
 	return nil
 
 }
-func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response ReactionsListForTeamDiscussionCommentLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -14344,15 +16793,34 @@ func encodeReactionsListForTeamDiscussionCommentLegacyResponse(response []Reacti
 	return nil
 
 }
-func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForTeamDiscussionInOrgResponse(response ReactionsListForTeamDiscussionInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -14362,15 +16830,34 @@ func encodeReactionsListForTeamDiscussionInOrgResponse(response []Reaction, w ht
 	return nil
 
 }
-func encodeReactionsListForTeamDiscussionLegacyResponse(response []Reaction, w http.ResponseWriter, span trace.Span) error {
+func encodeReactionsListForTeamDiscussionLegacyResponse(response ReactionsListForTeamDiscussionLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -14718,14 +17205,33 @@ func encodeReposCompareCommitsResponse(response ReposCompareCommitsRes, w http.R
 }
 func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Autolink:
+	case *AutolinkHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14750,14 +17256,33 @@ func encodeReposCreateAutolinkResponse(response ReposCreateAutolinkRes, w http.R
 }
 func encodeReposCreateCommitCommentResponse(response ReposCreateCommitCommentRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *CommitComment:
+	case *CommitCommentHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14825,14 +17350,33 @@ func encodeReposCreateCommitSignatureProtectionResponse(response ReposCreateComm
 		return errors.Errorf("/repos/{owner}/{repo}/branches/{branch}/protection/required_signatures"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWriter, span trace.Span) error {
+func encodeReposCreateCommitStatusResponse(response StatusHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Location' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Location",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Location.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Location header")
+			}
+		}
+	}
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -14841,14 +17385,33 @@ func encodeReposCreateCommitStatusResponse(response Status, w http.ResponseWrite
 }
 func encodeReposCreateDeployKeyResponse(response ReposCreateDeployKeyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *DeployKey:
+	case *DeployKeyHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14923,14 +17486,33 @@ func encodeReposCreateDeploymentResponse(response ReposCreateDeploymentRes, w ht
 }
 func encodeReposCreateDeploymentStatusResponse(response ReposCreateDeploymentStatusRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *DeploymentStatus:
+	case *DeploymentStatusHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -14979,14 +17561,33 @@ func encodeReposCreateDispatchEventResponse(response ReposCreateDispatchEventRes
 }
 func encodeReposCreateForAuthenticatedUserResponse(response ReposCreateForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Repository:
+	case *RepositoryHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -15139,14 +17740,33 @@ func encodeReposCreateForkResponse(response ReposCreateForkRes, w http.ResponseW
 }
 func encodeReposCreateInOrgResponse(response ReposCreateInOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Repository:
+	case *RepositoryHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -15313,14 +17933,33 @@ func encodeReposCreatePagesSiteResponse(response ReposCreatePagesSiteRes, w http
 }
 func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Release:
+	case *ReleaseHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -15356,14 +17995,33 @@ func encodeReposCreateReleaseResponse(response ReposCreateReleaseRes, w http.Res
 		return errors.Errorf("/repos/{owner}/{repo}/releases"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposCreateUsingTemplateResponse(response Repository, w http.ResponseWriter, span trace.Span) error {
+func encodeReposCreateUsingTemplateResponse(response RepositoryHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Location' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Location",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Location.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Location header")
+			}
+		}
+	}
 	w.WriteHeader(201)
 	span.SetStatus(codes.Ok, http.StatusText(201))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -15372,14 +18030,33 @@ func encodeReposCreateUsingTemplateResponse(response Repository, w http.Response
 }
 func encodeReposCreateWebhookResponse(response ReposCreateWebhookRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *Hook:
+	case *HookHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Location' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Location",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Location.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Location header")
+				}
+			}
+		}
 		w.WriteHeader(201)
 		span.SetStatus(codes.Ok, http.StatusText(201))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		response.Response.Encode(e)
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -15913,13 +18590,51 @@ func encodeReposDisableVulnerabilityAlertsResponse(response ReposDisableVulnerab
 	return nil
 
 }
-func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFound, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDownloadTarballArchiveResponse(response ReposDownloadTarballArchiveFoundHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Location' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Location",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Location.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Location header")
+			}
+		}
+	}
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
 
 }
-func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFound, w http.ResponseWriter, span trace.Span) error {
+func encodeReposDownloadZipballArchiveResponse(response ReposDownloadZipballArchiveFoundHeaders, w http.ResponseWriter, span trace.Span) error {
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Location' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Location",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Location.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Location header")
+			}
+		}
+	}
 	w.WriteHeader(302)
 	span.SetStatus(codes.Ok, http.StatusText(302))
 	return nil
@@ -17454,14 +20169,37 @@ func encodeReposListAutolinksResponse(response []Autolink, w http.ResponseWriter
 }
 func encodeReposListBranchesResponse(response ReposListBranchesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListBranchesOKApplicationJSON:
+	case *ReposListBranchesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -17518,14 +20256,37 @@ func encodeReposListBranchesForHeadCommitResponse(response ReposListBranchesForH
 }
 func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListCollaboratorsOKApplicationJSON:
+	case *ReposListCollaboratorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -17548,15 +20309,34 @@ func encodeReposListCollaboratorsResponse(response ReposListCollaboratorsRes, w 
 		return errors.Errorf("/repos/{owner}/{repo}/collaborators"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListCommentsForCommitResponse(response ReposListCommentsForCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -17566,15 +20346,34 @@ func encodeReposListCommentsForCommitResponse(response []CommitComment, w http.R
 	return nil
 
 }
-func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListCommitCommentsForRepoResponse(response ReposListCommitCommentsForRepoOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -17586,14 +20385,37 @@ func encodeReposListCommitCommentsForRepoResponse(response []CommitComment, w ht
 }
 func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatusesForRefRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListCommitStatusesForRefOKApplicationJSON:
+	case *ReposListCommitStatusesForRefOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -17618,14 +20440,37 @@ func encodeReposListCommitStatusesForRefResponse(response ReposListCommitStatuse
 }
 func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListCommitsOKApplicationJSON:
+	case *ReposListCommitsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -17689,14 +20534,37 @@ func encodeReposListCommitsResponse(response ReposListCommitsRes, w http.Respons
 }
 func encodeReposListContributorsResponse(response ReposListContributorsRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListContributorsOKApplicationJSON:
+	case *ReposListContributorsOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -17737,15 +20605,34 @@ func encodeReposListContributorsResponse(response ReposListContributorsRes, w ht
 		return errors.Errorf("/repos/{owner}/{repo}/contributors"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListDeployKeysResponse(response ReposListDeployKeysOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -17757,14 +20644,37 @@ func encodeReposListDeployKeysResponse(response []DeployKey, w http.ResponseWrit
 }
 func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatusesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListDeploymentStatusesOKApplicationJSON:
+	case *ReposListDeploymentStatusesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -17787,15 +20697,34 @@ func encodeReposListDeploymentStatusesResponse(response ReposListDeploymentStatu
 		return errors.Errorf("/repos/{owner}/{repo}/deployments/{deployment_id}/statuses"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposListDeploymentsResponse(response []Deployment, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListDeploymentsResponse(response ReposListDeploymentsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -17868,15 +20797,34 @@ func encodeReposListForAuthenticatedUserResponse(response ReposListForAuthentica
 		return errors.Errorf("/user/repos"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposListForOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListForOrgResponse(response ReposListForOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -17886,15 +20834,34 @@ func encodeReposListForOrgResponse(response []MinimalRepository, w http.Response
 	return nil
 
 }
-func encodeReposListForUserResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListForUserResponse(response ReposListForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -17906,14 +20873,37 @@ func encodeReposListForUserResponse(response []MinimalRepository, w http.Respons
 }
 func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListForksOKApplicationJSON:
+	case *ReposListForksOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -17936,15 +20926,34 @@ func encodeReposListForksResponse(response ReposListForksRes, w http.ResponseWri
 		return errors.Errorf("/repos/{owner}/{repo}/forks"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposListInvitationsResponse(response []RepositoryInvitation, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListInvitationsResponse(response ReposListInvitationsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -17956,14 +20965,37 @@ func encodeReposListInvitationsResponse(response []RepositoryInvitation, w http.
 }
 func encodeReposListInvitationsForAuthenticatedUserResponse(response ReposListInvitationsForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListInvitationsForAuthenticatedUserOKApplicationJSON:
+	case *ReposListInvitationsForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -18031,15 +21063,34 @@ func encodeReposListLanguagesResponse(response Language, w http.ResponseWriter, 
 	return nil
 
 }
-func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListPagesBuildsResponse(response ReposListPagesBuildsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -18051,14 +21102,37 @@ func encodeReposListPagesBuildsResponse(response []PageBuild, w http.ResponseWri
 }
 func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListPublicOKApplicationJSON:
+	case *ReposListPublicOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -18086,15 +21160,34 @@ func encodeReposListPublicResponse(response ReposListPublicRes, w http.ResponseW
 		return errors.Errorf("/repositories"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequestSimple, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListPullRequestsAssociatedWithCommitResponse(response ReposListPullRequestsAssociatedWithCommitOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -18104,15 +21197,34 @@ func encodeReposListPullRequestsAssociatedWithCommitResponse(response []PullRequ
 	return nil
 
 }
-func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListReleaseAssetsResponse(response ReposListReleaseAssetsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -18124,14 +21236,37 @@ func encodeReposListReleaseAssetsResponse(response []ReleaseAsset, w http.Respon
 }
 func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListReleasesOKApplicationJSON:
+	case *ReposListReleasesOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -18154,15 +21289,34 @@ func encodeReposListReleasesResponse(response ReposListReleasesRes, w http.Respo
 		return errors.Errorf("/repos/{owner}/{repo}/releases"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListTagsResponse(response ReposListTagsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -18172,15 +21326,34 @@ func encodeReposListTagsResponse(response []Tag, w http.ResponseWriter, span tra
 	return nil
 
 }
-func encodeReposListTeamsResponse(response []Team, w http.ResponseWriter, span trace.Span) error {
+func encodeReposListTeamsResponse(response ReposListTeamsOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -18237,14 +21410,37 @@ func encodeReposListWebhookDeliveriesResponse(response ReposListWebhookDeliverie
 }
 func encodeReposListWebhooksResponse(response ReposListWebhooksRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *ReposListWebhooksOKApplicationJSON:
+	case *ReposListWebhooksOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -19702,14 +22898,37 @@ func encodeSecretScanningGetAlertResponse(response SecretScanningGetAlertRes, w 
 }
 func encodeSecretScanningListAlertsForOrgResponse(response SecretScanningListAlertsForOrgRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *SecretScanningListAlertsForOrgOKApplicationJSON:
+	case *SecretScanningListAlertsForOrgOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -20573,14 +23792,37 @@ func encodeTeamsGetMembershipForUserLegacyResponse(response TeamsGetMembershipFo
 }
 func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsListOKApplicationJSON:
+	case *TeamsListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -20603,15 +23845,34 @@ func encodeTeamsListResponse(response TeamsListRes, w http.ResponseWriter, span 
 		return errors.Errorf("/orgs/{org}/teams"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListChildInOrgResponse(response TeamsListChildInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20623,14 +23884,37 @@ func encodeTeamsListChildInOrgResponse(response []Team, w http.ResponseWriter, s
 }
 func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsListChildLegacyOKApplicationJSON:
+	case *TeamsListChildLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -20679,15 +23963,34 @@ func encodeTeamsListChildLegacyResponse(response TeamsListChildLegacyRes, w http
 		return errors.Errorf("/teams/{team_id}/teams"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListDiscussionCommentsInOrgResponse(response TeamsListDiscussionCommentsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20697,15 +24000,34 @@ func encodeTeamsListDiscussionCommentsInOrgResponse(response []TeamDiscussionCom
 	return nil
 
 }
-func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionComment, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListDiscussionCommentsLegacyResponse(response TeamsListDiscussionCommentsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20715,15 +24037,34 @@ func encodeTeamsListDiscussionCommentsLegacyResponse(response []TeamDiscussionCo
 	return nil
 
 }
-func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListDiscussionsInOrgResponse(response TeamsListDiscussionsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20733,15 +24074,34 @@ func encodeTeamsListDiscussionsInOrgResponse(response []TeamDiscussion, w http.R
 	return nil
 
 }
-func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListDiscussionsLegacyResponse(response TeamsListDiscussionsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20753,14 +24113,37 @@ func encodeTeamsListDiscussionsLegacyResponse(response []TeamDiscussion, w http.
 }
 func encodeTeamsListForAuthenticatedUserResponse(response TeamsListForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsListForAuthenticatedUserOKApplicationJSON:
+	case *TeamsListForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -20846,14 +24229,33 @@ func encodeTeamsListIdpGroupsForLegacyResponse(response TeamsListIdpGroupsForLeg
 		return errors.Errorf("/teams/{team_id}/team-sync/group-mappings"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsListIdpGroupsForOrgResponse(response GroupMapping, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListIdpGroupsForOrgResponse(response GroupMappingHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
-	response.Encode(e)
+	response.Response.Encode(e)
 	if _, err := e.WriteTo(w); err != nil {
 		return errors.Wrap(err, "write")
 	}
@@ -20874,15 +24276,34 @@ func encodeTeamsListIdpGroupsInOrgResponse(response GroupMapping, w http.Respons
 	return nil
 
 }
-func encodeTeamsListMembersInOrgResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListMembersInOrgResponse(response TeamsListMembersInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20894,14 +24315,37 @@ func encodeTeamsListMembersInOrgResponse(response []SimpleUser, w http.ResponseW
 }
 func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsListMembersLegacyOKApplicationJSON:
+	case *TeamsListMembersLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -20924,15 +24368,34 @@ func encodeTeamsListMembersLegacyResponse(response TeamsListMembersLegacyRes, w 
 		return errors.Errorf("/teams/{team_id}/members"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvitation, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListPendingInvitationsInOrgResponse(response TeamsListPendingInvitationsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20942,15 +24405,34 @@ func encodeTeamsListPendingInvitationsInOrgResponse(response []OrganizationInvit
 	return nil
 
 }
-func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvitation, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListPendingInvitationsLegacyResponse(response TeamsListPendingInvitationsLegacyOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20960,15 +24442,34 @@ func encodeTeamsListPendingInvitationsLegacyResponse(response []OrganizationInvi
 	return nil
 
 }
-func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListProjectsInOrgResponse(response TeamsListProjectsInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -20980,14 +24481,37 @@ func encodeTeamsListProjectsInOrgResponse(response []TeamProject, w http.Respons
 }
 func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsListProjectsLegacyOKApplicationJSON:
+	case *TeamsListProjectsLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -21010,15 +24534,34 @@ func encodeTeamsListProjectsLegacyResponse(response TeamsListProjectsLegacyRes, 
 		return errors.Errorf("/teams/{team_id}/projects"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.ResponseWriter, span trace.Span) error {
+func encodeTeamsListReposInOrgResponse(response TeamsListReposInOrgOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -21030,14 +24573,37 @@ func encodeTeamsListReposInOrgResponse(response []MinimalRepository, w http.Resp
 }
 func encodeTeamsListReposLegacyResponse(response TeamsListReposLegacyRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *TeamsListReposLegacyOKApplicationJSON:
+	case *TeamsListReposLegacyOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -22253,14 +25819,37 @@ func encodeUsersGetPublicSSHKeyForAuthenticatedResponse(response UsersGetPublicS
 }
 func encodeUsersListResponse(response UsersListRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersListOKApplicationJSON:
+	case *UsersListOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -22353,14 +25942,37 @@ func encodeUsersListBlockedByAuthenticatedResponse(response UsersListBlockedByAu
 }
 func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersListEmailsForAuthenticatedOKApplicationJSON:
+	case *UsersListEmailsForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -22416,14 +26028,37 @@ func encodeUsersListEmailsForAuthenticatedResponse(response UsersListEmailsForAu
 }
 func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedByAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersListFollowedByAuthenticatedOKApplicationJSON:
+	case *UsersListFollowedByAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -22466,14 +26101,37 @@ func encodeUsersListFollowedByAuthenticatedResponse(response UsersListFollowedBy
 }
 func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFollowersForAuthenticatedUserRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersListFollowersForAuthenticatedUserOKApplicationJSON:
+	case *UsersListFollowersForAuthenticatedUserOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -22514,15 +26172,34 @@ func encodeUsersListFollowersForAuthenticatedUserResponse(response UsersListFoll
 		return errors.Errorf("/user/followers"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListFollowersForUserResponse(response UsersListFollowersForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -22532,15 +26209,34 @@ func encodeUsersListFollowersForUserResponse(response []SimpleUser, w http.Respo
 	return nil
 
 }
-func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListFollowingForUserResponse(response UsersListFollowingForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -22552,14 +26248,37 @@ func encodeUsersListFollowingForUserResponse(response []SimpleUser, w http.Respo
 }
 func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersListGpgKeysForAuthenticatedOKApplicationJSON:
+	case *UsersListGpgKeysForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -22613,15 +26332,34 @@ func encodeUsersListGpgKeysForAuthenticatedResponse(response UsersListGpgKeysFor
 		return errors.Errorf("/user/gpg_keys"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListGpgKeysForUserResponse(response UsersListGpgKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -22633,14 +26371,37 @@ func encodeUsersListGpgKeysForUserResponse(response []GpgKey, w http.ResponseWri
 }
 func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPublicEmailsForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersListPublicEmailsForAuthenticatedOKApplicationJSON:
+	case *UsersListPublicEmailsForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}
@@ -22694,15 +26455,34 @@ func encodeUsersListPublicEmailsForAuthenticatedResponse(response UsersListPubli
 		return errors.Errorf("/user/public_emails"+`: unexpected response type: %T`, response)
 	}
 }
-func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.ResponseWriter, span trace.Span) error {
+func encodeUsersListPublicKeysForUserResponse(response UsersListPublicKeysForUserOKHeaders, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
+	// Encoding response headers.
+	{
+		h := uri.NewHeaderEncoder(w.Header())
+		// Encode 'Link' header.
+		{
+			cfg := uri.HeaderParameterEncodingConfig{
+				Name:    "Link",
+				Explode: false,
+			}
+			if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+				if val, ok := response.Link.Get(); ok {
+					return e.EncodeValue(conv.StringToString(val))
+				}
+				return nil
+			}); err != nil {
+				return errors.Wrap(err, "encode Link header")
+			}
+		}
+	}
 	w.WriteHeader(200)
 	span.SetStatus(codes.Ok, http.StatusText(200))
 	e := jx.GetEncoder()
 	defer jx.PutEncoder(e)
 
 	e.ArrStart()
-	for _, elem := range response {
+	for _, elem := range response.Response {
 		elem.Encode(e)
 	}
 	e.ArrEnd()
@@ -22714,14 +26494,37 @@ func encodeUsersListPublicKeysForUserResponse(response []KeySimple, w http.Respo
 }
 func encodeUsersListPublicSSHKeysForAuthenticatedResponse(response UsersListPublicSSHKeysForAuthenticatedRes, w http.ResponseWriter, span trace.Span) error {
 	switch response := response.(type) {
-	case *UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON:
+	case *UsersListPublicSSHKeysForAuthenticatedOKHeaders:
 		w.Header().Set("Content-Type", "application/json")
+		// Encoding response headers.
+		{
+			h := uri.NewHeaderEncoder(w.Header())
+			// Encode 'Link' header.
+			{
+				cfg := uri.HeaderParameterEncodingConfig{
+					Name:    "Link",
+					Explode: false,
+				}
+				if err := h.EncodeParam(cfg, func(e uri.Encoder) error {
+					if val, ok := response.Link.Get(); ok {
+						return e.EncodeValue(conv.StringToString(val))
+					}
+					return nil
+				}); err != nil {
+					return errors.Wrap(err, "encode Link header")
+				}
+			}
+		}
 		w.WriteHeader(200)
 		span.SetStatus(codes.Ok, http.StatusText(200))
 		e := jx.GetEncoder()
 		defer jx.PutEncoder(e)
 
-		response.Encode(e)
+		e.ArrStart()
+		for _, elem := range response.Response {
+			elem.Encode(e)
+		}
+		e.ArrEnd()
 		if _, err := e.WriteTo(w); err != nil {
 			return errors.Wrap(err, "write")
 		}

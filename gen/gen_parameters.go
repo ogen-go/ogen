@@ -13,70 +13,22 @@ import (
 func (g *Generator) generateParameters(ctx *genctx, opName string, params []*openapi.Parameter) (_ []*ir.Parameter, err error) {
 	result := make([]*ir.Parameter, 0, len(params))
 	for i, p := range params {
-		if p.Content != nil {
-			notImplemented := &ErrNotImplemented{"parameter content field"}
-			if err := g.fail(notImplemented); err != nil {
+		ctx := ctx.appendPath("[" + strconv.Itoa(i) + "]")
+		param, err := g.generateParameter(ctx, opName, p)
+		if err != nil {
+			if err := g.fail(err); err != nil {
 				return nil, errors.Wrap(err, "fail")
 			}
 
 			// Path parameters are required.
 			if p.In == openapi.LocationPath {
-				return nil, notImplemented
+				return nil, err
 			}
 
 			continue
 		}
 
-		if p.In == openapi.LocationCookie {
-			if err := g.fail(&ErrNotImplemented{"cookie params"}); err != nil {
-				return nil, errors.Wrap(err, "fail")
-			}
-
-			continue
-		}
-
-		if err := isSupportedParamStyle(p); err != nil {
-			if err := g.fail(err); err != nil {
-				return nil, errors.Wrap(err, "fail")
-			}
-
-			continue
-		}
-
-		ctx := ctx.appendPath(strconv.Itoa(i), p.Name, "schema")
-
-		paramTypeName, err := pascal(opName, p.Name)
-		if err != nil {
-			return nil, errors.Wrapf(err, "parameter type name: %q", p.Name)
-		}
-		t, err := g.generateSchema(ctx, paramTypeName, p.Schema)
-		if err != nil {
-			return nil, errors.Wrapf(err, "%q", p.Name)
-		}
-
-		t, err = boxType(ctx, ir.GenericVariant{
-			Nullable: p.Schema != nil && p.Schema.Nullable,
-			Optional: !p.Required,
-		}, t)
-		if err != nil {
-			return nil, errors.Wrapf(err, "%q", p.Name)
-		}
-
-		visited := map[*ir.Type]struct{}{}
-		if err := isParamAllowed(t, true, visited); err != nil {
-			return nil, err
-		}
-
-		t.AddFeature("uri")
-		paramName, err := pascalNonEmpty(p.Name)
-		if err != nil {
-			return nil, errors.Wrapf(err, "parameter name: %q", p.Name)
-		}
-		result = append(result, &ir.Parameter{
-			Name: paramName,
-			Type: t,
-			Spec: p,
-		})
+		result = append(result, param)
 	}
 
 	// Params in different locations may have the same names,
@@ -112,6 +64,56 @@ func (g *Generator) generateParameters(ctx *genctx, opName string, params []*ope
 	}
 
 	return result, nil
+}
+
+func (g *Generator) generateParameter(ctx *genctx, opName string, p *openapi.Parameter) (*ir.Parameter, error) {
+	if p.Content != nil {
+		return nil, &ErrNotImplemented{"parameter content field"}
+	}
+
+	if p.In == openapi.LocationCookie {
+		return nil, &ErrNotImplemented{"cookie params"}
+	}
+
+	if err := isSupportedParamStyle(p); err != nil {
+		return nil, err
+	}
+
+	paramTypeName, err := pascal(opName, p.Name)
+	if err != nil {
+		return nil, errors.Wrapf(err, "parameter type name: %q", p.Name)
+	}
+
+	ctx = ctx.appendPath("schema")
+	t, err := g.generateSchema(ctx, paramTypeName, p.Schema)
+	if err != nil {
+		return nil, errors.Wrapf(err, "%q", p.Name)
+	}
+
+	t, err = boxType(ctx, ir.GenericVariant{
+		Nullable: p.Schema != nil && p.Schema.Nullable,
+		Optional: !p.Required,
+	}, t)
+	if err != nil {
+		return nil, errors.Wrapf(err, "%q", p.Name)
+	}
+
+	visited := map[*ir.Type]struct{}{}
+	if err := isParamAllowed(t, true, visited); err != nil {
+		return nil, err
+	}
+
+	t.AddFeature("uri")
+	paramName, err := pascalNonEmpty(p.Name)
+	if err != nil {
+		return nil, errors.Wrapf(err, "parameter name: %q", p.Name)
+	}
+
+	return &ir.Parameter{
+		Name: paramName,
+		Type: t,
+		Spec: p,
+	}, nil
 }
 
 func isParamAllowed(t *ir.Type, root bool, visited map[*ir.Type]struct{}) error {

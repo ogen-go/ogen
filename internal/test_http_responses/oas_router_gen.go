@@ -63,6 +63,57 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 						return
 					}
 				}
+			case 'h': // Prefix: "headers"
+				if l := len("headers"); len(elem) >= l && elem[0:l] == "headers" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case '2': // Prefix: "200"
+					if l := len("200"); len(elem) >= l && elem[0:l] == "200" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: Headers200
+						s.handleHeaders200Request([0]string{}, w, r)
+
+						return
+					}
+				case 'C': // Prefix: "Combined"
+					if l := len("Combined"); len(elem) >= l && elem[0:l] == "Combined" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: HeadersCombined
+						s.handleHeadersCombinedRequest([0]string{}, w, r)
+
+						return
+					}
+				case 'D': // Prefix: "Default"
+					if l := len("Default"); len(elem) >= l && elem[0:l] == "Default" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: HeadersDefault
+						s.handleHeadersDefaultRequest([0]string{}, w, r)
+
+						return
+					}
+				}
 			case 'm': // Prefix: "multipleGenericResponses"
 				if l := len("multipleGenericResponses"); len(elem) >= l && elem[0:l] == "multipleGenericResponses" {
 					elem = elem[l:]
@@ -190,6 +241,60 @@ func (s *Server) FindRoute(method, path string) (r Route, _ bool) {
 					if len(elem) == 0 {
 						// Leaf: AnyContentTypeBinaryStringSchemaDefault
 						r.name = "AnyContentTypeBinaryStringSchemaDefault"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				}
+			case 'h': // Prefix: "headers"
+				if l := len("headers"); len(elem) >= l && elem[0:l] == "headers" {
+					elem = elem[l:]
+				} else {
+					break
+				}
+
+				if len(elem) == 0 {
+					break
+				}
+				switch elem[0] {
+				case '2': // Prefix: "200"
+					if l := len("200"); len(elem) >= l && elem[0:l] == "200" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: Headers200
+						r.name = "Headers200"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'C': // Prefix: "Combined"
+					if l := len("Combined"); len(elem) >= l && elem[0:l] == "Combined" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: HeadersCombined
+						r.name = "HeadersCombined"
+						r.args = args
+						r.count = 0
+						return r, true
+					}
+				case 'D': // Prefix: "Default"
+					if l := len("Default"); len(elem) >= l && elem[0:l] == "Default" {
+						elem = elem[l:]
+					} else {
+						break
+					}
+
+					if len(elem) == 0 {
+						// Leaf: HeadersDefault
+						r.name = "HeadersDefault"
 						r.args = args
 						r.count = 0
 						return r, true

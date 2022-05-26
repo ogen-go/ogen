@@ -20,6 +20,18 @@ type Handler interface {
 	//
 	// GET /anyContentTypeBinaryStringSchemaDefault
 	AnyContentTypeBinaryStringSchemaDefault(ctx context.Context) (AnyContentTypeBinaryStringSchemaDefaultDefStatusCode, error)
+	// Headers200 implements headers200 operation.
+	//
+	// GET /headers200
+	Headers200(ctx context.Context) (Headers200OKHeaders, error)
+	// HeadersCombined implements headersCombined operation.
+	//
+	// GET /headersCombined
+	HeadersCombined(ctx context.Context, params HeadersCombinedParams) (HeadersCombinedRes, error)
+	// HeadersDefault implements headersDefault operation.
+	//
+	// GET /headersDefault
+	HeadersDefault(ctx context.Context) (HeadersDefaultDefStatusCodeWithHeaders, error)
 	// MultipleGenericResponses implements multipleGenericResponses operation.
 	//
 	// GET /multipleGenericResponses

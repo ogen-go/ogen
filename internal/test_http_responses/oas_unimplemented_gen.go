@@ -27,6 +27,27 @@ func (UnimplementedHandler) AnyContentTypeBinaryStringSchemaDefault(ctx context.
 	return r, ht.ErrNotImplemented
 }
 
+// Headers200 implements headers200 operation.
+//
+// GET /headers200
+func (UnimplementedHandler) Headers200(ctx context.Context) (r Headers200OKHeaders, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// HeadersCombined implements headersCombined operation.
+//
+// GET /headersCombined
+func (UnimplementedHandler) HeadersCombined(ctx context.Context, params HeadersCombinedParams) (r HeadersCombinedRes, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
+// HeadersDefault implements headersDefault operation.
+//
+// GET /headersDefault
+func (UnimplementedHandler) HeadersDefault(ctx context.Context) (r HeadersDefaultDefStatusCodeWithHeaders, _ error) {
+	return r, ht.ErrNotImplemented
+}
+
 // MultipleGenericResponses implements multipleGenericResponses operation.
 //
 // GET /multipleGenericResponses

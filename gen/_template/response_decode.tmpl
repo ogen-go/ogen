@@ -34,7 +34,14 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 {{- $response := $.Response }}
 {{- $ptr := $.Ptr }}
 {{- if $response.NoContent }}{{/* Decode NoContent response */}}
-	{{- if $response.Wrapped }}
+	{{- if $response.WithHeaders }}
+		var wrapper {{ $response.NoContent.Name }}
+		{{- if $response.WithStatusCode }}
+		wrapper.StatusCode = resp.StatusCode
+		{{- end }}
+		{{- template "decode_response_headers" $response }}
+		return {{ if $ptr }}&{{ end }}wrapper, nil
+	{{- else if $response.WithStatusCode }}
 		return {{ if $ptr }}&{{ end }}{{ $response.NoContent.Name }}{
 			StatusCode: resp.StatusCode,
 		}, nil
@@ -47,7 +54,7 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		case {{ quote $contentType }}:
 
 		{{- $type := $originalType }}
-		{{- if $response.Wrapped }}
+		{{- if or $response.WithStatusCode $response.WithHeaders }}
 			{{- $type = ($type.MustField "Response").Type }}
 		{{- end }}
 
@@ -80,8 +87,16 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 			{{- errorf "%q: %s decoder not implemented" $contentType $type }}
 		{{- end }}
 
-		{{- if $response.Wrapped }}
-			return {{ if $ptr }}&{{ end }}{{ $originalType.Go }}{
+		{{- if $response.WithHeaders }}
+			var wrapper {{ $originalType.Name }}
+			wrapper.Response = response
+			{{- if $response.WithStatusCode }}
+			wrapper.StatusCode = resp.StatusCode
+			{{- end }}
+			{{- template "decode_response_headers" $response }}
+			return {{ if $ptr }}&{{ end }}wrapper, nil
+		{{- else if $response.WithStatusCode }}
+			return {{ if $ptr }}&{{ end }}{{ $originalType.Name }}{
 				StatusCode: resp.StatusCode,
 				Response:   response,
 			}, nil
@@ -93,4 +108,23 @@ func decode{{ $op.Name }}Response(resp *http.Response, span trace.Span) (res {{ 
 		return res, validate.InvalidContentType(ct)
 	}
 {{- end }}{{/* Decode content response */}}
+{{- end }}
+
+{{- define "decode_response_headers" }}
+{{- $response := $ }}
+h := uri.NewHeaderDecoder(resp.Header)
+{{- range $_, $header := $response.Headers }}
+// Parse '{{ $header.Spec.Name }}' header.
+{
+	cfg := uri.HeaderParameterDecodingConfig{
+		Name:    {{ quote $header.Spec.Name }},
+		Explode: {{ if $header.Spec.Explode}}true{{ else }}false{{ end }},
+	}
+	if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+		{{- template "uri/decode" elem $header.Type (printf "wrapper.%s" $header.Name) }}
+	}); err != nil {
+		return res, errors.Wrap(err, "parse {{ $header.Spec.Name }} header")
+	}
+}
+{{- end }}
 {{- end }}

@@ -219,11 +219,29 @@ type ActionsDisableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
 // ActionsDownloadArtifactFound is response for ActionsDownloadArtifact operation.
 type ActionsDownloadArtifactFound struct{}
 
+// ActionsDownloadArtifactFoundHeaders wraps ActionsDownloadArtifactFound with response headers.
+type ActionsDownloadArtifactFoundHeaders struct {
+	Location OptString
+	Response ActionsDownloadArtifactFound
+}
+
 // ActionsDownloadJobLogsForWorkflowRunFound is response for ActionsDownloadJobLogsForWorkflowRun operation.
 type ActionsDownloadJobLogsForWorkflowRunFound struct{}
 
+// ActionsDownloadJobLogsForWorkflowRunFoundHeaders wraps ActionsDownloadJobLogsForWorkflowRunFound with response headers.
+type ActionsDownloadJobLogsForWorkflowRunFoundHeaders struct {
+	Location OptString
+	Response ActionsDownloadJobLogsForWorkflowRunFound
+}
+
 // ActionsDownloadWorkflowRunLogsFound is response for ActionsDownloadWorkflowRunLogs operation.
 type ActionsDownloadWorkflowRunLogsFound struct{}
+
+// ActionsDownloadWorkflowRunLogsFoundHeaders wraps ActionsDownloadWorkflowRunLogsFound with response headers.
+type ActionsDownloadWorkflowRunLogsFoundHeaders struct {
+	Location OptString
+	Response ActionsDownloadWorkflowRunLogsFound
+}
 
 // ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent is response for ActionsEnableSelectedRepositoryGithubActionsOrganization operation.
 type ActionsEnableSelectedRepositoryGithubActionsOrganizationNoContent struct{}
@@ -245,9 +263,21 @@ type ActionsListArtifactsForRepoOK struct {
 	Artifacts  []Artifact "json:\"artifacts\""
 }
 
+// ActionsListArtifactsForRepoOKHeaders wraps ActionsListArtifactsForRepoOK with response headers.
+type ActionsListArtifactsForRepoOKHeaders struct {
+	Link     OptString
+	Response ActionsListArtifactsForRepoOK
+}
+
 type ActionsListEnvironmentSecretsOK struct {
 	TotalCount int             "json:\"total_count\""
 	Secrets    []ActionsSecret "json:\"secrets\""
+}
+
+// ActionsListEnvironmentSecretsOKHeaders wraps ActionsListEnvironmentSecretsOK with response headers.
+type ActionsListEnvironmentSecretsOKHeaders struct {
+	Link     OptString
+	Response ActionsListEnvironmentSecretsOK
 }
 
 type ActionsListJobsForWorkflowRunFilter string
@@ -262,9 +292,21 @@ type ActionsListJobsForWorkflowRunOK struct {
 	Jobs       []Job "json:\"jobs\""
 }
 
+// ActionsListJobsForWorkflowRunOKHeaders wraps ActionsListJobsForWorkflowRunOK with response headers.
+type ActionsListJobsForWorkflowRunOKHeaders struct {
+	Link     OptString
+	Response ActionsListJobsForWorkflowRunOK
+}
+
 type ActionsListOrgSecretsOK struct {
 	TotalCount int                         "json:\"total_count\""
 	Secrets    []OrganizationActionsSecret "json:\"secrets\""
+}
+
+// ActionsListOrgSecretsOKHeaders wraps ActionsListOrgSecretsOK with response headers.
+type ActionsListOrgSecretsOKHeaders struct {
+	Link     OptString
+	Response ActionsListOrgSecretsOK
 }
 
 type ActionsListRepoAccessToSelfHostedRunnerGroupInOrgOK struct {
@@ -277,9 +319,21 @@ type ActionsListRepoSecretsOK struct {
 	Secrets    []ActionsSecret "json:\"secrets\""
 }
 
+// ActionsListRepoSecretsOKHeaders wraps ActionsListRepoSecretsOK with response headers.
+type ActionsListRepoSecretsOKHeaders struct {
+	Link     OptString
+	Response ActionsListRepoSecretsOK
+}
+
 type ActionsListRepoWorkflowsOK struct {
 	TotalCount int        "json:\"total_count\""
 	Workflows  []Workflow "json:\"workflows\""
+}
+
+// ActionsListRepoWorkflowsOKHeaders wraps ActionsListRepoWorkflowsOK with response headers.
+type ActionsListRepoWorkflowsOKHeaders struct {
+	Link     OptString
+	Response ActionsListRepoWorkflowsOK
 }
 
 type ActionsListSelectedReposForOrgSecretOK struct {
@@ -302,9 +356,21 @@ type ActionsListSelfHostedRunnersForOrgOK struct {
 	Runners    []Runner "json:\"runners\""
 }
 
+// ActionsListSelfHostedRunnersForOrgOKHeaders wraps ActionsListSelfHostedRunnersForOrgOK with response headers.
+type ActionsListSelfHostedRunnersForOrgOKHeaders struct {
+	Link     OptString
+	Response ActionsListSelfHostedRunnersForOrgOK
+}
+
 type ActionsListSelfHostedRunnersForRepoOK struct {
 	TotalCount int      "json:\"total_count\""
 	Runners    []Runner "json:\"runners\""
+}
+
+// ActionsListSelfHostedRunnersForRepoOKHeaders wraps ActionsListSelfHostedRunnersForRepoOK with response headers.
+type ActionsListSelfHostedRunnersForRepoOKHeaders struct {
+	Link     OptString
+	Response ActionsListSelfHostedRunnersForRepoOK
 }
 
 type ActionsListSelfHostedRunnersInGroupForOrgOK struct {
@@ -312,14 +378,32 @@ type ActionsListSelfHostedRunnersInGroupForOrgOK struct {
 	Runners    []Runner "json:\"runners\""
 }
 
+// ActionsListSelfHostedRunnersInGroupForOrgOKHeaders wraps ActionsListSelfHostedRunnersInGroupForOrgOK with response headers.
+type ActionsListSelfHostedRunnersInGroupForOrgOKHeaders struct {
+	Link     OptString
+	Response ActionsListSelfHostedRunnersInGroupForOrgOK
+}
+
 type ActionsListWorkflowRunArtifactsOK struct {
 	TotalCount int        "json:\"total_count\""
 	Artifacts  []Artifact "json:\"artifacts\""
 }
 
+// ActionsListWorkflowRunArtifactsOKHeaders wraps ActionsListWorkflowRunArtifactsOK with response headers.
+type ActionsListWorkflowRunArtifactsOKHeaders struct {
+	Link     OptString
+	Response ActionsListWorkflowRunArtifactsOK
+}
+
 type ActionsListWorkflowRunsForRepoOK struct {
 	TotalCount   int           "json:\"total_count\""
 	WorkflowRuns []WorkflowRun "json:\"workflow_runs\""
+}
+
+// ActionsListWorkflowRunsForRepoOKHeaders wraps ActionsListWorkflowRunsForRepoOK with response headers.
+type ActionsListWorkflowRunsForRepoOKHeaders struct {
+	Link     OptString
+	Response ActionsListWorkflowRunsForRepoOK
 }
 
 type ActionsListWorkflowRunsForRepoStatus string
@@ -567,9 +651,13 @@ type ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized Ba
 func (*ActivityListNotificationsForAuthenticatedUserApplicationJSONUnauthorized) activityListNotificationsForAuthenticatedUserRes() {
 }
 
-type ActivityListNotificationsForAuthenticatedUserOKApplicationJSON []Thread
+// ActivityListNotificationsForAuthenticatedUserOKHeaders wraps []Thread with response headers.
+type ActivityListNotificationsForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []Thread
+}
 
-func (ActivityListNotificationsForAuthenticatedUserOKApplicationJSON) activityListNotificationsForAuthenticatedUserRes() {
+func (*ActivityListNotificationsForAuthenticatedUserOKHeaders) activityListNotificationsForAuthenticatedUserRes() {
 }
 
 type ActivityListPublicEventsForRepoNetworkApplicationJSONForbidden BasicError
@@ -596,6 +684,12 @@ type ActivityListPublicEventsOKApplicationJSON []Event
 
 func (ActivityListPublicEventsOKApplicationJSON) activityListPublicEventsRes() {}
 
+// ActivityListRepoNotificationsForAuthenticatedUserOKHeaders wraps []Thread with response headers.
+type ActivityListRepoNotificationsForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []Thread
+}
+
 type ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden BasicError
 
 func (*ActivityListReposStarredByAuthenticatedUserApplicationJSONForbidden) activityListReposStarredByAuthenticatedUserRes() {
@@ -613,9 +707,13 @@ const (
 	ActivityListReposStarredByAuthenticatedUserDirectionDesc ActivityListReposStarredByAuthenticatedUserDirection = "desc"
 )
 
-type ActivityListReposStarredByAuthenticatedUserOKApplicationJSON []Repository
+// ActivityListReposStarredByAuthenticatedUserOKHeaders wraps []Repository with response headers.
+type ActivityListReposStarredByAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []Repository
+}
 
-func (ActivityListReposStarredByAuthenticatedUserOKApplicationJSON) activityListReposStarredByAuthenticatedUserRes() {
+func (*ActivityListReposStarredByAuthenticatedUserOKHeaders) activityListReposStarredByAuthenticatedUserRes() {
 }
 
 type ActivityListReposStarredByAuthenticatedUserSort string
@@ -624,6 +722,12 @@ const (
 	ActivityListReposStarredByAuthenticatedUserSortCreated ActivityListReposStarredByAuthenticatedUserSort = "created"
 	ActivityListReposStarredByAuthenticatedUserSortUpdated ActivityListReposStarredByAuthenticatedUserSort = "updated"
 )
+
+// ActivityListReposWatchedByUserOKHeaders wraps []MinimalRepository with response headers.
+type ActivityListReposWatchedByUserOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
 
 type ActivityListWatchedReposForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -635,9 +739,19 @@ type ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized Bas
 func (*ActivityListWatchedReposForAuthenticatedUserApplicationJSONUnauthorized) activityListWatchedReposForAuthenticatedUserRes() {
 }
 
-type ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON []MinimalRepository
+// ActivityListWatchedReposForAuthenticatedUserOKHeaders wraps []MinimalRepository with response headers.
+type ActivityListWatchedReposForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
 
-func (ActivityListWatchedReposForAuthenticatedUserOKApplicationJSON) activityListWatchedReposForAuthenticatedUserRes() {
+func (*ActivityListWatchedReposForAuthenticatedUserOKHeaders) activityListWatchedReposForAuthenticatedUserRes() {
+}
+
+// ActivityListWatchersForRepoOKHeaders wraps []SimpleUser with response headers.
+type ActivityListWatchersForRepoOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
 }
 
 type ActivityMarkNotificationsAsReadAccepted struct {
@@ -1305,9 +1419,13 @@ const (
 	AppsListAccountsForPlanDirectionDesc AppsListAccountsForPlanDirection = "desc"
 )
 
-type AppsListAccountsForPlanOKApplicationJSON []MarketplacePurchase
+// AppsListAccountsForPlanOKHeaders wraps []MarketplacePurchase with response headers.
+type AppsListAccountsForPlanOKHeaders struct {
+	Link     OptString
+	Response []MarketplacePurchase
+}
 
-func (AppsListAccountsForPlanOKApplicationJSON) appsListAccountsForPlanRes() {}
+func (*AppsListAccountsForPlanOKHeaders) appsListAccountsForPlanRes() {}
 
 type AppsListAccountsForPlanSort string
 
@@ -1323,9 +1441,13 @@ const (
 	AppsListAccountsForPlanStubbedDirectionDesc AppsListAccountsForPlanStubbedDirection = "desc"
 )
 
-type AppsListAccountsForPlanStubbedOKApplicationJSON []MarketplacePurchase
+// AppsListAccountsForPlanStubbedOKHeaders wraps []MarketplacePurchase with response headers.
+type AppsListAccountsForPlanStubbedOKHeaders struct {
+	Link     OptString
+	Response []MarketplacePurchase
+}
 
-func (AppsListAccountsForPlanStubbedOKApplicationJSON) appsListAccountsForPlanStubbedRes() {}
+func (*AppsListAccountsForPlanStubbedOKHeaders) appsListAccountsForPlanStubbedRes() {}
 
 type AppsListAccountsForPlanStubbedSort string
 
@@ -1350,7 +1472,13 @@ type AppsListInstallationReposForAuthenticatedUserOK struct {
 	Repositories        []Repository "json:\"repositories\""
 }
 
-func (*AppsListInstallationReposForAuthenticatedUserOK) appsListInstallationReposForAuthenticatedUserRes() {
+// AppsListInstallationReposForAuthenticatedUserOKHeaders wraps AppsListInstallationReposForAuthenticatedUserOK with response headers.
+type AppsListInstallationReposForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response AppsListInstallationReposForAuthenticatedUserOK
+}
+
+func (*AppsListInstallationReposForAuthenticatedUserOKHeaders) appsListInstallationReposForAuthenticatedUserRes() {
 }
 
 type AppsListPlansApplicationJSONNotFound BasicError
@@ -1361,13 +1489,21 @@ type AppsListPlansApplicationJSONUnauthorized BasicError
 
 func (*AppsListPlansApplicationJSONUnauthorized) appsListPlansRes() {}
 
-type AppsListPlansOKApplicationJSON []MarketplaceListingPlan
+// AppsListPlansOKHeaders wraps []MarketplaceListingPlan with response headers.
+type AppsListPlansOKHeaders struct {
+	Link     OptString
+	Response []MarketplaceListingPlan
+}
 
-func (AppsListPlansOKApplicationJSON) appsListPlansRes() {}
+func (*AppsListPlansOKHeaders) appsListPlansRes() {}
 
-type AppsListPlansStubbedOKApplicationJSON []MarketplaceListingPlan
+// AppsListPlansStubbedOKHeaders wraps []MarketplaceListingPlan with response headers.
+type AppsListPlansStubbedOKHeaders struct {
+	Link     OptString
+	Response []MarketplaceListingPlan
+}
 
-func (AppsListPlansStubbedOKApplicationJSON) appsListPlansStubbedRes() {}
+func (*AppsListPlansStubbedOKHeaders) appsListPlansStubbedRes() {}
 
 type AppsListReposAccessibleToInstallationApplicationJSONForbidden BasicError
 
@@ -1385,7 +1521,13 @@ type AppsListReposAccessibleToInstallationOK struct {
 	RepositorySelection OptString    "json:\"repository_selection\""
 }
 
-func (*AppsListReposAccessibleToInstallationOK) appsListReposAccessibleToInstallationRes() {}
+// AppsListReposAccessibleToInstallationOKHeaders wraps AppsListReposAccessibleToInstallationOK with response headers.
+type AppsListReposAccessibleToInstallationOKHeaders struct {
+	Link     OptString
+	Response AppsListReposAccessibleToInstallationOK
+}
+
+func (*AppsListReposAccessibleToInstallationOKHeaders) appsListReposAccessibleToInstallationRes() {}
 
 type AppsListSubscriptionsForAuthenticatedUserApplicationJSONNotFound BasicError
 
@@ -1397,14 +1539,22 @@ type AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized BasicE
 func (*AppsListSubscriptionsForAuthenticatedUserApplicationJSONUnauthorized) appsListSubscriptionsForAuthenticatedUserRes() {
 }
 
-type AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON []UserMarketplacePurchase
-
-func (AppsListSubscriptionsForAuthenticatedUserOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserRes() {
+// AppsListSubscriptionsForAuthenticatedUserOKHeaders wraps []UserMarketplacePurchase with response headers.
+type AppsListSubscriptionsForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []UserMarketplacePurchase
 }
 
-type AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON []UserMarketplacePurchase
+func (*AppsListSubscriptionsForAuthenticatedUserOKHeaders) appsListSubscriptionsForAuthenticatedUserRes() {
+}
 
-func (AppsListSubscriptionsForAuthenticatedUserStubbedOKApplicationJSON) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
+// AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders wraps []UserMarketplacePurchase with response headers.
+type AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders struct {
+	Link     OptString
+	Response []UserMarketplacePurchase
+}
+
+func (*AppsListSubscriptionsForAuthenticatedUserStubbedOKHeaders) appsListSubscriptionsForAuthenticatedUserStubbedRes() {
 }
 
 type AppsListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
@@ -1635,7 +1785,6 @@ type Authorization struct {
 func (*Authorization) appsCheckTokenRes()                         {}
 func (*Authorization) appsResetTokenRes()                         {}
 func (*Authorization) appsScopeTokenRes()                         {}
-func (*Authorization) oAuthAuthorizationsCreateAuthorizationRes() {}
 func (*Authorization) oAuthAuthorizationsGetAuthorizationRes()    {}
 func (*Authorization) oAuthAuthorizationsUpdateAuthorizationRes() {}
 
@@ -1644,6 +1793,14 @@ type AuthorizationApp struct {
 	Name     string  "json:\"name\""
 	URL      url.URL "json:\"url\""
 }
+
+// AuthorizationHeaders wraps Authorization with response headers.
+type AuthorizationHeaders struct {
+	Location OptString
+	Response Authorization
+}
+
+func (*AuthorizationHeaders) oAuthAuthorizationsCreateAuthorizationRes() {}
 
 // The status of auto merging a pull request.
 // Ref: #/components/schemas/auto_merge
@@ -1676,8 +1833,15 @@ type Autolink struct {
 	URLTemplate string "json:\"url_template\""
 }
 
-func (*Autolink) reposCreateAutolinkRes() {}
-func (*Autolink) reposGetAutolinkRes()    {}
+func (*Autolink) reposGetAutolinkRes() {}
+
+// AutolinkHeaders wraps Autolink with response headers.
+type AutolinkHeaders struct {
+	Location OptString
+	Response Autolink
+}
+
+func (*AutolinkHeaders) reposCreateAutolinkRes() {}
 
 // Base Gist.
 // Ref: #/components/schemas/base-gist
@@ -1704,8 +1868,6 @@ type BaseGist struct {
 	History     []jx.Raw              "json:\"history\""
 }
 
-func (*BaseGist) gistsForkRes() {}
-
 type BaseGistFiles map[string]BaseGistFilesItem
 
 func (s *BaseGistFiles) init() BaseGistFiles {
@@ -1724,6 +1886,14 @@ type BaseGistFilesItem struct {
 	RawURL   OptString "json:\"raw_url\""
 	Size     OptInt    "json:\"size\""
 }
+
+// BaseGistHeaders wraps BaseGist with response headers.
+type BaseGistHeaders struct {
+	Location OptString
+	Response BaseGist
+}
+
+func (*BaseGistHeaders) gistsForkRes() {}
 
 // Basic Error.
 // Ref: #/components/schemas/basic-error
@@ -2253,6 +2423,12 @@ type ChecksCreateSuiteReq struct {
 	HeadSha string "json:\"head_sha\""
 }
 
+// ChecksListAnnotationsOKHeaders wraps []CheckAnnotation with response headers.
+type ChecksListAnnotationsOKHeaders struct {
+	Link     OptString
+	Response []CheckAnnotation
+}
+
 type ChecksListForRefFilter string
 
 const (
@@ -2263,6 +2439,12 @@ const (
 type ChecksListForRefOK struct {
 	TotalCount int        "json:\"total_count\""
 	CheckRuns  []CheckRun "json:\"check_runs\""
+}
+
+// ChecksListForRefOKHeaders wraps ChecksListForRefOK with response headers.
+type ChecksListForRefOKHeaders struct {
+	Link     OptString
+	Response ChecksListForRefOK
 }
 
 type ChecksListForRefStatus string
@@ -2285,6 +2467,12 @@ type ChecksListForSuiteOK struct {
 	CheckRuns  []CheckRun "json:\"check_runs\""
 }
 
+// ChecksListForSuiteOKHeaders wraps ChecksListForSuiteOK with response headers.
+type ChecksListForSuiteOKHeaders struct {
+	Link     OptString
+	Response ChecksListForSuiteOK
+}
+
 type ChecksListForSuiteStatus string
 
 const (
@@ -2296,6 +2484,12 @@ const (
 type ChecksListSuitesForRefOK struct {
 	TotalCount  int          "json:\"total_count\""
 	CheckSuites []CheckSuite "json:\"check_suites\""
+}
+
+// ChecksListSuitesForRefOKHeaders wraps ChecksListSuitesForRefOK with response headers.
+type ChecksListSuitesForRefOKHeaders struct {
+	Link     OptString
+	Response ChecksListSuitesForRefOK
 }
 
 type ChecksRerequestSuiteCreated struct{}
@@ -2864,9 +3058,16 @@ type CommitComment struct {
 	Reactions         OptReactionRollup     "json:\"reactions\""
 }
 
-func (*CommitComment) reposCreateCommitCommentRes() {}
 func (*CommitComment) reposGetCommitCommentRes()    {}
 func (*CommitComment) reposUpdateCommitCommentRes() {}
+
+// CommitCommentHeaders wraps CommitComment with response headers.
+type CommitCommentHeaders struct {
+	Location OptString
+	Response CommitComment
+}
+
+func (*CommitCommentHeaders) reposCreateCommitCommentRes() {}
 
 type CommitCommit struct {
 	URL          url.URL            "json:\"url\""
@@ -3136,8 +3337,15 @@ type DeployKey struct {
 	ReadOnly  bool   "json:\"read_only\""
 }
 
-func (*DeployKey) reposCreateDeployKeyRes() {}
-func (*DeployKey) reposGetDeployKeyRes()    {}
+func (*DeployKey) reposGetDeployKeyRes() {}
+
+// DeployKeyHeaders wraps DeployKey with response headers.
+type DeployKeyHeaders struct {
+	Location OptString
+	Response DeployKey
+}
+
+func (*DeployKeyHeaders) reposCreateDeployKeyRes() {}
 
 // A request for a specific ref(branch,sha,tag) to be deployed.
 // Ref: #/components/schemas/deployment
@@ -3301,8 +3509,15 @@ type DeploymentStatus struct {
 	PerformedViaGithubApp OptNilNullableIntegration "json:\"performed_via_github_app\""
 }
 
-func (*DeploymentStatus) reposCreateDeploymentStatusRes() {}
-func (*DeploymentStatus) reposGetDeploymentStatusRes()    {}
+func (*DeploymentStatus) reposGetDeploymentStatusRes() {}
+
+// DeploymentStatusHeaders wraps DeploymentStatus with response headers.
+type DeploymentStatusHeaders struct {
+	Location OptString
+	Response DeploymentStatus
+}
+
+func (*DeploymentStatusHeaders) reposCreateDeploymentStatusRes() {}
 
 // The state of the status.
 type DeploymentStatusState string
@@ -3478,9 +3693,21 @@ type EnterpriseAdminListSelfHostedRunnersForEnterpriseOK struct {
 	Runners    []Runner   "json:\"runners\""
 }
 
+// EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders wraps EnterpriseAdminListSelfHostedRunnersForEnterpriseOK with response headers.
+type EnterpriseAdminListSelfHostedRunnersForEnterpriseOKHeaders struct {
+	Link     OptString
+	Response EnterpriseAdminListSelfHostedRunnersForEnterpriseOK
+}
+
 type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK struct {
 	TotalCount float64  "json:\"total_count\""
 	Runners    []Runner "json:\"runners\""
+}
+
+// EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders wraps EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK with response headers.
+type EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOKHeaders struct {
+	Link     OptString
+	Response EnterpriseAdminListSelfHostedRunnersInGroupForEnterpriseOK
 }
 
 type EnterpriseAdminProvisionAndInviteEnterpriseGroupReq struct {
@@ -4102,9 +4329,16 @@ type GistComment struct {
 	AuthorAssociation AuthorAssociation     "json:\"author_association\""
 }
 
-func (*GistComment) gistsCreateCommentRes() {}
 func (*GistComment) gistsGetCommentRes()    {}
 func (*GistComment) gistsUpdateCommentRes() {}
+
+// GistCommentHeaders wraps GistComment with response headers.
+type GistCommentHeaders struct {
+	Location OptString
+	Response GistComment
+}
+
+func (*GistCommentHeaders) gistsCreateCommentRes() {}
 
 // Gist Commit.
 // Ref: #/components/schemas/gist-commit
@@ -4165,7 +4399,6 @@ type GistSimple struct {
 	Truncated   OptBool                "json:\"truncated\""
 }
 
-func (*GistSimple) gistsCreateRes()      {}
 func (*GistSimple) gistsGetRes()         {}
 func (*GistSimple) gistsGetRevisionRes() {}
 
@@ -4240,6 +4473,14 @@ type GistSimpleForksItem struct {
 	CreatedAt OptDateTime   "json:\"created_at\""
 	UpdatedAt OptDateTime   "json:\"updated_at\""
 }
+
+// GistSimpleHeaders wraps GistSimple with response headers.
+type GistSimpleHeaders struct {
+	Location OptString
+	Response GistSimple
+}
+
+func (*GistSimpleHeaders) gistsCreateRes() {}
 
 // GistsCheckIsStarredNoContent is response for GistsCheckIsStarred operation.
 type GistsCheckIsStarredNoContent struct{}
@@ -4419,9 +4660,13 @@ type GistsListCommentsApplicationJSONNotFound BasicError
 
 func (*GistsListCommentsApplicationJSONNotFound) gistsListCommentsRes() {}
 
-type GistsListCommentsOKApplicationJSON []GistComment
+// GistsListCommentsOKHeaders wraps []GistComment with response headers.
+type GistsListCommentsOKHeaders struct {
+	Link     OptString
+	Response []GistComment
+}
 
-func (GistsListCommentsOKApplicationJSON) gistsListCommentsRes() {}
+func (*GistsListCommentsOKHeaders) gistsListCommentsRes() {}
 
 type GistsListCommitsApplicationJSONForbidden BasicError
 
@@ -4431,13 +4676,21 @@ type GistsListCommitsApplicationJSONNotFound BasicError
 
 func (*GistsListCommitsApplicationJSONNotFound) gistsListCommitsRes() {}
 
-type GistsListCommitsOKApplicationJSON []GistCommit
+// GistsListCommitsOKHeaders wraps []GistCommit with response headers.
+type GistsListCommitsOKHeaders struct {
+	Link     OptString
+	Response []GistCommit
+}
 
-func (GistsListCommitsOKApplicationJSON) gistsListCommitsRes() {}
+func (*GistsListCommitsOKHeaders) gistsListCommitsRes() {}
 
-type GistsListForUserOKApplicationJSON []BaseGist
+// GistsListForUserOKHeaders wraps []BaseGist with response headers.
+type GistsListForUserOKHeaders struct {
+	Link     OptString
+	Response []BaseGist
+}
 
-func (GistsListForUserOKApplicationJSON) gistsListForUserRes() {}
+func (*GistsListForUserOKHeaders) gistsListForUserRes() {}
 
 type GistsListForksApplicationJSONForbidden BasicError
 
@@ -4447,17 +4700,29 @@ type GistsListForksApplicationJSONNotFound BasicError
 
 func (*GistsListForksApplicationJSONNotFound) gistsListForksRes() {}
 
-type GistsListForksOKApplicationJSON []GistSimple
+// GistsListForksOKHeaders wraps []GistSimple with response headers.
+type GistsListForksOKHeaders struct {
+	Link     OptString
+	Response []GistSimple
+}
 
-func (GistsListForksOKApplicationJSON) gistsListForksRes() {}
+func (*GistsListForksOKHeaders) gistsListForksRes() {}
 
-type GistsListOKApplicationJSON []BaseGist
+// GistsListOKHeaders wraps []BaseGist with response headers.
+type GistsListOKHeaders struct {
+	Link     OptString
+	Response []BaseGist
+}
 
-func (GistsListOKApplicationJSON) gistsListRes() {}
+func (*GistsListOKHeaders) gistsListRes() {}
 
-type GistsListPublicOKApplicationJSON []BaseGist
+// GistsListPublicOKHeaders wraps []BaseGist with response headers.
+type GistsListPublicOKHeaders struct {
+	Link     OptString
+	Response []BaseGist
+}
 
-func (GistsListPublicOKApplicationJSON) gistsListPublicRes() {}
+func (*GistsListPublicOKHeaders) gistsListPublicRes() {}
 
 type GistsListStarredApplicationJSONForbidden BasicError
 
@@ -4467,9 +4732,13 @@ type GistsListStarredApplicationJSONUnauthorized BasicError
 
 func (*GistsListStarredApplicationJSONUnauthorized) gistsListStarredRes() {}
 
-type GistsListStarredOKApplicationJSON []BaseGist
+// GistsListStarredOKHeaders wraps []BaseGist with response headers.
+type GistsListStarredOKHeaders struct {
+	Link     OptString
+	Response []BaseGist
+}
 
-func (GistsListStarredOKApplicationJSON) gistsListStarredRes() {}
+func (*GistsListStarredOKHeaders) gistsListStarredRes() {}
 
 type GistsStarApplicationJSONForbidden BasicError
 
@@ -4521,8 +4790,7 @@ type GitCommit struct {
 	HTMLURL      url.URL                "json:\"html_url\""
 }
 
-func (*GitCommit) gitCreateCommitRes() {}
-func (*GitCommit) gitGetCommitRes()    {}
+func (*GitCommit) gitGetCommitRes() {}
 
 // Identifying information for the git-user.
 type GitCommitAuthor struct {
@@ -4543,6 +4811,14 @@ type GitCommitCommitter struct {
 	// Name of the git user.
 	Name string "json:\"name\""
 }
+
+// GitCommitHeaders wraps GitCommit with response headers.
+type GitCommitHeaders struct {
+	Location OptString
+	Response GitCommit
+}
+
+func (*GitCommitHeaders) gitCreateCommitRes() {}
 
 type GitCommitParentsItem struct {
 	// SHA for the commit.
@@ -4756,6 +5032,12 @@ type GitGetBlobApplicationJSONNotFound BasicError
 
 func (*GitGetBlobApplicationJSONNotFound) gitGetBlobRes() {}
 
+// GitListMatchingRefsOKHeaders wraps []GitRef with response headers.
+type GitListMatchingRefsOKHeaders struct {
+	Link     OptString
+	Response []GitRef
+}
+
 // Git references within a repository.
 // Ref: #/components/schemas/git-ref
 type GitRef struct {
@@ -4765,9 +5047,16 @@ type GitRef struct {
 	Object GitRefObject "json:\"object\""
 }
 
-func (*GitRef) gitCreateRefRes() {}
 func (*GitRef) gitGetRefRes()    {}
 func (*GitRef) gitUpdateRefRes() {}
+
+// GitRefHeaders wraps GitRef with response headers.
+type GitRefHeaders struct {
+	Location OptString
+	Response GitRef
+}
+
+func (*GitRefHeaders) gitCreateRefRes() {}
 
 type GitRefObject struct {
 	Type string "json:\"type\""
@@ -4792,8 +5081,15 @@ type GitTag struct {
 	Verification OptVerification "json:\"verification\""
 }
 
-func (*GitTag) gitCreateTagRes() {}
-func (*GitTag) gitGetTagRes()    {}
+func (*GitTag) gitGetTagRes() {}
+
+// GitTagHeaders wraps GitTag with response headers.
+type GitTagHeaders struct {
+	Location OptString
+	Response GitTag
+}
+
+func (*GitTagHeaders) gitCreateTagRes() {}
 
 type GitTagObject struct {
 	Sha  string  "json:\"sha\""
@@ -4817,8 +5113,15 @@ type GitTree struct {
 	Tree []GitTreeTreeItem "json:\"tree\""
 }
 
-func (*GitTree) gitCreateTreeRes() {}
-func (*GitTree) gitGetTreeRes()    {}
+func (*GitTree) gitGetTreeRes() {}
+
+// GitTreeHeaders wraps GitTree with response headers.
+type GitTreeHeaders struct {
+	Location OptString
+	Response GitTree
+}
+
+func (*GitTreeHeaders) gitCreateTreeRes() {}
 
 type GitTreeTreeItem struct {
 	Path OptString "json:\"path\""
@@ -4915,6 +5218,12 @@ type GroupMappingGroupsItem struct {
 	SyncedAt OptNilString "json:\"synced_at\""
 }
 
+// GroupMappingHeaders wraps GroupMapping with response headers.
+type GroupMappingHeaders struct {
+	Link     OptString
+	Response GroupMapping
+}
+
 // Webhooks for repositories.
 // Ref: #/components/schemas/hook
 type Hook struct {
@@ -4937,7 +5246,6 @@ type Hook struct {
 	LastResponse  HookResponse "json:\"last_response\""
 }
 
-func (*Hook) reposCreateWebhookRes() {}
 func (*Hook) reposGetWebhookRes()    {}
 func (*Hook) reposUpdateWebhookRes() {}
 
@@ -5068,6 +5376,14 @@ func (s *HookDeliveryResponseHeaders) init() HookDeliveryResponseHeaders {
 	return m
 }
 
+// HookHeaders wraps Hook with response headers.
+type HookHeaders struct {
+	Location OptString
+	Response Hook
+}
+
+func (*HookHeaders) reposCreateWebhookRes() {}
+
 // Ref: #/components/schemas/hook-response
 type HookResponse struct {
 	Code    NilInt    "json:\"code\""
@@ -5119,7 +5435,14 @@ type Import struct {
 
 func (*Import) migrationsGetImportStatusRes()  {}
 func (*Import) migrationsSetLfsPreferenceRes() {}
-func (*Import) migrationsStartImportRes()      {}
+
+// ImportHeaders wraps Import with response headers.
+type ImportHeaders struct {
+	Location OptString
+	Response Import
+}
+
+func (*ImportHeaders) migrationsStartImportRes() {}
 
 type ImportProjectChoicesItem struct {
 	Vcs         OptString "json:\"vcs\""
@@ -5333,7 +5656,6 @@ type Issue struct {
 	Reactions             OptReactionRollup         "json:\"reactions\""
 }
 
-func (*Issue) issuesCreateRes() {}
 func (*Issue) issuesGetRes()    {}
 func (*Issue) issuesUpdateRes() {}
 
@@ -5359,9 +5681,16 @@ type IssueComment struct {
 	Reactions             OptReactionRollup         "json:\"reactions\""
 }
 
-func (*IssueComment) issuesCreateCommentRes() {}
 func (*IssueComment) issuesGetCommentRes()    {}
 func (*IssueComment) issuesUpdateCommentRes() {}
+
+// IssueCommentHeaders wraps IssueComment with response headers.
+type IssueCommentHeaders struct {
+	Location OptString
+	Response IssueComment
+}
+
+func (*IssueCommentHeaders) issuesCreateCommentRes() {}
 
 // Issue Event.
 // Ref: #/components/schemas/issue-event
@@ -5430,6 +5759,14 @@ type IssueEventRename struct {
 	From string "json:\"from\""
 	To   string "json:\"to\""
 }
+
+// IssueHeaders wraps Issue with response headers.
+type IssueHeaders struct {
+	Location OptString
+	Response Issue
+}
+
+func (*IssueHeaders) issuesCreateRes() {}
 
 // IssueLabelsItem represents sum type.
 type IssueLabelsItem struct {
@@ -5940,9 +6277,13 @@ type IssuesGetEventApplicationJSONNotFound BasicError
 
 func (*IssuesGetEventApplicationJSONNotFound) issuesGetEventRes() {}
 
-type IssuesListAssigneesOKApplicationJSON []SimpleUser
+// IssuesListAssigneesOKHeaders wraps []SimpleUser with response headers.
+type IssuesListAssigneesOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
 
-func (IssuesListAssigneesOKApplicationJSON) issuesListAssigneesRes() {}
+func (*IssuesListAssigneesOKHeaders) issuesListAssigneesRes() {}
 
 type IssuesListCommentsApplicationJSONGone BasicError
 
@@ -5959,9 +6300,13 @@ const (
 	IssuesListCommentsForRepoDirectionDesc IssuesListCommentsForRepoDirection = "desc"
 )
 
-type IssuesListCommentsForRepoOKApplicationJSON []IssueComment
+// IssuesListCommentsForRepoOKHeaders wraps []IssueComment with response headers.
+type IssuesListCommentsForRepoOKHeaders struct {
+	Link     OptString
+	Response []IssueComment
+}
 
-func (IssuesListCommentsForRepoOKApplicationJSON) issuesListCommentsForRepoRes() {}
+func (*IssuesListCommentsForRepoOKHeaders) issuesListCommentsForRepoRes() {}
 
 type IssuesListCommentsForRepoSort string
 
@@ -5970,9 +6315,13 @@ const (
 	IssuesListCommentsForRepoSortUpdated IssuesListCommentsForRepoSort = "updated"
 )
 
-type IssuesListCommentsOKApplicationJSON []IssueComment
+// IssuesListCommentsOKHeaders wraps []IssueComment with response headers.
+type IssuesListCommentsOKHeaders struct {
+	Link     OptString
+	Response []IssueComment
+}
 
-func (IssuesListCommentsOKApplicationJSON) issuesListCommentsRes() {}
+func (*IssuesListCommentsOKHeaders) issuesListCommentsRes() {}
 
 type IssuesListDirection string
 
@@ -5981,9 +6330,13 @@ const (
 	IssuesListDirectionDesc IssuesListDirection = "desc"
 )
 
-type IssuesListEventsForRepoOKApplicationJSON []IssueEvent
+// IssuesListEventsForRepoOKHeaders wraps []IssueEvent with response headers.
+type IssuesListEventsForRepoOKHeaders struct {
+	Link     OptString
+	Response []IssueEvent
+}
 
-func (IssuesListEventsForRepoOKApplicationJSON) issuesListEventsForRepoRes() {}
+func (*IssuesListEventsForRepoOKHeaders) issuesListEventsForRepoRes() {}
 
 type IssuesListFilter string
 
@@ -6014,9 +6367,13 @@ const (
 	IssuesListForAuthenticatedUserFilterAll        IssuesListForAuthenticatedUserFilter = "all"
 )
 
-type IssuesListForAuthenticatedUserOKApplicationJSON []Issue
+// IssuesListForAuthenticatedUserOKHeaders wraps []Issue with response headers.
+type IssuesListForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []Issue
+}
 
-func (IssuesListForAuthenticatedUserOKApplicationJSON) issuesListForAuthenticatedUserRes() {}
+func (*IssuesListForAuthenticatedUserOKHeaders) issuesListForAuthenticatedUserRes() {}
 
 type IssuesListForAuthenticatedUserSort string
 
@@ -6052,9 +6409,13 @@ const (
 	IssuesListForOrgFilterAll        IssuesListForOrgFilter = "all"
 )
 
-type IssuesListForOrgOKApplicationJSON []Issue
+// IssuesListForOrgOKHeaders wraps []Issue with response headers.
+type IssuesListForOrgOKHeaders struct {
+	Link     OptString
+	Response []Issue
+}
 
-func (IssuesListForOrgOKApplicationJSON) issuesListForOrgRes() {}
+func (*IssuesListForOrgOKHeaders) issuesListForOrgRes() {}
 
 type IssuesListForOrgSort string
 
@@ -6087,9 +6448,13 @@ const (
 	IssuesListForRepoDirectionDesc IssuesListForRepoDirection = "desc"
 )
 
-type IssuesListForRepoOKApplicationJSON []IssueSimple
+// IssuesListForRepoOKHeaders wraps []IssueSimple with response headers.
+type IssuesListForRepoOKHeaders struct {
+	Link     OptString
+	Response []IssueSimple
+}
 
-func (IssuesListForRepoOKApplicationJSON) issuesListForRepoRes() {}
+func (*IssuesListForRepoOKHeaders) issuesListForRepoRes() {}
 
 type IssuesListForRepoSort string
 
@@ -6107,13 +6472,27 @@ const (
 	IssuesListForRepoStateAll    IssuesListForRepoState = "all"
 )
 
-type IssuesListLabelsForRepoOKApplicationJSON []Label
+// IssuesListLabelsForMilestoneOKHeaders wraps []Label with response headers.
+type IssuesListLabelsForMilestoneOKHeaders struct {
+	Link     OptString
+	Response []Label
+}
 
-func (IssuesListLabelsForRepoOKApplicationJSON) issuesListLabelsForRepoRes() {}
+// IssuesListLabelsForRepoOKHeaders wraps []Label with response headers.
+type IssuesListLabelsForRepoOKHeaders struct {
+	Link     OptString
+	Response []Label
+}
 
-type IssuesListLabelsOnIssueOKApplicationJSON []Label
+func (*IssuesListLabelsForRepoOKHeaders) issuesListLabelsForRepoRes() {}
 
-func (IssuesListLabelsOnIssueOKApplicationJSON) issuesListLabelsOnIssueRes() {}
+// IssuesListLabelsOnIssueOKHeaders wraps []Label with response headers.
+type IssuesListLabelsOnIssueOKHeaders struct {
+	Link     OptString
+	Response []Label
+}
+
+func (*IssuesListLabelsOnIssueOKHeaders) issuesListLabelsOnIssueRes() {}
 
 type IssuesListMilestonesDirection string
 
@@ -6122,9 +6501,13 @@ const (
 	IssuesListMilestonesDirectionDesc IssuesListMilestonesDirection = "desc"
 )
 
-type IssuesListMilestonesOKApplicationJSON []Milestone
+// IssuesListMilestonesOKHeaders wraps []Milestone with response headers.
+type IssuesListMilestonesOKHeaders struct {
+	Link     OptString
+	Response []Milestone
+}
 
-func (IssuesListMilestonesOKApplicationJSON) issuesListMilestonesRes() {}
+func (*IssuesListMilestonesOKHeaders) issuesListMilestonesRes() {}
 
 type IssuesListMilestonesSort string
 
@@ -6141,9 +6524,13 @@ const (
 	IssuesListMilestonesStateAll    IssuesListMilestonesState = "all"
 )
 
-type IssuesListOKApplicationJSON []Issue
+// IssuesListOKHeaders wraps []Issue with response headers.
+type IssuesListOKHeaders struct {
+	Link     OptString
+	Response []Issue
+}
 
-func (IssuesListOKApplicationJSON) issuesListRes() {}
+func (*IssuesListOKHeaders) issuesListRes() {}
 
 type IssuesListSort string
 
@@ -6621,8 +7008,15 @@ type Label struct {
 	Default bool   "json:\"default\""
 }
 
-func (*Label) issuesCreateLabelRes() {}
-func (*Label) issuesGetLabelRes()    {}
+func (*Label) issuesGetLabelRes() {}
+
+// LabelHeaders wraps Label with response headers.
+type LabelHeaders struct {
+	Location OptString
+	Response Label
+}
+
+func (*LabelHeaders) issuesCreateLabelRes() {}
 
 // Label Search Result Item.
 // Ref: #/components/schemas/label-search-result-item
@@ -6961,9 +7355,13 @@ type MigrationsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 func (*MigrationsListForAuthenticatedUserApplicationJSONUnauthorized) migrationsListForAuthenticatedUserRes() {
 }
 
-type MigrationsListForAuthenticatedUserOKApplicationJSON []Migration
+// MigrationsListForAuthenticatedUserOKHeaders wraps []Migration with response headers.
+type MigrationsListForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []Migration
+}
 
-func (MigrationsListForAuthenticatedUserOKApplicationJSON) migrationsListForAuthenticatedUserRes() {}
+func (*MigrationsListForAuthenticatedUserOKHeaders) migrationsListForAuthenticatedUserRes() {}
 
 // Allowed values that can be passed to the exclude param.
 type MigrationsListForOrgExcludeItem string
@@ -6972,13 +7370,27 @@ const (
 	MigrationsListForOrgExcludeItemRepositories MigrationsListForOrgExcludeItem = "repositories"
 )
 
-type MigrationsListReposForOrgOKApplicationJSON []MinimalRepository
+// MigrationsListForOrgOKHeaders wraps []Migration with response headers.
+type MigrationsListForOrgOKHeaders struct {
+	Link     OptString
+	Response []Migration
+}
 
-func (MigrationsListReposForOrgOKApplicationJSON) migrationsListReposForOrgRes() {}
+// MigrationsListReposForOrgOKHeaders wraps []MinimalRepository with response headers.
+type MigrationsListReposForOrgOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
 
-type MigrationsListReposForUserOKApplicationJSON []MinimalRepository
+func (*MigrationsListReposForOrgOKHeaders) migrationsListReposForOrgRes() {}
 
-func (MigrationsListReposForUserOKApplicationJSON) migrationsListReposForUserRes() {}
+// MigrationsListReposForUserOKHeaders wraps []MinimalRepository with response headers.
+type MigrationsListReposForUserOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
+
+func (*MigrationsListReposForUserOKHeaders) migrationsListReposForUserRes() {}
 
 type MigrationsMapCommitAuthorReq struct {
 	// The new Git author email.
@@ -7142,8 +7554,15 @@ type Milestone struct {
 	DueOn        NilDateTime           "json:\"due_on\""
 }
 
-func (*Milestone) issuesCreateMilestoneRes() {}
-func (*Milestone) issuesGetMilestoneRes()    {}
+func (*Milestone) issuesGetMilestoneRes() {}
+
+// MilestoneHeaders wraps Milestone with response headers.
+type MilestoneHeaders struct {
+	Location OptString
+	Response Milestone
+}
+
+func (*MilestoneHeaders) issuesCreateMilestoneRes() {}
 
 // The state of the milestone.
 type MilestoneState string
@@ -9391,12 +9810,12 @@ type OAuthAuthorizationsGetGrantApplicationJSONUnauthorized BasicError
 
 func (*OAuthAuthorizationsGetGrantApplicationJSONUnauthorized) oAuthAuthorizationsGetGrantRes() {}
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated Authorization
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated AuthorizationHeaders
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK Authorization
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK AuthorizationHeaders
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintApplicationJSONOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintRes() {
 }
@@ -9412,7 +9831,7 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppAndFingerprintReq struct {
 	NoteURL OptString "json:\"note_url\""
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated Authorization
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated AuthorizationHeaders
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONCreated) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
@@ -9422,7 +9841,7 @@ type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden B
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONForbidden) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
 
-type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK Authorization
+type OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK AuthorizationHeaders
 
 func (*OAuthAuthorizationsGetOrCreateAuthorizationForAppApplicationJSONOK) oAuthAuthorizationsGetOrCreateAuthorizationForAppRes() {
 }
@@ -9461,10 +9880,13 @@ type OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized BasicError
 func (*OAuthAuthorizationsListAuthorizationsApplicationJSONUnauthorized) oAuthAuthorizationsListAuthorizationsRes() {
 }
 
-type OAuthAuthorizationsListAuthorizationsOKApplicationJSON []Authorization
-
-func (OAuthAuthorizationsListAuthorizationsOKApplicationJSON) oAuthAuthorizationsListAuthorizationsRes() {
+// OAuthAuthorizationsListAuthorizationsOKHeaders wraps []Authorization with response headers.
+type OAuthAuthorizationsListAuthorizationsOKHeaders struct {
+	Link     OptString
+	Response []Authorization
 }
+
+func (*OAuthAuthorizationsListAuthorizationsOKHeaders) oAuthAuthorizationsListAuthorizationsRes() {}
 
 type OAuthAuthorizationsListGrantsApplicationJSONForbidden BasicError
 
@@ -9478,9 +9900,13 @@ type OAuthAuthorizationsListGrantsApplicationJSONUnauthorized BasicError
 
 func (*OAuthAuthorizationsListGrantsApplicationJSONUnauthorized) oAuthAuthorizationsListGrantsRes() {}
 
-type OAuthAuthorizationsListGrantsOKApplicationJSON []ApplicationGrant
+// OAuthAuthorizationsListGrantsOKHeaders wraps []ApplicationGrant with response headers.
+type OAuthAuthorizationsListGrantsOKHeaders struct {
+	Link     OptString
+	Response []ApplicationGrant
+}
 
-func (OAuthAuthorizationsListGrantsOKApplicationJSON) oAuthAuthorizationsListGrantsRes() {}
+func (*OAuthAuthorizationsListGrantsOKHeaders) oAuthAuthorizationsListGrantsRes() {}
 
 type OAuthAuthorizationsUpdateAuthorizationReq struct {
 	// A list of scopes that this authorization is in.
@@ -29837,7 +30263,6 @@ type OrgHook struct {
 	Type          string        "json:\"type\""
 }
 
-func (*OrgHook) orgsCreateWebhookRes() {}
 func (*OrgHook) orgsGetWebhookRes()    {}
 func (*OrgHook) orgsUpdateWebhookRes() {}
 
@@ -29847,6 +30272,14 @@ type OrgHookConfig struct {
 	ContentType OptString "json:\"content_type\""
 	Secret      OptString "json:\"secret\""
 }
+
+// OrgHookHeaders wraps OrgHook with response headers.
+type OrgHookHeaders struct {
+	Location OptString
+	Response OrgHook
+}
+
+func (*OrgHookHeaders) orgsCreateWebhookRes() {}
 
 // Org Membership.
 // Ref: #/components/schemas/org-membership
@@ -30045,7 +30478,13 @@ func (*OrgsCheckBlockedUserNoContent) orgsCheckBlockedUserRes() {}
 // OrgsCheckMembershipForUserFound is response for OrgsCheckMembershipForUser operation.
 type OrgsCheckMembershipForUserFound struct{}
 
-func (*OrgsCheckMembershipForUserFound) orgsCheckMembershipForUserRes() {}
+// OrgsCheckMembershipForUserFoundHeaders wraps OrgsCheckMembershipForUserFound with response headers.
+type OrgsCheckMembershipForUserFoundHeaders struct {
+	Location OptString
+	Response OrgsCheckMembershipForUserFound
+}
+
+func (*OrgsCheckMembershipForUserFoundHeaders) orgsCheckMembershipForUserRes() {}
 
 // OrgsCheckMembershipForUserNoContent is response for OrgsCheckMembershipForUser operation.
 type OrgsCheckMembershipForUserNoContent struct{}
@@ -30181,9 +30620,13 @@ type OrgsListBlockedUsersOKApplicationJSON []SimpleUser
 
 func (OrgsListBlockedUsersOKApplicationJSON) orgsListBlockedUsersRes() {}
 
-type OrgsListFailedInvitationsOKApplicationJSON []OrganizationInvitation
+// OrgsListFailedInvitationsOKHeaders wraps []OrganizationInvitation with response headers.
+type OrgsListFailedInvitationsOKHeaders struct {
+	Link     OptString
+	Response []OrganizationInvitation
+}
 
-func (OrgsListFailedInvitationsOKApplicationJSON) orgsListFailedInvitationsRes() {}
+func (*OrgsListFailedInvitationsOKHeaders) orgsListFailedInvitationsRes() {}
 
 type OrgsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -30193,13 +30636,27 @@ type OrgsListForAuthenticatedUserApplicationJSONUnauthorized BasicError
 
 func (*OrgsListForAuthenticatedUserApplicationJSONUnauthorized) orgsListForAuthenticatedUserRes() {}
 
-type OrgsListForAuthenticatedUserOKApplicationJSON []OrganizationSimple
+// OrgsListForAuthenticatedUserOKHeaders wraps []OrganizationSimple with response headers.
+type OrgsListForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []OrganizationSimple
+}
 
-func (OrgsListForAuthenticatedUserOKApplicationJSON) orgsListForAuthenticatedUserRes() {}
+func (*OrgsListForAuthenticatedUserOKHeaders) orgsListForAuthenticatedUserRes() {}
 
-type OrgsListInvitationTeamsOKApplicationJSON []Team
+// OrgsListForUserOKHeaders wraps []OrganizationSimple with response headers.
+type OrgsListForUserOKHeaders struct {
+	Link     OptString
+	Response []OrganizationSimple
+}
 
-func (OrgsListInvitationTeamsOKApplicationJSON) orgsListInvitationTeamsRes() {}
+// OrgsListInvitationTeamsOKHeaders wraps []Team with response headers.
+type OrgsListInvitationTeamsOKHeaders struct {
+	Link     OptString
+	Response []Team
+}
+
+func (*OrgsListInvitationTeamsOKHeaders) orgsListInvitationTeamsRes() {}
 
 type OrgsListMembersFilter string
 
@@ -30211,11 +30668,21 @@ const (
 // OrgsListMembersFound is response for OrgsListMembers operation.
 type OrgsListMembersFound struct{}
 
-func (*OrgsListMembersFound) orgsListMembersRes() {}
+// OrgsListMembersFoundHeaders wraps OrgsListMembersFound with response headers.
+type OrgsListMembersFoundHeaders struct {
+	Location OptString
+	Response OrgsListMembersFound
+}
 
-type OrgsListMembersOKApplicationJSON []SimpleUser
+func (*OrgsListMembersFoundHeaders) orgsListMembersRes() {}
 
-func (OrgsListMembersOKApplicationJSON) orgsListMembersRes() {}
+// OrgsListMembersOKHeaders wraps []SimpleUser with response headers.
+type OrgsListMembersOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
+
+func (*OrgsListMembersOKHeaders) orgsListMembersRes() {}
 
 type OrgsListMembersRole string
 
@@ -30235,9 +30702,13 @@ type OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized BasicErr
 func (*OrgsListMembershipsForAuthenticatedUserApplicationJSONUnauthorized) orgsListMembershipsForAuthenticatedUserRes() {
 }
 
-type OrgsListMembershipsForAuthenticatedUserOKApplicationJSON []OrgMembership
+// OrgsListMembershipsForAuthenticatedUserOKHeaders wraps []OrgMembership with response headers.
+type OrgsListMembershipsForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []OrgMembership
+}
 
-func (OrgsListMembershipsForAuthenticatedUserOKApplicationJSON) orgsListMembershipsForAuthenticatedUserRes() {
+func (*OrgsListMembershipsForAuthenticatedUserOKHeaders) orgsListMembershipsForAuthenticatedUserRes() {
 }
 
 type OrgsListMembershipsForAuthenticatedUserState string
@@ -30247,9 +30718,13 @@ const (
 	OrgsListMembershipsForAuthenticatedUserStatePending OrgsListMembershipsForAuthenticatedUserState = "pending"
 )
 
-type OrgsListOKApplicationJSON []OrganizationSimple
+// OrgsListOKHeaders wraps []OrganizationSimple with response headers.
+type OrgsListOKHeaders struct {
+	Link     OptString
+	Response []OrganizationSimple
+}
 
-func (OrgsListOKApplicationJSON) orgsListRes() {}
+func (*OrgsListOKHeaders) orgsListRes() {}
 
 type OrgsListOutsideCollaboratorsFilter string
 
@@ -30258,17 +30733,37 @@ const (
 	OrgsListOutsideCollaboratorsFilterAll         OrgsListOutsideCollaboratorsFilter = "all"
 )
 
-type OrgsListPendingInvitationsOKApplicationJSON []OrganizationInvitation
+// OrgsListOutsideCollaboratorsOKHeaders wraps []SimpleUser with response headers.
+type OrgsListOutsideCollaboratorsOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
 
-func (OrgsListPendingInvitationsOKApplicationJSON) orgsListPendingInvitationsRes() {}
+// OrgsListPendingInvitationsOKHeaders wraps []OrganizationInvitation with response headers.
+type OrgsListPendingInvitationsOKHeaders struct {
+	Link     OptString
+	Response []OrganizationInvitation
+}
+
+func (*OrgsListPendingInvitationsOKHeaders) orgsListPendingInvitationsRes() {}
+
+// OrgsListPublicMembersOKHeaders wraps []SimpleUser with response headers.
+type OrgsListPublicMembersOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
 
 type OrgsListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
 
 func (OrgsListWebhookDeliveriesOKApplicationJSON) orgsListWebhookDeliveriesRes() {}
 
-type OrgsListWebhooksOKApplicationJSON []OrgHook
+// OrgsListWebhooksOKHeaders wraps []OrgHook with response headers.
+type OrgsListWebhooksOKHeaders struct {
+	Link     OptString
+	Response []OrgHook
+}
 
-func (OrgsListWebhooksOKApplicationJSON) orgsListWebhooksRes() {}
+func (*OrgsListWebhooksOKHeaders) orgsListWebhooksRes() {}
 
 // OrgsPingWebhookNoContent is response for OrgsPingWebhook operation.
 type OrgsPingWebhookNoContent struct{}
@@ -31706,9 +32201,13 @@ const (
 	ProjectsListCardsArchivedStateNotArchived ProjectsListCardsArchivedState = "not_archived"
 )
 
-type ProjectsListCardsOKApplicationJSON []ProjectCard
+// ProjectsListCardsOKHeaders wraps []ProjectCard with response headers.
+type ProjectsListCardsOKHeaders struct {
+	Link     OptString
+	Response []ProjectCard
+}
 
-func (ProjectsListCardsOKApplicationJSON) projectsListCardsRes() {}
+func (*ProjectsListCardsOKHeaders) projectsListCardsRes() {}
 
 type ProjectsListCollaboratorsAffiliation string
 
@@ -31730,9 +32229,13 @@ type ProjectsListCollaboratorsApplicationJSONUnauthorized BasicError
 
 func (*ProjectsListCollaboratorsApplicationJSONUnauthorized) projectsListCollaboratorsRes() {}
 
-type ProjectsListCollaboratorsOKApplicationJSON []SimpleUser
+// ProjectsListCollaboratorsOKHeaders wraps []SimpleUser with response headers.
+type ProjectsListCollaboratorsOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
 
-func (ProjectsListCollaboratorsOKApplicationJSON) projectsListCollaboratorsRes() {}
+func (*ProjectsListCollaboratorsOKHeaders) projectsListCollaboratorsRes() {}
 
 type ProjectsListColumnsApplicationJSONForbidden BasicError
 
@@ -31742,13 +32245,21 @@ type ProjectsListColumnsApplicationJSONUnauthorized BasicError
 
 func (*ProjectsListColumnsApplicationJSONUnauthorized) projectsListColumnsRes() {}
 
-type ProjectsListColumnsOKApplicationJSON []ProjectColumn
+// ProjectsListColumnsOKHeaders wraps []ProjectColumn with response headers.
+type ProjectsListColumnsOKHeaders struct {
+	Link     OptString
+	Response []ProjectColumn
+}
 
-func (ProjectsListColumnsOKApplicationJSON) projectsListColumnsRes() {}
+func (*ProjectsListColumnsOKHeaders) projectsListColumnsRes() {}
 
-type ProjectsListForOrgOKApplicationJSON []Project
+// ProjectsListForOrgOKHeaders wraps []Project with response headers.
+type ProjectsListForOrgOKHeaders struct {
+	Link     OptString
+	Response []Project
+}
 
-func (ProjectsListForOrgOKApplicationJSON) projectsListForOrgRes() {}
+func (*ProjectsListForOrgOKHeaders) projectsListForOrgRes() {}
 
 type ProjectsListForOrgState string
 
@@ -31774,9 +32285,13 @@ type ProjectsListForRepoApplicationJSONUnauthorized BasicError
 
 func (*ProjectsListForRepoApplicationJSONUnauthorized) projectsListForRepoRes() {}
 
-type ProjectsListForRepoOKApplicationJSON []Project
+// ProjectsListForRepoOKHeaders wraps []Project with response headers.
+type ProjectsListForRepoOKHeaders struct {
+	Link     OptString
+	Response []Project
+}
 
-func (ProjectsListForRepoOKApplicationJSON) projectsListForRepoRes() {}
+func (*ProjectsListForRepoOKHeaders) projectsListForRepoRes() {}
 
 type ProjectsListForRepoState string
 
@@ -31786,9 +32301,13 @@ const (
 	ProjectsListForRepoStateAll    ProjectsListForRepoState = "all"
 )
 
-type ProjectsListForUserOKApplicationJSON []Project
+// ProjectsListForUserOKHeaders wraps []Project with response headers.
+type ProjectsListForUserOKHeaders struct {
+	Link     OptString
+	Response []Project
+}
 
-func (ProjectsListForUserOKApplicationJSON) projectsListForUserRes() {}
+func (*ProjectsListForUserOKHeaders) projectsListForUserRes() {}
 
 type ProjectsListForUserState string
 
@@ -32152,7 +32671,6 @@ type PullRequest struct {
 	ChangedFiles        int  "json:\"changed_files\""
 }
 
-func (*PullRequest) pullsCreateRes() {}
 func (*PullRequest) pullsGetRes()    {}
 func (*PullRequest) pullsUpdateRes() {}
 
@@ -32448,6 +32966,14 @@ type PullRequestHeadUser struct {
 	URL               url.URL   "json:\"url\""
 }
 
+// PullRequestHeaders wraps PullRequest with response headers.
+type PullRequestHeaders struct {
+	Location OptString
+	Response PullRequest
+}
+
+func (*PullRequestHeaders) pullsCreateRes() {}
+
 type PullRequestLabelsItem struct {
 	ID          OptInt64     "json:\"id\""
 	NodeID      OptString    "json:\"node_id\""
@@ -32596,9 +33122,16 @@ type PullRequestReviewComment struct {
 	BodyText  OptString                       "json:\"body_text\""
 }
 
-func (*PullRequestReviewComment) pullsCreateReplyForReviewCommentRes() {}
-func (*PullRequestReviewComment) pullsCreateReviewCommentRes()         {}
-func (*PullRequestReviewComment) pullsGetReviewCommentRes()            {}
+func (*PullRequestReviewComment) pullsGetReviewCommentRes() {}
+
+// PullRequestReviewCommentHeaders wraps PullRequestReviewComment with response headers.
+type PullRequestReviewCommentHeaders struct {
+	Location OptString
+	Response PullRequestReviewComment
+}
+
+func (*PullRequestReviewCommentHeaders) pullsCreateReplyForReviewCommentRes() {}
+func (*PullRequestReviewCommentHeaders) pullsCreateReviewCommentRes()         {}
 
 type PullRequestReviewCommentLinks struct {
 	Self        PullRequestReviewCommentLinksSelf        "json:\"self\""
@@ -32653,6 +33186,12 @@ type PullRequestReviewLinksPullRequest struct {
 type PullRequestReviewRequest struct {
 	Users []SimpleUser "json:\"users\""
 	Teams []Team       "json:\"teams\""
+}
+
+// PullRequestReviewRequestHeaders wraps PullRequestReviewRequest with response headers.
+type PullRequestReviewRequestHeaders struct {
+	Link     OptString
+	Response PullRequestReviewRequest
 }
 
 // Pull Request Simple.
@@ -32913,9 +33452,19 @@ type PullsGetApplicationJSONNotFound BasicError
 
 func (*PullsGetApplicationJSONNotFound) pullsGetRes() {}
 
-type PullsListCommentsForReviewOKApplicationJSON []ReviewComment
+// PullsListCommentsForReviewOKHeaders wraps []ReviewComment with response headers.
+type PullsListCommentsForReviewOKHeaders struct {
+	Link     OptString
+	Response []ReviewComment
+}
 
-func (PullsListCommentsForReviewOKApplicationJSON) pullsListCommentsForReviewRes() {}
+func (*PullsListCommentsForReviewOKHeaders) pullsListCommentsForReviewRes() {}
+
+// PullsListCommitsOKHeaders wraps []Commit with response headers.
+type PullsListCommitsOKHeaders struct {
+	Link     OptString
+	Response []Commit
+}
 
 type PullsListDirection string
 
@@ -32924,13 +33473,21 @@ const (
 	PullsListDirectionDesc PullsListDirection = "desc"
 )
 
-type PullsListFilesOKApplicationJSON []DiffEntry
+// PullsListFilesOKHeaders wraps []DiffEntry with response headers.
+type PullsListFilesOKHeaders struct {
+	Link     OptString
+	Response []DiffEntry
+}
 
-func (PullsListFilesOKApplicationJSON) pullsListFilesRes() {}
+func (*PullsListFilesOKHeaders) pullsListFilesRes() {}
 
-type PullsListOKApplicationJSON []PullRequestSimple
+// PullsListOKHeaders wraps []PullRequestSimple with response headers.
+type PullsListOKHeaders struct {
+	Link     OptString
+	Response []PullRequestSimple
+}
 
-func (PullsListOKApplicationJSON) pullsListRes() {}
+func (*PullsListOKHeaders) pullsListRes() {}
 
 type PullsListReviewCommentsDirection string
 
@@ -32946,6 +33503,12 @@ const (
 	PullsListReviewCommentsForRepoDirectionDesc PullsListReviewCommentsForRepoDirection = "desc"
 )
 
+// PullsListReviewCommentsForRepoOKHeaders wraps []PullRequestReviewComment with response headers.
+type PullsListReviewCommentsForRepoOKHeaders struct {
+	Link     OptString
+	Response []PullRequestReviewComment
+}
+
 type PullsListReviewCommentsForRepoSort string
 
 const (
@@ -32954,12 +33517,24 @@ const (
 	PullsListReviewCommentsForRepoSortCreatedAt PullsListReviewCommentsForRepoSort = "created_at"
 )
 
+// PullsListReviewCommentsOKHeaders wraps []PullRequestReviewComment with response headers.
+type PullsListReviewCommentsOKHeaders struct {
+	Link     OptString
+	Response []PullRequestReviewComment
+}
+
 type PullsListReviewCommentsSort string
 
 const (
 	PullsListReviewCommentsSortCreated PullsListReviewCommentsSort = "created"
 	PullsListReviewCommentsSortUpdated PullsListReviewCommentsSort = "updated"
 )
+
+// PullsListReviewsOKHeaders wraps []PullRequestReview with response headers.
+type PullsListReviewsOKHeaders struct {
+	Link     OptString
+	Response []PullRequestReview
+}
 
 type PullsListSort string
 
@@ -33122,7 +33697,15 @@ type RateLimitOverview struct {
 	Rate      RateLimit                  "json:\"rate\""
 }
 
-func (*RateLimitOverview) rateLimitGetRes() {}
+// RateLimitOverviewHeaders wraps RateLimitOverview with response headers.
+type RateLimitOverviewHeaders struct {
+	XRateLimitLimit     OptInt
+	XRateLimitRemaining OptInt
+	XRateLimitReset     OptInt
+	Response            RateLimitOverview
+}
+
+func (*RateLimitOverviewHeaders) rateLimitGetRes() {}
 
 type RateLimitOverviewResources struct {
 	Core                      RateLimit    "json:\"core\""
@@ -33471,9 +34054,13 @@ const (
 	ReactionsListForCommitCommentContentEyes     ReactionsListForCommitCommentContent = "eyes"
 )
 
-type ReactionsListForCommitCommentOKApplicationJSON []Reaction
+// ReactionsListForCommitCommentOKHeaders wraps []Reaction with response headers.
+type ReactionsListForCommitCommentOKHeaders struct {
+	Link     OptString
+	Response []Reaction
+}
 
-func (ReactionsListForCommitCommentOKApplicationJSON) reactionsListForCommitCommentRes() {}
+func (*ReactionsListForCommitCommentOKHeaders) reactionsListForCommitCommentRes() {}
 
 type ReactionsListForIssueApplicationJSONGone BasicError
 
@@ -33496,9 +34083,13 @@ const (
 	ReactionsListForIssueCommentContentEyes     ReactionsListForIssueCommentContent = "eyes"
 )
 
-type ReactionsListForIssueCommentOKApplicationJSON []Reaction
+// ReactionsListForIssueCommentOKHeaders wraps []Reaction with response headers.
+type ReactionsListForIssueCommentOKHeaders struct {
+	Link     OptString
+	Response []Reaction
+}
 
-func (ReactionsListForIssueCommentOKApplicationJSON) reactionsListForIssueCommentRes() {}
+func (*ReactionsListForIssueCommentOKHeaders) reactionsListForIssueCommentRes() {}
 
 type ReactionsListForIssueContent string
 
@@ -33513,9 +34104,13 @@ const (
 	ReactionsListForIssueContentEyes     ReactionsListForIssueContent = "eyes"
 )
 
-type ReactionsListForIssueOKApplicationJSON []Reaction
+// ReactionsListForIssueOKHeaders wraps []Reaction with response headers.
+type ReactionsListForIssueOKHeaders struct {
+	Link     OptString
+	Response []Reaction
+}
 
-func (ReactionsListForIssueOKApplicationJSON) reactionsListForIssueRes() {}
+func (*ReactionsListForIssueOKHeaders) reactionsListForIssueRes() {}
 
 type ReactionsListForPullRequestReviewCommentContent string
 
@@ -33530,9 +34125,13 @@ const (
 	ReactionsListForPullRequestReviewCommentContentEyes     ReactionsListForPullRequestReviewCommentContent = "eyes"
 )
 
-type ReactionsListForPullRequestReviewCommentOKApplicationJSON []Reaction
+// ReactionsListForPullRequestReviewCommentOKHeaders wraps []Reaction with response headers.
+type ReactionsListForPullRequestReviewCommentOKHeaders struct {
+	Link     OptString
+	Response []Reaction
+}
 
-func (ReactionsListForPullRequestReviewCommentOKApplicationJSON) reactionsListForPullRequestReviewCommentRes() {
+func (*ReactionsListForPullRequestReviewCommentOKHeaders) reactionsListForPullRequestReviewCommentRes() {
 }
 
 type ReactionsListForTeamDiscussionCommentInOrgContent string
@@ -33548,6 +34147,12 @@ const (
 	ReactionsListForTeamDiscussionCommentInOrgContentEyes     ReactionsListForTeamDiscussionCommentInOrgContent = "eyes"
 )
 
+// ReactionsListForTeamDiscussionCommentInOrgOKHeaders wraps []Reaction with response headers.
+type ReactionsListForTeamDiscussionCommentInOrgOKHeaders struct {
+	Link     OptString
+	Response []Reaction
+}
+
 type ReactionsListForTeamDiscussionCommentLegacyContent string
 
 const (
@@ -33560,6 +34165,12 @@ const (
 	ReactionsListForTeamDiscussionCommentLegacyContentRocket   ReactionsListForTeamDiscussionCommentLegacyContent = "rocket"
 	ReactionsListForTeamDiscussionCommentLegacyContentEyes     ReactionsListForTeamDiscussionCommentLegacyContent = "eyes"
 )
+
+// ReactionsListForTeamDiscussionCommentLegacyOKHeaders wraps []Reaction with response headers.
+type ReactionsListForTeamDiscussionCommentLegacyOKHeaders struct {
+	Link     OptString
+	Response []Reaction
+}
 
 type ReactionsListForTeamDiscussionInOrgContent string
 
@@ -33574,6 +34185,12 @@ const (
 	ReactionsListForTeamDiscussionInOrgContentEyes     ReactionsListForTeamDiscussionInOrgContent = "eyes"
 )
 
+// ReactionsListForTeamDiscussionInOrgOKHeaders wraps []Reaction with response headers.
+type ReactionsListForTeamDiscussionInOrgOKHeaders struct {
+	Link     OptString
+	Response []Reaction
+}
+
 type ReactionsListForTeamDiscussionLegacyContent string
 
 const (
@@ -33586,6 +34203,12 @@ const (
 	ReactionsListForTeamDiscussionLegacyContentRocket   ReactionsListForTeamDiscussionLegacyContent = "rocket"
 	ReactionsListForTeamDiscussionLegacyContentEyes     ReactionsListForTeamDiscussionLegacyContent = "eyes"
 )
+
+// ReactionsListForTeamDiscussionLegacyOKHeaders wraps []Reaction with response headers.
+type ReactionsListForTeamDiscussionLegacyOKHeaders struct {
+	Link     OptString
+	Response []Reaction
+}
 
 // Referrer Traffic.
 // Ref: #/components/schemas/referrer-traffic
@@ -33628,7 +34251,6 @@ type Release struct {
 	Reactions     OptReactionRollup "json:\"reactions\""
 }
 
-func (*Release) reposCreateReleaseRes()   {}
 func (*Release) reposGetReleaseByTagRes() {}
 func (*Release) reposGetReleaseRes()      {}
 func (*Release) reposUpdateReleaseRes()   {}
@@ -33662,6 +34284,14 @@ const (
 	ReleaseAssetStateUploaded ReleaseAssetState = "uploaded"
 	ReleaseAssetStateOpen     ReleaseAssetState = "open"
 )
+
+// ReleaseHeaders wraps Release with response headers.
+type ReleaseHeaders struct {
+	Location OptString
+	Response Release
+}
+
+func (*ReleaseHeaders) reposCreateReleaseRes() {}
 
 // Repo Search Result Item.
 // Ref: #/components/schemas/repo-search-result-item
@@ -34893,8 +35523,20 @@ type ReposDisableVulnerabilityAlertsNoContent struct{}
 // ReposDownloadTarballArchiveFound is response for ReposDownloadTarballArchive operation.
 type ReposDownloadTarballArchiveFound struct{}
 
+// ReposDownloadTarballArchiveFoundHeaders wraps ReposDownloadTarballArchiveFound with response headers.
+type ReposDownloadTarballArchiveFoundHeaders struct {
+	Location OptString
+	Response ReposDownloadTarballArchiveFound
+}
+
 // ReposDownloadZipballArchiveFound is response for ReposDownloadZipballArchive operation.
 type ReposDownloadZipballArchiveFound struct{}
+
+// ReposDownloadZipballArchiveFoundHeaders wraps ReposDownloadZipballArchiveFound with response headers.
+type ReposDownloadZipballArchiveFoundHeaders struct {
+	Location OptString
+	Response ReposDownloadZipballArchiveFound
+}
 
 // ReposEnableAutomatedSecurityFixesNoContent is response for ReposEnableAutomatedSecurityFixes operation.
 type ReposEnableAutomatedSecurityFixesNoContent struct{}
@@ -35008,9 +35650,13 @@ type ReposListBranchesForHeadCommitOKApplicationJSON []BranchShort
 
 func (ReposListBranchesForHeadCommitOKApplicationJSON) reposListBranchesForHeadCommitRes() {}
 
-type ReposListBranchesOKApplicationJSON []ShortBranch
+// ReposListBranchesOKHeaders wraps []ShortBranch with response headers.
+type ReposListBranchesOKHeaders struct {
+	Link     OptString
+	Response []ShortBranch
+}
 
-func (ReposListBranchesOKApplicationJSON) reposListBranchesRes() {}
+func (*ReposListBranchesOKHeaders) reposListBranchesRes() {}
 
 type ReposListCollaboratorsAffiliation string
 
@@ -35020,13 +35666,33 @@ const (
 	ReposListCollaboratorsAffiliationAll     ReposListCollaboratorsAffiliation = "all"
 )
 
-type ReposListCollaboratorsOKApplicationJSON []Collaborator
+// ReposListCollaboratorsOKHeaders wraps []Collaborator with response headers.
+type ReposListCollaboratorsOKHeaders struct {
+	Link     OptString
+	Response []Collaborator
+}
 
-func (ReposListCollaboratorsOKApplicationJSON) reposListCollaboratorsRes() {}
+func (*ReposListCollaboratorsOKHeaders) reposListCollaboratorsRes() {}
 
-type ReposListCommitStatusesForRefOKApplicationJSON []Status
+// ReposListCommentsForCommitOKHeaders wraps []CommitComment with response headers.
+type ReposListCommentsForCommitOKHeaders struct {
+	Link     OptString
+	Response []CommitComment
+}
 
-func (ReposListCommitStatusesForRefOKApplicationJSON) reposListCommitStatusesForRefRes() {}
+// ReposListCommitCommentsForRepoOKHeaders wraps []CommitComment with response headers.
+type ReposListCommitCommentsForRepoOKHeaders struct {
+	Link     OptString
+	Response []CommitComment
+}
+
+// ReposListCommitStatusesForRefOKHeaders wraps []Status with response headers.
+type ReposListCommitStatusesForRefOKHeaders struct {
+	Link     OptString
+	Response []Status
+}
+
+func (*ReposListCommitStatusesForRefOKHeaders) reposListCommitStatusesForRefRes() {}
 
 type ReposListCommitsApplicationJSONBadRequest BasicError
 
@@ -35044,9 +35710,13 @@ type ReposListCommitsApplicationJSONNotFound BasicError
 
 func (*ReposListCommitsApplicationJSONNotFound) reposListCommitsRes() {}
 
-type ReposListCommitsOKApplicationJSON []Commit
+// ReposListCommitsOKHeaders wraps []Commit with response headers.
+type ReposListCommitsOKHeaders struct {
+	Link     OptString
+	Response []Commit
+}
 
-func (ReposListCommitsOKApplicationJSON) reposListCommitsRes() {}
+func (*ReposListCommitsOKHeaders) reposListCommitsRes() {}
 
 type ReposListContributorsApplicationJSONForbidden BasicError
 
@@ -35061,13 +35731,33 @@ type ReposListContributorsNoContent struct{}
 
 func (*ReposListContributorsNoContent) reposListContributorsRes() {}
 
-type ReposListContributorsOKApplicationJSON []Contributor
+// ReposListContributorsOKHeaders wraps []Contributor with response headers.
+type ReposListContributorsOKHeaders struct {
+	Link     OptString
+	Response []Contributor
+}
 
-func (ReposListContributorsOKApplicationJSON) reposListContributorsRes() {}
+func (*ReposListContributorsOKHeaders) reposListContributorsRes() {}
 
-type ReposListDeploymentStatusesOKApplicationJSON []DeploymentStatus
+// ReposListDeployKeysOKHeaders wraps []DeployKey with response headers.
+type ReposListDeployKeysOKHeaders struct {
+	Link     OptString
+	Response []DeployKey
+}
 
-func (ReposListDeploymentStatusesOKApplicationJSON) reposListDeploymentStatusesRes() {}
+// ReposListDeploymentStatusesOKHeaders wraps []DeploymentStatus with response headers.
+type ReposListDeploymentStatusesOKHeaders struct {
+	Link     OptString
+	Response []DeploymentStatus
+}
+
+func (*ReposListDeploymentStatusesOKHeaders) reposListDeploymentStatusesRes() {}
+
+// ReposListDeploymentsOKHeaders wraps []Deployment with response headers.
+type ReposListDeploymentsOKHeaders struct {
+	Link     OptString
+	Response []Deployment
+}
 
 type ReposListForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -35122,6 +35812,12 @@ const (
 	ReposListForOrgDirectionDesc ReposListForOrgDirection = "desc"
 )
 
+// ReposListForOrgOKHeaders wraps []MinimalRepository with response headers.
+type ReposListForOrgOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
+
 type ReposListForOrgSort string
 
 const (
@@ -35150,6 +35846,12 @@ const (
 	ReposListForUserDirectionDesc ReposListForUserDirection = "desc"
 )
 
+// ReposListForUserOKHeaders wraps []MinimalRepository with response headers.
+type ReposListForUserOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
+
 type ReposListForUserSort string
 
 const (
@@ -35167,9 +35869,13 @@ const (
 	ReposListForUserTypeMember ReposListForUserType = "member"
 )
 
-type ReposListForksOKApplicationJSON []MinimalRepository
+// ReposListForksOKHeaders wraps []MinimalRepository with response headers.
+type ReposListForksOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
 
-func (ReposListForksOKApplicationJSON) reposListForksRes() {}
+func (*ReposListForksOKHeaders) reposListForksRes() {}
 
 type ReposListForksSort string
 
@@ -35195,26 +35901,78 @@ type ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized BasicEr
 func (*ReposListInvitationsForAuthenticatedUserApplicationJSONUnauthorized) reposListInvitationsForAuthenticatedUserRes() {
 }
 
-type ReposListInvitationsForAuthenticatedUserOKApplicationJSON []RepositoryInvitation
-
-func (ReposListInvitationsForAuthenticatedUserOKApplicationJSON) reposListInvitationsForAuthenticatedUserRes() {
+// ReposListInvitationsForAuthenticatedUserOKHeaders wraps []RepositoryInvitation with response headers.
+type ReposListInvitationsForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []RepositoryInvitation
 }
 
-type ReposListPublicOKApplicationJSON []MinimalRepository
+func (*ReposListInvitationsForAuthenticatedUserOKHeaders) reposListInvitationsForAuthenticatedUserRes() {
+}
 
-func (ReposListPublicOKApplicationJSON) reposListPublicRes() {}
+// ReposListInvitationsOKHeaders wraps []RepositoryInvitation with response headers.
+type ReposListInvitationsOKHeaders struct {
+	Link     OptString
+	Response []RepositoryInvitation
+}
 
-type ReposListReleasesOKApplicationJSON []Release
+// ReposListPagesBuildsOKHeaders wraps []PageBuild with response headers.
+type ReposListPagesBuildsOKHeaders struct {
+	Link     OptString
+	Response []PageBuild
+}
 
-func (ReposListReleasesOKApplicationJSON) reposListReleasesRes() {}
+// ReposListPublicOKHeaders wraps []MinimalRepository with response headers.
+type ReposListPublicOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
+
+func (*ReposListPublicOKHeaders) reposListPublicRes() {}
+
+// ReposListPullRequestsAssociatedWithCommitOKHeaders wraps []PullRequestSimple with response headers.
+type ReposListPullRequestsAssociatedWithCommitOKHeaders struct {
+	Link     OptString
+	Response []PullRequestSimple
+}
+
+// ReposListReleaseAssetsOKHeaders wraps []ReleaseAsset with response headers.
+type ReposListReleaseAssetsOKHeaders struct {
+	Link     OptString
+	Response []ReleaseAsset
+}
+
+// ReposListReleasesOKHeaders wraps []Release with response headers.
+type ReposListReleasesOKHeaders struct {
+	Link     OptString
+	Response []Release
+}
+
+func (*ReposListReleasesOKHeaders) reposListReleasesRes() {}
+
+// ReposListTagsOKHeaders wraps []Tag with response headers.
+type ReposListTagsOKHeaders struct {
+	Link     OptString
+	Response []Tag
+}
+
+// ReposListTeamsOKHeaders wraps []Team with response headers.
+type ReposListTeamsOKHeaders struct {
+	Link     OptString
+	Response []Team
+}
 
 type ReposListWebhookDeliveriesOKApplicationJSON []HookDeliveryItem
 
 func (ReposListWebhookDeliveriesOKApplicationJSON) reposListWebhookDeliveriesRes() {}
 
-type ReposListWebhooksOKApplicationJSON []Hook
+// ReposListWebhooksOKHeaders wraps []Hook with response headers.
+type ReposListWebhooksOKHeaders struct {
+	Link     OptString
+	Response []Hook
+}
 
-func (ReposListWebhooksOKApplicationJSON) reposListWebhooksRes() {}
+func (*ReposListWebhooksOKHeaders) reposListWebhooksRes() {}
 
 // ReposMergeConflict is response for ReposMerge operation.
 type ReposMergeConflict struct{}
@@ -36345,9 +37103,6 @@ type Repository struct {
 	StarredAt        OptString "json:\"starred_at\""
 }
 
-func (*Repository) reposCreateForAuthenticatedUserRes() {}
-func (*Repository) reposCreateInOrgRes()                {}
-
 // Repository Collaborator Permission.
 // Ref: #/components/schemas/repository-collaborator-permission
 type RepositoryCollaboratorPermission struct {
@@ -36357,6 +37112,15 @@ type RepositoryCollaboratorPermission struct {
 
 func (*RepositoryCollaboratorPermission) projectsGetPermissionForUserRes()        {}
 func (*RepositoryCollaboratorPermission) reposGetCollaboratorPermissionLevelRes() {}
+
+// RepositoryHeaders wraps Repository with response headers.
+type RepositoryHeaders struct {
+	Location OptString
+	Response Repository
+}
+
+func (*RepositoryHeaders) reposCreateForAuthenticatedUserRes() {}
+func (*RepositoryHeaders) reposCreateInOrgRes()                {}
 
 // Repository invitations let you manage who you collaborate with.
 // Ref: #/components/schemas/repository-invitation
@@ -37038,9 +37802,13 @@ type SecretScanningGetAlertNotFound struct{}
 
 func (*SecretScanningGetAlertNotFound) secretScanningGetAlertRes() {}
 
-type SecretScanningListAlertsForOrgOKApplicationJSON []OrganizationSecretScanningAlert
+// SecretScanningListAlertsForOrgOKHeaders wraps []OrganizationSecretScanningAlert with response headers.
+type SecretScanningListAlertsForOrgOKHeaders struct {
+	Link     OptString
+	Response []OrganizationSecretScanningAlert
+}
 
-func (SecretScanningListAlertsForOrgOKApplicationJSON) secretScanningListAlertsForOrgRes() {}
+func (*SecretScanningListAlertsForOrgOKHeaders) secretScanningListAlertsForOrgRes() {}
 
 type SecretScanningListAlertsForOrgState string
 
@@ -37130,7 +37898,13 @@ type ShortBlob struct {
 	Sha string "json:\"sha\""
 }
 
-func (*ShortBlob) gitCreateBlobRes() {}
+// ShortBlobHeaders wraps ShortBlob with response headers.
+type ShortBlobHeaders struct {
+	Location OptString
+	Response ShortBlob
+}
+
+func (*ShortBlobHeaders) gitCreateBlobRes() {}
 
 // Short Branch.
 // Ref: #/components/schemas/short-branch
@@ -37236,6 +38010,12 @@ type StatusCheckPolicy struct {
 
 func (*StatusCheckPolicy) reposGetStatusChecksProtectionRes()   {}
 func (*StatusCheckPolicy) reposUpdateStatusCheckProtectionRes() {}
+
+// StatusHeaders wraps Status with response headers.
+type StatusHeaders struct {
+	Location OptString
+	Response Status
+}
 
 // Tag.
 // Ref: #/components/schemas/tag
@@ -37994,6 +38774,12 @@ type TeamsGetMembershipForUserInOrgNotFound struct{}
 
 func (*TeamsGetMembershipForUserInOrgNotFound) teamsGetMembershipForUserInOrgRes() {}
 
+// TeamsListChildInOrgOKHeaders wraps []Team with response headers.
+type TeamsListChildInOrgOKHeaders struct {
+	Link     OptString
+	Response []Team
+}
+
 type TeamsListChildLegacyApplicationJSONForbidden BasicError
 
 func (*TeamsListChildLegacyApplicationJSONForbidden) teamsListChildLegacyRes() {}
@@ -38002,9 +38788,13 @@ type TeamsListChildLegacyApplicationJSONNotFound BasicError
 
 func (*TeamsListChildLegacyApplicationJSONNotFound) teamsListChildLegacyRes() {}
 
-type TeamsListChildLegacyOKApplicationJSON []Team
+// TeamsListChildLegacyOKHeaders wraps []Team with response headers.
+type TeamsListChildLegacyOKHeaders struct {
+	Link     OptString
+	Response []Team
+}
 
-func (TeamsListChildLegacyOKApplicationJSON) teamsListChildLegacyRes() {}
+func (*TeamsListChildLegacyOKHeaders) teamsListChildLegacyRes() {}
 
 type TeamsListDiscussionCommentsInOrgDirection string
 
@@ -38013,12 +38803,24 @@ const (
 	TeamsListDiscussionCommentsInOrgDirectionDesc TeamsListDiscussionCommentsInOrgDirection = "desc"
 )
 
+// TeamsListDiscussionCommentsInOrgOKHeaders wraps []TeamDiscussionComment with response headers.
+type TeamsListDiscussionCommentsInOrgOKHeaders struct {
+	Link     OptString
+	Response []TeamDiscussionComment
+}
+
 type TeamsListDiscussionCommentsLegacyDirection string
 
 const (
 	TeamsListDiscussionCommentsLegacyDirectionAsc  TeamsListDiscussionCommentsLegacyDirection = "asc"
 	TeamsListDiscussionCommentsLegacyDirectionDesc TeamsListDiscussionCommentsLegacyDirection = "desc"
 )
+
+// TeamsListDiscussionCommentsLegacyOKHeaders wraps []TeamDiscussionComment with response headers.
+type TeamsListDiscussionCommentsLegacyOKHeaders struct {
+	Link     OptString
+	Response []TeamDiscussionComment
+}
 
 type TeamsListDiscussionsInOrgDirection string
 
@@ -38027,12 +38829,24 @@ const (
 	TeamsListDiscussionsInOrgDirectionDesc TeamsListDiscussionsInOrgDirection = "desc"
 )
 
+// TeamsListDiscussionsInOrgOKHeaders wraps []TeamDiscussion with response headers.
+type TeamsListDiscussionsInOrgOKHeaders struct {
+	Link     OptString
+	Response []TeamDiscussion
+}
+
 type TeamsListDiscussionsLegacyDirection string
 
 const (
 	TeamsListDiscussionsLegacyDirectionAsc  TeamsListDiscussionsLegacyDirection = "asc"
 	TeamsListDiscussionsLegacyDirectionDesc TeamsListDiscussionsLegacyDirection = "desc"
 )
+
+// TeamsListDiscussionsLegacyOKHeaders wraps []TeamDiscussion with response headers.
+type TeamsListDiscussionsLegacyOKHeaders struct {
+	Link     OptString
+	Response []TeamDiscussion
+}
 
 type TeamsListForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -38042,9 +38856,13 @@ type TeamsListForAuthenticatedUserApplicationJSONNotFound BasicError
 
 func (*TeamsListForAuthenticatedUserApplicationJSONNotFound) teamsListForAuthenticatedUserRes() {}
 
-type TeamsListForAuthenticatedUserOKApplicationJSON []TeamFull
+// TeamsListForAuthenticatedUserOKHeaders wraps []TeamFull with response headers.
+type TeamsListForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []TeamFull
+}
 
-func (TeamsListForAuthenticatedUserOKApplicationJSON) teamsListForAuthenticatedUserRes() {}
+func (*TeamsListForAuthenticatedUserOKHeaders) teamsListForAuthenticatedUserRes() {}
 
 type TeamsListIdpGroupsForLegacyApplicationJSONForbidden BasicError
 
@@ -38054,6 +38872,12 @@ type TeamsListIdpGroupsForLegacyApplicationJSONNotFound BasicError
 
 func (*TeamsListIdpGroupsForLegacyApplicationJSONNotFound) teamsListIdpGroupsForLegacyRes() {}
 
+// TeamsListMembersInOrgOKHeaders wraps []SimpleUser with response headers.
+type TeamsListMembersInOrgOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
+
 type TeamsListMembersInOrgRole string
 
 const (
@@ -38062,9 +38886,13 @@ const (
 	TeamsListMembersInOrgRoleAll        TeamsListMembersInOrgRole = "all"
 )
 
-type TeamsListMembersLegacyOKApplicationJSON []SimpleUser
+// TeamsListMembersLegacyOKHeaders wraps []SimpleUser with response headers.
+type TeamsListMembersLegacyOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
 
-func (TeamsListMembersLegacyOKApplicationJSON) teamsListMembersLegacyRes() {}
+func (*TeamsListMembersLegacyOKHeaders) teamsListMembersLegacyRes() {}
 
 type TeamsListMembersLegacyRole string
 
@@ -38074,17 +38902,53 @@ const (
 	TeamsListMembersLegacyRoleAll        TeamsListMembersLegacyRole = "all"
 )
 
-type TeamsListOKApplicationJSON []Team
+// TeamsListOKHeaders wraps []Team with response headers.
+type TeamsListOKHeaders struct {
+	Link     OptString
+	Response []Team
+}
 
-func (TeamsListOKApplicationJSON) teamsListRes() {}
+func (*TeamsListOKHeaders) teamsListRes() {}
 
-type TeamsListProjectsLegacyOKApplicationJSON []TeamProject
+// TeamsListPendingInvitationsInOrgOKHeaders wraps []OrganizationInvitation with response headers.
+type TeamsListPendingInvitationsInOrgOKHeaders struct {
+	Link     OptString
+	Response []OrganizationInvitation
+}
 
-func (TeamsListProjectsLegacyOKApplicationJSON) teamsListProjectsLegacyRes() {}
+// TeamsListPendingInvitationsLegacyOKHeaders wraps []OrganizationInvitation with response headers.
+type TeamsListPendingInvitationsLegacyOKHeaders struct {
+	Link     OptString
+	Response []OrganizationInvitation
+}
 
-type TeamsListReposLegacyOKApplicationJSON []MinimalRepository
+// TeamsListProjectsInOrgOKHeaders wraps []TeamProject with response headers.
+type TeamsListProjectsInOrgOKHeaders struct {
+	Link     OptString
+	Response []TeamProject
+}
 
-func (TeamsListReposLegacyOKApplicationJSON) teamsListReposLegacyRes() {}
+// TeamsListProjectsLegacyOKHeaders wraps []TeamProject with response headers.
+type TeamsListProjectsLegacyOKHeaders struct {
+	Link     OptString
+	Response []TeamProject
+}
+
+func (*TeamsListProjectsLegacyOKHeaders) teamsListProjectsLegacyRes() {}
+
+// TeamsListReposInOrgOKHeaders wraps []MinimalRepository with response headers.
+type TeamsListReposInOrgOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
+
+// TeamsListReposLegacyOKHeaders wraps []MinimalRepository with response headers.
+type TeamsListReposLegacyOKHeaders struct {
+	Link     OptString
+	Response []MinimalRepository
+}
+
+func (*TeamsListReposLegacyOKHeaders) teamsListReposLegacyRes() {}
 
 // TeamsRemoveMemberLegacyNoContent is response for TeamsRemoveMemberLegacy operation.
 type TeamsRemoveMemberLegacyNoContent struct{}
@@ -39042,9 +39906,13 @@ type UsersListEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListEmailsForAuthenticatedApplicationJSONUnauthorized) usersListEmailsForAuthenticatedRes() {
 }
 
-type UsersListEmailsForAuthenticatedOKApplicationJSON []Email
+// UsersListEmailsForAuthenticatedOKHeaders wraps []Email with response headers.
+type UsersListEmailsForAuthenticatedOKHeaders struct {
+	Link     OptString
+	Response []Email
+}
 
-func (UsersListEmailsForAuthenticatedOKApplicationJSON) usersListEmailsForAuthenticatedRes() {}
+func (*UsersListEmailsForAuthenticatedOKHeaders) usersListEmailsForAuthenticatedRes() {}
 
 type UsersListFollowedByAuthenticatedApplicationJSONForbidden BasicError
 
@@ -39056,9 +39924,13 @@ type UsersListFollowedByAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListFollowedByAuthenticatedApplicationJSONUnauthorized) usersListFollowedByAuthenticatedRes() {
 }
 
-type UsersListFollowedByAuthenticatedOKApplicationJSON []SimpleUser
+// UsersListFollowedByAuthenticatedOKHeaders wraps []SimpleUser with response headers.
+type UsersListFollowedByAuthenticatedOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
 
-func (UsersListFollowedByAuthenticatedOKApplicationJSON) usersListFollowedByAuthenticatedRes() {}
+func (*UsersListFollowedByAuthenticatedOKHeaders) usersListFollowedByAuthenticatedRes() {}
 
 type UsersListFollowersForAuthenticatedUserApplicationJSONForbidden BasicError
 
@@ -39070,9 +39942,24 @@ type UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized BasicErro
 func (*UsersListFollowersForAuthenticatedUserApplicationJSONUnauthorized) usersListFollowersForAuthenticatedUserRes() {
 }
 
-type UsersListFollowersForAuthenticatedUserOKApplicationJSON []SimpleUser
+// UsersListFollowersForAuthenticatedUserOKHeaders wraps []SimpleUser with response headers.
+type UsersListFollowersForAuthenticatedUserOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
 
-func (UsersListFollowersForAuthenticatedUserOKApplicationJSON) usersListFollowersForAuthenticatedUserRes() {
+func (*UsersListFollowersForAuthenticatedUserOKHeaders) usersListFollowersForAuthenticatedUserRes() {}
+
+// UsersListFollowersForUserOKHeaders wraps []SimpleUser with response headers.
+type UsersListFollowersForUserOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
+
+// UsersListFollowingForUserOKHeaders wraps []SimpleUser with response headers.
+type UsersListFollowingForUserOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
 }
 
 type UsersListGpgKeysForAuthenticatedApplicationJSONForbidden BasicError
@@ -39090,13 +39977,27 @@ type UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListGpgKeysForAuthenticatedApplicationJSONUnauthorized) usersListGpgKeysForAuthenticatedRes() {
 }
 
-type UsersListGpgKeysForAuthenticatedOKApplicationJSON []GpgKey
+// UsersListGpgKeysForAuthenticatedOKHeaders wraps []GpgKey with response headers.
+type UsersListGpgKeysForAuthenticatedOKHeaders struct {
+	Link     OptString
+	Response []GpgKey
+}
 
-func (UsersListGpgKeysForAuthenticatedOKApplicationJSON) usersListGpgKeysForAuthenticatedRes() {}
+func (*UsersListGpgKeysForAuthenticatedOKHeaders) usersListGpgKeysForAuthenticatedRes() {}
 
-type UsersListOKApplicationJSON []SimpleUser
+// UsersListGpgKeysForUserOKHeaders wraps []GpgKey with response headers.
+type UsersListGpgKeysForUserOKHeaders struct {
+	Link     OptString
+	Response []GpgKey
+}
 
-func (UsersListOKApplicationJSON) usersListRes() {}
+// UsersListOKHeaders wraps []SimpleUser with response headers.
+type UsersListOKHeaders struct {
+	Link     OptString
+	Response []SimpleUser
+}
+
+func (*UsersListOKHeaders) usersListRes() {}
 
 type UsersListPublicEmailsForAuthenticatedApplicationJSONForbidden BasicError
 
@@ -39113,9 +40014,18 @@ type UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized BasicError
 func (*UsersListPublicEmailsForAuthenticatedApplicationJSONUnauthorized) usersListPublicEmailsForAuthenticatedRes() {
 }
 
-type UsersListPublicEmailsForAuthenticatedOKApplicationJSON []Email
+// UsersListPublicEmailsForAuthenticatedOKHeaders wraps []Email with response headers.
+type UsersListPublicEmailsForAuthenticatedOKHeaders struct {
+	Link     OptString
+	Response []Email
+}
 
-func (UsersListPublicEmailsForAuthenticatedOKApplicationJSON) usersListPublicEmailsForAuthenticatedRes() {
+func (*UsersListPublicEmailsForAuthenticatedOKHeaders) usersListPublicEmailsForAuthenticatedRes() {}
+
+// UsersListPublicKeysForUserOKHeaders wraps []KeySimple with response headers.
+type UsersListPublicKeysForUserOKHeaders struct {
+	Link     OptString
+	Response []KeySimple
 }
 
 type UsersListPublicSSHKeysForAuthenticatedApplicationJSONForbidden BasicError
@@ -39133,10 +40043,13 @@ type UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized BasicErro
 func (*UsersListPublicSSHKeysForAuthenticatedApplicationJSONUnauthorized) usersListPublicSSHKeysForAuthenticatedRes() {
 }
 
-type UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON []Key
-
-func (UsersListPublicSSHKeysForAuthenticatedOKApplicationJSON) usersListPublicSSHKeysForAuthenticatedRes() {
+// UsersListPublicSSHKeysForAuthenticatedOKHeaders wraps []Key with response headers.
+type UsersListPublicSSHKeysForAuthenticatedOKHeaders struct {
+	Link     OptString
+	Response []Key
 }
+
+func (*UsersListPublicSSHKeysForAuthenticatedOKHeaders) usersListPublicSSHKeysForAuthenticatedRes() {}
 
 type UsersSetPrimaryEmailVisibilityForAuthenticatedApplicationJSONForbidden BasicError
 

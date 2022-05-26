@@ -5,8 +5,7 @@
 
 {{- range $op := $.Operations }}{{/* Range over all methods */}}
 func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.ResponseWriter, span trace.Span) error {
-	{{- $typesCount := len $op.ListResponseTypes }}
-	{{- if eq $typesCount 1 }}
+	{{- if eq (len $op.ListResponseTypes) 1 }}
 		{{- range $info := $op.ListResponseTypes }}
 			{{- template "respond" $info }}
 		{{- end }}
@@ -25,8 +24,7 @@ func encode{{ $op.Name }}Response(response {{ $op.Responses.Type.Go }}, w http.R
 
 {{- if $.Error }}
 func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, span trace.Span) error {
-	{{- $typesCount := len $.Error.ResponseInfo }}
-	{{- if eq $typesCount 1 }}
+	{{- if eq (len $.Error.ResponseInfo) 1 }}
 		{{- range $info := $.Error.ResponseInfo }}
 			{{- template "respond" $info }}
 		{{- end }}
@@ -51,7 +49,28 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 	w.Header().Set("Content-Type", {{ quote $.ContentType }})
 {{- end }}
 
-{{- if $.Default }}
+{{- if $.WithHeaders }}
+// Encoding response headers.
+{
+	h := uri.NewHeaderEncoder(w.Header())
+	{{- range $_, $header := $.Headers }}
+	// Encode '{{ $header.Spec.Name }}' header.
+	{
+		cfg := uri.HeaderParameterEncodingConfig{
+			Name:    {{ quote $header.Spec.Name }},
+			Explode: {{ if $header.Spec.Explode}}true{{ else }}false{{ end }},
+		}
+		if err := h.EncodeParam(cfg, func(e uri.Encoder) error{
+			{{- template "uri/encode" elem $header.Type (printf "response.%s" $header.Name) }}
+		}); err != nil {
+			return errors.Wrap(err, "encode {{ $header.Spec.Name }} header")
+		}
+	}
+	{{- end }}
+}
+{{- end }}
+
+{{- if $.WithStatusCode }}
 	w.WriteHeader(response.StatusCode)
 	st := http.StatusText(response.StatusCode)
 	if response.StatusCode >= http.StatusBadRequest {
@@ -68,29 +87,31 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 	{{- end }}
 {{- end }}
 
-{{- $type := $.Type }}
-{{- $var := "response" }}
-{{- if or $.Wrapped $.Default }}
-	{{- $type = ($.Type.MustField "Response").Type }}
-	{{- $var = "response.Response" }}
-{{- end }}
-
 {{- if $.NoContent }}
 	return nil
-{{- else if $.ContentType.JSON }}
-	e := jx.GetEncoder()
-	defer jx.PutEncoder(e)
-	{{ template "json/enc" elem $type $var }}
-	if _, err := e.WriteTo(w); err != nil {
-		return errors.Wrap(err, "write")
-	}
-	return nil
-{{- else if $type.IsStream }}
-	if _, err := io.Copy(w, {{ $var }}); err != nil {
-		return errors.Wrap(err, "write")
-	}
-	return nil
 {{- else }}
-    {{- errorf "%q: %s encoder not implemented" $.ContentType $type }}
+	{{- $type := $.Type }}
+	{{- $var := "response" }}
+	{{- if or $.WithStatusCode $.WithHeaders }}
+		{{- $type = ($.Type.MustField "Response").Type }}
+		{{- $var = "response.Response" }}
+	{{- end }}
+
+	{{- if $.ContentType.JSON }}
+		e := jx.GetEncoder()
+		defer jx.PutEncoder(e)
+		{{ template "json/enc" elem $type $var }}
+		if _, err := e.WriteTo(w); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+	{{- else if $type.IsStream }}
+		if _, err := io.Copy(w, {{ $var }}); err != nil {
+			return errors.Wrap(err, "write")
+		}
+		return nil
+	{{- else }}
+		{{- errorf "%q: %s encoder not implemented" $.ContentType $type }}
+	{{- end }}
 {{- end }}
 {{ end }}

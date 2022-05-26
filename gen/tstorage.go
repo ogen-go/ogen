@@ -12,20 +12,19 @@ type tstorage struct {
 	types     map[string]*ir.Type     // Key: type name
 	responses map[string]*ir.Response // Key: ref
 
-	// w means 'wrapped'.
-	// These maps stores references to types and responses
-	// that we wrapped in a [T]StatusCode struct.
-	wtypes     map[string]*ir.Type     // Key: ref
-	wresponses map[string]*ir.Response // Key: ref
+	// wtypes stores references to wrapped types:
+	//  * [T]StatusCode
+	//  * [T]Headers
+	//  * [T]StatusCodeWithHeaders
+	wtypes map[string]*ir.Type // Key: ref
 }
 
 func newTStorage() *tstorage {
 	return &tstorage{
-		refs:       map[string]*ir.Type{},
-		types:      map[string]*ir.Type{},
-		responses:  map[string]*ir.Response{},
-		wtypes:     map[string]*ir.Type{},
-		wresponses: map[string]*ir.Response{},
+		refs:      map[string]*ir.Type{},
+		types:     map[string]*ir.Type{},
+		responses: map[string]*ir.Response{},
+		wtypes:    map[string]*ir.Type{},
 	}
 }
 
@@ -95,15 +94,6 @@ func (s *tstorage) saveWType(ref string, t *ir.Type) error {
 	return nil
 }
 
-func (s *tstorage) saveWResponse(ref string, r *ir.Response) error {
-	if _, ok := s.wresponses[ref]; ok {
-		return errors.Errorf("reference conflict: %q", ref)
-	}
-
-	s.wresponses[ref] = r
-	return nil
-}
-
 func (s *tstorage) merge(other *tstorage) error {
 	// Check for merge conflicts.
 	for ref, t := range other.refs {
@@ -136,12 +126,6 @@ func (s *tstorage) merge(other *tstorage) error {
 		}
 	}
 
-	for ref := range other.wresponses {
-		if _, ok := s.wresponses[ref]; ok {
-			return errors.Errorf("wrapped response reference conflict: %q", ref)
-		}
-	}
-
 	for ref := range other.wtypes {
 		if _, ok := s.wtypes[ref]; ok {
 			return errors.Errorf("wrapped type reference conflict: %q", ref)
@@ -160,10 +144,6 @@ func (s *tstorage) merge(other *tstorage) error {
 
 	for name, t := range other.responses {
 		s.responses[name] = t
-	}
-
-	for name, t := range other.wresponses {
-		s.wresponses[name] = t
 	}
 
 	for name, t := range other.wtypes {

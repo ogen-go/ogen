@@ -38,7 +38,7 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 		local:  g.tstorage,
 	}
 
-	resp, err := g.responseToIR(ctx, "ErrResp", "reduced default response", d)
+	resp, err := g.responseToIR(ctx, "ErrResp", "reduced default response", d, true)
 	if err != nil {
 		return errors.Wrap(err, "default")
 	}
@@ -46,10 +46,6 @@ func (g *Generator) reduceDefault(ops []*openapi.Operation) error {
 		return errors.Wrap(err, "too complicated to reduce default error")
 	}
 
-	g.errType, err = wrapResponseStatusCode(ctx, "", resp)
-	if err != nil {
-		return errors.Wrap(err, "wrap default response with status code struct")
-	}
-
+	g.errType = resp
 	return nil
 }

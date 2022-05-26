@@ -7,9 +7,12 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
 	"go.opentelemetry.io/otel/trace"
 
+	"github.com/ogen-go/ogen/conv"
+	"github.com/ogen-go/ogen/uri"
 	"github.com/ogen-go/ogen/validate"
 )
 
@@ -50,6 +53,130 @@ func decodeAnyContentTypeBinaryStringSchemaDefaultResponse(resp *http.Response, 
 		default:
 			return res, validate.InvalidContentType(ct)
 		}
+	}
+}
+func decodeHeaders200Response(resp *http.Response, span trace.Span) (res Headers200OKHeaders, err error) {
+	switch resp.StatusCode {
+	case 200:
+		var wrapper Headers200OKHeaders
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse 'TestHeader' header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "TestHeader",
+				Explode: false,
+			}
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				wrapper.TestHeader = c
+				return nil
+			}); err != nil {
+				return res, errors.Wrap(err, "parse TestHeader header")
+			}
+		}
+		return wrapper, nil
+	default:
+		return res, validate.UnexpectedStatusCode(resp.StatusCode)
+	}
+}
+func decodeHeadersCombinedResponse(resp *http.Response, span trace.Span) (res HeadersCombinedRes, err error) {
+	switch resp.StatusCode {
+	case 200:
+		var wrapper HeadersCombinedOKHeaders
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse 'TestHeader' header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "TestHeader",
+				Explode: false,
+			}
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				wrapper.TestHeader = c
+				return nil
+			}); err != nil {
+				return res, errors.Wrap(err, "parse TestHeader header")
+			}
+		}
+		return &wrapper, nil
+	default:
+		var wrapper HeadersCombinedDefStatusCodeWithHeaders
+		wrapper.StatusCode = resp.StatusCode
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse 'TestHeader' header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "TestHeader",
+				Explode: false,
+			}
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				wrapper.TestHeader = c
+				return nil
+			}); err != nil {
+				return res, errors.Wrap(err, "parse TestHeader header")
+			}
+		}
+		return &wrapper, nil
+	}
+}
+func decodeHeadersDefaultResponse(resp *http.Response, span trace.Span) (res HeadersDefaultDefStatusCodeWithHeaders, err error) {
+	switch resp.StatusCode {
+	default:
+		var wrapper HeadersDefaultDefStatusCodeWithHeaders
+		wrapper.StatusCode = resp.StatusCode
+		h := uri.NewHeaderDecoder(resp.Header)
+		// Parse 'TestHeader' header.
+		{
+			cfg := uri.HeaderParameterDecodingConfig{
+				Name:    "TestHeader",
+				Explode: false,
+			}
+			if err := h.DecodeParam(cfg, func(d uri.Decoder) error {
+				val, err := d.DecodeValue()
+				if err != nil {
+					return err
+				}
+
+				c, err := conv.ToString(val)
+				if err != nil {
+					return err
+				}
+
+				wrapper.TestHeader = c
+				return nil
+			}); err != nil {
+				return res, errors.Wrap(err, "parse TestHeader header")
+			}
+		}
+		return wrapper, nil
 	}
 }
 func decodeMultipleGenericResponsesResponse(resp *http.Response, span trace.Span) (res MultipleGenericResponsesRes, err error) {
