@@ -31,7 +31,7 @@ func (s *Server) handleCreateSnapshotRequest(args [0]string, w http.ResponseWrit
 	defer span.End()
 
 	var err error
-	request, err := decodeCreateSnapshotRequest(r, span)
+	request, err := s.decodeCreateSnapshotRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "CreateSnapshot",
@@ -76,7 +76,7 @@ func (s *Server) handleCreateSyncActionRequest(args [0]string, w http.ResponseWr
 	defer span.End()
 
 	var err error
-	request, err := decodeCreateSyncActionRequest(r, span)
+	request, err := s.decodeCreateSyncActionRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "CreateSyncAction",
@@ -301,7 +301,7 @@ func (s *Server) handleLoadSnapshotRequest(args [0]string, w http.ResponseWriter
 	defer span.End()
 
 	var err error
-	request, err := decodeLoadSnapshotRequest(r, span)
+	request, err := s.decodeLoadSnapshotRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "LoadSnapshot",
@@ -344,7 +344,7 @@ func (s *Server) handleMmdsConfigPutRequest(args [0]string, w http.ResponseWrite
 	defer span.End()
 
 	var err error
-	request, err := decodeMmdsConfigPutRequest(r, span)
+	request, err := s.decodeMmdsConfigPutRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "MmdsConfigPut",
@@ -421,7 +421,7 @@ func (s *Server) handleMmdsPatchRequest(args [0]string, w http.ResponseWriter, r
 	defer span.End()
 
 	var err error
-	request, err := decodeMmdsPatchRequest(r, span)
+	request, err := s.decodeMmdsPatchRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "MmdsPatch",
@@ -464,7 +464,7 @@ func (s *Server) handleMmdsPutRequest(args [0]string, w http.ResponseWriter, r *
 	defer span.End()
 
 	var err error
-	request, err := decodeMmdsPutRequest(r, span)
+	request, err := s.decodeMmdsPutRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "MmdsPut",
@@ -509,7 +509,7 @@ func (s *Server) handlePatchBalloonRequest(args [0]string, w http.ResponseWriter
 	defer span.End()
 
 	var err error
-	request, err := decodePatchBalloonRequest(r, span)
+	request, err := s.decodePatchBalloonRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PatchBalloon",
@@ -554,7 +554,7 @@ func (s *Server) handlePatchBalloonStatsIntervalRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := decodePatchBalloonStatsIntervalRequest(r, span)
+	request, err := s.decodePatchBalloonStatsIntervalRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PatchBalloonStatsInterval",
@@ -608,7 +608,7 @@ func (s *Server) handlePatchGuestDriveByIDRequest(args [1]string, w http.Respons
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodePatchGuestDriveByIDRequest(r, span)
+	request, err := s.decodePatchGuestDriveByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PatchGuestDriveByID",
@@ -662,7 +662,7 @@ func (s *Server) handlePatchGuestNetworkInterfaceByIDRequest(args [1]string, w h
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodePatchGuestNetworkInterfaceByIDRequest(r, span)
+	request, err := s.decodePatchGuestNetworkInterfaceByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PatchGuestNetworkInterfaceByID",
@@ -707,7 +707,7 @@ func (s *Server) handlePatchMachineConfigurationRequest(args [0]string, w http.R
 	defer span.End()
 
 	var err error
-	request, err := decodePatchMachineConfigurationRequest(r, span)
+	request, err := s.decodePatchMachineConfigurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PatchMachineConfiguration",
@@ -752,7 +752,7 @@ func (s *Server) handlePatchVmRequest(args [0]string, w http.ResponseWriter, r *
 	defer span.End()
 
 	var err error
-	request, err := decodePatchVmRequest(r, span)
+	request, err := s.decodePatchVmRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PatchVm",
@@ -797,7 +797,7 @@ func (s *Server) handlePutBalloonRequest(args [0]string, w http.ResponseWriter, 
 	defer span.End()
 
 	var err error
-	request, err := decodePutBalloonRequest(r, span)
+	request, err := s.decodePutBalloonRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PutBalloon",
@@ -842,7 +842,7 @@ func (s *Server) handlePutGuestBootSourceRequest(args [0]string, w http.Response
 	defer span.End()
 
 	var err error
-	request, err := decodePutGuestBootSourceRequest(r, span)
+	request, err := s.decodePutGuestBootSourceRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PutGuestBootSource",
@@ -896,7 +896,7 @@ func (s *Server) handlePutGuestDriveByIDRequest(args [1]string, w http.ResponseW
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodePutGuestDriveByIDRequest(r, span)
+	request, err := s.decodePutGuestDriveByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PutGuestDriveByID",
@@ -950,7 +950,7 @@ func (s *Server) handlePutGuestNetworkInterfaceByIDRequest(args [1]string, w htt
 		s.badRequest(ctx, w, r, span, otelAttrs, err)
 		return
 	}
-	request, err := decodePutGuestNetworkInterfaceByIDRequest(r, span)
+	request, err := s.decodePutGuestNetworkInterfaceByIDRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PutGuestNetworkInterfaceByID",
@@ -995,7 +995,7 @@ func (s *Server) handlePutGuestVsockRequest(args [0]string, w http.ResponseWrite
 	defer span.End()
 
 	var err error
-	request, err := decodePutGuestVsockRequest(r, span)
+	request, err := s.decodePutGuestVsockRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PutGuestVsock",
@@ -1040,7 +1040,7 @@ func (s *Server) handlePutLoggerRequest(args [0]string, w http.ResponseWriter, r
 	defer span.End()
 
 	var err error
-	request, err := decodePutLoggerRequest(r, span)
+	request, err := s.decodePutLoggerRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PutLogger",
@@ -1085,7 +1085,7 @@ func (s *Server) handlePutMachineConfigurationRequest(args [0]string, w http.Res
 	defer span.End()
 
 	var err error
-	request, err := decodePutMachineConfigurationRequest(r, span)
+	request, err := s.decodePutMachineConfigurationRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PutMachineConfiguration",
@@ -1130,7 +1130,7 @@ func (s *Server) handlePutMetricsRequest(args [0]string, w http.ResponseWriter, 
 	defer span.End()
 
 	var err error
-	request, err := decodePutMetricsRequest(r, span)
+	request, err := s.decodePutMetricsRequest(r, span)
 	if err != nil {
 		err = &ogenerrors.DecodeRequestError{
 			Operation: "PutMetrics",

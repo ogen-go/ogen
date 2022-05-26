@@ -1,6 +1,11 @@
 package uri
 
-import "net/url"
+import (
+	"mime/multipart"
+	"net/url"
+
+	"github.com/go-faster/errors"
+)
 
 type QueryEncoder struct {
 	values url.Values
@@ -38,4 +43,15 @@ func (e *QueryEncoder) EncodeParam(cfg QueryParameterEncodingConfig, f func(Enco
 
 func (e *QueryEncoder) Values() url.Values {
 	return e.values
+}
+
+func (e *QueryEncoder) WriteMultipart(w *multipart.Writer) error {
+	for k, values := range e.values {
+		for i, value := range values {
+			if err := w.WriteField(k, value); err != nil {
+				return errors.Wrapf(err, "write %q: [%d]", k, i)
+			}
+		}
+	}
+	return nil
 }

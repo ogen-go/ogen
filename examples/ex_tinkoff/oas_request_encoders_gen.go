@@ -7,31 +7,66 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodeOrdersLimitOrderPostRequestJSON(req LimitOrderRequest, span trace.Span) (data *jx.Encoder, err error) {
+func encodeOrdersLimitOrderPostRequestJSON(
+	req LimitOrderRequest,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeOrdersMarketOrderPostRequestJSON(req MarketOrderRequest, span trace.Span) (data *jx.Encoder, err error) {
+func encodeOrdersMarketOrderPostRequestJSON(
+	req MarketOrderRequest,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeSandboxCurrenciesBalancePostRequestJSON(req SandboxSetCurrencyBalanceRequest, span trace.Span) (data *jx.Encoder, err error) {
+func encodeSandboxCurrenciesBalancePostRequestJSON(
+	req SandboxSetCurrencyBalanceRequest,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeSandboxPositionsBalancePostRequestJSON(req SandboxSetPositionBalanceRequest, span trace.Span) (data *jx.Encoder, err error) {
+func encodeSandboxPositionsBalancePostRequestJSON(
+	req SandboxSetPositionBalanceRequest,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeSandboxRegisterPostRequestJSON(req OptSandboxRegisterRequest, span trace.Span) (data *jx.Encoder, err error) {
+func encodeSandboxRegisterPostRequestJSON(
+	req OptSandboxRegisterRequest,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)

@@ -3144,12 +3144,12 @@ type TestFloatValidationOK struct{}
 
 // Ref: #/components/schemas/TestForm
 type TestForm struct {
-	ID          OptInt
-	UUID        OptUUID
-	Description string
-	Array       []string
-	Object      OptTestFormObject
-	DeepObject  OptTestFormDeepObject
+	ID          OptInt                "json:\"id\""
+	UUID        OptUUID               "json:\"uuid\""
+	Description string                "json:\"description\""
+	Array       []string              "json:\"array\""
+	Object      OptTestFormObject     "json:\"object\""
+	DeepObject  OptTestFormDeepObject "json:\"deepObject\""
 }
 
 type TestFormDeepObject struct {
@@ -3164,6 +3164,9 @@ type TestFormObject struct {
 
 // TestFormURLEncodedOK is response for TestFormURLEncoded operation.
 type TestFormURLEncodedOK struct{}
+
+// TestMultipartOK is response for TestMultipart operation.
+type TestMultipartOK struct{}
 
 type TestObjectQueryParameterDeepObject struct {
 	Min    int    "json:\"min\""

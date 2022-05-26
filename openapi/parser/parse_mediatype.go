@@ -37,16 +37,22 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 			names[prop.Name] = prop
 		}
 
-		for name, e := range m.Encoding {
+		parseEncoding := func(name string, e ogen.Encoding) error {
 			prop, ok := names[name]
 			if !ok {
-				return nil, errors.Errorf("unknown encoding prop %q", name)
+				return errors.New("unknown prop")
 			}
 
 			encoding := &openapi.Encoding{
+				ContentType:   e.ContentType,
+				Headers:       map[string]*openapi.Header{},
 				Style:         inferParamStyle(openapi.LocationQuery, e.Style),
 				Explode:       inferParamExplode(openapi.LocationQuery, e.Explode),
 				AllowReserved: e.AllowReserved,
+			}
+			encoding.Headers, err = p.parseHeaders(e.Headers)
+			if err != nil {
+				return errors.Wrap(err, "headers")
 			}
 			encodings[name] = encoding
 
@@ -59,7 +65,15 @@ func (p *parser) parseMediaType(m ogen.Media) (*openapi.MediaType, error) {
 				Explode:  encoding.Explode,
 				Required: prop.Required,
 			}); err != nil {
-				return nil, err
+				return errors.Wrap(err, "param style")
+			}
+
+			return nil
+		}
+
+		for name, e := range m.Encoding {
+			if err := parseEncoding(name, e); err != nil {
+				return nil, errors.Wrapf(err, "encoding property %q", name)
 			}
 		}
 	}

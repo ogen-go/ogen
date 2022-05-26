@@ -4,6 +4,7 @@ package api
 
 import (
 	"io"
+	"mime"
 	"net/http"
 
 	"github.com/go-faster/errors"
@@ -13,8 +14,12 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeDataCreateRequest(r *http.Request, span trace.Span) (req OptData, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDataCreateRequest(r *http.Request, span trace.Span) (req OptData, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil

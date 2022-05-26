@@ -7,7 +7,14 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodeDataCreateRequestJSON(req OptData, span trace.Span) (data *jx.Encoder, err error) {
+func encodeDataCreateRequestJSON(
+	req OptData,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)

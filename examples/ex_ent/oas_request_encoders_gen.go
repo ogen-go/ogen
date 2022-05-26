@@ -7,31 +7,66 @@ import (
 	"go.opentelemetry.io/otel/trace"
 )
 
-func encodeCreatePetRequestJSON(req CreatePetReq, span trace.Span) (data *jx.Encoder, err error) {
+func encodeCreatePetRequestJSON(
+	req CreatePetReq,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeCreatePetCategoriesRequestJSON(req CreatePetCategoriesReq, span trace.Span) (data *jx.Encoder, err error) {
+func encodeCreatePetCategoriesRequestJSON(
+	req CreatePetCategoriesReq,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeCreatePetFriendsRequestJSON(req CreatePetFriendsReq, span trace.Span) (data *jx.Encoder, err error) {
+func encodeCreatePetFriendsRequestJSON(
+	req CreatePetFriendsReq,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeCreatePetOwnerRequestJSON(req CreatePetOwnerReq, span trace.Span) (data *jx.Encoder, err error) {
+func encodeCreatePetOwnerRequestJSON(
+	req CreatePetOwnerReq,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeUpdatePetRequestJSON(req UpdatePetReq, span trace.Span) (data *jx.Encoder, err error) {
+func encodeUpdatePetRequestJSON(
+	req UpdatePetReq,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)

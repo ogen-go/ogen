@@ -4,6 +4,7 @@ package api
 
 import (
 	"io"
+	"mime"
 	"net/http"
 
 	"github.com/go-faster/errors"
@@ -13,8 +14,12 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStickerToSet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStickerToSet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -58,8 +63,12 @@ func decodeAddStickerToSetRequest(r *http.Request, span trace.Span) (req AddStic
 	}
 }
 
-func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req AnswerCallbackQuery, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req AnswerCallbackQuery, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -103,8 +112,12 @@ func decodeAnswerCallbackQueryRequest(r *http.Request, span trace.Span) (req Ans
 	}
 }
 
-func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req AnswerInlineQuery, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req AnswerInlineQuery, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -148,8 +161,12 @@ func decodeAnswerInlineQueryRequest(r *http.Request, span trace.Span) (req Answe
 	}
 }
 
-func decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req AnswerPreCheckoutQuery, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req AnswerPreCheckoutQuery, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -185,8 +202,12 @@ func decodeAnswerPreCheckoutQueryRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req AnswerShippingQuery, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req AnswerShippingQuery, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -230,8 +251,12 @@ func decodeAnswerShippingQueryRequest(r *http.Request, span trace.Span) (req Ans
 	}
 }
 
-func decodeAnswerWebAppQueryRequest(r *http.Request, span trace.Span) (req AnswerWebAppQuery, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeAnswerWebAppQueryRequest(r *http.Request, span trace.Span) (req AnswerWebAppQuery, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -275,8 +300,12 @@ func decodeAnswerWebAppQueryRequest(r *http.Request, span trace.Span) (req Answe
 	}
 }
 
-func decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req ApproveChatJoinRequest, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req ApproveChatJoinRequest, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -312,8 +341,12 @@ func decodeApproveChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMember, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMember, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -349,8 +382,12 @@ func decodeBanChatMemberRequest(r *http.Request, span trace.Span) (req BanChatMe
 	}
 }
 
-func decodeBanChatSenderChatRequest(r *http.Request, span trace.Span) (req BanChatSenderChat, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeBanChatSenderChatRequest(r *http.Request, span trace.Span) (req BanChatSenderChat, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -386,8 +423,12 @@ func decodeBanChatSenderChatRequest(r *http.Request, span trace.Span) (req BanCh
 	}
 }
 
-func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -431,8 +472,12 @@ func decodeCopyMessageRequest(r *http.Request, span trace.Span) (req CopyMessage
 	}
 }
 
-func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req CreateChatInviteLink, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req CreateChatInviteLink, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -476,8 +521,12 @@ func decodeCreateChatInviteLinkRequest(r *http.Request, span trace.Span) (req Cr
 	}
 }
 
-func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req CreateNewStickerSet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req CreateNewStickerSet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -521,8 +570,12 @@ func decodeCreateNewStickerSetRequest(r *http.Request, span trace.Span) (req Cre
 	}
 }
 
-func decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req DeclineChatJoinRequest, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req DeclineChatJoinRequest, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -558,8 +611,12 @@ func decodeDeclineChatJoinRequestRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteChatPhoto, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteChatPhoto, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -595,8 +652,12 @@ func decodeDeleteChatPhotoRequest(r *http.Request, span trace.Span) (req DeleteC
 	}
 }
 
-func decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req DeleteChatStickerSet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req DeleteChatStickerSet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -632,8 +693,12 @@ func decodeDeleteChatStickerSetRequest(r *http.Request, span trace.Span) (req De
 	}
 }
 
-func decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMessage, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMessage, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -669,8 +734,12 @@ func decodeDeleteMessageRequest(r *http.Request, span trace.Span) (req DeleteMes
 	}
 }
 
-func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req OptDeleteMyCommands, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req OptDeleteMyCommands, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -707,8 +776,12 @@ func decodeDeleteMyCommandsRequest(r *http.Request, span trace.Span) (req OptDel
 	}
 }
 
-func decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req DeleteStickerFromSet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req DeleteStickerFromSet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -744,8 +817,12 @@ func decodeDeleteStickerFromSetRequest(r *http.Request, span trace.Span) (req De
 	}
 }
 
-func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req OptDeleteWebhook, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req OptDeleteWebhook, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -782,8 +859,12 @@ func decodeDeleteWebhookRequest(r *http.Request, span trace.Span) (req OptDelete
 	}
 }
 
-func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req EditChatInviteLink, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req EditChatInviteLink, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -827,8 +908,12 @@ func decodeEditChatInviteLinkRequest(r *http.Request, span trace.Span) (req Edit
 	}
 }
 
-func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req EditMessageCaption, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req EditMessageCaption, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -872,8 +957,12 @@ func decodeEditMessageCaptionRequest(r *http.Request, span trace.Span) (req Edit
 	}
 }
 
-func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req EditMessageLiveLocation, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req EditMessageLiveLocation, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -917,8 +1006,12 @@ func decodeEditMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMessageMedia, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMessageMedia, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -962,8 +1055,12 @@ func decodeEditMessageMediaRequest(r *http.Request, span trace.Span) (req EditMe
 	}
 }
 
-func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req EditMessageReplyMarkup, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req EditMessageReplyMarkup, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1007,8 +1104,12 @@ func decodeEditMessageReplyMarkupRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMessageText, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMessageText, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1052,8 +1153,12 @@ func decodeEditMessageTextRequest(r *http.Request, span trace.Span) (req EditMes
 	}
 }
 
-func decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req ExportChatInviteLink, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req ExportChatInviteLink, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1089,8 +1194,12 @@ func decodeExportChatInviteLinkRequest(r *http.Request, span trace.Span) (req Ex
 	}
 }
 
-func decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardMessage, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardMessage, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1126,8 +1235,12 @@ func decodeForwardMessageRequest(r *http.Request, span trace.Span) (req ForwardM
 	}
 }
 
-func decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1163,8 +1276,12 @@ func decodeGetChatRequest(r *http.Request, span trace.Span) (req GetChat, err er
 	}
 }
 
-func decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req GetChatAdministrators, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req GetChatAdministrators, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1200,8 +1317,12 @@ func decodeGetChatAdministratorsRequest(r *http.Request, span trace.Span) (req G
 	}
 }
 
-func decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMember, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMember, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1237,8 +1358,12 @@ func decodeGetChatMemberRequest(r *http.Request, span trace.Span) (req GetChatMe
 	}
 }
 
-func decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetChatMemberCount, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetChatMemberCount, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1274,8 +1399,12 @@ func decodeGetChatMemberCountRequest(r *http.Request, span trace.Span) (req GetC
 	}
 }
 
-func decodeGetChatMenuButtonRequest(r *http.Request, span trace.Span) (req OptGetChatMenuButton, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetChatMenuButtonRequest(r *http.Request, span trace.Span) (req OptGetChatMenuButton, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1312,8 +1441,12 @@ func decodeGetChatMenuButtonRequest(r *http.Request, span trace.Span) (req OptGe
 	}
 }
 
-func decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1349,8 +1482,12 @@ func decodeGetFileRequest(r *http.Request, span trace.Span) (req GetFile, err er
 	}
 }
 
-func decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGameHighScores, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGameHighScores, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1386,8 +1523,12 @@ func decodeGetGameHighScoresRequest(r *http.Request, span trace.Span) (req GetGa
 	}
 }
 
-func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req OptGetMyCommands, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req OptGetMyCommands, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1424,8 +1565,12 @@ func decodeGetMyCommandsRequest(r *http.Request, span trace.Span) (req OptGetMyC
 	}
 }
 
-func decodeGetMyDefaultAdministratorRightsRequest(r *http.Request, span trace.Span) (req OptGetMyDefaultAdministratorRights, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetMyDefaultAdministratorRightsRequest(r *http.Request, span trace.Span) (req OptGetMyDefaultAdministratorRights, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1462,8 +1607,12 @@ func decodeGetMyDefaultAdministratorRightsRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetStickerSet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetStickerSet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1499,8 +1648,12 @@ func decodeGetStickerSetRequest(r *http.Request, span trace.Span) (req GetSticke
 	}
 }
 
-func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req OptGetUpdates, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req OptGetUpdates, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -1552,8 +1705,12 @@ func decodeGetUpdatesRequest(r *http.Request, span trace.Span) (req OptGetUpdate
 	}
 }
 
-func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req GetUserProfilePhotos, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req GetUserProfilePhotos, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1597,8 +1754,12 @@ func decodeGetUserProfilePhotosRequest(r *http.Request, span trace.Span) (req Ge
 	}
 }
 
-func decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1634,8 +1795,12 @@ func decodeLeaveChatRequest(r *http.Request, span trace.Span) (req LeaveChat, er
 	}
 }
 
-func decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatMessage, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatMessage, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1671,8 +1836,12 @@ func decodePinChatMessageRequest(r *http.Request, span trace.Span) (req PinChatM
 	}
 }
 
-func decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req PromoteChatMember, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req PromoteChatMember, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1708,8 +1877,12 @@ func decodePromoteChatMemberRequest(r *http.Request, span trace.Span) (req Promo
 	}
 }
 
-func decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req RestrictChatMember, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req RestrictChatMember, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1745,8 +1918,12 @@ func decodeRestrictChatMemberRequest(r *http.Request, span trace.Span) (req Rest
 	}
 }
 
-func decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req RevokeChatInviteLink, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req RevokeChatInviteLink, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1782,8 +1959,12 @@ func decodeRevokeChatInviteLinkRequest(r *http.Request, span trace.Span) (req Re
 	}
 }
 
-func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnimation, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnimation, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1827,8 +2008,12 @@ func decodeSendAnimationRequest(r *http.Request, span trace.Span) (req SendAnima
 	}
 }
 
-func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1872,8 +2057,12 @@ func decodeSendAudioRequest(r *http.Request, span trace.Span) (req SendAudio, er
 	}
 }
 
-func decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChatAction, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChatAction, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1909,8 +2098,12 @@ func decodeSendChatActionRequest(r *http.Request, span trace.Span) (req SendChat
 	}
 }
 
-func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1954,8 +2147,12 @@ func decodeSendContactRequest(r *http.Request, span trace.Span) (req SendContact
 	}
 }
 
-func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -1999,8 +2196,12 @@ func decodeSendDiceRequest(r *http.Request, span trace.Span) (req SendDice, err 
 	}
 }
 
-func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocument, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocument, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2044,8 +2245,12 @@ func decodeSendDocumentRequest(r *http.Request, span trace.Span) (req SendDocume
 	}
 }
 
-func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2089,8 +2294,12 @@ func decodeSendGameRequest(r *http.Request, span trace.Span) (req SendGame, err 
 	}
 }
 
-func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2134,8 +2343,12 @@ func decodeSendInvoiceRequest(r *http.Request, span trace.Span) (req SendInvoice
 	}
 }
 
-func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocation, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocation, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2179,8 +2392,12 @@ func decodeSendLocationRequest(r *http.Request, span trace.Span) (req SendLocati
 	}
 }
 
-func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMediaGroup, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMediaGroup, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2224,8 +2441,12 @@ func decodeSendMediaGroupRequest(r *http.Request, span trace.Span) (req SendMedi
 	}
 }
 
-func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2269,8 +2490,12 @@ func decodeSendMessageRequest(r *http.Request, span trace.Span) (req SendMessage
 	}
 }
 
-func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2314,8 +2539,12 @@ func decodeSendPhotoRequest(r *http.Request, span trace.Span) (req SendPhoto, er
 	}
 }
 
-func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2359,8 +2588,12 @@ func decodeSendPollRequest(r *http.Request, span trace.Span) (req SendPoll, err 
 	}
 }
 
-func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2404,8 +2637,12 @@ func decodeSendStickerRequest(r *http.Request, span trace.Span) (req SendSticker
 	}
 }
 
-func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2449,8 +2686,12 @@ func decodeSendVenueRequest(r *http.Request, span trace.Span) (req SendVenue, er
 	}
 }
 
-func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2494,8 +2735,12 @@ func decodeSendVideoRequest(r *http.Request, span trace.Span) (req SendVideo, er
 	}
 }
 
-func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideoNote, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideoNote, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2539,8 +2784,12 @@ func decodeSendVideoNoteRequest(r *http.Request, span trace.Span) (req SendVideo
 	}
 }
 
-func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2584,8 +2833,12 @@ func decodeSendVoiceRequest(r *http.Request, span trace.Span) (req SendVoice, er
 	}
 }
 
-func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Span) (req SetChatAdministratorCustomTitle, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Span) (req SetChatAdministratorCustomTitle, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2629,8 +2882,12 @@ func decodeSetChatAdministratorCustomTitleRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetChatDescription, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetChatDescription, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2674,8 +2931,12 @@ func decodeSetChatDescriptionRequest(r *http.Request, span trace.Span) (req SetC
 	}
 }
 
-func decodeSetChatMenuButtonRequest(r *http.Request, span trace.Span) (req OptSetChatMenuButton, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetChatMenuButtonRequest(r *http.Request, span trace.Span) (req OptSetChatMenuButton, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2712,8 +2973,12 @@ func decodeSetChatMenuButtonRequest(r *http.Request, span trace.Span) (req OptSe
 	}
 }
 
-func decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetChatPermissions, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetChatPermissions, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2749,8 +3014,12 @@ func decodeSetChatPermissionsRequest(r *http.Request, span trace.Span) (req SetC
 	}
 }
 
-func decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPhoto, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPhoto, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2786,8 +3055,12 @@ func decodeSetChatPhotoRequest(r *http.Request, span trace.Span) (req SetChatPho
 	}
 }
 
-func decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetChatStickerSet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetChatStickerSet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2823,8 +3096,12 @@ func decodeSetChatStickerSetRequest(r *http.Request, span trace.Span) (req SetCh
 	}
 }
 
-func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTitle, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTitle, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2868,8 +3145,12 @@ func decodeSetChatTitleRequest(r *http.Request, span trace.Span) (req SetChatTit
 	}
 }
 
-func decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameScore, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameScore, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2905,8 +3186,12 @@ func decodeSetGameScoreRequest(r *http.Request, span trace.Span) (req SetGameSco
 	}
 }
 
-func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyCommands, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyCommands, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -2950,8 +3235,12 @@ func decodeSetMyCommandsRequest(r *http.Request, span trace.Span) (req SetMyComm
 	}
 }
 
-func decodeSetMyDefaultAdministratorRightsRequest(r *http.Request, span trace.Span) (req OptSetMyDefaultAdministratorRights, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetMyDefaultAdministratorRightsRequest(r *http.Request, span trace.Span) (req OptSetMyDefaultAdministratorRights, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -2988,8 +3277,12 @@ func decodeSetMyDefaultAdministratorRightsRequest(r *http.Request, span trace.Sp
 	}
 }
 
-func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req SetPassportDataErrors, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req SetPassportDataErrors, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3033,8 +3326,12 @@ func decodeSetPassportDataErrorsRequest(r *http.Request, span trace.Span) (req S
 	}
 }
 
-func decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req SetStickerPositionInSet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req SetStickerPositionInSet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3070,8 +3367,12 @@ func decodeSetStickerPositionInSetRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetStickerSetThumb, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetStickerSetThumb, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3107,8 +3408,12 @@ func decodeSetStickerSetThumbRequest(r *http.Request, span trace.Span) (req SetS
 	}
 }
 
-func decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3144,8 +3449,12 @@ func decodeSetWebhookRequest(r *http.Request, span trace.Span) (req SetWebhook, 
 	}
 }
 
-func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req StopMessageLiveLocation, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req StopMessageLiveLocation, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3189,8 +3498,12 @@ func decodeStopMessageLiveLocationRequest(r *http.Request, span trace.Span) (req
 	}
 }
 
-func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3234,8 +3547,12 @@ func decodeStopPollRequest(r *http.Request, span trace.Span) (req StopPoll, err 
 	}
 }
 
-func decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanChatMember, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanChatMember, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3271,8 +3588,12 @@ func decodeUnbanChatMemberRequest(r *http.Request, span trace.Span) (req UnbanCh
 	}
 }
 
-func decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Span) (req UnbanChatSenderChat, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Span) (req UnbanChatSenderChat, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3308,8 +3629,12 @@ func decodeUnbanChatSenderChatRequest(r *http.Request, span trace.Span) (req Unb
 	}
 }
 
-func decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req UnpinAllChatMessages, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req UnpinAllChatMessages, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3345,8 +3670,12 @@ func decodeUnpinAllChatMessagesRequest(r *http.Request, span trace.Span) (req Un
 	}
 }
 
-func decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinChatMessage, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinChatMessage, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -3382,8 +3711,12 @@ func decodeUnpinChatMessageRequest(r *http.Request, span trace.Span) (req UnpinC
 	}
 }
 
-func decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (req UploadStickerFile, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeUploadStickerFileRequest(r *http.Request, span trace.Span) (req UploadStickerFile, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired

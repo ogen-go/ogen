@@ -644,6 +644,31 @@
         }
       }
     },
+    "/testMultipart": {
+      "post": {
+        "operationId": "testMultipart",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "multipart/form-data": {
+              "encoding": {
+                "deepObject": {
+                  "style": "deepObject"
+                }
+              },
+              "schema": {
+                "$ref": "#/components/schemas/TestForm"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Ok"
+          }
+        }
+      }
+    },
     "/oneofBug": {
       "post": {
         "operationId": "oneofBug",

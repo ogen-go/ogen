@@ -500,6 +500,12 @@ func encodeTestFormURLEncodedResponse(response TestFormURLEncodedOK, w http.Resp
 	return nil
 
 }
+func encodeTestMultipartResponse(response TestMultipartOK, w http.ResponseWriter, span trace.Span) error {
+	w.WriteHeader(200)
+	span.SetStatus(codes.Ok, http.StatusText(200))
+	return nil
+
+}
 func encodeTestObjectQueryParameterResponse(response TestObjectQueryParameterOK, w http.ResponseWriter, span trace.Span) error {
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)

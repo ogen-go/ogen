@@ -4,6 +4,7 @@ package api
 
 import (
 	"io"
+	"mime"
 	"net/http"
 
 	"github.com/go-faster/errors"
@@ -13,8 +14,12 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeCreatePetRequest(r *http.Request, span trace.Span) (req CreatePetReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeCreatePetRequest(r *http.Request, span trace.Span) (req CreatePetReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -50,8 +55,12 @@ func decodeCreatePetRequest(r *http.Request, span trace.Span) (req CreatePetReq,
 	}
 }
 
-func decodeCreatePetCategoriesRequest(r *http.Request, span trace.Span) (req CreatePetCategoriesReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeCreatePetCategoriesRequest(r *http.Request, span trace.Span) (req CreatePetCategoriesReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -87,8 +96,12 @@ func decodeCreatePetCategoriesRequest(r *http.Request, span trace.Span) (req Cre
 	}
 }
 
-func decodeCreatePetFriendsRequest(r *http.Request, span trace.Span) (req CreatePetFriendsReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeCreatePetFriendsRequest(r *http.Request, span trace.Span) (req CreatePetFriendsReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -124,8 +137,12 @@ func decodeCreatePetFriendsRequest(r *http.Request, span trace.Span) (req Create
 	}
 }
 
-func decodeCreatePetOwnerRequest(r *http.Request, span trace.Span) (req CreatePetOwnerReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeCreatePetOwnerRequest(r *http.Request, span trace.Span) (req CreatePetOwnerReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -161,8 +178,12 @@ func decodeCreatePetOwnerRequest(r *http.Request, span trace.Span) (req CreatePe
 	}
 }
 
-func decodeUpdatePetRequest(r *http.Request, span trace.Span) (req UpdatePetReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeUpdatePetRequest(r *http.Request, span trace.Span) (req UpdatePetReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired

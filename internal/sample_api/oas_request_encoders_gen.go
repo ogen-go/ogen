@@ -3,7 +3,9 @@
 package api
 
 import (
+	"bytes"
 	"io"
+	"mime/multipart"
 	"strings"
 
 	"github.com/go-faster/errors"
@@ -14,56 +16,119 @@ import (
 	"github.com/ogen-go/ogen/uri"
 )
 
-func encodeDefaultTestRequestJSON(req DefaultTest, span trace.Span) (data *jx.Encoder, err error) {
+func encodeDefaultTestRequestJSON(
+	req DefaultTest,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeFoobarPostRequestJSON(req OptPet, span trace.Span) (data *jx.Encoder, err error) {
+func encodeFoobarPostRequestJSON(
+	req OptPet,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	return e, nil
 }
-func encodeOneofBugRequestJSON(req OneOfBugs, span trace.Span) (data *jx.Encoder, err error) {
+func encodeOneofBugRequestJSON(
+	req OneOfBugs,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodePetCreateRequestJSON(req OptPet, span trace.Span) (data *jx.Encoder, err error) {
+func encodePetCreateRequestJSON(
+	req OptPet,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	return e, nil
 }
-func encodePetUpdateNameAliasPostRequestJSON(req OptPetName, span trace.Span) (data *jx.Encoder, err error) {
+func encodePetUpdateNameAliasPostRequestJSON(
+	req OptPetName,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	return e, nil
 }
-func encodePetUpdateNamePostRequestJSON(req OptString, span trace.Span) (data *jx.Encoder, err error) {
+func encodePetUpdateNamePostRequestJSON(
+	req OptString,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 	if req.Set {
 		req.Encode(e)
 	}
 	return e, nil
 }
-func encodePetUploadAvatarByIDRequestOctetStream(req PetUploadAvatarByIDReq, span trace.Span) (data io.Reader, err error) {
+func encodePetUploadAvatarByIDRequestOctetStream(
+	req PetUploadAvatarByIDReq,
+	span trace.Span,
+) (
+	data io.Reader,
+
+	rerr error,
+) {
 	return req, nil
 }
-func encodeTestFloatValidationRequestJSON(req TestFloatValidation, span trace.Span) (data *jx.Encoder, err error) {
+func encodeTestFloatValidationRequestJSON(
+	req TestFloatValidation,
+	span trace.Span,
+) (
+	data *jx.Encoder,
+
+	rerr error,
+) {
 	e := jx.GetEncoder()
 
 	req.Encode(e)
 	return e, nil
 }
-func encodeTestFormURLEncodedRequestFormURLEncoded(req TestForm, span trace.Span) (data io.Reader, err error) {
+func encodeTestFormURLEncodedRequestFormURLEncoded(
+	req TestForm,
+	span trace.Span,
+) (
+	data io.Reader,
+
+	rerr error,
+) {
 	q := uri.NewQueryEncoder()
 	{
 		// Encode "id" form field.
@@ -172,4 +237,131 @@ func encodeTestFormURLEncodedRequestFormURLEncoded(req TestForm, span trace.Span
 	}
 	e := strings.NewReader(q.Values().Encode())
 	return e, nil
+}
+func encodeTestMultipartRequest(
+	req TestForm,
+	span trace.Span,
+) (
+	data io.Reader,
+	contentType string,
+	rerr error,
+) {
+	q := uri.NewQueryEncoder()
+	{
+		// Encode "id" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "id",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.ID.Get(); ok {
+				return e.EncodeValue(conv.IntToString(val))
+			}
+			return nil
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "uuid" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "uuid",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.UUID.Get(); ok {
+				return e.EncodeValue(conv.UUIDToString(val))
+			}
+			return nil
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "description" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "description",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeValue(conv.StringToString(req.Description))
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "array" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "array",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			return e.EncodeArray(func(e uri.Encoder) error {
+				for i, item := range req.Array {
+					if err := func() error {
+						return e.EncodeValue(conv.StringToString(item))
+					}(); err != nil {
+						return errors.Wrapf(err, "[%d]", i)
+					}
+				}
+				return nil
+			})
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "object" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "object",
+			Style:   uri.QueryStyleForm,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.Object.Get(); ok {
+				return val.EncodeURI(e)
+			}
+			return nil
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	{
+		// Encode "deepObject" form field.
+		cfg := uri.QueryParameterEncodingConfig{
+			Name:    "deepObject",
+			Style:   uri.QueryStyleDeepObject,
+			Explode: true,
+		}
+
+		if err := q.EncodeParam(cfg, func(e uri.Encoder) error {
+			if val, ok := req.DeepObject.Get(); ok {
+				return val.EncodeURI(e)
+			}
+			return nil
+		}); err != nil {
+			return data, "", errors.Wrap(err, "encode query")
+		}
+	}
+	e := new(bytes.Buffer)
+	w := multipart.NewWriter(e)
+	defer func() {
+		cerr := w.Close()
+		if rerr == nil {
+			rerr = cerr
+		}
+	}()
+	if err := q.WriteMultipart(w); err != nil {
+		return e, "", errors.Wrap(err, "write multipart")
+	}
+	return e, w.FormDataContentType(), nil
 }

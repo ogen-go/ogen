@@ -4,7 +4,9 @@ package api
 
 import (
 	"io"
+	"mime"
 	"net/http"
+	"net/url"
 
 	"github.com/go-faster/errors"
 	"github.com/go-faster/jx"
@@ -16,8 +18,12 @@ import (
 	"github.com/ogen-go/ogen/validate"
 )
 
-func decodeDefaultTestRequest(r *http.Request, span trace.Span) (req DefaultTest, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeDefaultTestRequest(r *http.Request, span trace.Span) (req DefaultTest, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -61,8 +67,12 @@ func decodeDefaultTestRequest(r *http.Request, span trace.Span) (req DefaultTest
 	}
 }
 
-func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -114,8 +124,12 @@ func decodeFoobarPostRequest(r *http.Request, span trace.Span) (req OptPet, err 
 	}
 }
 
-func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -159,8 +173,12 @@ func decodeOneofBugRequest(r *http.Request, span trace.Span) (req OneOfBugs, err
 	}
 }
 
-func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -212,8 +230,12 @@ func decodePetCreateRequest(r *http.Request, span trace.Span) (req OptPet, err e
 	}
 }
 
-func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req OptPetName, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req OptPetName, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -265,8 +287,12 @@ func decodePetUpdateNameAliasPostRequest(r *http.Request, span trace.Span) (req 
 	}
 }
 
-func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptString, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptString, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, nil
@@ -326,8 +352,12 @@ func decodePetUpdateNamePostRequest(r *http.Request, span trace.Span) (req OptSt
 	}
 }
 
-func decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (req PetUploadAvatarByIDReq, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (req PetUploadAvatarByIDReq, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/octet-stream":
 		return PetUploadAvatarByIDReq{Data: r.Body}, nil
 	default:
@@ -335,8 +365,12 @@ func decodePetUploadAvatarByIDRequest(r *http.Request, span trace.Span) (req Pet
 	}
 }
 
-func decodeTestFloatValidationRequest(r *http.Request, span trace.Span) (req TestFloatValidation, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestFloatValidationRequest(r *http.Request, span trace.Span) (req TestFloatValidation, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/json":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
@@ -380,23 +414,26 @@ func decodeTestFloatValidationRequest(r *http.Request, span trace.Span) (req Tes
 	}
 }
 
-func decodeTestFormURLEncodedRequest(r *http.Request, span trace.Span) (req TestForm, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decodeTestFormURLEncodedRequest(r *http.Request, span trace.Span) (req TestForm, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 	case "application/x-www-form-urlencoded":
 		if r.ContentLength == 0 {
 			return req, validate.ErrBodyRequired
 		}
-
-		var request TestForm
 		if err := r.ParseForm(); err != nil {
 			return req, errors.Wrap(err, "parse form")
 		}
+		form := r.PostForm
 
-		if len(r.PostForm) == 0 {
+		if len(form) == 0 {
 			return req, validate.ErrBodyRequired
 		}
 
-		q := uri.NewQueryDecoder(r.PostForm)
+		q := uri.NewQueryDecoder(form)
 		{
 			cfg := uri.QueryParameterDecodingConfig{
 				Name:    "id",
@@ -573,7 +610,209 @@ func decodeTestFormURLEncodedRequest(r *http.Request, span trace.Span) (req Test
 			}
 		}
 
-		return request, nil
+		return req, nil
+	default:
+		return req, validate.InvalidContentType(ct)
+	}
+}
+
+func (s *Server) decodeTestMultipartRequest(r *http.Request, span trace.Span) (req TestForm, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
+	case "multipart/form-data":
+		if r.ContentLength == 0 {
+			return req, validate.ErrBodyRequired
+		}
+		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
+			return req, errors.Wrap(err, "parse multipart form")
+		}
+		form := url.Values(r.MultipartForm.Value)
+
+		if len(form) == 0 {
+			return req, validate.ErrBodyRequired
+		}
+
+		q := uri.NewQueryDecoder(form)
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "id",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var reqDotIDVal int
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToInt(val)
+						if err != nil {
+							return err
+						}
+
+						reqDotIDVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					req.ID.SetTo(reqDotIDVal)
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"id\"")
+				}
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "uuid",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var reqDotUUIDVal uuid.UUID
+					if err := func() error {
+						val, err := d.DecodeValue()
+						if err != nil {
+							return err
+						}
+
+						c, err := conv.ToUUID(val)
+						if err != nil {
+							return err
+						}
+
+						reqDotUUIDVal = c
+						return nil
+					}(); err != nil {
+						return err
+					}
+					req.UUID.SetTo(reqDotUUIDVal)
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"uuid\"")
+				}
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "description",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					val, err := d.DecodeValue()
+					if err != nil {
+						return err
+					}
+
+					c, err := conv.ToString(val)
+					if err != nil {
+						return err
+					}
+
+					req.Description = c
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"description\"")
+				}
+			} else {
+				return req, errors.Wrap(err, "query")
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "array",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					return d.DecodeArray(func(d uri.Decoder) error {
+						var reqDotArrayVal string
+						if err := func() error {
+							val, err := d.DecodeValue()
+							if err != nil {
+								return err
+							}
+
+							c, err := conv.ToString(val)
+							if err != nil {
+								return err
+							}
+
+							reqDotArrayVal = c
+							return nil
+						}(); err != nil {
+							return err
+						}
+						req.Array = append(req.Array, reqDotArrayVal)
+						return nil
+					})
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"array\"")
+				}
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "object",
+				Style:   uri.QueryStyleForm,
+				Explode: true,
+				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var reqDotObjectVal TestFormObject
+					if err := func() error {
+						return reqDotObjectVal.DecodeURI(d)
+					}(); err != nil {
+						return err
+					}
+					req.Object.SetTo(reqDotObjectVal)
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"object\"")
+				}
+			}
+		}
+		{
+			cfg := uri.QueryParameterDecodingConfig{
+				Name:    "deepObject",
+				Style:   uri.QueryStyleDeepObject,
+				Explode: true,
+				Fields:  []uri.QueryParameterObjectField{{"min", false}, {"max", true}},
+			}
+
+			if err := q.HasParam(cfg); err == nil {
+				if err := q.DecodeParam(cfg, func(d uri.Decoder) error {
+					var reqDotDeepObjectVal TestFormDeepObject
+					if err := func() error {
+						return reqDotDeepObjectVal.DecodeURI(d)
+					}(); err != nil {
+						return err
+					}
+					req.DeepObject.SetTo(reqDotDeepObjectVal)
+					return nil
+				}); err != nil {
+					return req, errors.Wrap(err, "decode \"deepObject\"")
+				}
+			}
+		}
+
+		return req, nil
 	default:
 		return req, validate.InvalidContentType(ct)
 	}

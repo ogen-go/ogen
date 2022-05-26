@@ -5,8 +5,12 @@
 
 {{- range $op := $.Operations }}
 {{- if $op.Request }}
-func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
-	switch ct := r.Header.Get("Content-Type"); ct {
+func (s *Server) decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.Request.Type.Go }}, err error) {
+	ct, _, err := mime.ParseMediaType(r.Header.Get("Content-Type"))
+	if err != nil {
+		return req, errors.Wrap(err, "parse media type")
+	}
+	switch ct {
 {{- range $contentType, $t := $op.Request.Contents }}
 	case {{ quote $contentType }}:
 	{{- if $t.IsStream }}
@@ -55,7 +59,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- end }}
 
 		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
-    {{- else if $contentType.FormURLEncode }}
+    {{- else if or $contentType.FormURLEncoded $contentType.MultipartForm  }}
 		if r.ContentLength == 0 {
 		{{- if not $op.Request.Spec.Required }}
 			return req, nil
@@ -64,12 +68,19 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- end }}
 		}
 
-		var request {{ $t.Go }}
+		{{- if $contentType.FormURLEncoded }}
 		if err := r.ParseForm(); err != nil {
 			return req, errors.Wrap(err, "parse form")
 		}
+		form := r.PostForm
+		{{- else }}
+		if err := r.ParseMultipartForm(s.cfg.MaxMultipartMemory); err != nil {
+			return req, errors.Wrap(err, "parse multipart form")
+		}
+		form := url.Values(r.MultipartForm.Value)
+        {{- end }}
 
-		if len(r.PostForm) == 0 {
+		if len(form) == 0 {
 		{{- if not $op.Request.Spec.Required }}
 			return req, nil
 		{{- else }}
@@ -77,8 +88,8 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		{{- end }}
 		}
 
-		q := uri.NewQueryDecoder(r.PostForm)
-		{{- range $p := $op.Request.FormParameters }}
+		q := uri.NewQueryDecoder(form)
+		{{- range $p := $op.Request.FormParameters $contentType }}
 		{
         	{{- $el := elem $p.Type (printf "req.%s" $p.Name) }}
 			cfg := uri.QueryParameterDecodingConfig{
@@ -110,7 +121,7 @@ func decode{{ $op.Name }}Request(r *http.Request, span trace.Span) (req {{ $op.R
 		}
 		{{- end }}
 
-		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}request, nil
+		return {{ if ($op.Request.Type.IsInterface) }}&{{ end }}req, nil
 	{{- else }}
 		{{- errorf "%s decoder not implemented" $contentType }}
 	{{- end }}
