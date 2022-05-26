@@ -51,23 +51,6 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 	w.Header().Set("Content-Type", {{ quote $.ContentType }})
 {{- end }}
 
-{{- if $.WithStatusCode }}
-	w.WriteHeader(response.StatusCode)
-	st := http.StatusText(response.StatusCode)
-	if response.StatusCode >= http.StatusBadRequest {
-		span.SetStatus(codes.Error, st)
-	} else {
-		span.SetStatus(codes.Ok, st)
-	}
-{{- else }}
-	w.WriteHeader({{ $.StatusCode }})
-	{{- if ge .StatusCode 400 }}
-		span.SetStatus(codes.Error, http.StatusText({{ $.StatusCode }}))
-	{{- else }}
-		span.SetStatus(codes.Ok, http.StatusText({{ $.StatusCode }}))
-	{{- end }}
-{{- end }}
-
 {{- if $.WithHeaders }}
 // Encoding response headers.
 {
@@ -87,6 +70,23 @@ func encodeErrorResponse(response {{ $.ErrorType.Go }}, w http.ResponseWriter, s
 	}
 	{{- end }}
 }
+{{- end }}
+
+{{- if $.WithStatusCode }}
+	w.WriteHeader(response.StatusCode)
+	st := http.StatusText(response.StatusCode)
+	if response.StatusCode >= http.StatusBadRequest {
+		span.SetStatus(codes.Error, st)
+	} else {
+		span.SetStatus(codes.Ok, st)
+	}
+{{- else }}
+	w.WriteHeader({{ $.StatusCode }})
+	{{- if ge .StatusCode 400 }}
+		span.SetStatus(codes.Error, http.StatusText({{ $.StatusCode }}))
+	{{- else }}
+		span.SetStatus(codes.Ok, http.StatusText({{ $.StatusCode }}))
+	{{- end }}
 {{- end }}
 
 {{- if $.NoContent }}
